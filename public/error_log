@@ -1,0 +1,24 @@
+[15-Feb-2015 04:05:26 UTC] PHP Parse error:  syntax error, unexpected 'sign' (T_STRING), expecting ')' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/d5d058766af473b08b81aeec891e7f87 on line 11
+[15-Feb-2015 04:12:38 UTC] PHP Fatal error:  Call to a member function get() on a non-object in /home4/kjchabra/public_html/cerial_v2/app/storage/views/4c85cf1f9259dbcf237803cf1628c06a on line 1
+[15-Feb-2015 04:12:40 UTC] PHP Fatal error:  Call to a member function get() on a non-object in /home4/kjchabra/public_html/cerial_v2/app/storage/views/4c85cf1f9259dbcf237803cf1628c06a on line 1
+[15-Feb-2015 04:31:04 UTC] PHP Fatal error:  Cannot access protected property Illuminate\Validation\Validator::$messages in /home4/kjchabra/public_html/cerial_v2/app/controllers/AuthController.php on line 37
+[15-Feb-2015 04:37:08 UTC] PHP Parse error:  syntax error, unexpected 'name' (T_STRING), expecting ',' or ';' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/8f11f3cebca7b7537b83e7768df381ce on line 1
+[15-Feb-2015 04:38:41 UTC] PHP Parse error:  syntax error, unexpected 'name' (T_STRING), expecting ',' or ';' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/8f11f3cebca7b7537b83e7768df381ce on line 5
+[15-Feb-2015 05:00:14 UTC] PHP Fatal error:  Call to a member function Username() on a non-object in /home4/kjchabra/public_html/cerial_v2/app/storage/views/d5d058766af473b08b81aeec891e7f87 on line 10
+[15-Feb-2015 05:02:47 UTC] PHP Fatal error:  Call to a member function first() on a non-object in /home4/kjchabra/public_html/cerial_v2/app/storage/views/8f11f3cebca7b7537b83e7768df381ce on line 10
+[15-Feb-2015 05:39:53 UTC] PHP Fatal error:  Call to undefined method Illuminate\Database\Eloquent\Collection::id() in /home4/kjchabra/public_html/cerial_v2/app/controllers/AuthController.php on line 64
+[20-Feb-2015 20:54:40 UTC] PHP Fatal error:  Call to undefined method Illuminate\Database\Eloquent\Collection::password() in /home4/kjchabra/public_html/cerial_v2/app/controllers/AuthController.php on line 103
+[20-Feb-2015 20:55:17 UTC] PHP Fatal error:  Function name must be a string in /home4/kjchabra/public_html/cerial_v2/app/controllers/AuthController.php on line 103
+[20-Feb-2015 22:10:44 UTC] PHP Parse error:  syntax error, unexpected ';' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/69ea1c0df1e91ae96973ed120107551f on line 6
+[20-Feb-2015 22:10:46 UTC] PHP Parse error:  syntax error, unexpected ';' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/69ea1c0df1e91ae96973ed120107551f on line 6
+[20-Feb-2015 22:10:51 UTC] PHP Parse error:  syntax error, unexpected ';' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/69ea1c0df1e91ae96973ed120107551f on line 6
+[20-Feb-2015 22:10:53 UTC] PHP Parse error:  syntax error, unexpected ';' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/69ea1c0df1e91ae96973ed120107551f on line 6
+[20-Feb-2015 23:06:26 UTC] PHP Fatal error:  Undefined class constant 'token' in /home4/kjchabra/public_html/cerial_v2/app/storage/views/96cac2470d98099dafe44d928924a56c on line 21
+[21-Feb-2015 18:39:27 UTC] PHP Fatal error:  Call to undefined method Illuminate\Foundation\Application::create() in /home4/kjchabra/public_html/cerial_v2/bootstrap/compiled.php on line 3263
+[21-Feb-2015 18:41:34 UTC] PHP Fatal error:  Call to undefined method Illuminate\Foundation\Application::create() in /home4/kjchabra/public_html/cerial_v2/bootstrap/compiled.php on line 3263
+[21-Feb-2015 18:42:07 UTC] PHP Fatal error:  Call to undefined method Illuminate\Foundation\Application::create() in /home4/kjchabra/public_html/cerial_v2/bootstrap/compiled.php on line 3263
+[21-Feb-2015 18:49:55 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home4/kjchabra/public_html/cerial_v2/app/storage/views/44d4554a8fc5dc6fb78902f0a4a94184 on line 20
+[21-Feb-2015 20:10:49 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home4/kjchabra/public_html/cerial_v2/app/storage/views/44d4554a8fc5dc6fb78902f0a4a94184 on line 45
+[21-Feb-2015 20:10:51 UTC] PHP Parse error:  syntax error, unexpected 'endforeach' (T_ENDFOREACH) in /home4/kjchabra/public_html/cerial_v2/app/storage/views/44d4554a8fc5dc6fb78902f0a4a94184 on line 45
+[12-Jun-2015 23:26:41 UTC] PHP Fatal error:  Class 'likes' not found in /home4/kjchabra/public_html/demhub/demhub_v3/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 861
+[14-Jul-2015 00:48:18 UTC] PHP Fatal error:  Call to a member function isValid() on a non-object in /home4/kjchabra/public_html/demhub/demhub_v4/app/controllers/AuthController.php on line 336
