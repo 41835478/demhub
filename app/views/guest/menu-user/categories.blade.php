@@ -1,8 +1,10 @@
 
 @foreach($cats as $entity)
-	<div style="background-color:#{{$entity->bg_color}}; min-height:60px;" class="col-md-2">
-		<a style="color:#FFF;" href="{{URL::route('division', array('id' => $entity->id))}}">
+<a href="{{URL::route('division', array('id' => $entity->id))}}" style="">
+	<div style="background-color:#{{$entity->bg_color}}; min-height:67px;max-height:67px;" class="col-md-2">
+		<p style="color:#FFF;">
 			{{str_replace("<br>", " ",$entity->category_name)}}
-		</a>
+		</p>
 	</div>
+</a>	
 @endforeach

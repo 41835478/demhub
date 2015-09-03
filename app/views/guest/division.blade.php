@@ -13,23 +13,26 @@ $(document).ready(function(){
 	<div id="welcome-division">
 		
 		<div id="welcome-division-category" class="row" style="background:
-																url('../images/backgrounds/{{$cat->bg_image}}') no-repeat fixed 0% 73%; 
+																url('../images/backgrounds/{{$cat->bg_image}}') no-repeat fixed 0% 70%; 
 																-webkit-background-size: cover;
 																-moz-background-size: cover;
 																-o-background-size: cover;
-																background-size: cover;"
+																background-size: cover;
+																overflow: hidden;"
 		>
-			
-			<div id="ph-name" class="col-md-4 col-md-offset-8 text-center">
+			<div class="row">
+			<div id="ph-name" class="col-md-4 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
 				<h1 style="background:#{{$cat->bg_color}};">{{$cat->category_name}}</h1>
 			</div>
+			</div>
 			
-			
-		</div>
-		<div id="welcome-division-menu" class="row">
+		
+		<div class="row">
+		<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75)">
 			@include('guest.menu-user.categories')
 		</div>
-		
+		</div>
+		</div>
 		
 		<style>
 			div.paginated ul.pagination li span{
@@ -68,7 +71,7 @@ $(document).ready(function(){
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>
 
-		<div class="col-md-9 col-md-offset-1">
+		<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 			<!-- <div class="col-md-12 paginated" >
 				{{$cat->xmlfeeddata()->paginate(15)->appends(array('item' => 'news'))->links()}}
 			</div> -->
