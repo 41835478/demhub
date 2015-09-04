@@ -20,6 +20,11 @@ $(document).ready(function(){
 																background-size: cover;
 																overflow: hidden;"
 		>
+		<div class="row" style="padding-top:50px">
+		<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75)">
+			@include('guest.menu-user.categories')
+		</div>
+		</div>
 			<div class="row">
 			<div id="ph-name" class="col-md-4 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
 				<h1 style="background:#{{$cat->bg_color}};">{{$cat->category_name}}</h1>
@@ -27,11 +32,7 @@ $(document).ready(function(){
 			</div>
 			
 		
-		<div class="row">
-		<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75)">
-			@include('guest.menu-user.categories')
-		</div>
-		</div>
+		
 		</div>
 		
 		<style>
@@ -49,7 +50,7 @@ $(document).ready(function(){
 		
 		</style>
 		<div class="col-md-9 col-md-offset-1 text-left">
-			<h1 style="color:#{{$cat->bg_color}};">Discussion - {{str_replace('<br>', ' ', $cat->category_name)}}</h1>
+			<h1 style="color:#{{$cat->bg_color}};">Discussion</h1>
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>
 		<div class="col-md-9 col-md-offset-1">
