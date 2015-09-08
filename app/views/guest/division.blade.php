@@ -50,7 +50,7 @@ $(document).ready(function(){
 		
 		</style>
 		<div class="col-md-9 col-md-offset-1 text-left">
-			<h1 style="color:#{{$cat->bg_color}};">Discussion</h1>
+			<h2 style="color:#{{$cat->bg_color}};">DISCUSSION</h2>
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>
 		<div class="col-md-9 col-md-offset-1">
@@ -68,7 +68,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="col-md-9 col-md-offset-1 text-left">
-			<h1 style="color:#{{$cat->bg_color}};">News Report</h1>
+			<h2 style="color:#{{$cat->bg_color}};">NEWS</h2>
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>
 
