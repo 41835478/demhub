@@ -4,7 +4,7 @@
 
 <div id="welcome_sign-up" class="row">
     <div class="col-md-12 text-center">
-        <h1>Join For Free</h1>
+        <h2 style="font-size:300%">GET THE BETA VERSION</h2>
     </div>
     <div class="col-md-8 col-md-offset-2">
         @include('forms.sign-up')

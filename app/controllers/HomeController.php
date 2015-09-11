@@ -21,6 +21,18 @@ class HomeController extends BaseController {
 					->with('action', URL::route("sign-up"))
 					->with('xmlcategories', $categories);
 	}
+	public function showPrivacyPolicy() {
+		
+		return View::make('privacy_policy')
+					->with('action', URL::route("sign-up"));
+					
+	}
+	public function showTOS() {
+		
+		return View::make('terms_of_service')
+					->with('action', URL::route("sign-up"));
+					
+	}
 	public function showHomePage() {
 		$categories = Xmlcategories::all();
 		return View::make('user/home')

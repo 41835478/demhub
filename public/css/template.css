@@ -390,7 +390,10 @@ div#welcome_login{
 	font-family: 'Open Sans', sans-serif;
 
 }
-
+	
+	.blue-text{
+		color:#416788;
+	}
 	div#welcome_login h1 {
 		font-size: 4.5em;
 		color: #416788;

@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<!--load custom CSS-->
-		{{HTML::style('css/template.css')}}
+		<!-- {{HTML::style('css/template.css')}} -->
 
 		<!--Google jquery-->
+		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	
@@ -25,17 +25,20 @@
 
 	</head>
 	<body>
-		<div id="user-email" class="row">
-			<h1>Hi, {{$user}}!<br></h1>
-			<div>
-				<p>We like to personally welcome you to Cerial. Thank you for registering.</p>
+		<div>
+			<h3>Hello, {{$user}}!</h3>
+			
+				<p>Thank you for registering with DEMHUB. Your hub for disaster and emergency management resources.  DEMHUB is the online destination for disaster and emergency industry professionals.  We must verify your profile before you can access to the application.  The DEMHUB staff will evaluate within 48 hours of your registration.</p>
+				<p>
+					If you have any questions, concerns, or comments please contact us at demhubcontact@gmail.com
+				</p>
 				<br>
-				<a href="{{URL::route('home')}}">
-					{{HTML::image('images/logo/logo_welcome.png', 'Cerial Logo')}}
+				<a href="{{URL::route('division', array('id' => 1))}}">
+					{{HTML::image('images/logo/logo-black.png', 'DEMHUB Logo')}}
 				</a>
-			</div>
+			
 			<br>
-			<span class="text-warning">This E-Mail address does not accept any incoming email. Please do not reply back.</span>
+			<!-- <span><i>This E-Mail address does not accept any incoming email. Please do not reply back.</i></span> -->
 		</div>
 	</body>
 </html>

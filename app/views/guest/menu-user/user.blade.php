@@ -22,16 +22,16 @@
 			    <li><a href="{{URL::route('home', array('#welcome_about'))}}">About</a></li>
 			@endif
 			@if (Request::url() === URL::route('sign-up'))
-				<li class="active"><a href="{{URL::route('sign-up')}}">Sign-Up</a></li>
+				<li class="active"><a href="{{URL::route('sign-up')}}">Sign Up</a></li>
 			@else
-				<li><a href="{{URL::route('sign-up')}}">Sign-Up</a></li>
+				<li><a href="{{URL::route('sign-up')}}">Sign Up</a></li>
 			@endif
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				@if (Request::url() === URL::route('login'))
-					<li class="active"><a href="{{URL::route('login')}}">Log-In</a></li>
+					<li class="active"><a href="{{URL::route('login')}}">Log In</a></li>
 				@else
-					<li><a href="{{URL::route('login')}}">Log-In</a></li>
+					<li><a href="{{URL::route('login')}}">Log In</a></li>
 				@endif
 			</ul>
 		</div><!--/.nav-collapse -->

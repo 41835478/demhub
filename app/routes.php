@@ -34,6 +34,16 @@ Route::group(array('before' => 'guest'), function() {
 					'as' => 'home',
 					'uses' => 'HomeController@showWelcome'
 					));
+	Route::get('privacy_policy', array(
+					'as' => 'privacy_policy',
+					'uses' => 'HomeController@showPrivacyPolicy'
+					));
+	
+	Route::get('terms_of_service', array(
+					'as' => 'terms_of_service',
+					'uses' => 'HomeController@showTOS'
+									));
+	
 	Route::get('division/{id}', array(
 								'as'	=> 'division',
 								'uses'	=> 'XmlController@division'

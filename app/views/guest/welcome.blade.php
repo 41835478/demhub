@@ -3,13 +3,13 @@
 @section('content')
 <div id="welcome_home" class="row">
 	<div class="col-md-6 col-md-offset-6">
-		{{HTML::image("/images/logo/logo.svg", "Cerial logo", array('class' => 'img-responsive', 'width' => '700'))}}
+		{{HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '700'))}}
 	</div>
 	<div class="col-md-6 col-md-offset-6 text-center">
-		<hr>
-		<h2>Join Now</h2>
-		<a href="{{URL::route('sign-up')}}">
-			<button class="btn btn-default btn-lg">Join</button>
+		<!-- <hr> -->
+		<!-- <h2>Join Now</h2> -->
+		<a href="{{URL::route('division', array('id' => 1))}}">
+			<button class="btn btn-default btn-lg">TRY THE BETA</button>
 		</a>
 	</div>
 
@@ -50,10 +50,10 @@
 </div>
 <div id="welcome_secondary_text" class="row">
 	<div class="col-md-12 text-center">
-    	<h2>Connect with your Community</h2>
-		<a href="{{URL::route('sign-up')}}">
-		    <button class="btn btn-default btn-lg">Join Now</button>
-		</a>
+    	<h2>SIX SECTORS</h2>
+		<!-- <a href="{{URL::route('sign-up')}}">
+		    <button class="btn btn-default btn-lg">ACCESS BETA VERSION</button>
+		</a> -->
     </div>
 </div>	
 
@@ -73,23 +73,23 @@
 
 <div id="welcome_tertiary_text" class="row">
 	<div class="col-md-12 text-center">
-		<h2>Your place is here</h2>
-		<hr> 
-
-        <h1>Join Today</h1>
+		<h2></h2>
+		<!-- <hr>  -->
+		<h2>Want access to the beta?<br> What to know about the full release?</h2>
+        <!-- <h1>Join Today</h1> -->
         <a href="{{URL::route('sign-up')}}">
-			<button class="btn btn-default btn-lg">Join now for Free</button>
+			<button class="btn btn-default btn-lg">SIGN UP</button>
 		</a>
     </div>
 </div>
 
-<div class="row text-center">
+<!-- <div class="row text-center">
 	<h2>Already have an account?</h2><br>
     <a href="{{URL::route('login')}}">
 		<button type="button" class="btn btn-primary btn-lg">Log-In</button>
     </a>
     <p> &nbsp; </p>
-</div>
+</div> -->
 
 
 

@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'info@cerial.com', 'name' => 'Cerial - IoT platform'),
+	'from' => array('address' => 'demhubcontact@gmail.com', 'name' => 'DEMHUB Disaster & Emergency Hub'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'kjschabra@gmail.com',
+	'username' => 'demhubcontact@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => '',
+	'password' => 'disastermaster',
 
 	/*
 	|--------------------------------------------------------------------------

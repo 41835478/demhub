@@ -70,9 +70,9 @@ class AuthController extends BaseController {
 				
 				$user = Auth::user()->user_name;
 				$email = Auth::user()->user_email;
-				// Mail::send('emails.auth.welcome', array('user' => $user, 'email' => $email), function($message){
-				// 	$message->to(Auth::user()->user_email, Auth::user()->user_name)->subject('Welcome to Cerial - IoT Platform!');
-				// });
+				Mail::send('emails.auth.welcome', array('user' => $user, 'email' => $email), function($message){
+					$message->to(Auth::user()->user_email, Auth::user()->user_name)->subject('Welcome to DEMHUB!');
+				});
 
 				return Redirect::route('home');
 										

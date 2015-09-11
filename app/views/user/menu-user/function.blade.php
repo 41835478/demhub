@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{URL::route('home')}}">{{HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive'))}}
+            <a class="navbar-brand" href="{{URL::route('main-home')}}">{{HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive'))}}
             </a>
                 
 
@@ -31,7 +31,7 @@
                         </a>
                     </li>
                 @endif
-                @if(Request::url() === URL::route('main-home'))
+                <!-- @if(Request::url() === URL::route('main-home'))
                     <li class="active">
                         <a href="{{URL::route('main-home')}}">
                             <i class="fa fa-home"></i>
@@ -43,7 +43,7 @@
                             <i class="fa fa-home"></i>
                         </a>
                     </li>
-                @endif
+                @endif -->
                 @if(Request::url() === URL::route('discover'))
                 <li class="active">
                 	<a href="{{URL::route('discover')}}"><i class="fa fa-globe"></i> Discover</a>
