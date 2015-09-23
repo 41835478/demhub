@@ -29,6 +29,8 @@ class Avatar extends Eloquent implements UserInterface, RemindableInterface {
 	public function user(){
         return $this->belongsTo('User');
     }
-
+	public function registration(){
+        return $this->belongsTo('Registration');
+    }
 
 }

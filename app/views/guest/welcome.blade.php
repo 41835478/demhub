@@ -8,9 +8,9 @@
 	<div class="col-md-6 col-md-offset-6 text-center">
 		<!-- <hr> -->
 		<!-- <h2>Join Now</h2> -->
-		<a href="{{URL::route('division', array('id' => 1))}}">
-			<button class="btn btn-default btn-lg">TRY THE BETA</button>
-		</a>
+		
+			<a type="button" class="btn btn-default btn-lg btn-style" href="{{URL::route('division', 1)}}">TRY THE BETA</a>
+			
 	</div>
 
 </div>
@@ -57,18 +57,19 @@
     </div>
 </div>	
 
-<div id="welcome_division" class="row">
-	
+<div class="row">
+	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($xmlcategories as $category)
 		
 			<a href="{{URL::route('division', array('id' => $category->id))}}">
-				<div id="division_{{$category->id}}" style="border-top:7px solid #{{$category->bg_color}};border-bottom:7px solid #{{$category->bg_color}}" class="col-md-2">
-					<h5>{{$category->category_name}}</h5>
+				<div id="division_{{$category->id}}" style="background-color: #{{$category->bg_color}};min-height:67px;max-height:185px" class="col-md-2">
+					<h3 style="text-align:center;padding-top:30px">{{$category->category_name}}</h3>
 				</div>
 			</a>
 			
 		@endforeach
 
+</div>
 </div>
 
 <div id="welcome_tertiary_text" class="row">
@@ -78,7 +79,7 @@
 		<h2>Want access to the beta?<br> What to know about the full release?</h2>
         <!-- <h1>Join Today</h1> -->
         <a href="{{URL::route('sign-up')}}">
-			<button class="btn btn-default btn-lg">SIGN UP</button>
+			<button class="btn btn-default btn-lg btn-style">SIGN UP</button>
 		</a>
     </div>
 </div>
@@ -90,7 +91,6 @@
     </a>
     <p> &nbsp; </p>
 </div> -->
-
 
 
 @endsection('content')

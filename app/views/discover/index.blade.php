@@ -5,14 +5,14 @@
 		<div class="col-md-12">
 			<h1>Discover<hr></h1>
 		</div>
-		<div class="row text-center">
+		<!-- <div class="row text-center">
     		{{$categories->links()}}
-    	</div>
+    	</div> -->
     
 			@foreach($categories->chunk(4) as $categorys)
 				<div class="row">
 					@foreach($categorys as $category)
-						<div class="col-md-3" id="feeds-main">
+						<div class="col-md-6 col-md-offset-3" id="feeds-main">
 							<div class="col-md-12" id="feeds" style="border-top:10px solid #{{$category->getcategory->bg_color}};">
 								<small style="color:#{{$category->getcategory->bg_color}};"><?php $foll = false;?>
 									@if($category->getUserFeed)
@@ -41,7 +41,7 @@
 									<h3><a href="{{$category->link}}">{{$category->title}}</a></h3>
 									<span class="label label-default">{{date('F j, Y', $category->pubDate)}}</span>
 									<p>{{strip_tags($category->desc, '<img>')}}</p>
-									<?php 
+									<!-- <?php
 										$keys = $category->keywords;
 										$keywords = explode(';', $keys);
 									?>
@@ -49,7 +49,7 @@
 										@if($keyword != '')
 											<span class="badge">{{$keyword}}</span>
 										@endif
-									@endforeach
+									@endforeach -->
 								</div>
 								<div id="social-actions">
 									@include('user.menu-user.social-actions', array('feed' => $category))

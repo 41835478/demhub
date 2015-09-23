@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="welcome_login" class="row" style="padding-top:40px">
+<div class="row" style="padding-top:40px">
     <div class="col-md-12 text-center">
         <h2 class="blue-text" style="font-size:300%">PRIVACY POLICY</h2>
     </div>

@@ -5,11 +5,11 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class Registration extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 	
-	protected $fillable = array('user_name', 'user_email', 'user_password', 'user_avatar_id' , 'updated_at', 'created_at', 'first_name', 'last_name', 'job_title', 'org_agency', 'phone_number', 'specialization');
+	protected $fillable = array('user_name', 'user_email', 'user_password' , 'updated_at', 'created_at', 'first_name', 'last_name', 'job_title', 'org_agency', 'phone_number', 'specialization');
 
 	protected $guarded = ['user_password'];
 
@@ -18,7 +18,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'registration';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -27,9 +27,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
-	public function avatar(){
-		return $this->hasOne('Avatar', 'avatar_user_id');
-	}
+	
 
 
 	public function files() {

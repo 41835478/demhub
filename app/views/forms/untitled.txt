@@ -1,0 +1,64 @@
+<?php
+
+// echo "hello world";
+
+//$db = mysql_select_db('single_edits');
+if($_GET){
+    if(isset($_GET['autoLogin'])){
+        createUserAndLogin();
+    }
+}
+
+function createUserAndLogin(){
+	$name=$_GET['username'];
+	
+	$conn = mysqli_connect('localhost','root','root','demhub_v3');
+	
+	// mysqli_query($conn,"SELECT * FROM single_edits");
+	// $test=mysqli_query($conn,"SELECT * FROM single_edits ORDER BY id DESC LIMIT 1");
+	// $query = mysqli_query($conn,"SELECT id,OutputLink FROM single_edits WHERE MAX(id) LIKE 'qs1Nm.html'");
+	$query = mysqli_query($conn,"SELECT * FROM registration WHERE user_name=$name ORDER BY id DESC");
+	if ($query==""){
+		echo '$name';
+	}
+	else{
+	
+		while ($obj=mysqli_fetch_object($query)){
+			$name		 	= $obj-> user_name;
+			$email 			= $obj-> user_email;
+			$password		= $obj-> user_password;
+			// $firstName		= $obj-> first_name;
+// 			$lastName		= $obj-> last_name;
+// 			$jobTitle		= $obj-> job_title;
+// 			$orgAgency		= $obj-> org_agency;
+// 			$phoneNumber	= $obj-> phone_number;
+// 			$specialization	= $obj-> specialization;
+// 			$updated_at 	= $obj-> updated_at;
+// 			$created_at		= $obj-> created_at;
+			$rmbr			= $obj-> remember_token;
+			
+		}
+		mysqli_free_result($query);
+	
+		mysqli_query($conn,"INSERT INTO users (user_name,user_email)
+		VALUES ('".$name."','".$email."') WHERE remember_toke='".$rmbr."'");
+	}
+		$query = mysqli_query($conn,"SELECT * FROM user WHERE user_name='".$name."' ORDER BY id DESC");
+		if ($query==""){
+			echo "nothing";
+		}
+		else{
+	
+			while ($obj=mysqli_fetch_object($query)){
+				$id		 		= $obj-> id;  
+			
+			}
+			mysqli_free_result($query);
+		
+	}
+		return Redirect::route('signUpSuccess');
+			
+			mysqli_close($conn);
+		}
+			
+?>

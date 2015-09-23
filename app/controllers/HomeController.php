@@ -33,6 +33,30 @@ class HomeController extends BaseController {
 					->with('action', URL::route("sign-up"));
 					
 	}
+	public function showAutoLogin() {
+		
+		return View::make('auto-login')
+					->with('action', URL::route("auto-login"));
+					
+	}
+	public function showAdminPanel() {
+		
+		return View::make('admin-panel')
+					->with('action', URL::route("admin-panel"));
+					
+	}
+	public function showSignUpSuccess() {
+		
+		return View::make('signUpSuccess')
+					->with('action', URL::route("signUpSuccess"));
+					
+	}
+	public function showAboutUs() {
+		
+		return View::make('about-us')
+					->with('action', URL::route("about-us"));
+					
+	}
 	public function showHomePage() {
 		$categories = Xmlcategories::all();
 		return View::make('user/home')
@@ -41,13 +65,15 @@ class HomeController extends BaseController {
 	}
 	
 	public function showUserWelcome(){
-
+		$categories = Xmlcategories::all();
 		$feed = Followfeed::where('user_id', '=', Auth::user()->id)
 							->where('hidden', '=', false)
 							->get();
+							
 
 		return View::make('user/welcome')
-					->with('feeds', $feed);
+					->with('feeds', $feed)
+					->with('xmlcategories', $categories);
 	}
 
 	public function showUserWelcome_ArrangeByLikes(){

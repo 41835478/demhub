@@ -10,7 +10,6 @@ $(document).ready(function(){
 </script>
 
 @foreach($category as $cat)
-<nav>
 	<div id="welcome-division">
 		
 		<div id="welcome-division-category" class="row" style="background:
@@ -35,7 +34,6 @@ $(document).ready(function(){
 		
 		
 		</div>
-	</nav>
 		
 		<style>
 			div.paginated ul.pagination li span{
@@ -99,10 +97,10 @@ $(document).ready(function(){
 			<div id="ph-text" class="text-left">
 				@foreach($cat->xmlfeeddata()->paginate(15) as $data)
 					<div class="col-md-12">
-						<h3><a href="" data-toggle="modal" data-target="#myModal" style="color:#000">{{$data->title}}</a></h3>
+						<h3><a href="" data-toggle="modal" data-target="#myModal">{{$data->title}}</a></h3>
 						
 						<!-- href="{{$data->link}}" -->
-						<span class="label label-default" style="font-size:82%">{{date('F j, Y', $data->pubDate)}}</span>
+						<span class="label label-default" style="font-size:50%">{{date('F j, Y', $data->pubDate)}}</span>
 						<p>{{strip_tags($data->desc, '<img>')}}</p>
 						<?php 
 							$keys = $data->keywords;

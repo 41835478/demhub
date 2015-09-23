@@ -6,11 +6,9 @@
     <div class="col-md-12 text-center">
         <h2 style="font-size:300%">GET THE BETA VERSION</h2>
     </div>
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-4 col-md-offset-4">
         @include('forms.sign-up')
-        <hr>
     </div>
-
 </div>
 @if (count($errors) > 1)
     <script>

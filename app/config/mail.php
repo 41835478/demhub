@@ -55,7 +55,7 @@ return array(
 	*/
 
 	'from' => array('address' => 'demhubcontact@gmail.com', 'name' => 'DEMHUB Disaster & Emergency Hub'),
-
+	// 'cc' => array('address' => 'lhaggarty@ryerson.ca', 'name' => 'CC step'),
 	/*
 	|--------------------------------------------------------------------------
 	| E-Mail Encryption Protocol
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'demhubcontact@gmail.com',
+	'username' => 'demhubcontact',
 
 	/*
 	|--------------------------------------------------------------------------

@@ -28,12 +28,18 @@ Route::group(array('before' => 'guest'), function() {
 										'as' => 'login',
 										'uses' => 'AuthController@login'
 										));
+			
 	});
 	
 	Route::get('/', array(
 					'as' => 'home',
 					'uses' => 'HomeController@showWelcome'
 					));
+	Route::get('auto-login', array(
+					'as' => 'auto-login',
+					'uses' => 'HomeController@showAutoLogin'
+					));
+									
 	Route::get('privacy_policy', array(
 					'as' => 'privacy_policy',
 					'uses' => 'HomeController@showPrivacyPolicy'
@@ -42,7 +48,21 @@ Route::group(array('before' => 'guest'), function() {
 	Route::get('terms_of_service', array(
 					'as' => 'terms_of_service',
 					'uses' => 'HomeController@showTOS'
-									));
+					));
+	
+	Route::get('signUpSuccess', array(
+					'as' => 'signUpSuccess',
+					'uses' => 'HomeController@showSignUpSuccess'
+					));
+					
+	Route::get('admin-panel', array(
+					'as' => 'admin-panel',
+					'uses' => 'HomeController@showAdminPanel'
+					));
+	Route::get('about-us', array(
+					'as' => 'about-us',
+					'uses' => 'HomeController@showAboutUs'
+					));
 	
 	Route::get('division/{id}', array(
 								'as'	=> 'division',

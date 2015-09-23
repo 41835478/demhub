@@ -60,7 +60,7 @@
 												<h3><a href="{{$data->getFeed->link}}">{{$data->getFeed->title}}</a></h3>
 												<span class="label label-default">{{date('F j, Y', $data->getFeed->pubDate)}}</span>
 												<p>{{strip_tags($data->getFeed->desc, '<img>')}}</p>
-												<?php 
+												<!-- <?php
 
 													$keys = $data->getFeed->keywords;
 													$keywords = preg_split( "/[;,]/u", $keys);;
@@ -69,7 +69,7 @@
 													@if($keyword != '')
 														<span class="badge">{{$keyword}}</span>
 													@endif
-												@endforeach
+												@endforeach -->
 											</div>
 											<div id="social-actions">
 												@include('user.menu-user.social-actions', array('feed' => $data->getFeed))

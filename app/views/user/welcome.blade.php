@@ -67,13 +67,13 @@
 					color: #{{$feed->getFeedCategory->bg_color}};
 				}
 			</style>
-			<div id="paginated_{{$feed->getFeedCategory->id}}" class="row text-center">
+			<!-- <div id="paginated_{{$feed->getFeedCategory->id}}" class="row text-center">
 				{{$feed->getFeed()->paginate(15)->links()}}
-			</div>
+			</div> -->
 			@foreach($feed->getFeed()->paginate(16)->chunk(4) as $fds)
 				<div class="row">
 					@foreach($fds as $category)
-						<div class="col-md-3" id="feeds-main">
+						<div class="col-md-6 col-md-offset-3" id="feeds-main">
 							<div class="col-md-12" id="feeds" style="border-top:10px solid #{{$category->getcategory->bg_color}};">
 								<small style="color:#{{$category->getcategory->bg_color}};"><?php $foll = false;?>
 									@if($category->getUserFeed)
@@ -101,7 +101,7 @@
 									<h3><a href="{{$category->link}}">{{$category->title}}</a></h3>
 									<span class="label label-default">{{date('F j, Y', $category->pubDate)}}</span>
 									<p>{{strip_tags($category->desc, '<img>')}}</p>
-									<?php 
+									<!-- <?php
 
 										$keys = $category->keywords;
 										$keywords = preg_split( "/[;,]/u", $keys);;
@@ -110,7 +110,7 @@
 										@if($keyword != '')
 											<span class="badge">{{$keyword}}</span>
 										@endif
-									@endforeach
+									@endforeach -->
 								</div>
 								<div id="social-actions">
 									@include('user.menu-user.social-actions', array('feed' => $category))
