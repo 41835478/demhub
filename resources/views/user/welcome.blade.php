@@ -8,12 +8,12 @@
 <div id="discover-apps">
 	<div class="row">
 		<div class="col-md-12">
-			{{HTML::image('images/user/'.$user_avatar->image.'',
+			{!! HTML::image('images/user/'.$user_avatar->image.'',
 			        ''.Auth::user()->user_name.' icon',
 			        array(
 			          'class' => 'user-icon img-responsive img-thumbnail'
 			        )
-			)}}
+			) !!}
 
 	    	<h1>{{Auth::user()->user_name}}'s Feed</h1>
 	        <hr>

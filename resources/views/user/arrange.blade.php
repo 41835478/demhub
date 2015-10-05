@@ -5,12 +5,12 @@
 <div id="discover-apps">
 	<div class="row">
 		<div class="col-md-12">
-			{{HTML::image('images/user/'.$user_avatar->image.'', 
-			        ''.Auth::user()->user_name.' icon', 
+			{!! HTML::image('images/user/'.$user_avatar->image.'',
+			        ''.Auth::user()->user_name.' icon',
 			        array(
 			          'class' => 'user-icon img-responsive img-thumbnail'
 			        )
-			)}}
+			) !!}
 
 	    	<h1>{{Auth::user()->user_name}}'s Feed</h1>
 	        <hr>
@@ -53,7 +53,7 @@
 		    			<div class="row">
 			    			@foreach($fds as $data)
 				    			@if($data->getFeed->category_id === $feed->getFeedCategory->id)
-				    			
+
 					    			<div class="col-md-3" id="feeds-main">
 										<div class="col-md-12" id="feeds" style="border-top:10px solid #{{$feed->getFeedCategory->bg_color}};">
 							    			<div id="ph-text">
@@ -83,9 +83,8 @@
 	    		</div>
 
 		    @endforeach
-			
+
 
 	</div>
 </div>
 @endsection('content')
-

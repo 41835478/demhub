@@ -10,16 +10,16 @@
     	@if ($favourites)
     		@foreach($favourites as $favourite)
     			@if($favourite->getfavouritedapp)
-    				
+
     				<div class="col-md-12">
     					<hr>
 						<div id="user-info" class="col-md-2">
-							{{HTML::image('images/user/'.$favourite->file_name.'', 
-							        ''.$favourite->getfavouritedAppUser->user_name.' icon', 
+							{!! HTML::image('images/user/'.$favourite->file_name.'',
+							        ''.$favourite->getfavouritedAppUser->user_name.' icon',
 							        array(
 							          'class' => 'img-responsive img-circle'
 							        )
-							)}}
+							) !!}
 							<h5><a href="#">{{$favourite->getfavouritedAppUser->user_name}}</a></h5>
 						</div>
 						<div class="col-md-10">
@@ -31,7 +31,7 @@
 
 
 						<hr>
-										
+
 					</div>
     			@endif
     		@endforeach

@@ -3,7 +3,7 @@
 @section('content')
 <div id="welcome_home" class="row">
 	<div class="col-md-6 col-md-offset-6">
-		{{HTML::image("/images/logo/logo.svg", "Cerial logo", array('class' => 'img-responsive', 'width' => '700'))}}
+		{!! HTML::image("/images/logo/logo.svg", "Cerial logo", array('class' => 'img-responsive', 'width' => '700')) !!}
 	</div>
 </div>
 <div class="dots">

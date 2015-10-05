@@ -35,24 +35,24 @@
 			<hr>
 		</div>
 	</div>
-	
-		
+
+
 			@foreach($feed->getComments as $comments)
 				@if ($comments->xml_category_feed_id == $feed->id)
-				<div class="row">	
+				<div class="row">
 					<div class="col-md-11 col-md-offset-1">
-						{{HTML::image('images/user/'.$comments->getUser->avatar->file_name.'', 
-							        ''.$comments->getUser->user_name.' icon', 
+						{!! HTML::image('images/user/'.$comments->getUser->avatar->file_name.'',
+							        ''.$comments->getUser->user_name.' icon',
 							        array(
 							          'class' => 'user-icon img-responsive',
 							          'style' => 'width:20%; display:inline;'
 							        )
-							)}}
+							) !!}
 						<span style="margin-left:2%;"class="text-muted">
 							{{$comments->getUser->user_name}}
 						</span><br>
 						<p class="text-left">{{$comments->comment}}</p>
-						
+
 						<span class="text-warning"><small>{{date('F j, Y, g:i a', strtotime($comments->updated_at))}}</small></span>
 						<hr>
 					</div>
@@ -65,11 +65,11 @@
 					</div> -->
 				</div>
 				@endif
-				
+
 			@endforeach
-	
-	
-	
+
+
+
 </div>
 
 <script type="text/javascript">
