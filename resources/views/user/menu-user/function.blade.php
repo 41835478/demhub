@@ -12,7 +12,7 @@
 		<a href="{{url('home')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}
 		</a>
 	</div>
-  
+
 	<div class="container">
 	<div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -85,7 +85,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{url('logout')}}">Log-Out
+                            <a href="{{ Auth::logout() }}">Log-Out
                             </a>
                         </li>
                     </ul>

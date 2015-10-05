@@ -373,6 +373,7 @@ class AuthController extends Controller {
 		} else {
 			return Redirect::route('login');
 		}
+		return Redirect::route('login');
 	}
 
 	public function settingsUser() {
