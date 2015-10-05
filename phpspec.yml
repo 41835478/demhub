@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: DEMHub
+        psr4_prefix: DEMHub
         src_path: app

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace DEMHub\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

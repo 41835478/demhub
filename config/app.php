@@ -138,12 +138,17 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Form & HTML Helpers
+         */
+        Illuminate\Html\HtmlServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        DEMHub\Providers\AppServiceProvider::class,
+        DEMHub\Providers\AuthServiceProvider::class,
+        DEMHub\Providers\EventServiceProvider::class,
+        DEMHub\Providers\RouteServiceProvider::class,
 
     ],
 
@@ -194,6 +199,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Form & HTML Helpers
+         */
+        'HTML' => Illuminate\Html\HtmlFacade::class,
+        'Form' => Illuminate\Html\FormFacade::class,
     ],
 
 ];
