@@ -80,11 +80,6 @@ Route::group(array('before' => 'guest'), function() {
 						'uses' => 'HomeController@showAdminPanel'
 	));
 
-	Route::get('resource-filter', array(
-						'as' => 'resource-filter',
-						'uses' => 'HomeController@showResourceFilter'
-	));
-
 	Route::get('resource-list', array(
 						'as' => 'resource-list',
 						'uses' => 'HomeController@showResourceList'
@@ -188,6 +183,26 @@ if (Auth::check()) {
 			));
 
 		});
+
+		Route::get('resource-filter', array(
+							'as' => 'resource-filter',
+							'uses' => 'HomeController@showResourceFilter'
+		));
+
+		Route::get('events', array(
+						'as' => 'events',
+						'uses' => 'HomeController@showEvents'
+		));
+
+		Route::get('media', array(
+						'as' => 'media',
+						'uses' => 'HomeController@showMedia'
+		));
+
+		Route::get('profile', array(
+						'as' => 'profile',
+						'uses' => 'HomeController@showProfile'
+		));
 
 		Route::get('update-feed', array(
 							'as'	=> 'update-feeds',

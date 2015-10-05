@@ -1,13 +1,6 @@
 <?php
-
-namespace DEMHub\Http\Controllers;
-
-use Illuminate\Http\Request;
-use DEMHub\Http\Requests;
-use DEMHub\Http\Controllers\Controller;
-
-class ResourceController extends Controller {
-
+class ResourceController extends BaseController {
+	
 	// public function country($desiredData){
 // 		$countryEntryIds = ResourceRelation::where('entry_id', '=', $desiredData)
 // 								->get();
@@ -28,14 +21,14 @@ class ResourceController extends Controller {
 // 		$cats = Xmlcategories::all();
 //
 // 		if ($category){
-// 			return view('guest/division')
+// 			return View::make('guest/division')
 // 						->with('category', $category)
 // 						->with('cats', $cats)
 // 						->with('discussions', $discussions)
 // 						->with('feed', $feed);
 // 		}
 // 		else {
-// 			return Redirect::url('home');
+// 			return Redirect::route('home');
 // 		}
 // 	}
 //
@@ -128,20 +121,20 @@ class ResourceController extends Controller {
 // 			$cat = Xmlcategories::all();
 //
 // 			if ($category){
-// 				return view('guest/division')
+// 				return View::make('guest/division')
 // 							->with('category', $category)
 // 							->with('cats', $cat)
 // 							->with('discussions', $discussion);
 // 			}
 // 			else {
-// 				return Redirect::url('home');
+// 				return Redirect::route('home');
 // 			}
 // 		}
 
 	public function ResourceCountry($choiceValue){
-
+		
 			$resourceRelation = ResourceEntry::all();
-
+		
 			foreach ($resourceRelation as $value) {
 				# code...
 				//print_r($value->url);
@@ -154,8 +147,8 @@ class ResourceController extends Controller {
 				if ($country = $choiceValue){
 					echo 'value number '.$id.'';
 				}
-
-
+				
+			
 				}
 			}
 	public function ResourceFilter($choiceValue){
@@ -164,5 +157,5 @@ class ResourceController extends Controller {
 							->get();
 		return $resourceSelects;
 	}
-
+	
 }

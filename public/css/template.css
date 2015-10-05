@@ -21,8 +21,19 @@ a:hover {
 /*************Guest*****************/
 .navbar-default {
 	border: none!important;
+	
 }
 
+div.navbar-inverse {
+	border: none!important;
+	background:#cccccc;
+	color:#666666;
+}
+
+.navbar-inverse a {
+	
+	color:#666666;
+}
 .btn-group-lg > .btn, .btn-lg {
 	border-radius:3px!important;
 }

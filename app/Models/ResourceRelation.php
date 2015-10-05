@@ -5,11 +5,11 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class ResourceEntry extends Eloquent implements UserInterface, RemindableInterface {
+class ResourceRelation extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 	
-	protected $fillable = array('id', 'title', 'entry','country', 'region');
+	protected $fillable = array('id', 'country', 'regions',);
 
 	// protected $guarded = ['user_password'];
 
@@ -18,7 +18,7 @@ class ResourceEntry extends Eloquent implements UserInterface, RemindableInterfa
 	 *
 	 * @var string
 	 */
-	protected $table = 'resource_entries';
+	protected $table = 'resource_relations';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

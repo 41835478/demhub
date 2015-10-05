@@ -1,17 +1,5 @@
 <?php
-
-namespace DEMHub\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Collection;
-use DEMHub\Http\Requests;
-use DEMHub\Http\Controllers\Controller;
-use DEMHub\Models\Xmlcategories as Xmlcategories;
-use DEMHub\Models\Xml as Xml;
-use DEMHub\Models\Conversation as Conversation;
-use SimplePie;
-
-class XmlController extends Controller {
+class XmlController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -25,6 +13,14 @@ class XmlController extends Controller {
 	|	Route::get('/', 'XmlController@');
 	|
 	*/
+	public function recentFeed(){
+		// {{$item->get_date('j F Y | g:i a')}};
+		$feed_urls_array = Xml::all()
+            						->lists('date');
+		$date = $this -> simplepie_feed($feed_urls_array);
+		// var_dump($date);
+	}
+	
 
 	public function division($id){
 		$category = Xmlcategories::where('id', '=', $id)
@@ -33,8 +29,8 @@ class XmlController extends Controller {
 		// $content = $this -> update_feed($category);
 		// $this -> store_feed($category, $content, $id);
 		$feed_urls_array = Xml::where('category_id', '=', $id)
-            						->lists('url')->all();
-
+            						->lists('url');
+		
 		$feed = $this -> simplepie_feed($feed_urls_array);
 
 		$discussions = Conversation::where('xml_category_feed_id', '=', $id)
@@ -45,14 +41,14 @@ class XmlController extends Controller {
 		$cats = Xmlcategories::all();
 
 		if ($category){
-			return view('guest/division')
+			return View::make('guest/division')
 						->with('category', $category)
 						->with('cats', $cats)
 						->with('discussions', $discussions)
 						->with('feed', $feed);
 		}
 		else {
-			return Redirect::url('home');
+			return Redirect::route('home');
 		}
 	}
 

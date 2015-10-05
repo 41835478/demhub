@@ -1,13 +1,6 @@
 <?php
 
-namespace DEMHub\Http\Controllers;
-
-use Illuminate\Http\Request;
-use DEMHub\Http\Requests;
-use DEMHub\Http\Controllers\Controller;
-use DEMHub\Models\Xmlcategories as Xmlcategories;
-
-class HomeController extends Controller {
+class HomeController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -24,85 +17,109 @@ class HomeController extends Controller {
 
 	public function showWelcome() {
 		$categories = Xmlcategories::all();
-		return view('guest/welcome')
-					->with('action', url("sign-up"))
+		
+		return View::make('guest/welcome')
+					->with('action', URL::route("sign-up"))
 					->with('xmlcategories', $categories);
 	}
 	public function showPrivacyPolicy() {
-
-		return view('privacy_policy')
-					->with('action', url("sign-up"));
-
+		
+		return View::make('privacy_policy')
+					->with('action', URL::route("sign-up"));
+					
 	}
 	public function showTOS() {
-
-		return view('terms_of_service')
-					->with('action', url("sign-up"));
-
+		
+		return View::make('terms_of_service')
+					->with('action', URL::route("sign-up"));
+					
 	}
 	public function showAutoLogin() {
-
-		return view('auto-login')
-					->with('action', url("auto-login"));
-
+		
+		return View::make('auto-login')
+					->with('action', URL::route("auto-login"));
+					
 	}
 	public function showAdminPanel() {
-
-		return view('admin-panel')
-					->with('action', url("admin-panel"));
-
+		
+		return View::make('admin-panel')
+					->with('action', URL::route("admin-panel"));
+					
 	}
 	public function showSignUpSuccess() {
-
-		return view('signUpSuccess')
-					->with('action', url("signUpSuccess"));
-
+		
+		return View::make('signUpSuccess')
+					->with('action', URL::route("signUpSuccess"));
+					
 	}
 	public function showAboutUs() {
-
-		return view('about-us')
-					->with('action', url("about-us"));
-
+		
+		return View::make('about-us')
+					->with('action', URL::route("about-us"));
+					
 	}
 	public function showHomePage() {
 		$categories = Xmlcategories::all();
-		return view('user/home')
-					->with('action', url("sign-up"))
+		return View::make('user/home')
+					->with('action', URL::route("sign-up"))
 					->with('xmlcategories', $categories);
 	}
 	public function showResourceFilter(){
-
+		$resourceRelation= ResourceRelation::all();
 		$resourceEntry= ResourceEntry::all();
-
-		return view('user/resource-filter')
-					->with('action', url("resource-filter"))
+		$categories = Xmlcategories::all();
+		
+		return View::make('user/resource-filter')
+					->with('action', URL::route("resource-filter"))
+					->with('xmlcategories', $categories)	
+					->with('resourceRelation', $resourceRelation)
 					->with('resourceEntry', $resourceEntry);
+					
 	}
-	public function showResourceList($filter){
-
-		$resourceEntry= ResourceEntry::all();
-
-		$resourceSelects = ResourceEntry::where('country', '=', $filter)
-							// ->where('hidden', '=', false)
-							->get();
-		$entryIds = $resourceSelects -> entry_id;
-		$resourceFilterEntries = ResourceEntry::where('id', '=', $entryIds)
-							// ->where('hidden', '=', false)
-							->get();
-
-		return view('user/resource-list')
-					->with('action', url("resource-list"))
-
-					->with('resourceEntry', $resourceFilterEntries);
+	public function showEvents(){
+		$categories = Xmlcategories::all();
+		
+		return View::make('user/events')
+			->with('action', URL::route("events"))
+			->with('xmlcategories', $categories);
+	}
+	public function showMedia(){
+		$categories = Xmlcategories::all();
+		
+		return View::make('user/media')
+			->with('action', URL::route("media"))
+			->with('xmlcategories', $categories);
+	}
+	public function showProfile(){
+		$categories = Xmlcategories::all();
+		$user=Auth::user();
+		
+		return View::make('user/profile')
+			->with('action', URL::route("profile"))
+			->with('user', $user)
+			->with('xmlcategories', $categories);
+	}
+	public function showResourceList(){
+		
+		
+		// $resourceFilterEntries = ResourceEntry::where('id', '=', $entryIds)
+// 							// ->where('hidden', '=', false)
+// 							->get();
+		
+		return View::make('user/resource-list')
+					->with('action', URL::route("resource-list"));
+					
 	}
 	public function showUserWelcome(){
 		$categories = Xmlcategories::all();
 		$feed = Followfeed::where('user_id', '=', Auth::user()->id)
 							->where('hidden', '=', false)
 							->get();
+							
 
-		return view('user/welcome')
+		return View::make('user/welcome')
 					->with('feeds', $feed)
+					
 					->with('xmlcategories', $categories);
 	}
 
@@ -112,11 +129,12 @@ class HomeController extends Controller {
 						->get();
 
 		foreach ($feed as $k => $val) {
+			# code...
 			//echo $val->getFeed;
-			//echo $val->getLikes;
+			//echo $val->getLikes;			
 		}
 
-		return view('user/arrange')
+		return View::make('user/arrange')
 					->with('feeds', $feed);
 
 	}
@@ -125,11 +143,12 @@ class HomeController extends Controller {
 							->get();
 
 		foreach ($feed as $k => $val) {
+			# code...
 			//echo $val->getFeed;
-			//echo $val->getLikes;
+			//echo $val->getLikes;			
 		}
 
-		return view('user/arrange')
+		return View::make('user/arrange')
 					->with('feeds', $feed);
 
 	}
@@ -139,11 +158,12 @@ class HomeController extends Controller {
 							->get();
 
 		foreach ($feed as $k => $val) {
+			# code...
 			//echo $val->getFeed;
-			//echo $val->getLikes;
+			//echo $val->getLikes;			
 		}
 
-		return view('user/arrange')
+		return View::make('user/arrange')
 					->with('feeds', $feed);
 
 	}
@@ -153,23 +173,25 @@ class HomeController extends Controller {
 		$discussion = Conversation::where('hidden', '=', 'false')
 								->orderBy('updated_at', 'desc')
 								->paginate(15);
+	
 
-
-		return view('discussion.index')
+		return View::make('discussion.index')
 					->with('discussions', $discussion)
-					->with('categories', $options);
+					->with('categories', $options)
+					->with('xmlcategories', $options);
 	}
 
 	public function welcomeDivision($id){
-		return view('guest/division')->with('id',$id);
+		return View::make('guest/division')->with('id',$id);
 	}
 
 	public function discoverFeeds(){
-
+		
 		$category = Xmlcategoryfeed::orderBy('pubDate', 'desc')
 									->paginate(20);
 		$cat = Xmlcategories::all();
-		return view('discover.index')->with('categories', $category)
+		return View::make('discover.index')->with('categories', $category)
+											->with('xmlcategories', $cat)
 											->with('cats', $cat);
 		$this->updateFeeds();
 
@@ -199,13 +221,13 @@ class HomeController extends Controller {
 				$follow->save();
 			}
 		}
-
-		return Redirect::url('home');
+		
+		return Redirect::route('home');
 	}
 
 	public function updateFeeds(){
 		$category = Xmlcategories::all();
-
+		
 
 		/****logic to update and store xml feed****/
 
@@ -220,10 +242,10 @@ class HomeController extends Controller {
 					$xml=file_get_contents($url);
 					//print_r($xml);
 					$fd = simplexml_load_string($xml);
-
+					
 					if ($fd){
 						$ns=$fd->getNameSpaces(true);
-
+						
 						foreach ($fd->channel->item as $value) {
 							# code...
 							//push it to a blank array
@@ -237,18 +259,20 @@ class HomeController extends Controller {
 							foreach ($value->category as $val) {
 							}
 						}
-
+						
 					}
 				}
 			}
 		}
-
+					
 		foreach ($content as $val) {
-
+		
 			# code...
 			$origDate = $val[0]->pubDate;
 			$newDate = strtotime($origDate);
 			//print_r($val[0]->category);
+
+			
 
 			$update = Xmlcategoryfeed::where('title', '=', $val[0]->title)
 									->where('pubDate', '=', $newDate)
@@ -258,7 +282,7 @@ class HomeController extends Controller {
 				$create = new Xmlcategoryfeed;
 				$create->category_id = $val['category_id'];
 				$create->title = $val[0]->title;
-
+				
 				if (is_object($val[0]->link)){
 					foreach ($val[0]->link as $lnk) {
 						# code...

@@ -1,9 +1,9 @@
-@extends('layouts.master')
+@extends('structure.main')
 
 @section('content')
 <div id="welcome_home" class="row">
 	<div class="col-md-6 col-md-offset-6">
-		{!! HTML::image("/images/logo/logo.svg", "Cerial logo", array('class' => 'img-responsive', 'width' => '700')) !!}
+		{{HTML::image("/images/logo/logo.svg", "Cerial logo", array('class' => 'img-responsive', 'width' => '700'))}}
 	</div>
 </div>
 <div class="dots">
@@ -49,7 +49,7 @@
 <div id="welcome_division" class="row">
 		@foreach($xmlcategories as $category)
 
-			<a href="{{url('division', array('id' => $category->id))}}">
+			<a href="{{URL::route('division', array('id' => $category->id))}}">
 				<div id="division_{{$category->id}}" style="border-top:7px solid #{{$category->bg_color}};border-bottom:7px solid #{{$category->bg_color}}" class="col-md-2">
 					<h5>{{$category->category_name}}</h5>
 				</div>

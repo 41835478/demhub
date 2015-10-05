@@ -71,12 +71,13 @@
         </div>
     </div>
 	<br>
-	{!! Form::token() !!}
+	{{Form::token()}}
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-7">
         	<button type="button" class="btn btn-default btn-lg btn-style" data-toggle="modal" data-target="#myModal">JOIN</button>
         </div>
     </div>
+	
 </div>
     
 	
@@ -87,37 +88,39 @@
             <span>{{$errors->first('Username')}}</span>
         @endif -->
         <label for="firstName" class="col-sm-2 control-label" style="font-size:110%">First Name</label>
-        <div class="col-sm-10">
+        
 
         @if ($errors)
             <span>{{$errors->first('firstName')}}</span>
         @endif
-        <label for="firstName" class="col-sm-2 control-label" style="font-size:110%">First Name</label>
+        
 		<div class="col-sm-2"></div>
         <div class="col-sm-7 col-sm-offset-1">
 
             <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name">
         </div>
-    </div>
+		
+</div>
     <div class="form-group">
 
         <!-- @if ($errors)
             <span>{{$errors->first('Username')}}</span>
         @endif -->
         <label for="lastName" class="col-sm-2 control-label" style="font-size:110%">Last Name</label>
-        <div class="col-sm-10">
+       
 
         @if ($errors)
             <span>{{$errors->first('lastName')}}</span>
         @endif
-        <label for="lastName" class="col-sm-2 control-label" style="font-size:110%">Last Name</label>
+        
 		<div class="col-sm-2"></div>
         <div class="col-sm-7 col-sm-offset-1">
 
             <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
         </div>
 
-    </div>
+   
+</div>
     
     <div class="form-group">
 
@@ -125,66 +128,69 @@
             <span>{{$errors->first('Username')}}</span>
         @endif -->
         <label for="jobtitle" class="col-sm-2 control-label" style="font-size:110%">Job Title</label>
-        <div class="col-sm-10">
+        
 
         @if ($errors)
             <span>{{$errors->first('jobTitle')}}</span>
         @endif
-        <label for="jobtitle" class="col-sm-2 control-label" style="font-size:110%">Job Title</label>
+        
 		<div class="col-sm-2"></div>
         <div class="col-sm-7 col-sm-offset-1">
 
             <input type="text" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job Title">
         </div>
-    </div>
+   
+</div>
     <div class="form-group">
 
         <!-- @if ($errors)
             <span>{{$errors->first('Username')}}</span>
         @endif -->
         <label for="Organization/Agency" class="col-sm-2 control-label" style="font-size:110%">Organization/<br>Agency</label>
-        <div class="col-sm-10">
+        
 
         @if ($errors)
             <span>{{$errors->first('orgAgency')}}</span>
         @endif
-        <label for="Organization/Agency" class="col-sm-2 control-label" style="font-size:110%">Organization/<br>Agency</label>
+       
 		<div class="col-sm-2"></div>
         <div class="col-sm-7 col-sm-offset-1">
 
             <input type="text" name="orgAgency" class="form-control" id="orgAgency" placeholder="Organization/Agency">
         </div>
-    </div>
+   
+</div>
     <div class="form-group">
 
         <!-- @if ($errors)
             <span>{{$errors->first('Username')}}</span>
         @endif -->
         <label for="phone" class="col-sm-2 control-label" style="font-size:110%">Phone Number</label>
-        <div class="col-sm-10">
+        
 
         @if ($errors)
             <span>{{$errors->first('phoneNumber')}}</span>
         @endif
-        <label for="phone" class="col-sm-2 control-label" style="font-size:110%">Phone Number</label>
+       
 		<div class="col-sm-2"></div>
         <div class="col-sm-7 col-sm-offset-1">
 
             <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number">
         </div>
-    </div>
+		
+</div>
     <div class="form-group">
 
         <!-- @if ($errors)
             <span>{{$errors->first('Username')}}</span>
         @endif -->
-        <label for="specialization" class="col-sm-2 control-label" style="font-size:110%">Specialization<small>Choose one</small></label>
-        <div class="col-sm-10">
+        <label for="specialization" class="col-sm-2 control-label" style="font-size:105%">Specialization</label>
+        
 
         @if ($errors)
             <span>{{$errors->first('specialization')}}</span>
         @endif
-        <label for="specialization" class="col-sm-2 control-label" style="font-size:105%">Specialization</label>
+        
 		<div class="col-sm-2"></div>
         <div class="col-sm-7 col-sm-offset-1">
 
@@ -205,7 +211,8 @@
                 <option>Communications</option>
             </select>
         </div>
-    </div>
+    
+</div>
 
     <!-- <div class="form-group">
         <hr>
