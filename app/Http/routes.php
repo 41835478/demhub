@@ -132,6 +132,11 @@ Route::group(array('before' => 'guest'), function() {
 
 });
 
+Route::get('resource-filter', array(
+					'as' => 'resource-filter',
+					'uses' => 'HomeController@showResourceFilter'
+));
+
 if (Auth::check()) {
 
 	Route::group(array('before' => 'auth'), function() {
@@ -183,11 +188,6 @@ if (Auth::check()) {
 			));
 
 		});
-
-		Route::get('resource-filter', array(
-							'as' => 'resource-filter',
-							'uses' => 'HomeController@showResourceFilter'
-		));
 
 		Route::get('events', array(
 						'as' => 'events',

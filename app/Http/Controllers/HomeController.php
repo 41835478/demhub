@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DEMHub\Http\Requests;
 use DEMHub\Http\Controllers\Controller;
 use DEMHub\Models\User;
+use DEMHub\Models\ResourceRelation as ResourceRelation;
+use DEMHub\Models\ResourceEntry as ResourceEntry;
 use DEMHub\Models\Xmlcategories as Xmlcategories;
 
 class HomeController extends Controller {
