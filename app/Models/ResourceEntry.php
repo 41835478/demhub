@@ -1,15 +1,12 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+namespace DEMHub\Models;
 
-class ResourceEntry extends Eloquent implements UserInterface, RemindableInterface {
+use Illuminate\Database\Eloquent\Model;
 
-	use UserTrait, RemindableTrait;
-	
-	protected $fillable = array('id', 'title', 'entry','country', 'region');
+class ResourceEntry extends Model {
+
+	protected $fillable = ['id', 'title', 'entry','country', 'region'];
 
 	// protected $guarded = ['user_password'];
 
@@ -27,7 +24,7 @@ class ResourceEntry extends Eloquent implements UserInterface, RemindableInterfa
 	 */
 	// protected $hidden = array('password', 'remember_token');
 
-	
+
 
 
 	// public function files() {

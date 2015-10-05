@@ -9,12 +9,12 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
     	</button>
-		<a href="{{URL::route('home')}}">{{HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px'))}}
+		<a href="{{url('home')}}">{{HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px'))}}
 		</a>
 	</div>
 	
 		<!-- <div class="col-sm-3 navbar-collapse collapse">
-		<a href="{{URL::route('home')}}">{{HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px'))}}
+		<a href="{{url('home')}}">{{HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px'))}}
 		</a></div> -->
 	<div class="container">	
 	<div id="navbar" class="navbar-collapse collapse">
@@ -24,35 +24,35 @@
                         <kbd>BETA</kbd>
 					</a>	
                 </li>
-                <!-- @if(Request::url() === URL::route('main-home'))
+                <!-- @if(Request::url() === url('main-home'))
                     <li class="active">
-                        <a href="{{URL::route('main-home')}}">
+                        <a href="{{url('main-home')}}">
                             <i class="fa fa-home"></i>
                         </a>
                     </li>
                 @else
                     <li>
-                        <a href="{{URL::route('main-home')}}">
+                        <a href="{{url('main-home')}}">
                             <i class="fa fa-home"></i>
                         </a>
                     </li>
                 @endif -->
-                @if(Request::url() === URL::route('discover'))
+                @if(Request::url() === url('discover'))
                 <li class="active">
-                	<a href="{{URL::route('discover')}}"><i class="fa fa-globe"></i> DISCOVER</a>
+                	<a href="{{url('discover')}}"><i class="fa fa-globe"></i> DISCOVER</a>
                 </li>
                 @else
                 <li>
-                    <a href="{{URL::route('discover')}}"><i class="fa fa-globe"></i> DISCOVER</a>
+                    <a href="{{url('discover')}}"><i class="fa fa-globe"></i> DISCOVER</a>
                 </li> 
                 @endif
-                @if(Request::url() === URL::route('discussion'))
+                @if(Request::url() === url('discussion'))
                 <li class="active">
-                    <a href="{{URL::route('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
+                    <a href="{{url('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
                 </li>
                 @else
                 <li>
-                    <a href="{{URL::route('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
+                    <a href="{{url('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
                 </li> 
 				
                
@@ -70,25 +70,25 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{Auth::user()->user_name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-		                @if(Request::url() === URL::route('profile'))
+		                @if(Request::url() === url('profile'))
 		                    <li>
-		                        <a href="{{URL::route('profile')}}">
+		                        <a href="{{url('profile')}}">
 		                            <i class="fa fa-user"> PROFILE</i>
 		                        </a>
 		                    </li>
 		                @else 
 		                    <li>
-		                        <a href="{{URL::route('profile')}}">
+		                        <a href="{{url('profile')}}">
 		                            <i class="fa fa-user"></i> PROFILE</a>
 		                    </li>
 		                @endif
                         <li>
-                            <a href="{{URL::route('user-settings')}}">Settings
+                            <a href="{{url('user-settings')}}">Settings
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{URL::route('logout')}}">Log-Out
+                            <a href="{{url('logout')}}">Log-Out
                             </a>
                         </li>
                     </ul>
@@ -104,7 +104,7 @@
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($xmlcategories as $category)
 		
-			<a href="{{URL::route('division', array('id' => $category->id))}}">
+			<a href="{{url('division', array('id' => $category->id))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
 					<p style="text-align:center;padding-top:11px">{{$category->category_name}}</p>
 				</div>
@@ -184,18 +184,18 @@
 	<div class="navbar navbar-inverse" role="navigation" style="padding-left:30%;">
 	       
   	          <ul class="nav navbar-nav">
-				<li><a href="{{URL::route('logout')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
+				<li><a href="{{url('logout')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
 				
-				<li><a href="{{URL::route('resource-filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
+				<li><a href="{{url('resource-filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 				
 				
 			
-  	            <li><a href="{{URL::route('events')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"><!-- <img src="css/cut-video-image-black.png" class="blackImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"><img src="css/cut-video-image-white.png" class="whiteImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"> --> EVENTS</a></li>
+  	            <li><a href="{{url('events')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"><!-- <img src="css/cut-video-image-black.png" class="blackImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"><img src="css/cut-video-image-white.png" class="whiteImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"> --> EVENTS</a></li>
 			
-  				<!-- <li><a href="{URL::route('logout')}}"><img src="css/share-image-black.png" class="blackImage" alt="Hot Potato" width="55" height="21" style=""><img src="css/share-image-white.png" class="whiteImage" alt="Hot Potato" width="55" height="21" style=""> Feed</a></li> -->
-  				<li><a href="{{URL::route('media')}}" style="color:#666666;border-left:1px solid #fff;border-right:2px solid #fff">MEDIA</a></li>
+  				<!-- <li><a href="{url('logout')}}"><img src="css/share-image-black.png" class="blackImage" alt="Hot Potato" width="55" height="21" style=""><img src="css/share-image-white.png" class="whiteImage" alt="Hot Potato" width="55" height="21" style=""> Feed</a></li> -->
+  				<li><a href="{{url('media')}}" style="color:#666666;border-left:1px solid #fff;border-right:2px solid #fff">MEDIA</a></li>
 	
-  	            <!-- <li role="presentation"><a href="{URL::route('logout')}}">About &amp; Contact</a></li> -->
+  	            <!-- <li role="presentation"><a href="{url('logout')}}">About &amp; Contact</a></li> -->
 				
 				
   	      </div>

@@ -1,6 +1,19 @@
 <?php
 
-class AuthController extends BaseController {
+namespace DEMHub\Http\Controllers\Auth;
+
+use DEMHub\Models\User;
+use Validator;
+use Hash;
+use DateTime;
+use Auth;
+use Redirect;
+use DEMHub\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+class AuthController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -16,21 +29,21 @@ class AuthController extends BaseController {
 	*/
 	public function sign_up() {
 		if (Request::isMethod('get')) {
-			return View::make('guest/sign-up')->with('action', URL::route("sign-up"));
+			return view('guest/sign-up')->with('action', url("sign-up"));
 		}
 		else {
 			//print_r(Input::all());
-			$name = Input::get('username');
-			$email = Input::get('email');
-			$password = Input::get('password');
-			$remember = Input::get('remember');
-			$firstName = Input::get('firstName');
-			$lastName = Input::get('lastName');
-			$jobTitle = Input::get('jobTitle');
-			$orgAgency = Input::get('orgAgency');
-			$phoneNumber = Input::get('phoneNumber');
-			$specialization = Input::get('specialization');
-			$remember = Input::get('remember');
+			$name = Request::input('username');
+			$email = Request::input('email');
+			$password = Request::input('password');
+			$remember = Request::input('remember');
+			$firstName = Request::input('firstName');
+			$lastName = Request::input('lastName');
+			$jobTitle = Request::input('jobTitle');
+			$orgAgency = Request::input('orgAgency');
+			$phoneNumber = Request::input('phoneNumber');
+			$specialization = Request::input('specialization');
+			$remember = Request::input('remember');
 			$input = array(
 						'Username' 	=> $name,
 						'Email' 	=> $email,
@@ -56,7 +69,7 @@ class AuthController extends BaseController {
 											->withErrors($validate->messages());
 			}
 			else {
-				$rmbr = Input::get('_token');
+				$rmbr = Request::input('_token');
 				// $rmbr = false;
 				// if(!empty($remember)){
 // 					$rmbr = true;
@@ -110,7 +123,7 @@ class AuthController extends BaseController {
 				// $user = Auth::user()->user_name;
 				// $email = Auth::user()->user_email;
 			Mail::send('emails.auth.welcome', array('user_name' => $user->user_name), function($message) {
-					$message->to(Input::get('email'),Input::get('username'))->subject('Welcome to DEMHUB!');
+					$message->to(Request::input('email'),Request::input('username'))->subject('Welcome to DEMHUB!');
 				});
 
 
@@ -126,12 +139,7 @@ class AuthController extends BaseController {
 										'specialization'	=> $specialization), function($message) {
 					$message->to('jennifer.holmes@ryerson.ca','Jen Holmes')->subject('New DEMHUB Signup Request!');
 				});
-	// $conn = mysqli_connect(getenv('DATABASE_HOST'),getenv('DATABASE_USERNAME'),getenv('DATABASE_PASSWORD'),getenv('DATABASE_NAME'));
-	//$conn = mysqli_connect('localhost','root','root','demhub_v3');
-	$conn = mysqli_connect('localhost','forge','R0SDQrIB8oWjyf5fuUUM','demhubprod');
-	// mysqli_query($conn,"SELECT * FROM single_edits");
-	// $test=mysqli_query($conn,"SELECT * FROM single_edits ORDER BY id DESC LIMIT 1");
-	// $query = mysqli_query($conn,"SELECT id,OutputLink FROM single_edits WHERE MAX(id) LIKE 'qs1Nm.html'");
+	$conn = mysqli_connect(getenv('DATABASE_HOST'),getenv('DATABASE_USERNAME'),getenv('DATABASE_PASSWORD'),getenv('DATABASE_NAME'));
 	$query = mysqli_query($conn,"UPDATE users SET user_name='".$rmbr."',user_email='".$rmbr."',remember_token='".$rmbr."' WHERE user_name='".$name."'");
 	if ($query==""){
 		echo 'nothing';
@@ -151,13 +159,13 @@ class AuthController extends BaseController {
 
 	public function login() {
 		if (Request::isMethod('get')) {
-			return View::make('guest/login')->with('action', URL::route("login"));
+			return view('guest/login')->with('action', url("login"));
 		}
 		else {
 			//print_r(Input::all());
-			$name = Input::get('username');
-			$password = Input::get('password');
-			$remember = Input::get('remember');
+			$name = Request::input('username');
+			$password = Request::input('password');
+			$remember = Request::input('remember');
 			$input = array(
 						'Username' 	=> $name,
 						'Password' => $password,
@@ -228,13 +236,13 @@ class AuthController extends BaseController {
 
 	public function loginIntial() {
 		if (Request::isMethod('get')) {
-			return View::make('guest/login')->with('action', URL::route("login"));
+			return view('guest/login')->with('action', url("login"));
 		}
 		else {
 			//print_r(Input::all());
-			$name = Input::get('username');
-			$password = Input::get('password');
-			$remember = Input::get('remember');
+			$name = Request::input('username');
+			$password = Request::input('password');
+			$remember = Request::input('remember');
 			$input = array(
 						'Username' 	=> $name,
 						'Password' => $password,
@@ -305,7 +313,7 @@ class AuthController extends BaseController {
 
 	public function loginWithGoogle() {
 		// get data from input
-		$code = Input::get( 'code' );
+		$code = Request::input( 'code' );
 
 		// get google service
 		$googleService = OAuth::consumer( 'Google' );
@@ -343,10 +351,10 @@ class AuthController extends BaseController {
 
 	public function loginWithTwitter() {
 		// Oauth token
-		$token = Input::get('oauth_token');
+		$token = Request::input('oauth_token');
 
 		// Verifier token
-		$verifier = Input::get('oauth_verifier');
+		$verifier = Request::input('oauth_verifier');
 
 		if (!empty($token) && !empty($verifier)){
 			// Request access token
@@ -381,8 +389,8 @@ class AuthController extends BaseController {
 
 	 	// $url = preg_replace('/\s+/', '', $url);
 
-	 	// $code = Input::get('code');
-	 	// $state = Input::get('state');
+	 	// $code = Request::input('code');
+	 	// $state = Request::input('state');
 	 	// if (!$code){
 	 	// 	return Redirect::to($url);
 	 	// }
@@ -404,7 +412,7 @@ class AuthController extends BaseController {
 	    else {
 	        try {
 	            // Try to get an access token (using the authorization code grant)
-	            $t = $provider->getAccessToken('authorization_code', array('code' => Input::get('code')));
+	            $t = $provider->getAccessToken('authorization_code', array('code' => Request::input('code')));
 	            try {
 	                // We got an access token, let's now get the user's details
 	                $userDetails = $provider->getUserDetails($t);
@@ -446,8 +454,8 @@ class AuthController extends BaseController {
 		if (Request::isMethod('get')) {
 			$userid = Auth::user()->id;
 
-			return View::make('user.settings')
-						->with('action', URL::route('user-settings'))
+			return view('user.settings')
+						->with('action', url('user-settings'))
 						->with('xmlcategories', $categories);
 		}
 		else {
@@ -458,14 +466,14 @@ class AuthController extends BaseController {
 			if (Input::hasFile('user_image')){
 				    //
 				    $inputs = array(
-							'Username' 	=> Input::get('user_name'),
+							'Username' 	=> Request::input('user_name'),
 							'Image'		=> Input::file('user_image')
 							);
 					//print_r(Input::all());
 			}
 			else {
 				$inputs = array(
-							'Username' => Input::get('user_name'),
+							'Username' => Request::input('user_name'),
 							);
 			}
 			//unique:users,user_name|
@@ -502,10 +510,10 @@ class AuthController extends BaseController {
 				else {
 					Session::flash('error', 'uploaded file is not valid');
 				}
-				$user->user_name = Input::get('user_name');
-				$user->job_title = Input::get('job_title');
-				$user->org_agency = Input::get('org_agency');
-				$user->specialization = Input::get('specialization');
+				$user->user_name = Request::input('user_name');
+				$user->job_title = Request::input('job_title');
+				$user->org_agency = Request::input('org_agency');
+				$user->specialization = Request::input('specialization');
 				$user->save();
 				return Redirect::route('home');
 

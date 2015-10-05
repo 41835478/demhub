@@ -49,7 +49,7 @@
 <div id="welcome_division" class="row">
 		@foreach($xmlcategories as $category)
 
-			<a href="{{URL::route('division', array('id' => $category->id))}}">
+			<a href="{{url('division', array('id' => $category->id))}}">
 				<div id="division_{{$category->id}}" style="border-top:7px solid #{{$category->bg_color}};border-bottom:7px solid #{{$category->bg_color}}" class="col-md-2">
 					<h5>{{$category->category_name}}</h5>
 				</div>

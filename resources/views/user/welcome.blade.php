@@ -33,17 +33,17 @@
 			<h5>Arrange by</h5>
 			<ul class="list-inline">
 				<li>
-					<a href="{{URL::route('arrange-likes')}}">
+					<a href="{{url('arrange-likes')}}">
 						<i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="Likes"></i>
 					</a>
 				</li>
 				<li>
-					<a href="{{URL::route('arrange-dislikes')}}">
+					<a href="{{url('arrange-dislikes')}}">
 						<i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Dislikes"></i>
 					</a>
 				</li>
 				<li>
-					<a href="{{URL::route('arrange-comments')}}">
+					<a href="{{url('arrange-comments')}}">
 						<i class="fa fa-commenting" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>
 					</a>
 				</li>
@@ -80,7 +80,7 @@
 										@foreach($category->getUserFeed as $follow)
 											@if ($follow->user_id == Auth::user()->id && $follow->category_id == $category->category_id)
 												<span class="badge" style="background:#{{$category->getcategory->bg_color}};">
-													<a style="color:#FFF;" href="{{URL::route('follow-feed', array('id' => $category->getcategory->id))}}">
+													<a style="color:#FFF;" href="{{url('follow-feed', array('id' => $category->getcategory->id))}}">
 														<i class="fa fa-minus" data-toggle="tooltip" data-placement="top" title="Unfollow Feed"></i>
 													</a>
 												</span>
@@ -90,7 +90,7 @@
 									@endif
 									@if(!$foll)
 										<span class="badge" style="background:#{{$category->getcategory->bg_color}};">
-											<a style="color:#FFF;" href="{{URL::route('follow-feed', array('id' => $category->getcategory->id))}}">
+											<a style="color:#FFF;" href="{{url('follow-feed', array('id' => $category->getcategory->id))}}">
 												<i class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Follow Feed"></i>
 											</a>
 										</span>

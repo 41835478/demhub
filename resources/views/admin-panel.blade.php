@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('structure.main')
 
 @section('content')
 
@@ -6,20 +6,20 @@
 	<div class="col-md-6 col-md-offset-3">
 		<h3 style="text-align:center">ADMIN PANEL</h3>
 <form class="form-horizontal" enctype="multipart/form-data" method="get" action="auto-login">
-
-    <div class="form-group">
+	
+    <div class="form-group">   
         <label for="name" class="col-sm-3 control-label" style="font-size:110%">Username</label>
         <div class="col-sm-9">
         	<input type="text" name="username" class="form-control" id="username" placeholder="Username">
         </div>
-
+        
   	</div>
-    <div class="form-group">
+    <div class="form-group">   
         <label for="email" class="col-sm-3 control-label" style="font-size:110%">Email</label>
         <div class="col-sm-9">
         	<input type="text" name="email" class="form-control" id="email" placeholder="Email">
         </div>
-
+        
   	</div>
     <!-- <div class="form-group">
 
@@ -47,7 +47,7 @@
         </div>
     </div>
 	<br><br><br>
-
+    
 </form>
 </div>
 </div>
