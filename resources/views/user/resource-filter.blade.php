@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@extends('structure.main')
 @section('content')
 <div id="user-settings" class="row">
 	<div class="col-md-12 text-center">
