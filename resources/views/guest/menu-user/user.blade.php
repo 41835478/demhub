@@ -10,7 +10,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
         	</button>
-			<a href="{{url('home')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}
+			<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}
 			</a>
 		</div>
 
@@ -18,10 +18,8 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 			@if (Request::url() === url('home'))
-			    <!-- <li><a href="#welcome_home">Home</a></li> -->
 			    <li><a href="about-us">About</a></li>
 			@else
-				<!-- <li><a href="{{url('home', array('#welcome_home'))}}">Home</a></li> -->
 			    <li><a href="{{url('about-us')}}">About</a></li>
 			@endif
 			@if (Request::url() === url('sign-up'))
