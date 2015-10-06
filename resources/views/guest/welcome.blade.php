@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<div id="welcome_home" class="row">
+	<div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed center center no-repeat;">
 
 		<div class="col-md-6 col-md-offset-6">
 			{!! HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '700')) !!}
@@ -54,7 +54,7 @@
 		</div>
 	</div>
 
-	<div id="welcome_secondary_text" class="row">
+	<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/bridge.jpg') no-repeat fixed;">
 		<div class="col-md-12 text-center">
     	<h2>SIX SECTORS</h2>
     </div>

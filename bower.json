@@ -1,0 +1,26 @@
+{
+  "name": "demhub",
+  "version": "0.0.0",
+  "authors": [
+    "Aldo Ruiz <aldo.ruiz.luna@gmail.com>"
+  ],
+  "description": "Disaster and Emergency Management Hub",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "beta.demhub.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
+    "font-awesome": "fontawesome#~4.4.0",
+    "jquery-ui": "jqueryui#~1.11.4"
+  }
+}

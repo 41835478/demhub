@@ -40,7 +40,7 @@
 
 	</div>
 </div>
-<div id="welcome_secondary_text" class="row">
+<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/bridge.jpg') no-repeat fixed;">
 	<div class="col-md-12 text-center">
     	<h2>Connect with your Community</h2>
     </div>
@@ -50,7 +50,7 @@
 		@foreach($xmlcategories as $category)
 
 			<a href="{{url('division', array('id' => $category->id))}}">
-				<div id="division_{{$category->id}}" style="border-top:7px solid #{{$category->bg_color}};border-bottom:7px solid #{{$category->bg_color}}" class="col-md-2">
+				<div id="division_{{$category->id}}" style="background: url('images/backgrounds/{{$category->id}}.jpg') no-repeat fixed -90% 0;border-top:7px solid #{{$category->bg_color}};border-bottom:7px solid #{{$category->bg_color}}" class="col-md-2">
 					<h5>{{$category->category_name}}</h5>
 				</div>
 			</a>
