@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('structure.main')
 
 @section('content')
 
@@ -7,7 +7,7 @@
         <h2 class="blue-text" style="font-size:300%">TERMS OF SERVICE</h2>
     </div>
     <div class="col-md-8 col-md-offset-2" style="text-align:left">
-        
+
 	<p>
 		By using the DEMHUB.com web site ("Service"), or any services of DEMHUB, Inc ("DEMHUB"), you are agreeing to be bound by the following terms and conditions ("Terms of Service"). IF YOU ARE ENTERING INTO THIS AGREEMENT ON BEHALF OF A COMPANY OR OTHER LEGAL ENTITY, YOU REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND SUCH ENTITY, ITS AFFILIATES AND ALL USERS WHO ACCESS OUR SERVICES THROUGH YOUR ACCOUNT TO THESE TERMS AND CONDITIONS, IN WHICH CASE THE TERMS "YOU" OR "YOUR" SHALL REFER TO SUCH ENTITY, ITS AFFILIATES AND USERS ASSOCIATED WITH IT. IF YOU DO NOT HAVE SUCH AUTHORITY, OR IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS, YOU MUST NOT ACCEPT THIS AGREEMENT AND MAY NOT USE THE SERVICES.
 </p>
@@ -16,7 +16,7 @@
 </p>
 <p>
 		If DEMHUB makes material changes to these Terms, we will notify you by email or by posting a notice on our site before the changes are effective. Any new features that augment or enhance the current Service, including the release of new tools and resources, shall be subject to the Terms of Service. Continued use of the Service after any such changes shall constitute your consent to such changes. You can review the most current version of the Terms of Service at any time at: http://demhub.ca/terms_of_service
-</p>		
+</p>
 <p>
 		Violation of any of the terms below will result in the termination of your Account. While DEMHUB prohibits such conduct and Content on the Service, you understand and agree that DEMHUB cannot be responsible for the Content posted on the Service and you nonetheless may be exposed to such materials. You agree to use the Service at your own risk.
 </p>
@@ -39,11 +39,11 @@
 	7. One person or legal entity may not maintain more than one free account.
 
 	8. You may not use the Service for any illegal or unauthorized purpose. You must not, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright or trademark laws).
-	
+
 </p>
 <h3 class="blue-text">
 		B. Copyright and Content Ownership
-</h3>		
+</h3>
 <p>
 		We claim no intellectual property rights over the material you provide to the Service. Your profile and materials uploaded remain yours. However, by setting your pages to be viewed publicly, you agree to allow others to view your Content. By setting your repositories to be viewed publicly, you agree to allow others to view and fork your repositories.
 
@@ -53,7 +53,7 @@
 
 		The look and feel of the Service is copyright ©2010 DEMHUB Inc. All rights reserved. You may not duplicate, copy, or reuse any portion of the HTML/CSS, Javascript, or visual design elements or concepts without express written permission from DEMHUB.
 </p>
-<h3 class="blue-text">	
+<h3 class="blue-text">
 		C. General Conditions
 </h3>
 <p>
@@ -74,7 +74,7 @@
 	Verbal, physical, written or other abuse (including threats of abuse or retribution) of any DEMHUB customer, employee, member, or officer will result in immediate account termination.
 
 	You understand that the technical processing and transmission of the Service, including your Content, may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices.
-		
+
 </p>
 
 <p>
@@ -89,7 +89,7 @@
 
 		You expressly understand and agree that DEMHUB shall not be liable for any direct, indirect, incidental, special, consequential or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data or other intangible losses (even if DEMHUB has been advised of the possibility of such damages), resulting from: (i) the use or the inability to use the service; (ii) the cost of procurement of substitute goods and services resulting from any goods, data, information or services purchased or obtained or messages received or transactions entered into through or from the service; (iii) unauthorized access to or alteration of your transmissions or data; (iv) statements or conduct of any third-party on the service; (v) or any other matter relating to the service.
 
-		The failure of DEMHUB to exercise or enforce any right or provision of the Terms of Service shall not constitute a waiver of such right or provision. The Terms of Service constitutes the entire agreement between you and DEMHUB and govern your use of the Service, superseding any prior agreements between you and DEMHUB (including, but not limited to, any prior versions of the Terms of Service). You agree that these Terms of Service and Your use of the Service are governed under Canadian law. 
+		The failure of DEMHUB to exercise or enforce any right or provision of the Terms of Service shall not constitute a waiver of such right or provision. The Terms of Service constitutes the entire agreement between you and DEMHUB and govern your use of the Service, superseding any prior agreements between you and DEMHUB (including, but not limited to, any prior versions of the Terms of Service). You agree that these Terms of Service and Your use of the Service are governed under Canadian law.
 </p>
 
 <p>
@@ -101,7 +101,7 @@
 </p>
 <p style="text-align:center">
 		<b>Last Updated: April 28, 2015</b>
-	</p>	
+	</p>
     </div>
 
 </div>

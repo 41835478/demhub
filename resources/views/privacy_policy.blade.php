@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('structure.main')
 
 @section('content')
 
@@ -69,7 +69,7 @@
 
 		Other: DEMHUB is a dynamic, innovative environment, which means we are always seeking to improve the services we offer you. We often introduce new features, some of which may result in the collection of new information (for example, when the Endorsements feature launched, we began collecting information about skills for which members were endorsed and the individuals who endorsed them). Furthermore, new partnerships or corporate acquisitions may result in new features, and we may potentially collect new types of information.
 </p>
-<h3 class="blue-text">	
+<h3 class="blue-text">
 		Notice of Privacy Rights to California Residents
 </h3>
 <p>
@@ -100,14 +100,14 @@
 		Amendments: DEMHUB may modify or amend this policy from time to time. If we make any material changes, as determined by DEMHUB, in the way in which Personal Information is collected, used or transferred, we will notify you of these changes by modification of this Privacy Policy, which will be available for review by you at the Website.  Notwithstanding any modifications we may make, any Personal Information collected by DEMHUB from you will be treated in accordance with the privacy policy in effect at the time information was collected, unless we obtain your consent otherwise.
 </p>
 <p>
-		Children:  DEMHUB does not knowingly collect or maintain personally identifiable information from persons under 18 years of age, and no part of the Website is directed at persons under 18.  If you are under 18 years of age, then please do not use the Website. 
+		Children:  DEMHUB does not knowingly collect or maintain personally identifiable information from persons under 18 years of age, and no part of the Website is directed at persons under 18.  If you are under 18 years of age, then please do not use the Website.
 </p>
 <p>
 		Website Visitors from outside the Canada:  DEMHUB and its servers are located in the Canada and are subject to the applicable state and federal laws of the Canada.  If you choose to access or use the Website, you consent to the use and disclosure of information in accordance with this privacy policy and subject to such laws.
 </p>
 <p style="text-align:center">
 		<b>Effective Date of this policy: April 28, 2015</b>
-	</p>	
+	</p>
     </div>
 
 </div>
