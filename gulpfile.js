@@ -41,7 +41,7 @@ elixir(function (mix) {
   mix.copy([
     paths.fontawesome + '/fonts',
     paths.bootstrap   + '/fonts/bootstrap'
-  ], 'public/assets/fonts');
+  ], 'public/build/assets/fonts');
 
   mix.version([
     "assets/css/core.css",
