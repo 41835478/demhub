@@ -9,7 +9,7 @@
     @yield('meta')
 
     <!-- CSS -->
-    <link href="{{ url('/assets/css/core.css') }}" rel="stylesheet">
+    <link href="{!! elixir('assets/css/core.css') !!}" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -17,8 +17,8 @@
     <![endif]-->
 
     <!-- Scripts -->
-    <script src="{{ url('/assets/js/dependencies.js') }}"></script>
-    <script src="{{ url('/assets/js/core.js') }}"></script>
+    <script src="{!! elixir('assets/js/dependencies.js') !!}"></script>
+    <script src="{!! elixir('assets/js/core.js') !!}"></script>
   </head>
 
   <body>

@@ -42,4 +42,10 @@ elixir(function (mix) {
     paths.fontawesome + '/fonts',
     paths.bootstrap   + '/fonts/bootstrap'
   ], 'public/assets/fonts');
+
+  mix.version([
+    "assets/css/core.css",
+    "assets/js/dependencies.js",
+    "assets/js/core.js"
+  ]);
 });
