@@ -35,6 +35,7 @@ return [
     'member_since' => 'Member since',
     'page_not_found' => 'Page Not Found',
     'password_successfully_changed' => 'Password successfully changed',
+    'policy' => 'Privacy Policy',
     'profile_successfully_updated' => 'Profile successfully updated.',
     'save_button' => 'Save',
     'search_placeholder' => 'Search...',
@@ -44,6 +45,7 @@ return [
         'tasks' => 'View all tasks',
     ],
     'sorry_page_you_were_trying' => 'Sorry, but the page you were trying to view does not exist.',
+    'terms' => 'Terms of Service',
     'test' => 'Test',
     'using_access_helper' => [
         'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',

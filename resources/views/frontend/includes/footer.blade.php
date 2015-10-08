@@ -1,9 +1,11 @@
 <!-- Main Footer -->
 <footer class="main-footer">
-  <!-- To the right -->
-  <div class="pull-right hidden-xs">
-      <a href="http://laravel-boilerplate.com" target="_blank">{{ trans('strings.boilerplate_link') }}</a>
-  </div>
-  <!-- Default to the left -->
-  <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> {{ trans('strings.all_rights_reserved') }}
+  <p> &nbsp; </p>
+  <p align="center">
+    {!! link_to('policy', trans('strings.policy')) !!} |
+    {!! link_to('terms', trans('strings.terms')) !!}
+  </p>
+  <p align="center">
+    <strong>Copyright &copy; 2015 {!! link_to('', 'DEMHub Inc') !!}.</strong> {{ trans('strings.all_rights_reserved') }}
+  </p>
 </footer>
