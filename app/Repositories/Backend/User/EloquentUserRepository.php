@@ -301,9 +301,15 @@ class EloquentUserRepository implements UserContract {
 	private function createUserStub($input)
 	{
 		$user = new User;
-		$user->name = $input['name'];
+		$user->username = $input['username'];
+		$user->first_name = $input['first_name'];
+		$user->last_name = $input['last_name'];
 		$user->email = $input['email'];
 		$user->password = $input['password'];
+		$user->job_title = $input['job_title'];
+		$user->organization_name = $input['organization_name'];
+		$user->phone_number = $input['phone_number'];
+		$user->specialization = $input['specialization'];
 		$user->status = isset($input['status']) ? 1 : 0;
 		$user->confirmation_code = md5(uniqid(mt_rand(), true));
 		$user->confirmed = isset($input['confirmed']) ? 1 : 0;

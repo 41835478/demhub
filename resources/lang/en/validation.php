@@ -105,7 +105,10 @@ return [
     */
 
     'attributes' => [
+        'username' => 'Username',
         'name' => 'Name',
+        'first_name' => 'First Name',
+        'last_name' => 'Last Name',
         'email' => 'E-mail',
         'password' => 'Password',
         'password_confirmation' => 'Password Confirmation',
@@ -114,6 +117,10 @@ return [
         'new_password_confirmation' => 'New Password Confirmation',
         'created_at' => 'Created At',
         'last_updated' => 'Last Updated',
+        'job_title' => 'Job Title',
+        'org_entity' => 'Organizational Entity',
+        'phone_number' => 'Phone Number',
+        'specialization' => 'Specialization',
         'actions' => 'Actions',
         'active' => 'Active',
         'confirmed' => 'Confirmed',
