@@ -11,9 +11,9 @@ $(document).ready(function(){
 
 @foreach($category as $cat)
 	<div id="welcome-division">
-		
+
 		<div id="welcome-division-category" class="row" style="background:
-																url('../images/backgrounds/{{$cat->bg_image}}') no-repeat fixed 0% 70%; 
+																url('../images/backgrounds/{{$cat->bg_image}}') no-repeat fixed 0% 70%;
 																-webkit-background-size: cover;
 																-moz-background-size: cover;
 																-o-background-size: cover;
@@ -30,11 +30,11 @@ $(document).ready(function(){
 				<h1 style="background:#{{$cat->bg_color}}">{{$cat->category_name}}</h1>
 			</div>
 			</div>
-			
-		
-		
+
+
+
 		</div>
-		
+
 		<style>
 			div.paginated ul.pagination li span{
 				color: #{{$cat->bg_color}};
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			div.paginated ul.pagination li a {
 				color: #{{$cat->bg_color}};
 			}
-		
+
 		</style>
 		<div class="col-md-9 col-md-offset-1 text-left" id="discussion">
 			<h2 style="color:#{{$cat->bg_color}};font-size:170%">DISCUSSION</h2>
@@ -68,12 +68,12 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<script>
-		  
+
 		  </script>
 		  <div class="modal fade" id="myModal" style="padding-top:100px">
 		    <div class="modal-dialog">
 		      <div class="modal-content">
-		        
+
 		        <div class="modal-body">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		          <h3>You can access the articles once you <a type="button" class="btn btn-default btn-style-alt" data-dismiss="modal" href="{{url('sign-up')}}">SIGN UP</a></h3>
@@ -85,7 +85,7 @@ $(document).ready(function(){
 		      </div><!-- /.modal-content -->
 		    </div><!-- /.modal-dialog -->
 		  </div><!-- /.modal -->
-		<div class="col-md-9 col-md-offset-1 text-left" id="news">	
+		<div class="col-md-9 col-md-offset-1 text-left" id="news" style='background: url("images/icons/NewspaperIcon-quarter.png") 110px 0;'>	
 			<h2 style="color:#{{$cat->bg_color}};"> NEWS</h2>
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>
@@ -98,11 +98,11 @@ $(document).ready(function(){
 				@foreach($cat->xmlfeeddata()->paginate(15) as $data)
 					<div class="col-md-12">
 						<h3><a href="" data-toggle="modal" data-target="#myModal">{{$data->title}}</a></h3>
-						
+
 						<!-- href="{{$data->link}}" -->
 						<span class="label label-default" style="font-size:50%">{{date('F j, Y', $data->pubDate)}}</span>
 						<p>{{strip_tags($data->desc, '<img>')}}</p>
-						<?php 
+						<?php
 							$keys = $data->keywords;
 							$keywords = explode(';', $keys);
 						?>
@@ -119,7 +119,7 @@ $(document).ready(function(){
 				{{$cat->xmlfeeddata()->paginate(15)->links()}}
 			</div>
 		</div>
-		
+
 
 
 	</div>

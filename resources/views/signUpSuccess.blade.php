@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="welcome_sign-up" class="row">
-    
+<div id="welcome_sign-up" class="row" style="background: url('images/backgrounds/sign-up.jpg') no-repeat center center;">
+
     <div class="col-md-6 col-md-offset-3" style="color:#fff">
         <h3>You've successfully signed up for DEMHUB!</h3>
 		<br>

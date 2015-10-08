@@ -109,7 +109,7 @@ function autoLogin(){
       else {
         // redirect to login with errors
         return Redirect::route('login')->with('message', 'The Username or E-Mail address provided was incorrect. Please try again!')
-                        ->withInput(Input::all());
+                        ->withInput(Request::all());
       }
     }
     elseif ($user_email) {
@@ -127,7 +127,7 @@ function autoLogin(){
       else {
         // redirect to login with errors
         return Redirect::route('login')->with('message', 'The Username or E-Mail address provided was incorrect. Please try again!')
-                        ->withInput(Input::all());
+                        ->withInput(Request::all());
 
       }
     }

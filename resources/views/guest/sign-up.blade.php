@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="welcome_sign-up" class="row">
+<div id="welcome_sign-up" class="row" style="background: url('images/backgrounds/sign-up.jpg') no-repeat center center;">
     <div class="col-md-12 text-center">
         <h2 style="font-size:300%">GET THE BETA VERSION</h2>
     </div>

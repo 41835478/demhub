@@ -216,9 +216,7 @@ class HomeController extends Controller {
 			$create = Followfeed::create(array(
 										'user_id'		=> Auth::user()->id,
 										'category_id'	=> $id,
-										'hidden'		=> false,
-										'updated_at'	=> app('currentDT'),
-										'created_at'	=> app('currentDT')
+										'hidden'		=> false
 									));
 		}
 		else {
@@ -322,8 +320,6 @@ class HomeController extends Controller {
 					$create->keywords = $val[0]->category;
 				}
 				$create->pubDate = $newDate;
-				$create->updated_at = app('currentDT');
-				$create->created_at = app('currentDT');
 				$create->save();
 			}
 			else {

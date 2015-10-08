@@ -105,16 +105,6 @@
 													   	  if (strlen($description) > 100)
 													      $str = substr($description, 0, 150) . '...';
 														  strip_tags($description, '<img>')}}</p>
-									<!-- <?php
-
-										$keys = $category->keywords;
-										$keywords = preg_split( "/[;,]/u", $keys);;
-									?>
-									@foreach($keywords as $keyword)
-										@if($keyword != '')
-											<span class="badge">{{$keyword}}</span>
-										@endif
-									@endforeach -->
 								</div>
 								<div id="social-actions">
 									@include('user.menu-user.social-actions', array('feed' => $category))

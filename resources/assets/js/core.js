@@ -42,3 +42,8 @@ $(document).ready(function(){
     }
   );
 });
+
+$(document).ready(function(){
+  $("div#ph-text > p").find('br').remove();
+  $("div#ph-text > p").find('a').remove();
+});

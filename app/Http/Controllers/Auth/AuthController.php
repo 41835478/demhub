@@ -3,11 +3,14 @@
 namespace DEMHub\Http\Controllers\Auth;
 
 use DEMHub\Models\User;
+use DEMHub\Models\Registration;
+use DEMHub\Models\Avatar;
 use Validator;
 use Hash;
 use DateTime;
 use Auth;
 use Redirect;
+use Mail;
 use DEMHub\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -62,7 +65,7 @@ class AuthController extends Controller {
 			));
 
 			if ($validate->fails()){
-				return Redirect::route('sign-up')->withInput(Input::all())
+				return Redirect::route('sign-up')->withInput(Request::all())
 											->withErrors($validate->messages());
 			} else {
 				$rmbr = Request::input('_token');
@@ -76,68 +79,62 @@ class AuthController extends Controller {
 					'org_agency'			=> $orgAgency,
 					'phone_number'		=> $phoneNumber,
 					'specialization'	=> $specialization,
-					'updated_at' 			=> app('currentDT'),
-					'created_at'			=> app('currentDT'),
 					'remember_token'	=> $rmbr
 				));
 
-				$registration = Registration::create(array(
-										'user_name' 		=> $name,
-										'user_email'		=> $email,
-										'user_password'		=> $password,
-										'first_name'		=> $firstName,
-										'last_name'			=> $lastName,
-										'job_title'			=> $jobTitle,
-										'org_agency'		=> $orgAgency,
-										'phone_number'		=> $phoneNumber,
-										'specialization'	=> $specialization,
-										'updated_at' 		=> app('currentDT'),
-										'created_at'		=> app('currentDT'),
-										'remember_token'	=> $rmbr
-				));
+				// $registration = Registration::create(array(
+				// 						'user_name' 		=> $name,
+				// 						'user_email'		=> $email,
+				// 						'user_password'		=> $password,
+				// 						'first_name'		=> $firstName,
+				// 						'last_name'			=> $lastName,
+				// 						'job_title'			=> $jobTitle,
+				// 						'org_agency'		=> $orgAgency,
+				// 						'phone_number'		=> $phoneNumber,
+				// 						'specialization'	=> $specialization,
+				// 						'remember_token'	=> $rmbr
+				// ));
 
 				$avatar = Avatar::create(array(
 										'avatar_user_id'	=> $user->id,
-										'file_name'			=> 'defaultavatar.svg',
-										'updated_at'		=> app('currentDT'),
-										'created_at'		=> app('currentDT')
+										'file_name'			=> 'defaultavatar.svg'
 				));
 
-				$registration->save();
+				// $registration->save();
 				$user->user_avatar_id = $avatar->id;
 				$user->save();
 
-				Mail::send('emails.auth.welcome', array('user_name' => $user->user_name), function($message) {
-					$message->to(Request::input('email'),Request::input('username'))->subject('Welcome to DEMHUB!');
-				});
+				// Mail::send('emails.auth.welcome', array('user_name' => $user->user_name), function($message) {
+				// 	$message->to(Request::input('email'),Request::input('username'))->subject('Welcome to DEMHUB!');
+				// });
+				//
+				// Mail::send('emails.auth.account-details', array(
+				// 						'user_name'			=> $name,
+				// 						'user_email'		=> $email,
+				// 						'first_name'		=> $firstName,
+				// 						'last_name'			=> $lastName,
+				// 						'job_title'			=> $jobTitle,
+				// 						'org_agency'		=> $orgAgency,
+				// 						'phone_number'		=> $phoneNumber,
+				// 						'specialization'	=> $specialization
+				// ), function($message) {
+				// 	$message->to('jennifer.holmes@ryerson.ca','Jen Holmes')->subject('New DEMHUB Signup Request!');
+				// });
 
-				Mail::send('emails.auth.account-details', array(
-										'user_name'			=> $name,
-										'user_email'		=> $email,
-										'first_name'		=> $firstName,
-										'last_name'			=> $lastName,
-										'job_title'			=> $jobTitle,
-										'org_agency'		=> $orgAgency,
-										'phone_number'		=> $phoneNumber,
-										'specialization'	=> $specialization
-				), function($message) {
-					$message->to('jennifer.holmes@ryerson.ca','Jen Holmes')->subject('New DEMHUB Signup Request!');
-				});
-
-				$conn = mysqli_connect(getenv('DATABASE_HOST'),getenv('DATABASE_USERNAME'),getenv('DATABASE_PASSWORD'),getenv('DATABASE_NAME'));
-				$query = mysqli_query($conn,"UPDATE users SET user_name='".$rmbr."',user_email='".$rmbr."',remember_token='".$rmbr."' WHERE user_name='".$name."'");
-
-				if ($query==""){
-					echo 'nothing';
-				}
-
-				$query = mysqli_query($conn,"UPDATE registration SET remember_token='".$rmbr."' WHERE user_name='".$name."'");
-				if ($query==""){
-					echo 'nothing';
-				} else{
-					mysqli_close($conn);
+				// $conn = mysqli_connect(getenv('DATABASE_HOST'),getenv('DATABASE_USERNAME'),getenv('DATABASE_PASSWORD'),getenv('DATABASE_NAME'));
+				// $query = mysqli_query($conn,"UPDATE users SET user_name='".$rmbr."',user_email='".$rmbr."',remember_token='".$rmbr."' WHERE user_name='".$name."'");
+				//
+				// if ($query==""){
+				// 	echo 'nothing';
+				// }
+				//
+				// $query = mysqli_query($conn,"UPDATE registration SET remember_token='".$rmbr."' WHERE user_name='".$name."'");
+				// if ($query==""){
+				// 	echo 'nothing';
+				// } else{
+				// 	mysqli_close($conn);
 					return Redirect::route('signUpSuccess');
-				}
+				// }
 			}
 		}
 	}
@@ -161,7 +158,7 @@ class AuthController extends Controller {
 			));
 
 			if ($validate1->fails()){
-				return Redirect::to('login')->withInput(Input::all())
+				return Redirect::to('login')->withInput(Request::all())
 											->withErrors($validate1->messages());
 			} else {
 				$user_name = User::where('user_name', '=', $name)->first();
@@ -181,7 +178,7 @@ class AuthController extends Controller {
 					} else {
 						// redirect to login with errors
 						return Redirect::route('login')->with('message', 'The Username or E-Mail address provided was incorrect. Please try again!')
-														->withInput(Input::all());
+														->withInput(Request::all());
 					}
 				} elseif ($user_email) {
 					if (Hash::check($password, $user_email->user_password)){
@@ -193,11 +190,11 @@ class AuthController extends Controller {
 						$dt = $dt->format('Y-m-d H:i:s');
 
 						Auth::login($user_email);
-						return Redirect::route('home')->with('message', 'Hello '.Auth::user()->user_name.'.');
+						return Redirect::route('')->with('message', 'Hello '.Auth::user()->user_name.'.');
 					} else {
 						// redirect to login with errors
 						return Redirect::route('login')->with('message', 'The Username or E-Mail address provided was incorrect. Please try again!')
-														->withInput(Input::all());
+														->withInput(Request::all());
 
 					}
 				} else {
@@ -228,7 +225,7 @@ class AuthController extends Controller {
 			));
 
 			if ($validate1->fails()){
-				return Redirect::to('login')->withInput(Input::all())
+				return Redirect::to('login')->withInput(Request::all())
 											->withErrors($validate1->messages());
 			} else {
 				$user_name = User::where('user_name', '=', $name)->first();
@@ -248,7 +245,7 @@ class AuthController extends Controller {
 					} else {
 						// redirect to login with errors
 						return Redirect::route('login')->with('message', 'The Username or E-Mail address provided was incorrect. Please try again!')
-														->withInput(Input::all());
+														->withInput(Request::all());
 					}
 				} elseif ($user_email) {
 					if (Hash::check($password, $user_email->user_password)){
@@ -264,7 +261,7 @@ class AuthController extends Controller {
 					} else {
 						// redirect to login with errors
 						return Redirect::route('login')->with('message', 'The Username or E-Mail address provided was incorrect. Please try again!')
-														->withInput(Input::all());
+														->withInput(Request::all());
 
 					}
 				}

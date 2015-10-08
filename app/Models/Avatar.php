@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Avatar extends Model {
 
 	protected $fillable = ['avatar_user_id', 'file_name', 'updated_at', 'created_at'];
-	
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -20,7 +20,7 @@ class Avatar extends Model {
 	 *
 	 * @var array
 	 */
-	protected $hidden = []];
+	protected $hidden = [];
 
 
 	public function user(){

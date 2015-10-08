@@ -16,7 +16,7 @@ var bower_path = "./vendor/bower_components";
 var paths = {
     'jquery'      : bower_path + '/jquery/dist',
     'jqueryui'    : bower_path + '/jquery-ui',
-    'bootstrap'   : bower_path + '/bootstrap-sass/assets/',
+    'bootstrap'   : bower_path + '/bootstrap-sass/assets',
     'fontawesome' : bower_path + '/font-awesome'
 };
 
@@ -38,10 +38,8 @@ elixir(function (mix) {
   ], 'public/assets/js/dependencies.js', '.');
 
   // Copy the bootstrap fonts and font awesome assets
-  mix.copy([
-    paths.fontawesome + '/fonts',
-    paths.bootstrap   + '/fonts/bootstrap'
-  ], 'public/build/assets/fonts');
+  mix.copy(paths.fontawesome + '/fonts', 'public/build/assets/fonts');
+  mix.copy(paths.bootstrap   + '/fonts/bootstrap', 'public/build/assets/fonts/bootstrap');
 
   mix.version([
     "assets/css/core.css",

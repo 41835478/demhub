@@ -13,7 +13,7 @@
 
 	</div>
 
-	<div class="dots">
+	<div class="dots" style='background: url("images/backgrounds/dots.png") repeat scroll 0 0 transparent;'>
 		<div id="welcome_about" class="row">
 
 			<div class="col-md-12">
@@ -74,7 +74,7 @@
 		</div>
 	</div>
 
-	<div id="welcome_tertiary_text" class="row">
+	<div id="welcome_tertiary_text" class="row" style="background: url('images/backgrounds/bridge.jpg') no-repeat fixed;">
 		<div class="col-md-12 text-center">
 			<h2>Want access to the beta?<br> What to know about the full release?</h2>
       <a href="{{url('sign-up')}}">

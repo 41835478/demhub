@@ -32,8 +32,6 @@ class DiscussionController extends Controller {
 			$discussion->discussion_title = $title;
 			$discussion->discussion_paragraph = $description;
 			$discussion->hidden = false;
-			$discussion->updated_at = app('currentDT');
-			$discussion->created_at = app('currentDT');
 			$discussion->save();
 
 			return Redirect::url('discussion');
@@ -63,14 +61,7 @@ class DiscussionController extends Controller {
 			$reply_create->conversation_id = $id;
 			$reply_create->reply_paragraph = Request::input('reply');
 			$reply_create->hidden = false;
-			$reply_create->updated_at = app('currentDT');
-			$reply_create->updated_at = app('currentDT');
 			$reply_create->save();
-
-			$conversation = Conversation::where('id','=',$id)
-										->update(array(
-												'updated_at' => app('currentDT'),
-												));
 
 			return Redirect::back();
 		}

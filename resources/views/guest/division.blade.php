@@ -2,19 +2,12 @@
 
 @section('content')
 
-	<script>
-		$(document).ready(function(){
-			$("div#ph-text > p").find('br').remove();
-			$("div#ph-text > p").find('a').remove();
-		});
-	</script>
-
 	@foreach($category as $cat)
 		<nav>
 			<div id="welcome-division">
 
 				<div id="welcome-division-category" class="row" style="background:
-																url('../images/backgrounds/{{$cat->bg_image}}') no-repeat fixed 0% 70%;
+																url('/images/backgrounds/divisions/{{$cat->id}}.jpg') no-repeat fixed 0% 70%;
 																-webkit-background-size: cover;
 																-moz-background-size: cover;
 																-o-background-size: cover;
@@ -52,7 +45,7 @@
 			}
 		</style>
 
-		<div class="col-md-9 col-md-offset-1 text-left" id="discussion">
+		<div class="col-md-9 col-md-offset-1 text-left" id="discussion" style='background: url("images/icons/DiscussionIcon-quarter.png") 165px 0;'>
 			<h2 style="color:#{{$cat->bg_color}};font-size:170%">DISCUSSION</h2>
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>
@@ -89,7 +82,7 @@
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 
-		<div class="col-md-9 col-md-offset-1 text-left" id="news">
+		<div class="col-md-9 col-md-offset-1 text-left" id="news" style='background: url("images/icons/NewspaperIcon-quarter.png") 110px 0;'>
 			<h2 style="color:#{{$cat->bg_color}};"> NEWS</h2>
 			<hr style="border-color:#{{$cat->bg_color}};">
 		</div>

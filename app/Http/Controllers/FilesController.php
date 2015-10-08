@@ -57,8 +57,6 @@ class FilesController extends Controller {
 						$f->file_size = $fileSize;
 						$f->user_id = Auth::user()->id;
 						$f->hidden = false;
-						$f->updated_at = app('currentDT');
-						$f->created_at = app('currentDT');
 						$f->save();
 
 
@@ -132,10 +130,7 @@ class FilesController extends Controller {
 					$create->link = url('user_files/'.$file->file_name);
 					$create->desc = Request::input('fileshare-desc');
 					$create->hidden = false;
-					$create->pubDate = strtotime(app('currentDT'));
 					$create->keywords = Request::input('fileshare-keywords');
-					$create->updated_at = app('currentDT');
-					$create->created_at = app('currentDT');
 					$create->save();
 					Session::flash('success', 'File shared successfully.');
 				}

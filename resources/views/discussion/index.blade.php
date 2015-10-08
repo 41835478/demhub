@@ -6,7 +6,7 @@
 			<h1>Discussion <hr></h1>
 		</div>
 	</div>
-	<div id="conversation-head" class="row" >
+	<div id="conversation-head" class="row" style="background: url('images/backgrounds/shutterstock_130635224.jpg') fixed center center no-repeat;">
 		<div class="col-md-12 text-center">
 			<button class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg">Start a Conversation</button>
 		</div>

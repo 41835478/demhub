@@ -27,9 +27,7 @@ class CommentsController extends Controller {
 									'user_id' 				=> Auth::user()->id,
 									'xml_category_feed_id' 	=> $id,
 									'comment'				=> $user_cmt,
-									'hidden'				=> false,
-									'updated_at'			=> app('currentDT'),
-									'created_at'			=> app('currentDT')
+									'hidden'				=> false
 								));
 			$comment_create = Commentscount::where('feed_id', '=', $id)
 											->first();
@@ -43,8 +41,6 @@ class CommentsController extends Controller {
 				$commentcount_create->feed_id = $id;
 				$commentcount_create->count = $commentcount_create->count + 1;
 				$commentcount_create->hidden = false;
-				$commentcount_create->updated_at = app('currentDT');
-				$commentcount_create->created_at = app('currentDT');
 				$commentcount_create->save();
 			}
 		}

@@ -32,8 +32,6 @@ class LikeController extends Controller {
 			$create->user_id = Auth::user()->id;
 			$create->feed_id = $id;
 			$hidden = false;
-			$updated_at = app('currentDT');
-			$created_at = app('currentDT');
 			$create->save();
 		}
 
@@ -58,8 +56,6 @@ class LikeController extends Controller {
 			$likecount_create->feed_id = $id;
 			$likecount_create->count = $likecount_create->count + 1;
 			$likecount_create->hidden = false;
-			$likecount_create->updated_at = app('currentDT');
-			$likecount_create->created_at = app('currentDT');
 			$likecount_create->save();
 		}
 
@@ -90,8 +86,6 @@ class LikeController extends Controller {
 			$create->user_id = Auth::user()->id;
 			$create->xml_category_feed_id = $id;
 			$hidden = false;
-			$updated_at = app('currentDT');
-			$created_at = app('currentDT');
 			$create->save();
 		}
 		if ($dislikecount){
@@ -115,8 +109,6 @@ class LikeController extends Controller {
 			$dislikecount_create->feed_id = $id;
 			$dislikecount_create->count = $dislikecount_create->count + 1;
 			$dislikecount_create->hidden = false;
-			$dislikecount_create->updated_at = app('currentDT');
-			$dislikecount_create->created_at = app('currentDT');
 			$dislikecount_create->save();
 		}
 

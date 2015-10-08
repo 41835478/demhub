@@ -220,35 +220,30 @@ div#welcome_division div#division_1 {
   background-size: contain;
 }
 div#welcome_division div#division_2 {
-  background: url('../images/backgrounds/DEMHUB_SCIENCE.jpg')no-repeat fixed;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
 div#welcome_division div#division_3 {
-  background: url("../images/backgrounds/DEMHUB_PRACTIONER.jpg") no-repeat center fixed;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
 div#welcome_division div#division_4 {
-  background: url("../images/backgrounds/DEMHUB_CYBER.jpg") no-repeat center fixed;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
 div#welcome_division div#division_5 {
-  background: url("../images/backgrounds/DEMHUB_PRIVATE.jpg") no-repeat center fixed;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
 }
 div#welcome_division div#division_6 {
-  background: url("../images/backgrounds/DEMHUB_NGO.jpg") fixed 5% 0;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -258,7 +253,6 @@ div#welcome_sign-up {
   padding: 6% 1% 5%;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  background: url("../images/backgrounds/sign-up.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -301,12 +295,10 @@ div#welcome_sign-up form span {
   background: #ff5c5c;
 }
 #discussion {
-  background: url("../images/icons/DiscussionIcon-quarter.png") 165px 0;
   background-size: 7.9%;
   background-repeat: no-repeat;
 }
 #news {
-  background: url("../images/icons/NewspaperIcon-quarter.png") 110px 0;
   background-size: 8.5%;
   background-repeat: no-repeat;
 }
@@ -319,7 +311,6 @@ div#welcome_login {
   padding: 3% 1% 0;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  background: url("../images/backgrounds/sign-up.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -494,11 +485,10 @@ div#welcome-division div#ph-text p {
   font-size: 1.2em;
   padding: 1% 0;
 }
-/********************************/
-/**********User Menu*************/
-img.user-icon {
 
-}
+
+
+
 div#user-email {
   padding: 0 0 0 5%;
 }
@@ -561,7 +551,6 @@ nav#user-function div.container div#navbar ul.dropdown-menu li a:hover {
   background: #416788;
 }
 .dots {
-  background: url("../images/backgrounds/dots.png") repeat scroll 0 0 transparent;
   height: 100%;
 }
 div#user-home {
@@ -777,7 +766,6 @@ div#conversation h1 {
 }
 div#conversation-head {
   padding: 5%;
-  background: url("../images/backgrounds/shutterstock_130635224.jpg") fixed center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

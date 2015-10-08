@@ -9,7 +9,7 @@ use DEMHub\Http\Controllers\Controller;
 class SearchController extends Controller {
 
 	public function searchTerm(){
-		//print_r(Input::all());
+		//print_r(Request::all());
 		$search = Request::input('search');
 		//echo $search;
 		$feed = Xmlcategoryfeed::where('title', 'like', '%'.$search.'%')
