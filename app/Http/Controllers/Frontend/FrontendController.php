@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Frontend;
 
+use App\Models\Division;
 use App\Http\Controllers\Controller;
 
 /**
@@ -17,7 +18,11 @@ class FrontendController extends Controller {
 			'test' => 'it works!'
 		]);
 
-		return view('frontend.index');
+		$divisions = Division::all();
+
+		return view('frontend.index', [
+      'divisions' => $divisions
+    ]);
 	}
 
 	/**
@@ -26,5 +31,29 @@ class FrontendController extends Controller {
 	public function macros()
 	{
 		return view('frontend.macros');
+	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function about()
+	{
+		return view('frontend.about');
+	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function policy()
+	{
+		return view('frontend.policy');
+	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function terms()
+	{
+		return view('frontend.terms');
 	}
 }

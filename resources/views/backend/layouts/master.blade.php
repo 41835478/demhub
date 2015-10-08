@@ -11,6 +11,7 @@
         @yield('meta')
 
         @yield('before-styles-end')
+        {!! HTML::style(elixir('css/core.css')) !!}
         {!! HTML::style(elixir('css/backend.css')) !!}
         @yield('after-styles-end')
 

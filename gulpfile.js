@@ -17,7 +17,6 @@ elixir(function(mix) {
                 'plugins.js',
                 'frontend/main.js'
             ], 'public/js/frontend.js')
-
         .sass([ // Process back-end stylesheets
             'backend/main.scss',
             'backend/skin.scss',
@@ -32,9 +31,21 @@ elixir(function(mix) {
                 'backend/plugin/toastr/toastr.min.js',
                 'backend/custom.js'
             ], 'public/js/backend.js')
+        .sass([ // Process core stylesheets
+          'core/core.scss',
+        ], 'resources/assets/css/core/core.css')
+        .styles([ // Combine pre-processed CSS files
+                'core/core.css'
+            ], 'public/css/core.css')
 
         // Apply version control
-        .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
+        .version([
+          "public/css/frontend.css",
+          "public/js/frontend.js",
+          "public/css/backend.css",
+          "public/js/backend.js",
+          "public/css/core.css",
+        ]);
 });
 
 /**

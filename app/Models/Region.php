@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sector extends Model
+class Region extends Model
 {
   /**
    * Indicates if the model should be timestamped.

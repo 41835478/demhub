@@ -5,6 +5,9 @@
  */
 get('/', 'FrontendController@index')->name('home');
 get('macros', 'FrontendController@macros');
+get('about', 'FrontendController@about');
+get('policy', 'FrontendController@policy');
+get('terms', 'FrontendController@terms');
 
 /**
  * These frontend controllers require the user to be logged in

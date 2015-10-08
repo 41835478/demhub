@@ -4,8 +4,8 @@
 	<div class="row">
 
 		<ul>
-			@foreach($sectors as $sector)
-        <li>{{ $sector->name }}</li>
+			@foreach($resources as $resource)
+        <li>{{ $resource->name }}</li>
     	@endforeach
 		</ul>
 
