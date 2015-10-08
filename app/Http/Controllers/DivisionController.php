@@ -21,10 +21,11 @@ class DivisionController extends Controller
 
     public function show($divisionId)
     {
-      $division = Division::all();
+      $divisions = Division::all();
       $division = Division::where('slug', $divisionId)->firstOrFail();
 
       return view('division.show', [
+        'divisions' => $divisions,
         'division' => $division
       ]);
     }
