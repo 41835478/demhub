@@ -1,49 +1,77 @@
 var elixir = require('laravel-elixir');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+elixir(function(mix) {
+    mix
+        // Copy webfont files from /vendor directories to /public directory.
+        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
+        .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/build/fonts/bootstrap')
+        .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
 
-// Configure the paths
-var bower_path = "./vendor/bower_components";
-var paths = {
-    'jquery'      : bower_path + '/jquery/dist',
-    'jqueryui'    : bower_path + '/jquery-ui',
-    'bootstrap'   : bower_path + '/bootstrap-sass/assets',
-    'fontawesome' : bower_path + '/font-awesome'
-};
+        .sass([ // Process front-end stylesheets
+                'frontend/main.scss'
+            ], 'resources/assets/css/frontend/main.css')
+        .styles([  // Combine pre-processed CSS files
+                'frontend/main.css'
+            ], 'public/css/frontend.css')
+        .scripts([ // Combine front-end scripts
+                'plugins.js',
+                'frontend/main.js'
+            ], 'public/js/frontend.js')
 
-elixir(function (mix) {
-  // Merge the SASS stylesheets into the core.css file
-  mix.sass("core.scss", "public/assets/css", {
-    includePaths: [
-      paths.bootstrap   + '/stylesheets',
-      paths.fontawesome + '/scss'
-    ]
-  });
+        .sass([ // Process back-end stylesheets
+            'backend/main.scss',
+            'backend/skin.scss',
+            'backend/plugin/toastr/toastr.scss'
+        ], 'resources/assets/css/backend/main.css')
+        .styles([ // Combine pre-processed CSS files
+                'backend/main.css'
+            ], 'public/css/backend.css')
+        .scripts([ // Combine back-end scripts
+                'plugins.js',
+                'backend/main.js',
+                'backend/plugin/toastr/toastr.min.js',
+                'backend/custom.js'
+            ], 'public/js/backend.js')
 
-  // Merge JavaScripts into core.js and dependencies.js
-  mix.scripts("core.js", "public/assets/js/core.js", "resources/assets/js");
-  mix.scripts([
-    paths.jquery    + '/jquery.min.js',
-    paths.jqueryui  + '/jquery-ui.min.js',
-    paths.bootstrap + '/javascripts/bootstrap.min.js'
-  ], 'public/assets/js/dependencies.js', '.');
-
-  // Copy the bootstrap fonts and font awesome assets
-  mix.copy(paths.fontawesome + '/fonts', 'public/build/assets/fonts');
-  mix.copy(paths.bootstrap   + '/fonts/bootstrap', 'public/build/assets/fonts/bootstrap');
-
-  mix.version([
-    "assets/css/core.css",
-    "assets/js/dependencies.js",
-    "assets/js/core.js"
-  ]);
+        // Apply version control
+        .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
 });
+
+/**
+ * Uncomment for LESS version
+ */
+/*elixir(function(mix) {
+    mix
+        // Copy webfont files from /vendor directories to /public directory.
+        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
+        .copy('vendor/twbs/bootstrap/fonts', 'public/build/fonts/bootstrap')
+        .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
+
+        .less([ // Process front-end stylesheets
+            'frontend/main.less'
+        ], 'resources/assets/css/frontend/main.css')
+        .styles([  // Combine pre-processed CSS files
+            'frontend/main.css'
+        ], 'public/css/frontend.css')
+        .scripts([ // Combine front-end scripts
+            'plugins.js',
+            'frontend/main.js'
+        ], 'public/js/frontend.js')
+
+        .less([ // Process back-end stylesheets
+            'backend/AdminLTE.less',
+            'backend/plugin/toastr/toastr.less'
+        ], 'resources/assets/css/backend/main.css')
+        .styles([ // Combine pre-processed CSS files
+            'backend/main.css'
+        ], 'public/css/backend.css')
+        .scripts([ // Combine back-end scripts
+            'plugins.js',
+            'backend/main.js',
+            'backend/plugin/toastr/toastr.min.js',
+            'backend/custom.js'
+        ], 'public/js/backend.js')
+
+        // Apply version control
+        .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
+});*/

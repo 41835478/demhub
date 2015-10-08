@@ -1,5 +1,6 @@
 {
-  "assets/css/core.css": "assets/css/core-0e00be6019.css",
-  "assets/js/core.js": "assets/js/core-2c2b3cfcc7.js",
-  "assets/js/dependencies.js": "assets/js/dependencies-19ba53c503.js"
+  "css/backend.css": "css/backend-a4eceaf223.css",
+  "css/frontend.css": "css/frontend-7d6c71ba80.css",
+  "js/backend.js": "js/backend-a8417e99ce.js",
+  "js/frontend.js": "js/frontend-5f7705adb0.js"
 }

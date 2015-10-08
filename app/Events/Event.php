@@ -1,8 +1,3 @@
-<?php
+<?php namespace App\Events;
 
-namespace DEMHub\Events;
-
-abstract class Event
-{
-    //
-}
+abstract class Event {}
