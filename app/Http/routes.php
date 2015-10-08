@@ -35,3 +35,13 @@ $router->group(['namespace' => 'Backend'], function () use ($router)
 		});
 	});
 });
+
+/**
+ * Sector Routes
+ * Namespaces indicate folder structure
+ * TODO - Implement folder structure
+ */
+
+Route::get('sectors', 'SectorController@index');
+Route::get('sector/{slug}', 'SectorController@index')
+					->where('slug', '[A-Za-z0-9_\-]+');;
