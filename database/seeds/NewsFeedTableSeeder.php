@@ -11,7 +11,7 @@ class NewsFeedTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('info_resources')->insert([
+      DB::table('news_feeds')->insert([
         ['url' => 'http://www.who.int/feeds/entity/csr/disease/ebola/rss/en/rss.xml', 'division_id' => 1],
         ['url' => 'http://www.who.int/feeds/entity/csr/don/en/rss.xml', 'division_id' => 1],
         ['url' => 'http://www.preventionweb.net/english/rss/feed.php?id=8', 'division_id' => 1],

@@ -16,7 +16,7 @@ class DivisionTableSeeder extends Seeder
         ['name' => 'Science, Research & Academia', 'slug' => 'academia'],
         ['name' => 'EM Practitioner & Response', 'slug' => 'response'],
         ['name' => 'Civil & Cyber Security', 'slug' => 'security'],
-        ['name' => 'Business Continuity & Risk Management', 'slug' => 'continuity'],
+        ['name' => 'Business Continuity', 'slug' => 'continuity'],
         ['name' => 'NGO & Humanitarian', 'slug' => 'humanitarian'],
       ]);
     }
