@@ -12,14 +12,14 @@
 		</div>
 		<div class="col-md-12">
 			<div class="col-md-1 text-center">
-				{{HTML::image('images/user/'.$discussion->getUser->avatar->file_name.'', 
+				{!! HTML::image('images/user/'.$discussion->getUser->avatar->file_name.'', 
 				    ''.$discussion->getUser->user_name.' icon', 
 				    array(
 				      'class' => 'user-icon img-responsive img-circle center-block',
 				      'style' => 'border:1px solid #CCC; padding:1px; bakground:#FFF;',
 				      'width' => '60',
 				    )
-				)}}
+				)}!!}
 				<h5>{{$discussion->getUser->user_name}}</h5>
 			</div>
 			<div class="col-md-11">
@@ -32,7 +32,7 @@
 			<div class="col-md-12">
 				<hr>
 				<div class="col-md-1 text-center">
-					{{HTML::image('images/user/'.$reply->getUser->avatar->file_name.'', 
+					{!! HTML::image('images/user/'.$reply->getUser->avatar->file_name.'', 
 					    ''.$reply->getUser->user_name.' icon', 
 					    array(
 					      'class' => 'user-icon img-responsive img-circle center-block',
@@ -51,14 +51,14 @@
 		<div class="col-md-12">
 			<hr>
 			<div class="col-md-2 text-center">
-				{{HTML::image('images/user/'.Auth::user()->avatar->file_name.'', 
+				{!! HTML::image('images/user/'.Auth::user()->avatar->file_name.'', 
 				    ''.Auth::user()->user_name.' icon', 
 				    array(
 				      'class' => 'user-icon img-responsive img-circle center-block',
 				      'style' => 'border:1px solid #CCC; padding:1px; bakground:#FFF;',
 				      'width' => '60',
 				    )
-				)}}
+				)!!}
 				<h5>{{Auth::user()->user_name}}</h5>
 			</div>
 			<div class="col-md-10">

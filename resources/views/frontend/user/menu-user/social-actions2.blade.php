@@ -2,13 +2,13 @@
 <div class="col-md-8 col-md-offset-2" >
 	<ul id="social" class="list-inline">
 		<li class="like">
-			<a href="{{URL::route('like', array('id' => $feed->id))}}">
+			<a href="{{url('like', array('id' => $feed->id))}}">
 				<i class="fa fa-chevron-up" data-toggle="tooltip" data-placement="top" title="Like"></i>
 			</a>
 			<span class="badge">{{count($feed->getLikes)}}</span>
 		</li>
 		<li class="dislike">
-			<a href="{{URL::route('dislike', array('id' => $feed->id))}}">
+			<a href="{{url('dislike', array('id' => $feed->id))}}">
 				<i class="fa fa-chevron-down" data-toggle="tooltip" data-placement="top" title="Dislike"></i>
 			</a>
 			<span class="badge">{{count($feed->getDislikes)}}</span>

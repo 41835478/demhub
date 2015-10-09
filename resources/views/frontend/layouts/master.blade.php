@@ -31,6 +31,9 @@
 
         <div class="wrapper">
           @include('frontend.includes.nav')
+		  
+		  @include ('frontend.user.menu-user.function')
+		  
           <div class="container-fluid">
             @include('includes.partials.messages')
             @yield('content')

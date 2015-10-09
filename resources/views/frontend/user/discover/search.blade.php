@@ -19,7 +19,7 @@
 											@if ($follow->user_id == Auth::user()->id && $follow->category_id == $category->category_id)
 											
 												<span class="badge" style="background:#{{$category->getcategory->bg_color}};">
-													<a style="color:#FFF;" href="{{URL::route('follow-feed', array('id' => $category->getcategory->id))}}">
+													<a style="color:#FFF;" href="{{url('follow-feed', array('id' => $category->getcategory->id))}}">
 														<i class="fa fa-minus" data-toggle="tooltip" data-placement="top" title="Unfollow Feed"></i>
 													</a>
 												</span>
@@ -29,7 +29,7 @@
 									@endif
 									@if(!$foll)
 										<span class="badge" style="background:#{{$category->getcategory->bg_color}};">
-											<a style="color:#FFF;" href="{{URL::route('follow-feed', array('id' => $category->getcategory->id))}}">
+											<a style="color:#FFF;" href="{{url('follow-feed', array('id' => $category->getcategory->id))}}">
 												<i class="fa fa-plus" data-toggle="tooltip" data-placement="top" title="Follow Feed"></i>
 											</a>
 										</span>

@@ -32,19 +32,19 @@
 		@foreach($discussions as $discussion)
 			<div class="col-md-12">
 				<div class="col-md-1 text-center">
-					{{HTML::image('images/user/'.$discussion->getUser->avatar->file_name.'', 
+					{!! HTML::image('images/user/'.$discussion->getUser->avatar->file_name.'', 
 				        ''.$discussion->getUser->user_name.' icon', 
 				        array(
 				          'class' => 'user-icon img-responsive img-circle center-block',
 				          'style' => 'border:1px solid #CCC; padding:1px; bakground:#FFF;',
 				          'width' => '60',
 				        )
-					)}}
+					)!!}
 					<h5>{{$discussion->getUser->user_name}}</h5>
 				</div>
 				<div class="col-md-6">
 					<h4>
-						<a href="{{URL::route('discussion-convo', array('id' => $discussion->id))}}">
+						<a href="{{url('discussion-convo', array('id' => $discussion->id))}}">
 							{{$discussion->discussion_title}}
 						</a>
 					</h4>

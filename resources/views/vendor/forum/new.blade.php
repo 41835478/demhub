@@ -52,7 +52,7 @@
 
 	@if (!is_null($user))
 		<div class="text-center">
-			<a href="{{ URL::route('forum.post.mark.read') }}"class="btn btn-primary btn-small" data-confirm data-method="post">{{ trans('forum::base.mark_read') }}</a>
+			<a href="{{ url('forum.post.mark.read') }}"class="btn btn-primary btn-small" data-confirm data-method="post">{{ trans('forum::base.mark_read') }}</a>
 		</div>
 	@endif
 @else

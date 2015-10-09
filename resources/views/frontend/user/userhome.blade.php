@@ -8,12 +8,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<!-- {!! HTML::image('images/user/'.$user_avatar->image.'',
-			        ''.Auth::user()->user_name.' icon',
-			        array(
-			          'class' => 'user-icon img-responsive img-thumbnail'
-			        )
-			) !!} -->
+		
 
 	    	<h1></h1>
 	        <hr>
@@ -31,21 +26,21 @@
 	    <div class="col-md-12 text-right">
 			<h5>Arrange by</h5>
 			<ul class="list-inline">
-				<li>
-					<a href="{{URL::route('arrange-likes')}}">
+				<!-- <li>
+					<a href="{{url('arrange-likes')}}">
 						<i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="Likes"></i>
 					</a>
 				</li>
 				<li>
-					<a href="{{URL::route('arrange-dislikes')}}">
+					<a href="{{url('arrange-dislikes')}}">
 						<i class="fa fa-thumbs-down" data-toggle="tooltip" data-placement="bottom" title="Dislikes"></i>
 					</a>
 				</li>
 				<li>
-					<a href="{{URL::route('arrange-comments')}}">
+					<a href="{{url('arrange-comments')}}">
 						<i class="fa fa-commenting" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		

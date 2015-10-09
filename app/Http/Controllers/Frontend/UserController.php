@@ -17,6 +17,18 @@ class UserController extends Controller {
 		return view('frontend.user.userhome')
 					->with('division', $division);
 	}
+	public function showResourceFilter(){
+		$resourceRelation= ResourceRelation::all();
+		$resourceEntry= ResourceEntry::all();
+		$categories = Xmlcategories::all();
+		
+		return View::make('user/resource-filter')
+					->with('action', URL::route("resource-filter"))
+					->with('xmlcategories', $categories)	
+					->with('resourceRelation', $resourceRelation)
+					->with('resourceEntry', $resourceEntry);
+					
+	}
 	/**
 	 * @return \Illuminate\View\View
 	 */
