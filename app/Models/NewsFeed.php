@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Division extends Model
+class NewsFeed extends Model
 {
   /**
    * Indicates if the model should be timestamped.
@@ -14,8 +14,8 @@ class Division extends Model
   /**
    * Get the division record associated with the news feed.
    */
-  public function newsFeeds()
+  public function division()
   {
-      return $this->hasMany('App\Models\NewsFeed');
+      return $this->belongsTo('App\Models\Division');
   }
 }

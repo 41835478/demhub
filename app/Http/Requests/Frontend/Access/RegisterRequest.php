@@ -26,6 +26,7 @@ class RegisterRequest extends Request {
 	public function rules()
 	{
 		return [
+			'username'			=> 'required|max:255',
 			'first_name' 		=> 'required|max:255',
 			'last_name' 		=> 'required|max:255',
 			'email' 	=> 'required|email|max:255|unique:users',
