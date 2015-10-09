@@ -1,4 +1,4 @@
-@if(Auth::check())
+@if(Auth::check() && ! empty($divisions))
 
 <nav id="user-function" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-header">
@@ -72,8 +72,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{{url('logout')}}">Log-Out
-                            </a>
+                            {!! link_to('auth/logout', trans('navs.logout')) !!}
                         </li>
                     </ul>
                 </li>
@@ -86,7 +85,7 @@
 
 <div class="row" style="padding-top:52px;">
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
-		@foreach($division as $category)
+		@foreach($divisions as $category)
 
 			<a href="{{url('division', array('id' => $category->id))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
@@ -105,7 +104,7 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
 	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	@foreach($division as $category)
+	@foreach($divisions as $category)
     <li data-target="#carousel-example-generic" data-slide-to="{{$category->id}}"></li>
 
 	@endforeach
@@ -119,9 +118,9 @@
         WELCOME TO DEMHUB!
       </div>
     </div>
-		@foreach($division as $category)
+		@foreach($divisions as $category)
     <div class="item">
-      <img src="./images/backgrounds/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->id}} Image" style="">
+      <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->id}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">
         {{$category->name}}
       </div>

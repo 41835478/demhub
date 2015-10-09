@@ -13,9 +13,9 @@ class UserController extends Controller {
 	 * User Homepage
 	 */
 	public function showUserHome(){
-		$division = Division::all();
+		$divisions = Division::all();
 		return view('frontend.user.userhome')
-					->with('division', $division);
+					->with('divisions', $divisions);
 	}
 	public function showResourceFilter(){
 		$resourceRelation= ResourceRelation::all();

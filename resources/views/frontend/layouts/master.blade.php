@@ -30,10 +30,13 @@
         <![endif]-->
 
         <div class="wrapper">
-          @include('frontend.includes.nav')
+          
+		  @if (Auth::user())
+		  	@include ('frontend.user.menu-user.function')
 		  
-		  @include ('frontend.user.menu-user.function')
-		  
+		  @else
+		  	@include('frontend.includes.nav')
+		  @endif
           <div class="container-fluid">
             @include('includes.partials.messages')
             @yield('content')

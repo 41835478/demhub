@@ -2,6 +2,7 @@
 
 use App\Models\Division;
 use App\Http\Controllers\Controller;
+use Auth;
 
 /**
  * Class FrontendController
@@ -14,15 +15,16 @@ class FrontendController extends Controller {
 	 */
 	public function index()
 	{
-		javascript()->put([
-			'test' => 'it works!'
-		]);
+		if (Auth::user()) {
+			return redirect()->route('userhome');
+		} else  {
+			$divisions = Division::all();
 
-		$divisions = Division::all();
-
-		return view('frontend.index', [
-      'divisions' => $divisions
-    ]);
+			return view('frontend.index', [
+	      	  'divisions' => $divisions
+	   	   	]);
+		}
+		
 	}
 
 	/**

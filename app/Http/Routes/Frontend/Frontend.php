@@ -29,8 +29,8 @@ get('resources', 'InfoResourceController@index');
  */
 $router->group(['middleware' => 'auth'], function ()
 {
-	get('dashboard', 'DashboardController@index')->name('frontend.dashboard');
-	get('profile/edit', 'ProfileController@edit')->name('frontend.profile.edit');
-	patch('profile/update', 'ProfileController@update')->name('frontend.profile.update');
-	get('userhome', 'UserController@showUserHome')->name('frontend.user.userhome');
+	get('dashboard', 'DashboardController@index')->name('dashboard');
+	get('profile/edit', 'ProfileController@edit')->name('edit_profile');
+	patch('profile/update', 'ProfileController@update');
+	get('userhome', 'UserController@showUserHome')->name('userhome');
 });
