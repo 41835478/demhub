@@ -15,7 +15,8 @@ class DivisionController extends Controller
       $divisions = Division::all();
 
       return view('division.index', [
-        'divisions' => $divisions
+        'divisions' => $divisions,
+        'nav_divisions' => $divisions
       ]);
     }
 
@@ -26,7 +27,8 @@ class DivisionController extends Controller
 
       return view('division.show', [
         'divisions' => $divisions,
-        'division' => $division
+        'division' => $division,
+        'nav_divisions' => $divisions
       ]);
     }
 }

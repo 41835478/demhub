@@ -51,6 +51,7 @@
 	</div>
 </nav>
 
+@if( ! empty($nav_divisions))
 <nav class="navbar navbar-default nav-justified">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -64,10 +65,11 @@
 
 		<div class="collapse navbar-collapse" id="divisions-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-        @foreach($divisions as $div)
-          <li>{!! link_to('division/'.$div->slug, $div->name) !!}</li>
-		    @endforeach
+				@foreach($nav_divisions as $div)
+					<li>{!! link_to('division/'.$div->slug, $div->name) !!}</li>
+				@endforeach
 			</ul>
 		</div>
 	</div>
 </nav>
+@endif
