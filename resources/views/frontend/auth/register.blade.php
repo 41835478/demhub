@@ -37,11 +37,8 @@
 		    	<label for="username" class="col-sm-2 control-label" style="font-size:110%">Username</label>
 				
 		        <div class="col-sm-7 col-sm-offset-1">
-		        	<input type="text" name="username" class="form-control" id="username" placeholder="Username"
-		         	@if (Input::old('username'))
-		            	value = "{{Input::old('username')}}"
-		            @endif
-		            >
+		        	{!! Form::input('user_name', 'user_name', old('user_name'), ['class' => 'form-control']) !!}
+		            
 		        </div>
         
 		  	</div>
@@ -52,11 +49,7 @@
 		        <label for="inputEmail3" class="col-sm-2 control-label" style="font-size:110%">Email</label>
 				
 		        <div class="col-sm-7 col-sm-offset-1">
-		        	<input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email"
-		            @if (Input::old('email'))
-		            	value = "{{Input::old('email')}}"
-		            @endif
-		            >
+		        	{!! Form::input('email', 'email', old('email'), ['class' => 'form-control']) !!}
 		        </div>
 		    </div>
 		    <div class="form-group">
@@ -66,7 +59,17 @@
 		        <label for="inputPassword3" class="col-sm-2 control-label" style="font-size:110%">Password</label>
 				
 		        <div class="col-sm-7 col-sm-offset-1">
-		        	<input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+		        	{!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
+		        </div>
+		    </div>
+		    <div class="form-group">
+		    	@if ($errors)
+		        	<span>{{$errors->first('Password')}}</span>
+		        @endif
+		        <label for="inputPassword3" class="col-sm-2 control-label" style="font-size:110%">Password Confirm</label>
+				
+		        <div class="col-sm-7 col-sm-offset-1">
+		        	{!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
 		        </div>
 		    </div>
 		    <div class="form-group">
@@ -112,7 +115,7 @@
 				
 		        <div class="col-sm-7 col-sm-offset-1">
 
-		            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name">
+		            {!! Form::input('first_name', 'first_name', old('first_name'), ['class' => 'form-control']) !!}
 		        </div>
 		
 		</div>
@@ -131,7 +134,7 @@
 				
 		        <div class="col-sm-7 col-sm-offset-1">
 
-		            <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
+		            {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control']) !!}
 		        </div>
 
    
@@ -152,7 +155,7 @@
 				
 		        <div class="col-sm-7 col-sm-offset-1">
 
-		            <input type="text" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job Title">
+		            {!! Form::input('job_title', 'job_title', old('job_title'), ['class' => 'form-control']) !!}
 		        </div>
    
 		</div>
@@ -171,7 +174,7 @@
 				
 		        <div class="col-sm-7 col-sm-offset-1">
 
-		            <input type="text" name="orgAgency" class="form-control" id="orgAgency" placeholder="Organization/Agency">
+		            {!! Form::input('organization_name', 'organization_name', old('organization_name'), ['class' => 'form-control']) !!}
 		        </div>
    
 		</div>
@@ -190,7 +193,7 @@
 				
 		        <div class="col-sm-7 col-sm-offset-1">
 
-		            <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number">
+		            {!! Form::input('phone_number', 'phone_number', old('phone_number'), ['class' => 'form-control']) !!}
 		        </div>
 		
 		</div>
@@ -208,23 +211,7 @@
         
 				
 		        <div class="col-sm-7 col-sm-offset-1">
-
-		            <select class="form-control" name="specialization" id="specialization">
-		                <option>Emergency Management Practitioner</option>
-		                <option>Science/Research</option>
-		                <option>Academic</option>
-		                <option>Health</option>
-		                <option>Government</option>
-		                <option>CBO/NGO</option>
-		                <option>Administrative/Association Management</option>
-		                <option>Consultant/Vendor</option>
-		                <option>Security/Corporate Health and Safety</option>
-		                <option>Student</option>
-		                <option>Response</option>
-		                <option>Business Continutity</option>
-		                <option>Critical Infrustructure </option>
-		                <option>Communications</option>
-		            </select>
+		            {!! Form::select('specialization', array('Emergency Management Practitioner' => 'Emergency Management Practitioner', 'Science' => 'Science', 'Academic' => 'Academic', 'Health' => 'Health', 'Government' => 'Government', 'CBO/NG' => 'CBO/NGO', 'Administrative/Association Management' => 'Administrative/Association Management', 'Consultant/Vendor' => 'Consultant/Vendor', 'Security/Corporate Health and Safety' => 'Security/Corporate Health and Safety', 'Student' => 'Student', 'Response' => 'Response', 'Business Continutity' => 'Business Continutity', 'Critical Infrustructure' => 'Critical Infrustructure', 'Communications' => 'Communications'), array('class' => 'form-control')) !!}
 		        </div>
     
 		</div>
