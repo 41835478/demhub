@@ -20,10 +20,10 @@ class UserController extends Controller {
 	public function showResourceFilter(){
 		$resourceRelation= ResourceRelation::all();
 		$resourceEntry= ResourceEntry::all();
-		$categories = Xmlcategories::all();
+		$categories = Divisions::all();
 		
-		return View::make('user/resource-filter')
-					->with('action', URL::route("resource-filter"))
+		return view('frontend.user.resource-filter')
+					->with('action', url("resource-filter"))
 					->with('xmlcategories', $categories)	
 					->with('resourceRelation', $resourceRelation)
 					->with('resourceEntry', $resourceEntry);

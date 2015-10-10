@@ -301,7 +301,7 @@ class EloquentUserRepository implements UserContract {
 	private function createUserStub($input)
 	{
 		$user = new User;
-		$user->username = $input['username'];
+		$user->user_name = $input['user_name'];
 		$user->first_name = $input['first_name'];
 		$user->last_name = $input['last_name'];
 		$user->email = $input['email'];

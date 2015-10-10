@@ -43,7 +43,7 @@ class EloquentUserRepository implements UserContract {
 	 */
 	public function create($data, $provider = false) {
 		$user = User::create([
-			'username' => $data['username'],
+			'user_name' => $data['user_name'],
 			'first_name' => $data['first_name'],
 			'last_name' => $data['last_name'],
 			'job_title' => $data['job_title'],

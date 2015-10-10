@@ -16,7 +16,11 @@
 	<div class="container">
 	<div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-
+                <li>
+                    <a>
+                        <kbd>BETA</kbd>
+                    </a>
+                </li>
                 @if(Request::url() === url('home'))
                     <li class="active">
                         <a href="{{url('userhome')}}">
@@ -47,11 +51,7 @@
                     <a href="{{url('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
                 </li>
 
-                <li>
-                    <a>
-                        <kbd>BETA</kbd>
-                    </a>
-                </li>
+                
                 @endif
 
 
@@ -67,12 +67,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{Auth::user()->user_name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{{url('user-settings')}}">Settings
+                            <a href="{{url('self_profile')}}">USER DASHBOARD
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            {!! link_to('auth/logout', trans('navs.logout')) !!}
+                            {!! link_to('auth/logout', trans('LOGOUT')) !!}
                         </li>
                     </ul>
                 </li>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav id="guest-menu" class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -7,14 +7,30 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="">{{ app_name() }}</a>
+			@if (Request::url() === URL::route('home'))
+			
+			@else
+			
+			@endif
+			<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}</a>
+		</li>
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li>{!! link_to('/', trans('navs.home')) !!}</li>
-				<li>{!! link_to('about', trans('navs.about')) !!}</li>
-        <li>{!! link_to('auth/register', trans('navs.register')) !!}</li>
+				@if (Request::url() === url('about'))
+				<li class="active">
+				@else
+				<li>
+				@endif
+				{!! link_to('about', trans('ABOUT')) !!}</li>
+				
+				@if (Request::url() === url('auth/register'))
+				<li class="active">
+				@else
+				<li>
+				@endif
+        {!! link_to('auth/register', trans('REGISTER')) !!}</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
@@ -30,7 +46,12 @@
 					</ul>
 					</li> -->
 				@if (Auth::guest())
-          <li>{!! link_to('auth/login', trans('navs.login')) !!}</li>
+				@if (Request::url() === url('auth/login'))
+				<li class="active" style="padding-right:50px">
+				@else
+				<li style="padding-right:50px">
+				@endif
+          {!! link_to('auth/login', trans('LOGIN')) !!}</li>
 					<!-- <li>{!! link_to('auth/login', trans('navs.login')) !!}</li>
 					<li>{!! link_to('auth/register', trans('navs.register')) !!}</li> -->
 				@else
