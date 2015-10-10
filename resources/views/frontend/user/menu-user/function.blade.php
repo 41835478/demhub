@@ -89,7 +89,7 @@
 
 			<a href="{{url('division', array('id' => $category->id))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
-					<p style="text-align:center;padding-top:11px">{{$category->category_name}}</p>
+					<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
 				</div>
 			</a>
 
@@ -115,14 +115,14 @@
     <div class="item active">
       <img src="./images/backgrounds/bridge.jpg" class="img-responsive" alt="" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:200px;padding-top:20px">
-        WELCOME TO DEMHUB!
+      	<p>WELCOME<font style="visibility:hidden">*</font>TO<font style="visibility:hidden">*</font>DEMHUB!</p>
       </div>
     </div>
 		@foreach($divisions as $category)
     <div class="item">
       <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->id}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">
-        {{$category->name}}
+        {!! $category->welcome_message !!}
       </div>
     </div>
 	@endforeach
@@ -170,7 +170,7 @@
   	          <ul class="nav navbar-nav">
 				<li><a href="{{url('logout')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
 
-				<li><a href="{{url('resource-filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
+				<li><a href="{{url('resource_filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 
 
 

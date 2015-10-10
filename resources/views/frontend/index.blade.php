@@ -65,8 +65,8 @@
 
 		@foreach($divisions as $div)
 			<a href="{{url('division', $div->slug)}}" style="">
-				<div id="division_{{$div->id}}" style="background-color: #FFF;min-height:67px;max-height:185px;" class="col-md-2">
-					<h3 style="text-align:center;padding-top:30px">{{$div->name}}</h3>
+				<div id="division_{{$div->id}}" style="background-color: #{{$div->bg_color}};min-height:185px;max-height:185px;" class="col-md-2">
+					<h3 style="text-align:center;padding-top:30px;text-transform:uppercase;">{{$div->name}}</h3>
 				</div>
 			</a>
 		@endforeach

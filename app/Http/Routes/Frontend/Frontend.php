@@ -9,6 +9,7 @@ get('about', 'FrontendController@about');
 get('policy', 'FrontendController@policy');
 get('terms', 'FrontendController@terms');
 
+
 /**
  * Division Routes
  * Namespaces indicate folder structure
@@ -22,7 +23,9 @@ get('division/{slug}', 'DivisionController@show')->where('slug', '[A-Za-z_\-]+')
  * Namespaces indicate folder structure
  * TODO - Implement folder structure
 */
+get('resource_filter', 'InfoResourceController@showResourceFilter')->name('resource_filter');
 get('resources', 'InfoResourceController@index');
+
 
 /**
  * These frontend controllers require the user to be logged in
