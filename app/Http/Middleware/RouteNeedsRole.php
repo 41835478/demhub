@@ -13,7 +13,7 @@ class RouteNeedsRole {
 	 * @param callable $next
 	 * @param $role
 	 * @return mixed
-     */
+   */
 	public function handle($request, Closure $next, $role)
 	{
 		if (! access()->hasRole($role))
