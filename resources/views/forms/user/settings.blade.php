@@ -4,12 +4,7 @@
     <label class="col-sm-3 control-label" for="inputuserImage">Avatar</label>
     <div class="col-sm-9">
 
-      {{HTML::image('images/user/'.$user_avatar->image.'', 
-                    ''.Auth::user()->user_name.' icon', 
-                    array(
-                      'class' => 'user-icon img-responsive img-circle',
-                    )
-        )}}<br><br>
+      <!-- {!! HTML::image('images/user/'.$user_avatar->image.'',''.Auth::user()->user_name.' icon', array('class' => 'user-icon img-responsive img-circle',)) !!} --> <br><br>
       <input type="file" name="user_image" id="user_image" placeholder="Browse" value="{{Auth::user()->user_name}}">
       <br>
       <span class="text-primary">JPEGs and PNG accepted.</span>

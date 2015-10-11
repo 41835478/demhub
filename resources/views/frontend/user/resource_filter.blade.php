@@ -61,7 +61,7 @@
 			element=document.createElement("div");
 			element.id="{{$entry -> country}}";
 			element.style.display="none";
-			element.innerHTML = [{{$entry -> regions}}];
+			element.innerHTML = [{!! $entry -> regions_array !!}];
 			document.body.appendChild(element);
 			i++;
 		@endforeach
@@ -76,7 +76,7 @@
 				@foreach($resourceEntry as $entry)
 				<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
 				<td>
-    			<a href="{{$entry->entry}}">{{$entry->title}}</a>
+    			<a href="{{$entry->url}}">{{$entry->name}}</a>
 				</td>
 				</tr>
 				@endforeach

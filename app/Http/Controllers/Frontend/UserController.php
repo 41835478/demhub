@@ -14,21 +14,12 @@ class UserController extends Controller {
 	 */
 	public function showUserHome(){
 		$divisions = Division::all();
-		return view('frontend.user.userhome')
-					->with('divisions', $divisions);
+		return view('frontend.user.userhome', [
+					'divisions'  => $divisions
+					]);
+						
 	}
-	public function showResourceFilter(){
-		$resourceRelation= ResourceRelation::all();
-		$resourceEntry= ResourceEntry::all();
-		$categories = Xmlcategories::all();
-		
-		return View::make('user/resource-filter')
-					->with('action', URL::route("resource-filter"))
-					->with('xmlcategories', $categories)	
-					->with('resourceRelation', $resourceRelation)
-					->with('resourceEntry', $resourceEntry);
-					
-	}
+	
 	/**
 	 * @return \Illuminate\View\View
 	 */

@@ -16,7 +16,11 @@
 	<div class="container">
 	<div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-
+                <li>
+                    <a>
+                        <kbd>BETA</kbd>
+                    </a>
+                </li>
                 @if(Request::url() === url('home'))
                     <li class="active">
                         <a href="{{url('userhome')}}">
@@ -47,11 +51,7 @@
                     <a href="{{url('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
                 </li>
 
-                <li>
-                    <a>
-                        <kbd>BETA</kbd>
-                    </a>
-                </li>
+                
                 @endif
 
 
@@ -67,12 +67,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{Auth::user()->user_name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{{url('user-settings')}}">Settings
+                            <a href="{{url('self_profile')}}">USER DASHBOARD
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            {!! link_to('auth/logout', trans('navs.logout')) !!}
+                            {!! link_to('auth/logout', trans('LOGOUT')) !!}
                         </li>
                     </ul>
                 </li>
@@ -89,7 +89,7 @@
 
 			<a href="{{url('division', array('id' => $category->id))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
-					<p style="text-align:center;padding-top:11px">{{$category->category_name}}</p>
+					<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
 				</div>
 			</a>
 
@@ -115,14 +115,14 @@
     <div class="item active">
       <img src="./images/backgrounds/bridge.jpg" class="img-responsive" alt="" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:200px;padding-top:20px">
-        WELCOME TO DEMHUB!
+      	<p>WELCOME<font style="visibility:hidden">*</font>TO<font style="visibility:hidden">*</font>DEMHUB!</p>
       </div>
     </div>
 		@foreach($divisions as $category)
     <div class="item">
       <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->id}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">
-        {{$category->name}}
+        {!! $category->welcome_message !!}
       </div>
     </div>
 	@endforeach
@@ -170,7 +170,7 @@
   	          <ul class="nav navbar-nav">
 				<li><a href="{{url('logout')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
 
-				<li><a href="{{url('resource-filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
+				<li><a href="{{url('resource_filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 
 
 
