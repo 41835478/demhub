@@ -167,7 +167,8 @@ return [
 		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
-		'Riari\Forum\ForumServiceProvider'
+		'Riari\Forum\ForumServiceProvider',
+		'Sofa\Eloquence\ServiceProvider'
 	],
 
 	/*

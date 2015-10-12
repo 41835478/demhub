@@ -13,7 +13,7 @@ class CreateNewsFeedsItemsTable extends Migration
     public function up()
     {
       DB::statement("
-        CREATE TABLE `items` (
+        CREATE TABLE `news_feeds_items` (
           `feed_id` TEXT CHARACTER SET utf8 NOT NULL,
           `id` TEXT CHARACTER SET utf8 NOT NULL,
           `data` TEXT CHARACTER SET utf8 NOT NULL,
@@ -32,6 +32,6 @@ class CreateNewsFeedsItemsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news_feeds_cache_data');
+        Schema::drop('news_feeds_items');
     }
 }
