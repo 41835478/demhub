@@ -14,13 +14,14 @@ class UserDashboardController extends Controller {
 	 * User Homepage
 	 */
 	public function showSelfProfile() {
-		
+		$division = Division::all();
 		//go to users settings page
 		if (Request::isMethod('get')) {
 			$userid = Auth::user()->id;
 
 			return view('frontend.user.user_dashboard.self_profile')
-						->with('action', url('self_profile'));
+						->with('action', url('self_profile'))
+						->with('divisions', $division);
 		}
 		else {
 			$id = Auth::user()->id;

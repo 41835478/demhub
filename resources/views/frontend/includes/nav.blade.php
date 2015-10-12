@@ -73,7 +73,7 @@
 </nav>
 
 @if( ! empty($nav_divisions))
-<div class="row" style="padding-top:52px;">
+<!-- <div class="row" style="padding-top:52px;">
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($divisions as $category)
 
@@ -86,7 +86,7 @@
 		@endforeach
 
 </div>
-</div>
+</div> -->
 <!-- <nav class="navbar navbar-default nav-justified">
 	<div class="container-fluid">
 		<div class="navbar-header">

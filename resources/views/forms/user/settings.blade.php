@@ -4,8 +4,8 @@
     <label class="col-sm-3 control-label" for="inputuserImage">Avatar</label>
     <div class="col-sm-9">
 
-      <!-- {!! HTML::image('images/user/'.$user_avatar->image.'',''.Auth::user()->user_name.' icon', array('class' => 'user-icon img-responsive img-circle',)) !!} --> <br><br>
-      <input type="file" name="user_image" id="user_image" placeholder="Browse" value="{{Auth::user()->user_name}}">
+      <h2>USER IMAGE COMING SOON</h2><br><br>
+      <input type="file" name="user_image" id="user_image" placeholder="Browse" value="{{Auth::user()->user_name}}" disabled>
       <br>
       <span class="text-primary">JPEGs and PNG accepted.</span>
       <br>
@@ -14,8 +14,8 @@
 	  	<div class="col-sm-offset-2 col-sm-9">
 	      <button type="submit" class="btn btn-default btn-style">SAVE ALL</button>
 	    </div>
-	  </div>
-	  {{Form::token()}}
+	  </div> 
+	  <p style="visibility:hidden">{{Form::token()}}</p>
     </div>
   </div>
 </div>

@@ -26,7 +26,7 @@ class DivisionController extends Controller
       $divisions = Division::all();
       $division = Division::where('slug', $divisionId)->firstOrFail();
 
-      $newsFeeds = $division->newsFeeds->lists('url')->all();;
+      $newsFeeds = $division->newsFeeds->lists('url')->all();
 
       $newsFeeds = $this -> simplepie_feed($newsFeeds);
 

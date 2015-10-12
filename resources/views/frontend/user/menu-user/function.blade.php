@@ -21,7 +21,7 @@
                         <kbd>BETA</kbd>
                     </a>
                 </li>
-                @if(Request::url() === url('home'))
+                <!-- @if(Request::url() === url('home'))
                     <li class="active">
                         <a href="{{url('userhome')}}">
                             <i class="fa fa-user"> PROFILE</i>
@@ -51,8 +51,8 @@
                     <a href="{{url('discussion')}}"><i class="fa fa-comments"></i> DISCUSSION</a>
                 </li>
 
-                
-                @endif
+
+                @endif -->
 
 
             </ul>
@@ -168,9 +168,18 @@
 	<div class="navbar navbar-inverse" role="navigation" style="padding-left:30%;">
 
   	          <ul class="nav navbar-nav">
-				<li><a href="{{url('logout')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
-
-				<li><a href="{{url('resource_filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
+ 				 @if(Request::url() === url('userhome'))
+ 				 <li class="active">
+ 				 @else
+ 				 <li>
+ 				 @endif
+				<a href="{{url('userhome')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
+				 @if(Request::url() === url('resource_filter'))
+				 <li class="active">
+				 @else
+				 <li>
+				 @endif
+				<a href="{{url('resource_filter')}}" style="border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 
 
 
@@ -184,4 +193,9 @@
 	</div>
 
 	</div>
+	<script>
+	window.onload = function() {
+		setTimeout(function(){document.getElementById("adjustPage").click();},115);
+	}
+	</script>
 @endif

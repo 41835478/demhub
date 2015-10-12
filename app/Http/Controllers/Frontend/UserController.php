@@ -2,6 +2,8 @@
 
 use App\Models\Division;
 use App\Http\Controllers\Controller;
+use SimplePie;
+
 
 /**
  * Class FrontendController
@@ -13,12 +15,20 @@ class UserController extends Controller {
 	 * User Homepage
 	 */
 	public function showUserHome(){
-		$divisions = Division::all();
+		$division = Division::all();
+		// foreach ($division as $division){
+// 		$divisionInd = Division::where('slug', $division->id);
+//
+// 		$newsFeedsTemp = $divisionInd->newsFeeds->lists('url')->all();
+//
+// 		}
 		return view('frontend.user.userhome', [
-					'divisions'  => $divisions
+					'divisions'  => $division
+					
 					]);
 						
 	}
+    
 	
 	/**
 	 * @return \Illuminate\View\View

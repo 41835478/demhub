@@ -24,8 +24,8 @@
 		</div>
 		
 	    <div class="col-md-12 text-right">
-			<h5>Arrange by</h5>
-			<ul class="list-inline">
+			<!-- <h5>Arrange by</h5>
+			<ul class="list-inline"> -->
 				<!-- <li>
 					<a href="{{url('arrange-likes')}}">
 						<i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="Likes"></i>

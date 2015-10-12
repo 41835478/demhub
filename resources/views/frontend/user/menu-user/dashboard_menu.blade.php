@@ -13,11 +13,16 @@
                 @endif
                 @if(Request::url() === url('privacy_settings'))
                 <li class="active">
-                	<a href="{{url('privacy_settings')}}" style="background:#60A0FF;color:#FFF;border-color:#000;"><i class="fa fa-globe"></i> PRIVACY SETTINGS</a>
-                </li>
                 @else
                 <li>
-                    <a href="{{url('privacy_settings')}}"><i class="fa fa-globe"></i> PRIVACY SETTINGS</a>
-                </li>
                 @endif
+                    <a href="{{url('self_profile')}}"><i class="fa fa-globe"></i> PRIVACY SETTINGS - COMING SOON</a>
+                </li>
+                @if(Request::url() === url('privacy_settings'))
+                <li class="active">
+                @else
+                <li>
+                @endif
+                    <a href="{{url('self_profile')}}"><i class="fa fa-file"></i> COLLECTION - COMING SOON</a>
+                </li>
 			</ul>
