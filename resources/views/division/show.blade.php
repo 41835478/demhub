@@ -14,7 +14,7 @@
 																	>
 						<div class="row" style="padding-top:52px;">
 							<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
-								@foreach($nav_divisions as $category)
+								@foreach($navDivisions as $category)
 
 									<a href="{{url('division', array('id' => $category->id))}}">
 										<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
@@ -37,14 +37,14 @@
 
 		</div>
 	</nav>
-	
+
 
 	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 
 		<div id="ph-text" class="text-left">
 			<?php
-				$max = $news_feeds->get_item_quantity();
-				for ($x = 0; $x < $max; $x++): $item = $news_feeds->get_item($x);
+				$max = $newsFeeds->get_item_quantity();
+				for ($x = 0; $x < $max; $x++): $item = $newsFeeds->get_item($x);
 			?>
 
 				<div class="col-md-12">
@@ -53,17 +53,17 @@
 					<span class="label label-default" style="font-size:82%">{{$item->get_date('j F Y | g:i a')}}</span>
 					<p><?php
 						$description = $item->get_description();
-						
+
  				   	 	 if (strlen($description) > 150){
-							 
+
  				      	$str = substr($description, 0, 150) . '...';
 						echo strip_tags($str, '<img>');
 					 	}
 						 else{
-						
+
 						echo strip_tags($description, '<img>');
 						}
-						
+
 						 ?></p>
 					<hr>
 				</div>
@@ -72,11 +72,4 @@
 		</div>
 
 	</div>
-@endsection
-
-@section('after-scripts-end')
-	<script>
-		//Being injected from FrontendController
-		console.log(test);
-	</script>
 @stop

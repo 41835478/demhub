@@ -14,28 +14,34 @@ class DivisionController extends Controller
     */
     public function index()
     {
-      $divisions = Division::all();
+      $allDivisions = Division::all();
+
+      $newsFeeds = array();
+      foreach ($allDivisions as $div) {
+        $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
+      }
+      $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
       return view('division.index', [
-        'divisions' => $divisions,
-        'nav_divisions' => $divisions
+        'allDivisions' => $allDivisions,
+        'navDivisions' => $allDivisions,
+        'newsFeeds' => $newsFeeds
       ]);
     }
 
     public function show($divisionId)
     {
-      $divisions = Division::all();
+      $allDivisions = Division::all();
       $division = Division::where('slug', $divisionId)->firstOrFail();
 
       $newsFeeds = $division->newsFeeds->lists('url')->all();
-
       $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
       return view('division.show', [
-        'divisions' => $divisions,
+        'allDivisions' => $allDivisions,
         'division' => $division,
-        'nav_divisions' => $divisions,
-        'news_feeds' => $newsFeeds
+        'navDivisions' => $allDivisions,
+        'newsFeeds' => $newsFeeds
       ]);
     }
 

@@ -1,15 +1,40 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-	
-			
-						
-	
-@endsection
 
-@section('after-scripts-end')
-	<script>
-		//Being injected from FrontendController
-		
-	</script>
+<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
+
+	<div id="ph-text" class="text-left">
+		<?php
+			$max = $newsFeeds->get_item_quantity();
+			for ($x = 0; $x < $max; $x++): $item = $newsFeeds->get_item($x);
+		?>
+
+			<div class="col-md-12">
+
+				<h3><a href="" data-toggle="modal" data-target="#myModal" style="color:#000">{{$item->get_title()}}</a></h3>
+
+				<span class="label label-default" style="font-size:82%">{{$item->get_date('j F Y | g:i a')}}</span>
+				<p><?php
+					$description = $item->get_description();
+
+						 if (strlen($description) > 150){
+
+							$str = substr($description, 0, 150) . '...';
+					echo strip_tags($str, '<img>');
+					}
+					 else{
+
+					echo strip_tags($description, '<img>');
+					}
+
+					 ?></p>
+				<hr>
+			</div>
+
+		<?php endfor; ?>
+	</div>
+
+</div>
+
 @stop
