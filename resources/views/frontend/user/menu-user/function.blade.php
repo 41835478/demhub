@@ -1,4 +1,4 @@
-@if(Auth::check() && ! empty($divisions))
+@if(Auth::check() && ! empty($allDivisions))
 
 <nav id="user-function" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-header">

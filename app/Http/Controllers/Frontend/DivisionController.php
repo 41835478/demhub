@@ -3,7 +3,6 @@
 use App\Models\Division;
 use App\Http\Controllers\Controller;
 use SimplePie;
-use Illuminate\Support\Facades\DB;
 
 class DivisionController extends Controller
 {
