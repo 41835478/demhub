@@ -16,6 +16,8 @@ class CreateDivisionsTable extends Migration
             $table->increments('id');
             $table->string('name');
 			      $table->string('slug');
+				  $table->string('bg_color');
+				  $table->string('welcome_division');
         });
     }
 
