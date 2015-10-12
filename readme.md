@@ -56,6 +56,7 @@
     * Events/Handlers
     * Entire application split between frontend/backend
     * Localization Throughout
+    
 * [Changelog](#changelog)
 
 ### Installation:
@@ -372,7 +373,7 @@ javascript()->put([
 ```
 
 There is an example in ```FrontendController@index``` and is printed out in ```frontend.index```
-    
+
 ## Troubleshooting
 
 If for any reason something goes wrong, try each of the following:
@@ -382,11 +383,11 @@ Delete the `composer.lock` file
 Run the `dumpautoload` command
 
        $ composer dumpautoload -o
-       
+
 If the above fails to fix, and the command line is referencing errors in `compiled.php`, do the following:
-       
+
 Delete the `storage/framework/compiled.php` file
-       
+
 **If all of the above don't work please [report here](https://github.com/rappasoft/Laravel-5-Boilerplate/issues).**
 
 <a name="changelog"/>
@@ -432,7 +433,7 @@ Delete the `storage/framework/compiled.php` file
   Removed old blade functions and replaced with native blade directives.
   NEW: role, roles, needsroles
   NEW: permission, permissions, needspermissions
-  
+
   See documentation for details.
 ```
 
