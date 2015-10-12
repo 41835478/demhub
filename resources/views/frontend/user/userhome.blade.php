@@ -8,21 +8,21 @@
 
 	<div class="row">
 		<div class="col-md-12">
-		
 
-	    	<h1></h1>
-	        <hr>
-	    </div>
-	    <div class="row text-center">
-			
+	    <h1></h1>
+      <hr>
+    </div>
+
+    <div class="row text-center">
+
 		</div>
-		
+
 		<div class="row" style="padding:2%;">
 			<div class="col-md-12">
-				
+
 			</div>
 		</div>
-		
+
 	    <div class="col-md-12 text-right">
 			<!-- <h5>Arrange by</h5>
 			<ul class="list-inline"> -->
@@ -43,11 +43,10 @@
 				</li> -->
 			</ul>
 		</div>
-		
+
 
 </div>
 
 
 
 @endsection('content')
-

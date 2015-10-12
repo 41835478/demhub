@@ -3,12 +3,12 @@
 <nav id="user-function" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	        <span class="sr-only">Toggle navigation</span>
+	    <span class="sr-only">Toggle navigation</span>
 
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-    	</button>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+    </button>
 		<a href="{{url('userhome')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}
 		</a>
 	</div>
@@ -86,13 +86,11 @@
 <div class="row" style="padding-top:52px;">
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($divisions as $category)
-
-			<a href="{{url('division', array('id' => $category->id))}}">
+			<a href="{{url('division', array('slug' => $category->slug))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
 					<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
 				</div>
 			</a>
-
 		@endforeach
 
 </div>
@@ -106,7 +104,6 @@
 	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 	@foreach($divisions as $category)
     <li data-target="#carousel-example-generic" data-slide-to="{{$category->id}}"></li>
-
 	@endforeach
   </ol>
 
@@ -120,7 +117,7 @@
     </div>
 		@foreach($divisions as $category)
     <div class="item">
-      <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->id}} Image" style="">
+      <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->slug}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">
         {!! $category->welcome_message !!}
       </div>

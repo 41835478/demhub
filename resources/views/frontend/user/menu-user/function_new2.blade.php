@@ -67,18 +67,18 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{Auth::user()->user_name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-		                
+
 		                    <li>
 		                        <a href="{{url('self_profile')}}">
 		                            <i class="fa fa-user"> PROFILE</i>
 		                        </a>
 		                    </li>
-		                
+
 		                    <li>
 		                        <a href="{{url('self_profile')}}">
 		                            <i class="fa fa-user"></i> PROFILE</a>
 		                    </li>
-		                
+
                         <li>
                             <a href="{{url('privacy_settings')}}">Settings
                             </a>
@@ -101,7 +101,7 @@
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($xmlcategories as $category)
 
-			<a href="{{url('division', array('id' => $category->id))}}">
+			<a href="{{url('division', array('slug' => $category->slug))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
 					<p style="text-align:center;padding-top:11px">{{$category->category_name}}</p>
 				</div>
@@ -202,6 +202,6 @@
 	</div>
 
 	<script>
-	
+
 	</script>
 @endif
