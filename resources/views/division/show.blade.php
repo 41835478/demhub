@@ -56,8 +56,8 @@
 						<?php
 							$description = $item->get_description();
 
-							if (strlen($description) > 150){
-								$str = substr($description, 0, 150) . '...';
+							if (strlen($description) > 225){
+								$str = substr($description, 0, 225) . '...';
 								echo strip_tags($str, '<img>');
 							} else{
 								echo strip_tags($description, '<img>');
