@@ -15,7 +15,7 @@ class CreateNewsFeedsCacheDataTable extends Migration
       DB::statement("
         CREATE TABLE `news_feeds_cache_data` (
           `id` TEXT CHARACTER SET utf8 NOT NULL,
-          `news_feed_items` SMALLINT NOT NULL DEFAULT 0,
+          `items` SMALLINT NOT NULL DEFAULT 0,
           `data` BLOB NOT NULL,
           `mtime` INT UNSIGNED NOT NULL,
           UNIQUE (
