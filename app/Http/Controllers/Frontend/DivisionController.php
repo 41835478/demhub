@@ -55,5 +55,5 @@ class DivisionController extends Controller
       $feed->init();
       $feed->handle_content_type();
       return $feed;
-	}
+	  }
 }
