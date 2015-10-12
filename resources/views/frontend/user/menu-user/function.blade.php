@@ -160,7 +160,7 @@
 			</div>
 
 		</div>
-
+<a id="adjustPage" href="#adjustPage" style="visibility:hidden">_</a>
 	</div>
 </div>
 
@@ -179,14 +179,14 @@
 				 @else
 				 <li>
 				 @endif
-				<a href="{{url('resource_filter')}}" style="border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
+				<a href="{{url('resource_filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 
 
 
-  	            <li><a href="{{url('events')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"><!-- <img src="css/cut-video-image-black.png" class="blackImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"><img src="css/cut-video-image-white.png" class="whiteImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"> --> EVENTS</a></li>
+  	            <li><a href="{{url('userhome')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"><!-- <img src="css/cut-video-image-black.png" class="blackImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"><img src="css/cut-video-image-white.png" class="whiteImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"> --> EVENTS - COMING SOON</a></li>
 
   				<!-- <li><a href="{url('logout')}}"><img src="css/share-image-black.png" class="blackImage" alt="Hot Potato" width="55" height="21" style=""><img src="css/share-image-white.png" class="whiteImage" alt="Hot Potato" width="55" height="21" style=""> Feed</a></li> -->
-  				<li><a href="{{url('media')}}" style="color:#666666;border-left:1px solid #fff;border-right:2px solid #fff">MEDIA</a></li>
+  				<li><a href="{{url('userhome')}}" style="color:#666666;border-left:1px solid #fff;border-right:2px solid #fff">MEDIA - COMING SOON</a></li>
 
   	            <!-- <li role="presentation"><a href="{url('logout')}}">About &amp; Contact</a></li> -->
   	      </div>
