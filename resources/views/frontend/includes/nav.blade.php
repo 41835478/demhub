@@ -46,11 +46,11 @@
 					</ul>
 					</li> -->
 				@if (Auth::guest())
-				@if (Request::url() === url('auth/login'))
-				<li class="active" style="padding-right:50px">
-				@else
-				<li style="padding-right:50px">
-				@endif
+					@if (Request::url() === url('auth/login'))
+						<li class="active" style="padding-right:50px">
+					@else
+						<li style="padding-right:50px">
+					@endif
           {!! link_to('auth/login', trans('LOGIN')) !!}</li>
 					<!-- <li>{!! link_to('auth/login', trans('navs.login')) !!}</li>
 					<li>{!! link_to('auth/register', trans('navs.register')) !!}</li> -->
@@ -58,15 +58,15 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-						    <li>{!! link_to('dashboard', trans('navs.dashboard')) !!}</li>
-							    <li>{!! link_to('auth/password/change', trans('navs.change_password')) !!}</li>
-						    @permission('view-backend')
-						        <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
-							    @endauth
+						  <li>{!! link_to('dashboard', trans('navs.dashboard')) !!}</li>
+						  <li>{!! link_to('auth/password/change', trans('navs.change_password')) !!}</li>
+						  @permission('view-backend')
+						    <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
+						  @endauth
 							<li>{!! link_to('auth/logout', trans('navs.logout')) !!}</li>
 						</ul>
 					</li>
-					@endif
+				@endif
 			</ul>
 		</div>
 	</div>

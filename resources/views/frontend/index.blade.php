@@ -56,7 +56,8 @@
 
 <div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/bridge.jpg') no-repeat fixed;">
 	<div class="col-md-12 text-center">
-		<h2>SIX SECTORS</h2>
+		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('divisions')}}>SIX DIVISIONS</a>
+		<h2></h2>
 	</div>
 </div>
 
@@ -78,9 +79,6 @@
 	<div class="col-md-12 text-center">
 		<h2>Want access to the beta?<br> What to know about the full release?</h2>
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
-		<!-- <a href="{{url('sign-up')}}">
-			<button class="btn btn-default btn-lg btn-style">SIGN UP</button>
-		</a> -->
 	</div>
 </div>
 @stop

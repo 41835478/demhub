@@ -1,10 +1,10 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-			<nav>
-				<div id="welcome-division">
+	<nav>
+		<div id="welcome-division">
 
-					<div id="welcome-division-category" class="row" style="background:
+			<div id="welcome-division-category" class="row" style="background:
 																	url('../images/backgrounds/divisions/{{$division->slug}}.jpg') no-repeat fixed 0% 70%;
 																	-webkit-background-size: cover;
 																	-moz-background-size: cover;
@@ -12,20 +12,20 @@
 																	background-size: cover;
 																	overflow: hidden;"
 																	>
-						<div class="row" style="padding-top:52px;">
-							<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
-								@foreach($navDivisions as $category)
+				<div class="row" style="padding-top:52px;">
+					<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
+						@foreach($navDivisions as $category)
 
-									<a href="{{url('division', array('id' => $category->id))}}">
-										<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
-											<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
-										</div>
-									</a>
+							<a href="{{url('division', array('id' => $category->slug))}}">
+								<div id="division_{{$category->slug}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
+									<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
+								</div>
+							</a>
 
-								@endforeach
+						@endforeach
 
-						</div>
-						</div>
+					</div>
+				</div>
 
 				<div class="row">
 					<div id="ph-name" class="col-md-4 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
@@ -38,7 +38,6 @@
 		</div>
 	</nav>
 
-
 	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 
 		<div id="ph-text" class="text-left">
@@ -50,21 +49,22 @@
 				<div class="col-md-12">
 					<h3><a href="" data-toggle="modal" data-target="#myModal" style="color:#000">{{$item->get_title()}}</a></h3>
 
-					<span class="label label-default" style="font-size:82%">{{$item->get_date('j F Y | g:i a')}}</span>
-					<p><?php
-						$description = $item->get_description();
+					<span class="label label-default" style="font-size:82%">
+						{{$item->get_date('j F Y | g:i a')}}
+					</span>
+					<p>
+						<?php
+							$description = $item->get_description();
 
- 				   	 	 if (strlen($description) > 150){
+							if (strlen($description) > 150){
+								$str = substr($description, 0, 150) . '...';
+								echo strip_tags($str, '<img>');
+							} else{
+								echo strip_tags($description, '<img>');
+							}
 
- 				      	$str = substr($description, 0, 150) . '...';
-						echo strip_tags($str, '<img>');
-					 	}
-						 else{
-
-						echo strip_tags($description, '<img>');
-						}
-
-						 ?></p>
+						?>
+					 </p>
 					<hr>
 				</div>
 
