@@ -14,6 +14,7 @@ class DivisionController extends Controller
     public function index()
     {
       $allDivisions = Division::all();
+	  $userMenu = false;
 
       $newsFeeds = array();
       foreach ($allDivisions as $div) {
@@ -24,7 +25,8 @@ class DivisionController extends Controller
       return view('division.index', [
         'allDivisions' => $allDivisions,
         'navDivisions' => $allDivisions,
-        'newsFeeds' => $newsFeeds
+        'newsFeeds' => $newsFeeds,
+		'userMenu' => $userMenu
       ]);
     }
 
