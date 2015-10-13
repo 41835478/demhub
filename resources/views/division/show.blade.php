@@ -12,7 +12,7 @@
 																	background-size: cover;
 																	overflow: hidden;"
 																	>
-				<div class="row" style="padding-top:52px;">
+				<div class="row" style="padding-top:50px;">
 					<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 						@foreach($navDivisions as $category)
 
@@ -46,7 +46,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h3>You can access the articles once you <a type="button" class="btn btn-default btn-style" data-dismiss="modal" href="{{url('register')}}">REGISTER</a></h3>
+						<h3>You can access the articles once you {!! link_to('auth/register', trans('REGISTER')) !!}</h3>
 					</div>
 
 				</div><!-- /.modal-content -->

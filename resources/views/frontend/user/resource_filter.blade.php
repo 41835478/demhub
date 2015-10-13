@@ -112,7 +112,7 @@
 			document.getElementById("secondFilter").style.display="";
 		}
 	});
-	function secondFilter(){
+	function initialFilter(){
 	if (($("select#country").val()) != null){
 		
 		var filterVar = $("select#country").val();
