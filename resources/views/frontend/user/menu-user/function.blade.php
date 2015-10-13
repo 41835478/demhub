@@ -179,6 +179,12 @@
  				 <li>
  				 @endif
 				<a href="{{url('userhome')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
+				 @if(Request::url() === url('discussion'))
+				 <li class="active">
+				 @else
+				 <li>
+				 @endif
+				<a href="{{url('userhome')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> DISCUSSION - COMING SOON</a></li>
 				 @if(Request::url() === url('resource_filter'))
 				 <li class="active">
 				 @else
@@ -186,9 +192,7 @@
 				 @endif
 				<a href="{{url('resource_filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 
-
-
-  	            <li><a href="{{url('userhome')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"><!-- <img src="css/cut-video-image-black.png" class="blackImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"><img src="css/cut-video-image-white.png" class="whiteImage" alt="Hot Potato" width="35.24" height="23.5" style="padding-top:2px"> --> EVENTS - COMING SOON</a></li>
+  	            <li><a href="{{url('userhome')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff">EVENTS - COMING SOON</a></li>
 
   				<!-- <li><a href="{url('logout')}}"><img src="css/share-image-black.png" class="blackImage" alt="Hot Potato" width="55" height="21" style=""><img src="css/share-image-white.png" class="whiteImage" alt="Hot Potato" width="55" height="21" style=""> Feed</a></li> -->
   				<li><a href="{{url('userhome')}}" style="color:#666666;border-left:1px solid #fff;border-right:2px solid #fff">MEDIA - COMING SOON</a></li>
