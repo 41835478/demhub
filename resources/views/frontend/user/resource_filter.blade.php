@@ -30,8 +30,8 @@
 			    <label for="exampleInputEmail2">Email</label>
 			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 			  </div> -->
-			  <!-- <button type="button" onclick="initialFilter()" class="btn btn-default btn-style">FILTER</button>
-			  <button type="button" onclick="secondFilter()" class="btn btn-default btn-style">FILTER 2</button>  -->
+			  <!-- <button type="button" onclick="initialFilter()" class="btn btn-default btn-style">FILTER</button> -->
+			  <button type="button" id="secondFilter" onclick="secondFilter()" class="btn btn-default btn-style" style="display:none">FILTER 2</button>
 		</form>
         <hr>
     </div>
@@ -108,6 +108,7 @@
 			var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
 			document.getElementById("region").innerHTML=regionForm;
 			document.getElementById("regionFormGroup").style.display="";
+			document.getElementById("secondFilter").style.display="";
 		}
 	});
 	function fillRegions(country){
@@ -122,6 +123,22 @@
 		return optionHTML;
 	}
 	$("select#region").click(function(){
+	if (($("select#region").val()) != null){
+		var filterVar = $("select#region").val();
+		var region = filterVar.toLowerCase();
+		region=region.replace(/-/g,"_");
+		
+		// var list =document.getElementsByClassName(country);
+		
+		if($("tr").hasClass('in')) {
+		        $("tr").addClass("out");
+		        $("tr").removeClass("in");
+		        $("tr." +region).addClass("in");
+		        $("tr." +region).removeClass("out");
+		    } 
+	}
+	});
+	function secondFilter(){
 	if (($("select#region").val()) != null){
 		var filterVar = $("select#region").val();
 		var region = filterVar.toLowerCase();
