@@ -27,7 +27,7 @@ class InfoResourceController extends Controller
 		
 		return view('frontend.user.resource_filter', [
 					
-					'divisions' =>  $categories,	
+					'AllDivisions' =>  $categories,	
 					'resourceRelation'  => $regions,
 					'resourceEntry' =>  $InfoResource]);
 					

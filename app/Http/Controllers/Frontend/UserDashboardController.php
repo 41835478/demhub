@@ -15,16 +15,16 @@ class UserDashboardController extends Controller {
 	 */
 	public function showSelfProfile() {
 		$division = Division::all();
-		
+		$userMenu = false;
 		//go to users settings page
 		if (Request::isMethod('get')) {
 			$userid = Auth::user()->id;
-			
-			return view('frontend.user.userhome', [
-						'allDivisions' => $divisions
-						]);
-			
-						
+
+			return view('frontend.user.user_dashboard.self_profile')
+						->with('action', url('self_profile'))
+						->with('divisions', $division)
+						->with('allDivisions', $division)
+						->with('userMenu', $userMenu);
 		}
 		else {
 			$id = Auth::user()->id;
