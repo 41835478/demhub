@@ -83,9 +83,9 @@
 			</tbody>
 		</table>
     </div>
-	<div class="col-sm-5 col-sm-offset-4 paginated" >
-		
-	</div>
+	<!-- <div class="col-sm-5 col-sm-offset-4 paginated" >
+
+	</div> -->
 </div>
 
 	<script>
