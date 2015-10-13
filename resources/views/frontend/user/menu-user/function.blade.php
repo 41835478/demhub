@@ -170,7 +170,7 @@
 </div>
 
 <div class="row">
-	<div class="navbar navbar-inverse" role="navigation" style="padding-left:30%;">
+	<div class="navbar navbar-inverse" role="navigation" style="padding-left:20%;">
 
   	          <ul class="nav navbar-nav">
  				 @if(Request::url() === url('userhome'))
@@ -207,5 +207,6 @@
 		setTimeout(function(){document.getElementById("adjustPage").click();},115);
 	}
 	</script>
+	<br>
 @endif
 @endif
