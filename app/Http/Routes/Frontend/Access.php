@@ -11,6 +11,7 @@ $router->group(['namespace' => 'Auth'], function () use ($router)
 	$router->group(['middleware' => 'auth'], function ()
 	{
 		get('auth/logout', 'AuthController@getLogout');
+		get('auth/register', 'AuthController@getRegister')->name('register');
 		get('auth/password/change', 'PasswordController@getChangePassword');
 		post('auth/password/change', 'PasswordController@postChangePassword')->name('password.change');
 	});
