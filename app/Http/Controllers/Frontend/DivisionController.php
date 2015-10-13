@@ -33,6 +33,7 @@ class DivisionController extends Controller
     public function show($divisionId)
     {
       $allDivisions = Division::all();
+	  $userMenu = false;
       $division = Division::where('slug', $divisionId)->firstOrFail();
 
       $newsFeeds = $division->newsFeeds->lists('url')->all();
