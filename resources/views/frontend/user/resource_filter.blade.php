@@ -153,6 +153,6 @@
 		        $("tr." +region).removeClass("out");
 		    } 
 	}
-	});
+	};
 	</script>
 @endsection('content')
