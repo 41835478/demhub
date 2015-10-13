@@ -19,11 +19,11 @@ class UserDashboardController extends Controller {
 		//go to users settings page
 		if (Request::isMethod('get')) {
 			$userid = Auth::user()->id;
-
-			return view('frontend.user.user_dashboard.self_profile')
-						->with('action', url('self_profile'))
-						->with('divisions', $division)
-						->with('allDivisions', $division);
+			
+			return view('frontend.user.userhome', [
+						'allDivisions' => $divisions
+						]);
+			
 						
 		}
 		else {
