@@ -8,7 +8,7 @@ get('macros', 'FrontendController@macros');
 get('about', 'FrontendController@about');
 get('policy', 'FrontendController@policy');
 get('terms', 'FrontendController@terms');
-get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
+// get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
 
 /**
  * Division Routes

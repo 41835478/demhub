@@ -47,7 +47,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h3>You can access the articles once you <a type="button" class="btn btn-default btn-style-alt" data-dismiss="modal" href="{{url('register')}}">REGISTER</a></h3>
+						<h3>You can access the articles once you {!! link_to('auth/register', trans('REGISTER')) !!}</h3>
 					</div>
 
 				</div><!-- /.modal-content -->
