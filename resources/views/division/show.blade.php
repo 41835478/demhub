@@ -37,7 +37,22 @@
 
 		</div>
 	</nav>
+	
+		<div class="modal fade" id="myModal" style="padding-top:100px">
+			<div class="modal-dialog">
+				<div class="modal-content">
 
+					<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h3>You can access the articles once you <a type="button" class="btn btn-default btn-style" data-dismiss="modal" href="{{URL::route('sign-up')}}">SIGN UP</a></h3>
+					</div>
+
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		
 	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 
 		<div id="ph-text" class="text-left">
@@ -47,7 +62,13 @@
 			?>
 
 				<div class="col-md-12">
-					<h3><a href="" data-toggle="modal" data-target="#myModal" style="color:#000">{{$item->get_title()}}</a></h3>
+					<h3><a  
+	   				 @if(Auth::check())
+	   				 href="{{$item->get_link()}}"
+	   				 @else
+	   				 href="" data-toggle="modal" data-target="#myModal"
+	   				 @endif
+						style="color:#000">{{$item->get_title()}}</a></h3>
 
 					<span class="label label-default" style="font-size:82%">
 						{{$item->get_date('j F Y | g:i a')}}
