@@ -42,7 +42,8 @@ class DivisionController extends Controller
         'allDivisions' => $allDivisions,
         'division' => $division,
         'navDivisions' => $allDivisions,
-        'newsFeeds' => $newsFeeds
+        'newsFeeds' => $newsFeeds,
+		'userMenu' => $userMenu
       ]);
     }
 
