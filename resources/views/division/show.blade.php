@@ -46,7 +46,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h3>You can access the articles once you <a type="button" class="btn btn-default btn-style" data-dismiss="modal" href="{{URL::route('sign-up')}}">SIGN UP</a></h3>
+						<h3>You can access the articles once you <a type="button" class="btn btn-default btn-style" data-dismiss="modal" href="{{url('auth/register')}}">REGISTER</a></h3>
 					</div>
 
 				</div><!-- /.modal-content -->
