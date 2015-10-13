@@ -31,7 +31,7 @@
 			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 			  </div> -->
 			  <!-- <button type="button" onclick="initialFilter()" class="btn btn-default btn-style">FILTER</button> -->
-			  <button type="button" id="secondFilter" onclick="secondFilter()" class="btn btn-default btn-style" style="display:none">FILTER 2</button>
+			  <button type="button" id="secondFilter" onclick="secondFilter()" class="btn btn-default btn-style" style="display:none">FILTER</button>
 		</form>
         <hr>
     </div>
