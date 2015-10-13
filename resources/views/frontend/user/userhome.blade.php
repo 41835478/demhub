@@ -4,13 +4,13 @@
 @section('content')
 
 
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-12">
 
 	    <h1></h1>
-      <hr>
-    </div>
 
+    </div>
+</div>
     <div class="row text-center">
 
 		</div>
@@ -19,12 +19,12 @@
 			<div class="col-md-12">
 
 			</div>
-		</div>
+		</div> -->
 
 	    <div class="col-md-12 text-right">
 			<!-- <h5>Arrange by</h5>
-			<ul class="list-inline"> -->
-				<!-- <li>
+			<ul class="list-inline">
+				<li>
 					<a href="{{url('arrange-likes')}}">
 						<i class="fa fa-thumbs-up" data-toggle="tooltip" data-placement="bottom" title="Likes"></i>
 					</a>
@@ -38,10 +38,10 @@
 					<a href="{{url('arrange-comments')}}">
 						<i class="fa fa-commenting" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>
 					</a>
-				</li> -->
-			</ul>
+				</li>
+			</ul> -->
 		</div>
-</div>
+
 <div class="row">
 	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 

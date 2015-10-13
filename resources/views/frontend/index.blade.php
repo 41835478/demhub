@@ -77,7 +77,7 @@
 
 <div id="welcome_tertiary_text" class="row" style="background: url('images/backgrounds/bridge.jpg') no-repeat fixed;">
 	<div class="col-md-12 text-center">
-		<h2>Want access to the beta?<br> What to know about the full release?</h2>
+		<h2>Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
 	</div>
 </div>
