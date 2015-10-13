@@ -16,13 +16,13 @@
                 @else
                 <li>
                 @endif
-                    <a href="{{url('self_profile')}}"><i class="fa fa-globe" disabled></i> PRIVACY SETTINGS - COMING SOON</a>
+                    <a href=""><i class="fa fa-globe" style="color:#999"></i> PRIVACY SETTINGS - COMING SOON</a>
                 </li>
                 @if(Request::url() === url('privacy_settings'))
                 <li class="active">
                 @else
                 <li>
                 @endif
-                    <a href="{{url('self_profile')}}"><i class="fa fa-file" disabled></i> COLLECTION - COMING SOON</a>
+                    <a href=""><i class="fa fa-file" style="color:#999"></i> COLLECTION - COMING SOON</a>
                 </li>
 			</ul>

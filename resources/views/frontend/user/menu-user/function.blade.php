@@ -184,7 +184,7 @@
 				 @else
 				 <li>
 				 @endif
-				<a href="{{url('userhome')}}" style="border-left:1px solid #fff;border-right:1px solid #fff" disabled> DISCUSSION - COMING SOON</a></li>
+				<a href="" style="border-left:1px solid #fff;border-right:1px solid #fff;color:#999"> DISCUSSION - COMING SOON</a></li>
 				 @if(Request::url() === url('resource_filter'))
 				 <li class="active">
 				 @else
@@ -192,10 +192,10 @@
 				 @endif
 				<a href="{{url('resource_filter')}}" style="color:#666666;border-left:1px solid #fff;border-right:1px solid #fff"> RESOURCES</a></li>
 
-  	            <li><a href="{{url('userhome')}}" style="border-left:1px solid #fff;border-right:1px solid #fff" disabled>EVENTS - COMING SOON</a></li>
+  	            <li><a href="" style="border-left:1px solid #fff;border-right:1px solid #fff;color:#999">EVENTS - COMING SOON</a></li>
 
   				<!-- <li><a href="{url('logout')}}"><img src="css/share-image-black.png" class="blackImage" alt="Hot Potato" width="55" height="21" style=""><img src="css/share-image-white.png" class="whiteImage" alt="Hot Potato" width="55" height="21" style=""> Feed</a></li> -->
-  				<li><a href="{{url('userhome')}}" style="border-left:1px solid #fff;border-right:2px solid #fff" disabled>MEDIA - COMING SOON</a></li>
+  				<li><a href="" style="border-left:1px solid #fff;border-right:2px solid #fff;color:#999">MEDIA - COMING SOON</a></li>
 
   	            <!-- <li role="presentation"><a href="{url('logout')}}">About &amp; Contact</a></li> -->
   	      </div>
