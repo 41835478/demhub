@@ -21,7 +21,9 @@ class UserDashboardController extends Controller {
 
 			return view('frontend.user.user_dashboard.self_profile')
 						->with('action', url('self_profile'))
-						->with('divisions', $division);
+						->with('divisions', $division)
+						->with('allDivisions', $division)
+						->with('userMenu', $userMenu);
 		}
 		else {
 			$id = Auth::user()->id;
