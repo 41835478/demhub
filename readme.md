@@ -56,7 +56,6 @@
     * Events/Handlers
     * Entire application split between frontend/backend
     * Localization Throughout
-    
 * [Changelog](#changelog)
 
 ### Installation:
