@@ -6,7 +6,7 @@
 											-moz-background-size: cover;
 											-o-background-size: cover;
 											background-size: cover;
-											overflow: hidden;"">
+											overflow: hidden;">
 
 	<div class="col-md-6 col-md-offset-6">
 		{!! HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '700')) !!}
@@ -59,7 +59,11 @@
 	</div>
 </div>
 
-<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/bridge.jpg') no-repeat fixed;">
+<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/bridge.jpg') no-repeat fixed;										-webkit-background-size: cover;
+											-moz-background-size: cover;
+											-o-background-size: cover;
+											background-size: cover;
+											overflow: hidden;">
 	<div class="col-md-12 text-center">
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('divisions')}}>SIX DIVISIONS</a>
 		<h2></h2>
