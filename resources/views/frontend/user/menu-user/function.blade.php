@@ -1,4 +1,4 @@
-@if(Auth::check() && ! empty($allDivisions) && ! empty($userMenu))
+@if(Auth::check() && ! empty($allDivisions))
 
 <nav id="user-function" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-header">
@@ -82,6 +82,7 @@
         <!--/.nav-collapse -->
     </div>
 </nav>
+@if (isset($userMenu)=false)
 <div class="row" style="padding-top:52px;">
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($allDivisions as $category)
@@ -194,4 +195,5 @@
 		setTimeout(function(){document.getElementById("adjustPage").click();},115);
 	}
 	</script>
+@endif
 @endif

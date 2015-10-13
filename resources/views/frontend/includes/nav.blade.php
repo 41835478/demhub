@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			@if (Request::url() === URL::route('home'))
+			@if (Request::url() === url('home'))
 
 			@else
 
