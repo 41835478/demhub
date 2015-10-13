@@ -146,19 +146,19 @@
 			<div id="ph-text" class="text-left">
 
 					<div class="col-md-12">
-						<h3>DISCUSSION</h3>
+						<h4>DISCUSSION</h4>
 						<!-- <span class="label label-default" >publication Date</span>
 						<p>Description, Description, Description, Description.</p> -->
 						<hr>
-						<h3>SEARCH</h3>
+						<h4>SEARCH</h4>
 						<hr>
-						<h3>GROUPS</h3>
+						<h4>GROUPS</h4>
 						<hr>
-						<h3>TRENDING NEWS</h3>
+						<h4>TRENDING NEWS</h4>
 						<hr>
-						<h3>EVENT TRACKING</h3>
+						<h4>EVENT TRACKING</h4>
 						<hr>
-						<h3>INTERACTIVE MAP</h3>
+						<h4>INTERACTIVE MAP</h4>
 						<hr>
 					</div>
 
