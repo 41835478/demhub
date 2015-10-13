@@ -52,7 +52,7 @@
 			?>
 
 				<div class="col-md-12">
-					<h3><a href="{{$item->get_link()}}" style="color:#000">{{$item->get_title()}}</a></h3>
+					<h3><a target="_blank" href="{{$item->get_link()}}" style="color:#000">{{$item->get_title()}}</a></h3>
 
 					<span class="label label-default" style="font-size:82%">
 						{{$item->get_date('j F Y | g:i a')}}
