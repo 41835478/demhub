@@ -24,6 +24,7 @@ class UserController extends Controller {
         $newsFeeds = $this -> simplepie_feed($newsFeeds);
 		return view('frontend.user.userhome', [
 					'divisions'  => $allDivisions,
+					'division'  => $allDivisions,
 					'allDivisions' => $allDivisions,
 					'newsFeeds' => $newsFeeds
 					]);

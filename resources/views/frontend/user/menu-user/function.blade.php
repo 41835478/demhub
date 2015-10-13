@@ -85,7 +85,7 @@
 
 <div class="row" style="padding-top:52px;">
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
-		@foreach($divisions as $category)
+		@foreach($allDivisions as $category)
 			<a href="{{url('division', array('slug' => $category->slug))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
 					<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
@@ -102,7 +102,7 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
 	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	@foreach($divisions as $category)
+	@foreach($allDivisions as $category)
     <li data-target="#carousel-example-generic" data-slide-to="{{$category->id}}"></li>
 	@endforeach
   </ol>
@@ -115,7 +115,7 @@
       	<p>WELCOME<font style="visibility:hidden">*</font>TO<font style="visibility:hidden">*</font>DEMHUB!</p>
       </div>
     </div>
-		@foreach($divisions as $category)
+		@foreach($allDivisions as $category)
     <div class="item">
       <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->slug}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">
