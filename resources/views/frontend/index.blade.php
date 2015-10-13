@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="col-md-6 col-md-offset-6 text-center">
-		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('division', 'health')}}">TRY THE BETA</a>
+		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">TRY THE BETA</a>
 	</div>
 
 </div>
@@ -65,7 +65,7 @@
 											background-size: cover;
 											overflow: hidden;">
 	<div class="col-md-12 text-center">
-		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('divisions')}}>SIX DIVISIONS</a>
+		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
 		<h2></h2>
 	</div>
 </div>
