@@ -15,6 +15,7 @@ class UserDashboardController extends Controller {
 	 */
 	public function showSelfProfile() {
 		$division = Division::all();
+		$userMenu = false;
 		//go to users settings page
 		if (Request::isMethod('get')) {
 			$userid = Auth::user()->id;
