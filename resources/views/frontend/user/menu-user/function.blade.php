@@ -117,11 +117,13 @@
     </div>
 		@foreach($allDivisions as $category)
     <div class="item">
+	<a href="{{url('division', array('slug' => $category->slug))}}">
       <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->slug}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">
         {!! $category->welcome_message !!}
       </div>
     </div>
+	</a>
 	@endforeach
 
   </div>
@@ -138,19 +140,25 @@
 </div>
 </div>
 	<div class="col-md-4">
-		<h3>TRENDING ON DEMHUB</h3>
+		<h3>COMING SOON</h3>
 		<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 
 			<div id="ph-text" class="text-left">
 
 					<div class="col-md-12">
-						<h3><a href="" style="color:#000">Article Title</a></h3>
-
-
-						<span class="label label-default" >publication Date</span>
-						<p>Description, Description, Description, Description.</p>
-
-
+						<h3>DISCUSSION</h3>
+						<!-- <span class="label label-default" >publication Date</span>
+						<p>Description, Description, Description, Description.</p> -->
+						<hr>
+						<h3>SEARCH</h3>
+						<hr>
+						<h3>GROUPS</h3>
+						<hr>
+						<h3>TRENDING NEWS</h3>
+						<hr>
+						<h3>EVENT TRACKING</h3>
+						<hr>
+						<h3>INTERACTIVE MAP</h3>
 						<hr>
 					</div>
 

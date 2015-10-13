@@ -76,7 +76,7 @@
 				@foreach($resourceEntry as $entry)
 				<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
 				<td>
-    			<a href="{{$entry->url}}">{{$entry->name}}</a>
+    			<a target="_blank" href="{{$entry->url}}">{{$entry->name}}</a>
 				</td>
 				</tr>
 				@endforeach
