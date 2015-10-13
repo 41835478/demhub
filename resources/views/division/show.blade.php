@@ -64,7 +64,7 @@
 				<div class="col-md-12">
 					<h3><a  
 	   				 @if(Auth::check())
-	   				 href="{{$item->get_link()}}"
+	   				 target="_blank" href="{{$item->get_link()}}"
 	   				 @else
 	   				 href="" data-toggle="modal" data-target="#myModal"
 	   				 @endif

@@ -11,7 +11,6 @@ $router->group(['namespace' => 'Auth'], function () use ($router)
 	$router->group(['middleware' => 'auth'], function ()
 	{
 		get('auth/logout', 'AuthController@getLogout');
-		get('auth/register', 'AuthController@getRegister')->name('register');
 		get('auth/password/change', 'PasswordController@getChangePassword');
 		post('auth/password/change', 'PasswordController@postChangePassword')->name('password.change');
 	});
@@ -24,6 +23,7 @@ $router->group(['namespace' => 'Auth'], function () use ($router)
 		get('auth/login/{provider}', 'AuthController@loginThirdParty')->name('auth.provider');
 		get('account/confirm/{token}', 'AuthController@confirmAccount')->name('account.confirm');
 		get('account/confirm/resend/{user_id}', 'AuthController@resendConfirmationEmail')->name('account.confirm.resend');
+		get('auth/register', 'AuthController@getRegister')->name('register');
 
 		$router->controller('auth', 'AuthController');
 		$router->controller('password', 'PasswordController');
