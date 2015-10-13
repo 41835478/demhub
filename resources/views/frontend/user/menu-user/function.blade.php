@@ -82,8 +82,8 @@
         <!--/.nav-collapse -->
     </div>
 </nav>
-@if (empty($userMenu))
-<div class="row" style="padding-top:52px;">
+@if (!issue($userMenu))
+<div class="row" style="padding-top:10px;">
 	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 		@foreach($allDivisions as $category)
 			<a href="{{url('division', array('slug' => $category->slug))}}">
