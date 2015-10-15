@@ -89,8 +89,8 @@
 </div>
 
 	<script>
-	$("select#country").click(
-	setTimeout(function(){
+	$("select#country").click(function(){
+	$("div#countryFormGroup").click();
 	if (($("select#country").val()) != null){
 		
 		var filterVar = $("select#country").val();
@@ -113,8 +113,7 @@
 			document.getElementById("secondFilter").style.display="";
 			alert('fixing');
 		}
-		},115);
-	);
+	});
 	// function initialFilter(){
 // 	if (($("select#country").val()) != null){
 //
