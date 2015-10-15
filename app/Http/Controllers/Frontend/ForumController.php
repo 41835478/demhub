@@ -5,6 +5,12 @@
 /* Feel free to override methods here to fit your requirements */
 class ForumController extends \Riari\Forum\Controllers\BaseController
 {
+	
+	public function showDiscussionIndex($id){
+		
+		return view('vendor.forum.index', [
+			]);
+	}
 	public function postDiscussion(){
 		if (Request::isMethod('post')){
 			$title = Input::get('title');
@@ -38,7 +44,7 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 			return Redirect::back();
 		}
 	}
-
+	
 	public function postReply($id){
 		if (Request::isMethod('post')){
 			$reply_create = new Reply;

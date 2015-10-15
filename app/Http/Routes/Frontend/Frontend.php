@@ -37,4 +37,5 @@ $router->group(['middleware' => 'auth'], function ()
 	patch('profile/update', 'ProfileController@update');
 	get('userhome', 'UserController@showUserHome')->name('userhome');
 	get('self_profile', 'UserDashboardController@showSelfProfile')->name('self_profile');
+	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 });

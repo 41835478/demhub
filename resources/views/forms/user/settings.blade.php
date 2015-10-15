@@ -10,7 +10,7 @@
       <span class="text-primary">JPEGs and PNG accepted.</span>
       <br>
       <span class="text-danger">Max File size: 2MB</span>
-	  <div class="form-group" style="padding-top:50px; ">
+	  <div class="form-group" style="padding-top:50px; visibility:hidden">
 	  	<div class="col-sm-offset-2 col-sm-9">
 	       {!! Form::submit(trans('labels.save_button'), ['class' => 'btn btn-primary btn-style']) !!}
 	    </div>
