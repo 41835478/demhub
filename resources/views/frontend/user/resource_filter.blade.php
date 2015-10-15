@@ -90,7 +90,6 @@
 
 	<script>
 	$("select#country").click(function(){
-	$("div#countryFormGroup").click();
 	if (($("select#country").val()) != null){
 		
 		var filterVar = $("select#country").val();
