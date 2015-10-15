@@ -12,10 +12,10 @@
       <span class="text-danger">Max File size: 2MB</span>
 	  <div class="form-group" style="padding-top:50px; visibility:hidden">
 	  	<div class="col-sm-offset-2 col-sm-9">
-	      <button type="submit" class="btn btn-default btn-style">SAVE ALL</button>
+	       {!! Form::submit(trans('labels.save_button'), ['class' => 'btn btn-primary btn-style']) !!}
 	    </div>
 	  </div> 
-	  <p style="visibility:hidden">{{Form::token()}}</p>
+	 
     </div>
   </div>
 </div>
