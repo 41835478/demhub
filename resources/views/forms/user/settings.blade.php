@@ -1,4 +1,4 @@
-<form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{$action}}">
+ {!! Form::model($user, ['route' => 'frontend.profile.update', 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
 	<div class="col-md-3">
   <div class="form-group">
     <label class="col-sm-3 control-label" for="inputuserImage">Avatar</label>
@@ -111,4 +111,4 @@
   </div>
   
 </div>
-</form>
+{!! Form::close() !!}
