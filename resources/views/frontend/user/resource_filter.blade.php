@@ -107,11 +107,12 @@
 			fillRegions(country);
 			var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
 			document.getElementById("region").innerHTML=regionForm;
-			document.getElementById("regionFormGroup").style.display="";
 			
-			document.getElementById("secondFilter").style.display="";
 			
 		}
+		document.getElementById("regionFormGroup").style.display="";
+		
+		document.getElementById("secondFilter").style.display="";
 	});
 	// function initialFilter(){
 // 	if (($("select#country").val()) != null){
