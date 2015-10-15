@@ -124,7 +124,10 @@ class AuthController extends Controller
 				->withSocialiteLinks($this->getSocialLinks())
             	->withFlashSuccess("Your account has been successfully confirmed!");
         } catch (GeneralException $e) {
-            return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
+	        return view('frontend.auth.login')
+				->withSocialiteLinks($this->getSocialLinks())
+				->withFlashDanger($e->getMessage());
+            // return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
     }
 
@@ -137,10 +140,7 @@ class AuthController extends Controller
         //Don't know why the exception handler is not catching this
         try {
             $this->auth->resendConfirmationEmail($user_id);
-            // return redirect()->route('home')->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
-	        return view('frontend.auth.login')
-				->withSocialiteLinks($this->getSocialLinks())
-            	->withFlashSuccess("Your account has been successfully confirmed!");
+            return redirect()->route('home')->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
         } catch (GeneralException $e) {
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
