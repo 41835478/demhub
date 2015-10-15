@@ -30,7 +30,7 @@
 			    <label for="exampleInputEmail2">Email</label>
 			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 			  </div> -->
-			  
+			   <button type="button" id="firstFilter" onclick="firstFilter()" class="btn btn-default btn-style" style="display:none">FILTER</button>
 			  <button type="button" id="secondFilter" onclick="secondFilter()" class="btn btn-default btn-style" style="display:none">FILTER</button>
 		</form>
         <hr>
@@ -90,53 +90,33 @@
 
 	<script>
 	$("select#country").click(function(){
+		document.getElementById("firstFilter").style.display="";
+	});
+	
+	
+	function firstFilter(){
 	if (($("select#country").val()) != null){
-		
+
 		var filterVar = $("select#country").val();
 		var country = filterVar.toLowerCase();
 		country=country.replace(/ /g,"_");
-		
+
 		// var list =document.getElementsByClassName(country);
-		
+
 		if($("tr").hasClass('in')) {
 		        $("tr").addClass("out");
 		        $("tr").removeClass("in");
 		        $("tr." +country).addClass("in");
 		        $("tr." +country).removeClass("out");
-		    } 
+		    }
 			fillRegions(country);
 			var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
 			document.getElementById("region").innerHTML=regionForm;
-			
+			document.getElementById("regionFormGroup").style.display="";
+			document.getElementById("firstFilter").style.display="none";
 			
 		}
-		document.getElementById("regionFormGroup").style.display="";
-		
-		document.getElementById("secondFilter").style.display="";
-	});
-	// function initialFilter(){
-// 	if (($("select#country").val()) != null){
-//
-// 		var filterVar = $("select#country").val();
-// 		var country = filterVar.toLowerCase();
-// 		country=country.replace(/ /g,"_");
-//
-// 		// var list =document.getElementsByClassName(country);
-//
-// 		if($("tr").hasClass('in')) {
-// 		        $("tr").addClass("out");
-// 		        $("tr").removeClass("in");
-// 		        $("tr." +country).addClass("in");
-// 		        $("tr." +country).removeClass("out");
-// 		    }
-// 			fillRegions(country);
-// 			var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
-// 			document.getElementById("region").innerHTML=regionForm;
-// 			document.getElementById("regionFormGroup").style.display="";
-// 			document.getElementById("initialFilter").style.display="none";
-// 			document.getElementById("secondFilter").style.display="";
-// 		}
-// 	};
+	};
 	function fillRegions(country){
 		var data = document.getElementById(country).innerHTML;
 		// data=data.replace(/,/g,'","');
@@ -150,28 +130,8 @@
 	}
 	
 	$("select#region").click(function(){
-		if (($("select#country").val()) != null){
 		
-			var filterVar = $("select#country").val();
-			var country = filterVar.toLowerCase();
-			country=country.replace(/ /g,"_");
-		
-			// var list =document.getElementsByClassName(country);
-		
-			if($("tr").hasClass('in')) {
-			        $("tr").addClass("out");
-			        $("tr").removeClass("in");
-			        $("tr." +country).addClass("in");
-			        $("tr." +country).removeClass("out");
-			    } 
-				fillRegions(country);
-				var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
-				document.getElementById("region").innerHTML=regionForm;
-				document.getElementById("regionFormGroup").style.display="";
-			
-				document.getElementById("secondFilter").style.display="";
-				
-			}
+		document.getElementById("secondFilter").style.display="";
 		});	
 		
 	// if (($("select#region").val()) != null){
@@ -204,6 +164,7 @@
 		        $("tr." +region).removeClass("out");
 		    } 
 	}
+	document.getElementById("secondFilter").style.display="none";
 	};
 	</script>
 @endsection('content')
