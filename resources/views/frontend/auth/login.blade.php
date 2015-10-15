@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div id="welcome_sign-up" class="row"     style="padding:0px;background:url('localhost/images/backgrounds/dried_earth.jpg')  no-repeat fixed center;
+  <div id="welcome_sign-up" class="row"     style="padding:0px;background:url('http://beta.demhub.net/images/backgrounds/dried_earth.jpg')  no-repeat fixed center;
                                 -webkit-background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
