@@ -23,21 +23,21 @@
   <div class="form-group disabled">
     <label for="firstName" class="col-sm-3 control-label">First Name</label>
     <div class="col-sm-9">
-      <input type="text" name="first_name" class="form-control" id="firstName" placeholder="Email" value="{{Auth::user()->first_name}}" disabled>
+      {!! Form::input('text', 'first_name',$user->first_name, ['class' => 'form-control']) !!}
     </div>
   </div>
   
   <div class="form-group disabled">
     <label for="lastName" class="col-sm-3 control-label">Last Name</label>
     <div class="col-sm-9">
-      <input type="text" name="last_name" class="form-control" id="lastName" placeholder="Email" value="{{Auth::user()->last_name}}" disabled>
+      {!! Form::input('text', 'last_name', $user->last_name, ['class' => 'form-control']) !!}
     </div>
   </div>
   
   <div class="form-group">
     <label for="inputuserName" class="col-sm-3 control-label">Username</label>
     <div class="col-sm-9">
-      <input type="text" name="user_name" class="form-control" id="inputuserName" placeholder="Email" value="{{Auth::user()->user_name}}">
+      {!! Form::input('text', 'user_name', null, ['class' => 'form-control']) !!}
     </div>
   </div>
   
