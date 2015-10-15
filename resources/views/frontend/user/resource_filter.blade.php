@@ -170,7 +170,7 @@
 				document.getElementById("regionFormGroup").style.display="";
 			
 				document.getElementById("secondFilter").style.display="";
-				alert('fixing');
+				
 			}
 		});	
 		
