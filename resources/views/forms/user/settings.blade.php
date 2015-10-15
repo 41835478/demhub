@@ -103,10 +103,10 @@
       </div>
    </div>
    
-  <div class="form-group">
+  <div class="form-group" style="visibility:hidden">
     <label for="inputLinkedIn" class="col-sm-3 control-label">LinkedIn</label>
     <div class="col-sm-9">
-      <input type="text" name="LinkedIn" class="form-control" id="inputLinkedIn" placeholder="ca.linkedin.com/in/..." >
+      <input type="text" name="linkedIn" class="form-control" id="inputLinkedIn" placeholder="ca.linkedin.com/in/..." >
     </div>
   </div>
   
