@@ -8,7 +8,7 @@
 		<br>
 		<!-- <h3>Filters</h3> -->
 		<form class="form-inline">
-			<div class="form-group">
+			<div class="form-group" id="countryFormGroup">
 			    <label for="country">Country</label>
 				<select id="country" class="form-control">
 					<option value="" disabled selected>Select One</option>
@@ -89,7 +89,8 @@
 </div>
 
 	<script>
-	$("select#country").click(function(){
+	$("select#country").click(
+	setTimeout(function(){
 	if (($("select#country").val()) != null){
 		
 		var filterVar = $("select#country").val();
@@ -110,8 +111,10 @@
 			document.getElementById("regionFormGroup").style.display="";
 			
 			document.getElementById("secondFilter").style.display="";
+			alert('fixing');
 		}
-	});
+		},115);
+	);
 	// function initialFilter(){
 // 	if (($("select#country").val()) != null){
 //
@@ -146,6 +149,7 @@
 		// console.log(optionHTML);
 		return optionHTML;
 	}
+	
 	$("select#region").click(function(){
 	if (($("select#region").val()) != null){
 		var filterVar = $("select#region").val();
