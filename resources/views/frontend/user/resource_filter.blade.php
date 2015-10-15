@@ -30,8 +30,8 @@
 			    <label for="exampleInputEmail2">Email</label>
 			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 			  </div> -->
-			   <button type="button" id="firstFilter" onclick="firstFilter()" class="btn btn-default btn-style" style="display:none">FILTER</button>
-			  <button type="button" id="secondFilter" onclick="secondFilter()" class="btn btn-default btn-style" style="display:none">FILTER</button>
+			   <button type="button" id="firstFilter" onclick="firstFilterF()" class="btn btn-default btn-style" style="display:none">FILTER</button>
+			  <button type="button" id="secondFilter" onclick="secondFilterF()" class="btn btn-default btn-style" style="display:none">FILTER</button>
 		</form>
         <hr>
     </div>
@@ -94,7 +94,7 @@
 	});
 	
 	
-	function firstFilter(){
+	function firstFilterF(){
 	if (($("select#country").val()) != null){
 
 		var filterVar = $("select#country").val();
@@ -149,7 +149,7 @@
 // 		    }
 // 	}
 // 	});
-	function secondFilter(){
+	function secondFilterF(){
 	if (($("select#region").val()) != null){
 		var filterVar = $("select#region").val();
 		var region = filterVar.toLowerCase();
