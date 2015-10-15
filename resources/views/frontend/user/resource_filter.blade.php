@@ -110,7 +110,7 @@
 			document.getElementById("regionFormGroup").style.display="";
 			
 			document.getElementById("secondFilter").style.display="";
-			alert('fixing');
+			
 		}
 	});
 	// function initialFilter(){
@@ -149,21 +149,45 @@
 	}
 	
 	$("select#region").click(function(){
-	if (($("select#region").val()) != null){
-		var filterVar = $("select#region").val();
-		var region = filterVar.toLowerCase();
-		region=region.replace(/-/g,"_");
+		if (($("select#country").val()) != null){
 		
-		// var list =document.getElementsByClassName(country);
+			var filterVar = $("select#country").val();
+			var country = filterVar.toLowerCase();
+			country=country.replace(/ /g,"_");
 		
-		if($("tr").hasClass('in')) {
-		        $("tr").addClass("out");
-		        $("tr").removeClass("in");
-		        $("tr." +region).addClass("in");
-		        $("tr." +region).removeClass("out");
-		    } 
-	}
-	});
+			// var list =document.getElementsByClassName(country);
+		
+			if($("tr").hasClass('in')) {
+			        $("tr").addClass("out");
+			        $("tr").removeClass("in");
+			        $("tr." +country).addClass("in");
+			        $("tr." +country).removeClass("out");
+			    } 
+				fillRegions(country);
+				var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
+				document.getElementById("region").innerHTML=regionForm;
+				document.getElementById("regionFormGroup").style.display="";
+			
+				document.getElementById("secondFilter").style.display="";
+				alert('fixing');
+			}
+		});	
+		
+	// if (($("select#region").val()) != null){
+// 		var filterVar = $("select#region").val();
+// 		var region = filterVar.toLowerCase();
+// 		region=region.replace(/-/g,"_");
+//
+// 		// var list =document.getElementsByClassName(country);
+//
+// 		if($("tr").hasClass('in')) {
+// 		        $("tr").addClass("out");
+// 		        $("tr").removeClass("in");
+// 		        $("tr." +region).addClass("in");
+// 		        $("tr." +region).removeClass("out");
+// 		    }
+// 	}
+// 	});
 	function secondFilter(){
 	if (($("select#region").val()) != null){
 		var filterVar = $("select#region").val();
