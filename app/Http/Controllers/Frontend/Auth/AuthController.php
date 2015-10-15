@@ -121,7 +121,7 @@ class AuthController extends Controller
         try {
             $this->auth->confirmAccount($token);
 	        return view('frontend.auth.login')
-	            ->withSocialiteLinks($this->getSocialLinks());
+	            ->withSocialiteLinks($this->getSocialLinks())
             	->withFlashSuccess("Your account has been successfully confirmed!");
         } catch (GeneralException $e) {
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
