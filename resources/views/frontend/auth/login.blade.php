@@ -46,8 +46,8 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-7 col-md-offset-4">
-                {!! Form::submit(trans('labels.login_button'), ['class' => 'btn btn-default btn-style', 'style' => 'margin-right:15px']) !!}
+            <div class="col-md-8 col-md-offset-4">
+                <button type="submit" class="btn btn-default btn-lg btn-style" style="margin-right:10px">LOGIN</button>
 
                 {!! link_to('password/email', trans('labels.forgot_password')) !!}
             </div>

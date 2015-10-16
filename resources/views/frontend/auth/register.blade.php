@@ -18,11 +18,11 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 
-	      <div class="modal-body">
+	      <div class="modal-body" style="color:#000">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateForm()"><span aria-hidden="true">&times;</span></button>
 	          <h3>We verify each member who signs up.</h3>
 					  <h3>In order to do so DEMHUB needs a few more details.</h3>
-						<button type="button" class="btn btn-default btn-style-alt" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
+						<button type="button" class="btn btn-default btn-style" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
 					</button>
 				</div>
 				<!-- <div class="modal-footer">
@@ -83,7 +83,7 @@
 		    	</div>
 
 		    	<div class="form-group">
-		        <div class="col-sm-offset-3 col-sm-7">
+		        <div class="col-sm-offset-4 col-sm-7">
 		          <div class="checkbox">
 		            <label>
 		            	<input name="remember" type="checkbox"
@@ -101,7 +101,7 @@
 					</div>
 
 					<div class="form-group">
-		        <div class="col-sm-offset-3 col-sm-7">
+		        <div class="col-sm-offset-4 col-sm-7">
 		        	<button type="button" class="btn btn-default btn-lg btn-style" data-toggle="modal" data-target="#myModal">JOIN</button>
 		        </div>
 		    	</div>

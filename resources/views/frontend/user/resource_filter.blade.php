@@ -66,7 +66,10 @@
 			i++;
 		@endforeach
 				
-				
+	function capitalizeFirstLetter(string) {
+		   return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+			
 	</script>
 	<div class="row">
     <div class="col-sm-5 col-sm-offset-4">
@@ -76,7 +79,7 @@
 				@foreach($resourceEntry as $entry)
 				<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
 				<td>
-    			<a target="_blank" href="{{$entry->url}}">{{$entry->name}}</a>
+    			<a target="_blank" href="{{$entry->url}}">{{$entry->name}}.capitalizeFirstLetter()</a>
 				</td>
 				</tr>
 				@endforeach
