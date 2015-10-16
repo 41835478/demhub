@@ -6,7 +6,7 @@
 class ForumController extends \Riari\Forum\Controllers\BaseController
 {
 	
-	public function showDiscussionIndex($id){
+	public function showDiscussionIndex(){
 		
 		return view('frontend.vendor.forum.index', [
 			]);
