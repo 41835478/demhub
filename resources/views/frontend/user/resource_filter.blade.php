@@ -12,10 +12,10 @@
 			    <label for="country">Country</label>
 				<select id="country" class="form-control">
 					<option value="" disabled selected>Select One</option>
-				  <option>Australia</option>
-				  <option>Canada</option>
-				  <option>United States</option>
-				  <option>New Zealand</option>
+				  <option class="countryOption">Australia</option>
+				  <option class="countryOption">Canada</option>
+				  <option class="countryOption">United States</option>
+				  <option class="countryOption">New Zealand</option>
 				</select>
 			  </div>
   			<div class="form-group" id="regionFormGroup" style="display:none">
@@ -30,8 +30,7 @@
 			    <label for="exampleInputEmail2">Email</label>
 			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 			  </div> -->
-			   <button type="button" id="firstFilter" onclick="firstFilterF()" class="btn btn-default btn-style" style="display:none">FILTER</button>
-			  <button type="button" id="secondFilter" onclick="secondFilterF()" class="btn btn-default btn-style" style="display:none">FILTER</button>
+			  
 		</form>
         <hr>
     </div>
@@ -79,7 +78,7 @@
 				@foreach($resourceEntry as $entry)
 				<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
 				<td>
-    			<a target="_blank" href="{{$entry->url}}"><script>capitalizeFirstLetter({{$entry->name}})</script></a>
+    			<a target="_blank" href="{{$entry->url}}" style="text-transform: capitalize">{{$entry->name}}</a>
 				</td>
 				</tr>
 				@endforeach
@@ -92,34 +91,55 @@
 </div>
 
 	<script>
-	$("select#country").click(function(){
-		document.getElementById("firstFilter").style.display="";
+	$("select#country").change(function(){
+		if (($("select#country").val()) != null){
+
+			var filterVar = $("select#country").val();
+			var country = filterVar.toLowerCase();
+			country=country.replace(/ /g,"_");
+
+			// var list =document.getElementsByClassName(country);
+
+			if($("tr").hasClass('in')) {
+			        $("tr").addClass("out");
+			        $("tr").removeClass("in");
+			        $("tr." +country).addClass("in");
+			        $("tr." +country).removeClass("out");
+			    }
+				fillRegions(country);
+				var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
+				document.getElementById("region").innerHTML=regionForm;
+				document.getElementById("regionFormGroup").style.display="";
+				
+			
+			}
+		
 	});
 	
 	
-	function firstFilterF(){
-	if (($("select#country").val()) != null){
-
-		var filterVar = $("select#country").val();
-		var country = filterVar.toLowerCase();
-		country=country.replace(/ /g,"_");
-
-		// var list =document.getElementsByClassName(country);
-
-		if($("tr").hasClass('in')) {
-		        $("tr").addClass("out");
-		        $("tr").removeClass("in");
-		        $("tr." +country).addClass("in");
-		        $("tr." +country).removeClass("out");
-		    }
-			fillRegions(country);
-			var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
-			document.getElementById("region").innerHTML=regionForm;
-			document.getElementById("regionFormGroup").style.display="";
-			document.getElementById("firstFilter").style.display="none";
-			
-		}
-	};
+	// function firstFilterF(){
+	// if (($("select#country").val()) != null){
+	//
+	// 	var filterVar = $("select#country").val();
+	// 	var country = filterVar.toLowerCase();
+	// 	country=country.replace(/ /g,"_");
+	//
+	// 	// var list =document.getElementsByClassName(country);
+	//
+	// 	if($("tr").hasClass('in')) {
+	// 	        $("tr").addClass("out");
+	// 	        $("tr").removeClass("in");
+	// 	        $("tr." +country).addClass("in");
+	// 	        $("tr." +country).removeClass("out");
+	// 	    }
+	// 		fillRegions(country);
+	// 		var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
+	// 		document.getElementById("region").innerHTML=regionForm;
+	// 		document.getElementById("regionFormGroup").style.display="";
+	// 		document.getElementById("firstFilter").style.display="none";
+	//
+	// 	}
+	// };
 	function fillRegions(country){
 		var data = document.getElementById(country).innerHTML;
 		// data=data.replace(/,/g,'","');
@@ -132,12 +152,25 @@
 		return optionHTML;
 	}
 	
-	$("select#region").click(function(){
+	$("select#region").change(function(){
 		
-		document.getElementById("secondFilter").style.display="";
-		});	
-		
-	// if (($("select#region").val()) != null){
+	if (($("select#region").val()) != null){
+		var filterVar = $("select#region").val();
+		var region = filterVar.toLowerCase();
+		region=region.replace(/-/g,"_");
+
+		// var list =document.getElementsByClassName(country);
+
+		if($("tr").hasClass('in')) {
+		        $("tr").addClass("out");
+		        $("tr").removeClass("in");
+		        $("tr." +region).addClass("in");
+		        $("tr." +region).removeClass("out");
+		    }
+	}
+	});
+	// function secondFilterF(){
+// 	if (($("select#region").val()) != null){
 // 		var filterVar = $("select#region").val();
 // 		var region = filterVar.toLowerCase();
 // 		region=region.replace(/-/g,"_");
@@ -151,23 +184,7 @@
 // 		        $("tr." +region).removeClass("out");
 // 		    }
 // 	}
-// 	});
-	function secondFilterF(){
-	if (($("select#region").val()) != null){
-		var filterVar = $("select#region").val();
-		var region = filterVar.toLowerCase();
-		region=region.replace(/-/g,"_");
-		
-		// var list =document.getElementsByClassName(country);
-		
-		if($("tr").hasClass('in')) {
-		        $("tr").addClass("out");
-		        $("tr").removeClass("in");
-		        $("tr." +region).addClass("in");
-		        $("tr." +region).removeClass("out");
-		    } 
-	}
-	document.getElementById("secondFilter").style.display="none";
-	};
+// 	document.getElementById("secondFilter").style.display="none";
+// 	};
 	</script>
 @endsection('content')
