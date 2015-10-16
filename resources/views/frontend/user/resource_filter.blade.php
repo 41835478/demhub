@@ -79,7 +79,7 @@
 				@foreach($resourceEntry as $entry)
 				<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
 				<td>
-    			<a target="_blank" href="{{$entry->url}}">{{$entry->name}}.capitalizeFirstLetter()</a>
+    			<a target="_blank" href="{{$entry->url}}">capitalizeFirstLetter({{$entry->name}})</a>
 				</td>
 				</tr>
 				@endforeach
