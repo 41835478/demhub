@@ -8,7 +8,7 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 	
 	public function showDiscussionIndex(){
 		
-		return view('frontend.vendor.forum.index', [
+		return view('vendor.forum.index', [
 			]);
 	}
 	public function postDiscussion(){
