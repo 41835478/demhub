@@ -11,7 +11,7 @@ return [
 	|
 	*/
 
-	'user_model' => 'App\User',
+	'user_model' => 'App\Models\Access\User\User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -86,6 +86,6 @@ return [
 	|
 	*/
 
-	'controller' => '\App\Http\Controllers\ForumController'
+	'controller' => '\App\Http\Controllers\Frontend\ForumController'
 
 ];

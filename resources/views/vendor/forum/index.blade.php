@@ -35,6 +35,7 @@
                         ({{ $category->latestActiveThread->lastPost->authorName }})</a>
 				</div>
                 @endif
+				{{ var_dump ($category->newestThread) }}
             </td>
             <td>{{ $category->threadCount }}</td>
             <td>{{ $category->postCount }}</td>

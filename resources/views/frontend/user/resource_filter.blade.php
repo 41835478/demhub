@@ -3,7 +3,7 @@
 @section('content')
 <div id="user-settings" class="row">
 	<div class="col-md-12 text-center">
-    	<h1>Resources</h1>
+    	<h1>RESOURCES</h1>
 		
 		<br>
 		<!-- <h3>Filters</h3> -->

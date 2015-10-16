@@ -73,10 +73,17 @@
 					<span class="label label-default" style="font-size:82%">
 						{{$item->get_date('j F Y | g:i a')}}
 					</span>
-					<p>
+					
 						<?php
 							$description = $item->get_description();
-
+							if (preg_match_all('/(https?:\/\/\S+\.(?:jpg|png|gif))\s+/', $description, $img)){
+							
+							echo $img[0][0];	
+							}
+							?>
+						<p>
+						<?php	
+						$description = $item->get_description();
 							if (strlen($description) > 225){
 								$str = substr($description, 0, 225) . '...';
 								echo strip_tags($str, '<img>');
