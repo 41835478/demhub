@@ -18,6 +18,11 @@ class DivisionController extends Controller
       $allDivisions = Division::all();
 	    $userMenu = false;
 
+      $division = Division::find(1);
+      $division->slug = "all";
+      $division->bg_color = "000";
+      $division->name = "All Sections";
+
       $newsFeeds = array();
       foreach ($allDivisions as $div) {
         $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
@@ -26,6 +31,7 @@ class DivisionController extends Controller
 
       return view('division.index', [
         'allDivisions' => $allDivisions,
+        'division' => $division,
         'navDivisions' => $allDivisions,
         'newsFeeds' => $newsFeeds,
 		    'userMenu' => $userMenu
@@ -57,10 +63,10 @@ class DivisionController extends Controller
 
       $query = Request::get('search');
 
-      $queryResults = DB::table('news_feeds_cache_data')->where('data', 'LIKE', '%' . $query . '%')
-        ->lists('data');
+      $queryResults = DB::table('news_feeds_items')->where('data', 'LIKE', '%' . $query . '%')
+        ->lists('id');
 
-      dd($queryResults[0]);
+      dd($queryResults);
 
       return view('division.results', [
         'allDivisions' => $allDivisions,
@@ -78,10 +84,10 @@ class DivisionController extends Controller
 		  $feed->enable_cache(true); $feed->set_cache_location('mysql://'.getenv('DB_USERNAME').':'.getenv('DB_PASSWORD').'@'.getenv('DB_HOST').':3306/'.getenv('DB_DATABASE').'?prefix=news_feeds_');
       $feed->set_cache_duration(60*60); // (sec*mins)
       $feed->set_output_encoding('utf-8');
-      $feed->set_item_limit(1);
-      // dd($feed);
 
-      $feed->init();
+      $feed->set_item_limit(1);
+
+      // $feed->init();
       $feed->handle_content_type();
       return $feed;
 	  }
