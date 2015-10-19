@@ -2,9 +2,9 @@
 
   <div id="ph-text" class="text-left">
 
-    @foreach($newsFeeds->get_items(0, 15) as $item)
+    @foreach($newsFeeds->get_items() as $item)
 
-      @if(isset($pattern) && (preg_match($pattern, $item->get_title()) == true || preg_match($pattern, $item->get_description()) == true) )
+      @if(!isset($pattern) || isset($pattern) && (preg_match($pattern, $item->get_title()) == true || preg_match($pattern, $item->get_description()) == true) )
 
         <div class="col-md-12">
           <h3>

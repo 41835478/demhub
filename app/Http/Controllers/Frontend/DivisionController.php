@@ -4,7 +4,6 @@ use App\Models\Division;
 use App\Http\Controllers\Controller;
 use SimplePie;
 use Request;
-use DB;
 
 class DivisionController extends Controller
 {
@@ -91,7 +90,6 @@ class DivisionController extends Controller
     private function simplepie_feed($newsFeeds)
     {
 		  $feed = new SimplePie();
-
 		  $feed->set_feed_url($newsFeeds);
 		  $feed->enable_cache(true); $feed->set_cache_location('mysql://'.getenv('DB_USERNAME').':'.getenv('DB_PASSWORD').'@'.getenv('DB_HOST').':3306/'.getenv('DB_DATABASE').'?prefix=news_feeds_');
       $feed->set_cache_duration(60*60); // (sec*mins)
