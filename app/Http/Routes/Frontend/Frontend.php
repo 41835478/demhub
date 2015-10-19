@@ -17,6 +17,7 @@ get('terms', 'FrontendController@terms');
  */
 get('divisions', 'DivisionController@index');
 get('division/{slug}', 'DivisionController@show')->where('slug', '[A-Za-z_\-]+');
+post('divisions/results', 'DivisionController@results');
 
 /**
  * Info Resources Routes

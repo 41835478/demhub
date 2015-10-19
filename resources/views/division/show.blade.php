@@ -1,103 +1,13 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-	<nav>
-		<div id="welcome-division">
 
-			<div id="welcome-division-category" class="row" style="background:
-																	url('../images/backgrounds/divisions/{{$division->slug}}.jpg') no-repeat fixed 0% 70%;
-																	-webkit-background-size: cover;
-																	-moz-background-size: cover;
-																	-o-background-size: cover;
-																	background-size: cover;
-																	overflow: hidden;"
-																	>
-				<div class="row" style="padding-top:50px;">
-					<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
-						@foreach($navDivisions as $category)
+	@include('division._welcome_division')
 
-							<a href="{{url('division', array('id' => $category->slug))}}">
-								<div id="division_{{$category->slug}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
-									<p style="text-align:center;padding-top:11px;text-transform:uppercase;">{{$category->name}}</p>
-								</div>
-							</a>
+	@include('division._restricted_access')
 
-						@endforeach
+	@include('division._search')
 
-					</div>
-				</div>
+	@include('division._feeds')
 
-				<div class="row">
-					<div id="ph-name" class="col-md-4 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
-						<h1 style="background:#{{$division->bg_color}}">{{$division->name}}</h1>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-	</nav>
-	
-		<div class="modal fade" id="myModal" style="padding-top:100px">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<div class="modal-body">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h3>You can access the articles once you {!! link_to('auth/register', trans('REGISTER')) !!}</h3>
-					</div>
-
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		
-	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
-
-		<div id="ph-text" class="text-left">
-			<?php
-				$max = $newsFeeds->get_item_quantity();
-				for ($x = 0; $x < $max; $x++): $item = $newsFeeds->get_item($x);
-			?>
-
-				<div class="col-md-12">
-					<h3><a  
-	   				 @if(Auth::check())
-	   				 target="_blank" href="{{$item->get_link()}}"
-	   				 @else
-	   				 href="" data-toggle="modal" data-target="#myModal"
-	   				 @endif
-						style="color:#000">{{$item->get_title()}}</a></h3>
-
-					<span class="label label-default" style="font-size:82%">
-						{{$item->get_date('j F Y | g:i a')}}
-					</span>
-					
-						<?php
-							$description = $item->get_description();
-							if (preg_match_all('/(https?:\/\/\S+\.(?:jpg|png|gif))\s+/', $description, $img)){
-							
-							echo $img[0][0];	
-							}
-							?>
-						<p>
-						<?php	
-						$description = $item->get_description();
-							if (strlen($description) > 225){
-								$str = substr($description, 0, 225) . '...';
-								echo strip_tags($str, '<img>');
-							} else{
-								echo strip_tags($description, '<img>');
-							}
-
-						?>
-					 </p>
-					<hr>
-				</div>
-
-			<?php endfor; ?>
-		</div>
-
-	</div>
 @stop

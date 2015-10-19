@@ -8,6 +8,12 @@
 
 	@include('division._search')
 
-	@include('division._feeds')
+	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
+
+		@foreach ($queryResults as $item)
+			{{ $item }}
+		@endforeach
+
+	</div>
 
 @stop
