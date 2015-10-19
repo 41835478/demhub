@@ -61,18 +61,30 @@ class DivisionController extends Controller
       $allDivisions = Division::all();
 	    $userMenu = false;
 
+      $division = Division::find(1);
+      $division->slug = "all";
+      $division->bg_color = "000";
+      $division->name = "All Sections";
+
+      $newsFeeds = array();
+      foreach ($allDivisions as $div) {
+        $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
+      }
+      $newsFeeds = $this -> simplepie_feed($newsFeeds);
+
+      // dd ( parse_url(Request::url())["path"] );
+
       $query = Request::get('search');
+      $pattern = "/".$query."/i";
 
-      $queryResults = DB::table('news_feeds_items')->where('data', 'LIKE', '%' . $query . '%')
-        ->lists('id');
-
-      dd($queryResults);
-
-      return view('division.results', [
+      return view('division.index', [
         'allDivisions' => $allDivisions,
+        'division' => $division,
         'navDivisions' => $allDivisions,
-        'queryResults' => $queryResults,
-		    'userMenu' => $userMenu
+        'newsFeeds' => $newsFeeds,
+		    'userMenu' => $userMenu,
+        'query' => $query,
+        'pattern' => $pattern
       ]);
     }
 
@@ -87,7 +99,7 @@ class DivisionController extends Controller
 
       $feed->set_item_limit(1);
 
-      // $feed->init();
+      $feed->init();
       $feed->handle_content_type();
       return $feed;
 	  }
