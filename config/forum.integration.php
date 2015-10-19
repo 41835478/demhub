@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 
 return [
 
@@ -22,7 +23,7 @@ return [
 	|
 	*/
 
-	'user_name_attribute' => 'name',
+	'user_name_attribute' => null,
 
 	/*
 	|--------------------------------------------------------------------------

@@ -5,28 +5,21 @@
 
 <h2>{{ trans('forum::base.index') }}</h2>
 
-@foreach ($categories as $category)
+
 
 <table class="table table-index">
     <thead>
         <tr>
-            <th>{{ trans('forum::base.category') }}</th>
             <th>{{ trans('forum::base.threads') }}</th>
-            <th>{{ trans('forum::base.posts') }}</th>
+			<th>{{ trans('forum::base.category') }}</th>
+            
+			<th>Author</th>
+			<th>{{ trans('forum::base.posts') }}</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <p class="lead"><a href="{{ $category->route }}">{{ $category->title }}</a></p>
-                {{ $category->subtitle }}
-				
-
-				
-            </td>
-            <td>{{ $category->threadCount }}</td>
-            <td>{{ $category->postCount }}</td>
-        </tr>
+		@foreach ($threads as $thread)
+       
         @if (!$category->subcategories->isEmpty())
         <tr>
             <td>{{ trans('forum::base.subcategories') }}</td>

@@ -57,5 +57,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function canChangeEmail() {
 		return config('access.users.change_email');
 	}
+	public function user_name() {
+		return $this->$user_name;
+	}
 
 }
