@@ -17,6 +17,8 @@
         <div class="clearfix"></div>
     </div><!--well-->
 
+    <input type="hidden" name="route" value="{{ Request::path() }}">
+
   {!! Form::close() !!}
 
 </div>
