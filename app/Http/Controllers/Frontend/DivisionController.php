@@ -14,45 +14,39 @@ class DivisionController extends Controller
     */
     public function index()
     {
-      $allDivisions = Division::all();
-	    $userMenu = false;
+      $currentDivision = Division::find(1);
+      $currentDivision->slug      = "all";
+      $currentDivision->bg_color  = "000";
+      $currentDivision->name      = "All Divisions";
 
-      $division = Division::find(1);
-      $division->slug = "all";
-      $division->bg_color = "000";
-      $division->name = "All Sections";
+      $allDivisions = $navDivisions = Division::all();
+	    $userMenu = false;
 
       $newsFeeds = array();
       foreach ($allDivisions as $div) {
         $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
       }
+      $newsFeeds = array_unique($newsFeeds, SORT_REGULAR);
       $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
-      return view('division.index', [
-        'allDivisions' => $allDivisions,
-        'division' => $division,
-        'navDivisions' => $allDivisions,
-        'newsFeeds' => $newsFeeds,
-		    'userMenu' => $userMenu
-      ]);
+      return view('division.index', compact([
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu'
+      ]));
     }
 
     public function show($divisionId)
     {
+      $currentDivision = Division::where('slug', $divisionId)->firstOrFail();
+
       $allDivisions = Division::all();
 	    $userMenu = false;
-      $division = Division::where('slug', $divisionId)->firstOrFail();
 
-      $newsFeeds = $division->newsFeeds->lists('url')->all();
+      $newsFeeds = $currentDivision->newsFeeds->lists('url')->all();
       $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
-      return view('division.show', [
-        'allDivisions' => $allDivisions,
-        'division' => $division,
-        'navDivisions' => $allDivisions,
-        'newsFeeds' => $newsFeeds,
-		    'userMenu' => $userMenu
-      ]);
+      return view('division.show', compact([
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu'
+      ]));
     }
 
     public function results()
@@ -71,7 +65,7 @@ class DivisionController extends Controller
       }
       $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
-      // dd ( parse_url(Request::url())["path"] );
+      dd ( parse_url(Request::url())["path"] );
 
       $query = Request::get('search');
       $pattern = "/".$query."/i";

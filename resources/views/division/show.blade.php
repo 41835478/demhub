@@ -4,7 +4,7 @@
 
 	@include('division._welcome_division')
 
-	@include('division._restricted_access')
+	@include('division._restricted_access_modal')
 
 	@include('division._search')
 

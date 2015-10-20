@@ -2,7 +2,7 @@
   <div id="welcome-division">
 
     <div id="welcome-division-category" class="row" style="background:
-                                url('../images/backgrounds/divisions/{{$division->slug}}.jpg') no-repeat fixed 0% 70%;
+                                url('../images/backgrounds/divisions/{{$currentDivision->slug}}.jpg') no-repeat fixed 0% 70%;
                                 -webkit-background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
@@ -26,7 +26,7 @@
 
       <div class="row">
         <div id="ph-name" class="col-md-4 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
-          <h1 style="background:#{{$division->bg_color}}">{{$division->name}}</h1>
+          <h1 style="background:#{{$currentDivision->bg_color}}">{{$currentDivision->name}}</h1>
         </div>
       </div>
 
