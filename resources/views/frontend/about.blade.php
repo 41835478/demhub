@@ -65,14 +65,14 @@
 
       <div class="col-md-12">
         <div class="col-sm-4 col-sm-offset-2" style="padding-top:15px">
-          <img src="./images/photos/leonhaggarty_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+          <img src="./images/photos/aldo_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
         </div>
       </div>
 
       <div class="col-sm-8" style="text-align:left">
-        <h3>Leon Haggarty, Lead Developer</h3>
+        <h3>Aldo Ruíz Luna, Lead Developer</h3>
         <p>
-          Leon Haggarty is a digital creator.  He has a diploma in film production, a bachelor's of applied management with a concentration in e-commerce, and a master of digital media.  He enjoys working on products & services that solve problems, moreover that people enjoy using.  Leon has previously worked with other startups.  Currently he's balances DEMHUB with his side project called Hot Potato.
+          Results-driven, user-focused software developer with 3+ years of cumulative industry experience in automation, scripting and web applications. Deep understanding of MVC architecture and translating business needs into technical requirements.  Articulate and strategic lateral thinker with an entrepreneurial spirit.
         </p>
       </div>
       <br>
@@ -86,8 +86,8 @@
     <div class="col-md-12">
 
       <div class="col-sm-2 col-sm-offset-3" style="padding-top:15px">
-        <img src="./images/photos/aldo_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
-        <h3>Aldo Ruíz Luna, <br>Senior Developer</h3>
+        <img src="./images/photos/leonhaggarty_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+        <h3>Leon Haggarty, <br>Senior Developer</h3>
       </div>
 
       <div class="col-sm-2" style="padding-top:15px">
