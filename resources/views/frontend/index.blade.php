@@ -66,7 +66,7 @@
 											overflow: hidden;">
 	<div class="col-md-12 text-center">
 		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
-		<h2></h2>
+		
 	</div>
 </div>
 

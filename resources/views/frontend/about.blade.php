@@ -28,7 +28,7 @@
 
     <div class="col-md-12">
       <div class="col-sm-2 col-sm-offset-5">
-        <img src="./images/photos/jenholmes_bio_pic.png" class="img-responsive img-circle" style="width:90%">
+        <img src="./images/photos/jenholmes_bio_pic.png" class="img-responsive img-circle" style="width:90%; height:90%">
       </div>
     </div>
 
@@ -49,7 +49,7 @@
     <div class="col-md-6">
 
       <div class="col-sm-4 col-sm-offset-6" style="padding-top:15px">
-        <img src="./images/photos/seankondra_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+        <img src="./images/photos/seankondra_bio_pic.jpg" class="img-responsive img-circle" style="width:90%; height:90%">
       </div>
 
       <div class="col-sm-8 col-sm-offset-4" style="text-align:left">
@@ -65,11 +65,11 @@
 
       <div class="col-md-12">
         <div class="col-sm-4 col-sm-offset-2" style="padding-top:15px">
-          <img src="./images/photos/aldo_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+          <img src="./images/photos/aldo_bio_pic.jpg" class="img-responsive img-circle" style="width:90%; height:90%">
         </div>
       </div>
 
-      <div class="col-sm-8" style="text-align:left">
+      <div class="col-sm-8" style="text-align:left;padding-top:8px">
         <h3>Aldo Ruíz Luna, Lead Developer</h3>
         <p>
           Results-driven, user-focused software developer with 3+ years of cumulative industry experience in automation, scripting and web applications. Deep understanding of MVC architecture and translating business needs into technical requirements.  Articulate and strategic lateral thinker with an entrepreneurial spirit.
@@ -86,17 +86,17 @@
     <div class="col-md-12">
 
       <div class="col-sm-2 col-sm-offset-3" style="padding-top:15px">
-        <img src="./images/photos/leonhaggarty_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+        <img src="./images/photos/leonhaggarty_bio_pic.jpg" class="img-responsive img-circle" style="width:90%; height:90%">
         <h3>Leon Haggarty, <br>Senior Developer</h3>
       </div>
 
       <div class="col-sm-2" style="padding-top:15px">
-        <img src="./images/photos/kylo_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+        <img src="./images/photos/kylo_bio_pic.jpg" class="img-responsive img-circle" style="width:90%; height:90%">
         <h3>Jiao Xue, <br>UI & UX Designer</h3>
       </div>
 
       <div class="col-sm-2" style="padding-top:15px">
-        <img src="./images/photos/hilaryJ_bio_pic.jpg" class="img-responsive img-circle" style="width:90%">
+        <img src="./images/photos/hilaryJ_bio_pic.jpg" class="img-responsive img-circle" style="width:90%; height:90%">
         <h3>Hilary Julien, <br>Media Manager</h3>
       </div>
       <br>
