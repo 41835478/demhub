@@ -5,7 +5,7 @@
   <div class="form-group">
         {!! Form::label('search', 'Search news', ['class' => 'col-lg-2 control-label']) !!}
         <div class="col-lg-10">
-            {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
+            {!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
         </div>
     </div><!--form control-->
 
