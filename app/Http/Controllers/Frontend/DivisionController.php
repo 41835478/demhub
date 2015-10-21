@@ -64,20 +64,22 @@ class DivisionController extends Controller
       $pattern = "/".$query."/i";
 
       $url = parse_url(Request::get('route'));
-      $url = str_replace("/", ".", $url['path']);
+      $url = explode("/", $url['path']);
+      $url_base = $url[0];
+      $url_slug = $url[1];
 
       $compact_vars = [
         'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'query', 'pattern'
       ];
 
-      if ($url == "divisions") {
+      if ($url_base == "divisions") {
         $currentDivision = Division::find(1);
         $currentDivision->slug = "all";
         $currentDivision->bg_color = "000";
         $currentDivision->name = "All Sections";
         return view('division.index', compact($compact_vars));
       } else {
-
+        $currentDivision = Division::where('slug', $url_slug)->firstOrFail();
         return view('division.show', compact($compact_vars));
       }
 
@@ -90,7 +92,7 @@ class DivisionController extends Controller
 		  $feed->enable_cache(true); $feed->set_cache_location('mysql://'.getenv('DB_USERNAME').':'.getenv('DB_PASSWORD').'@'.getenv('DB_HOST').':3306/'.getenv('DB_DATABASE').'?prefix=news_feeds_');
       $feed->set_cache_duration(60*60); // (sec*mins)
       $feed->set_output_encoding('utf-8');
-      // $feed->init();
+      $feed->init();
       $feed->handle_content_type();
       return $feed;
 	  }
