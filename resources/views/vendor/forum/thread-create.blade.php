@@ -1,4 +1,5 @@
-@extends('forum::layouts.master')
+@extends ('frontend.layouts.master')
+@section('forum::layouts.master')
 
 @section('content')
 @include('forum::partials.breadcrumbs', compact('parentCategory', 'category', 'thread'))

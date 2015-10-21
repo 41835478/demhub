@@ -179,7 +179,7 @@
  				 <li>
  				 @endif
 				<a href="{{url('userhome')}}" style="color:#666666;border-left:2px solid #fff;border-right:1px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
-				 @if(Request::url() === url('forum'))
+				 @if(Request::url() === url('all_threads'))
 				 <li class="active">
 				 @else
 				 <li>
