@@ -58,6 +58,7 @@ class DivisionController extends Controller
       foreach ($allDivisions as $div) {
         $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
       }
+      $newsFeeds = array_unique($newsFeeds, SORT_REGULAR);
       $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
       $query = Request::get('search');
