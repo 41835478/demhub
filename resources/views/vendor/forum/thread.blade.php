@@ -1,4 +1,4 @@
-@extends('forum::layouts.master')
+@extends('frontend.layouts.master')
 
 @section('content')
 @include('forum::partials.breadcrumbs')

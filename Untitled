@@ -1,0 +1,78 @@
+
+                @if ($category->newestThread->title)
+				<div class="text-muted">
+                    <br>
+
+					{{ $category->newestThread }}
+
+                    {{ trans('forum::base.newest_thread') }}:
+                    <a href="{{ $category->newestThread->route }}">
+                        {{ $category->newestThread->title }}
+                        ({{ print_r($category->newestThread->authorName) }})</a>
+                    <br>
+                    {{ trans('forum::base.last_post') }}:
+                    <a href="{{ $category->latestActiveThread->lastPost->route }}">
+                        {{ $category->latestActiveThread->title }}
+					</a>
+				</div>
+                @endif
+    $categories=array();
+    foreach ($threads as $thread){
+          $categories[]=Category::where('id' => $thread->parent_category)
+                            ->get('title');
+
+    }
+
+    $categoryString =$categories->where('id' -> $thread->parent_category)->get();
+          echo $categoryString -> title)
+
+          {array_search($thread->parent_category, $categories)}}
+
+          @foreach ($categories as $category)
+            @if ($thread->parent_category = $category->id)
+            echo '<a href="$category->route">$category->title</a>';
+          @endif
+          @endforeach
+
+
+          <?php
+          foreach ($categories as $category){
+            if ($thread->parent_category == $category->id){
+              echo '<a href="'.$category->route.'">'.$category->title.'</a>';
+            }
+          }
+          ?>
+
+
+          @if ($thread)
+            <tr>
+              <td>
+                <span class="pull-right">
+                  @if($thread->locked)
+                    <span class="label label-danger">{{ trans('forum::base.locked') }}</span>
+                  @endif
+                  @if($thread->pinned)
+                    <span class="label label-info">{{ trans('forum::base.pinned') }}</span>
+                  @endif
+                  @if($thread->userReadStatus)
+                    <span class="label label-primary">{{ trans($thread->userReadStatus) }}</span>
+                  @endif
+                </span>
+                <p class="lead">
+                  <a href="{{ $thread->route }}">{{ $thread->title }}</a>
+                </p>
+                <p>{{ $thread->author->user_name }} <span class="text-muted">({{ $thread->posted }})</span></p>
+              </td>
+              <td class="text-right">
+                  {{ $thread->viewCount }}
+              </td>
+              <td class="text-right">
+                  {{ $thread->replyCount }}
+              </td>
+              <td class="text-right">
+                  <!-- {{ ($thread->lastPost) }} -->
+                <p class="text-muted">({{ $thread->lastPost->posted }})</p>
+                <a href="{{ URL::to( $thread->lastPostRoute ) }}" class="btn btn-primary btn-xs">{{ trans('forum::base.view_post') }} &raquo;</a>
+              </td>
+            </tr>
+          @endif

@@ -26,13 +26,13 @@
 					{{ trans('forum::base.newest_thread') }}:
 					<a href="{{ $subcategory->newestThread->route }}">
 						{{ $subcategory->newestThread->title }}
-						({{ $subcategory->newestThread->authorName }})
+						({{ $subcategory->newestThread->author->user_name }})
 					</a>
 					<br>
 					{{ trans('forum::base.last_post') }}:
 					<a href="{{ $subcategory->latestActiveThread->lastPost->route }}">
 						{{ $subcategory->latestActiveThread->title }}
-						({{ $subcategory->latestActiveThread->lastPost->authorName }})
+						({{ $subcategory->latestActiveThread->lastPost->author->user_name }})
 					</a>
 				@endif
 			</td>
@@ -65,8 +65,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		@if (!$category->threadsPaginated->isEmpty())
+		@if ($category->threadsPaginated)
 			@foreach ($category->threadsPaginated as $thread)
+				@if ($thread->lastPost != null)
 				<tr>
 					<td>
 						<span class="pull-right">
@@ -83,20 +84,23 @@
 						<p class="lead">
 							<a href="{{ $thread->route }}">{{ $thread->title }}</a>
 						</p>
-						<p>{{ $thread->authorName }} <span class="text-muted">({{ $thread->posted }})</span></p>
+						<p>{{ $thread->author->user_name }} <span class="text-muted">({{ $thread->posted }})</span></p>
 					</td>
 					<td class="text-right">
-					    {{ $thread->viewCount }}
+							{{ $thread->viewCount }}
 					</td>
 					<td class="text-right">
-					    {{ $thread->replyCount }}
+							{{ $thread->replyCount }}
 					</td>
 					<td class="text-right">
-					    {{ $thread->lastPost->authorName }}
+							{{ ($thread->lastPost) }}
 						<p class="text-muted">({{ $thread->lastPost->posted }})</p>
 						<a href="{{ URL::to( $thread->lastPostRoute ) }}" class="btn btn-primary btn-xs">{{ trans('forum::base.view_post') }} &raquo;</a>
 					</td>
 				</tr>
+				@else
+				<tr>hi</tr>
+				@endif
 			@endforeach
 		@else
 			<tr>
