@@ -67,7 +67,6 @@ class DivisionController extends Controller
       $url = parse_url(Request::get('route'));
       $url = explode("/", $url['path']);
       $url_base = $url[0];
-      $url_slug = $url[1];
 
       $compact_vars = [
         'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'query', 'pattern'
@@ -80,6 +79,7 @@ class DivisionController extends Controller
         $currentDivision->name = "All Sections";
         return view('division.index', compact($compact_vars));
       } else {
+        $url_slug = $url[1];
         $currentDivision = Division::where('slug', $url_slug)->firstOrFail();
         return view('division.show', compact($compact_vars));
       }
