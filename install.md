@@ -15,8 +15,8 @@
 - `composer global require "laravel/homestead=~2.0"`
 - `echo 'export PATH="$PATH:~/.composer/vendor/bin"' >> ~/.bashrc`
 - `source ~/.bashrc`
-- `homestead make`
-- `vim Homestead.yaml`
+- `homestead init`
+- `homestead edit`
 
 ```yaml
 ---
