@@ -1,5 +1,6 @@
 ### Installation (OSX):
 
+- Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 - Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://www.vagrantup.com/)
 - Install [Atom](https://atom.io/) (Optional - Recommended)
