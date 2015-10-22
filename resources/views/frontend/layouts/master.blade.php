@@ -19,7 +19,7 @@
         {!! HTML::style(elixir('css/core.css')) !!}
         {!! HTML::style(elixir('css/frontend.css')) !!}
         @yield('after-styles-end')
-		
+
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -35,10 +35,15 @@
         <![endif]-->
 
         <div class="wrapper">
-          
-		  @if (Auth::user())
-		  	@include ('frontend.user.menu-user.function')
-		  
+
+		  @if (Auth::user() && ! empty($allDivisions))
+		  	@include ('frontend.user.menu-user.first-menu-user')
+          @if (!isset($userMenu))
+            @if (Request::url() == url('userhome'))
+              @include ('frontend.user.menu-user.carousel-menu-user')
+            @endif
+            @include ('frontend.user.menu-user.second-menu-user')
+            @endif
 		  @else
 		  	@include('frontend.includes.nav')
 		  @endif
@@ -51,7 +56,7 @@
         </div><!-- ./wrapper -->
         @include('frontend.includes.footer')
 
-        
+
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
         {!! HTML::script('js/vendor/bootstrap.min.js') !!}
 

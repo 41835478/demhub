@@ -1,10 +1,10 @@
 
 
-    <div class="container">
+    
         @include('forum::partials.alerts')
 
         @yield('content')
-    </div>
+
 
     <script>
     $('a[data-confirm]').click(function(event) {

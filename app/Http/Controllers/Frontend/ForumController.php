@@ -30,11 +30,11 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 			$threads = Thread::all();
 
 			$categories = $this->categories->getAll();
-			$categoriesIds = $categories->get('id');
+
 			$allDivisions = Division::all();
 
 
-			return View::make('forum::all_threads', compact('threads', 'categories','categoryIds','allDivisions'));
+			return View::make('forum::all_threads', compact('threads', 'categories', 'allDivisions'));
 	}
 	protected function makeView($name)
 	{
@@ -48,6 +48,59 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 			$categories = $this->categories->getAll();
 
 			return View::make('forum::index', compact('categories', 'allDivisions'));
+	}
+	public function getViewThread($categoryID, $categoryAlias, $threadID, $threadAlias)
+	{
+			$allDivisions = Division::all();
+			$this->load(['category' => $categoryID, 'thread' => $threadID]);
+
+			Event::fire(new ThreadWasViewed($this->collections['thread']));
+
+			return $this->makeView('forum::thread', compact('allDivisions'));
+	}
+
+	public function getCreateThread()
+	{
+			$allDivisions = Division::all();
+			$this->load(['category' => 9]);
+
+			return $this->makeView('forum::thread-create', compact('allDivisions'));
+	}
+
+	public function postCreateThread()
+	{
+			$user = Utils::getCurrentUser();
+
+
+			$thread_valid = Validation::check('thread');
+			$post_valid = Validation::check('post');
+
+			if (Input::get('title'))
+			{
+					$thread = array(
+							'author_id'       => $user->id,
+							'parent_category' => Input::get('division_selection'),
+							'title'           => Input::get('title')
+					);
+
+					$thread = $this->threads->create($thread);
+
+					$post = array(
+							'parent_thread'   => $thread->id,
+							'author_id'       => $user->id,
+							'content'         => Input::get('content')
+					);
+
+					$this->posts->create($post);
+
+					Alerts::add('success', trans('forum::base.thread_created'));
+
+					return Redirect::to($thread->route);
+			}
+			else
+			{
+					return Redirect::to($this->collections['category']->newThreadRoute)->withInput();
+			}
 	}
 	// public function showDiscussionIndex(){
 //

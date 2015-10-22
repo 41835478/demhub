@@ -4,8 +4,6 @@
 @section('content')
 
 
-	
-
 <div class="row">
 	<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
 

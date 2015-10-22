@@ -2,7 +2,7 @@
 @section('forum::layouts.master')
 
 @section('content')
-@include('forum::partials.breadcrumbs')
+
 
 <h2>
     @if ($thread->locked)
@@ -78,6 +78,7 @@
                 'form_url'            => $thread->replyRoute,
                 'form_classes'        => '',
                 'show_title_field'    => false,
+                'division_show'       => false,
                 'post_content'        => '',
                 'submit_label'        => trans('forum::base.reply'),
                 'cancel_url'          => ''
@@ -85,4 +86,5 @@
         )
     </div>
 @endif
+<!-- @include('forum::partials.breadcrumbs') -->
 @overwrite
