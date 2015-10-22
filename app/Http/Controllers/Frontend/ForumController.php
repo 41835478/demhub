@@ -36,6 +36,19 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 
 			return View::make('forum::all_threads', compact('threads', 'categories','categoryIds','allDivisions'));
 	}
+	protected function makeView($name)
+	{
+		$allDivisions = Division::all();
+			return View::make($name)->with($this->collections)->with('allDivisions', $allDivisions);
+	}
+
+	public function getViewIndex()
+	{
+	$allDivisions = Division::all();
+			$categories = $this->categories->getAll();
+
+			return View::make('forum::index', compact('categories', 'allDivisions'));
+	}
 	// public function showDiscussionIndex(){
 //
 // 		return view('vendor.forum.index', [

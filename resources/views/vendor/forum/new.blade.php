@@ -1,4 +1,5 @@
-@extends('forum::layouts.master')
+@extends ('frontend.layouts.master')
+@section('forum::layouts.master')
 
 @section('content')
 @include('forum::partials.breadcrumbs', ['other' => trans('forum::base.new_threads')])
@@ -33,7 +34,7 @@
 							<a href="{{ $thread->route }}">{{ $thread->title }}</a>
 						</p>
 						<p>
-                            {{ $thread->authorName }}
+                            {{ $thread->author->user_name }}
 							<span class="text-muted">(<em><a href="{{ $thread->category->route }}">{{ $thread->category->title }}</a></em>, {{ $thread->posted }})</span>
 						</p>
 					</td>
@@ -41,7 +42,7 @@
 					    {{ $thread->replyCount }}
 					</td>
 					<td class="text-right">
-					    {{ $thread->lastPost->authorName }}
+					    {{ $thread->lastPost->author->user_name }}
 						<p class="text-muted">({{ $thread->lastPost->posted }})</p>
 						<a href="{{ URL::to( $thread->lastPostRoute ) }}" class="btn btn-primary btn-xs">{{ trans('forum::base.view_post') }} &raquo;</a>
 					</td>
