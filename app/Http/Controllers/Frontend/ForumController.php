@@ -1,5 +1,4 @@
 <?php namespace App\Http\Controllers\Frontend;
-use App;
 use Config;
 use Event;
 use Input;
