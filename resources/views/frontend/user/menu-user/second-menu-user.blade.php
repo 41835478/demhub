@@ -9,12 +9,12 @@
  				 <li>
  				 @endif
 				<a href="{{url('userhome')}}" style="border-left:2px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
-				 @if(Request::url() === url('all_threads'))
-				 <li class="active">
-				 @else
+
+
+
 				 <li>
-				 @endif
-				 <!-- {{route('all_threads')}} -->
+
+				 
 				<a href="" style=""> DISCUSSION - COMING SOON</a></li>
 				 @if(Request::url() === url('resource_filter'))
 				 <li class="active">
