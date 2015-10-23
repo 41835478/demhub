@@ -17,14 +17,10 @@ class UserController extends Controller {
 	public function showUserHome(){
         $allDivisions = Division::all();
 
-        $newsFeeds = array();
-        // foreach ($allDivisions as $div) {
-        //   $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
-        // }
-        // $newsFeeds = $this -> simplepie_feed($newsFeeds);
+
 		return view('frontend.user.userhome', [
-					'allDivisions' => $allDivisions,
-					'newsFeeds' => $newsFeeds
+					'allDivisions' => $allDivisions
+
 					]);
 
 	}
