@@ -120,7 +120,7 @@ nav#guest-menu div.container div.navbar-header a {
   font-weight: 700; }
 
 nav#guest-menu div.container div.navbar-header a:hover {
-  color: #999; }
+  color: #60A0FF; }
 
 nav#guest-menu div.container div.navbar-header img {
   margin-top: -25px; }
@@ -128,15 +128,15 @@ nav#guest-menu div.container div.navbar-header img {
 nav#guest-menu div.container div#navbar {
   margin-left: 1%; }
 
-nav#guest-menu div.container div#navbar a {
+nav#guest-menu li a {
   color: #fff; }
 
-nav#guest-menu div.container div#navbar a:hover {
+nav#guest-menu li a:hover {
   color: #60a0ff;
   text-decoration: none;
   text-shadow: none; }
 
-nav#guest-menu div.container div#navbar ul.navbar-nav li.active a {
+nav#guest-menu li.active a {
   background: #60a0ff;
   color: #fff;
   text-decoration: none;
