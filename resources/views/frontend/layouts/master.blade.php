@@ -47,12 +47,8 @@
 		  @else
 		  	@include('frontend.includes.nav')
 		  @endif
-            @if ((Request::url() != url('')))
-            <div class="container-fluid">
-            @else
-            <div>
-            @endif
 
+            <div class="container-fluid">
             @include('includes.partials.messages')
             @yield('content')
             </div>
