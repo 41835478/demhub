@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div style="padding:0px">
+
 <div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed center center no-repeat;
 											-webkit-background-size: cover;
 											-moz-background-size: cover;
@@ -90,6 +90,5 @@
 		<h2>Help us develop the world's DEM network</h2><h3>Test the beta and give us your feedback</h3><br>
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
 	</div>
-</div>
 </div>
 @stop
