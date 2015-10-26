@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-
+<div class="container-fluid">
 <div class="row" style="padding:0px;
                                 background:url('http://beta.demhub.net/images/backgrounds/dried_earth.jpg')  no-repeat fixed center;
                                 -webkit-background-size: cover;
@@ -63,5 +63,6 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 @endsection
