@@ -47,9 +47,10 @@
 		  @else
 		  	@include('frontend.includes.nav')
 		  @endif
-          <div class="container-fluid">
+          <div class="container-fluid" style="overflow-x:hidden">
             @include('includes.partials.messages')
             @yield('content')
+
           </div><!-- container -->
 
           <div class="push"></div>

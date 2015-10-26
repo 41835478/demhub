@@ -1,4 +1,4 @@
-<nav id="guest-menu" class="navbar navbar-default navbar-fixed-top">
+<nav id="guest-menu" class="navbar navbar-default navbar-fixed-top" style="padding-left:30px">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -33,7 +33,7 @@
         {!! link_to('auth/register', trans('REGISTER')) !!}</li>
 			</ul>
 
-			<ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right" style="padding-right:180px">
 				<!-- <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <spanclass="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -47,9 +47,9 @@
 					</li> -->
 				@if (Auth::guest())
 					@if (Request::url() === url('auth/login'))
-						<li class="active" style="padding-right:50px">
+						<li class="active">
 					@else
-						<li style="padding-right:50px">
+						<li>
 					@endif
           {!! link_to('auth/login', trans('LOGIN')) !!}</li>
 					<!-- <li>{!! link_to('auth/login', trans('navs.login')) !!}</li>

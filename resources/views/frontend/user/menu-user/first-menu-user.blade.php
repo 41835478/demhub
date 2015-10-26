@@ -1,6 +1,5 @@
-
-
-<nav id="user-function" class="navbar navbar-inverse navbar-fixed-top">
+<nav id="user-function" class="navbar navbar-inverse navbar-fixed-top" style="padding-left:30px">
+	<div class="container-fluid">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 	    <span class="sr-only">Toggle navigation</span>
@@ -56,7 +55,7 @@
 
 
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" style="padding-right:25px">
 
                 <li style="padding:0;">
                     <a style="padding:5% 0 0 0;">
@@ -81,4 +80,5 @@
 
         <!--/.nav-collapse -->
     </div>
+	</div>
 </nav>

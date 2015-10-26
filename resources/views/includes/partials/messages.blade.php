@@ -1,4 +1,5 @@
 @if ($errors->any())
+  <div style="padding-top:50px">
     <div class="alert alert-danger">
         @foreach ($errors->all() as $error)
             {!! $error !!}<br/>
@@ -43,5 +44,6 @@
         @else
             {!! Session::get('flash_message') !!}
         @endif
+    </div>
     </div>
 @endif
