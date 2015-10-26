@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+<div class="container-fluid">
 <div class="row" style="padding:0px;background:url('../images/backgrounds/dried_earth.jpg')  no-repeat fixed center;
 																	-webkit-background-size: cover;
 																	-moz-background-size: cover;
@@ -43,7 +44,7 @@
 		        	<span>{{$errors->first('Username')}}</span>
 		        @endif
 		    		<label for="username" class="col-sm-4 control-label" style="font-size:110%">Username</label>
-						
+
 		        <div class="col-md-7">
 		        	{!! Form::input('user_name', 'user_name', old('user_name'), ['class' => 'form-control']) !!}
 		        </div>
@@ -54,7 +55,7 @@
 		        	<span>{{$errors->first('Email')}}</span>
 		        @endif
 		        <label for="inputEmail3" class="col-sm-4 control-label" style="font-size:110%">Email</label>
-						
+
 		        <div class="col-md-7">
 		        	{!! Form::input('email', 'email', old('email'), ['class' => 'form-control']) !!}
 		        </div>
@@ -65,7 +66,7 @@
 		        	<span>{{$errors->first('Password')}}</span>
 		        @endif
 		        <label for="inputPassword3" class="col-sm-4 control-label" style="font-size:110%">Password</label>
-						
+
 		        <div class="col-md-7">
 		        	{!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
 		        </div>
@@ -76,7 +77,7 @@
 		        	<span>{{$errors->first('Password')}}</span>
 		        @endif
 		        <label for="inputPassword3" class="col-sm-4 control-label" style="font-size:110%">Password Confirm</label>
-						
+
 		        <div class="col-md-7">
 		        	{!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
 		        </div>
@@ -121,7 +122,7 @@
 		          <span>{{$errors->first('firstName')}}</span>
 		        @endif
 
-						
+
 		        <div class="col-md-7">
 
 		          {!! Form::input('first_name', 'first_name', old('first_name'), ['class' => 'form-control']) !!}
@@ -140,7 +141,7 @@
 		            <span>{{$errors->first('lastName')}}</span>
 		        @endif
 
-						
+
 		        <div class="col-md-7">
 		            {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control']) !!}
 		        </div>
@@ -157,7 +158,7 @@
 		          <span>{{$errors->first('jobTitle')}}</span>
 		        @endif
 
-						
+
 		        <div class="col-md-7">
 		          {!! Form::input('job_title', 'job_title', old('job_title'), ['class' => 'form-control']) !!}
 		        </div>
@@ -174,7 +175,7 @@
 		            <span>{{$errors->first('orgAgency')}}</span>
 		        @endif
 
-						
+
 		        <div class="col-md-7">
 							{!! Form::input('organization_name', 'organization_name', old('organization_name'), ['class' => 'form-control']) !!}
 		        </div>
@@ -191,7 +192,7 @@
 		            <span>{{$errors->first('phoneNumber')}}</span>
 		        @endif
 
-						
+
 		        <div class="col-md-7">
 		            {!! Form::input('phone_number', 'phone_number', old('phone_number'), ['class' => 'form-control']) !!}
 		        </div>
@@ -208,7 +209,7 @@
 		            <span>{{$errors->first('specialization')}}</span>
 		        @endif
 
-						
+
 		        <div class="col-md-7">
 		            {!! Form::select('specialization', array('Emergency Management Practitioner' => 'Emergency Management Practitioner', 'Science' => 'Science', 'Academic' => 'Academic', 'Health' => 'Health', 'Government' => 'Government', 'CBO/NG' => 'CBO/NGO', 'Administrative/Association Management' => 'Administrative/Association Management', 'Consultant/Vendor' => 'Consultant/Vendor', 'Security/Corporate Health and Safety' => 'Security/Corporate Health and Safety', 'Student' => 'Student', 'Response' => 'Response', 'Business Continutity' => 'Business Continutity', 'Critical Infrustructure' => 'Critical Infrustructure', 'Communications' => 'Communications'), array('class' => 'form-control')) !!}
 		        </div>
@@ -226,7 +227,7 @@
 		</div>
 	</div>
 </div>
-
+</div>
 <script>
 	function updateForm(){
 		document.getElementById("form-part-1").style.display="none";

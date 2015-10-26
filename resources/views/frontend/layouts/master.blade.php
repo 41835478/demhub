@@ -49,8 +49,9 @@
 		  @endif
 
             @include('includes.partials.messages')
+            <div class="container-fluid">
             @yield('content')
-
+            </div>
 
 
           <div class="push"></div>

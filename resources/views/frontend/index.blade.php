@@ -91,4 +91,5 @@
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
 	</div>
 </div>
+</div>
 @stop
