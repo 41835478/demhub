@@ -36,17 +36,7 @@
 
         <div class="wrapper">
 
-		  @if (Auth::user() && ! empty($allDivisions))
-		  	@include ('frontend.user.menu-user.first-menu-user')
-          @if (!isset($userMenu))
-            @if (Request::url() == url('userhome'))
-              @include ('frontend.user.menu-user.carousel-menu-user')
-            @endif
-            @include ('frontend.user.menu-user.second-menu-user')
-            @endif
-		  @else
-		  	@include('frontend.includes.nav')
-		  @endif
+		  
           <div class="container-fluid">
             @include('includes.partials.messages')
             @yield('content')
