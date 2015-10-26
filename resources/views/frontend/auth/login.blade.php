@@ -8,8 +8,9 @@
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
                                 background-size: cover;
+                                overflow-x:hidden;
 								                color:#fff">
-  <div class="col-xs-12">
+  <div class="col-xs-12" style="padding:0px">
     <div class="row" style="padding-top:50px;">
       <div class="col-md-12 text-center">
         <h2 style="font-size:300%">LOGIN</h2>
