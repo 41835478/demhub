@@ -64,7 +64,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase">{{Auth::user()->user_name}}<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+                    <ul class="dropdown-menu navbar-inverse" role="menu">
                         <li>
                             <a href="{{url('self_profile')}}">USER DASHBOARD
                             </a>

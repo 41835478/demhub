@@ -71,7 +71,7 @@
 		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
 	</div>
 </div>
-<br><br><br><br>
+<br><br><br>
 <div id="welcome-division-menu" class="row">
 	<div class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 

@@ -560,6 +560,7 @@ nav#user-function div.container div#navbar a {
 
 nav#user-function div.container div#navbar a:hover {
   color: #60A0FF;
+  background: #000;
   text-decoration: none;
   text-shadow: none; }
 
@@ -568,18 +569,6 @@ nav#user-function div.container div#navbar ul.navbar-nav li.active a {
   color: #fff;
   text-decoration: none;
   text-shadow: none; }
-
-nav#user-function div.container div#navbar ul.dropdown-menu li {
-  padding: 1%; }
-
-nav#user-function div.container div#navbar ul.dropdown-menu li.divider {
-  padding: 0; }
-
-nav#user-function div.container div#navbar ul.dropdown-menu li a {
-  color: #000; }
-
-nav#user-function div.container div#navbar ul.dropdown-menu li a:hover {
-  color: #60A0FF; }
 
 .dots {
   height: 100%; }
