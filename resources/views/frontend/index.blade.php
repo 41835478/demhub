@@ -8,7 +8,7 @@
 											-moz-background-size: cover;
 											-o-background-size: cover;
 											background-size: cover;
-											overflow: hidden;">
+											overflow-x: hidden;">
 
 	<div class="col-md-6 col-md-offset-6">
 		{!! HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '700')) !!}
@@ -20,7 +20,7 @@
 
 </div>
 
-<div class="dots" style='background: url("images/backgrounds/dots.png") repeat scroll 0 0 transparent;'>
+<div class="" style='background: url("images/backgrounds/dots.png") repeat scroll 0 0 transparent;'>
 	<div id="welcome_about" class="row">
 
 		<div class="col-md-12">
@@ -66,12 +66,12 @@
 											-o-background-size: cover;
 											background-size: cover;
 											overflow: hidden;">
+	<div class="row">
 	<div class="col-md-12 text-center">
 		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
-
 	</div>
 </div>
-
+<br><br><br><br>
 <div id="welcome-division-menu" class="row">
 	<div class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 
@@ -86,11 +86,12 @@
 	</div>
 </div>
 
-<div id="welcome_tertiary_text" class="row" style="background: url('images/backgrounds/bridge.jpg') no-repeat fixed;">
+<div id="welcome_tertiary_text" class="row" >
 	<div class="col-md-12 text-center">
 		<h2>Help us develop the world's DEM network</h2><h3>Test the beta and give us your feedback</h3><br>
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
 	</div>
+</div>
 </div>
 </div>
 </div>
