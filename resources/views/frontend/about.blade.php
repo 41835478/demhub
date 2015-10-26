@@ -87,7 +87,7 @@
 
       <div class="col-sm-2 col-sm-offset-3" style="padding-top:15px">
         <img src="./images/photos/leonhaggarty_bio_pic.jpg" class="img-responsive img-circle" style="width:90%; height:90%">
-        <h3>Leon Haggarty, <br>Senior Developer</h3>
+        <h3>Leon Haggarty, <br>Full Stack Developer</h3>
       </div>
 
       <div class="col-sm-2" style="padding-top:15px">

@@ -4,7 +4,7 @@
 <div id="user-settings" class="row">
 	<div class="col-md-12 text-center">
     	<h1>RESOURCES</h1>
-		
+
 		<br>
 		<!-- <h3>Filters</h3> -->
 		<form class="form-inline">
@@ -23,18 +23,18 @@
   				<select id="region" class="form-control">
   					<option value="" disabled selected>Select One</option>
   				  <option style="display:none"></option>
-  				  
+
   				</select>
   			  </div>
 			  <!-- <div class="form-group">
 			    <label for="exampleInputEmail2">Email</label>
 			    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
 			  </div> -->
-			  
+
 		</form>
         <hr>
     </div>
-	
+
 </div>
 	<style>
 		div.paginated ul.pagination li span{
@@ -48,9 +48,9 @@
 		div.paginated ul.pagination li a {
 			color: #ccc;
 		}
-	
+
 	</style>
-	
+
 	<script>
 	var i=0;
 	var element;
@@ -64,15 +64,15 @@
 			document.body.appendChild(element);
 			i++;
 		@endforeach
-				
+
 	function capitalizeFirstLetter(string) {
 		   return string.charAt(0).toUpperCase() + string.slice(1);
 	}
-			
+
 	</script>
 	<div class="row">
     <div class="col-sm-5 col-sm-offset-4">
-		
+
 		<table id="resource-table" class="table table-hover">
 			<tbody>
 				@foreach($resourceEntry as $entry)
@@ -89,6 +89,7 @@
 
 	</div> -->
 </div>
+{!! $resourceEntry->render() !!}
 
 	<script>
 	$("select#country").change(function(){
@@ -110,13 +111,13 @@
 				var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
 				document.getElementById("region").innerHTML=regionForm;
 				document.getElementById("regionFormGroup").style.display="";
-				
-			
+
+
 			}
-		
+
 	});
-	
-	
+
+
 	// function firstFilterF(){
 	// if (($("select#country").val()) != null){
 	//
@@ -151,9 +152,9 @@
 		// console.log(optionHTML);
 		return optionHTML;
 	}
-	
+
 	$("select#region").change(function(){
-		
+
 	if (($("select#region").val()) != null){
 		var filterVar = $("select#region").val();
 		var region = filterVar.toLowerCase();
