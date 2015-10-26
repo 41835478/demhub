@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="container-fluid">
+<div style="padding:0px">
 <div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed center center no-repeat;
 											-webkit-background-size: cover;
 											-moz-background-size: cover;
