@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-<div class="container-fluid">
 <div class="row" style="padding:0px;background:url('../images/backgrounds/dried_earth.jpg')  no-repeat fixed center;
 																	-webkit-background-size: cover;
 																	-moz-background-size: cover;
@@ -226,7 +225,6 @@
 			{!! Form::close() !!}
 		</div>
 	</div>
-</div>
 </div>
 <script>
 	function updateForm(){
