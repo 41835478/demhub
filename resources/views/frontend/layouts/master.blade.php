@@ -36,12 +36,22 @@
 
         <div class="wrapper">
 
-		  
-          <div class="container-fluid">
+		  @if (Auth::user() && ! empty($allDivisions))
+		  	@include ('frontend.user.menu-user.first-menu-user')
+          @if (!isset($userMenu))
+            @if (Request::url() == url('userhome'))
+              @include ('frontend.user.menu-user.carousel-menu-user')
+            @endif
+            @include ('frontend.user.menu-user.second-menu-user')
+            @endif
+		  @else
+		  	@include('frontend.includes.nav')
+		  @endif
+
             @include('includes.partials.messages')
             @yield('content')
 
-          </div><!-- container -->
+          
 
           <div class="push"></div>
         </div><!-- ./wrapper -->
