@@ -8,7 +8,7 @@
                                 -o-background-size: cover;
                                 background-size: cover;
 								color:#fff;
-								
+
                                 ">
     <div class="row" style="padding-top:50px;">
       <div class="col-md-12 text-center">
@@ -22,7 +22,7 @@
 
         <div class="form-group">
             {!! Form::label('email', trans('Email'), ['class' => 'col-md-4 control-label']) !!}
-			
+
             <div class="col-md-7">
                 {!! Form::input('email', 'email', old('email'), ['class' => 'form-control']) !!}
             </div>
@@ -49,7 +49,7 @@
             <div class="col-md-8 col-md-offset-4">
                 <button type="submit" class="btn btn-default btn-lg btn-style" style="margin-right:10px">LOGIN</button>
 
-                {!! link_to('password/email', trans('labels.forgot_password')) !!}
+                {!! link_to('password/email', trans('labels.forgot_password'), ['style' => 'color:#60A0FF']) !!}
             </div>
         </div>
 
@@ -58,7 +58,7 @@
         <div class="row text-center">
             {!! $socialite_links !!}
         </div>
-        
+
       </div>
     </div>
   </div>

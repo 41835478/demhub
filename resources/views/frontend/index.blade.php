@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+<div style="overflow-x:hidden">
 <div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed center center no-repeat;
 											-webkit-background-size: cover;
 											-moz-background-size: cover;
@@ -66,7 +67,7 @@
 											overflow: hidden;">
 	<div class="col-md-12 text-center">
 		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
-		
+
 	</div>
 </div>
 
@@ -86,8 +87,9 @@
 
 <div id="welcome_tertiary_text" class="row" style="background: url('images/backgrounds/bridge.jpg') no-repeat fixed;">
 	<div class="col-md-12 text-center">
-		<h2>Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
+		<h2>Help us develop the world's DEM network</h2><h3>Test the beta and give us your feedback</h3><br>
 		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
 	</div>
+</div>
 </div>
 @stop
