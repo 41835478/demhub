@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0356286d5497651472cbc26e0f568041",
+    "hash": "58ae06eb572ddccfffea06205245e510",
+    "content-hash": "98889154cd0a763598d51467ee77beab",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -1643,16 +1644,16 @@
         },
         {
             "name": "league/oauth1-client",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "4d4edd9b6014f882e319231a9b3351e3a1dfdc81"
+                "reference": "cef3ceda13c78f89c323e4d5e6301c0eb7cea422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/4d4edd9b6014f882e319231a9b3351e3a1dfdc81",
-                "reference": "4d4edd9b6014f882e319231a9b3351e3a1dfdc81",
+                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/cef3ceda13c78f89c323e4d5e6301c0eb7cea422",
+                "reference": "cef3ceda13c78f89c323e4d5e6301c0eb7cea422",
                 "shasum": ""
             },
             "require": {
@@ -1702,7 +1703,7 @@
                 "tumblr",
                 "twitter"
             ],
-            "time": "2015-08-22 09:49:14"
+            "time": "2015-10-23 04:02:07"
         },
         {
             "name": "monolog/monolog",
@@ -1826,6 +1827,61 @@
             "time": "2015-01-11 23:07:46"
         },
         {
+            "name": "nathanmac/parser",
+            "version": "v3.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nathanmac/Parser.git",
+                "reference": "5472cc6bae23b89e9a9764db8ff0dc475b7006e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nathanmac/Parser/zipball/5472cc6bae23b89e9a9764db8ff0dc475b7006e8",
+                "reference": "5472cc6bae23b89e9a9764db8ff0dc475b7006e8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.3.0",
+                "symfony/yaml": "~2.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.3",
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nathanmac\\Utilities\\Parser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nathan Macnamara",
+                    "email": "hello@nathanmac.com"
+                }
+            ],
+            "description": "Simple PHP Parser Utility Library for API Development",
+            "homepage": "https://github.com/nathanmac/Parser",
+            "keywords": [
+                "api",
+                "json",
+                "parser",
+                "xml"
+            ],
+            "time": "2015-10-03 21:34:42"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.20.0",
             "source": {
@@ -1919,16 +1975,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.0.8",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "7fe2420f8ad46aa08d5b317c92a148611d366d88"
+                "reference": "2fa50aa2f17066fa74ba00d943e8cee1a98284af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/7fe2420f8ad46aa08d5b317c92a148611d366d88",
-                "reference": "7fe2420f8ad46aa08d5b317c92a148611d366d88",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/2fa50aa2f17066fa74ba00d943e8cee1a98284af",
+                "reference": "2fa50aa2f17066fa74ba00d943e8cee1a98284af",
                 "shasum": ""
             },
             "require": {
@@ -1960,7 +2016,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-10-18 21:39:26"
+            "time": "2015-10-23 13:21:37"
         },
         {
             "name": "psr/http-message",
@@ -2123,16 +2179,16 @@
         },
         {
             "name": "riari/laravel-forum",
-            "version": "2.4.7",
+            "version": "2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum.git",
-                "reference": "916c3af6c505fa43ef8ca2f5465a75d96c266172"
+                "reference": "dcb1b7c4d60d6f011f334882a03c15bff35bd814"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/916c3af6c505fa43ef8ca2f5465a75d96c266172",
-                "reference": "916c3af6c505fa43ef8ca2f5465a75d96c266172",
+                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/dcb1b7c4d60d6f011f334882a03c15bff35bd814",
+                "reference": "dcb1b7c4d60d6f011f334882a03c15bff35bd814",
                 "shasum": ""
             },
             "require": {
@@ -2163,7 +2219,7 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2015-09-21 19:17:37"
+            "time": "2015-10-25 11:00:03"
         },
         {
             "name": "simplepie/simplepie",
@@ -3017,6 +3073,55 @@
                 "dump"
             ],
             "time": "2015-09-22 14:41:01"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "31cb2ad0155c95b88ee55fe12bc7ff92232c1770"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/31cb2ad0155c95b88ee55fe12bc7ff92232c1770",
+                "reference": "31cb2ad0155c95b88ee55fe12bc7ff92232c1770",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-09-14 14:14:09"
         },
         {
             "name": "twbs/bootstrap",
@@ -3892,16 +3997,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.14",
+            "version": "4.8.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b4900675926860bef091644849305399b986efa2"
+                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b4900675926860bef091644849305399b986efa2",
-                "reference": "b4900675926860bef091644849305399b986efa2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/625f8c345606ed0f3a141dfb88f4116f0e22978e",
+                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e",
                 "shasum": ""
             },
             "require": {
@@ -3960,7 +4065,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-17 15:03:30"
+            "time": "2015-10-23 06:48:33"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4429,55 +4534,6 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2015-06-21 13:59:46"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "v2.7.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "31cb2ad0155c95b88ee55fe12bc7ff92232c1770"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/31cb2ad0155c95b88ee55fe12bc7ff92232c1770",
-                "reference": "31cb2ad0155c95b88ee55fe12bc7ff92232c1770",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "~2.7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2015-09-14 14:14:09"
         }
     ],
     "aliases": [],
