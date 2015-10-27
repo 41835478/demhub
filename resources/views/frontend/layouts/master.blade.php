@@ -22,11 +22,14 @@
     @yield('after-styles-end')
 
     <?php // "coming soon" logic
-      $pattern = "/^(http(s?):\/\/)?((((staging)|(beta)).demhub.net)|(localhost:8000)|(demhub.dev))\/?(.+)?$/i"
-      // $launch_date = strtotime("2015-11-10");
+      $pattern = "/^(http(s?):\/\/)?((((staging)|(beta)).demhub.net)|(localhost:8000)|(demhub.dev))\/?(.+)?$/i";
+      $today = date("Y-m-d H:i:s");
+      $launch_date = "2015-11-10 00:00:00";
+      // FALSE if deploying to production // TRUE if testing on development
+      $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
     ?>
 
-    @if(preg_match($pattern, Request::url()) == FALSE)
+    @if($display_coming_soon)
       {!! HTML::style(elixir('css/coming-soon.css')) !!}
     @endif
 
@@ -45,7 +48,7 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    @if(preg_match($pattern, Request::url()) == FALSE)
+    @if($display_coming_soon)
       @include('frontend.includes._coming-soon')
     @else
       <div class="wrapper">
