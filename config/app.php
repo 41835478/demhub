@@ -167,7 +167,8 @@ return [
 		'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 		// 'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
-		'Riari\Forum\ForumServiceProvider'
+		'Riari\Forum\ForumServiceProvider',
+		'Nathanmac\Utilities\Parser\ParserServiceProvider'
 	],
 
 	/*
@@ -222,6 +223,7 @@ return [
 		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+		'Parser' 	=> 'Nathanmac\Utilities\Parser\Facades\Parser',
 
 	],
 ];

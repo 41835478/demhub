@@ -18,7 +18,8 @@
 		"arcanedev/log-viewer": "~3.4.0",
 		"creativeorange/gravatar": "~1.0",
 		"simplepie/simplepie": "dev-master",
-		"riari/laravel-forum": "~2.0"
+		"riari/laravel-forum": "~2.0",
+		"Nathanmac/Parser": "3.*"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
