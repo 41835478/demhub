@@ -26,7 +26,7 @@
       // $launch_date = strtotime("2015-11-10");
     ?>
 
-    @if(preg_match($pattern, Request::url()) == FALSE || )
+    @if(preg_match($pattern, Request::url()) == FALSE)
       {!! HTML::style(elixir('css/coming-soon.css')) !!}
     @endif
 
