@@ -22,7 +22,7 @@ class InfoResourceController extends Controller
     }
 	public function showResourceFilter(){
 		$regions= Region::all();
-		$InfoResource= InfoResource::simplePaginate(15);
+		$InfoResource= InfoResource::all();
 		$categories = Division::all();
 
 		return view('frontend.user.resource_filter', [
