@@ -41,7 +41,7 @@
             <div class="btn-group" role="group">
                 <!-- <a href="{{ $thread->replyRoute }}" class="btn btn-default">{{ trans('forum::base.new_reply') }}</a> -->
                 <!-- <a href="#quick-reply" class="btn btn-default">{{ trans('forum::base.quick_reply') }}</a> -->
-                <a href="{{ route('all_threads') }}" class="btn btn-default btn-style">ALL THREADS</a>
+                <a href="{{ url('forum/all_threads') }}" class="btn btn-default btn-style">ALL THREADS</a>
             </div>
         </div>
         <div class="col-xs-8 text-right">

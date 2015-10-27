@@ -62,10 +62,9 @@
 			<div id="ph-text" class="text-left">
 
 					<div class="col-md-12">
-						<h4>DISCUSSION</h4>
+
 						<!-- <span class="label label-default" >publication Date</span>
 						<p>Description, Description, Description, Description.</p> -->
-						<hr>
 						<h4>SEARCH</h4>
 						<hr>
 						<h4>GROUPS</h4>
