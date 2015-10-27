@@ -1,7 +1,7 @@
 <div class="theme-fire">
   <!-- Background container -->
   <div id="background-container" class="background-container">
-      <div id="background-output" class="background-output" style="display:hidden"></div>
+      <div id="background-output" class="background-output"></div>
       <div id="vignette" class="background-vignette"></div>
       <div id="noise" class="background-noise"></div>
   </div>
