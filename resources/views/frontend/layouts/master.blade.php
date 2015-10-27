@@ -21,6 +21,14 @@
     {!! HTML::style(elixir('css/frontend.css')) !!}
     @yield('after-styles-end')
 
+    <?php // "coming soon" logic
+      $pattern = "/^(http(s?):\/\/)?((((staging)|(beta)).demhub.net)|(localhost:8000)|(demhub.dev))\/?(.+)?$/i"
+    ?>
+
+    @if(preg_match($pattern, Request::url()) == FALSE)
+      {!! HTML::style(elixir('css/coming-soon.css')) !!}
+    @endif
+
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 
@@ -35,10 +43,6 @@
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <?php // "coming soon" logic
-      $pattern = "/^(http(s?):\/\/)?((((staging)|(beta)).demhub.net)|(localhost:8000)|(demhub.dev))\/?(.+)?$/i"
-    ?>
 
     @if(preg_match($pattern, Request::url()) == FALSE)
       @include('frontend.includes._coming-soon')

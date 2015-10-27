@@ -15,7 +15,13 @@ elixir(function(mix) {
             ], 'public/css/frontend.css')
         .scripts([ // Combine front-end scripts
                 'plugins.js',
-                'frontend/main.js'
+                'frontend/main.js',
+                'frontend/coming-soon/jquery.countdown.js', // coming-soon js
+                'frontend/coming-soon/placeholders.min.js', // coming-soon js
+                'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
+                'frontend/coming-soon/main.config.js', // coming-soon js
+                'frontend/coming-soon/shader.js', // coming-soon js
+                'frontend/coming-soon/demo.js' // coming-soon js
             ], 'public/js/frontend.js')
         .sass([ // Process back-end stylesheets
             'backend/main.scss',
@@ -34,9 +40,15 @@ elixir(function(mix) {
         .sass([ // Process core stylesheets
           'core/core.scss',
         ], 'resources/assets/css/core/core.css')
+        .sass([ // Process coming soon stylesheets
+          'core/coming-soon.scss',
+        ], 'resources/assets/css/core/coming-soon.css')
         .styles([ // Combine pre-processed CSS files
-                'core/core.css'
-            ], 'public/css/core.css')
+          'core/core.css'
+        ], 'public/css/core.css')
+        .styles([ // Combine pre-processed CSS files
+          'core/coming-soon.css'
+        ], 'public/css/coming-soon.css')
 
         // Apply version control
         .version([
@@ -45,6 +57,7 @@ elixir(function(mix) {
           "public/css/backend.css",
           "public/js/backend.js",
           "public/css/core.css",
+          "public/css/coming-soon.css"
         ]);
 });
 
