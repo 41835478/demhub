@@ -22,8 +22,8 @@
 //  Global Dependencies // include files in gulpfile.js
 //  =========================================================
 //
-// @import "bootstrap";
-// @import "font-awesome";
+// @import "bootstrap"; // already included in gulpfile.js
+// @import "font-awesome"; // already included in gulpfile.js
 //
 //  =========================================================
 //  Base
@@ -35,8 +35,8 @@
 //  Areas
 //  =========================================================
 //
- @import "header";
- @import "navbar";
+@import "header";
+@import "navbar";
 @import "footer";
 //
 //  =========================================================
@@ -63,4 +63,4 @@
 //  Temp files // need to be removed eventually
 //  =========================================================
 //
- @import "shame"
+ @import "shame";

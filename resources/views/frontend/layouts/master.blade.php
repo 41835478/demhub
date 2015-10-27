@@ -1,81 +1,95 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="_token" content="{{ csrf_token() }}" />
-        <title>@yield('title', app_name())</title>
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('author', 'DEMHUB Developers')">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{{ csrf_token() }}" />
+    <title>@yield('title', app_name())</title>
+    <meta name="description" content="@yield('meta_description', 'Default Description')">
+    <meta name="author" content="@yield('author', 'DEMHUB Developers')">
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-        @yield('meta')
 
-        @yield('before-styles-end')
-        {!! HTML::style(elixir('css/core.css')) !!}
-        {!! HTML::style(elixir('css/frontend.css')) !!}
-        @yield('after-styles-end')
+    @yield('meta')
+    @yield('before-styles-end')
+    {!! HTML::style(elixir('css/core.css')) !!}
+    {!! HTML::style(elixir('css/frontend.css')) !!}
+    @yield('after-styles-end')
 
-        <!-- Fonts -->
-        <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    <?php // "coming soon" logic
+      $pattern = "/^(http(s?):\/\/)?((((staging)|(beta)).demhub.net)|(localhost:8000)|(demhub.dev))\/?(.+)?$/i"
+    ?>
 
-        <!-- Icons-->
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+    @if(preg_match($pattern, Request::url()) == FALSE)
+      {!! HTML::style(elixir('css/coming-soon.css')) !!}
+    @endif
 
-        {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <!-- Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 
-        <div class="wrapper">
+    <!-- Icons-->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
 
-		  @if (Auth::user() && ! empty($allDivisions))
-		  	@include ('frontend.user.menu-user.first-menu-user')
+    {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
+  </head>
+
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    @if(preg_match($pattern, Request::url()) == FALSE)
+      @include('frontend.includes._coming-soon')
+    @else
+      <div class="wrapper">
+
+        @if (Auth::user() && ! empty($allDivisions))
+          @include ('frontend.user.menu-user.first-menu-user')
           @if (!isset($userMenu))
             @if (Request::url() == url('userhome'))
               @include ('frontend.user.menu-user.carousel-menu-user')
             @endif
             @include ('frontend.user.menu-user.second-menu-user')
-            @endif
-		  @else
-		  	@include('frontend.includes.nav')
-		  @endif
+          @endif
+        @else
+          @include('frontend.includes.nav')
+        @endif
 
-            <div class="container-fluid">
-            @include('includes.partials.messages')
-            @yield('content')
-            </div>
+        <div class="container-fluid">
+          @include('includes.partials.messages')
+          @yield('content')
+        </div>
 
-          <div class="push"></div>
-        </div><!-- ./wrapper -->
-        @include('frontend.includes.footer')
+        <div class="push"></div>
+      </div><!-- ./wrapper -->
 
+      @include('frontend.includes.footer')
+    @endif
 
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
-        {!! HTML::script('js/vendor/bootstrap.min.js') !!}
+    <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
+    {!! HTML::script('js/vendor/bootstrap.min.js') !!}
 
-        @yield('before-scripts-end')
-        {!! HTML::script(elixir('js/frontend.js')) !!}
-        @yield('after-scripts-end')
+    @yield('before-scripts-end')
+    {!! HTML::script(elixir('js/frontend.js')) !!}
+    @yield('after-scripts-end')
 
-        @include('includes.partials.ga')
-        <!-- google-analytics -->
-        <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    @include('includes.partials.ga')
 
-        ga('create', 'UA-69289302-1', 'auto');
-        ga('send', 'pageview');
+    <!-- google-analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-</script>
-    </body>
+      ga('create', 'UA-69289302-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
 </html>
