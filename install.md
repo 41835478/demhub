@@ -1,11 +1,11 @@
 ### Installation (OSX):
 
-- Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+- Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) (`brew install composer`)
 - Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://www.vagrantup.com/)
 - Install [Atom](https://atom.io/) (Optional - Recommended)
 - Get invited to [DEMHUB Devs Group](https://bitbucket.org/account/user/demhub/groups/developers/) in [Bitbucket](https://bitbucket.org)
-- Add local SSH key to [DEMHUB SSH Keys](https://bitbucket.org/account/user/demhub/ssh-keys/)
+- Add local SSH key to [DEMHUB SSH Keys](https://bitbucket.org/account/user/demhub/ssh-keys/) (`ssh-keygen -t rsa`)
 
 #### Inside Terminal
 
@@ -37,3 +37,9 @@ sites:
 
 - `homestead ssh`
 - `cd ~/workspace/demhub`
+- `composer install`
+- `npm install`
+- `cp .env.example .env`
+- `artisan key:generate`
+- `artisan migrate:refresh --seed`
+- Open Chrome and visit `demhub.dev`
