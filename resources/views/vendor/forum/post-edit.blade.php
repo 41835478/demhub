@@ -12,6 +12,7 @@
         'form_url'          => $post->editRoute,
         'form_classes'      => '',
         'show_title_field'  => false,
+        'division_show'     => false,
         'post_content'      => $post->content,
         'submit_label'      => trans('forum::base.edit_post'),
         'cancel_url'        => $post->thread->route

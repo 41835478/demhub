@@ -27,7 +27,7 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 {
 	public function getViewAllThreads()
 	{
-			$threads = Thread::all();
+			$threads = Thread::simplePaginate(10);
 
 			$categories = $this->categories->getAll();
 
@@ -59,7 +59,7 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 			return $this->makeView('forum::thread', compact('allDivisions'));
 	}
 
-	public function getCreateThread()
+	public function getModCreateThread()
 	{
 			$allDivisions = Division::all();
 			$this->load(['category' => 9]);
@@ -67,7 +67,7 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 			return $this->makeView('forum::thread-create', compact('allDivisions'));
 	}
 
-	public function postCreateThread()
+	public function postModCreateThread()
 	{
 			$user = Utils::getCurrentUser();
 

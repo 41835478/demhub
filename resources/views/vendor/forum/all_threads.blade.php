@@ -4,18 +4,18 @@
 @section('content')
 <!-- @include('forum::partials.breadcrumbs') -->
 
-<h2>{{ trans('forum::base.index') }}</h2>
+<!-- <h2>{{ trans('forum::base.index') }}</h2> -->
 
 <div class="row">
-	<div class="col-xs-4">
+	<div class="col-md-7 col-md-offset-2">
 
-		<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-primary">{{ trans('forum::base.new_thread') }}</a>
-
+		<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-default btn-style">{{ trans('forum::base.new_thread') }}</a>
 	</div>
 
 </div>
-
-<table class="table table-index">
+<div class="row">
+	<div class="col-md-7 col-md-offset-2">
+<table class="table table-index table-hover">
 
     <thead>
         <tr>
@@ -36,11 +36,11 @@
 				<!-- </a> -->
         </td>
       <td>{{$thread->author->user_name}}</td>
-      <td>{{(count($thread->posts)+1)}}</td>
+      <td>{{(count($thread->posts))}}</td>
       </tr>
 
       @endforeach
     </tbody>
 </table>
-
+{!! $threads->render() !!}
 @overwrite
