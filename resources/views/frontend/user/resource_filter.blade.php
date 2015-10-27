@@ -89,7 +89,7 @@
 
 	</div> -->
 </div>
-{!! $resourceEntry->render() !!}
+
 
 	<script>
 	$("select#country").change(function(){
