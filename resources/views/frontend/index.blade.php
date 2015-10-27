@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-<div class="col-xs-12" style="padding:0px">
+<div class="col-xs-12">
 <div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed center center no-repeat;
 											-webkit-background-size: cover;
 											-moz-background-size: cover;

@@ -538,7 +538,7 @@ div#user-email p {
 div img {
   max-width: 30%; }
 
-nav#user-function {
+#user-function {
   text-decoration: none;
   text-shadow: none;
   color: #fff; }
@@ -546,7 +546,7 @@ nav#user-function {
 nav#user-function div.container div.navbar-header a {
   font-weight: bolder; }
 
-nav#guest-function div.container div.navbar-header a:hover {
+#guest-function div.container div.navbar-header a:hover {
   color: #60A0FF; }
 
 nav#user-function div.container div.navbar-header img {
@@ -555,20 +555,24 @@ nav#user-function div.container div.navbar-header img {
 nav#user-function div.container div#navbar {
   margin-left: 1%; }
 
-nav#user-function div.container div#navbar a {
+#user-function div.container div#navbar a {
   color: #fff; }
 
-nav#user-function div.container div#navbar a:hover {
+#user-function div.container div#navbar a:hover {
   color: #60A0FF;
   background: #000;
   text-decoration: none;
   text-shadow: none; }
 
-nav#user-function div.container div#navbar ul.navbar-nav li.active a {
+#user-function li.active a {
   background: #60A0FF;
   color: #fff;
   text-decoration: none;
   text-shadow: none; }
+
+#user-function li ul li a:hover {
+  color: #60A0FF;
+  background: #000; }
 
 .dots {
   height: 100%; }

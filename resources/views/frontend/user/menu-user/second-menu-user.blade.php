@@ -1,6 +1,6 @@
 
 <div class="row" @if (Request::url() !== url('userhome')) style="padding-top:52px;" @endif>
-	<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:20%;">
+	<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:18%;">
 
   	          <ul class="nav navbar-nav">
  				 @if(Request::url() === url('userhome'))
@@ -9,8 +9,6 @@
  				 <li>
  				 @endif
 				<a href="{{url('userhome')}}" style="border-left:2px solid #fff"><!-- <img src="css/hot-potato-black-text-with-logo.png" class="blackImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"><img src="css/hot-potato-white-text-with-logo.png" class="whiteImage" alt="Hot Potato" width="101.48" height="22" style="padding-bottom:0px;"> --> NEWS FEED</a></li>
-
-
 
 				 <li>
 

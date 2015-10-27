@@ -1,6 +1,6 @@
 
 
-<div class="col-md-9 col-md-offset-1" style="overflow-x:hidden">
+<div class="col-md-7 col-md-offset-2" style="overflow-x:hidden">
 
   <div id="ph-text" class="text-left">
 
