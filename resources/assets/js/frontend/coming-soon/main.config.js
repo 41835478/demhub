@@ -2,7 +2,7 @@ var config = {
     countdown: {
         year: 2015,
         month: 11,
-        day: 1,
+        day: 10,
         hour: 0,
         minute: 0,
         second: 0
