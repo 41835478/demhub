@@ -1,5 +1,5 @@
 <nav id="user-function" class="navbar navbar-inverse navbar-fixed-top" style="padding-left:30px">
-	<div class="container-fluid">
+
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 	    <span class="sr-only">Toggle navigation</span>
@@ -59,7 +59,9 @@
 
                 <li style="padding:0;">
                     <a style="padding:5% 0 0 0;">
-                        <!-- @include('forms.search') -->
+
+													{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
+										
                     </a>
                 </li>
                 <li class="dropdown">
@@ -80,5 +82,5 @@
 
         <!--/.nav-collapse -->
     </div>
-	</div>
+
 </nav>

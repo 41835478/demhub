@@ -349,7 +349,7 @@ div#welcome_sign-up form span {
   background-repeat: no-repeat; }
 
 .label-default {
-  opacity: 0.35;
+  opacity: 0.45;
   filter: alpha(opacity=35);
   /* For IE8 and earlier */ }
 
@@ -472,7 +472,6 @@ div#social-actions ul#social li span.badge {
   color: #333; }
 
 div#welcome-division {
-  padding: 0 0 5%;
   text-align: center; }
 
 div#welcome-division-menu {

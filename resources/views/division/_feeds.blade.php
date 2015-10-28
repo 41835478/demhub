@@ -1,14 +1,16 @@
-
+<div class="row">
 
 <div class="col-md-7 col-md-offset-2" style="overflow-x:hidden">
-
+  <div class="row" >
+    <h2><span class="label label-info" style="background-color:rgba(0, 0, 0, 0.7);">NEWS FEED</span><h2>
+  </div>
   <div id="ph-text" class="text-left">
 
     @foreach($newsFeeds->get_items($start, $length) as $item)
 
       @if(!isset($pattern) || isset($pattern) && (preg_match($pattern, $item->get_title()) == true || preg_match($pattern, $item->get_description()) == true) )
 
-        <div class="col-md-12">
+        <div class="row">
           <h3>
             <a
               @if(Auth::check())
@@ -25,14 +27,15 @@
             {{$item->get_date('j F Y | g:i a')}}
           </span>
 
+
           <?php
             $description = $item->get_description();
             if (preg_match_all('/(https?:\/\/\S+\.(?:jpg|png|gif))\s+/', $description, $img)){
-              echo $img[0][0];
+              echo '<img class="img-responsive">'.$img[0][0].'</img>';
             }
           ?>
 
-          <p>
+          <p style="padding-top:10px">
             <?php
             $description = $item->get_description();
               if (strlen($description) > 225){
@@ -58,4 +61,5 @@
     <a href="<?php echo '?start=' . $start . '&length=10'; ?>">10</a>
     <a href="<?php echo '?start=' . $start . '&length=20'; ?>">20</a> at a time.</p>
 
+</div>
 </div>

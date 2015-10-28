@@ -1,6 +1,6 @@
 
 <div class="row" style="padding-top:52px;">
-	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
+	<div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);overflow-x:hidden">
 		@foreach($allDivisions as $category)
 			<a href="{{url('division', array('slug' => $category->slug))}}">
 				<div id="division_{{$category->id}}" style="opacity: 0.75;filter: alpha(opacity=75);background-color: #{{$category->bg_color}};min-height:67px;max-height:67px" class="col-md-2">
@@ -13,8 +13,8 @@
 </div>
 
 <div class="row">
-	<div class="col-md-8" style="max-height:500px;overflow-y:hidden;padding:0px">
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="max-height:500px">
+	<div class="col-md-8" style="max-height:450px;overflow-y:hidden;padding-right:5px">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="max-height:450px">
   <!-- Indicators -->
   <ol class="carousel-indicators">
 	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -32,7 +32,7 @@
       </div>
     </div>
 		@foreach($allDivisions as $category)
-    <div class="item">
+    <div class="item" id="carousel_{{$category->slug}}">
 	<a href="{{url('division', array('slug' => $category->slug))}}">
       <img src="./images/backgrounds/divisions/{{$category->slug}}.jpg" class="img-responsive" alt="{{$category->slug}} Image" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:150px;padding-top:20px">

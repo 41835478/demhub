@@ -26,7 +26,7 @@
   	            <li><a href="" style="">MAP - COMING SOON</a></li>
 
   				<!-- <li><a href="{url('logout')}}"><img src="css/share-image-black.png" class="blackImage" alt="Hot Potato" width="55" height="21" style=""><img src="css/share-image-white.png" class="whiteImage" alt="Hot Potato" width="55" height="21" style=""> Feed</a></li> -->
-  				<li><a href="">CONNECTIONS - COMING SOON</a></li>
+  				<!-- <li><a href="">CONNECTIONS - COMING SOON</a></li> -->
 					<li><a href="" style="border-right:2px solid #fff">EVENT TRACKING - COMING SOON</a></li>
   	            <!-- <li role="presentation"><a href="{url('logout')}}">About &amp; Contact</a></li> -->
   	      </div>

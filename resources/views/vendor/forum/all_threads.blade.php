@@ -42,5 +42,7 @@
       @endforeach
     </tbody>
 </table>
+</div>
+</div>
 {!! $threads->render() !!}
 @overwrite
