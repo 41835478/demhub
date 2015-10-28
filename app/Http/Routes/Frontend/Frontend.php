@@ -44,3 +44,11 @@ $router->group(['middleware' => 'auth'], function ()
 	get('self_profile', 'UserDashboardController@showSelfProfile')->name('self_profile');
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 });
+
+/**
+ * Scheduler routes
+ *
+ */
+get('scheduler/initialize', 'SchedulerController@initialize');
+get('scheduler/toolbox', 'SchedulerController@toolbox');
+get('scheduler/scrapeRss', 'SchedulerController@scrapeRss');
