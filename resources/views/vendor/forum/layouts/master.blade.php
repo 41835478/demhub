@@ -1,9 +1,4 @@
-
-
-    
-        @include('forum::partials.alerts')
-
-        @yield('content')
+     @include('forum::partials.alerts')
 
 
     <script>

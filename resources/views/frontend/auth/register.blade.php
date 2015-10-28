@@ -7,6 +7,7 @@
 																	-o-background-size: cover;
 																	background-size: cover;
 																	color:#fff;
+																	padding-bottom:15%
 																	">
 	<div class="row" style="padding-top:50px;">
     <div class="col-md-12 text-center">

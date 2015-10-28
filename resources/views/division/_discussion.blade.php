@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-7 col-md-offset-2">
     <div class="row" >
-      
+
 			<h2><span class="label label-info" style="background-color:rgba(0, 0, 0, 0.7);">DISCUSSION</span><h2>
     </div>
 
@@ -19,7 +19,10 @@
         </a>
       </h3>
       <p>
-        <b>LATEST POST:</b> {{$thread->getLastPostAttribute()->content}}
+        <b>LATEST POST:</b>
+				<?php
+				echo preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', nl2br(e($thread->getLastPostAttribute()->content)));
+				?>
       </p>
     </div>
     @endforeach
