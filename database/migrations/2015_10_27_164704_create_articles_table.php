@@ -16,11 +16,11 @@ class CreateArticlesTable extends Migration
 			$table->increments('id');
 			$table->integer('type');
 			$table->string('divisions')->nullable();
-			$table->integer('source_id', false, true);
-			$table->string('source_url');
 			$table->string('title');
 			$table->string('excerpt');
 			$table->string('keywords')->nullable();
+			$table->integer('source_id', false, true);
+			$table->string('source_url');
 			$table->string('city')->nullable();
 			$table->string('state')->nullable();
 			$table->string('country')->nullable();
@@ -28,6 +28,7 @@ class CreateArticlesTable extends Migration
 			$table->double('lng')->nullable();
 			$table->integer('review');
 			$table->boolean('deleted');
+			$table->timestamp('publish_date');
 			$table->timestamps();
 		});
     }
