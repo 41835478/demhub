@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Image;
 
 /**
  * Class DashboardController
@@ -13,7 +14,7 @@ class DashboardController extends Controller {
 	 */
 	public function index()
 	{
-		return view('frontend.user.dashboard')
+		return view('frontend.user.dashboard.index')
 			->withUser(auth()->user());
 	}
 }

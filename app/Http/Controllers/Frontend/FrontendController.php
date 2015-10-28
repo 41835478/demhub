@@ -24,7 +24,7 @@ class FrontendController extends Controller {
 	      	  'divisions' => $divisions
 	   	   	]);
 		}
-		
+
 	}
 
 	/**

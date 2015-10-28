@@ -53,17 +53,7 @@
     @else
       <div class="wrapper">
 
-        @if (Auth::user() && ! empty($allDivisions))
-          @include ('frontend.user.menu-user._first-menu-user')
-          @if (!isset($userMenu))
-            @if (Request::url() == url('userhome'))
-              @include ('frontend.user.menu-user._carousel-menu-user')
-            @endif
-            @include ('frontend.user.menu-user._second-menu-user')
-          @endif
-        @else
-          @include('frontend.includes.nav')
-        @endif
+        @include('frontend.includes._navigation')
 
         <div class="container-fluid">
           @include('includes.partials.messages')
@@ -73,7 +63,7 @@
         <div class="push"></div>
       </div><!-- ./wrapper -->
 
-      @include('frontend.includes.footer')
+      @include('frontend.includes._footer')
     @endif
 
     <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
@@ -86,14 +76,6 @@
     @include('includes.partials.ga')
 
     <!-- google-analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-69289302-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+    @include('includes.partials._google_analytics')
   </body>
 </html>

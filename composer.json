@@ -19,7 +19,10 @@
 		"creativeorange/gravatar": "~1.0",
 		"simplepie/simplepie": "dev-master",
 		"riari/laravel-forum": "~2.0",
-		"Nathanmac/Parser": "3.*"
+		"Nathanmac/Parser": "3.*",
+		"intervention/image": "^2.3",
+		"codesleeve/stapler": "1.0.*",
+    "codesleeve/laravel-stapler": "1.0.*"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

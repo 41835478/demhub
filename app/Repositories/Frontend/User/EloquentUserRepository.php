@@ -6,12 +6,22 @@ use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use Codesleeve\Stapler\ORM\StaplerableInterface;
+use Codesleeve\Stapler\ORM\EloquentTrait;
 
 /**
  * Class EloquentUserRepository
  * @package App\Repositories\User
  */
-class EloquentUserRepository implements UserContract {
+class EloquentUserRepository implements UserContract, StaplerableInterface {
+	use EloquentTrait;
+
+	/**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['avatar'];
 
 	/**
 	 * @var RoleRepositoryContract
@@ -146,7 +156,13 @@ class EloquentUserRepository implements UserContract {
 	 */
 	public function updateProfile($input) {
 		$user = access()->user();
-		$user->name = $input['name'];
+		$user->first_name = $input['first_name'];
+		$user->last_name = $input['last_name'];
+		// TODO - Add $user->canChangeUserName()
+		// $user->user_name = $input['user_name'];
+		$user->job_title = $input['job_title'];
+		$user->organization_name = $input['org_agency'];
+		$user->specialization = $input['specialization'];
 
 		if ($user->canChangeEmail()) {
 			//Address is not current address
@@ -158,6 +174,11 @@ class EloquentUserRepository implements UserContract {
 
 				$user->email = $input['email'];
 			}
+		}
+
+		if ($input['avatar']) {
+			// TODO - Add validation for image/file
+			$user->avatar = $input['avatar'];
 		}
 
 		return $user->save();

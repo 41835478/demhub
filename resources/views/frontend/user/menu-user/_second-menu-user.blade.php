@@ -1,5 +1,5 @@
 
-<div class="row" @if (Request::url() !== url('userhome')) style="padding-top:52px;" @endif>
+<div class="row" @if (Request::url() !== url('home')) style="padding-top:52px;" @endif>
 	<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:18%;">
 
   	          <ul class="nav navbar-nav">
@@ -8,7 +8,7 @@
  				 @else
  				 <li>
  				 @endif
-				<a href="{{url('userhome')}}" style="border-left:2px solid #fff"> NEWS FEED</a></li>
+				<a href="{{url('home')}}" style="border-left:2px solid #fff"> NEWS FEED</a></li>
 
 				@if(Request::url() == url('forum/all_threads'))
 				<li class="active">

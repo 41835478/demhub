@@ -14,28 +14,28 @@ class UserController extends Controller {
 	/**
 	 * User Homepage
 	 */
-	public function showUserHome(){
-        $allDivisions = Division::all();
+	public function index(){
+    $allDivisions = Division::all();
 
-				$allDivisions = $navDivisions = Division::all();
+		$allDivisions = $navDivisions = Division::all();
 
-	      $newsFeeds = array();
-	      foreach ($allDivisions as $div) {
-	        $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
-	      }
-	      $newsFeeds = array_unique($newsFeeds, SORT_REGULAR);
-	      $newsFeeds = $this -> simplepie_feed($newsFeeds);
+    $newsFeeds = array();
+    foreach ($allDivisions as $div) {
+      $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
+    }
+    $newsFeeds = array_unique($newsFeeds, SORT_REGULAR);
+    $newsFeeds = $this -> simplepie_feed($newsFeeds);
 
-	      $paginateVars = $this->paginate($newsFeeds);
-	      $start = $paginateVars[0];
-	      $length= $paginateVars[1];
-	      $max= $paginateVars[2];
-	      $next= $paginateVars[3];
-	      $prev= $paginateVars[4];
-	      $nextlink= $paginateVars[5];
-	      $prevlink= $paginateVars[6];
-	      $begin= $paginateVars[7];
-	      $end= $paginateVars[8];
+    $paginateVars = $this->paginate($newsFeeds);
+    $start = $paginateVars[0];
+    $length= $paginateVars[1];
+    $max= $paginateVars[2];
+    $next= $paginateVars[3];
+    $prev= $paginateVars[4];
+    $nextlink= $paginateVars[5];
+    $prevlink= $paginateVars[6];
+    $begin= $paginateVars[7];
+    $end= $paginateVars[8];
 
 		return view('frontend.user.userhome', compact([
 					'allDivisions', 'newsFeeds', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
@@ -83,7 +83,7 @@ class UserController extends Controller {
 		  $feed->enable_cache(true); $feed->set_cache_location('mysql://'.getenv('DB_USERNAME').':'.getenv('DB_PASSWORD').'@'.getenv('DB_HOST').':3306/'.getenv('DB_DATABASE').'?prefix=news_feeds_');
       $feed->set_cache_duration(60*60); // (sec*mins)
       $feed->set_output_encoding('utf-8');
-      $feed->init();
+      // $feed->init();
       $feed->handle_content_type();
       return $feed;
 	  }

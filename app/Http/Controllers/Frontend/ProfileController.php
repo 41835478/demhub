@@ -25,6 +25,6 @@ class ProfileController extends Controller {
 	 */
 	public function update(UserContract $user, UpdateProfileRequest $request) {
 		$user->updateProfile($request->all());
-		return redirect()->route('frontend.dashboard')->withFlashSuccess(trans("strings.profile_successfully_updated"));
+		return redirect()->route('dashboard')->withFlashSuccess(trans("strings.profile_successfully_updated"));
 	}
 }

@@ -37,10 +37,9 @@ get('resources', 'InfoResourceController@index');
  */
 $router->group(['middleware' => 'auth'], function ()
 {
-	get('dashboard', 'DashboardController@index')->name('dashboard');
-	get('profile/edit', 'ProfileController@edit')->name('edit_profile');
-	patch('profile/update', 'ProfileController@update');
-	get('userhome', 'UserController@showUserHome')->name('userhome');
-	get('self_profile', 'UserDashboardController@showSelfProfile')->name('self_profile');
+	get('userhome', 'UserController@index')->name('userhome');
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
+	get('dashboard', 'DashboardController@index')->name('dashboard');
+	// get('profile/edit', 'ProfileController@edit')->name('edit_profile');
+	patch('profile/update', 'ProfileController@update')->name('update_profile');
 });
