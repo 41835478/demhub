@@ -49,8 +49,18 @@ class DivisionController extends Controller
       $begin= $paginateVars[7];
       $end= $paginateVars[8];
 
+      $threads = array();
+      $tempThreads = array();
+      $threads[0] = Thread::where('parent_category', $currentDivision->id)->orderBy('created_at', 'desc')->first();
+      $tempThreads = Thread::where('parent_category', $currentDivision->id)->orderBy('updated_at', 'desc')->get();
+      if ($tempThreads[0] = $threads[0]){
+        $threads[1]=$tempThreads[1];
+      }
+      else {
+        $threads[1]=$tempThreads[0];
+      }
       return view('division.index', compact([
-        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'threads', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
       ]));
     }
 
