@@ -4,6 +4,15 @@ use App\Models\Division;
 use App\Http\Controllers\Controller;
 use SimplePie;
 use Request;
+use Riari\Forum\Models\Thread;
+use Riari\Forum\Events\ThreadWasViewed;
+use Riari\Forum\Repositories\Categories;
+use Riari\Forum\Repositories\Threads;
+use Riari\Forum\Repositories\Posts;
+use Riari\Forum\Libraries\AccessControl;
+use Riari\Forum\Libraries\Alerts;
+use Riari\Forum\Libraries\Utils;
+use Riari\Forum\Libraries\Validation;
 
 class DivisionController extends Controller
 {
@@ -40,8 +49,18 @@ class DivisionController extends Controller
       $begin        = $paginateVars[7];
       $end          = $paginateVars[8];
 
+      $threads = array();
+      $tempThreads = array();
+      $threads[0] = Thread::where('parent_category', $currentDivision->id)->orderBy('created_at', 'desc')->first();
+      $tempThreads = Thread::where('parent_category', $currentDivision->id)->orderBy('updated_at', 'desc')->get();
+      if ($tempThreads[0] = $threads[0]){
+        $threads[1]=$tempThreads[1];
+      }
+      else {
+        $threads[1]=$tempThreads[0];
+      }
       return view('division.index', compact([
-        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'threads', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
       ]));
     }
 
@@ -65,9 +84,20 @@ class DivisionController extends Controller
       $begin        = $paginateVars[7];
       $end          = $paginateVars[8];
 
-      return view('division.show', compact([
-        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
+      $threads = array();
+      $tempThreads = array();
+      $threads[0] = Thread::where('parent_category', $currentDivision->id)->orderBy('created_at', 'desc')->first();
+      $tempThreads = Thread::where('parent_category', $currentDivision->id)->orderBy('updated_at', 'desc')->get();
+      if ($tempThreads[0] = $threads[0]){
+        $threads[1]=$tempThreads[1];
+      }
+      else {
+        $threads[1]=$tempThreads[0];
+      }
+      return view('division.index', compact([
+        'allDivisions', 'navDivisions', 'currentDivision', 'threads', 'newsFeeds', 'userMenu', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
       ]));
+
     }
 
     public function results()

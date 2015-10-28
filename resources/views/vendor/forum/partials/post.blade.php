@@ -3,7 +3,9 @@
 		<strong>{!! $post->author->user_name !!}</strong>
 	</td>
 	<td>
-		{!! nl2br(e($post->content)) !!}
+		<?php
+		echo preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', nl2br(e($post->content)));
+		?>
 	</td>
 </tr>
 <tr>

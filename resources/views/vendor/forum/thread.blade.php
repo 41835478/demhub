@@ -2,7 +2,10 @@
 @section('forum::layouts.master')
 
 @section('content')
-
+<div class="row" style="padding:0px;
+                                background:url('/images/backgrounds/earth_17.jpg')  no-repeat fixed;
+                                background-position: 100% 70%;
+                                overflow:hidden;">
 
 <h2>
     @if ($thread->locked)
@@ -63,7 +66,8 @@
     </thead>
     <tbody>
         @foreach ($thread->postsPaginated as $post)
-            @include('forum::partials.post', compact('post'))
+
+           @include('forum::partials.post', compact('post'))
         @endforeach
     </tbody>
 </table>

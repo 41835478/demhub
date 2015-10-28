@@ -43,3 +43,11 @@ $router->group(['middleware' => 'auth'], function ()
 	// get('profile/edit', 'ProfileController@edit')->name('edit_profile');
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
 });
+
+/**
+ * Scheduler routes
+ *
+ */
+get('scheduler/initialize', 'SchedulerController@initialize');
+get('scheduler/toolbox', 'SchedulerController@toolbox');
+get('scheduler/scrapeRss', 'SchedulerController@scrapeRss');

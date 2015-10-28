@@ -9,7 +9,7 @@
                                 background-size: cover;
                                 overflow: hidden;"
                                 >
-      <div class="row" style="padding-top:50px;">
+      <div class="row" style="padding-top:52px;">
         <div id="welcome-division-menu" class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 
           @foreach($navDivisions as $div)
