@@ -76,6 +76,7 @@ class DivisionController extends Controller
 	    $userMenu = false;
 
       $newsFeeds = array();
+
       foreach ($allDivisions as $div) {
         $newsFeeds = array_merge($newsFeeds, $div->newsFeeds->lists('url')->all());
       }

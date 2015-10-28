@@ -4,7 +4,7 @@
 
   <div id="ph-text" class="text-left">
 
-    @foreach($newsFeeds->get_items($start, $length) as $item)
+    @foreach($newsFeeds->get_items() as $item)
 
       @if(!isset($pattern) || isset($pattern) && (preg_match($pattern, $item->get_title()) == true || preg_match($pattern, $item->get_description()) == true) )
 
@@ -52,10 +52,5 @@
     @endforeach
 
   </div>
-  <p>Showing <?php echo $begin; ?>&ndash;<?php echo $end; ?> out of <?php echo $max; ?> |
-    <?php echo $prevlink; ?> | <?php echo $nextlink; ?> |
-    <a href="<?php echo '?start=' . $start . '&length=5'; ?>">5</a>
-    <a href="<?php echo '?start=' . $start . '&length=10'; ?>">10</a>
-    <a href="<?php echo '?start=' . $start . '&length=20'; ?>">20</a> at a time.</p>
 
 </div>
