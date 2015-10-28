@@ -54,12 +54,12 @@
       <div class="wrapper">
 
         @if (Auth::user() && ! empty($allDivisions))
-          @include ('frontend.user.menu-user.first-menu-user')
+          @include ('frontend.user.menu-user._first-menu-user')
           @if (!isset($userMenu))
             @if (Request::url() == url('userhome'))
-              @include ('frontend.user.menu-user.carousel-menu-user')
+              @include ('frontend.user.menu-user._carousel-menu-user')
             @endif
-            @include ('frontend.user.menu-user.second-menu-user')
+            @include ('frontend.user.menu-user._second-menu-user')
           @endif
         @else
           @include('frontend.includes.nav')
