@@ -15,9 +15,9 @@ class CreateScrapeSourcesTable extends Migration
 		Schema::create('scrape_sources', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('type', 32);
-			$table->string('title');
+			$table->string('title')->nullable();
 			$table->string('url');
-			$table->integer('division_id');
+			$table->integer('division_id')->nullable();
 			$table->timestamp('last_checked_item');
 			$table->boolean('deleted');
 			$table->timestamps();

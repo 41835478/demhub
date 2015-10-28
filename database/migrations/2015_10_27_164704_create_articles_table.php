@@ -15,17 +15,17 @@ class CreateArticlesTable extends Migration
 		Schema::create('articles', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('type');
-			$table->integer('division');
+			$table->string('divisions')->nullable();
 			$table->integer('source_id', false, true);
 			$table->string('source_url');
 			$table->string('title');
 			$table->string('excerpt');
-			$table->string('keywords');
-			$table->string('city');
-			$table->string('state');
-			$table->string('country');
-			$table->double('lat');
-			$table->double('lng');
+			$table->string('keywords')->nullable();
+			$table->string('city')->nullable();
+			$table->string('state')->nullable();
+			$table->string('country')->nullable();
+			$table->double('lat')->nullable();
+			$table->double('lng')->nullable();
 			$table->integer('review');
 			$table->boolean('deleted');
 			$table->timestamps();

@@ -16,7 +16,7 @@ class CreateArticleDetailsTable extends Migration
 			$table->increments('id');
 			$table->integer('article_id');
 			$table->string('url');
-			$table->text('text');
+			$table->text('text')->nullable();
 			$table->timestamps();
 		});
     }

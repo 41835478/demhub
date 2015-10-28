@@ -14,12 +14,12 @@ class CreateScrapeLogsTable extends Migration
     {
 		Schema::create('scrape_logs', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('source_id');
-			$table->boolean('automated');
+			$table->integer('source_id')->nullable();
+			$table->boolean('automated')->default(0);
 			$table->string('url');
 			$table->integer('saved_count');
 			$table->timestamp('last_item');
-			$table->text('data');
+			$table->text('data')->nullable();
 			$table->timestamps();
 		});
     }

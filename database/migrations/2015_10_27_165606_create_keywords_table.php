@@ -14,10 +14,10 @@ class CreateKeywordsTable extends Migration
     {
 		Schema::create('keywords', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('weight');
+			$table->integer('weight')->nullable();
 			$table->string('keyword');
 			$table->string('slug');
-			$table->string('divisions');
+			$table->string('divisions')->nullable();
 			$table->boolean('deleted');
 			$table->timestamps();
 		});
