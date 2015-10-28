@@ -57,13 +57,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" style="padding-right:25px">
 
-                <li style="padding:0;">
-                    <a style="padding:5% 0 0 0;">
+                <li style="padding:3% 0 0 0;">
 
-													{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
-										
-                    </a>
-                </li>
+										{!! Form::open(['url' => 'divisions/results', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
+										<input type="hidden" name="route" value="{{ Request::path() }}">
+										{!! Form::close() !!}
+								</li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase">{{Auth::user()->user_name}}<span class="caret"></span></a>
                     <ul class="dropdown-menu navbar-inverse" role="menu">

@@ -6,12 +6,11 @@
 
 	@include('division._restricted_access_modal')
 
-	@include('division._discussion')
-
 
 	@if(Request::url() == url('divisions/results'))
 		@include('division._search_feed')
 	@else
+		@include('division._discussion')
 		@include('division._feeds')
 	@endif
 @stop
