@@ -150,8 +150,10 @@ class SchedulerController extends Controller
 			$messages .= '</b><br>';
 		}
 
+
 		echo $messages;
-		//TODO: record messages in a log file or email them out to monitor cronjob
+		$messages = str_replace("<br>", "\n", $messages);
+		file_put_contents(storage_path()."/logs/scheduler/scrapeRSS_".date("YmdHis").".log", $messages);
 	}
 
 
