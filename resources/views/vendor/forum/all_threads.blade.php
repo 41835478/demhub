@@ -28,14 +28,14 @@
     <tbody>
       @foreach ($threads as $thread)
       <tr>
-        <td><a href="{{$thread->route}}" style="color:#60a0ff"><b>{{$thread->title}}</b></a></td>
+        <td><a href="{{$thread->route}}" ><b>{{$thread->title}}</b></a></td>
         <td>
         <a href="{{url('/division/'.$thread->category->slug)}}">
 					<img src="/images/backgrounds/nothing.png" alt="" class="img-circle img-responsive" style="background-color:#{{$thread->category->bg_color}};height:22px">
 				</a>
         </td>
       <td>{{$thread->author->user_name}}</td>
-      <td><span class="label label-default" style="font-size:82%">{{(count($thread->posts))}}</span></td>
+      <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td>
       </tr>
 
       @endforeach
