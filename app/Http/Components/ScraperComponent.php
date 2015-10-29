@@ -8,6 +8,12 @@
 
 namespace App\Http\Components;
 
+use Nathanmac\Utilities\Parser\Parser;
+use App\Models\Article;
+use App\Models\Keyword;
+use App\Models\NewsFeed;
+use App\Models\ScrapeSource;
+
 
 class ScraperComponent
 {
@@ -15,8 +21,6 @@ class ScraperComponent
 	const itemTypeNewsArticle = 1;
 	const itemTypeScientificPaper = 2;
 	const itemTypeOther = 9;
-
-
 
 	/**
 	 * Standard function to convert an int/string array to format optimized for search needed to be stored in db
@@ -83,5 +87,104 @@ class ScraperComponent
 		} else {
 			return $string;
 		}
+	}
+
+	/**
+	 * Gets information such as Sublocal, city, state, and country from google API from a set of Lat & Lng
+	 *
+	 * @param double $lat Latitude
+	 * @param double $lng longitude
+	 *
+	 * @return array
+	 */
+	public static function getLocationInfo($lat, $lng)
+	{
+		$session = curl_init('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$lng.'&sensor=false&key=');
+		// Tell cURL to return the request data
+		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+		// Execute cURL on the session handle
+		$response = curl_exec($session);
+		$results = json_decode($response);
+		curl_close($session);
+
+		$result = array('sublocal'=>null,'city'=>null,'state'=>null,'country'=>null);
+
+		if($results->status === 'OK')
+		{
+			foreach($results->results as $res){
+				if(in_array('locality', $res->types)){
+					foreach($res->address_components as $comp){
+						if(in_array('sublocality', $comp->types)) $result['sublocal'] = $comp->long_name;
+						if(in_array('locality', $comp->types)) $result['city'] = $comp->long_name;
+						if(in_array('administrative_area_level_1', $comp->types)){ $result['state'] = $comp->long_name; }
+						elseif(in_array('administrative_area_level_2', $comp->types)) { $result['state'] = $comp->long_name; }
+						if(in_array('country', $comp->types)) $result['country'] = $comp->long_name;
+					}
+				}
+			}
+			if($result['city'] == null) $result['city'] = $result['sublocal'];
+			if($result['city'] == NULL){
+				foreach($results->results as $res){
+
+					foreach($res->address_components as $comp){
+						if(in_array('sublocality', $comp->types)) $result['sublocal'] = $comp->long_name;
+						if(in_array('locality', $comp->types)) $result['city'] = $comp->long_name;
+						if(in_array('administrative_area_level_1', $comp->types)) $result['state'] = $comp->long_name;
+						if(in_array('country', $comp->types)) $result['country'] = $comp->long_name;
+					}
+
+				}
+
+
+			}
+		}
+		if($result['city'] == null) $result['city'] = $result['sublocal'];
+		$result['lat'] = (double)$lat;
+		$result['lng'] = (double)$lng;
+
+		return $result;
+	}
+
+	/**
+	 * getCoords
+	 *
+	 * Gets coordinates of a given location
+	 *
+	 * @param string $address address
+	 *
+	 * @return array lat, lng, type, status
+	 */
+	public static function getCoords($address){
+//		$rest = new RESTClient();
+//		//
+//		// Google api free tier has limit of 2,500 request per day and returns null if exceeded
+//		//
+//		$rest->initialize(array('server'=>'https://maps.googleapis.com'));
+//		$rest->option(CURLOPT_SSL_VERIFYPEER, false);
+//		$info = $rest->get('maps/api/geocode/json', array('address'=>urlencode($address), 'sensor'=>false, 'key'=>param('GOOGLE_GCM_API_KEY')));
+//		$result = json_decode($info);
+//
+//		$return = array('lat'=>null,'lng'=>null,'type'=>null,'status'=>$result->status);
+//
+//		if($result->status === 'OK'){
+//			$res = $result->results;
+//			$return['lat'] = $res[0]->geometry->location->lat;
+//			$return['lng'] = $res[0]->geometry->location->lng;
+//			$return['type'] = $res[0]->geometry->location_type;
+//		}
+//
+//		return $return;
+	}
+
+	/**
+	 * Just a quick func to verify if a variable is set and if not set it to a default
+	 *
+	 * @param mixed $var Any variable or array index that might not have been set
+	 * @param mixed $default Default value t return if not set
+	 * @return null $var value if set and $default value if not set
+	 */
+	public static function verify(&$var, $default=null){
+		return isset($var) ? $var : $default;
 	}
 } 
