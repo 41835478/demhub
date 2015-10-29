@@ -1,3 +1,6 @@
+body {
+  padding-top: 70px; }
+
 html, body {
   height: 100%; }
 
@@ -475,21 +478,21 @@ div#welcome-division {
   text-align: center; }
 
 div#welcome-division-menu {
-  background: #333; }
+  /*background: #333; }*/
 
 div#welcome-division-menu div {
   padding: 0 1%;
-  color: #fff;
-  border: 1px solid #fff;
+  /*color: #fff;*/
+  /*border: 1px solid #fff;*/
   font-size: 1.25em;
   min-height: 60px; }
 
-div#welcome-division-menu div:hover {
+/*div#welcome-division-menu div:hover {
   opacity: 1.0;
-  cursor: pointer; }
+  cursor: pointer; }*/
 
 div#welcome-division div#welcome-division-category {
-  color: #fff;
+  /*color: #fff;*/
   height: 452px;
   font-family: 'Open Sans', sans-serif;
   text-shadow: 1px 1px 1px #333; }
@@ -623,28 +626,6 @@ div#user-home ul#social li.comment a:hover {
 div#user-home ul#social li.comment span {
   background: #fff;
   color: #e30080; }
-
-div#user-settings {
-  padding: 5% 1% 0; }
-
-div#user-settings h1 {
-  color: #416788;
-  font-family: 'Open Sans', sans-serif; }
-
-div#user-settings form label {
-  color: #416788;
-  font-family: 'Open Sans', sans-serif; }
-
-div#user-settings form button {
-  box-shadow: none;
-  border: 1px solid #416788;
-  color: #333;
-  text-shadow: none;
-  background: #fff; }
-
-div#user-settings form button:hover {
-  background: #416788;
-  color: #fff; }
 
 div#user-manageapps {
   padding: 5% 1% 0; }
