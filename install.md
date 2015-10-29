@@ -47,3 +47,7 @@ sites:
 #### Before commiting
 - `git config --global user.name "Your Name"`
 - `git config --global user.email you@example.com`
+
+OR
+
+- commit inside the demhub folder, outside vagrant
