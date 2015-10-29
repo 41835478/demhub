@@ -23,7 +23,121 @@ class ScraperComponent
 	const itemTypeScientificPaper = 2;
 	const itemTypeOther = 9;
 
+	public static function processRSSFeed($source)
+	{
+		$return['status'] = 'tbd';
+		$return['count'] = 0;
+		$return['errors'] = 0;
+		$return['message'] = '';
+		// Initialize the cURL session with the request URL
+		//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
+		$session = curl_init($source->url);
+		// Tell cURL to return the request data
+		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+		// Execute cURL on the session handle
+		$response = curl_exec($session);
+		//$results = json_decode($response, true);
+		// Close the cURL session
+		curl_close($session);
 
+		//$parser = new Parser();
+		//$parsed = $parser->xml($response);
+		$return['data'] = $response;
+		$xml = simplexml_load_string($response, 'SimpleXMLElement', LIBXML_NOCDATA);
+
+		if(!$xml)
+			return $return;
+
+		$namespacesMeta = $xml->getNamespaces(true);
+
+		// Fix for empty values in XML
+		$json = json_encode((array) $xml);
+		$json = str_replace(':{}',':null', $json);
+		$json = str_replace(':[]',':null', $json);
+		$parsed = json_decode($json, 1);
+
+		//var_dump($parsed);
+
+		// if there's only one item, the ['item'] wont be an array, it'll be just the item.
+		// This is tested by existance of 'title' index
+		$total = isset($parsed['channel']['item']['title']) ? 1 : count($parsed['channel']['item']);
+		$return['message'] .= '<br><b>';
+		$return['message'] .= 'Checking source '.$source->id.' ('.$total.' items) : '.$source->url;
+		$return['message'] .= '</b>';
+
+		$all_keywords = Keyword::where('deleted', '=', 0)->get();
+
+		foreach($xml->channel->item as $item)
+		{
+			$item_array = (array)$item;
+
+			if(!isset($item_array['pubDate'])){
+				$return['message'] .= '<br><b>- Error - No publish date</b>';
+				continue;
+			}
+			if(strtotime($item->pubDate) < strtotime($source->last_checked_item)){
+				$return['message'] .= '<br><b>- Old item already.</b>';
+				continue;
+			}
+			if(Article::where('title', ScraperComponent::truncate(ScraperComponent::verify($item_array['title'])))->first()){
+				$return['message'] .= '<br><b>- This title already added to DB</b>';
+				continue;
+			}
+
+			$text = strip_tags($item_array['description']);
+			$keys_divs = ScraperComponent::guessKeywords($text, $all_keywords);
+
+			$locaion_info = null;
+			if(isset($namespacesMeta['geo'])){
+				$geoXML = (array)$item->children($namespacesMeta['geo']);
+				if(isset($geoXML['lat']) && isset($geoXML['long'])){
+					$locaion_info = self::getLocationInfo($geoXML['lat'], $geoXML['long']);
+				}
+			}
+
+			$model = new Article();
+			$model->type 		= ScraperComponent::itemTypeNewsArticle;
+			$model->divisions 	= ScraperComponent::convertDBArrayToString($keys_divs['divisions']);
+			$model->source_id 	= $source->id;
+			$model->source_url 	= ScraperComponent::truncate(ScraperComponent::verify($item_array['link']));
+			$model->title 		= ScraperComponent::truncate(ScraperComponent::verify($item_array['title']));
+			$model->excerpt 	= ScraperComponent::truncate($text);
+			$model->keywords 	= ScraperComponent::convertDBArrayToString($keys_divs['keywords']);
+			$model->city 		= $locaion_info!=null ? $locaion_info['city'] : null;
+			$model->state 		= $locaion_info!=null ? $locaion_info['state'] : null;
+			$model->country 	= $locaion_info!=null ? $locaion_info['country'] : null;
+			$model->lat 		= $locaion_info!=null ? $locaion_info['lat'] : null;
+			$model->lng 		= $locaion_info!=null ? $locaion_info['lng'] : null;
+			$model->review 		= 0;
+			$model->deleted 	= 0;
+			$model->publish_date= date("Y-m-d H:i:s", strtotime($item_array['pubDate']));
+
+			if($model->save()){
+				$return['message'] .= '<br><b>- Added '.$model->id.':</b> '.$model->excerpt;
+
+				$return['status'] = 'ok';
+				$return['count']++;
+				$return['last_saved_item'] = $model->publish_date;
+
+				$mdetail = new ArticleDetail();
+				$mdetail->article_id = $model->id;
+				$mdetail->url = $model->source_url;
+				$mdetail->text = $text;
+				$mdetail->save();
+
+			} else {
+				$return['message'] .= '<br><b>- Error adding: '.$item_array['title'].'</b>';
+				$return['errors']++;
+			}
+
+		}
+		if($return['count'] == 0)
+			$return['status'] = 'nothing';
+
+		return $return;
+		//var_dump($parsed['channel']['item']);
+	}
 
 	////////////////////////////
 	////      HELPERS
@@ -244,26 +358,32 @@ class ScraperComponent
 	 *
 	 * @return array lat, lng, type, status
 	 */
-	public static function getCoords($address){
-//		$rest = new RESTClient();
-//		//
-//		// Google api free tier has limit of 2,500 request per day and returns null if exceeded
-//		//
-//		$rest->initialize(array('server'=>'https://maps.googleapis.com'));
-//		$rest->option(CURLOPT_SSL_VERIFYPEER, false);
-//		$info = $rest->get('maps/api/geocode/json', array('address'=>urlencode($address), 'sensor'=>false, 'key'=>param('GOOGLE_GCM_API_KEY')));
-//		$result = json_decode($info);
-//
-//		$return = array('lat'=>null,'lng'=>null,'type'=>null,'status'=>$result->status);
-//
-//		if($result->status === 'OK'){
-//			$res = $result->results;
-//			$return['lat'] = $res[0]->geometry->location->lat;
-//			$return['lng'] = $res[0]->geometry->location->lng;
-//			$return['type'] = $res[0]->geometry->location_type;
-//		}
-//
-//		return $return;
+	public static function getCoords($address)
+	{
+		//TODO: required valid GOOGLE_GCM_API_KEY
+		$google_api_key = '';
+		//
+		// Google api free tier has limit of 2,500 request per day and returns null if exceeded
+		//
+		$session = curl_init('https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($address).'&sensor=false&key='.$google_api_key);
+		// Tell cURL to return the request data
+		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+		// Execute cURL on the session handle
+		$response = curl_exec($session);
+		$result = json_decode($response);
+		curl_close($session);
+
+		$return = array('lat'=>null,'lng'=>null,'type'=>null,'status'=>$result->status);
+
+		if($result->status === 'OK'){
+			$res = $result->results;
+			$return['lat'] = $res[0]->geometry->location->lat;
+			$return['lng'] = $res[0]->geometry->location->lng;
+			$return['type'] = $res[0]->geometry->location_type;
+		}
+
+		return $return;
 	}
 
 	/**
