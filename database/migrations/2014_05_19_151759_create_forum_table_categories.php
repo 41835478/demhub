@@ -19,13 +19,30 @@ class CreateForumTableCategories extends Migration {
 			$table->string('title');
 			$table->string('subtitle');
 			$table->integer('weight');
+			$table->string('bg_color'); // not part of vendor
+			$table->string('slug');			// not part of vendor
 		});
 
 		DB::table('forum_categories')->insert(
 			array(
-				['parent_category' => null, 'title' => 'Category', 'subtitle' => 'Contains categories and threads', 'weight' => 0],
-				['parent_category' => 1, 'title' => 'Sub-category', 'subtitle' => 'Contains threads', 'weight' => 0],
-				['parent_category' => 1, 'title' => 'Second subcategory', 'subtitle' => 'Contains more threads', 'weight' => 1]
+				['parent_category' => null, 'title' => 'Category', 								'subtitle' => 'Contains categories and threads',
+				'weight' => 0, 'bg_color' => null, 'slug' => null],
+				['parent_category' => 1, 		'title' => 'Sub-category', 						'subtitle' => 'Contains threads',
+				'weight' => 0, 'bg_color' => null, 'slug' => null],
+				['parent_category' => 1, 		'title' => 'Second subcategory', 			'subtitle' => 'Contains more threads',
+				'weight' => 1, 'bg_color' => null, 'slug' => null],
+				['parent_category' => null, 'title' => 'Health', 										'subtitle' => '',
+				'weight' => 0, 'bg_color' => '0D8E56', 'slug' => 'health'],
+				['parent_category' => null, 'title' => 'Science & Academia', 				'subtitle' => '',
+				'weight' => 0, 'bg_color' => '1D73A3', 'slug' => 'academia'],
+				['parent_category' => null, 'title' => 'EM Practitioner & Response','subtitle' => '',
+				'weight' => 0, 'bg_color' => 'DB9421', 'slug' => 'response'],
+				['parent_category' => null, 'title' => 'Civil & Cyber Security', 		'subtitle' => '',
+				'weight' => 0, 'bg_color' => '848889', 'slug' => 'security'],
+				['parent_category' => null, 'title' => 'Business Continuity', 			'subtitle' => '',
+				'weight' => 0, 'bg_color' => '933131', 'slug' => 'continuity'],
+				['parent_category' => null, 'title' => 'NGO & Humanitarian', 				'subtitle' => '',
+				'weight' => 0, 'bg_color' => '754293', 'slug' => 'humanitarian']
 			)
 		);
 	}

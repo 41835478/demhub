@@ -13,8 +13,8 @@
 - `git clone git@bitbucket.org:demhub/demhub.git; cd demhub`
 - `vagrant box add laravel/homestead`
 - `composer global require "laravel/homestead=~2.0"`
-- `echo 'export PATH="$PATH:~/.composer/vendor/bin"' >> ~/.bashrc`
-- `source ~/.bashrc`
+- `echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bash_profile`
+- `source ~/.bash_profile`
 - `homestead init`
 - `homestead edit`
 
