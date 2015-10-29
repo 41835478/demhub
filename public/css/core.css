@@ -510,59 +510,6 @@ div#social-actions ul#social li span.badge {
 div#welcome-division {
   text-align: center; }
 
-<<<<<<< HEAD
-=======
-div#welcome-division-menu {
-  /*background: #333; }*/
-
-div#welcome-division-menu div {
-  padding: 0 1%;
-  /*color: #fff;*/
-  /*border: 1px solid #fff;*/
-  font-size: 1.25em;
-  min-height: 60px; }
-
-/*div#welcome-division-menu div:hover {
-  opacity: 1.0;
-  cursor: pointer; }*/
-
-div#welcome-division div#welcome-division-category {
-  /*color: #fff;*/
-  height: 452px;
-  font-family: 'Open Sans', sans-serif;
-  text-shadow: 1px 1px 1px #333; }
-
-div#welcome-division-category div#ph-name {
-  margin-top: 5%; }
-
-div#welcome-division-category div#ph-name h1 {
-  font-size: 3.5em;
-  text-transform: uppercase;
-  padding: 3% 1%; }
-
-div#welcome-division div#ph-text {
-  margin: 1% 0;
-  padding: 1% 0; }
-
-div#welcome-division div#ph-text img {
-  max-width: 25%;
-  max-height: 20%;
-  display: block;
-  padding: 1% 1% 1% 0;
-  margin-left: 0; }
-
-div#welcome-division div#ph-text h3 a {
-  color: #333; }
-
-div#welcome-division div#ph-text span {
-  background: #333;
-  font-size: 1.0em; }
-
-div#welcome-division div#ph-text p {
-  font-size: 1.2em;
-  padding: 1% 0; }
-
->>>>>>> 11e5efa8bbb57138bfb40f1c62ff64a962bdb407
 div#user-email {
   padding: 0 0 0 5%; }
 
