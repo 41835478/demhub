@@ -1,5 +1,5 @@
 @include('frontend.includes._navbar')
-@if( isset($navDivisions) )
+@if( isset($navDivisions) && !isset($userMenu))
   @include('frontend.includes._nav_divisions')
 @endif
 @if (Auth::user() && ! empty($allDivisions))
