@@ -12,7 +12,7 @@
 
           <div class="col-sm-9">
             @if($user->avatar)
-              <img src="<?= $user->avatar->url() ?>" >
+              <img src="<?= $user->avatar->url() ?>" style="height: 200px; max-width: 200px !important;" >
             @else
                 {!! HTML::image("images/user/defaultavatar.svg") !!}
             @endif
