@@ -447,22 +447,17 @@ div#welcome-division {
 
   text-align: center;
 }
-div#welcome-division-menu {
-  // background: #333;
-}
-div#welcome-division-menu div {
-  padding: 0 1%;
-  // color: #fff;
-  // border: 1px solid #fff;
-  font-size: 1.25em;
-  min-height: 60px;
+
+#welcome-division-menu {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
 }
 div#welcome-division-menu div:hover {
   opacity: 1.0;
   cursor: pointer;
 }
-div#welcome-division div#welcome-division-category {
-  // color: #fff;
+#welcome-division-category {
+  color: #fff;
   height: 452px;
   font-family: 'Open Sans', sans-serif;
   text-shadow: 1px 1px 1px #333;

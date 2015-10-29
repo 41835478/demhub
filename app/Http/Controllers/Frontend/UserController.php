@@ -15,7 +15,6 @@ class UserController extends Controller {
 	 * User Homepage
 	 */
 	public function index(){
-    $allDivisions = Division::all();
 
 		$allDivisions = $navDivisions = Division::all();
 
@@ -38,7 +37,7 @@ class UserController extends Controller {
     $end= $paginateVars[8];
 
 		return view('frontend.user.userhome', compact([
-					'allDivisions', 'newsFeeds', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
+					'allDivisions','navDivisions', 'newsFeeds', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
 					]));
 
 	}

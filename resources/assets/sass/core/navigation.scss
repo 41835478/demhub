@@ -1,0 +1,88 @@
+//
+//  =========================================================
+//  DEMHUB Navigation
+//  Sass Stylesheet
+//  =========================================================
+//
+//
+//  =========================================================
+//  Main Navbar
+//  =========================================================
+
+.navbar-default {
+	border: none!important;
+}
+
+div.navbar-inverse {
+	border: none!important;
+	background:#ddd;
+	color:#666666;
+}
+
+.navbar-inverse a {
+	color:#666666;
+}
+
+// division and variables
+
+@mixin text_center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+$div_text_color:  #fff !default;
+
+.navigation_properties {
+  color:  $div_text_color;
+  @include text_center;
+  color: #fff;
+}
+
+//  =========================================================
+//  Divisions Navbar
+//  =========================================================
+
+.welcome-division {
+
+}
+
+.divisions-navbar-item:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.divisions-navbar-item {
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+	color: white;
+	background-color: black;
+	text-align:center;
+	padding-top:8px;
+	text-transform:uppercase;
+
+}
+.divisions-navbar-item h4 {
+	font-size:117%;
+}
+.ph-name {
+		opacity: 0.75;
+		filter: alpha(opacity=75);
+	  margin-top: 5%;
+	  font-size: 3.5em;
+	  text-transform: uppercase;
+	  padding: 1% 1% 1.5%;
+	}
+
+// .divisions-navbar-section {
+//
+// }
+//
+// .divisions-navbar-section-content {
+//
+// }
+//
+// .js-divisions-navbar-section-content {
+//
+// }

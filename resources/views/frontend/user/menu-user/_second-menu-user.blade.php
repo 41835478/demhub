@@ -1,6 +1,5 @@
 
-<div class="row" @if (Request::url() !== url('userhome')) style="padding-top:58px;" @endif>
-	<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:18%;margin:0px;">
+<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:18%;margin:0px;">
 
   	          <ul class="nav navbar-nav">
  				 @if(Request::url() === url('userhome'))
@@ -30,5 +29,4 @@
 					<li><a href="" style="border-right:2px solid #fff">EVENT TRACKING - COMING SOON</a></li>
   	            <!-- <li role="presentation"><a href="{url('logout')}}">About &amp; Contact</a></li> -->
 					</ul>
-  	      </div>
-	</div>
+  </div>
