@@ -1,0 +1,29 @@
+//all new variables.
+
+@mixin text_center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+$div_text_color:  #fff !default;
+
+
+
+
+//actual stylesheet
+.navigation_properties {
+  color:  $div_text_color;
+  @include text_center;
+  color: #fff;
+}
+
+//eg
+$health_color = "#FFF";
+$science_color = "...";
+
+
+.health {
+  background-color: $health_color;
+}

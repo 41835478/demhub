@@ -69,16 +69,17 @@
 	<div class="row">
 	<div class="col-md-12 text-center">
 		<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
-	</div>
-</div>
-<br><br><br>
-<div id="welcome-division-menu" class="row">
-	<div class="col-xs-12" style="opacity: 0.75;filter: alpha(opacity=75);padding:0px;">
 
+	</div>
+<!-- </div> -->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- <div class="row"> -->
+	<div class="col-xs-12" style="background:none;">
 		@foreach($divisions as $div)
 			<a href="{{url('division', $div->slug)}}" style="">
-				<div id="division_{{$div->id}}" style="background-color: #{{$div->bg_color}};min-height:185px;max-height:185px;" class="col-md-2">
-					<h3 style="text-align:center;padding-top:30px;text-transform:uppercase;">{{$div->name}}</h3>
+				<div id="division_{{$div->id}}" style="background-color: #{{$div->bg_color}};opacity:0.85; position:relative; min-height:185px;max-height:185px; color:#fff; width:14vw; margin:0 15px 0 15px; text-align:center; " class="col-md-2">
+					<h3 style="margin-top:30%;text-transform: uppercase; z-index:3; position:relative; ">{{$div->name}}</h3>
 				</div>
 			</a>
 		@endforeach
@@ -88,8 +89,8 @@
 
 <div id="welcome_tertiary_text" class="row" >
 	<div class="col-md-12 text-center">
-		<h2>Help us develop the world's DEM network</h2><h3>Test the beta and give us your feedback</h3><br>
-		<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
+		<h2>Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
+		<a type="button" class="btn btn-default btn-lg btn-style; position:absolute; " href={{url('auth/register')}}>REGISTER</a>
 	</div>
 </div>
 </div>
