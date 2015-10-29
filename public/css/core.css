@@ -103,11 +103,10 @@ button.btn-style:active {
   border-color: #000; }
 
 .feedsbox {
-  width: 22vw;
   height: 360px;
   display: inline-block;
-  margin: 10px 10px 10px 10px;
-  padding: 15px 15px 15px 15px;
+  margin: 10px 0px 10px 0px;
+  padding: 15px 5px 15px 5px;
   border: 1px   solid #ddd;
   float: left;
   position: relative; }
@@ -789,7 +788,8 @@ div#conversation-head {
   background: #0D8E56;
   display: block;
   float: left;
-  margin: -16px; }
+  margin: 0px 10px 0px 10px;
+  padding: 0px 5px 0px 5px; }
 
 .color-label_academia {
   width: 111%;

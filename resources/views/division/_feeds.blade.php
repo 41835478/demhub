@@ -6,12 +6,12 @@
 </div>
   <div class="row">
 
-  <div class="col-md-10 col-md-offset-1" style="overflow-x:hidden;padding-left:7%">
+  <!-- <div class="col-md-10 col-md-offset-1" style="overflow-x:hidden;padding-left:7%"> -->
 
     @foreach($newsFeeds->get_items($start, $length) as $index => $item)
 
       @if(!isset($pattern) || isset($pattern) && (preg_match($pattern, $item->get_title()) == true || preg_match($pattern, $item->get_description()) == true) )
-
+        <div class="col-xs-12 col-sm-6 col-md-4">
         <div class = "feedsbox">
 
         <div class ="color-label_{{$currentDivision->slug}}"></div>
@@ -100,11 +100,12 @@
 </div>
         </div>
       </div> <!-- the div that closes the box -->
+    </div>
       @endif
 
     @endforeach
 
-</div>
+<!-- </div> -->
 </div>
 <div class="row">
 <div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">
