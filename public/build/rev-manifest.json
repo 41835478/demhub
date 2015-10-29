@@ -1,7 +1,11 @@
 {
   "css/backend.css": "css/backend-5cfabe7892.css",
   "css/coming-soon.css": "css/coming-soon-ccb55490d9.css",
+<<<<<<< HEAD
   "css/core.css": "css/core-0b4e13c949.css",
+=======
+  "css/core.css": "css/core-a71f68c072.css",
+>>>>>>> 11e5efa8bbb57138bfb40f1c62ff64a962bdb407
   "css/frontend.css": "css/frontend-0d32185e2a.css",
   "js/backend.js": "js/backend-3b4f70a1d9.js",
   "js/frontend.js": "js/frontend-1bb44359f4.js"

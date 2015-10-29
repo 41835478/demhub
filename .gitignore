@@ -5,11 +5,12 @@
 Homestead.yaml
 Homestead.json
 .env
-/.DS_Store
+*.DS_Store
 /Thumbs.db
 /*.sublime-project
 /*.sublime-workspace
 .idea
+.tags*
 .project
 _ide_helper.php
 composer.phar

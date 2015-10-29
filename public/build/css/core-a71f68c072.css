@@ -1,5 +1,5 @@
 body {
-  padding-top: 50px; }
+  padding-top: 70px; }
 
 html, body {
   height: 100%; }
@@ -14,44 +14,11 @@ html, body {
 
 div.navbar-inverse {
   border: none !important;
-  background: #ddd;
+  background: #cccccc;
   color: #666666; }
 
 .navbar-inverse a {
   color: #666666; }
-
-.navigation_properties {
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  color: #fff; }
-
-.divisions-navbar-item:hover {
-  opacity: 1;
-  filter: alpha(opacity=100); }
-
-.divisions-navbar-item {
-  opacity: 0.75;
-  filter: alpha(opacity=75);
-  color: white;
-  background-color: black;
-  text-align: center;
-  padding-top: 8px;
-  text-transform: uppercase; }
-
-.divisions-navbar-item h4 {
-  font-size: 117%; }
-
-.ph-name {
-  opacity: 0.75;
-  filter: alpha(opacity=75);
-  margin-top: 5%;
-  font-size: 3.5em;
-  text-transform: uppercase;
-  padding: 1% 1% 1.5%; }
 
 footer, .push {
   height: 100px;
@@ -510,8 +477,6 @@ div#social-actions ul#social li span.badge {
 div#welcome-division {
   text-align: center; }
 
-<<<<<<< HEAD
-=======
 div#welcome-division-menu {
   /*background: #333; }*/
 
@@ -562,7 +527,6 @@ div#welcome-division div#ph-text p {
   font-size: 1.2em;
   padding: 1% 0; }
 
->>>>>>> 11e5efa8bbb57138bfb40f1c62ff64a962bdb407
 div#user-email {
   padding: 0 0 0 5%; }
 
@@ -805,24 +769,6 @@ div#conversation-head {
   padding: 5%;
   background-size: cover;
   box-shadow: -1px 0 2px #333; }
-
-.division_health {
-  background-color: #0D8E56; }
-
-.division_academia {
-  background-color: #1D73A3; }
-
-.division_response {
-  background-color: #DB9421; }
-
-.division_security {
-  background-color: #848889; }
-
-.division_continuity {
-  background-color: #933131; }
-
-.division_humanitarian {
-  background-color: #754293; }
 
 /*# sourceMappingURL=core.css.map */
 
