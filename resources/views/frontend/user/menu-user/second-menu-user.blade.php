@@ -14,7 +14,7 @@
 				 @else
 				 <li>
 				 @endif
-				 <!-- {{route('all_threads')}} -->
+				 <!-- {{--route('all_threads')--}} -->
 				<a href="" style=""> DISCUSSION - COMING SOON</a></li>
 				 @if(Request::url() === url('resource_filter'))
 				 <li class="active">

@@ -35,7 +35,7 @@
         <![endif]-->
 
         <div class="wrapper">
-
+          <p>fsdfsdfds</p>
 		  @if (Auth::user() && ! empty($allDivisions))
 		  	@include ('frontend.user.menu-user.first-menu-user')
           @if (!isset($userMenu))

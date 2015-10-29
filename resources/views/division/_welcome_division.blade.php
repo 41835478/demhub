@@ -24,7 +24,7 @@
       </div>
 
       <div class="row">
-        <div id="ph-name" class="col-md-4 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
+        <div id="ph-name" class="col-md-8 col-md-offset-8 text-center" style="opacity: 0.75;filter: alpha(opacity=75)">
           <h1 style="background:#{{$currentDivision->bg_color}}">
             {{$currentDivision->name}}
           </h1>
