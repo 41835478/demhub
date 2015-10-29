@@ -43,3 +43,7 @@ sites:
 - `artisan key:generate`
 - `artisan migrate:refresh --seed`
 - Open Chrome and visit `demhub.dev`
+
+#### Before commiting
+- `git config --global user.name "Your Name"`
+- `git config --global user.email you@example.com`
