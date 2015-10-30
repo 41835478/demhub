@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-    
+
     @yield('meta')
     @yield('before-styles-end')
     {!! HTML::style(elixir('css/core.css')) !!}
@@ -58,6 +58,7 @@
 
         <div class="container-fluid">
           @include('includes.partials.messages')
+          @yield('body-style')
           @yield('content')
         </div>
 

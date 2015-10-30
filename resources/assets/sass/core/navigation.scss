@@ -67,9 +67,11 @@ $div_text_color:  #fff !default;
 	font-size:117%;
 }
 .ph-name {
+		color: white;
 		opacity: 0.75;
 		filter: alpha(opacity=75);
 	  margin-top: 5%;
+		margin-bottom: 5%;
 	  font-size: 3.5em;
 	  text-transform: uppercase;
 	  padding: 1% 1% 1.5%;

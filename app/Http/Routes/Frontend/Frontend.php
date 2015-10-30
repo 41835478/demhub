@@ -55,8 +55,13 @@ $router->group(['middleware' => 'auth'], function ()
 
 /**
  * Scheduler routes
- *
  */
 get('scheduler/initialize', 'SchedulerController@initialize');
 get('scheduler/toolbox', 'SchedulerController@toolbox');
 get('scheduler/scrapeRss', 'SchedulerController@scrapeRss');
+
+/**
+ * Articles routes
+ */
+get('article/browse', 'ArticleController@browse');
+get('article/keywordlist', 'ArticleController@keywordlist');

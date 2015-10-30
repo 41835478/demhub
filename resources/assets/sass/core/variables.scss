@@ -34,6 +34,54 @@ $humanitarian_color: #754293;
 	  background-color:$humanitarian_color;
 	}
 
+.color-label_health {
+    width:111.25%;
+    height: 5%;
+    background:$health_color;
+    display:block;
+    float:left;
+    
+}
+.color-label_academia {
+    width:111%;
+    height: 5%;
+    background:$academia_color;
+    display:block;
+    float:left;
+    margin:-16px;
+}
+.color-label_response {
+    width:111%;
+    height: 5%;
+    background:$response_color;
+    display:block;
+    float:left;
+    margin:-16px;
+}
+.color-label_security {
+    width:111%;
+    height: 5%;
+    background:$security_color;
+    display:block;
+    float:left;
+    margin:-16px;
+}
+.color-label_continuity {
+    width:111%;
+    height: 5%;
+    background:$continuity_color;
+    display:block;
+    float:left;
+    margin:-16px;
+}
+.color-label_humanitarian {
+    width:111%;
+    height: 5%;
+    background:$humanitarian_color;
+    display:block;
+    float:left;
+    margin:-16px;
+}
 
 
 //actual stylesheet

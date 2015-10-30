@@ -1,18 +1,23 @@
 <div class="row">
 
-<div class="col-md-7 col-md-offset-2" style="overflow-x:hidden">
-  <div class="row" >
+<div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">
     <h2><span class="label label-info" style="background-color:rgba(0, 0, 0, 0.7);">NEWS FEED</span><h2>
   </div>
-  <div id="ph-text" class="text-left">
+</div>
+  <div class="row">
+    <div class="col-md-offset-1" style="padding-right:100px">
+  <!-- <div class="col-md-10 col-md-offset-1" style="overflow-x:hidden;padding-left:7%"> -->
 
-    @foreach($newsFeeds->get_items($start, $length) as $item)
+    @foreach($newsFeeds->get_items($start, $length) as $index => $item)
 
       @if(!isset($pattern) || isset($pattern) && (preg_match($pattern, $item->get_title()) == true || preg_match($pattern, $item->get_description()) == true) )
-      <div class = "feedsbox" style ="width:22vw; height:360px; display:inline-block; margin:10px 10px 10px 10px; padding:15px 15px 15px 15px; border:1px solid #ddd; float:left; position:relative;">
-        <!-- <div class="col-md-12">  -->
-        <div style ="width:111%; height: 5%; background:#{{$currentDivision->bg_color}};display:block;float:left; margin:-15px; -15px auto auto"></div>
-        <div style="width: 90%; height: 90%; margin-left:15px; margin-right:25px;">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class = "feedsbox">
+
+
+
+          <div style="width: 90%; height: 90%; margin-right:25px;">
+            <div class ="color-label_{{$currentDivision->slug}}"></div>
           <h3>
             <a
               @if(Auth::check())
@@ -95,16 +100,24 @@
 </div>
         </div>
       </div> <!-- the div that closes the box -->
+    </div>
       @endif
 
     @endforeach
 
-  </div>
-  <p>Showing <?php echo $begin; ?>&ndash;<?php echo $end; ?> out of <?php echo $max; ?> |
-    <?php echo $prevlink; ?> | <?php echo $nextlink; ?> |
-    <a href="<?php echo '?start=' . $start . '&length=5'; ?>">5</a>
-    <a href="<?php echo '?start=' . $start . '&length=10'; ?>">10</a>
-    <a href="<?php echo '?start=' . $start . '&length=20'; ?>">20</a> at a time.</p>
-
+<!-- </div> -->
 </div>
+<!-- <div class="col-md-1">
+  <p>side column</p>
+</div> -->
+</div>
+<div class="row">
+<div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">
+    <p>Showing <?php echo $begin; ?>&ndash;<?php echo $end; ?> out of <?php echo $max; ?> |
+      <?php echo $prevlink; ?> | <?php echo $nextlink; ?> |
+      <a href="<?php echo '?start=' . $start . '&length=5'; ?>">5</a>
+      <a href="<?php echo '?start=' . $start . '&length=10'; ?>">10</a>
+      <a href="<?php echo '?start=' . $start . '&length=20'; ?>">20</a> at a time.
+    </p>
+  </div>
 </div>
