@@ -22,8 +22,8 @@ class UserTableSeeder extends Seeder {
 		$users = [
 			[
 				'user_name' => 'DEMHUB',
-				'first_name' => 'ADMIN',
-				'last_name' => 'HUB',
+				'first_name' => 'DEMHUB',
+				'last_name' => 'NETWORK',
 				'email' => 'demhubcontact@gmail.com',
 				'password' => bcrypt('password'),
 				'confirmation_code' => md5(uniqid(mt_rand(), true)),

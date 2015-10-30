@@ -19,9 +19,11 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call(AccessTableSeeder::class);
 		$this->call(DivisionTableSeeder::class);
+		$this->call(ForumPostsTableSeeder::class);
+		$this->call(ForumThreadsTableSeeder::class);
 		$this->call(InfoResourceTableSeeder::class);
 		$this->call(NewsFeedTableSeeder::class);
-		$this->call(ForumPostsTableSeeder::class);
+		$this->call(RegionsTableSeeder::class);
 
 		if(env('DB_DRIVER')=='mysql')
 			DB::statement('SET FOREIGN_KEY_CHECKS=1;');

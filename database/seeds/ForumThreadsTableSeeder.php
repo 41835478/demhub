@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon as Carbon;
 
 class ForumThreadsTableSeeder extends Seeder
 {

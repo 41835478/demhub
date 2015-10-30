@@ -25,12 +25,6 @@ class CreateForumTableCategories extends Migration {
 
 		DB::table('forum_categories')->insert(
 			array(
-				['parent_category' => null, 'title' => 'Category', 								'subtitle' => 'Contains categories and threads',
-				'weight' => 0, 'bg_color' => null, 'slug' => null],
-				['parent_category' => 1, 		'title' => 'Sub-category', 						'subtitle' => 'Contains threads',
-				'weight' => 0, 'bg_color' => null, 'slug' => null],
-				['parent_category' => 1, 		'title' => 'Second subcategory', 			'subtitle' => 'Contains more threads',
-				'weight' => 1, 'bg_color' => null, 'slug' => null],
 				['parent_category' => null, 'title' => 'Health', 										'subtitle' => '',
 				'weight' => 0, 'bg_color' => '0D8E56', 'slug' => 'health'],
 				['parent_category' => null, 'title' => 'Science & Academia', 				'subtitle' => '',
@@ -42,7 +36,13 @@ class CreateForumTableCategories extends Migration {
 				['parent_category' => null, 'title' => 'Business Continuity', 			'subtitle' => '',
 				'weight' => 0, 'bg_color' => '933131', 'slug' => 'continuity'],
 				['parent_category' => null, 'title' => 'NGO & Humanitarian', 				'subtitle' => '',
-				'weight' => 0, 'bg_color' => '754293', 'slug' => 'humanitarian']
+				'weight' => 0, 'bg_color' => '754293', 'slug' => 'humanitarian'],
+				['parent_category' => null, 'title' => 'Category', 								'subtitle' => 'Contains categories and threads',
+				'weight' => 0, 'bg_color' => null, 'slug' => null],
+				['parent_category' => 7, 		'title' => 'Sub-category', 						'subtitle' => 'Contains threads',
+				'weight' => 0, 'bg_color' => null, 'slug' => null],
+				['parent_category' => 7, 		'title' => 'Second subcategory', 			'subtitle' => 'Contains more threads',
+				'weight' => 1, 'bg_color' => null, 'slug' => null]
 			)
 		);
 	}
