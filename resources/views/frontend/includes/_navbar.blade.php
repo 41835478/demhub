@@ -44,16 +44,18 @@
 						@if (Request::url() === url('auth/login'))
 							class="active"
 						@endif
-					>{!! link_to('auth/login', trans('LOGIN')) !!}</li>
+						>{!! link_to('auth/login', trans('LOGIN')) !!}</li>
 				@else
-					{{-- <li style="padding:0;">
+					<li style="padding:0;">
 							<a style="padding:5% 0 0 0;">
-								{!! Form::open(['url' => 'divisions/results', 'class' => 'form-horizontal', 'role' => 'form']) !!}
-+										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
-+										<input type="hidden" name="route" value="{{ Request::path() }}">
-+										{!! Form::close() !!}
+								@if (isset($currentDivision))
+										{!! Form::open(['url' => 'divisions/results', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
+										<input type="hidden" name="route" value="{{ Request::path() }}">
+										{!! Form::close() !!}
+								@endif
 							</a>
-					</li> --}}
+					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;">
 							{{ Auth::user()->user_name }} <span class="caret"></span>
