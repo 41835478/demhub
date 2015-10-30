@@ -48,7 +48,10 @@
 				@else
 					{{-- <li style="padding:0;">
 							<a style="padding:5% 0 0 0;">
-									@include('forms.search')
+								{!! Form::open(['url' => 'divisions/results', 'class' => 'form-horizontal', 'role' => 'form']) !!}
++										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
++										<input type="hidden" name="route" value="{{ Request::path() }}">
++										{!! Form::close() !!}
 							</a>
 					</li> --}}
 					<li class="dropdown">
