@@ -59,7 +59,7 @@ class UserController extends Controller {
 	/**
 	 * @param CreateUserRequest $request
 	 * @return mixed
-     */
+   */
 	public function create(CreateUserRequest $request) {
 		return view('backend.access.create')
 			->withRoles($this->roles->getAllRoles('sort', 'asc', true))
@@ -69,7 +69,7 @@ class UserController extends Controller {
 	/**
 	 * @param StoreUserRequest $request
 	 * @return mixed
-     */
+   */
 	public function store(StoreUserRequest $request) {
 		$this->users->create(
 			$request->except('assignees_roles', 'permission_user'),
@@ -83,7 +83,7 @@ class UserController extends Controller {
 	 * @param $id
 	 * @param EditUserRequest $request
 	 * @return mixed
-     */
+   */
 	public function edit($id, EditUserRequest $request) {
 		$user = $this->users->findOrThrowException($id, true);
 		return view('backend.access.edit')
@@ -122,7 +122,7 @@ class UserController extends Controller {
 	 * @param $id
 	 * @param PermanentlyDeleteUserRequest $request
 	 * @return mixed
-     */
+   */
 	public function delete($id, PermanentlyDeleteUserRequest $request) {
 		$this->users->delete($id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted_permanently"));
@@ -132,7 +132,7 @@ class UserController extends Controller {
 	 * @param $id
 	 * @param RestoreUserRequest $request
 	 * @return mixed
-     */
+   */
 	public function restore($id, RestoreUserRequest $request) {
 		$this->users->restore($id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.restored"));
@@ -143,7 +143,7 @@ class UserController extends Controller {
 	 * @param $status
 	 * @param MarkUserRequest $request
 	 * @return mixed
-     */
+   */
 	public function mark($id, $status, MarkUserRequest $request) {
 		$this->users->mark($id, $status);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.updated"));

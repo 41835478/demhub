@@ -31,6 +31,15 @@ post('divisions/results', 'DivisionController@results');
 get('resource_filter', 'InfoResourceController@showResourceFilter')->name('resource_filter');
 get('resources', 'InfoResourceController@index');
 
+/**
+ * Publication Routes
+ */
+// resource('publication', 'PublicationController');
+get('publications', 'PublicationController@index')->name('publications');
+get('publication/new', 'PublicationController@create')->name('new_publication');
+post('publication/store', 'PublicationController@store')->name('store_publication');
+get('publication/{id}/edit', 'PublicationController@edit')->name('show_publication');
+patch('publication/update', 'PublicationController@update')->name('update_publication');
 
 /**
  * These frontend controllers require the user to be logged in
