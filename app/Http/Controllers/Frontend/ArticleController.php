@@ -12,6 +12,18 @@ use DB;
 class ArticleController extends Controller
 {
 
+	/**
+	 * Browse function for browsing (searching) articles
+	 *
+	 * @param Request $request $_GET variables defining the request. The list of variables accepted are:
+	 * 'division':  (optional) division ID default 0 for all
+	 * 'data':		(optional) search query
+	 * 'location':	(optional) location string i.e. Toronto or '298 Dundas St W' or Canada or anything really
+	 * 'page':		(optional) page number defaults to 1
+	 * 'count':		(optional) items per page defaults to 50
+	 * 'radius':	(optional) km (approximate) defaults to 150km
+	 *
+	 */
 	public function browse(Request $request)
 	{
 		$options_division = $request->input('division', 0);		// (optional) division ID default 0 for all
