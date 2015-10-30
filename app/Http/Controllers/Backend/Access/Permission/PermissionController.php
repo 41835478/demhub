@@ -35,7 +35,7 @@ class PermissionController extends Controller {
 	 * @param RoleRepositoryContract $roles
 	 * @param PermissionRepositoryContract $permissions
 	 * @param PermissionGroupRepositoryContract $groups
-     */
+   */
 	public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions, PermissionGroupRepositoryContract $groups) {
 		$this->roles = $roles;
 		$this->permissions = $permissions;

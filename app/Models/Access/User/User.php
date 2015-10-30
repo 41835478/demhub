@@ -73,11 +73,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
   }
 
 	/**
+   * One-to-Many relations with Publication.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\hasMany
+   */
+	public function publications()
+  {
+      return $this->hasMany('App\Models\Publication');
+  }
+
+	/**
 	 * @return mixed
 	 */
 	public function canChangeEmail() {
 		return config('access.users.change_email');
 	}
+
 	public function user_name() {
 		return $this->$user_name;
 	}
