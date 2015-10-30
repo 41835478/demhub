@@ -105,8 +105,8 @@ button.btn-style:active {
 .feedsbox {
   height: 360px;
   display: inline-block;
-  margin: 10px 0px 10px 0px;
-  padding: 15px 5px 15px 5px;
+  margin: 0px 0px 10px 0px;
+  padding: 0px 0px 15px 0px;
   border: 1px   solid #ddd;
   float: left;
   position: relative; }
@@ -783,13 +783,11 @@ div#conversation-head {
   background-color: #754293; }
 
 .color-label_health {
-  width: 111%;
+  width: 111.25%;
   height: 5%;
   background: #0D8E56;
   display: block;
-  float: left;
-  margin: 0px 10px 0px 10px;
-  padding: 0px 5px 0px 5px; }
+  float: left; }
 
 .color-label_academia {
   width: 111%;

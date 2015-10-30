@@ -1,13 +1,20 @@
 @extends('frontend.layouts.master')
-
+@section('body-style')
+<style>
+body {
+	padding-top: 0px !important;
+}
+</style>
+@endsection
 @section('content')
 <div class="row">
 <div class="col-xs-12">
-<div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed center center no-repeat;
+<div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed no-repeat;
 											-webkit-background-size: cover;
 											-moz-background-size: cover;
 											-o-background-size: cover;
 											background-size: cover;
+											background-position: center center;
 											overflow-x: hidden;">
 
 	<div class="col-md-6 col-md-offset-6">

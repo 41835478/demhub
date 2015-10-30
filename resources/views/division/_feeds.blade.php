@@ -5,7 +5,7 @@
   </div>
 </div>
   <div class="row">
-
+    <div class="col-md-offset-1" style="padding-right:100px">
   <!-- <div class="col-md-10 col-md-offset-1" style="overflow-x:hidden;padding-left:7%"> -->
 
     @foreach($newsFeeds->get_items($start, $length) as $index => $item)
@@ -14,10 +14,10 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
         <div class = "feedsbox">
 
-        <div class ="color-label_{{$currentDivision->slug}}"></div>
 
-          <div style="width: 90%; height: 90%; margin-left:15px; margin-right:25px;">
 
+          <div style="width: 90%; height: 90%; margin-right:25px;">
+            <div class ="color-label_{{$currentDivision->slug}}"></div>
           <h3>
             <a
               @if(Auth::check())
@@ -106,6 +106,10 @@
     @endforeach
 
 <!-- </div> -->
+</div>
+<!-- <div class="col-md-1">
+  <p>side column</p>
+</div> -->
 </div>
 <div class="row">
 <div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">

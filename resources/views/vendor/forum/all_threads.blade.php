@@ -1,12 +1,17 @@
 @extends ('frontend.layouts.master')
 
 @extends ('forum::layouts.master')
+@section('body-style')
+<style>
+body {
+  background:url('/images/backgrounds/earth_19.jpg')  no-repeat fixed;
+  background-position: 100% 140%;
 
+}
+</style>
+@endsection
 @section('content')
-<div class="row" style="padding:0px;
-                                background:url('/images/backgrounds/earth_17.jpg')  no-repeat fixed;
-                                background-position: 100% 70%;
-                                overflow:hidden;">
+<div class="row" >
 <!-- @include('forum::partials.breadcrumbs') -->
 
 <!-- <h2>{{ trans('forum::base.index') }}</h2> -->
