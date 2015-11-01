@@ -23,26 +23,20 @@ class ScraperComponent
 	const itemTypeScientificPaper = 2;
 	const itemTypeOther = 9;
 
-	public static function processRSSFeed($source)
+	/**
+	 * Processes a single RSS feed given a item from scrape_sources table
+	 *
+	 * @param ScrapeSource $source source item containing RSS url and some meta
+	 * @return mixed Results of the scrape process
+	 */
+	public static function processRSSFeed(ScrapeSource $source)
 	{
 		$return['status'] = 'tbd';
 		$return['count'] = 0;
 		$return['errors'] = 0;
 		$return['message'] = '';
-		// Initialize the cURL session with the request URL
-		//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
-		$session = curl_init($source->url);
-		// Tell cURL to return the request data
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
-		// Execute cURL on the session handle
-		$response = curl_exec($session);
-		//$results = json_decode($response, true);
-		// Close the cURL session
-		curl_close($session);
 
-		//$parser = new Parser();
-		//$parsed = $parser->xml($response);
+		$response = self::getHttpResponse($source->url);
 		$return['data'] = $response;
 		$xml = simplexml_load_string($response, 'SimpleXMLElement', LIBXML_NOCDATA);
 
@@ -57,8 +51,6 @@ class ScraperComponent
 		$json = str_replace(':[]',':null', $json);
 		$parsed = json_decode($json, 1);
 
-		//var_dump($parsed);
-
 		// if there's only one item, the ['item'] wont be an array, it'll be just the item.
 		// This is tested by existance of 'title' index
 		$total = isset($parsed['channel']['item']['title']) ? 1 : count($parsed['channel']['item']);
@@ -66,77 +58,56 @@ class ScraperComponent
 		$return['message'] .= 'Checking source '.$source->id.' ('.$total.' items) : '.$source->url;
 		$return['message'] .= '</b>';
 
-		$all_keywords = Keyword::where('deleted', '=', 0)->get();
-
 		foreach($xml->channel->item as $item)
 		{
 			$item_array = (array)$item;
 
+			// for some reason pubDate is no available (not a valid rss)
 			if(!isset($item_array['pubDate'])){
 				$return['message'] .= '<br><b>- Error - No publish date</b>';
 				continue;
 			}
+			// item is older than the last the source was checked
 			if(strtotime($item->pubDate) < strtotime($source->last_checked_item)){
 				$return['message'] .= '<br><b>- Old item already.</b>';
 				continue;
 			}
-			if(Article::where('title', ScraperComponent::truncate(ScraperComponent::verify($item_array['title'])))->first()){
-				$return['message'] .= '<br><b>- This title already added to DB</b>';
+			// item exists in db
+			if(Article::where('title', self::truncate(self::verify($item_array['title'])))->first()){
 				continue;
 			}
 
-			$text = strip_tags($item_array['description']);
-			$keys_divs = ScraperComponent::guessKeywords($text, $all_keywords);
-
-			$locaion_info = null;
 			if(isset($namespacesMeta['geo'])){
 				$geoXML = (array)$item->children($namespacesMeta['geo']);
 				if(isset($geoXML['lat']) && isset($geoXML['long'])){
-					$locaion_info = self::getLocationInfo($geoXML['lat'], $geoXML['long']);
+					$params['lat'] = $geoXML['lat'];
+					$params['lng'] = $geoXML['long'];
 				}
 			}
+			$params['text'] = $item_array['description'];
+			$params['url'] = $item_array['link'];
+			$params['title'] = $item_array['title'];
+			$params['date'] = $item_array['pubDate'];
+			$params['review'] = 0;
 
-			$model = new Article();
-			$model->type 		= ScraperComponent::itemTypeNewsArticle;
-			$model->divisions 	= ScraperComponent::convertDBArrayToString($keys_divs['divisions']);
-			$model->source_id 	= $source->id;
-			$model->source_url 	= ScraperComponent::truncate(ScraperComponent::verify($item_array['link']));
-			$model->title 		= ScraperComponent::truncate(ScraperComponent::verify($item_array['title']));
-			$model->excerpt 	= ScraperComponent::truncate($text);
-			$model->keywords 	= ScraperComponent::convertDBArrayToString($keys_divs['keywords']);
-			$model->city 		= $locaion_info!=null ? $locaion_info['city'] : null;
-			$model->state 		= $locaion_info!=null ? $locaion_info['state'] : null;
-			$model->country 	= $locaion_info!=null ? $locaion_info['country'] : null;
-			$model->lat 		= $locaion_info!=null ? $locaion_info['lat'] : null;
-			$model->lng 		= $locaion_info!=null ? $locaion_info['lng'] : null;
-			$model->review 		= 0;
-			$model->deleted 	= 0;
-			$model->publish_date= date("Y-m-d H:i:s", strtotime($item_array['pubDate']));
+			$save_result = self::saveArticle(self::itemTypeNewsArticle, $source, $params);
 
-			if($model->save()){
-				$return['message'] .= '<br><b>- Added '.$model->id.':</b> '.$model->excerpt;
+			if($save_result['status'] == 'ok'){
+				$return['message'] .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
 
 				$return['status'] = 'ok';
 				$return['count']++;
-				$return['last_saved_item'] = $model->publish_date;
-
-				$mdetail = new ArticleDetail();
-				$mdetail->article_id = $model->id;
-				$mdetail->url = $model->source_url;
-				$mdetail->text = $text;
-				$mdetail->save();
+				$return['last_saved_item'] = $save_result['model']->publish_date;
 
 			} else {
 				$return['message'] .= '<br><b>- Error adding: '.$item_array['title'].'</b>';
 				$return['errors']++;
 			}
-
 		}
 		if($return['count'] == 0)
 			$return['status'] = 'nothing';
 
 		return $return;
-		//var_dump($parsed['channel']['item']);
 	}
 
 	////////////////////////////
@@ -144,10 +115,112 @@ class ScraperComponent
 	////////////////////////////
 
 	/**
-	 * This function takes in a string and tries to determine related tags and divisions based on a set of provided keyword models
+	 * General method to get http responses of a url designed to allow various methods
+	 *
+	 * @param string $url URL to call
+	 * @param string $method type of call (curl, file_get_content, etc) currently only curl is supported
+	 * @return string response received from the call
+	 */
+	public static function getHttpResponse($url, $method = 'curl')
+	{
+		$response = 'Unrecognized method';
+
+		if($method == 'curl')
+		{
+			// Initialize the cURL session with the request URL
+			//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
+			$session = curl_init($url);
+			// Tell cURL to return the request data
+			curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+			// Execute cURL on the session handle
+			$response = curl_exec($session);
+			//$results = json_decode($response, true);
+			// Close the cURL session
+			curl_close($session);
+		}
+
+		return $response;
+	}
+
+	/**
+	 * Saves a new article to DB. if successful it also save the complete text in article_details for future reference
+	 *
+	 * @param int $type Article type (news, scientific article, etc)
+	 * @param ScrapeSource $source Source model from which the article has been obtained
+	 * @param array $params Article info array containing the following items:
+	 * 'text' - Complete article text
+	 * 'url' - Url to the complete article
+	 * 'title' - Article title
+	 * 'date' - publish_date of the article
+	 * 'lat' - latitude (optional)
+	 * 'lng' - longitude (optional)
+	 * 'location' - if lat, lng is not available, the function attempts to determine te lat, lng from
+	 * location text (optional)
+	 *
+	 * @return mixed
+	 */
+	public static function saveArticle($type, ScrapeSource $source, $params)
+	{
+		$return['status'] = '';
+		$return['message'] = '';
+		$all_keywords = Keyword::where('deleted', '=', 0)->get();
+
+		$text = strip_tags(self::verify($params['text'], ''));
+		$keys_divs = self::guessKeywords($text, $all_keywords);
+
+		// Checks if coords given, if not checks for location string.
+		// if either available tries to determine location details for saving in DB
+		$location_info = null;
+		if(self::verify($params['lat']) && self::verify($params['lng'])){
+			$location_info = self::getLocationInfo($params['lat'], $params['lng']);
+		} elseif (self::verify($params['location'])){
+			$coords = self::getCoords($params['location']);
+			if($coords['lat']!=null && $coords['lng']!=null)
+				$location_info = self::getLocationInfo($coords['lat'], $coords['lng']);
+		}
+
+		$model = new Article();
+		$model->type 		= $type;
+		$model->divisions 	= self::convertDBArrayToString($keys_divs['divisions']);
+		$model->source_id 	= $source->id;
+		$model->source_url 	= self::truncate(self::verify($params['url']));
+		$model->title 		= self::truncate(self::verify($params['title'], ''));
+		$model->excerpt 	= self::truncate($text);
+		$model->keywords 	= self::convertDBArrayToString($keys_divs['keywords']);
+		$model->city 		= $location_info!=null ? $location_info['city'] : null;
+		$model->state 		= $location_info!=null ? $location_info['state'] : null;
+		$model->country 	= $location_info!=null ? $location_info['country'] : null;
+		$model->lat 		= $location_info!=null ? $location_info['lat'] : null;
+		$model->lng 		= $location_info!=null ? $location_info['lng'] : null;
+		$model->review 		= self::verify($params['review'], 0);
+		$model->deleted 	= 0;
+		$model->publish_date= date("Y-m-d H:i:s", strtotime($params['date']));
+
+		if($model->save()){
+			$return['status'] = 'ok';
+			$return['model'] = $model;
+
+			$mdetail = new ArticleDetail();
+			$mdetail->article_id = $model->id;
+			$mdetail->url = $model->source_url;
+			$mdetail->text = $text;
+			$mdetail->save();
+
+		} else {
+			$return['status'] = 'error';
+		}
+
+		return $return;
+	}
+
+	/**
+	 * This function takes in a string and tries to determine related tags and divisions based on a set of provided
+	 * keyword models
 	 *
 	 * @param string $text Text to be analyzed
-	 * @param /App/Models/Keyword $all_keywords A complete list of keywords models available (this is to speed up processing when dealing with many keywords)
+	 * @param /App/Models/Keyword $all_keywords A complete list of keywords models available (this is to speed up
+	 * processing when dealing with many keywords)
 	 * @return array containing a sorted arrays for keywords as well as divisions
 	 */
 	public static function guessKeywords($text, $all_keywords)
