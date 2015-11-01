@@ -18,6 +18,59 @@ use Nathanmac\Utilities\Parser\Parser;
 class SchedulerController extends Controller
 {
 
+
+	/**
+	 * Function designed to be called by the crontab
+	 * Will review and save new articles from 'RSS' type sources in the scrape_sources table
+	 *
+	 * The results will be logged under /storage/logs/scheduler/scrapeRSS_<YmdHis>.log for future review
+	 */
+	public function scrapeRSS()
+	{
+		set_time_limit(1000);
+		$messages = '';
+		$sources = ScrapeSource::where('deleted', 0)->get();
+
+		foreach($sources as $source){
+			$return = ScraperComponent::processRSSFeed($source);
+			$messages .= $return['message'];
+			$messages .= '<br><br><b>';
+			if($return['status'] == 'ok'){
+				$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.$return['errors'].' errors.';
+
+				//temporarily disabled to force checking all items against the DB so it doesnt require reseting the DB for testing
+				//$source->last_checked_item = date("Y-m-d H:i:s");
+				//$source->save();
+
+				$mlog = new ScrapeLog();
+				$mlog->source_id = $source->id;
+				$mlog->automated = 0;
+				$mlog->url = $source->url;
+				$mlog->saved_count = $return['count'];
+				$mlog->last_item = $return['last_saved_item'];
+				$mlog->data = $return['data'];
+				$mlog->save();
+
+			} elseif($return['status'] == 'nothing'){
+				$messages .= 'Source '.$source->id.': Had no new items to fetch';
+			} else {
+				$messages .= 'Source '.$source->id.': DID NOT COMPLETE DUE TO AN ERROR.';
+			}
+			$messages .= '</b><br>';
+		}
+
+
+		echo $messages;
+		// convert html tags to something easier to read before saving the log file
+		$messages = str_replace("<br>", "\n", $messages);
+		$messages = strip_tags($messages);
+
+		if (!is_dir(storage_path()."/logs/scheduler"))
+			mkdir(storage_path()."/logs/scheduler", 0744, true);
+
+		file_put_contents(storage_path()."/logs/scheduler/scrapeRSS_".date("YmdHis").".log", $messages);
+	}
+
 	/**
 	 * Prepares scraper tables based on currently available data in the DB as well as new data
 	 * Currently fills in ScrapeSource table based on NewsFeeds table and populates keywords table
@@ -110,50 +163,6 @@ class SchedulerController extends Controller
 
 
 
-	}
-
-	/**
-	 * Function designed to be called by the crontab
-	 * Will review and bring all new articles from 'RSS' type sources in the scrape_sources table
-	 */
-	public function scrapeRSS()
-	{
-		set_time_limit(1000);
-		$messages = '';
-		$sources = ScrapeSource::where('deleted', 0)->get();
-
-		foreach($sources as $source){
-			$return = ScraperComponent::processRSSFeed($source);
-			$messages .= $return['message'];
-			$messages .= '<br><br><b>';
-			if($return['status'] == 'ok'){
-				$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.$return['errors'].' errors.';
-
-				//temporarily disabled to force checking all items against the DB so it doesnt require reseting the DB for testing
-				//$source->last_checked_item = date("Y-m-d H:i:s");
-				//$source->save();
-
-				$mlog = new ScrapeLog();
-				$mlog->source_id = $source->id;
-				$mlog->automated = 0;
-				$mlog->url = $source->url;
-				$mlog->saved_count = $return['count'];
-				$mlog->last_item = $return['last_saved_item'];
-				$mlog->data = $return['data'];
-				$mlog->save();
-
-			} elseif($return['status'] == 'nothing'){
-				$messages .= 'Source '.$source->id.': Had no new items to fetch';
-			} else {
-				$messages .= 'Source '.$source->id.': DID NOT COMPLETE.';
-			}
-			$messages .= '</b><br>';
-		}
-
-
-		echo $messages;
-		$messages = str_replace("<br>", "\n", $messages);
-		file_put_contents(storage_path()."/logs/scheduler/scrapeRSS_".date("YmdHis").".log", $messages);
 	}
 
 
