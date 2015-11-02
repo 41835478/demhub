@@ -59,7 +59,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
           'styles' => [
               'medium' => '300x300',
               'thumb' => '100x100'
-          ]
+          ],
+					'default_url' => '/images/avatars/:style/missing.png'
       ]);
 
       parent::__construct($attributes);
