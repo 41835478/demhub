@@ -56,7 +56,7 @@
             ?>
           </p>
 
-<div style="width:100%; height:75px; bottom:0px; position:absolute;">
+<div style="width:100%; height:42px; bottom:0px; position:absolute;">
 
               <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite"
               disabled>
