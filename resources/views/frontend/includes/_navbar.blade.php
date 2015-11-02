@@ -1,4 +1,4 @@
-<nav id="guest-menu" class="navbar navbar-default navbar-fixed-top" style="padding-left:30px">
+<nav id="guest-menu" class="navbar navbar-default navbar-fixed-top" style="padding-left:30px;max-height:30px">
 	<div class="container-fluid">
 
 		<div class="navbar-header">
@@ -57,9 +57,11 @@
 							</a>
 					</li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;">
-							{{ Auth::user()->user_name }} <span class="caret"></span>
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;btn-style;">
+							<img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{ Auth::user()->user_name}} <span class="caret"></span>
 						</a>
+
 						<ul class="dropdown-menu navbar-inverse" role="menu">
 						  <li>{!! link_to('dashboard', 'USER DASHBOARD') !!}</li>
 						  @permission('view-backend')

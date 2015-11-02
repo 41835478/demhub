@@ -13,7 +13,7 @@
 
 
 <div class="row" style="padding-top:15px">
-	<div class="col-md-7 col-md-offset-2">
+	<div class="col-md-8 col-md-offset-2">
 <table class="table table-index table-hover">
 
     <thead>
@@ -34,7 +34,7 @@
 					<img src="/images/backgrounds/nothing.png" alt="" class="img-circle img-responsive" style="background-color:#{{$thread->category->bg_color}};height:22px">
 				</a>
         </td>
-      <td>{{$thread->author->user_name}}</td>
+      <td><img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$thread->author->user_name}}</td>
       <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td>
       </tr>
 
