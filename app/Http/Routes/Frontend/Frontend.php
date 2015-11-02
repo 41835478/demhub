@@ -65,5 +65,5 @@ get('scheduler/toolbox', 'SchedulerController@toolbox');
  * Articles routes
  */
 get('article/browse', 'ArticleController@browse');
-get('article/tagstream', 'ArticleController@tagstream');
+get('article/stream', 'ArticleController@stream');
 get('article/keywordlist', 'ArticleController@keywordlist');
