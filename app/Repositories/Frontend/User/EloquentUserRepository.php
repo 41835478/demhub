@@ -56,7 +56,7 @@ class EloquentUserRepository implements UserContract {
 			'confirmed' => config('access.users.confirm_email') ? 0 : 1,
 		]);
 		$user->attachRole($this->role->getDefaultUserRole());
-		
+
 		if (config('access.users.confirm_email') and $provider === false)
         		$this->sendConfirmationEmail($user);
     		else
@@ -165,8 +165,8 @@ class EloquentUserRepository implements UserContract {
 				$user->email = $input['email'];
 			}
 		}
-
-		if ($input['avatar']) {
+		
+		if (array_key_exists('avatar', $input)) {
 			// TODO - Add validation for image/file
 			$user->avatar = $input['avatar'];
 		}

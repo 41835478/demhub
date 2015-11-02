@@ -8,7 +8,7 @@
 			@include('frontend.user.dashboard.menu._dashboard_menu')
 		</div>
     	<div style="padding-top:50px">
-        COMING SOON
+
 
 		</div>
 </div>

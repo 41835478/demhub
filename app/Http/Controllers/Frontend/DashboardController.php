@@ -23,7 +23,7 @@ class DashboardController extends Controller {
 	}
 	public function showConnections()
 	{
-		$allDivisions = $navDivisions = Division::all();
+		$allDivisions = Division::all();
 		$users = User::all();
 
 		return view('frontend.user.dashboard.connections', compact([
