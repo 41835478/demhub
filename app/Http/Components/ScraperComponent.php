@@ -69,7 +69,7 @@ class ScraperComponent
 			}
 			// item is older than the last the source was checked
 			if(strtotime($item->pubDate) < strtotime($source->last_checked_item)){
-				$return['message'] .= '<br><b>- Old item already.</b>';
+				$return['message'] .= '<br><b>- Old item already reviewed.</b>';
 				continue;
 			}
 			// item exists in db
@@ -104,7 +104,7 @@ class ScraperComponent
 				$return['errors']++;
 			}
 		}
-		if($return['count'] == 0)
+		if($return['count'] == 0 && $return['errors'] == 0)
 			$return['status'] = 'nothing';
 
 		return $return;
@@ -147,7 +147,7 @@ class ScraperComponent
 	 * Saves a new article to DB. if successful it also save the complete text in article_details for future reference
 	 *
 	 * @param int $type Article type (news, scientific article, etc)
-	 * @param ScrapeSource $source Source model from which the article has been obtained
+	 * @param ScrapeSource $source The source model from which the article has been obtained or NULL if not using a standard source
 	 * @param array $params Article info array containing the following items:
 	 * 'text' - Complete article text
 	 * 'url' - Url to the complete article
@@ -160,7 +160,7 @@ class ScraperComponent
 	 *
 	 * @return mixed
 	 */
-	public static function saveArticle($type, ScrapeSource $source, $params)
+	public static function saveArticle($type, $source, $params)
 	{
 		$return['status'] = '';
 		$return['message'] = '';
@@ -183,7 +183,7 @@ class ScraperComponent
 		$model = new Article();
 		$model->type 		= $type;
 		$model->divisions 	= self::convertDBArrayToString($keys_divs['divisions']);
-		$model->source_id 	= $source->id;
+		$model->source_id 	= $source!=null ? $source->id : null;
 		$model->source_url 	= self::truncate(self::verify($params['url']));
 		$model->title 		= self::truncate(self::verify($params['title'], ''));
 		$model->excerpt 	= self::truncate($text);
@@ -195,7 +195,7 @@ class ScraperComponent
 		$model->lng 		= $location_info!=null ? $location_info['lng'] : null;
 		$model->review 		= self::verify($params['review'], 0);
 		$model->deleted 	= 0;
-		$model->publish_date= date("Y-m-d H:i:s", strtotime($params['date']));
+		$model->publish_date= isset($params['date']) ? date("Y-m-d H:i:s", strtotime($params['date'])) : null;
 
 		if($model->save()){
 			$return['status'] = 'ok';
@@ -226,11 +226,13 @@ class ScraperComponent
 	public static function guessKeywords($text, $all_keywords)
 	{
 		$sensitivity = 1;		// min number of occurances required for a keyword/division to be returned
-		$result = array();
 		$all_divisions = array();
+		$keywords_raw = array();
 		$divisions_raw = array();
 		$keywords = array();
 		$divisions = array();
+		$keyword_weights = array();
+		$net_weight = 0;
 
 		//black lists
 		$ignore = array("am","you","is","are","i","they","them","they're","it","it's","its","you're","i'm","&");
@@ -242,9 +244,10 @@ class ScraperComponent
 
 		//pre-set the categories array
 		foreach($all_keywords as $i=>$key){
-			if(!isset($result[$key->keyword])){
-				$result[$key->keyword] = 0;
+			if(!isset($keywords_raw[$key->keyword])){
+				$keywords_raw[$key->keyword] = 0;
 				$all_divisions[$key->keyword] = self::convertDBStringToArray($key->divisions);
+				$keyword_weights[$key->keyword] = $key->weight;
 			}
 		}
 
@@ -265,12 +268,36 @@ class ScraperComponent
 				$phrase_triple3 = isset($words[$wi-1])&&isset($words[$wi-2]) ? $words[$wi-2].' '.$words[$wi-1].' '.$word : null;
 				$temp_divs = array();
 
-				if(isset($result[$word])){ $result[$word]++; $temp_divs = $all_divisions[$word]; }
-				elseif($phrase_double1 != null && isset($result[$phrase_double1])){ $result[$phrase_double1]++; $temp_divs = $all_divisions[$phrase_double1]; }
-				elseif($phrase_double2 != null && isset($result[$phrase_double2])){ $result[$phrase_double2]++; $temp_divs = $all_divisions[$phrase_double2]; }
-				elseif($phrase_triple1 != null && isset($result[$phrase_triple1])){ $result[$phrase_triple1]++; $temp_divs = $all_divisions[$phrase_triple1]; }
-				elseif($phrase_triple2 != null && isset($result[$phrase_triple2])){ $result[$phrase_triple2]++; $temp_divs = $all_divisions[$phrase_triple2]; }
-				elseif($phrase_triple3 != null && isset($result[$phrase_triple3])){ $result[$phrase_triple3]++; $temp_divs = $all_divisions[$phrase_triple3]; }
+				if(isset($keywords_raw[$word])){
+					$keywords_raw[$word]++;
+					$temp_divs = $all_divisions[$word];
+					$net_weight += $keyword_weights[$word];
+				}
+				elseif($phrase_double1 != null && isset($keywords_raw[$phrase_double1])){
+					$keywords_raw[$phrase_double1]++;
+					$temp_divs = $all_divisions[$phrase_double1];
+					$net_weight += $keyword_weights[$phrase_double1];
+				}
+				elseif($phrase_double2 != null && isset($keywords_raw[$phrase_double2])){
+					$keywords_raw[$phrase_double2]++;
+					$temp_divs = $all_divisions[$phrase_double2];
+					$net_weight += $keyword_weights[$phrase_double2];
+				}
+				elseif($phrase_triple1 != null && isset($keywords_raw[$phrase_triple1])){
+					$keywords_raw[$phrase_triple1]++;
+					$temp_divs = $all_divisions[$phrase_triple1];
+					$net_weight += $keyword_weights[$phrase_triple1];
+				}
+				elseif($phrase_triple2 != null && isset($keywords_raw[$phrase_triple2])){
+					$keywords_raw[$phrase_triple2]++;
+					$temp_divs = $all_divisions[$phrase_triple2];
+					$net_weight += $keyword_weights[$phrase_triple2];
+				}
+				elseif($phrase_triple3 != null && isset($keywords_raw[$phrase_triple3])){
+					$keywords_raw[$phrase_triple3]++;
+					$temp_divs = $all_divisions[$phrase_triple3];
+					$net_weight += $keyword_weights[$phrase_triple3];
+				}
 
 				foreach($temp_divs as $div)
 				{
@@ -283,8 +310,8 @@ class ScraperComponent
 			}
 		}
 
-		arsort($result);
-		foreach ($result as $i=>$r){
+		arsort($keywords_raw);
+		foreach ($keywords_raw as $i=>$r){
 			if($r >= $sensitivity) $keywords[] = $i;
 		}
 		//if(empty($keywords)) $keywords[] = NULL;
@@ -295,7 +322,7 @@ class ScraperComponent
 			if($r >= $sensitivity) $divisions[] = $i;
 		}
 
-		return array('keywords'=>$keywords, 'divisions'=>$divisions);
+		return array('keywords'=>$keywords, 'weight'=>$net_weight, 'divisions'=>$divisions);
 	}
 
 	/**
