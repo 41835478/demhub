@@ -40,8 +40,13 @@ class ArticleController extends Controller
 		if($options_division != 0)
 			$query = $query->where('divisions', 'LIKE', '%|'.$options_division.'|%');
 
-		if(trim($options_data) != '')
-			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$options_data.'%', '%|'.$options_data.'|%'));
+		if(trim($options_data) != ''){
+			$keywords = explode(' ', $options_data);
+			foreach($keywords as $keyword){
+				$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
+			}
+		}
+
 
 		if(trim($options_location) !== '')
 		{

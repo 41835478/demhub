@@ -70,19 +70,33 @@ class SchedulerController extends Controller
 		file_put_contents(storage_path()."/logs/scheduler/scrapeRSS_".date("YmdHis").".log", $messages);
 	}
 
-	public function scrapeIRDR()
+	public function scrapeIRDR(Request $request)
 	{
 		//important to terminate the process in case the while loop goes haywire but shouldnt be
 		//too short for the algo to do it's job
-		set_time_limit(300);
+		set_time_limit(400);
 
+		//only lists the sources if ?id=list
+		if($request->input('id', 0) == 'list'){
+			$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
+			foreach($sources as $source){
+				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
+			}
+			return;
+		}
+
+		// only does one source if ?id=<source_id> due to timeout issues or all if not provided
+		if( ($sid = $request->input('id', 0)) != 0){
+			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
+		} else {
+			$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
+		}
 		$messages = '';
-		$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
-		//$sources = ['http://www.irdrinternational.org/other-publications/'];
 
 		foreach($sources as $source){
 			//$return = ScraperComponent::processRSSFeed($source);
 			//$messages .= $return['message'];
+			echo $source->url.'<br>';
 			$page = 1;
 			$end = false;
 			$return['status'] = '';
@@ -301,6 +315,8 @@ class SchedulerController extends Controller
 	 */
 	public function toolbox()
 	{
+		echo 'hi ';
+		echo 'there';
 //		// Initialize the cURL session with the request URL
 //		//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
 //		$session = curl_init($_GET['url']);
