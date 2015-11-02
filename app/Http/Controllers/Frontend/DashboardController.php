@@ -1,6 +1,10 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Division;
+use App\Models\User;
+use App\Repositories\Frontend\User\UserContract;
+use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Image;
 
 /**
@@ -16,5 +20,14 @@ class DashboardController extends Controller {
 	{
 		return view('frontend.user.dashboard.index')
 			->withUser(auth()->user());
+	}
+	public function showConnections()
+	{
+		$allDivisions = $navDivisions = Division::all();
+		$users = User::all();
+
+		return view('frontend.user.dashboard.connections', compact([
+						'allDivisions','navDivisions', 'newsFeeds', 'users'
+						]));
 	}
 }

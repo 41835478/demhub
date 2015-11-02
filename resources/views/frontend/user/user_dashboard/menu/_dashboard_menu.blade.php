@@ -4,13 +4,19 @@
 
                 @if(Request::url() === url('dashboard'))
                 <li class="active">
-                	<a href="{{url('dashboard')}}"><i class="fa fa-user"></i> PROFILE</a>
-                </li>
                 @else
                 <li>
+                @endif
                     <a href="{{url('dashboard')}}"><i class="fa fa-user"></i> PROFILE</a>
                 </li>
+                
+                @if(Request::url() === url('connections'))
+                <li class="active">
+                @else
+                <li>
                 @endif
+                    <a href="{{url('connections') }}"><i class="fa fa-user"></i> CONNECTIONS</a>
+                </li>
                 @if(Request::url() === url('privacy_settings'))
                 <li class="active">
                 @else

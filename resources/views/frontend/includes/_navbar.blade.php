@@ -50,7 +50,7 @@
 							<a style="padding:5% 0 0 0;">
 								@if (isset($navDivision))
 										{!! Form::open(['url' => 'divisions/results', 'class' => 'form-horizontal', 'role' => 'form']) !!}
-										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search news']) !!}
+										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search News']) !!}
 										<input type="hidden" name="route" value="{{ Request::path() }}">
 										{!! Form::close() !!}
 								@endif
@@ -59,7 +59,7 @@
 					<li class="dropdown">
 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;btn-style;">
-							<img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{ Auth::user()->user_name}} <span class="caret"></span>
+							<img class="img-responsive img-circle" style="height:25px;width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{ Auth::user()->user_name}} <span class="caret"></span>
 						</a>
 
 						<ul class="dropdown-menu navbar-inverse" role="menu">
