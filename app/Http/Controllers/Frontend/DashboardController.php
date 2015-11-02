@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Division;
-use App\Models\User;
+use App\Models\Access\User\User;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Image;
@@ -27,7 +27,7 @@ class DashboardController extends Controller {
 		$users = User::all();
 
 		return view('frontend.user.dashboard.connections', compact([
-						'allDivisions','navDivisions', 'newsFeeds', 'users'
+						'allDivisions', 'users'
 						]));
 	}
 }

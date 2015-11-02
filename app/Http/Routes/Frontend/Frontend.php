@@ -50,6 +50,7 @@ $router->group(['middleware' => 'auth'], function ()
 	get('userhome', 'UserController@index')->name('userhome');
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 	get('dashboard', 'DashboardController@index')->name('dashboard'); // used instead of edit_profile
+	get('connections', 'DashboardController@showConnections')->name('connections'); 
 	// get('profile/edit', 'ProfileController@edit')->name('edit_profile');
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
 });
