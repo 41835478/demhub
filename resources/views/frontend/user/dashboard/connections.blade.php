@@ -37,14 +37,14 @@
 
 
 
-<div style="width:100%; height:90px; bottom:0px; position:absolute;">
-            
-            <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover"
+<div style="width:100%; height:40px; bottom:0px; position:absolute;">
+
+            <!-- <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover"
             data-content="Feed successfully added to your favourite">
 
 
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-  </button>
+  </button> -->
 
   <!-- <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
     <div class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> xxx</div>
@@ -52,12 +52,13 @@
 
 
 
-  <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
-    <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
-  </button>
+  <a type="button" class="btn btn-default btn-style-alt" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
+    <div class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</div>
+  </a>
 
 
-      <a button type="button" class="btn btn-default btn-sm" style="margin-left:5px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+
+      <!-- <a button type="button" class="btn btn-default btn-sm" style="margin-left:5px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
         <div class="glyphicon glyphicon-comment" aria-hidden="true"> COMMENT</div>
       </button></a>
       <ul class="dropdown-menu" aria-labelledby="dLabel" style="width:100%; heigth:auto; margin-left:-30px; padding: 15px 15px 15px 15px;">
@@ -79,7 +80,7 @@
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
 
-    </ul>
+    </ul> -->
 
 </div>
       </div>
