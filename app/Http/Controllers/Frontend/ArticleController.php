@@ -93,12 +93,15 @@ class ArticleController extends Controller
 
 		// TODO add view to render items. Can use $items, $item_count, $total_count, and $last_page
 		// for debug
+		echo '<form action="/article/browse" method="GET"><input type="hidden" name="count" value="1000"><input type="text" name="data"><input type="submit" value="search" ></form>';
 		echo $query->toSql();
+		echo '<br><br>';
+		echo 'found: '.$total_count.' items';
 		foreach($items as $item)
 		{
-			echo '<br> '.$item->divisions.' ----- '.$item->title;
+			echo '<br><b>Item id '.$item->id.': '.$item->title.'</b> Divisions: '.$item->divisions.' | '.$item->excerpt;
 		}
-		echo '<br>'.(int)$last_page.'<br>';
+		//echo '<br>'.($last_page).'<br>';
 
 	}
 
