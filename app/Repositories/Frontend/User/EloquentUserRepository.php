@@ -228,13 +228,14 @@ class EloquentUserRepository implements UserContract, StaplerableInterface {
 	 * @return mixed
 	 */
 	public function sendConfirmationEmail($user) {
+
 		//$user can be user instance or id
 		if (! $user instanceof User)
 			$user = User::findOrFail($user);
 
 		return Mail::send('emails.confirm', ['token' => $user->confirmation_code], function($message) use ($user)
 		{
-			$message->to($user->email, $user->name)->subject(app_name().': Confirm your account!');
+			$message->to($user->email, $user->first_name)->subject(app_name().': Confirm your account!');
 		});
 	}
 }

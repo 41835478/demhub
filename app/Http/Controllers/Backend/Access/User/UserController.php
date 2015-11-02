@@ -177,7 +177,7 @@ class UserController extends Controller {
 	 * @param $id
 	 * @param ChangeUserPasswordRequest $request
 	 * @return mixed
-     */
+   */
 	public function changePassword($id, ChangeUserPasswordRequest $request) {
 		return view('backend.access.change-password')
 			->withUser($this->users->findOrThrowException($id));
@@ -198,7 +198,7 @@ class UserController extends Controller {
 	 * @param AuthenticationContract $auth
 	 * @param ResendConfirmationEmailRequest $request
 	 * @return mixed
-     */
+   */
 	public function resendConfirmationEmail($user_id, AuthenticationContract $auth, ResendConfirmationEmailRequest $request) {
 		$auth->resendConfirmationEmail($user_id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.confirmation_email"));
