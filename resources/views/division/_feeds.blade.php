@@ -16,7 +16,7 @@
 
 
 
-          <div style="width: 90%; height: 90%; margin-right:25px;">
+          <div style="width: 90%; height: 90%;">
             <div class ="color-label_{{$currentDivision->slug}}"></div>
           <h3>
             <a
