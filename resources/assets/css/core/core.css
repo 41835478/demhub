@@ -91,7 +91,7 @@ a.btn-style:active {
 a.btn-style-alt {
   background: #60A0FF;
   color: #FFF;
-  border-color: #000; }
+  border-color: #ccc; }
 
 a.btn-style-alt:hover, a.btn-style-alt:focus {
   background: #FFF;
@@ -116,19 +116,6 @@ button.btn-style-alt:active {
   background: #FFF;
   color: #000;
   border-color: #ccc; }
-
-button.btn-style {
-  background: #FFF;
-  border-color: #ccc; }
-
-button.btn-style:hover, button.btn-style:focus {
-  background: #FFF;
-  color: #60A0FF; }
-
-button.btn-style:active {
-  background: #60A0FF;
-  color: #FFF;
-  border-color: #000; }
 
 .feedsbox {
   height: 300px;
