@@ -48,26 +48,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = [
-		'user_name',
-		'first_name',
-		'last_name',
-		'job_title',
-		'organization_name',
-		'phone_number',
-		'specialization',
-		'email',
-		'password',
-		'confirmation_code',
-		'confirmed',
-		'avatar'
-	];
-
-	/**
 	 * For soft deletes
 	 *
 	 * @var array
