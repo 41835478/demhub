@@ -1,5 +1,5 @@
 
-            <ul class="nav nav-stacked navbar-inverse" id="user-function">
+      <ul class="nav nav-stacked navbar-inverse" id="user-function">
 
 
                 @if(Request::url() === url('dashboard'))
@@ -9,7 +9,7 @@
                 @endif
                     <a href="{{url('dashboard')}}"><i class="fa fa-user"></i> PROFILE</a>
                 </li>
-                
+
                 @if(Request::url() === url('connections'))
                 <li class="active">
                 @else

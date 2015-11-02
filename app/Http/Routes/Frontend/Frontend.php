@@ -38,8 +38,9 @@ get('resources', 'InfoResourceController@index');
 get('publications', 'PublicationController@index')->name('publications');
 get('publication/new', 'PublicationController@create')->name('new_publication');
 post('publication/store', 'PublicationController@store')->name('store_publication');
-get('publication/{id}/edit', 'PublicationController@edit')->name('show_publication');
-patch('publication/update', 'PublicationController@update')->name('update_publication');
+get('publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
+patch('publication/{id}', 'PublicationController@update')->name('update_publication');
+get('publication/{id}', 'PublicationController@show')->name('show_publication');
 
 /**
  * These frontend controllers require the user to be logged in
@@ -48,7 +49,7 @@ $router->group(['middleware' => 'auth'], function ()
 {
 	get('userhome', 'UserController@index')->name('userhome');
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
-	get('dashboard', 'DashboardController@index')->name('dashboard');
+	get('dashboard', 'DashboardController@index')->name('dashboard'); // used instead of edit_profile
 	// get('profile/edit', 'ProfileController@edit')->name('edit_profile');
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
 });
