@@ -15,9 +15,9 @@
         <div class = "feedsbox">
 
 
+          <div class ="color-label division_{{$currentDivision->slug}}"></div>
+          <div class="inner-feedsbox">
 
-          <div style="width: 90%; height: 90%;">
-            <div class ="color-label_{{$currentDivision->slug}}"></div>
           <h3>
             <a
               @if(Auth::check())
