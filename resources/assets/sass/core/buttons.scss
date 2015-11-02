@@ -35,6 +35,23 @@ a.btn-style-alt:active{
 	color:#000;
 	border-color:#ccc;
 }
+button.btn-style-alt{
+	background:#60A0FF;
+	color:#FFF;
+	border-color:#ccc;
+}
+
+button.btn-style-alt:hover, a.btn-style-alt:focus{
+	background:#FFF;
+	color:#60A0FF;
+	border-color:#ccc;
+}
+
+button.btn-style-alt:active{
+	background:#FFF;
+	color:#000;
+	border-color:#ccc;
+}
 
 button.btn-style{
 	background:#FFF;

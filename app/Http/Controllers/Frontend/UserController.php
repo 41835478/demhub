@@ -17,6 +17,9 @@ class UserController extends Controller {
 	public function index(){
 
 		$allDivisions = $navDivisions = Division::all();
+		$currentDivision = Division::find(1);
+		$currentDivision->slug      = "all";
+		$currentDivision->name      = "All Divisions";
 
     $newsFeeds = array();
     foreach ($allDivisions as $div) {
@@ -37,7 +40,7 @@ class UserController extends Controller {
     $end= $paginateVars[8];
 
 		return view('frontend.user.userhome', compact([
-					'allDivisions','navDivisions', 'newsFeeds', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
+					'allDivisions','currentDivision','navDivisions', 'newsFeeds', 'start' , 'length' , 'max' , 'next' , 'prev' , 'nextlink' , 'prevlink' , 'begin' , 'end'
 					]));
 
 	}
