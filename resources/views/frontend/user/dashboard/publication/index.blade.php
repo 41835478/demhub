@@ -18,6 +18,7 @@
                 <tr>
                     <td>Title</td>
                     <td>Description</td>
+                    <td>Author</td>
                     <td>Has attached doc?</td>
                     <td>Actions</td>
                 </tr>
@@ -27,6 +28,7 @@
                 <tr>
                     <td>{{ $pub->title }}</td>
                     <td>{{ $pub->description }}</td>
+                    <td>{{ $pub->author->full_name() }}</td>
                     <td><a href="{{ $pub->document->url() }}" download>Download</a></td>
 
                     <td>

@@ -83,4 +83,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return config('access.users.change_email');
 	}
 
+	public function full_name() {
+		return $this->first_name." ".$this->last_name;
+	}
+
 }

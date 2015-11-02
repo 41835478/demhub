@@ -28,6 +28,6 @@ class DashboardController extends Controller {
 
 		return view('frontend.user.dashboard.connections', compact([
 						'allDivisions','navDivisions', 'newsFeeds', 'users'
-						]));
+		]));
 	}
 }

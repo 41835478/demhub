@@ -30,7 +30,8 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Publication::all();
+      $publications = Auth::user()->publications;
+
       return view(
         'frontend.user.dashboard.publication.index', compact(['publications'])
       );

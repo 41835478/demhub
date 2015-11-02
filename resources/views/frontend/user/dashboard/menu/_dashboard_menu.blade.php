@@ -13,7 +13,7 @@
     @else
       <li>
     @endif
-      <a href="{{url('publications')}}"><i class="fa fa-briefcase"></i> PUBLICATIONS</a>
+      <a href="{{url('publications')}}"><i class="fa fa-briefcase"></i> MY PUBLICATIONS</a>
     </li>
 
     @if(Request::url() === url('connections'))
