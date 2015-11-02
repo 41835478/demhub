@@ -25,7 +25,6 @@ class DivisionController extends Controller
     {
       $currentDivision = Division::find(1);
       $currentDivision->slug      = "all";
-      $currentDivision->bg_color  = "000";
       $currentDivision->name      = "All Divisions";
 
       $allDivisions = $navDivisions = Division::all();

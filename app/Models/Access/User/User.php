@@ -48,23 +48,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	/**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
-  protected $fillable = [
-		'user_name',
-		'first_name',
-		'last_name',
-		'job_title',
-		'organization_name',
-		'phone_number',
-		'specialization',
-		'email',
-		'avatar'
-	];
-
-	/**
 	 * For soft deletes
 	 *
 	 * @var array
@@ -76,7 +59,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
           'styles' => [
               'medium' => '300x300',
               'thumb' => '100x100'
-          ]
+          ],
+					'default_url' => '/images/avatars/:style/missing.png'
       ]);
 
       parent::__construct($attributes);
@@ -97,10 +81,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function canChangeEmail() {
 		return config('access.users.change_email');
-	}
-
-	public function user_name() {
-		return $this->$user_name;
 	}
 
 }

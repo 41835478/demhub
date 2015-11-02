@@ -2,13 +2,13 @@
             <ul class="nav nav-stacked navbar-inverse" id="user-function">
 
 
-                @if(Request::url() === url('self_profile'))
+                @if(Request::url() === url('dashboard'))
                 <li class="active">
-                	<a href="{{url('self_profile')}}"><i class="fa fa-user"></i> PROFILE</a>
+                	<a href="{{url('dashboard')}}"><i class="fa fa-user"></i> PROFILE</a>
                 </li>
                 @else
                 <li>
-                    <a href="{{url('self_profile')}}"><i class="fa fa-user"></i> PROFILE</a>
+                    <a href="{{url('dashboard')}}"><i class="fa fa-user"></i> PROFILE</a>
                 </li>
                 @endif
                 @if(Request::url() === url('privacy_settings'))

@@ -11,11 +11,7 @@
           {!! Form::label('avatar', 'Avatar', ['class' => 'col-sm-3 control-label']) !!}
 
           <div class="col-sm-9">
-            @if($user->avatar)
-              <img src="<?= $user->avatar->url() ?>" style="height: 200px; max-width: 200px !important;" >
-            @else
-                {!! HTML::image("images/user/defaultavatar.svg") !!}
-            @endif
+            <img src="{{ $user->avatar->url('') }}" style="height: 200px; max-width: 200px !important;" >
 
             {!! Form::file('avatar', null, ['class' => 'col-sm-3 control-label']) !!}
 

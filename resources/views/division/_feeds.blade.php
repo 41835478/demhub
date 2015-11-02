@@ -1,9 +1,12 @@
+@if (! url('userhome'))
 <div class="row">
-
-<div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">
+  <div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">
     <h2><span class="label label-info" style="background-color:rgba(0, 0, 0, 0.7);">NEWS FEED</span><h2>
   </div>
 </div>
+@else
+<div style="padding-bottom:20px"></div>
+@endif
   <div class="row">
     <div class="col-md-offset-1" style="padding-right:100px">
   <!-- <div class="col-md-10 col-md-offset-1" style="overflow-x:hidden;padding-left:7%"> -->
@@ -55,16 +58,16 @@
 
 <div style="width:100%; height:50px; bottom:0px; position:absolute;">
 
-              <button type="button" class="btn btn-default" aria-label="Left Align" style="background-color:red;color:#fff;" data-toggle="popover"
+              <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover"
               data-content="Feed successfully added to your favourite">
 
 
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
 
-    <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
+    <!-- <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
       <div class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> xxx</div>
-    </button>
+    </button> -->
 
 
 
@@ -74,7 +77,7 @@
 
 
         <a button type="button" class="btn btn-default btn-sm" style="margin-left:5px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-          <div class="glyphicon glyphicon-comment" aria-hidden="true"> xxx</div>
+          <div class="glyphicon glyphicon-comment" aria-hidden="true"> COMMENT</div>
         </button></a>
         <ul class="dropdown-menu" aria-labelledby="dLabel" style="width:100%; heigth:auto; margin-left:-30px; padding: 15px 15px 15px 15px;">
         <li>Place Holder

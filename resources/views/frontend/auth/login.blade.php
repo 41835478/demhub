@@ -1,5 +1,13 @@
 @extends('frontend.layouts.master')
 
+@section('body-style')
+<style>
+body {
+	padding-top: 0px !important;
+}
+</style>
+@endsection
+
 @section('content')
 <div class="row" style="padding:0px;
                                 background:url('http://beta.demhub.net/images/backgrounds/dried_earth.jpg')  no-repeat fixed center;

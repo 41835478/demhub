@@ -6,22 +6,12 @@ use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
-use Codesleeve\Stapler\ORM\StaplerableInterface;
-use Codesleeve\Stapler\ORM\EloquentTrait;
 
 /**
  * Class EloquentUserRepository
  * @package App\Repositories\User
  */
-class EloquentUserRepository implements UserContract, StaplerableInterface {
-	use EloquentTrait;
-
-	/**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['avatar'];
+class EloquentUserRepository implements UserContract {
 
 	/**
 	 * @var RoleRepositoryContract
@@ -66,7 +56,7 @@ class EloquentUserRepository implements UserContract, StaplerableInterface {
 			'confirmed' => config('access.users.confirm_email') ? 0 : 1,
 		]);
 		$user->attachRole($this->role->getDefaultUserRole());
-
+		
 		if (config('access.users.confirm_email') and $provider === false)
         		$this->sendConfirmationEmail($user);
     		else
