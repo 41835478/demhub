@@ -24,13 +24,6 @@ class Publication extends Model implements StaplerableInterface {
 	 */
 	protected $guarded = ['id'];
 
-  /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
-  protected $fillable = ['title', 'description', 'document'];
-
 	/**
 	 * For soft deletes
 	 *

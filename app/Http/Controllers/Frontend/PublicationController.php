@@ -99,7 +99,7 @@ class PublicationController extends Controller
     public function update(Request $request, $id)
     {
       $publication = Publication::findOrFail($id);
-      // TODO - update with $request
+      $publication->fill($request->all())->save();
 
       return redirect('publications')
       ->withFlashSuccess("Successfully created publication!");

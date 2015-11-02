@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
   <a class="btn btn-small btn-success" href="{{ URL::to('publications') }}">Show All Publications</a>
 
   <table class="table table-striped table-bordered">
