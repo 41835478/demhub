@@ -86,15 +86,71 @@ class ArticleController extends Controller
 		$item_count = count($items);
 		$last_page = $item_count < $options_count;
 
-		// for debug
-//		echo $query->toSql();
-//		foreach($items as $item)
-//		{
-//			echo '<br> '.$item->divisions.' ----- '.$item->title;
-//		}
-//		echo '<br>'.(int)$last_page.'<br>'.$total_count;
-
 		// TODO add view to render items. Can use $items, $item_count, $total_count, and $last_page
+		// for debug
+		echo $query->toSql();
+		foreach($items as $item)
+		{
+			echo '<br> '.$item->divisions.' ----- '.$item->title;
+		}
+		echo '<br>'.(int)$last_page.'<br>';
+
+	}
+
+	/**
+	 * Takes up to 3 keywords through $_GET and returns 3 separate article lists related to those keywords
+	 *
+	 * @param Request $request Request containing GET variables defining the request, which are:
+	 * 'keyword_1'	(optional) first keyword
+	 * 'keyword_2'	(optional) second keyword
+	 * 'keyword_3'	(optional) third keyword
+	 * 'page':		(optional) page number defaults to 1
+	 * 'count':		(optional) items per page defaults to 50
+	 *
+	 */
+	public function stream(Request $request)
+	{
+		$keywords[] = 		$request->input('keyword_1', null);
+		$keywords[] = 		$request->input('keyword_2', null);
+		$keywords[] = 		$request->input('keyword_3', null);
+		$options_page = 	$request->input('page', 1);			// (optional) page number defaults to 1
+		$options_count = 	$request->input('count', 50);		// (optional) items per page defaults to 50
+
+		$data = array();
+		$index = 0;		// to manually keep track of index in case of dismissed/missing keywords
+		foreach($keywords as $i=>$keyword){
+			if($keyword != null){
+				$query = DB::table('articles')->select("*");
+				$query = $query->where('deleted', 0);
+				$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
+				$query = $query->orderBy('publish_date', 'desc');
+				$total_count = $query->count();
+				$query = $query->skip( ($options_page - 1) * $options_count );
+				$query = $query->take( $options_count );
+				$items = $query->get();
+
+				$data[$index]['keyword'] = $keyword;
+				$data[$index]['count'] = count($items);
+				$data[$index]['last_page'] = $data[$index]['count'] < $options_count;
+				$data[$index]['total_count'] = $total_count;
+				$data[$index]['items'] = $items;
+				$index++;
+			}
+		}
+
+
+		// TODO add view to render items in the $data array. Can use $data[]['keyword'], $data[]['items'], $data[]['count'], and $data[]['last_page']
+		// for debug
+		echo $query->toSql();
+		foreach($data as $i=>$d){
+			echo '<br><b>Dataset '.($i+1).' for keyword: '.$d['keyword'].'</b>';
+			foreach($d['items'] as $item)
+			{
+				echo '<br> '.$item->divisions.' ----- '.$item->title;
+			}
+			echo '<br>Last page: '.(int)$d['last_page'].'<br>';
+		}
+
 	}
 
 }
