@@ -105,11 +105,15 @@ button.btn-style:active {
 .feedsbox {
   height: 360px;
   display: inline-block;
-  margin: 10px 0px 10px 0px;
-  padding: 15px 0px 15px 0px;
+  margin: 10px 0px 5px 0px;
+  padding: 15px 0px 5px 0px;
   border: 1px   solid #ddd;
   float: left;
   position: relative; }
+
+.inner-feedsbox {
+  padding-left: 10px;
+  padding-right: 10px; }
 
 div#message {
   margin-top: 10%; }
@@ -782,51 +786,12 @@ div#conversation-head {
 .division_humanitarian {
   background-color: #754293; }
 
-.color-label_health {
-  width: 111.25%;
+.color-label {
+  width: 100%;
   height: 5%;
   background: #0D8E56;
   display: block;
-  float: left; }
-
-.color-label_academia {
-  width: 111%;
-  height: 5%;
-  background: #1D73A3;
-  display: block;
   float: left;
-  margin: -16px; }
-
-.color-label_response {
-  width: 111%;
-  height: 5%;
-  background: #DB9421;
-  display: block;
-  float: left;
-  margin: -16px; }
-
-.color-label_security {
-  width: 111%;
-  height: 5%;
-  background: #848889;
-  display: block;
-  float: left;
-  margin: -16px; }
-
-.color-label_continuity {
-  width: 111%;
-  height: 5%;
-  background: #933131;
-  display: block;
-  float: left;
-  margin: -16px; }
-
-.color-label_humanitarian {
-  width: 111%;
-  height: 5%;
-  background: #754293;
-  display: block;
-  float: left;
-  margin: -16px; }
+  margin-top: -15px; }
 
 /*# sourceMappingURL=core.css.map */
