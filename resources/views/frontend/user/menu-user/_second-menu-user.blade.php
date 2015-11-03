@@ -6,7 +6,7 @@
     @else
       <li>
     @endif
-    <a href="{{url('home')}}" style="border-left:2px solid #fff"> NEWS FEED</a></li>
+    <a href="{{url('userhome')}}" style="border-left:2px solid #fff"> NEWS FEED</a></li>
 
     @if(Request::url() == url('forum/all_threads'))
       <li class="active">
