@@ -13,8 +13,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Nathanmac\Utilities\Parser\Parser;
 
-//Todo: Remove Parser vendor Nathanmac\Utilities\Parser\Parser it's no longer needed
-
 class SchedulerController extends Controller
 {
 
