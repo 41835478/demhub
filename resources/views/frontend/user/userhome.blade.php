@@ -8,6 +8,11 @@
 	@include('division._search_feed')
 @else
 	@include('division._feeds')
+	@if($total_count > 0)
+		@include('division._pagination')
+	@else
+		@include('division._contribute_article')
+	@endif
 @endif
 
 @endsection('content')

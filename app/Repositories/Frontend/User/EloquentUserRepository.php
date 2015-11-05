@@ -151,8 +151,9 @@ class EloquentUserRepository implements UserContract {
 		// TODO - Add $user->canChangeUserName()
 		// $user->user_name = $input['user_name'];
 		$user->job_title = $input['job_title'];
-		$user->organization_name = $input['org_agency'];
+		$user->organization_name = $input['organization_name'];
 		$user->specialization = $input['specialization'];
+		$user->phone_number = $input['phone_number'];
 
 		if ($user->canChangeEmail()) {
 			//Address is not current address
@@ -165,7 +166,7 @@ class EloquentUserRepository implements UserContract {
 				$user->email = $input['email'];
 			}
 		}
-		
+
 		if (array_key_exists('avatar', $input)) {
 			// TODO - Add validation for image/file
 			$user->avatar = $input['avatar'];

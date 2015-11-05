@@ -16,9 +16,7 @@
 			<ul class="nav navbar-nav">
 
 				<li>
-          <a>
-            <kbd>BETA</kbd>
-          </a>
+          <a><kbd>BETA</kbd></a>
         </li>
 
 				@if (Auth::guest())
@@ -46,16 +44,17 @@
 						@endif
 						>{!! link_to('auth/login', trans('LOGIN')) !!}</li>
 				@else
+
 					<li style="padding:0;">
 							<a style="padding:5% 0 0 0;">
-								@if (isset($navDivision))
-										{!! Form::open(['url' => 'divisions/results', 'class' => 'form-horizontal', 'role' => 'form']) !!}
-										{!! Form::text('search', (isset($query)) ? $query : NULL, ['class' => 'form-control', 'placeholder' => 'Search News']) !!}
-										<input type="hidden" name="route" value="{{ Request::path() }}">
+								@if (isset($navDivisions))
+										{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control', 'placeholder' => 'Search News']) !!}
 										{!! Form::close() !!}
 								@endif
 							</a>
 					</li>
+
 					<li class="dropdown">
 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;btn-style;">
@@ -71,6 +70,7 @@
 							<li>{!! link_to('auth/logout', trans('navs.logout')) !!}</li>
 						</ul>
 					</li>
+
 				@endif
 
 			</ul>
