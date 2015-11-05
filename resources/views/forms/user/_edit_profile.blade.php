@@ -61,7 +61,7 @@
         </div>
 
         <div class="form-group">
-          <label for="specialization" class="col-sm-3 control-label" style="font-size:105%">Specialization</label>
+          <label for="specialization" class="col-sm-3 control-label" style="font-size:95%">Specialization</label>
           <div class="col-sm-9">
             <select class="form-control" name="specialization" id="specialization">
               <option class="active">{{Auth::user()->specialization ? Auth::user()->specialization : "Please select an option"}}</option>

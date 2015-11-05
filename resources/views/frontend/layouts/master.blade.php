@@ -42,6 +42,8 @@
     <!-- Place favicon.ico in the root directory -->
 
     {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
+    {!! HTML::script("js/vendor/jquery.maphilight.min.js") !!}
+    
   </head>
 
   <body>
