@@ -168,7 +168,6 @@ return [
 		'Laravel\Socialite\SocialiteServiceProvider',
 		// 'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 		'Riari\Forum\ForumServiceProvider',
-		'Nathanmac\Utilities\Parser\ParserServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Codesleeve\LaravelStapler\Providers\L5ServiceProvider'
 	],
@@ -225,7 +224,6 @@ return [
 		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-		'Parser' 	=> 'Nathanmac\Utilities\Parser\Facades\Parser',
 		'Image' => 'Intervention\Image\Facades\Image'
 
 	],

@@ -13,8 +13,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Nathanmac\Utilities\Parser\Parser;
 
-//Todo: Remove Parser vendor Nathanmac\Utilities\Parser\Parser it's no longer needed
-
 class SchedulerController extends Controller
 {
 
@@ -70,6 +68,14 @@ class SchedulerController extends Controller
 		file_put_contents(storage_path()."/logs/scheduler/scrapeRSS_".date("YmdHis").".log", $messages);
 	}
 
+	/**
+	 * Downloads articles from http://www.irdrinternational.org/ based on 'IRDR' type sources on the scrape_sources DB table
+	 *
+	 * @param Request $request Accepted indexes:
+	 * - 'id' (optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
+	 * - 'all_pages' (optional) The function will go through up to 3 pages, if all_pages=1 is set it'll go through all but will likely timeout
+	 *
+	 */
 	public function scrapeIRDR(Request $request)
 	{
 		//important to terminate the process in case the while loop goes haywire but shouldnt be
@@ -93,6 +99,8 @@ class SchedulerController extends Controller
 		}
 		$messages = '';
 
+		$page_count = $request->input('all_pages', 0)==0 ? 30 : 3;
+
 		foreach($sources as $source){
 			//$return = ScraperComponent::processRSSFeed($source);
 			//$messages .= $return['message'];
@@ -103,7 +111,7 @@ class SchedulerController extends Controller
 			$return['count'] = 0;
 			$return['errors'] = 0;
 
-			while(!$end)
+			while(!$end && $page <= $page_count)
 			{
 				$data = array();
 				if($page == 1)
