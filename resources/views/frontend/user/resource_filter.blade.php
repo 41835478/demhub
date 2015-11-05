@@ -9,6 +9,8 @@ $( document ).ready(function() {
 });
 </script>
 <div class="row">
+	<h3 style="text-align:center">SELECT A LOCATION</h3>
+	<span id="mapHideNote" style="display:none">Map navigation is accesible on screens with a width greater than 630px</span>
 	<div class="col-md-9 col-md-offset-2" id="map_container">
 
 		<div id="world_map" class="mapContainer" style="">
@@ -203,7 +205,7 @@ $( document ).ready(function() {
 </div>
 <div id="user-settings" class="row">
 	<div class="col-md-12 text-center">
-    	<h1>RESOURCES</h1>
+
 
 		<br>
 		<!-- <h3>Filters</h3> -->
@@ -295,21 +297,34 @@ $( document ).ready(function() {
 
 	<script>
 	var countries = ["canada","united_states","australia"];
+	var counter=0;
+	$(document).ready(function(){
+		if ($(window).width() < 630) {
+			$("#map_container").hide();
+			$("#mapHideNote").show();
+		}
+	})
 	$(window).resize(function(){
-		if ($(window).width() < 500) {
+		counter++;
+		if ($(window).width() < 600 && counter % 10 == 0) {
 			// for (var i=1;i<=countries.length;i++){
 			// 	changeCoordinates(countries[i]);
 			// }
-			console.log('working');
-			changeCoordinates('canada');
-
+			$("#map_container").hide();
+			$("#mapHideNote").show();
+		}
+		else if ($(window).width() > 600 && counter % 10 == 0) {
+			// for (var i=1;i<=countries.length;i++){
+			// 	changeCoordinates(countries[i]);
+			// }
+			$("#map_container").show();
 		}
 		// else if ($(window).width() < 768) {
-			// for (var i=1;i<=countries.length;i++){
-			// 	changeCoordinates(countries[i]);
-			// }
-
-			// console.log("working");
+		// 	for (var i=1;i<=countries.length;i++){
+		// 		changeCoordinates(countries[i]);
+		// 	}
+		//
+		// 	console.log("working");
 		// }
 	});
 
@@ -433,7 +448,6 @@ $( document ).ready(function() {
 		var filterVar = region;
 		var region = filterVar.toLowerCase();
 		region=region.replace(/ /g,"_");
-
 		// var list =document.getElementsByClassName(country);
 
 		if($("tr").hasClass('in')) {
@@ -444,6 +458,7 @@ $( document ).ready(function() {
 		    }
 
 			$(".mapContainer").hide();
+
 			// document.getElementById(country+"_map").style.display="";
 			document.getElementById("mapListing").style.display="";
 	};
