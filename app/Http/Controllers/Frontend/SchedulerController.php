@@ -265,7 +265,7 @@ class SchedulerController extends Controller
 
 		}
 
-		//populat ethe keywords table with some basic keys
+		//populate the keywords table with some basic keys
 		$keys = array('Terrorism'=>[4], 'Terrorist'=>[4], 'Breach'=>[4], 'Security'=>[4], 'Cybersecurity'=>[4], 'Threat'=>[4], 'Cybercrime'=>[4],
 			'Civil Protection'=>[4], 'Risk Reduction'=>[3,4], 'Preparedness'=>[3,4], 'Mitigation'=>[3], 'Infrastructure'=>[3], 'Recovery'=>[3], 'Response'=>[3], 'Humanitarian'=>[6],
 			'Pandemic'=>[1], 'Epidemic'=>[1], 'Endemic'=>[1], 'Outbreak'=>[1], 'Quarentine'=>[1], 'Virus'=>[1],

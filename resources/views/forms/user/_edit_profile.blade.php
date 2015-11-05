@@ -54,9 +54,9 @@
         </div>
 
         <div class="form-group">
-          {!! Form::label('org_agency', 'Organization', ['class' => 'col-sm-3 control-label']) !!}
+          {!! Form::label('organization_name', 'Organization', ['class' => 'col-sm-3 control-label']) !!}
           <div class="col-sm-9">
-            {!! Form::text('org_agency', $user->org_agency, ['class' => 'form-control']) !!}
+            {!! Form::text('organization_name', $user->organization_name, ['class' => 'form-control']) !!}
           </div>
         </div>
 

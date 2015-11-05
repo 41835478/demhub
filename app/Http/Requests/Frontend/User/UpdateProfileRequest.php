@@ -29,6 +29,8 @@ class UpdateProfileRequest extends Request {
 			'first_name'	=> 'required',
 			'last_name'	=> 'required',
 			'email'	=> 'sometimes|required|email',
+			'avatar' => 'max:2000|mimes:jpeg,JPG,jpg,JPEG,png,PNG',
+			'phone_number' => 'regex:/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/'
 		];
 	}
 }

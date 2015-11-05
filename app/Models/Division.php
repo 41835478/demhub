@@ -18,10 +18,10 @@ class Division extends Model
   {
       return $this->hasMany('App\Models\NewsFeed');
   }
-  
-  // public function parentCategory()
-//   {
-//       return $this->hasMany('App\Models\Division', 'name')->orderBy('weight');
-//   }
-  
+
+  public function articles()
+  {
+      return $this->hasMany('App\Models\Article');
+  }
+
 }
