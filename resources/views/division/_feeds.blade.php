@@ -16,15 +16,15 @@
 
         <?php
           $articleDivs = array_filter(preg_split("/\|/", $item->divisions));
-          if ($articleDivs)
+          if ($articleDivs) {
             sort($articleDivs);
+            $width = 100/count($articleDivs);
+            $marginLeft = 0;
+          }
+
         ?>
 
         <div class = "feedsbox">
-          <?php
-            $width = 100/count($articleDivs);
-            $marginLeft = 0;
-          ?>
           @forelse($articleDivs as $div)
             <div style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></div>
             <?php
