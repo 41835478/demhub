@@ -295,12 +295,24 @@ $( document ).ready(function() {
 
 	<script>
 	var countries = ["canada","united_states","australia"];
-	// $(window).resize(function(){
-	// 	for (var i=1;i<=countries.length;i++){
-	// 		changeCoordinates(countries[i]);
-	// 	}
-	// 	console.log("working");
-	// });
+	$(window).resize(function(){
+		if ($(window).width() < 500) {
+			// for (var i=1;i<=countries.length;i++){
+			// 	changeCoordinates(countries[i]);
+			// }
+			console.log("working");
+			$("#map_container").hide();
+		}
+		// else if ($(window).width() < 768) {
+			// for (var i=1;i<=countries.length;i++){
+			// 	changeCoordinates(countries[i]);
+			// }
+
+			// console.log("working");
+		// }
+	});
+
+
 
 	function changeCoordinates (mapCountry){
 		var widthDiff= $("#map_container").width()/$("#"+mapCountry+"_img").attr('orgWidth');
