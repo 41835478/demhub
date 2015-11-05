@@ -43,7 +43,7 @@
 
     {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
     {!! HTML::script("js/vendor/jquery.maphilight.min.js") !!}
-    
+
   </head>
 
   <body>
@@ -69,7 +69,16 @@
 
       @include('frontend.includes._footer')
     @endif
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-69289302-1', 'auto');
+      ga('send', 'pageview');
+
+  </script>
     <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
     {!! HTML::script('js/vendor/bootstrap.min.js') !!}
 

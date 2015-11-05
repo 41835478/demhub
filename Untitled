@@ -121,7 +121,7 @@
 </map>
 ------------
 <div id="canada_map" class="mapContainer">
-    <img class="map img-responsive" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" orgwidth="1000" orgheight="969" style="max-width: 100%; opacity: 0; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;" usemap="#canada"></div>
+    <img class="map img-responsive" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" orgwidth="1000" orgheight="969" style="max-width: 100%;" usemap="#canada"></div>
 		<map name="canada" style="text-transform: capitalize;">
 		<!-- <area shape="rect" coords="998,967,1000,969" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" /> -->
 		<area id="canada_poly_1" alt="" title="Manitoba" onclick="secondFilterF(this.title)" shape="poly" coords="300,567,302,515,355,455,343,447,331,450,327,430,324,426,315,423,315,409,260,403,244,560">
@@ -139,4 +139,18 @@
 		<area id="canada_poly_12" alt="" title="New Brunswick" onclick="secondFilterF(this.title)" shape="poly" coords="593,567,586,578,577,589,570,596,560,591,555,582,553,572,552,569,547,567,545,560,544,555,552,554,560,551,569,548,581,545,581,557,584,565">
 		<area id="canada_poly_13" alt="" title="Nova Scotia" onclick="secondFilterF(this.title)" shape="poly" coords="574,599,579,589,585,582,592,569,600,569,608,565,611,560,616,552,620,543,627,547,627,552,633,557,627,567,618,578,612,588,606,592,601,593,598,600,589,609,580,609">
 		</map>
+	</div>
+  ---------
+  <div id="australia_map" class="mapContainer" style="display: block;">
+	<div class="map img-responsive" style="display: block; background-image: url(http://localhost:8000/images/maps/australia_map.png); background-size: contain; position: relative; padding: 0px; width: 690px; height: 655px;"><canvas style="width: 690px; height: 655px; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px; opacity: 1;" height="655" width="690"></canvas><img class="map img-responsive maphilighted" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" orgwidth="1206" orgheight="1144" style="max-width: 100%; opacity: 0; position: absolute; left: 0px; top: 0px; padding: 0px; border: 0px;" alt=""></div>
+	<map name="australia" style="text-transform: capitalize;">
+
+	<area id="australia_poly_1" title="Western Australia" onclick="secondFilterF(this.title)" shape="poly" coords="271,88,264,82,252,87,252,81,228,62,192,84,180,100,176,111,157,115,147,132,142,145,146,152,131,175,119,188,100,193,88,197,16,250,13,244,6,258,5,295,19,312,5,320,26,348,52,400,68,426,64,439,69,453,57,461,65,481,90,488,112,485,132,470,137,462,165,455,188,459,196,454,205,436,224,423,254,422,280,409,280,403" style="outline:none;" target="_self">
+	<area id="australia_poly_2" title="Northern Territory" onclick="secondFilterF(this.title)" shape="poly" coords="270,87,275,86,273,72,280,56,287,53,284,45,303,25,328,27,332,22,318,13,330,5,368,22,376,22,383,26,411,8,415,14,404,24,417,24,412,49,401,53,391,81,402,94,435,114,430,294,278,294" style="outline:none;" target="_self">
+	<area id="australia_poly_3" title="Queensland" onclick="secondFilterF(this.title)" shape="poly" coords="435,118,454,124,457,132,475,136,493,116,501,87,497,78,500,53,507,46,502,39,522,5,527,6,532,28,540,37,541,49,544,77,557,75,570,86,570,106,576,116,574,124,583,131,580,156,584,168,595,177,621,199,625,211,634,230,636,239,652,244,655,262,685,312,685,324,683,361,665,361,659,367,645,373,639,366,625,362,611,362,604,366,475,355,477,298,430,294,435,124" style="outline:none;" target="_self">
+	<area id="australia_poly_4" title="South Australia" onclick="secondFilterF(this.title)" shape="poly" coords="465,536,455,534,441,517,434,482,420,484,426,470,421,462,414,477,399,478,397,471,410,458,407,447,387,472,374,466,367,444,353,433,351,422,323,414,302,411,280,409,278,295,430,295,478,298" style="outline:none;" target="_self">
+	<area id="australia_poly_5" title="New South Wales" onclick="secondFilterF(this.title)" shape="poly" coords="605,533,612,509,623,492,636,464,655,447,670,424,673,411,686,378,688,361,664,362,658,369,648,372,643,372,639,365,624,361,613,362,606,366,475,354,469,453,483,453,493,467,498,465,503,468,505,476,517,485,523,494,533,493,572,500,577,508,580,517" style="outline:none;" target="_self">
+	<area id="australia_poly_6" title="Victoria" onclick="secondFilterF(this.title)" shape="poly" coords="464,538,473,542,481,541,498,552,517,542,529,550,542,560,553,555,565,544,595,541,604,536,579,517,573,501,550,498,534,493,526,497,520,488,505,478,504,469,498,465,493,468,484,454,470,451" style="outline:none;" target="_self">
+	<area id="australia_poly_7" title="Tasmania" onclick="secondFilterF(this.title)" shape="poly" coords="527,647,514,630,516,619,508,601,508,589,514,583,539,593,557,593,564,589,574,597,575,618,563,641,553,651,537,651" style="outline:none;" target="_self">
+	</map>
 	</div>
