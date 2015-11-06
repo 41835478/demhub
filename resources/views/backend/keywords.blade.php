@@ -55,9 +55,9 @@
 				</div>
 			</form>
 
-	        @foreach($keywords as $item)
+	        @foreach($items as $item)
 		        <form action="{!!route('backend.keywords')!!}" method="get">
-					<input type="hidden" name="key_id" value="{{$item->id}}">
+					<input type="hidden" name="id" value="{{$item->id}}">
 		            <div class="container-fluid text-center" style="border-bottom: 1px solid #bbb">
 						<div class="col-xs-1">{{ $item->id }}:</div>
 						<div class="col-xs-3">
