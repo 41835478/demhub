@@ -3,6 +3,8 @@
 use App\Models\Division;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Http\Request;
+use Mail;
 
 /**
  * Class FrontendController
@@ -15,6 +17,27 @@ class FrontendController extends Controller {
 	 */
 	public function index()
 	{
+		if (Auth::user()) {
+			return redirect()->route('userhome');
+		} else  {
+			$divisions = Division::all();
+
+			return view('frontend.index', [
+	      	  'divisions' => $divisions
+	   	   	]);
+		}
+
+	}
+	public function postFeedback(Request $request)
+	{
+		// $question1 = $request->input('question1');
+		// $question2 = $request->input('question2');
+		// $question3 = $request->input('question3');
+		// $inputs=array($question1, $question2, $question3);
+		$inputs = $request->all();
+		Mail::send('emails.feedback-email', ['inputs' => $inputs], function($message) {
+					$message->to('demhubcontact@gmail.com','feedback bot')->subject('DEMHUB Feedback');
+				});
 		if (Auth::user()) {
 			return redirect()->route('userhome');
 		} else  {

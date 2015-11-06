@@ -11,6 +11,9 @@ get('terms', 'FrontendController@terms');
 get('forum/all_threads', 'ForumController@getViewAllThreads')->name('all_threads');
 get('forum/9-/thread/create', 'ForumController@getModCreateThread');
 post('forum/9-/thread/create', 'ForumController@postModCreateThread');
+
+get('feedback', 'FrontendController@getFeedback');
+post('feedback', 'FrontendController@postFeedback')->name('post_feedback');
 // get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
 
 /**

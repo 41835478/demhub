@@ -50,11 +50,56 @@
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <script type="text/javascript">
+  $(document).ready(function(){
+
+    $('div#dashboard-icon > i').click(function(){
+
+      if ($('div#dashboard').css('right') == '-350px'){
+        $('div#dashboard').animate({
+          right:'0px'
+        }, function(){
+          $('div#dashboard-icon > i').removeClass();
+          $('div#dashboard-icon > i').addClass('fa fa-angle-double-right');
+          $('div#dashboard-icon').css('right', '350px');
+        });
+      }
+      else if ($('div#dashboard').css('right') == '0px'){
+        $('div#dashboard').animate({
+          right:'-350px'
+        }, function(){
+          $('div#dashboard-icon > i').removeClass();
+          $('div#dashboard-icon > i').addClass('glyphicon glyphicon-flag');
+          $('div#dashboard-icon').css('right', '0');
+        });
+      }
+    });
+
+
+    $("i").hover(
+      function(){
+        $(this).tooltip('show');
+      }, function() {
+        $(this).tooltip('hide');
+      }
+    );
+
+  });
+</script>
 
     @if($display_coming_soon)
       @include('frontend.includes._coming-soon')
     @else
       <div class="wrapper">
+        @if (Auth::user())
+          <div id="dashboard-icon">
+    		    <i class="glyphicon glyphicon-flag" data-toggle="tooltip" data-placement="left" title="FEEDBACK"></i>
+    	    </div>
+
+          <div id="dashboard">
+    		    @include('forms.user.feedback')
+    	    </div>
+        @endif
 
         @include('frontend.includes._navigation')
 
