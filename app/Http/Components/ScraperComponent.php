@@ -333,11 +333,11 @@ class ScraperComponent
 	 */
 	public static function convertDBArrayToString($array)
 	{
+		if($array == null || empty($array)) return null;
+
 		$return = "|";
 		$return .= implode('|', $array);
 		$return .= "|";
-
-		if(empty($array)) $return = '';
 
 		return $return;
 	}
