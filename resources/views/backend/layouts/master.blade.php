@@ -22,7 +22,7 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-blue">
+    <body class="skin-blue" style="padding: 0;">
         <div class="wrapper">
           @include('backend.includes.header')
           @include('backend.includes.sidebar')
