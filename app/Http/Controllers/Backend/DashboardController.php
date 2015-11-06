@@ -4,6 +4,7 @@ use App\Http\Components\ScraperComponent;
 use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\Keyword;
+use App\Models\ScrapeSource;
 use Illuminate\Http\Request;
 
 /**
@@ -27,10 +28,10 @@ class DashboardController extends Controller {
 	public function keywords(Request $request)
 	{
 		if($request->input("submit", "") == "save"){
-			if($request->input("key_id") == 0){
+			if($request->input("id") == 0){
 				$keyword = new Keyword();
 			} else {
-				$keyword = Keyword::find($request->input("key_id"));
+				$keyword = Keyword::find($request->input("id"));
 			}
 
 			$keyword->divisions = ScraperComponent::convertDBArrayToString($request->input("div", ""));
@@ -43,13 +44,14 @@ class DashboardController extends Controller {
 			}
 		}
 		if($request->input("submit", "") == "x"){
-			$keyword = Keyword::find($request->input("key_id"));
+			$keyword = Keyword::find($request->input("id"));
 			$keyword->delete();
+			$request->session()->flash('status', 'Deleted.');
 		}
-		$keywords = Keyword::orderBy('id', 'DESC')->get();
+		$items = Keyword::orderBy('id', 'DESC')->get();
 		$divisions = Division::all();
 
-		return view('backend.keywords', compact('keywords', 'divisions'));
+		return view('backend.keywords', compact('items', 'divisions'));
 	}
 
 	/**
@@ -58,9 +60,31 @@ class DashboardController extends Controller {
 	 */
 	public function sources(Request $request)
 	{
+		if($request->input("submit", "") == "save"){
+			if($request->input("id") == 0){
+				$item = new ScrapeSource();
+			} else {
+				$item = ScrapeSource::find($request->input("id"));
+			}
+			$item->type = $request->input("type", "");
+			$item->title = $request->input("title");
+			$item->url = $request->input("url");
+			if($item->save()){
+				$request->session()->flash('status', 'Success');
+			} else {
+				$request->session()->flash('status', 'Failed!');
+			}
+		}
+		if($request->input("submit", "") == "x"){
+			$item = ScrapeSource::find($request->input("id"));
+			$item->delete();
+			$request->session()->flash('status', 'Deleted.');
+		}
 
+		$items = ScrapeSource::orderBy('id', 'DESC')->get();
+		$divisions = Division::all();
 
-		return view('backend.sources', compact('keywords', 'divisions'));
+		return view('backend.sources', compact('items', 'divisions'));
 	}
 
 }
