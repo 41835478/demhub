@@ -218,7 +218,12 @@ body {
 
 
 		        <div class="col-md-7">
-		            {!! Form::select('specialization', array('Emergency Management Practitioner' => 'Emergency Management Practitioner', 'Science' => 'Science', 'Academic' => 'Academic', 'Health' => 'Health', 'Government' => 'Government', 'CBO/NG' => 'CBO/NGO', 'Administrative/Association Management' => 'Administrative/Association Management', 'Consultant/Vendor' => 'Consultant/Vendor', 'Security/Corporate Health and Safety' => 'Security/Corporate Health and Safety', 'Student' => 'Student', 'Response' => 'Response', 'Business Continutity' => 'Business Continutity', 'Critical Infrustructure' => 'Critical Infrustructure', 'Communications' => 'Communications'), array('class' => 'form-control')) !!}
+		            {!! Form::select('specialization', array('Emergency Management Practitioner' => 'Emergency Management Practitioner',
+								'Science' => 'Science', 'Academic' => 'Academic', 'Health' => 'Health', 'Government' => 'Government', 'CBO/NG' => 'CBO/NGO',
+								'Administrative/Association Management' => 'Administrative/Association Management', 'Consultant/Vendor' => 'Consultant/Vendor',
+								'Security/Corporate Health and Safety' => 'Security/Corporate Health and Safety', 'Student' => 'Student', 'Response' => 'Response',
+								'Business Continutity' => 'Business Continutity', 'Critical Infrustructure' => 'Critical Infrustructure', 'Communications' =>
+								'Communications'), array('class' => 'form-control')) !!}
 		        </div>
 					</div>
 
