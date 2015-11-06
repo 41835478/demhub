@@ -18,39 +18,20 @@ body {
 																	">
 	<div class="row" style="padding-top:50px;">
     <div class="col-md-12 text-center">
-
       <h2 style="font-size:300%">GET THE BETA VERSION</h2>
     </div>
 	</div>
 
-	<div class="modal fade" id="successModal" style="padding-top:100px">
+	<div class="modal fade" id="myModal" style="padding-top:100px">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 
 	      <div class="modal-body" style="color:#000">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=""><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateForm()"><span aria-hidden="true">&times;</span></button>
 	          <h3>We verify each member who signs up.</h3>
 					  <h3>In order to do so DEMHUB needs a few more details.</h3>
-						<div class="col-sm-offset-4">
-						<button type="button" class="btn btn-default btn-style-alt text-center" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
-					</button></div>
-				</div>
-				<!-- <div class="modal-footer">
-
-				<button type="button" class="btn btn-primary">Save changes</button>
-				</div> -->
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-
-	<div class="modal fade" id="errorModal" style="padding-top:100px">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-
-	      <div class="modal-body" style="color:#000">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=""><span aria-hidden="true">&times;</span></button>
-	          <h4>Please correctly enter values into the registration fields.</h4>
-
+						<button type="button" class="btn btn-default btn-style" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
+					</button>
 				</div>
 				<!-- <div class="modal-footer">
 
@@ -62,21 +43,18 @@ body {
 
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			{!! Form::open(['to' => 'auth/register', 'class' => 'form-horizontal', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100' ]) !!}
+			{!! Form::open(['to' => 'auth/register', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 				<div id="form-part-1">
 
 					<div class="form-group">
 		    		@if ($errors)
 		        	<span>{{$errors->first('Username')}}</span>
 		        @endif
-		    		<label for="user_name" class="col-sm-4 control-label" style="font-size:110%">Username</label>
+		    		<label for="username" class="col-sm-4 control-label" style="font-size:110%">Username</label>
 
 		        <div class="col-md-7">
-		        	{!! Form::input('user_name','user_name',old('user_name'), ['class' => 'form-control','required','id' => 'user_name']) !!}
+		        	{!! Form::input('user_name', 'user_name', old('user_name'), ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 		  		</div>
 
 					<div class="form-group">
@@ -86,11 +64,8 @@ body {
 		        <label for="inputEmail3" class="col-sm-4 control-label" style="font-size:110%">Email</label>
 
 		        <div class="col-md-7">
-		        	{!! Form::input('email', 'email', old('email'), ['class' => 'form-control','required','data-error'=> 'Invalid email address','id' => 'email']) !!}
+		        	{!! Form::input('email', 'email', old('email'), ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 		    	</div>
 
 		    	<div class="form-group">
@@ -100,11 +75,8 @@ body {
 		        <label for="inputPassword3" class="col-sm-4 control-label" style="font-size:110%">Password</label>
 
 		        <div class="col-md-7">
-		        	{!! Form::input('password', 'password', null, ['class' => 'form-control','data-minlength'=>'6','id' =>'password']) !!}
+		        	{!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 		    	</div>
 
 					<div class="form-group">
@@ -114,11 +86,8 @@ body {
 		        <label for="inputPassword3" class="col-sm-4 control-label" style="font-size:110%">Password Confirm</label>
 
 		        <div class="col-md-7">
-		        	{!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control','data-minlength'=>'6']) !!}
+		        	{!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 		    	</div>
 
 		    	<div class="form-group">
@@ -135,13 +104,13 @@ body {
 		        </div>
 		    	</div>
 
-						{!! Form::token() !!}
+					<div style="visibility:hidden">
+						{{Form::token()}}
+					</div>
 
 					<div class="form-group">
 		        <div class="col-sm-offset-4 col-sm-7">
-		        	<a type="button" class="btn btn-lg btn-default btn-style" onclick="pageUpdate()">JOIN</a>
-							<button type="button" id="modalSuccessButton" class="btn btn-default btn-style" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
-							<button type="button" id="modalErrorButton" class="btn btn-default btn-style" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
+		        	<button type="button" class="btn btn-default btn-lg btn-style" data-toggle="modal" data-target="#myModal">JOIN</button>
 		        </div>
 		    	</div>
 
@@ -154,7 +123,7 @@ body {
 		            <span>{{$errors->first('Username')}}</span>
 		        @endif -->
 
-						<label for="firstName" class="col-sm-4 control-label">First Name</label>
+						<label for="firstName" class="col-sm-3 control-label">First Name</label>
 
 		        @if ($errors)
 		          <span>{{$errors->first('firstName')}}</span>
@@ -163,11 +132,8 @@ body {
 
 		        <div class="col-md-7">
 
-		          {!! Form::input('first_name', 'first_name', old('first_name'), ['class' => 'form-control','required']) !!}
+		          {!! Form::input('first_name', 'first_name', old('first_name'), ['class' => 'form-control']) !!}
 		      	</div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 					</div>
 
 		    	<div class="form-group">
@@ -175,7 +141,7 @@ body {
 		        <!-- @if ($errors)
 		            <span>{{$errors->first('Username')}}</span>
 		        @endif -->
-		        <label for="lastName" class="col-sm-4 control-label" >Last Name</label>
+		        <label for="lastName" class="col-sm-3 control-label" >Last Name</label>
 
 
 		        @if ($errors)
@@ -184,11 +150,8 @@ body {
 
 
 		        <div class="col-md-7">
-		            {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control','required']) !!}
+		            {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 					</div>
 
 		    	<div class="form-group">
@@ -196,7 +159,7 @@ body {
 		        <!-- @if ($errors)
 		            <span>{{$errors->first('Username')}}</span>
 		        @endif -->
-		        <label for="jobtitle" class="col-sm-4 control-label" >Job Title</label>
+		        <label for="jobtitle" class="col-sm-3 control-label" >Job Title</label>
 
 		        @if ($errors)
 		          <span>{{$errors->first('jobTitle')}}</span>
@@ -204,11 +167,8 @@ body {
 
 
 		        <div class="col-md-7">
-		          {!! Form::input('job_title', 'job_title', old('job_title'), ['class' => 'form-control','required']) !!}
+		          {!! Form::input('job_title', 'job_title', old('job_title'), ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 					</div>
 
 		    	<div class="form-group">
@@ -216,7 +176,7 @@ body {
 		        <!-- @if ($errors)
 		            <span>{{$errors->first('Username')}}</span>
 		        @endif -->
-		        <label for="Organization/Agency" class="col-sm-4 control-label" >Organization</label>
+		        <label for="Organization/Agency" class="col-sm-3 control-label" >Organization</label>
 
 		        @if ($errors)
 		            <span>{{$errors->first('orgAgency')}}</span>
@@ -224,14 +184,48 @@ body {
 
 
 		        <div class="col-md-7">
-							{!! Form::input('organization_name', 'organization_name', old('organization_name'), ['class' => 'form-control','required']) !!}
+							{!! Form::input('organization_name', 'organization_name', old('organization_name'), ['class' => 'form-control']) !!}
 		        </div>
-						<div class="col-md-7 col-md-offset-4">
-							<div class="help-block with-errors" style="background-color:#fff"></div>
-						</div>
 					</div>
 
+		    	<div class="form-group">
 
+		        <!-- @if ($errors)
+		            <span>{{$errors->first('Username')}}</span>
+		        @endif -->
+		        <label for="phone" class="col-sm-3 control-label" >Phone Number</label>
+
+		        @if ($errors)
+		            <span>{{$errors->first('phoneNumber')}}</span>
+		        @endif
+
+
+		        <div class="col-md-7">
+		            {!! Form::input('phone_number', 'phone_number', old('phone_number'), ['class' => 'form-control']) !!}
+		        </div>
+					</div>
+
+		    	<div class="form-group">
+
+		        <!-- @if ($errors)
+		            <span>{{$errors->first('Username')}}</span>
+		        @endif -->
+		        <label for="specialization" class="col-sm-3 control-label" >Specialization</label>
+
+		        @if ($errors)
+		            <span>{{$errors->first('specialization')}}</span>
+		        @endif
+
+
+		        <div class="col-md-7">
+		            {!! Form::select('specialization', array('Emergency Management Practitioner' => 'Emergency Management Practitioner',
+								'Science' => 'Science', 'Academic' => 'Academic', 'Health' => 'Health', 'Government' => 'Government', 'CBO/NG' => 'CBO/NGO',
+								'Administrative/Association Management' => 'Administrative/Association Management', 'Consultant/Vendor' => 'Consultant/Vendor',
+								'Security/Corporate Health and Safety' => 'Security/Corporate Health and Safety', 'Student' => 'Student', 'Response' => 'Response',
+								'Business Continutity' => 'Business Continutity', 'Critical Infrustructure' => 'Critical Infrustructure', 'Communications' =>
+								'Communications'), array('class' => 'form-control')) !!}
+		        </div>
+					</div>
 
 		    	<div class="form-group">
 		        <div class="col-sm-3"></div>
@@ -246,18 +240,10 @@ body {
 	</div>
 </div>
 <script>
-	function pageUpdate(){
-		if(!$('#user_name').val() || !$('#email').val() || !$('#password').val()) {
-		// $("#sign-up-form").slideUp();
-		$('#modalErrorButton').click();
-		}
-		else {
-			$('#modalSuccessButton').click();
-		}
-	}
 	function updateForm(){
 		document.getElementById("form-part-1").style.display="none";
 		document.getElementById("form-part-2").style.display="";
+		// $("#sign-up-form").slideUp();
 	}
 </script>
 

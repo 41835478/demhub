@@ -19,6 +19,7 @@ elixir(function(mix) {
                 'frontend/coming-soon/jquery.countdown.js', // coming-soon js
                 'frontend/coming-soon/placeholders.min.js', // coming-soon js
                 'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
+                'frontend/plugins/validator.js', // coming-soon js
                 'frontend/coming-soon/main.config.js', // coming-soon js
                 'frontend/coming-soon/shader.js', // coming-soon js
                 'frontend/coming-soon/demo.js' // coming-soon js
