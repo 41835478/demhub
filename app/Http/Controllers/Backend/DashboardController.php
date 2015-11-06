@@ -27,7 +27,12 @@ class DashboardController extends Controller {
 	public function keywords(Request $request)
 	{
 		if($request->input("submit", "") == "save"){
-			$keyword = Keyword::find($request->input("key_id")); //where("id", $request->input("key_id"))->get();
+			if($request->input("key_id") == 0){
+				$keyword = new Keyword();
+			} else {
+				$keyword = Keyword::find($request->input("key_id"));
+			}
+
 			$keyword->divisions = ScraperComponent::convertDBArrayToString($request->input("div", ""));
 			$keyword->keyword = $request->input("keyword");
 			$keyword->weight = $request->input("weight");
@@ -37,10 +42,25 @@ class DashboardController extends Controller {
 				$request->session()->flash('status', 'Failed!');
 			}
 		}
-		$keywords = Keyword::all();
+		if($request->input("submit", "") == "x"){
+			$keyword = Keyword::find($request->input("key_id"));
+			$keyword->delete();
+		}
+		$keywords = Keyword::orderBy('id', 'DESC')->get();
 		$divisions = Division::all();
 
 		return view('backend.keywords', compact('keywords', 'divisions'));
+	}
+
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function sources(Request $request)
+	{
+
+
+		return view('backend.sources', compact('keywords', 'divisions'));
 	}
 
 }

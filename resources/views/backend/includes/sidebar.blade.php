@@ -3,6 +3,8 @@
 
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
+
+				<?php /*
               <!-- Sidebar user panel (optional) -->
               <div class="user-panel">
                 <div class="pull-left image">
@@ -15,6 +17,7 @@
                 </div>
               </div>
 
+
               <!-- search form (Optional) -->
               <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">
@@ -25,6 +28,7 @@
                 </div>
               </form>
               <!-- /.search form -->
+ 				*/ ?>
 
               <!-- Sidebar Menu -->
               <ul class="sidebar-menu">
@@ -32,8 +36,10 @@
 
                 <!-- Optionally, you can add icons to the links -->
                 <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.dashboard')!!}"><span>{{ trans('menus.dashboard') }}</span></a></li>
-				<li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.keywords')!!}"><span>keywords</span></a></li>
+				<li class="{{ Active::pattern('admin/keywords') }}"><a href="{!!route('backend.keywords')!!}"><span>Keywords</span></a></li>
+				  <li class="{{ Active::pattern('admin/sources') }}"><a href="{!!route('backend.sources')!!}"><span>Sources</span></a></li>
 
+				  <?php /*
                 @permission('view-access-management')
                   <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.access_management') }}</span></a></li>
                 @endauth
@@ -52,6 +58,7 @@
                     </li>
                   </ul>
                 </li>
+ 				*/ ?>
 
               </ul><!-- /.sidebar-menu -->
             </section>

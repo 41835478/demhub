@@ -2,7 +2,7 @@
           <header class="main-header">
 
             <!-- Logo -->
-            <a href="{!!route('home')!!}" class="logo"><b>L5</b>Bootstrap</a>
+            <a href="{!!route('home')!!}" class="logo"><b>DEMHub</b> Admin</a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -12,6 +12,7 @@
               </a>
               <!-- Navbar Right Menu -->
               <div class="navbar-custom-menu">
+				  <?php /* Temporarily commented since not being used
                 <ul class="nav navbar-nav">
 
                   <li class="dropdown">
@@ -158,6 +159,7 @@
                     </ul>
                   </li>
                 </ul>
+				  */ ?>
               </div>
             </nav>
           </header>
