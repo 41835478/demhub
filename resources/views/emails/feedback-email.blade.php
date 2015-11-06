@@ -30,9 +30,14 @@
 <h3>Hey Jen and team, DEMHUB system update</h3>
 
   <p>New feedback form.  Here are the details.</p>
-  <p>Are you getting value from DEMHUB?: {{$inputs['question1']}}</p>
-	<p>What did you use DEMHUB for?: {{$inputs['question2']}}</p>
-	<p>How can we improve DEMHUB?: {{$inputs['question3']}}</p>
+  <p><b>Are you getting value from DEMHUB?</b></p>
+	<p>{{$inputs['question1']}}</p>
+	<br>
+	<p><b>What did you use DEMHUB for?</b></p>
+	<p>{{$inputs['question2']}}</p>
+	<br>
+	<p><b>How can we improve DEMHUB?</b></p>
+	<p>{{$inputs['question3']}}</p>
 
 </div>
 </body>
