@@ -787,6 +787,10 @@ div#conversation-head {
 .division_health {
   background-color: #0D8E56; }
 
+.division_icon_health:before {
+  content: "\f09b";
+  font-family: FontAwesome; }
+
 .division_academia {
   background-color: #1D73A3; }
 
