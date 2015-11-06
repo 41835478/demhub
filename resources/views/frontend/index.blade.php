@@ -87,6 +87,7 @@ body {
 			<a href="{{url('division', $div->slug)}}" style="">
 				<div id="division_{{$div->id}}" style="background-color: #{{$div->bg_color}};opacity:0.85; position:relative; min-height:185px;max-height:185px; color:#fff; width:14vw; margin:0 15px 0 15px; text-align:center; " class="col-md-2">
 					<h3 style="margin-top:30%;text-transform: uppercase; z-index:3; position:relative; ">{{$div->name}}</h3>
+					<i class="fa division_icon_{{$div->slug}} fa-4x"></i>
 				</div>
 			</a>
 		@endforeach

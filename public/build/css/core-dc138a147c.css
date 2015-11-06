@@ -66,7 +66,7 @@ footer, .push {
   background: #FFF;
   border-color: #ccc; }
 
-.btn-style:hover, .btn-style:focus {
+.btn-style:hover, a.btn-style:focus {
   background: #FFF;
   color: #60A0FF; }
 
