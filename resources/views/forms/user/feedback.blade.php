@@ -1,4 +1,5 @@
-<div style="padding-left:35px;color:#fff" class="col-xs-11">
+<div class="row">
+<div style="padding-left:45px;color:#fff" class="col-xs-11">
 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{route('post_feedback')}}">
   <!--App details-->
   <div class="form-group">
@@ -26,13 +27,12 @@
     <label for="question3">How can we improve DEMHUB?</label>
     <textarea class="form-control" rows="3" name="question3" placeholder="Answer...."></textarea>
   </div>
-  <div class="form-group">
-  {!! Form::input('extra', 'extra', null, ['class' => 'form-control']) !!}
-  </div>
+
   <div class="form-group">
     <button type="submit"  class="btn btn-default btn-style">SUBMIT</button>
   </div>
 
     {!! Form::token() !!}
 </form>
+</div>
 </div>

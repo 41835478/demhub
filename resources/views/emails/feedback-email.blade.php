@@ -27,12 +27,13 @@
 	</head>
 	<body>
 		<div>
-<h3>Hey Jen, DEMHUB system update</h3>
+<h3>Hey Jen and team, DEMHUB system update</h3>
 
-  <p>New feedback form.  Here are the details. </p>
-  @foreach ($inputs as $input)
-    <p>{{$input}}<p>
-  @endforeach
+  <p>New feedback form.  Here are the details.</p>
+  <p>Are you getting value from DEMHUB?: {{$inputs['question1']}}</p>
+	<p>What did you use DEMHUB for?: {{$inputs['question2']}}</p>
+	<p>How can we improve DEMHUB?: {{$inputs['question3']}}</p>
+
 </div>
 </body>
 </html>
