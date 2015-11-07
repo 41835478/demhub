@@ -192,7 +192,7 @@ class SchedulerController extends Controller
 						continue;
 					}
 
-					$save_result = ScraperComponent::saveArticle(ScraperComponent::itemTypeScientificPaper, $source, $data);
+					$save_result = ScraperComponent::saveArticle(ArticleController::typeNews, $source, $data);
 					//var_dump($data);
 
 					if($save_result['status'] == 'ok'){

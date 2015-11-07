@@ -12,6 +12,11 @@ use DB;
 class ArticleController extends Controller
 {
 
+	const typeNews = 1;
+	const typeScientificPaper = 2;
+	const typePublication = 3;
+	const typeOther = 9;
+
 	/**
 	 * Browse function for browsing (searching) articles
 	 *
