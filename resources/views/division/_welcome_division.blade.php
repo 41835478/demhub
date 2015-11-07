@@ -14,7 +14,7 @@
 
           @foreach($navDivisions as $div)
             <a href="{{url('division', array('id' => $div->slug))}}">
-              <div style="min-height:67px;max-height:67px;" class="col-md-2 divisions-navbar-item division_{{$div->slug}}">
+              <div class="col-md-2 divisions-page-item division_{{$div->slug}}">
                 <h4>{{$div->name}}</h4>
               </div>
             </a>

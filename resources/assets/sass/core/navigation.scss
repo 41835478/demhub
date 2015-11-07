@@ -44,17 +44,17 @@ $div_text_color:  #fff !default;
 //  Divisions Navbar
 //  =========================================================
 
-.welcome-division {
+.division-navbar, {
 	height:67px;
 }
 
-.welcome-division:hover  .divisions-navbar-item{
+.division-navbar:hover  .divisions-navbar-item{
 	height:67px;
 	text-indent: 0%;
 	white-space: normal
 }
 
-.welcome-division:focus .divisions-navbar-item {
+.division-navbar:focus .divisions-navbar-item {
 	height:67px;
 	text-indent: 0%;
 	white-space: normal
@@ -75,18 +75,35 @@ $div_text_color:  #fff !default;
     overflow: hidden;
 
 }
-
-.divisions-navbar-item:hover, .divisions-navbar-item:focus ~ .divisions-navbar-item {
+.divisions-navbar-item:hover, .divisions-navbar-item:focus {
 	opacity: 1;
 	filter: alpha(opacity=100);
 	text-align:center;
+
+}
+.divisions-page-item {
+	height:67px;
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+	color: white;
+	background-color: black;
+	text-align:center;
 	padding-top:8px;
+	text-transform:uppercase;
 
 }
 
-.divisions-navbar-item h4 {
+.divisions-page-item:hover, .divisions-page-item:focus {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	text-align:center;
+
+}
+
+.divisions-navbar-item, .divisions-page-item h4 {
 	font-size:117%;
 }
+
 .ph-name {
 		color: white;
 		opacity: 0.75;
