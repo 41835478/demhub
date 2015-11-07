@@ -8,7 +8,9 @@
 
 namespace App\Http\Components;
 
+use App\Http\Controllers\Frontend\ArticleController;
 use App\Models\ArticleDetail;
+use App\Models\ArticleMedia;
 use Nathanmac\Utilities\Parser\Parser;
 use App\Models\Article;
 use App\Models\Keyword;
@@ -18,10 +20,6 @@ use App\Models\ScrapeSource;
 
 class ScraperComponent
 {
-
-	const itemTypeNewsArticle = 1;
-	const itemTypeScientificPaper = 2;
-	const itemTypeOther = 9;
 
 	/**
 	 * Processes a single RSS feed given a item from scrape_sources table
@@ -90,7 +88,7 @@ class ScraperComponent
 			$params['date'] = $item_array['pubDate'];
 			$params['review'] = 0;
 
-			$save_result = self::saveArticle(self::itemTypeNewsArticle, $source, $params);
+			$save_result = self::saveArticle(ArticleController::typeNews, $source, $params);
 
 			if($save_result['status'] == 'ok'){
 				$return['message'] .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
@@ -149,14 +147,16 @@ class ScraperComponent
 	 * @param int $type Article type (news, scientific article, etc)
 	 * @param ScrapeSource $source The source model from which the article has been obtained or NULL if not using a standard source
 	 * @param array $params Article info array containing the following items:
-	 * 'text' - Complete article text
-	 * 'url' - Url to the complete article
-	 * 'title' - Article title
-	 * 'date' - publish_date of the article
-	 * 'lat' - latitude (optional)
-	 * 'lng' - longitude (optional)
-	 * 'location' - if lat, lng is not available, the function attempts to determine te lat, lng from
-	 * location text (optional)
+	 * 'text'		Complete article text
+	 * 'url'		Url to the complete article
+	 * 'title'		Article title
+	 * 'date'		publish_date of the article
+	 * 'lat'		latitude (optional)
+	 * 'lng'		longitude (optional)
+	 * 'location'	if lat, lng is not available, the function attempts to determine te lat, lng from
+	 * 				location text (optional)
+	 * 'media'      An array of medias to attach to the article, currently only supports and requires full image
+	 * 				url as 'url' index - example: $params['media'][0]['url'] = 'http://example.com/image.jpg'
 	 *
 	 * @return mixed
 	 */
@@ -188,6 +188,7 @@ class ScraperComponent
 		$model->title 		= self::truncate(self::verify($params['title'], ''));
 		$model->excerpt 	= self::truncate($text);
 		$model->keywords 	= self::convertDBArrayToString($keys_divs['keywords']);
+		$model->language	= self::verify($params['language']);
 		$model->city 		= $location_info!=null ? $location_info['city'] : null;
 		$model->state 		= $location_info!=null ? $location_info['state'] : null;
 		$model->country 	= $location_info!=null ? $location_info['country'] : null;
@@ -201,11 +202,29 @@ class ScraperComponent
 			$return['status'] = 'ok';
 			$return['model'] = $model;
 
+			// Save a complete text record for the article for future reference and search (not front-end)
 			$mdetail = new ArticleDetail();
 			$mdetail->article_id = $model->id;
 			$mdetail->url = $model->source_url;
 			$mdetail->text = $text;
 			$mdetail->save();
+
+			// Handle media (images) rlated to the article
+			if(isset($params['media'])){
+				foreach($params['media'] as $i=>$media){
+					$save_ready = false;
+					$media_model = new ArticleMedia();
+					$media_model->article_id = $model->id;
+					$media_model->view_order = $i;
+					if(isset($media['url'])){
+						$media_model->filename = $media['url'];
+						$media_model->filetype = 'url';
+						$save_ready = true;
+					}
+					if($save_ready)
+						$media_model->save();
+				}
+			}
 
 		} else {
 			$return['status'] = 'error';
