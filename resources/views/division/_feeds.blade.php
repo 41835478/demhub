@@ -26,7 +26,7 @@
 
         <div class = "feedsbox">
           @forelse($articleDivs as $div)
-            <div style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></div>
+            <a style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" href="{{$allDivisions[$div-1]->slug}}" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></a>
             <?php
               $marginLeft += $width;
             ?>
@@ -43,7 +43,14 @@
                   href="" data-toggle="modal" data-target="#myModal"
                   @endif
               style="color:#000">
-              {{ $item->title }}
+              <?php
+                if (strlen($item->title) > 80){
+                  $str = substr($item->title, 0, 80) . '...';
+                  echo $str;
+                } else{
+                  echo $item->title;
+                }
+              ?>
               </a>
             </h3>
 
@@ -61,11 +68,11 @@
             <p style="padding-top:10px">
               <?php
               $description = $item->excerpt;
-                if (strlen($description) > 150){
-                  $str = substr($description, 0, 150) . '...';
-                  echo strip_tags($str, '<img>');
+                if (strlen($description) > 190){
+                  $str = substr($description, 0, 190) . '...';
+                  echo strip_tags($str);
                 } else{
-                  echo strip_tags($description, '<img>');
+                  echo strip_tags($description);
                 }
               ?>
             </p>
