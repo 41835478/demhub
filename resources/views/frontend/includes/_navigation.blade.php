@@ -14,17 +14,6 @@
 
 <script>
 
-	  if ($(".coming-soon").click()) {
-          $(window).scroll(function () {
-
-                   // set distance user needs to scroll before start fadeIn...here its 30px
-              if ($(this).scrollTop() > 30) {
-                  $('.navbar-default').fadeIn();
-              } else {
-                  $('.navbar-default').fadeOut();
-              }
-          });
-    }
 var comingSoonElementNames=[];
 function comingSoon (elementId) {
   var alreadyAdded=false;
