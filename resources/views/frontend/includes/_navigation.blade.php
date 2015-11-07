@@ -11,3 +11,40 @@
 @if( isset($navDivisions) && !isset($userMenu))
   @include('frontend.includes._nav_divisions')
 @endif
+
+<script>
+
+	  if ($(".coming-soon").click()) {
+          $(window).scroll(function () {
+
+                   // set distance user needs to scroll before start fadeIn...here its 30px
+              if ($(this).scrollTop() > 30) {
+                  $('.navbar-default').fadeIn();
+              } else {
+                  $('.navbar-default').fadeOut();
+              }
+          });
+    }
+var comingSoonElementNames=[];
+function comingSoon (elementId) {
+  var alreadyAdded=false;
+  for (var i=0;i<comingSoonElementNames.length;i++){
+    if (elementId==comingSoonElementNames[i]){
+      alreadyAdded=true;
+    }
+  }
+  if (alreadyAdded==false){
+    document.getElementById(elementId).innerHTML=document.getElementById(elementId).innerHTML+comingSoonText();
+    document.getElementById(elementId).style.paddingRight='5px';
+    document.getElementById(elementId).style.paddingLeft='5px';
+    comingSoonElementNames.push(elementId);
+  }
+}
+
+function comingSoonText(){
+  var text;
+  text="<span style='color:#98a9c1;'> - COMING SOON </span>";
+  return text;
+}
+
+</script>

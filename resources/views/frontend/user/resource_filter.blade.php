@@ -162,7 +162,7 @@ $( document ).ready(function() {
 	</div>
 
 	<div id="canada_map" class="mapContainer" style="visibility:hidden;height:1px">
-		<img class="map img-responsive" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
+		<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" width="690" height="669" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
 		<map name="canada" style="text-transform: capitalize;">
 		<!-- <area shape="rect" coords="998,967,1000,969" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" /> -->
 		<area id="canada_poly_1" alt="" title="Manitoba" onclick="secondFilterF(this.title)" shape="poly" coords="300,567,302,515,355,455,343,447,331,450,327,430,324,426,315,423,315,409,260,403,244,560">
@@ -183,7 +183,7 @@ $( document ).ready(function() {
 	</div>
 
 	<div id="australia_map" class="mapContainer" style="visibility:hidden;height:1px">
-	<img class="map img-responsive" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" orgWidth="690" orgHeight="655" style="max-width:100%;" alt="" />
+	<img class="map" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" width="690" height="655" orgWidth="690" orgHeight="655" style="max-width:100%;" alt="" />
 	<map name="australia" style="text-transform: capitalize;">
 
 		<area id="australia_poly_1" title="Western Australia" onclick="secondFilterF(this.title)" shape="poly" coords="271,88,264,82,252,87,252,81,228,62,192,84,180,100,176,111,157,115,147,132,142,145,146,152,131,175,119,188,100,193,88,197,16,250,13,244,6,258,5,295,19,312,5,320,26,348,52,400,68,426,64,439,69,453,57,461,65,481,90,488,112,485,132,470,137,462,165,455,188,459,196,454,205,436,224,423,254,422,280,409,280,403" style="outline:none;" target="_self">

@@ -20,7 +20,7 @@
     @else
       <li>
     @endif
-    <a href="{{url('publications')}}" style=""> PUBLICATIONS</a></li>
+    <a href="{{url('publications')}}"> PUBLICATIONS</a></li>
 
     @if(Request::url() === url('resource_filter'))
       <li class="active">
@@ -29,9 +29,9 @@
     @endif
     <a href="{{url('resource_filter')}}"> RESOURCES</a></li>
 
-    <li><a href="" style="">MAP - COMING SOON</a></li>
+    <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:45px;padding-right:45px;"> MAP</a></li>
 
-  	<li><a href="" style="border-right:2px solid #fff">EVENT TRACKING - COMING SOON</a></li>
+  	<li><a href="javascript:comingSoon('event_tracking_title')" id="event_tracking_title" style="padding-left:45px;padding-right:45px;border-right:2px solid #fff"> EVENT TRACKING</a></li>
 
 	</ul>
 </div>

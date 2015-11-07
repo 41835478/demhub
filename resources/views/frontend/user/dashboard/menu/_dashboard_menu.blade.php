@@ -21,7 +21,7 @@
     @else
       <li>
     @endif
-      <a href=""><i class="fa fa-users"></i> CONNECTIONS - COMING SOON</a>
+      <a href="javascript:comingSoon('connections_title')" id="connections_title" style="padding-left:45px;padding-right:45px;"><i class="fa fa-users"></i> CONNECTIONS</a>
     </li>
 
     @if(Request::url() === url('privacy_settings'))
@@ -29,7 +29,7 @@
     @else
       <li>
     @endif
-      <a href=""><i class="fa fa-globe" style=""></i> PRIVACY SETTINGS - COMING SOON</a>
+      <a href="javascript:comingSoon('privacy_settings_title')" id="privacy_settings_title" style="padding-left:45px;padding-right:45px;"><i class="fa fa-globe" style=""></i> PRIVACY SETTINGS</a>
     </li>
 
     @if(Request::url() === url('privacy_settings'))
@@ -37,7 +37,7 @@
     @else
       <li>
     @endif
-      <a href=""><i class="fa fa-file" style=""></i> COLLECTION - COMING SOON</a>
+      <a href="javascript:comingSoon('collection_title')" id="collection_title" style="padding-left:45px;padding-right:45px;"><i class="fa fa-file" style=""></i> COLLECTION</a>
     </li>
 
 </ul>
