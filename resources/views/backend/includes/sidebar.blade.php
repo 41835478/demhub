@@ -36,6 +36,7 @@
 
                 <!-- Optionally, you can add icons to the links -->
                 <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.dashboard')!!}"><span>{{ trans('menus.dashboard') }}</span></a></li>
+				  <li class="{{ Active::pattern('admin/articles') }}"><a href="{!!route('backend.articles')!!}"><span>Articles</span></a></li>
 				<li class="{{ Active::pattern('admin/keywords') }}"><a href="{!!route('backend.keywords')!!}"><span>Keywords</span></a></li>
 				  <li class="{{ Active::pattern('admin/sources') }}"><a href="{!!route('backend.sources')!!}"><span>Scrape sources</span></a></li>
 

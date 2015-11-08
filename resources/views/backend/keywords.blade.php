@@ -80,8 +80,8 @@
 							<input type="number" name="weight" value="{{ $item->weight }}" style="width: 40px;">
 						</div>
 						<div class="col-xs-2">
-							<input type="submit" name="submit" value="save">
-							<input type="submit" name="submit" value="x" style="background-color: red">
+							<input class="btn btn-xs btn-default" type="submit" name="submit" value="save">
+							<input class="btn btn-xs btn-danger" type="submit" name="submit" value="x">
 						</div>
 		            </div>
 		        </form>
