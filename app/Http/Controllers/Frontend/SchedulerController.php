@@ -144,12 +144,14 @@ class SchedulerController extends Controller
 						$e2s = $e1->getElementsByTagName('div');
 						foreach($e2s as $e2){
 							if($e2->getAttribute('class') == 'entry-content'){
+								// Excerpt
 								$e3s = $e2->getElementsByTagName('p');
 								foreach($e3s as $e3){
 									//backup, will be overwritten if a better text is found
 									$data['text'] = trim($e3->textContent);
 								}
 
+								// Text and publishdate
 								$e3s = $e2->getElementsByTagName('a');
 								foreach($e3s as $e3){
 									if(strpos($e3->getAttribute('class'), 'read-more') !== false){
@@ -173,6 +175,14 @@ class SchedulerController extends Controller
 												$data['date'] = $e5->getAttribute('datetime');
 											}
 										}
+									}
+								}
+
+								//Image
+								$e3s = $e2->getElementsByTagName('img');
+								foreach($e3s as $e3){
+									if(strpos($e3->getAttribute('class'), 'wp-post-image') !== false){
+										$data['media'][0]['url'] = $e3->getAttribute('src');
 									}
 								}
 							}
