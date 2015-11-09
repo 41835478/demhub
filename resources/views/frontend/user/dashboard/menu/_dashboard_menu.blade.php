@@ -13,7 +13,7 @@
     @else
       <li>
     @endif
-      <a href="{{url('publications')}}"><i class="fa fa-briefcase"></i> MY PUBLICATIONS</a>
+      <a href="javascript:comingSoonP('my_publications_title)" id="my_publications_title"><i class="fa fa-briefcase"></i> MY PUBLICATIONS</a>
     </li>
 
     @if(Request::url() === url('connections'))

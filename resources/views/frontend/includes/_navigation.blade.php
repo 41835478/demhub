@@ -13,7 +13,6 @@
 @endif
 
 <script>
-
 var comingSoonElementNames=[];
 function comingSoon (elementId) {
   var alreadyAdded=false;
