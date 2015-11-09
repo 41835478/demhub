@@ -91,33 +91,38 @@ div#secondary-menu li a{
 div#welcome_home {
   font-weight: bolder;
   font-family: 'Open Sans', sans-serif;
+  background-color: #ddd !important;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  margin-top: -25px;
+  background-position: center center;
+  overflow-x: hidden;
+  margin-top: 25px;
+;
+
   padding: 15%;
 }
-div#welcome_home div {
-  padding: 1%;
-}
-div#welcome_home div h1 {
-  text-align: center;
-  font-size: 5em;
-  color: #416788;
-}
-div#welcome_home div h2 {
-  text-align: center;
-  font-size: 2.5em;
-  color: #fff;
-  font-weight: lighter;
-}
-div#welcome_home div code {
-  margin-top: 1%;
-}
-div#welcome_home div img {
-  margin: 0 auto;
-}
+// div#welcome_home div {
+//   padding: 1%;
+// }
+// div#welcome_home div h1 {
+//   text-align: center;
+//   font-size: 5em;
+//   color: #416788;
+// }
+// div#welcome_home div h2 {
+//   text-align: center;
+//   font-size: 2.5em;
+//   color: #fff;
+//   font-weight: lighter;
+// }
+// div#welcome_home div code {
+//   margin-top: 1%;
+// }
+// div#welcome_home div img {
+//   margin: 0 auto;
+// }
 div#welcome_about {
   padding: 6% 1% 10%;
   background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%);
