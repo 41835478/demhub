@@ -10,23 +10,38 @@ Feature: Membership
 
   Scenario: Guest Visit
     When I go to the homepage
+    Given I am not logged in
     Then I should be on the homepage
 
-  Scenario: Guest Wants to Register
+  Scenario: Guest Wants to Register from Navbar
     Given I am not a registered user
     When I go to the homepage
-    And I press "REGISTER"
+    And I follow "REGISTER"
     Then I should see "GET THE BETA VERSION"
 
+  # Scenario: Guest Wants to Register from final landing page section
+  #   Given I am not a registered user
+  #   When I go to the homepage
+  #   And I follow "REGISTER"
+  #   Then I should see "GET THE BETA VERSION"
+
   Scenario: Guest Wants to Register - Part 2
-    Given I am not a registered user
+    Given I am not logged in
     And I am on "auth/register"
-    When I fill in "username" with "TestUser"
+    When I fill in "user_name" with "TestUser"
     And I fill in "email" with "test@example.com"
     And I fill in "password" with "password"
-    And I fill in "password confirm" with "password"
-    And I press "JOIN"
-    Then I should see "We verify each member who signs up."
+    And I fill in "password_confirmation" with "password"
+    And I follow "JOIN"
+    And I follow "SOUNDS GOOD"
+    And I fill in "first_name" with "TestUser"
+    And I fill in "last_name" with "Gorilla"
+    And I fill in "job_title" with "password"
+    And I fill in "organization_name" with "password"
+    And I press "DONE"
+    # And I wait 1 second
+    # Then I should be on the homepage
+    And I should see "Your account was successfully created. We have sent you an e-mail to confirm your account."
 
   Scenario: Member Visit
     When I go to the homepage
