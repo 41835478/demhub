@@ -14,7 +14,7 @@ body {
 																	-o-background-size: cover;
 																	background-size: cover;
 																	color:#fff;
-																	padding-bottom:10vh;
+																	padding-bottom:15%
 																	">
 	<div class="row" style="padding-top:50px;">
     <div class="col-md-12 text-center">
@@ -28,15 +28,6 @@ body {
 	    <div class="modal-content">
 
 	      <div class="modal-body" style="color:#000">
-<<<<<<< HEAD
-					<div class ="auth-modal-email">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateForm()"><span aria-hidden="true">&times;</span></button>
-	          <h4 class ="col-md-offset-3">We verify each member who signs up.</h4>
-					  <h4 class ="col-md-offset-1">In order to do so DEMHUB needs a few more details.</h4>
-						<p>&nbsp;</p>
-						<button type="button" class="btn btn-default btn-style col-md-offset-5" data-dismiss="modal" onclick="updateForm()">CONFIRM
-					</button>
-=======
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=""><span aria-hidden="true">&times;</span></button>
 	          <h3>We verify each member who signs up.</h3>
 					  <h3>In order to do so DEMHUB needs a few more details.</h3>
@@ -60,8 +51,6 @@ body {
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick=""><span aria-hidden="true">&times;</span></button>
 	          <h4>Please correctly enter values into the registration fields.</h4>
 
->>>>>>> 199b75a9a8159e94aa812e0e724ca30b1ddd38e4
-				</div>
 				</div>
 				<!-- <div class="modal-footer">
 
