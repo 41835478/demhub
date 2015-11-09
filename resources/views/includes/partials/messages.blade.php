@@ -3,6 +3,7 @@
     <div class="alert alert-danger">
         @foreach ($errors->all() as $error)
             {!! $error !!}<br/>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         @endforeach
     </div>
 @elseif (Session::get('flash_success'))
@@ -12,6 +13,7 @@
         @else
             {!! Session::get('flash_success') !!}
         @endif
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
 @elseif (Session::get('flash_warning'))
     <div class="alert alert-warning">

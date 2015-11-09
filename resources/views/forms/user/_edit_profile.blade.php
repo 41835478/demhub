@@ -28,7 +28,7 @@
 
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4" style="margin-left:-40px">
 
         <div class="form-group">
           {!! Form::label('first_name', 'First Name', ['class' => 'col-sm-4 control-label']) !!}
