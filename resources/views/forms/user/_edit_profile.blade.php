@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">{{ trans('labels.update_information_box_title') }}</div>
+  <!-- <div class="panel-heading">{{ trans('labels.update_information_box_title') }}</div> -->
 
   <div class="panel-body">
 
