@@ -3,10 +3,7 @@
 @extends ('forum::layouts.master')
 
 @section('content')
-<div class="row" style="padding:0px;
-                                background:url('/images/backgrounds/earth_17.jpg')  no-repeat fixed;
-                                background-position: 100% 70%;
-                                overflow:hidden;">
+<div class="row">
 <!-- @include('forum::partials.breadcrumbs') -->
 
 <!-- <h2>{{ trans('forum::base.index') }}</h2> -->
@@ -18,7 +15,7 @@
 
     <thead>
         <tr>
-            <th><a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-default btn-style">NEW THREAD</a></th>
+            <th><a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-default btn-style-alt">NEW THREAD</a></th>
 			<th>DIVISION</th>
 
 			<th>AUTHOR</th>

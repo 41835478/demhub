@@ -4,26 +4,26 @@ div#message {
 
 div#dashboard-icon {
   position: fixed;
-  bottom: 10%;
-  padding-left: 7px;
-  padding-right: 7px;
+  top: 10%;
+  padding-left: 15px;
+  padding-right: 5px;
   font-size: 2em;
   z-index: 100;
   cursor: pointer;
   background: rgba(20, 20, 20, 0.9);
   color: #fff;
-  right:0px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  margin-left: -11px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 div#dashboard {
   position: fixed;
-  width: 350px;
+  width: 250px;
   height: 100%;
   background: rgba(20, 20, 20, 0.9);
   z-index: 100;
   font-size: 1.5em;
-  right: -350px;
+  margin-left: -1000px;
 }
 div#dashboard ul {
   margin-top: 25%;
@@ -91,12 +91,17 @@ div#secondary-menu li a{
 div#welcome_home {
   font-weight: bolder;
   font-family: 'Open Sans', sans-serif;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  margin-top: -25px;
-  padding: 15%;
+  // background-image: url("/images/backgrounds/bg1.png");
+  background:("/images/backgrounds/bg1.png") no-repeat right top;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
+  background-position: center center;
+  overflow-x: hidden;
+  overflow-y:hidden;
+  margin-top:-25px;
+  height:90vh;
 }
 div#welcome_home div {
   padding: 1%;
@@ -493,53 +498,60 @@ div#user-email p {
 div img {
   max-width: 30%;
 }
-#user-function {
-  text-decoration: none;
-  text-shadow: none;
-
-  color: #fff;
-}
-nav#user-function div.container div.navbar-header a {
-  font-weight: bolder;
-}
-#guest-function div.container div.navbar-header a:hover {
-  color: #60A0FF;
-}
-nav#user-function div.container div.navbar-header img {
-  margin-top: -24px;
-}
-nav#user-function div.container div#navbar {
-  margin-left: 1%;
-}
-#user-function div.container div#navbar a {
-  color: #fff;
-}
-#user-function div.container div#navbar a:hover {
-  color: #60A0FF;
-  background: #000;
-  text-decoration: none;
-  text-shadow: none;
-}
-#user-function li.active a {
+.user_dashboard_menu li.active a {
   background: #60A0FF;
   color: #fff;
-  text-decoration: none;
-  text-shadow: none;
 }
-#user-function li ul li a:hover {
-  color: #60A0FF;
-  background: #000;
+.user_dashboard_menu i {
+  padding-left: 20%;
 }
-// nav#user-function div.container div#navbar ul.dropdown-menu li {
+.user_dashboard_menu span {
+  
+}
+// #user_dashboard_menu {
+//   text-decoration: none;
+//   text-shadow: none;
+//   background: rgba(0,0,0,0.85);
+//   padding:0px;
+//   background-size: 100% 200%;
+//   color: #fff;
+// }
+// nav#user_dashboard_menu div.container div.navbar-header a {
+//   font-weight: bolder;
+// }
+// #guest-function div.container div.navbar-header a:hover {
+//   color: #60A0FF;
+// }
+// nav#user_dashboard_menu div.container div.navbar-header img {
+//   margin-top: -24px;
+// }
+// nav#user_dashboard_menu div.container div#navbar {
+//   margin-left: 1%;
+// }
+// #user_dashboard_menu div.container div#navbar a {
+//   color: #fff;
+// }
+// #user_dashboard_menu div.container div#navbar a:hover {
+//   color: #60A0FF;
+//   background: #000;
+//   text-decoration: none;
+//   text-shadow: none;
+// }
+
+// #user_dashboard_menu li ul li a:hover {
+//   color: #60A0FF;
+//   background: #000;
+// }
+// nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li {
 //   padding: 1%;
 // }
-// nav#user-function div.container div#navbar ul.dropdown-menu li.divider {
+// nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li.divider {
 //   padding: 0;
 // }
-// nav#user-function div.container div#navbar ul.dropdown-menu li a {
+// nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li a {
 //   color: #000;
 // }
-// nav#user-function div.container div#navbar ul.dropdown-menu li a:hover {
+// nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li a:hover {
 //   color: #60A0FF;
 // }
 .dots {

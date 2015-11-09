@@ -1,11 +1,19 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-	<div class="row">
+	<div class="row" style="padding:0px;
+	                                background:url('http://beta.demhub.net/images/backgrounds/dried_earth.jpg')  no-repeat fixed center;
+	                                -webkit-background-size: cover;
+	                                -moz-background-size: cover;
+	                                -o-background-size: cover;
+	                                background-size: cover;
+	                                overflow-x:hidden;
+																	background-color:#000;
+	                      					padding-bottom:26vh;">
 
 		<div class="col-md-8 col-md-offset-2">
 
-			<div class="panel panel-default">
+			<div class="panel panel-default" style="margin-top:20vh;">
 
 				<div class="panel-heading">{{ trans('labels.reset_password_box_title') }}</div>
 
@@ -32,7 +40,6 @@
 						</div>
 
 					{!! Form::close() !!}
-
 				</div><!-- panel body -->
 
             </div><!-- panel -->

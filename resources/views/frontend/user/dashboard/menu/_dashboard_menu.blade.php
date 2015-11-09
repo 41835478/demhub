@@ -1,6 +1,6 @@
-<ul class="nav nav-stacked navbar-inverse" id="user-function">
+<ul class="nav nav-stacked navbar-inverse user_dashboard_menu">
 
-    @if(Request::url() === url('dashboard'))
+    @if(Request::url() == url('dashboard'))
       <li class="active">
     @else
       <li>
@@ -13,7 +13,7 @@
     @else
       <li>
     @endif
-      <a href="{{url('publications')}}"><i class="fa fa-briefcase"></i> MY PUBLICATIONS</a>
+      <a href="javascript:comingSoonP('my_publications_title)" id="my_publications_title"><i class="fa fa-briefcase"></i> MY PUBLICATIONS</a>
     </li>
 
     @if(Request::url() === url('connections'))
@@ -21,7 +21,7 @@
     @else
       <li>
     @endif
-      <a href="javascript:comingSoon('connections_title')" id="connections_title" style="padding-left:45px;padding-right:45px;"><i class="fa fa-users"></i> CONNECTIONS</a>
+      <a href="javascript:comingSoonP('connections_title')" id="connections_title"><i class="fa fa-users"></i> CONNECTIONS</a>
     </li>
 
     @if(Request::url() === url('privacy_settings'))
@@ -29,7 +29,7 @@
     @else
       <li>
     @endif
-      <a href="javascript:comingSoon('privacy_settings_title')" id="privacy_settings_title" style="padding-left:45px;padding-right:45px;"><i class="fa fa-globe" style=""></i> PRIVACY SETTINGS</a>
+      <a href="javascript:comingSoonP('privacy_settings_title')" id="privacy_settings_title" style=""><i class="fa fa-globe" style=""></i> PRIVACY SETTINGS</a>
     </li>
 
     @if(Request::url() === url('privacy_settings'))
@@ -37,7 +37,7 @@
     @else
       <li>
     @endif
-      <a href="javascript:comingSoon('collection_title')" id="collection_title" style="padding-left:45px;padding-right:45px;"><i class="fa fa-file" style=""></i> COLLECTION</a>
+      <a href="javascript:comingSoonP('collection_title')" id="collection_title" style=""><i class="fa fa-file" style=""></i> COLLECTION</a>
     </li>
 
 </ul>

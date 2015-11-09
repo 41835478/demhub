@@ -58,7 +58,7 @@
 						<hr>
 						<h4>TRENDING NEWS</h4>
 						<hr>
-						<h4>EVENT TRACKING</h4>
+						<h4>TRACK EVENTS</h4>
 						<hr>
 						<h4>INTERACTIVE MAP</h4>
 						<hr>

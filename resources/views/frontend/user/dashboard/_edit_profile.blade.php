@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading">{{ trans('labels.update_information_box_title') }}</div>
+  <!-- <div class="panel-heading">{{ trans('labels.update_information_box_title') }}</div> -->
 
   <div class="panel-body">
 
@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-1">
-                	<button type="submit" class="btn btn-default btn-style-alt">SAVE</button>
+                	<button type="submit" class="btn btn-style-alt">SAVE</button>
             </div>
         </div>
 
@@ -65,6 +65,9 @@
           </div>
         </div>
 
+      </div>
+
+      <div class="col-md-4">
         <div class="form-group">
           <label for="division" class="col-sm-4 control-label">Division</label>
           <div class="col-sm-8">
@@ -82,14 +85,10 @@
          </div>
         </div>
 
-      </div>
-
-      <div class="col-md-4">
-
         <div class="form-group">
           {!! Form::label('location', 'Location', ['class' => 'col-sm-4 control-label']) !!}
           <div class="col-sm-8">
-            {!! Form::text('location', $user->phone_number, ['class' => 'form-control']) !!}
+            {!! Form::text('location', $user->location, ['class' => 'form-control']) !!}
           </div>
         </div>
 

@@ -17,9 +17,11 @@ body {
                                 background-size: cover;
                                 overflow-x:hidden;
 								                color:#fff;
-                                padding-bottom:25%">
+																background-color:#000;
+                      					padding-bottom:21vh;">
   <div class="col-xs-12" style="padding:0px">
-    <div class="row" style="padding-top:50px;">
+
+    <div class="row" style="padding-top:20vh;">
       <div class="col-md-12 text-center">
         <h2 style="font-size:300%">LOGIN</h2>
       </div>

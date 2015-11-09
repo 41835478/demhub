@@ -2,6 +2,8 @@
 @section('forum::layouts.master')
 
 @section('content')
+<div class="row" >
+	<div class="col-md-8 col-md-offset-2">
 @include('forum::partials.breadcrumbs', ['other' => trans('forum::base.new_threads')])
 
 <h2>{{ trans('forum::base.new_threads') }}</h2>
@@ -53,12 +55,15 @@
 
 	@if (!is_null($user))
 		<div class="text-center">
-			<a href="{{ url('forum.post.mark.read') }}"class="btn btn-primary btn-small" data-confirm data-method="post">{{ trans('forum::base.mark_read') }}</a>
+			<a href="{{ url('forum.post.mark.read') }}"class="btn btn-primary btn-style-alt" data-confirm data-method="post">{{ trans('forum::base.mark_read') }}</a>
 		</div>
 	@endif
 @else
 	<p class="text-center">
 		{{ trans('forum::base.no_threads') }}
 	</p>
+
 @endif
+</div>
+</div>
 @overwrite
