@@ -102,18 +102,19 @@
         @endif
 
         @include('frontend.includes._navigation')
-
+        @include('includes.partials.messages')
         <div class="container-fluid">
-          @include('includes.partials.messages')
+
           @yield('body-style')
           @yield('content')
-        </div>
+
 
         <div class="push"></div>
+      </div>
       </div><!-- ./wrapper -->
-
       @include('frontend.includes._footer')
     @endif
+
 
     @include('includes.scripts._google_analytics')
     @include('includes.scripts._hotjar_analytics')
