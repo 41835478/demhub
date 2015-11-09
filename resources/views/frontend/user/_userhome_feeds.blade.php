@@ -26,7 +26,7 @@
 
         <div class = "feedsbox">
           @forelse($articleDivs as $div)
-            <a style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" href="{{$allDivisions[$div-1]->slug}}" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></a>
+            <a style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" href="division/{{$allDivisions[$div-1]->slug}}" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></a>
             <?php
               $marginLeft += $width;
             ?>

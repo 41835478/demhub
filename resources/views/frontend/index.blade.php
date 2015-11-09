@@ -79,12 +79,19 @@ body {
 	<div class="row" style="margin-left:1vw;">
 		@foreach($divisions as $div)
 			<a href="{{url('division', $div->slug)}}" style="">
+<<<<<<< HEAD
 				<div class="division-landing-box col-md-2">
 					<div id="division_{{$div->id}}">
 						<h3>{{$div->name}}</h3>
 					</div>
 						<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
 			</div>
+=======
+				<div id="division_{{$div->id}}" style="background-color: #{{$div->bg_color}};opacity:0.85; position:relative; min-height:185px;max-height:185px; color:#fff; width:14vw; margin:0 15px 0 15px; text-align:center; " class="col-md-2">
+					<h3 style="margin-top:30%;text-transform: uppercase; z-index:3; position:relative; ">{{$div->name}}</h3>
+					<i class="fa division_icon_{{$div->slug}} fa-4x"></i>
+				</div>
+>>>>>>> 199b75a9a8159e94aa812e0e724ca30b1ddd38e4
 			</a>
 		@endforeach
 

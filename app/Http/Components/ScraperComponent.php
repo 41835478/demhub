@@ -8,8 +8,10 @@
 
 namespace App\Http\Components;
 
+use App\Http\Components\Helpers;
+use App\Http\Controllers\Frontend\ArticleController;
 use App\Models\ArticleDetail;
-use Nathanmac\Utilities\Parser\Parser;
+use App\Models\ArticleMedia;
 use App\Models\Article;
 use App\Models\Keyword;
 use App\Models\NewsFeed;
@@ -18,10 +20,6 @@ use App\Models\ScrapeSource;
 
 class ScraperComponent
 {
-
-	const itemTypeNewsArticle = 1;
-	const itemTypeScientificPaper = 2;
-	const itemTypeOther = 9;
 
 	/**
 	 * Processes a single RSS feed given a item from scrape_sources table
@@ -73,7 +71,7 @@ class ScraperComponent
 				continue;
 			}
 			// item exists in db
-			if(Article::where('title', self::truncate(self::verify($item_array['title'])))->first()){
+			if(Article::where('title', Helpers::truncate(Helpers::verify($item_array['title'])))->first()){
 				continue;
 			}
 
@@ -90,7 +88,7 @@ class ScraperComponent
 			$params['date'] = $item_array['pubDate'];
 			$params['review'] = 0;
 
-			$save_result = self::saveArticle(self::itemTypeNewsArticle, $source, $params);
+			$save_result = self::saveArticle(ArticleController::typeNews, $source, $params);
 
 			if($save_result['status'] == 'ok'){
 				$return['message'] .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
@@ -149,14 +147,16 @@ class ScraperComponent
 	 * @param int $type Article type (news, scientific article, etc)
 	 * @param ScrapeSource $source The source model from which the article has been obtained or NULL if not using a standard source
 	 * @param array $params Article info array containing the following items:
-	 * 'text' - Complete article text
-	 * 'url' - Url to the complete article
-	 * 'title' - Article title
-	 * 'date' - publish_date of the article
-	 * 'lat' - latitude (optional)
-	 * 'lng' - longitude (optional)
-	 * 'location' - if lat, lng is not available, the function attempts to determine te lat, lng from
-	 * location text (optional)
+	 * 'text'		Complete article text
+	 * 'url'		Url to the complete article
+	 * 'title'		Article title
+	 * 'date'		publish_date of the article
+	 * 'lat'		latitude (optional)
+	 * 'lng'		longitude (optional)
+	 * 'location'	if lat, lng is not available, the function attempts to determine te lat, lng from
+	 * 				location text (optional)
+	 * 'media'      An array of medias to attach to the article, currently only supports and requires full image
+	 * 				url as 'url' index - example: $params['media'][0]['url'] = 'http://example.com/image.jpg'
 	 *
 	 * @return mixed
 	 */
@@ -166,34 +166,35 @@ class ScraperComponent
 		$return['message'] = '';
 		$all_keywords = Keyword::where('deleted', '=', 0)->get();
 
-		$text = strip_tags(self::verify($params['text'], ''));
+		$text = strip_tags(Helpers::verify($params['text'], ''));
 		$keys_divs = self::guessKeywords($text, $all_keywords);
 
 		// Checks if coords given, if not checks for location string.
 		// if either available tries to determine location details for saving in DB
 		$location_info = null;
-		if(self::verify($params['lat']) && self::verify($params['lng'])){
-			$location_info = self::getLocationInfo($params['lat'], $params['lng']);
-		} elseif (self::verify($params['location'])){
-			$coords = self::getCoords($params['location']);
+		if(Helpers::verify($params['lat']) && Helpers::verify($params['lng'])){
+			$location_info = Helpers::getLocationInfo($params['lat'], $params['lng']);
+		} elseif (Helpers::verify($params['location'])){
+			$coords = Helpers::getCoords($params['location']);
 			if($coords['lat']!=null && $coords['lng']!=null)
-				$location_info = self::getLocationInfo($coords['lat'], $coords['lng']);
+				$location_info = Helpers::getLocationInfo($coords['lat'], $coords['lng']);
 		}
 
 		$model = new Article();
 		$model->type 		= $type;
-		$model->divisions 	= self::convertDBArrayToString($keys_divs['divisions']);
+		$model->divisions 	= Helpers::convertDBArrayToString($keys_divs['divisions']);
 		$model->source_id 	= $source!=null ? $source->id : null;
-		$model->source_url 	= self::truncate(self::verify($params['url']));
-		$model->title 		= self::truncate(self::verify($params['title'], ''));
-		$model->excerpt 	= self::truncate($text);
-		$model->keywords 	= self::convertDBArrayToString($keys_divs['keywords']);
+		$model->source_url 	= Helpers::truncate(Helpers::verify($params['url']));
+		$model->title 		= Helpers::truncate(Helpers::verify($params['title'], ''));
+		$model->excerpt 	= Helpers::truncate($text);
+		$model->keywords 	= Helpers::convertDBArrayToString($keys_divs['keywords']);
+		$model->language	= Helpers::verify($params['language']);
 		$model->city 		= $location_info!=null ? $location_info['city'] : null;
 		$model->state 		= $location_info!=null ? $location_info['state'] : null;
 		$model->country 	= $location_info!=null ? $location_info['country'] : null;
 		$model->lat 		= $location_info!=null ? $location_info['lat'] : null;
 		$model->lng 		= $location_info!=null ? $location_info['lng'] : null;
-		$model->review 		= self::verify($params['review'], 0);
+		$model->review 		= Helpers::verify($params['review'], 0);
 		$model->deleted 	= 0;
 		$model->publish_date= isset($params['date']) ? date("Y-m-d H:i:s", strtotime($params['date'])) : null;
 
@@ -201,11 +202,29 @@ class ScraperComponent
 			$return['status'] = 'ok';
 			$return['model'] = $model;
 
+			// Save a complete text record for the article for future reference and search (not front-end)
 			$mdetail = new ArticleDetail();
 			$mdetail->article_id = $model->id;
 			$mdetail->url = $model->source_url;
 			$mdetail->text = $text;
 			$mdetail->save();
+
+			// Handle media (images) rlated to the article
+			if(isset($params['media'])){
+				foreach($params['media'] as $i=>$media){
+					$save_ready = false;
+					$media_model = new ArticleMedia();
+					$media_model->article_id = $model->id;
+					$media_model->view_order = $i;
+					if(isset($media['url'])){
+						$media_model->filename = $media['url'];
+						$media_model->filetype = 'url';
+						$save_ready = true;
+					}
+					if($save_ready)
+						$media_model->save();
+				}
+			}
 
 		} else {
 			$return['status'] = 'error';
@@ -246,7 +265,7 @@ class ScraperComponent
 		foreach($all_keywords as $i=>$key){
 			if(!isset($keywords_raw[$key->keyword])){
 				$keywords_raw[$key->keyword] = 0;
-				$all_divisions[$key->keyword] = self::convertDBStringToArray($key->divisions);
+				$all_divisions[$key->keyword] = Helpers::convertDBStringToArray($key->divisions);
 				$keyword_weights[$key->keyword] = $key->weight;
 			}
 		}
@@ -325,175 +344,5 @@ class ScraperComponent
 		return array('keywords'=>$keywords, 'weight'=>$net_weight, 'divisions'=>$divisions);
 	}
 
-	/**
-	 * Standard function to convert an int/string array to format optimized for search needed to be stored in db
-	 *
-	 * @param array $array data to be converted to storable string
-	 * @return string
-	 */
-	public static function convertDBArrayToString($array)
-	{
-		$return = "|";
-		$return .= implode('|', $array);
-		$return .= "|";
 
-		if(empty($array)) $return = '';
-
-		return $return;
-	}
-
-	/**
-	 * A standard function to convert a stored DB array in form of a string back to the original array.
-	 *
-	 * @param string $string String data obtained from DB
-	 * @return array
-	 */
-	public static function convertDBStringToArray($string)
-	{
-		$array = explode('|', $string);
-		foreach($array as $i=>$item){
-			if($item === '' || $item === null) unset($array[$i]);
-		}
-
-		return $array;
-	}
-
-	/**
-	 * Generates a standard url safe slug given any string
-	 *
-	 * @param string $text
-	 * @return string
-	 */
-	public static function generateSlug($text)
-	{
-		$remove = array("!",",",":",";","@","#","?","(",")","*",".","\"","/",'"',"%","&");
-		$return = strtolower(str_replace(' ', '-', str_replace($remove,'',$text)));
-
-		return $return;
-	}
-
-	/**
-	 * Limits the character count of a long string to a certain count (def 255) and adds "..." if string is truncated.
-	 * Returns the truncated string that doesnt not exceed the char count provided
-	 *
-	 * @param string $string original
-	 * @param int $len Length of the desired string
-	 * @return string
-	 */
-	public static function truncate($string, $len=255){
-		if($string == null)
-			return "";
-		if(strlen($string)>($len-3)){
-			$string = substr($string, 0, $len-3);
-			$string .= '...';
-			return $string;
-		} else {
-			return $string;
-		}
-	}
-
-	/**
-	 * Gets information such as Sublocal, city, state, and country from google API from a set of Lat & Lng
-	 *
-	 * @param double $lat Latitude
-	 * @param double $lng longitude
-	 *
-	 * @return array
-	 */
-	public static function getLocationInfo($lat, $lng)
-	{
-		$session = curl_init('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$lng.'&sensor=false&key=');
-		// Tell cURL to return the request data
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
-		// Execute cURL on the session handle
-		$response = curl_exec($session);
-		$results = json_decode($response);
-		curl_close($session);
-
-		$result = array('sublocal'=>null,'city'=>null,'state'=>null,'country'=>null);
-
-		if($results->status === 'OK')
-		{
-			foreach($results->results as $res){
-				if(in_array('locality', $res->types)){
-					foreach($res->address_components as $comp){
-						if(in_array('sublocality', $comp->types)) $result['sublocal'] = $comp->long_name;
-						if(in_array('locality', $comp->types)) $result['city'] = $comp->long_name;
-						if(in_array('administrative_area_level_1', $comp->types)){ $result['state'] = $comp->long_name; }
-						elseif(in_array('administrative_area_level_2', $comp->types)) { $result['state'] = $comp->long_name; }
-						if(in_array('country', $comp->types)) $result['country'] = $comp->long_name;
-					}
-				}
-			}
-			if($result['city'] == null) $result['city'] = $result['sublocal'];
-			if($result['city'] == NULL){
-				foreach($results->results as $res){
-
-					foreach($res->address_components as $comp){
-						if(in_array('sublocality', $comp->types)) $result['sublocal'] = $comp->long_name;
-						if(in_array('locality', $comp->types)) $result['city'] = $comp->long_name;
-						if(in_array('administrative_area_level_1', $comp->types)) $result['state'] = $comp->long_name;
-						if(in_array('country', $comp->types)) $result['country'] = $comp->long_name;
-					}
-
-				}
-
-
-			}
-		}
-		if($result['city'] == null) $result['city'] = $result['sublocal'];
-		$result['lat'] = (double)$lat;
-		$result['lng'] = (double)$lng;
-
-		return $result;
-	}
-
-	/**
-	 * getCoords
-	 *
-	 * Gets coordinates of a given location
-	 *
-	 * @param string $address address
-	 *
-	 * @return array lat, lng, type, status
-	 */
-	public static function getCoords($address)
-	{
-		//TODO: required valid GOOGLE_GCM_API_KEY
-		$google_api_key = '';
-		//
-		// Google api free tier has limit of 2,500 request per day and returns null if exceeded
-		//
-		$session = curl_init('https://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($address).'&sensor=false&key='.$google_api_key);
-		// Tell cURL to return the request data
-		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
-		// Execute cURL on the session handle
-		$response = curl_exec($session);
-		$result = json_decode($response);
-		curl_close($session);
-
-		$return = array('lat'=>null,'lng'=>null,'type'=>null,'status'=>$result->status);
-
-		if($result->status === 'OK'){
-			$res = $result->results;
-			$return['lat'] = $res[0]->geometry->location->lat;
-			$return['lng'] = $res[0]->geometry->location->lng;
-			$return['type'] = $res[0]->geometry->location_type;
-		}
-
-		return $return;
-	}
-
-	/**
-	 * Just a quick func to verify if a variable is set and if not set it to a default
-	 *
-	 * @param mixed $var Any variable or array index that might not have been set
-	 * @param mixed $default Default value t return if not set
-	 * @return null $var value if set and $default value if not set
-	 */
-	public static function verify(&$var, $default=null){
-		return isset($var) ? $var : $default;
-	}
 } 

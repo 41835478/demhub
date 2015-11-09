@@ -18,7 +18,9 @@ class AddBasicAttributesToUsersTable extends Migration
           $table->string('job_title');
           $table->string('organization_name');
           $table->string('phone_number', 22);
+          $table->string('division');
           $table->string('specialization');
+          $table->string('location');
       });
   }
 
@@ -36,7 +38,9 @@ class AddBasicAttributesToUsersTable extends Migration
             'job_title',
             'organization_name',
             'phone_number',
-            'specialization'
+            'division',
+            'specialization',
+            'location',
           ]);
       });
   }

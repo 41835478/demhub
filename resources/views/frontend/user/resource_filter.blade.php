@@ -9,6 +9,8 @@ $( document ).ready(function() {
 });
 </script>
 <div class="row">
+	<h3 style="text-align:center">SELECT A LOCATION</h3>
+	<span id="mapHideNote" style="display:none">Map navigation is accesible on screens with a width greater than 630px</span>
 	<div class="col-md-9 col-md-offset-2" id="map_container">
 
 		<div id="world_map" class="mapContainer" style="">
@@ -160,7 +162,7 @@ $( document ).ready(function() {
 	</div>
 
 	<div id="canada_map" class="mapContainer" style="visibility:hidden;height:1px">
-		<img class="map img-responsive" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" orgWidth="1000" orgHeight="969" style="max-width:100%;" usemap="#canada" />
+		<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" width="690" height="669" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
 		<map name="canada" style="text-transform: capitalize;">
 		<!-- <area shape="rect" coords="998,967,1000,969" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" /> -->
 		<area id="canada_poly_1" alt="" title="Manitoba" onclick="secondFilterF(this.title)" shape="poly" coords="300,567,302,515,355,455,343,447,331,450,327,430,324,426,315,423,315,409,260,403,244,560">
@@ -181,7 +183,7 @@ $( document ).ready(function() {
 	</div>
 
 	<div id="australia_map" class="mapContainer" style="visibility:hidden;height:1px">
-	<img class="map img-responsive" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" orgWidth="1206" orgHeight="1144" style="max-width:100%;" alt="" />
+	<img class="map" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" width="690" height="655" orgWidth="690" orgHeight="655" style="max-width:100%;" alt="" />
 	<map name="australia" style="text-transform: capitalize;">
 
 		<area id="australia_poly_1" title="Western Australia" onclick="secondFilterF(this.title)" shape="poly" coords="271,88,264,82,252,87,252,81,228,62,192,84,180,100,176,111,157,115,147,132,142,145,146,152,131,175,119,188,100,193,88,197,16,250,13,244,6,258,5,295,19,312,5,320,26,348,52,400,68,426,64,439,69,453,57,461,65,481,90,488,112,485,132,470,137,462,165,455,188,459,196,454,205,436,224,423,254,422,280,409,280,403" style="outline:none;" target="_self">
@@ -203,7 +205,7 @@ $( document ).ready(function() {
 </div>
 <div id="user-settings" class="row">
 	<div class="col-md-12 text-center">
-    	<h1>RESOURCES</h1>
+
 
 		<br>
 		<!-- <h3>Filters</h3> -->
@@ -295,20 +297,34 @@ $( document ).ready(function() {
 
 	<script>
 	var countries = ["canada","united_states","australia"];
+	var counter=0;
+	$(document).ready(function(){
+		if ($(window).width() < 630) {
+			$("#map_container").hide();
+			$("#mapHideNote").show();
+		}
+	})
 	$(window).resize(function(){
-		if ($(window).width() < 500) {
+		counter++;
+		if ($(window).width() < 600 && counter % 10 == 0) {
 			// for (var i=1;i<=countries.length;i++){
 			// 	changeCoordinates(countries[i]);
 			// }
-			console.log("working");
 			$("#map_container").hide();
+			$("#mapHideNote").show();
+		}
+		else if ($(window).width() > 600 && counter % 10 == 0) {
+			// for (var i=1;i<=countries.length;i++){
+			// 	changeCoordinates(countries[i]);
+			// }
+			$("#map_container").show();
 		}
 		// else if ($(window).width() < 768) {
-			// for (var i=1;i<=countries.length;i++){
-			// 	changeCoordinates(countries[i]);
-			// }
-
-			// console.log("working");
+		// 	for (var i=1;i<=countries.length;i++){
+		// 		changeCoordinates(countries[i]);
+		// 	}
+		//
+		// 	console.log("working");
 		// }
 	});
 
@@ -432,7 +448,6 @@ $( document ).ready(function() {
 		var filterVar = region;
 		var region = filterVar.toLowerCase();
 		region=region.replace(/ /g,"_");
-
 		// var list =document.getElementsByClassName(country);
 
 		if($("tr").hasClass('in')) {
@@ -443,6 +458,7 @@ $( document ).ready(function() {
 		    }
 
 			$(".mapContainer").hide();
+
 			// document.getElementById(country+"_map").style.display="";
 			document.getElementById("mapListing").style.display="";
 	};

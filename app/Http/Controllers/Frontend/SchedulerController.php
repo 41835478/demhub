@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Components\Helpers;
 use App\Http\Components\ScraperComponent;
 use App\Models\Article;
 use App\Models\Keyword;
@@ -144,12 +145,14 @@ class SchedulerController extends Controller
 						$e2s = $e1->getElementsByTagName('div');
 						foreach($e2s as $e2){
 							if($e2->getAttribute('class') == 'entry-content'){
+								// Excerpt
 								$e3s = $e2->getElementsByTagName('p');
 								foreach($e3s as $e3){
 									//backup, will be overwritten if a better text is found
 									$data['text'] = trim($e3->textContent);
 								}
 
+								// Text and publishdate
 								$e3s = $e2->getElementsByTagName('a');
 								foreach($e3s as $e3){
 									if(strpos($e3->getAttribute('class'), 'read-more') !== false){
@@ -175,12 +178,20 @@ class SchedulerController extends Controller
 										}
 									}
 								}
+
+								//Image
+								$e3s = $e2->getElementsByTagName('img');
+								foreach($e3s as $e3){
+									if(strpos($e3->getAttribute('class'), 'wp-post-image') !== false){
+										$data['media'][0]['url'] = $e3->getAttribute('src');
+									}
+								}
 							}
 						}
 					}
 
 					// item exists in db
-					if($existingart = Article::where('title', ScraperComponent::truncate(ScraperComponent::verify($data['title'])))->first()){
+					if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
 						$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
 						unset($data);
 						continue;
@@ -192,7 +203,7 @@ class SchedulerController extends Controller
 						continue;
 					}
 
-					$save_result = ScraperComponent::saveArticle(ScraperComponent::itemTypeScientificPaper, $source, $data);
+					$save_result = ScraperComponent::saveArticle(ArticleController::typeNews, $source, $data);
 					//var_dump($data);
 
 					if($save_result['status'] == 'ok'){
@@ -283,17 +294,17 @@ class SchedulerController extends Controller
 			'Oil Spill'=>[1,3,6], 'Nuclear'=>[1,3,6], 'Chemical Spill'=>[1,3,6], 'Train Derailment'=>[5,3], 'Bridge Collapse'=>[5,3], 'Active Shooter'=>[3] );
 		$negative_keys = array('newsletter', 'workshop');
 		foreach($keys as $k=>$d){
-			$slug = ScraperComponent::generateSlug($k);
+			$slug = Helpers::generateSlug($k);
 			$exists = Keyword::where(array('slug'=>$slug))->first();
 			if(!$exists){
 				$model = new Keyword();
 				$model->weight = 1;
 				$model->keyword = strtolower($k);
 				$model->slug = $slug;
-				$model->divisions = ScraperComponent::convertDBArrayToString($d);
+				$model->divisions = Helpers::convertDBArrayToString($d);
 				$model->save();
 
-				echo '<br>Added keyword: '.$k.'      with divisions: '. ScraperComponent::convertDBArrayToString($d);
+				echo '<br>Added keyword: '.$k.'      with divisions: '. Helpers::convertDBArrayToString($d);
 			}
 
 		}

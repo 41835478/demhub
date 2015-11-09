@@ -7,7 +7,7 @@
 @if(Request::url() == url('divisions/results'))
 	@include('division._search_feed')
 @else
-	@include('division._feeds')
+	@include('frontend.user._userhome_feeds')
 	@if($total_count > 0)
 		@include('division._pagination')
 	@else
