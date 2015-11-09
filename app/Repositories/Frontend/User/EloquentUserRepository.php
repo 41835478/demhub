@@ -48,8 +48,6 @@ class EloquentUserRepository implements UserContract {
 			'last_name' => $data['last_name'],
 			'job_title' => $data['job_title'],
 			'organization_name' => $data['organization_name'],
-			'phone_number' => $data['phone_number'],
-			'specialization' => $data['specialization'],
 			'email' => $data['email'],
 			'password' => $provider ? null : $data['password'],
 			'confirmation_code' => md5(uniqid(mt_rand(), true)),
