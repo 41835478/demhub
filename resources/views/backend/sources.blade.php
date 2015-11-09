@@ -44,7 +44,7 @@
 					</div>
 					<div class="col-xs-2"></div>
 					<div class="col-xs-2">
-						<input type="submit" name="submit" value="save">
+						<input class="btn btn-xs btn-success" type="submit" name="submit" value="save">
 					</div>
 				</div>
 			</form>
@@ -65,7 +65,7 @@
 						</div>
 						<div class="col-xs-2">{{ $item->last_checked }}</div>
 						<div class="col-xs-2">
-							<input class="btn btn-xs btn-default" type="submit" name="submit" value="save">
+							<input class="btn btn-xs btn-success" type="submit" name="submit" value="save">
 							<input class="btn btn-xs btn-danger" type="submit" name="submit" value="x">
 						</div>
 		            </div>

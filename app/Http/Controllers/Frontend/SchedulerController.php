@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Components\Helpers;
 use App\Http\Components\ScraperComponent;
 use App\Models\Article;
 use App\Models\Keyword;
@@ -190,7 +191,7 @@ class SchedulerController extends Controller
 					}
 
 					// item exists in db
-					if($existingart = Article::where('title', ScraperComponent::truncate(ScraperComponent::verify($data['title'])))->first()){
+					if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
 						$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
 						unset($data);
 						continue;
@@ -293,17 +294,17 @@ class SchedulerController extends Controller
 			'Oil Spill'=>[1,3,6], 'Nuclear'=>[1,3,6], 'Chemical Spill'=>[1,3,6], 'Train Derailment'=>[5,3], 'Bridge Collapse'=>[5,3], 'Active Shooter'=>[3] );
 		$negative_keys = array('newsletter', 'workshop');
 		foreach($keys as $k=>$d){
-			$slug = ScraperComponent::generateSlug($k);
+			$slug = Helpers::generateSlug($k);
 			$exists = Keyword::where(array('slug'=>$slug))->first();
 			if(!$exists){
 				$model = new Keyword();
 				$model->weight = 1;
 				$model->keyword = strtolower($k);
 				$model->slug = $slug;
-				$model->divisions = ScraperComponent::convertDBArrayToString($d);
+				$model->divisions = Helpers::convertDBArrayToString($d);
 				$model->save();
 
-				echo '<br>Added keyword: '.$k.'      with divisions: '. ScraperComponent::convertDBArrayToString($d);
+				echo '<br>Added keyword: '.$k.'      with divisions: '. Helpers::convertDBArrayToString($d);
 			}
 
 		}

@@ -61,7 +61,7 @@
 						</div>
 				        <div class="col-xs-1" style="padding: 0">
 							@foreach($divisions as $div)
-								@if(in_array($div->id, \App\Http\Components\ScraperComponent::convertDBStringToArray($item->divisions)))
+								@if(in_array($div->id, \App\Http\Components\Helpers::convertDBStringToArray($item->divisions)))
 									<div class="col-xs-3" style="padding:0 5px;background-color: #{{ $div->bg_color }}">
 										{{ $div->id }}
 									</div>
@@ -92,7 +92,7 @@
 							<input type="text" name="location" value="@if($item->country!=null) {{ $item->city }}, {{ $item->state }}, {{ $item->country }}  @endif" style="width: 100%;" >
 						</div>
 						<div class="col-xs-2" style="padding: 0">
-							<input class="btn btn-xs btn-default" type="submit" name="submit" value="save">
+							<input class="btn btn-xs btn-success" type="submit" name="submit" value="save">
 							<input class="btn btn-xs btn-danger" type="submit" name="submit" value="x">
 						</div>
 		            </div>

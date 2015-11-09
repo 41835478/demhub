@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Backend;
 
+use App\Http\Components\Helpers;
 use App\Http\Components\ScraperComponent;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -35,7 +36,7 @@ class DashboardController extends Controller {
 				$keyword = Keyword::find($request->input("id"));
 			}
 
-			$keyword->divisions = ScraperComponent::convertDBArrayToString($request->input("div", ""));
+			$keyword->divisions = Helpers::convertDBArrayToString($request->input("div", ""));
 			$keyword->keyword = $request->input("keyword");
 			$keyword->weight = $request->input("weight");
 			if($keyword->save()){
@@ -102,7 +103,7 @@ class DashboardController extends Controller {
 				$item = Article::find($request->input("id"));
 			}
 			$item->type = $request->input("type");
-			$item->title = ScraperComponent::truncate($request->input("title"));
+			$item->title = Helpers::truncate($request->input("title"));
 			$item->language = trim($request->input("language",''))=='' ? null : $request->input("language",'');
 			if(trim($request->input("location", '')) != ''){
 				$coords = self::getCoords($request->input("location", ''));

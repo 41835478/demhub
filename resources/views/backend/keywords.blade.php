@@ -25,7 +25,7 @@
 				<div class="col-xs-5">
 					@foreach($divisions as $div)
 						<div class="col-xs-2">
-							{{ \App\Http\Components\ScraperComponent::truncate($div->slug, 8) }}
+							{{ \App\Http\Components\Helpers::truncate($div->slug, 8) }}
 						</div>
 					@endforeach
 				</div>
@@ -50,7 +50,7 @@
 						<input type="number" min="-10" max="10" name="weight" value="1" style="width: 40px;">
 					</div>
 					<div class="col-xs-2">
-						<input type="submit" name="submit" value="save">
+						<input class="btn btn-xs btn-success" type="submit" name="submit" value="save">
 					</div>
 				</div>
 			</form>
@@ -67,7 +67,7 @@
 							@foreach($divisions as $div)
 								<div class="col-xs-2" style="background-color: #{{ $div->bg_color }}">
 									<input type="checkbox" name="div[]" value="{{ $div->id }}"
-									@foreach(\App\Http\Components\ScraperComponent::convertDBStringToArray($item->divisions) as $item_div)
+									@foreach(\App\Http\Components\Helpers::convertDBStringToArray($item->divisions) as $item_div)
 										@if($div->id == $item_div)
 											checked
 										@endif
@@ -80,7 +80,7 @@
 							<input type="number" name="weight" value="{{ $item->weight }}" style="width: 40px;">
 						</div>
 						<div class="col-xs-2">
-							<input class="btn btn-xs btn-default" type="submit" name="submit" value="save">
+							<input class="btn btn-xs btn-success" type="submit" name="submit" value="save">
 							<input class="btn btn-xs btn-danger" type="submit" name="submit" value="x">
 						</div>
 		            </div>

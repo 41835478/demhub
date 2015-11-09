@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Components\Helpers;
 use App\Http\Components\ScraperComponent;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -56,7 +57,7 @@ class ArticleController extends Controller
 		if(trim($options_location) !== '')
 		{
 			// lat lng method
-			$coords = ScraperComponent::getCoords($options_location);
+			$coords = Helpers::getCoords($options_location);
 
 			// if location info not found (or google api request limit reached)
 			if($coords['lat'] == null || $coords['lng'] == null)
