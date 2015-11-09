@@ -110,7 +110,7 @@
 
 
         <div class="push"></div>
-      </div>
+      </div><!-- ./container-fluid -->
       </div><!-- ./wrapper -->
       @include('frontend.includes._footer')
     @endif
