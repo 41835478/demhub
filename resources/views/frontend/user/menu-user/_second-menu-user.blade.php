@@ -31,7 +31,7 @@
 
     <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:45px;padding-right:45px;"> MAP</a></li>
 
-  	<li><a href="javascript:comingSoon('event_tracking_title')" id="event_tracking_title" style="padding-left:45px;padding-right:45px;border-right:2px solid #fff"> EVENT TRACKING</a></li>
+  	<li><a href="javascript:comingSoon('event_tracking_title')" id="event_tracking_title" style="padding-left:45px;padding-right:45px;border-right:2px solid #fff"> TRACK EVENTS</a></li>
 
 	</ul>
 </div>
