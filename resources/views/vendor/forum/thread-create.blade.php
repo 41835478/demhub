@@ -2,9 +2,11 @@
 @section('forum::layouts.master')
 
 @section('content')
+<div class="row" style="padding-top:15px">
+	<div class="col-md-8 col-md-offset-2">
 <!-- @include('forum::partials.breadcrumbs', compact('parentCategory', 'category', 'thread')) -->
-
-<h2>{{ trans('forum::base.new_thread') }}</h2>
+<a href="{{ url('forum/all_threads') }}" class="btn btn-default btn-style-alt">ALL THREADS</a>
+<h2>NEW DISCUSSION</h2>
 
 @include(
     'forum::partials.forms.post',
@@ -18,6 +20,8 @@
         'cancel_url'          => ''
     )
 )
+</div>
+</div>
 <script>
 $("button#submit").attr("disabled", true);
 

@@ -2,11 +2,9 @@
 @section('forum::layouts.master')
 
 @section('content')
-<div class="row" style="padding:0px;
-                                background:url('/images/backgrounds/earth_17.jpg')  no-repeat fixed;
-                                background-position: 100% 70%;
-                                overflow:hidden;">
-
+<div class="row">
+<div class="col-md-8 col-md-offset-2" style="padding-top:15px">
+  <a href="{{ url('forum/all_threads') }}" class="btn btn-default btn-style-alt">ALL THREADS</a>
 <h2>
     @if ($thread->locked)
         [{{ trans('forum::base.locked') }}]
@@ -14,7 +12,7 @@
     @if ($thread->pinned)
         [{{ trans('forum::base.pinned') }}]
     @endif
-    {{{ $thread->title }}}
+    {{ $thread->title }}
 </h2>
 
 @if ($thread->canLock || $thread->canPin || $thread->canDelete)
@@ -44,7 +42,7 @@
             <div class="btn-group" role="group">
                 <!-- <a href="{{ $thread->replyRoute }}" class="btn btn-default">{{ trans('forum::base.new_reply') }}</a> -->
                 <!-- <a href="#quick-reply" class="btn btn-default">{{ trans('forum::base.quick_reply') }}</a> -->
-                <a href="{{ url('forum/all_threads') }}" class="btn btn-default btn-style">ALL THREADS</a>
+
             </div>
         </div>
         <div class="col-xs-8 text-right">
@@ -92,4 +90,6 @@
     </div>
 @endif
 <!-- @include('forum::partials.breadcrumbs') -->
+</div>
+</div>
 @overwrite

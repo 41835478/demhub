@@ -19,7 +19,7 @@
     {!! Form::select('question2', array('0' => 'Select One','Explore the platform' => 'Explore the platform',
     'Industry specific needs' => 'Industry specific needs', 'News' => 'News', 'Track Events' => 'Track Events',
     'Communciation' => 'Communication', 'Access resources' => 'Access resources',
-    'Documentary sharing' => 'Documentary sharing', 'Other' => 'Other'),'0', array('class' => 'form-control')) !!}
+    'Uploading & sharing' => 'Uploading & sharing', 'Other' => 'Other'),'0', array('class' => 'form-control')) !!}
 
   </div>
   <br>

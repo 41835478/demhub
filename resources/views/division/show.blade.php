@@ -9,7 +9,7 @@
 	@if(Request::url() == url('divisions/results'))
 		@include('division._search_feed')
 	@else
-		@include('division._discussion')
+		<!-- @include('division._discussion') -->
 		@include('division._feeds')
 	@endif
 @stop

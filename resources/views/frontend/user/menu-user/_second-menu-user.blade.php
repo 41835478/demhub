@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:18%;margin:0px;">
+<div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="padding-left:18%;margin:0px">
 
   <ul class="nav navbar-nav">
     @if(Request::url() === url('userhome'))
@@ -20,7 +20,7 @@
     @else
       <li>
     @endif
-    <a href="{{url('publications')}}"> PUBLICATIONS</a></li>
+    <a href="javascript:comingSoon('publications_title')" id="publications_title" style="padding-left:45px;padding-right:45px;"> PUBLICATIONS</a></li>
 
     @if(Request::url() === url('resource_filter'))
       <li class="active">

@@ -20,9 +20,9 @@
     {!! Form::textarea('content', $post_content, ['class' => 'form-control']) !!}
 </div>
 
-<button type="submit" id="submit" class="btn btn-primary">{{ $submit_label }}</button>
+<button type="submit" id="submit" class="btn btn-style-alt">{{ $submit_label }}</button>
 @if ( $cancel_url )
-<a href="{{ $cancel_url }}" class="btn btn-default">{{ trans('forum::base.cancel') }}</a>
+<a href="{{ $cancel_url }}" class="btn btn-default btn-style-alt">{{ trans('forum::base.cancel') }}</a>
 @endif
 
 {!! Form::close() !!}
