@@ -92,6 +92,42 @@ footer, .push {
   height: 100px;
   /* '.push' must be the same height as 'footer' */ }
 
+div.division-landing-box {
+  max-height: 220px;
+  min-height: 110px;
+  color: #fff; }
+  div.division-landing-box div.division-landing-color {
+    width: 90%;
+    height: 100%;
+    opacity: 0.6;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    background-color: #fff; }
+  div.division-landing-box h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-transform: uppercase;
+    width: 80%;
+    height: 80%;
+    position: relative; }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  div.division-landing-box {
+    width: 100%;
+    height: 110px; } }
+
 .btn-group-lg > .btn, .btn-lg {
   border-radius: 3px !important; }
 
@@ -156,7 +192,7 @@ button.btn-style-alt:active {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px   solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative; }
 
