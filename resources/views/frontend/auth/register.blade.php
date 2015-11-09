@@ -14,7 +14,7 @@ body {
 																	-o-background-size: cover;
 																	background-size: cover;
 																	color:#fff;
-																	padding-bottom:15%
+																	padding-bottom:10vh;
 																	">
 	<div class="row" style="padding-top:50px;">
     <div class="col-md-12 text-center">
@@ -27,11 +27,14 @@ body {
 	    <div class="modal-content">
 
 	      <div class="modal-body" style="color:#000">
+					<div class ="auth-modal-email">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="updateForm()"><span aria-hidden="true">&times;</span></button>
-	          <h3>We verify each member who signs up.</h3>
-					  <h3>In order to do so DEMHUB needs a few more details.</h3>
-						<button type="button" class="btn btn-default btn-style" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
+	          <h4 class ="col-md-offset-3">We verify each member who signs up.</h4>
+					  <h4 class ="col-md-offset-1">In order to do so DEMHUB needs a few more details.</h4>
+						<p>&nbsp;</p>
+						<button type="button" class="btn btn-default btn-style col-md-offset-5" data-dismiss="modal" onclick="updateForm()">CONFIRM
 					</button>
+				</div>
 				</div>
 				<!-- <div class="modal-footer">
 

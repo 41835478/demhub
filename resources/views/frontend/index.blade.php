@@ -9,16 +9,10 @@ body {
 @section('content')
 <div class="row">
 <div class="col-xs-12">
-<div id="welcome_home" class="row" style="background: url('images/backgrounds/welcome_home.jpg') fixed no-repeat;
-											-webkit-background-size: cover;
-											-moz-background-size: cover;
-											-o-background-size: cover;
-											background-size: cover;
-											background-position: center center;
-											overflow-x: hidden;">
+<div id="welcome_home" class="row">
 
 	<div class="col-md-6 col-md-offset-6">
-		{!! HTML::image("/images/logo/logo.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '700')) !!}
+		{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '300')) !!}
 	</div>
 
 	<div class="col-md-6 col-md-offset-6 text-center">
@@ -82,12 +76,15 @@ body {
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <!-- <div class="row"> -->
-	<div class="col-xs-12" style="background:none;">
+	<div class="row" style="margin-left:1vw;">
 		@foreach($divisions as $div)
 			<a href="{{url('division', $div->slug)}}" style="">
-				<div id="division_{{$div->id}}" style="background-color: #{{$div->bg_color}};opacity:0.85; position:relative; min-height:185px;max-height:185px; color:#fff; width:14vw; margin:0 15px 0 15px; text-align:center; " class="col-md-2">
-					<h3 style="margin-top:30%;text-transform: uppercase; z-index:3; position:relative; ">{{$div->name}}</h3>
-				</div>
+				<div class="division-landing-box col-md-2">
+					<div id="division_{{$div->id}}">
+						<h3>{{$div->name}}</h3>
+					</div>
+						<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
+			</div>
 			</a>
 		@endforeach
 
