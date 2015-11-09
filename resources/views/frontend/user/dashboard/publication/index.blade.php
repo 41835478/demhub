@@ -10,7 +10,7 @@
       </div>
 
       <div class="col-md-9" style="padding:0px;margin-left:-5%">
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="padding-bottom:15%">
         <a href="{{ URL::to('publication/new') }}">Create a Publication</a>
 
         @if($publications)
