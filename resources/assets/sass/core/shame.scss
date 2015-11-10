@@ -4,27 +4,27 @@ div#message {
 
 div#dashboard-icon {
   position: fixed;
-  top: 10%;
-  padding-left: 15px;
-  padding-right: 5px;
+  bottom: 10%;
+  padding-left: 7px;
+  padding-right: 7px;
   font-size: 2em;
   z-index: 100;
   cursor: pointer;
   background: rgba(20, 20, 20, 0.9);
   color: #fff;
-  margin-left: -11px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  right:0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 div#dashboard {
   position: fixed;
-  width: 250px;
+  width: 350px;
   height: 100%;
   background: rgba(20, 20, 20, 0.9);
   z-index: 100;
   font-size: 1.5em;
-  margin-left: -1000px;
-}
+  right: -350px;
+} 
 div#dashboard ul {
   margin-top: 25%;
 }
