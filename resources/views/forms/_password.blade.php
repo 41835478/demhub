@@ -1,3 +1,4 @@
+<h2> RESET PASSWORD </h2>
 {!! Form::open(['to' => 'password/email', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
   <div class="form-group">
