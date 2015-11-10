@@ -1,4 +1,4 @@
-<nav id="guest-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="padding-left:30px;max-height:30px">
+<nav id="guest-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="padding-left:30px;">
 	<div class="container-fluid">
 
 		<div class="navbar-header">
@@ -14,7 +14,6 @@
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<span>BETA</span>
 				@if (Auth::guest())
 					<li
 						@if (Request::url() === url('about'))
