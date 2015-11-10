@@ -12,5 +12,6 @@
 @endsection
 
 @section('content')
+	@include('modals._register_prompt')
 	@include('frontend.includes._fullscreen', ['form' => '_register'])
 @endsection
