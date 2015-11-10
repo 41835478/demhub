@@ -8,8 +8,8 @@
   <div style="padding-bottom:20px"></div>
 @endif
 
-<div class="row">
-  <div class="col-md-offset-1" style="padding-right:100px">
+<div class="container">
+  <div class="row">
 
     @foreach($newsFeeds as $item)
       <div class="col-xs-12 col-sm-6 col-md-4">
