@@ -188,6 +188,17 @@ div#division_6 {
   height: 300px;
   position: relative;
 }
+@media (max-width: 991px) {
+  div#division_1,
+  div#division_2,
+  div#division_3,
+  div#division_4,
+  div#division_5,
+  div#division_6 {
+    height: 100px;
+  }
+}
+
 div#welcome_division a {
   color: #fff;
   text-shadow: 1px 1px 1px #333;

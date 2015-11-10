@@ -77,13 +77,15 @@
 				<p>&nbsp;</p>
 				<p>&nbsp;</p>
 
-				<div class="row" style="margin-left:1vw;">
+				<div class="row" style="margin-left: 15px; margin-right: 15px;">
 					@foreach($divisions as $div)
-						<a href="{{url('division', $div->slug)}}" style="">
+						<a href="{{url('division', $div->slug)}}">
 							<div class="division-landing-box col-md-2">
 								<div id="division_{{$div->id}}">
-									<div class="division-landing-icon"><img src ="/images/icons/division-0{{$div->id}}.svg"></div>
-									<h3 style="padding-top:30px;">{{$div->name}}</h3>
+									<div class="division-landing-icon">
+										<img src ="/images/icons/division-0{{$div->id}}.svg">
+									</div>
+									<h3 class="division-landing-name">{{$div->name}}</h3>
 								</div>
 									<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
 						</div>
