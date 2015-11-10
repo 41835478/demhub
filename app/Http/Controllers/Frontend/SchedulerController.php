@@ -199,8 +199,8 @@ class SchedulerController extends Controller
 						continue;
 					}
 
-					$save_result = ScraperComponent::saveArticle(ArticleController::typeNews, $source, $data);
 					//var_dump($data);
+					$save_result = ScraperComponent::saveArticle($source->article_type, $source, $data);
 
 					if($save_result['status'] == 'ok'){
 						$messages .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
@@ -377,7 +377,7 @@ class SchedulerController extends Controller
 						}
 
 						//var_dump($data);
-						$save_result = ScraperComponent::saveArticle(ArticleController::typeNews, $source, $data);
+						$save_result = ScraperComponent::saveArticle($source->article_type, $source, $data);
 
 						if($save_result['status'] == 'ok'){
 							$messages .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;

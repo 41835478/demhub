@@ -88,7 +88,7 @@ class ScraperComponent
 			$params['date'] = $item_array['pubDate'];
 			$params['review'] = 0;
 
-			$save_result = self::saveArticle(ArticleController::typeNews, $source, $params);
+			$save_result = self::saveArticle($source->article_type, $source, $params);
 
 			if($save_result['status'] == 'ok'){
 				$return['message'] .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
@@ -212,7 +212,7 @@ class ScraperComponent
 		}
 
 		$model = new Article();
-		$model->type 		= $type;
+		$model->type 		= ($type==null||$type==0) ? ArticleController::typeOtherb : $type;
 		$model->divisions 	= Helpers::convertDBArrayToString($keys_divs['divisions']);
 		$model->source_id 	= $source!=null ? $source->id : null;
 		$model->source_url 	= Helpers::truncate(Helpers::verify($params['url']));

@@ -3,6 +3,7 @@
 use App\Http\Components\Helpers;
 use App\Http\Components\ScraperComponent;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\ArticleController;
 use App\Models\Article;
 use App\Models\Division;
 use App\Models\Keyword;
@@ -29,7 +30,10 @@ class DashboardController extends Controller {
 	 */
 	public function keywords(Request $request)
 	{
+		$form_submit = false;
+
 		if($request->input("submit", "") == "save"){
+			$form_submit = true;
 			if($request->input("id") == 0){
 				$keyword = new Keyword();
 			} else {
@@ -45,7 +49,8 @@ class DashboardController extends Controller {
 				$request->session()->flash('status', 'Failed!');
 			}
 		}
-		if($request->input("submit", "") == "x"){
+		elseif($request->input("submit", "") == "x"){
+			$form_submit = true;
 			$keyword = Keyword::find($request->input("id"));
 			$keyword->delete();
 			$request->session()->flash('status', 'Deleted.');
@@ -53,7 +58,12 @@ class DashboardController extends Controller {
 		$items = Keyword::orderBy('id', 'DESC')->get();
 		$divisions = Division::all();
 
-		return view('backend.keywords', compact('items', 'divisions'));
+		if($form_submit){
+			return redirect()->route('backend.keywords');
+		} else {
+			return view('backend.keywords', compact('items', 'divisions'));
+		}
+
 	}
 
 	/**
@@ -62,13 +72,17 @@ class DashboardController extends Controller {
 	 */
 	public function sources(Request $request)
 	{
+		$form_submit = false;
+
 		if($request->input("submit", "") == "save"){
+			$form_submit = true;
 			if($request->input("id") == 0){
 				$item = new ScrapeSource();
 			} else {
 				$item = ScrapeSource::find($request->input("id"));
 			}
 			$item->type = $request->input("type", "");
+			$item->article_type = $request->input("article_type", ArticleController::typeOther);
 			$item->title = $request->input("title");
 			$item->url = $request->input("url");
 			if($item->save()){
@@ -77,7 +91,8 @@ class DashboardController extends Controller {
 				$request->session()->flash('status', 'Failed!');
 			}
 		}
-		if($request->input("submit", "") == "x"){
+		elseif($request->input("submit", "") == "x"){
+			$form_submit = true;
 			$item = ScrapeSource::find($request->input("id"));
 			$item->deleted = 1;
 			$item->save();
@@ -87,7 +102,11 @@ class DashboardController extends Controller {
 		$items = ScrapeSource::where('deleted', 0)->orderBy('id', 'DESC')->get();
 		$divisions = Division::all();
 
-		return view('backend.sources', compact('items', 'divisions'));
+		if($form_submit){
+			return redirect()->route('backend.sources');
+		} else {
+			return view('backend.sources', compact('items', 'divisions'));
+		}
 	}
 
 	/**
@@ -96,7 +115,11 @@ class DashboardController extends Controller {
 	 */
 	public function articles(Request $request)
 	{
+
+		$form_submit = false;
+
 		if($request->input("submit", "") == "save"){
+			$form_submit = true;
 			if($request->input("id") == 0){
 				$item = new Article();
 			} else {
@@ -123,7 +146,8 @@ class DashboardController extends Controller {
 				$request->session()->flash('status', 'Failed!');
 			}
 		}
-		if($request->input("submit", "") == "x"){
+		elseif($request->input("submit", "") == "x"){
+			$form_submit = true;
 			$item = Article::find($request->input("id"));
 			$item->deleted = 1;
 			$item->save();
@@ -133,7 +157,12 @@ class DashboardController extends Controller {
 		$items = Article::where('deleted', 0)->orderBy('id', 'DESC')->get();
 		$divisions = Division::all();
 
-		return view('backend.articles', compact('items', 'divisions'));
+		if($form_submit){
+			return redirect()->route('backend.articles');
+		} else {
+			return view('backend.articles', compact('items', 'divisions'));
+		}
+
 	}
 
 }
