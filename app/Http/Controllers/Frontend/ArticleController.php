@@ -16,6 +16,7 @@ class ArticleController extends Controller
 	const typeNews = 1;
 	const typeScientificPaper = 2;
 	const typePublication = 3;
+	const typePressRelease = 4;
 	const typeOther = 9;
 
 	/**

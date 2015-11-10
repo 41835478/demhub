@@ -99,7 +99,7 @@ class SchedulerController extends Controller
 		foreach($sources as $source){
 			//$return = ScraperComponent::processRSSFeed($source);
 			//$messages .= $return['message'];
-			echo $source->url.'<br>';
+			$messages .= $source->url.'<br>';
 			$page = 	$request->input('page_from', 1);
 			$page_to = 	$request->input('page_to', 3);
 			$end = false;
@@ -109,7 +109,7 @@ class SchedulerController extends Controller
 
 			while(!$end && $page <= $page_to)
 			{
-				echo '<br>Analysing page: '.$page;
+				$messages .= '<br>Analysing page: '.$page;
 				$data = array();
 				if($page == 1)
 					$url = $source->url;
@@ -376,7 +376,7 @@ class SchedulerController extends Controller
 							continue;
 						}
 
-						var_dump($data);
+						//var_dump($data);
 						$save_result = ScraperComponent::saveArticle(ArticleController::typeNews, $source, $data);
 
 						if($save_result['status'] == 'ok'){
@@ -426,7 +426,7 @@ class SchedulerController extends Controller
 
 		echo $messages;
 
-		ScraperComponent::saveLog($messages, "scrapeIRDR_" . date("YmdHis") . ".log");
+		ScraperComponent::saveLog($messages, "scrapeEC_" . date("YmdHis") . ".log");
 	}
 
 
