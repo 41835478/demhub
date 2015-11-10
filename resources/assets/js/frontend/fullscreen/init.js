@@ -9,4 +9,9 @@ $(function () {
 		"../images/backgrounds/dried_earth.jpg"
 	]);
 
+	$(".js-landing-hero").backstretch([
+			"../images/backgrounds/landing-hero.jpg"
+		]);
+
+
 });
