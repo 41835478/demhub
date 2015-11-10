@@ -81,4 +81,8 @@ class FrontendController extends Controller {
 	{
 		return view('frontend.terms');
 	}
+	public function signUpSuccess()
+	{
+		return view('frontend.signUpSuccess');
+	}
 }

@@ -2,9 +2,9 @@
 
 @section('content')
 <div id="welcome_sign-up" class="row">
-    
+
     <div class="col-md-6 col-md-offset-3" style="color:#fff">
-        <h3>You've successfully signed up for DEMHUB!</h3>
+        <h3>THANK YOU FOR REGISTERING!</h3>
 		<br>
 		<h4>We've sent you a confirmation email.  Your account will be active once it has been verified by a DEMHUB staff member; this will be done within 24 hours.</h4>
 		<br>
