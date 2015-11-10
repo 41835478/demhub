@@ -1,12 +1,8 @@
 {
-  "css/backend.css": "css/backend-5cfabe7892.css",
-  "css/coming-soon.css": "css/coming-soon-ccb55490d9.css",
-<<<<<<< HEAD
-  "css/core.css": "css/core-7b14854d05.css",
-=======
-  "css/core.css": "css/core-59e0972317.css",
->>>>>>> a8d995968b8e643abae391853593308c742e3d50
-  "css/frontend.css": "css/frontend-0d32185e2a.css",
-  "js/backend.js": "js/backend-3b4f70a1d9.js",
-  "js/frontend.js": "js/frontend-c522b1a5cd.js"
+  "css/backend.css": "css/backend-30e6af23eb.css",
+  "css/coming-soon.css": "css/coming-soon-cf025320d2.css",
+  "css/core.css": "css/core-8788deae3b.css",
+  "css/frontend.css": "css/frontend-9df27e040d.css",
+  "js/backend.js": "js/backend-319808775e.js",
+  "js/frontend.js": "js/frontend-e9b4722f97.js"
 }
