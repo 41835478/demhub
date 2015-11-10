@@ -6,12 +6,17 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
+use Laracasts\Behat\Context\Migrator;
+use Laracasts\Behat\Context\DatabaseTransactions;
+use PHPUnit_Framework_Assert as PHPUnit;
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext
 {
+    use Migrator, DatabaseTransactions;
+
     /**
      * Initializes context.
      *
@@ -24,28 +29,34 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
-     * @Given that I am not a registered user
+     * @Given I am not a registered user
      */
-    public function thatIAmNotARegisteredUser()
+    public function iAmNotARegisteredUser()
     {
-        throw new PendingException();
+        PHPUnit::assertFalse(Auth::check());
     }
 
     /**
-     * @Given that I am a registered user
+     * @Given I am a registered user
      */
-    public function thatIAmARegisteredUser()
+    public function iAmARegisteredUser()
     {
-        throw new PendingException();
+        PHPUnit::assertTrue(Auth::check());
     }
 
     /**
-     * @Then I should be on the userhome
+     * @Given I am not logged in
      */
-    public function iShouldBeOnTheUserhome()
+    public function iAmNotLoggedIn()
     {
-        throw new PendingException();
+        PHPUnit::assertFalse(Auth::check());
     }
 
-
+    /**
+     * @When I wait :seconds second(s)
+     */
+    public function iWaitSecond($seconds)
+    {
+      $this->getSession()->wait(1000);
+    }
 }

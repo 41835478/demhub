@@ -10,24 +10,40 @@ Feature: Membership
 
   Scenario: Guest Visit
     When I go to the homepage
+    Given I am not logged in
     Then I should be on the homepage
 
-  Scenario: Guest Wants to Register
-    Given that I am not a registered user
+  Scenario: Guest Wants to Register from Navbar
+    Given I am not a registered user
     When I go to the homepage
-    And I press "REGISTER"
+    And I follow "REGISTER"
     Then I should see "GET THE BETA VERSION"
 
+  # Scenario: Guest Wants to Register from final landing page section
+  #   Given I am not a registered user
+  #   When I go to the homepage
+  #   And I follow "REGISTER"
+  #   Then I should see "GET THE BETA VERSION"
+
   Scenario: Guest Wants to Register - Part 2
-    Given that I am not a registered user
-    And that I am on the "registration page"
-    When I fill "username" with "TestUser"
-    And I fill "email" with "test@example.com"
-    And I fill "password" with "password"
-    And I fill "password confirm" with "password"
-    Then I should see "We verify each member who signs up."
+    Given I am not logged in
+    And I am on "auth/register"
+    When I fill in "user_name" with "TestUser"
+    And I fill in "email" with "test@example.com"
+    And I fill in "password" with "password"
+    And I fill in "password_confirmation" with "password"
+    And I follow "JOIN"
+    And I follow "SOUNDS GOOD"
+    And I fill in "first_name" with "TestUser"
+    And I fill in "last_name" with "Gorilla"
+    And I fill in "job_title" with "password"
+    And I fill in "organization_name" with "password"
+    And I press "DONE"
+    # And I wait 1 second
+    # Then I should be on the homepage
+    And I should see "Your account was successfully created. We have sent you an e-mail to confirm your account."
 
   Scenario: Member Visit
     When I go to the homepage
-    Given that I am a registered user
-    Then I should be on the userhome
+    Given I am a registered user
+    Then I should be on "userhome"

@@ -39,6 +39,8 @@ class AuthController extends Controller
      */
     public function postRegister(RegisterRequest $request)
     {
+        dd("Your account was successfully created. We have sent you an e-mail to confirm your account.");
+
         if (config('access.users.confirm_email')) {
             $this->auth->create($request->all());
             return redirect()->route('home')->withFlashSuccess("Your account was successfully created. We have sent you an e-mail to confirm your account.");

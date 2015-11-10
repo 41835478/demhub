@@ -98,6 +98,7 @@ footer, .push {
 div.division-landing-box {
   max-height: 220px;
   min-height: 110px;
+<<<<<<< HEAD
   color: #fff;
   padding: 10px 10px 10px 10px; }
   div.division-landing-box:hover div.division-landing-color {
@@ -110,18 +111,30 @@ div.division-landing-box {
     width: 140px;
     position: absolute;
     height: auto; }
+=======
+  color: #fff; }
+>>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
   div.division-landing-box div.division-landing-color {
     width: 90%;
     height: 100%;
     opacity: 0.6;
+<<<<<<< HEAD
     z-index: 0;
+=======
+>>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
     position: absolute;
     position: absolute;
     top: 50%;
     left: 50%;
     text-align: center;
     -webkit-transform: translate(-50%, -50%);
+<<<<<<< HEAD
     transform: translate(-50%, -50%); }
+=======
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    background-color: #fff; }
+>>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
   div.division-landing-box h3 {
     position: absolute;
     top: 50%;
@@ -164,14 +177,20 @@ div.auth-modal-email {
   background-color: #000; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
 div.auth-modal-email {
   width: 100%;
   height: 100%;
   padding: auto 20px auto 20px;
   text-align: center; }
 
+<<<<<<< HEAD
 >>>>>>> 08efa05e18cbbdeaead305d75e99edb3e1fc965f
+=======
+>>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
 .btn-group-lg > .btn, .btn-lg {
   border-radius: 3px !important; }
 
@@ -337,6 +356,7 @@ div#welcome_home {
   font-weight: bolder;
   font-family: 'Open Sans', sans-serif;
 <<<<<<< HEAD
+<<<<<<< HEAD
   background: #000 url("images/backgrounds/earth.jpg") no-repeat right top;
   background-size: cover;
   background-position: center center;
@@ -351,6 +371,13 @@ div#welcome_home {
   overflow-x: hidden;
   margin-top: 25px;
 >>>>>>> 08efa05e18cbbdeaead305d75e99edb3e1fc965f
+=======
+  background-color: #ddd !important;
+  background-size: cover;
+  background-position: center center;
+  overflow-x: hidden;
+  margin-top: 25px;
+>>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
   padding: 15%; }
 
 div#welcome_about {

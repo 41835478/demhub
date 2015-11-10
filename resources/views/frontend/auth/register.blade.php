@@ -32,8 +32,8 @@ body {
 	          <h3>We verify each member who signs up.</h3>
 					  <h3>In order to do so DEMHUB needs a few more details.</h3>
 						<div class="col-sm-offset-4">
-						<button type="button" class="btn btn-default btn-style-alt text-center" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
-					</button></div>
+						<a type="button" href="" class="btn btn-default btn-style-alt text-center" data-dismiss="modal" onclick="updateForm()">SOUNDS GOOD
+					</a></div>
 				</div>
 				<!-- <div class="modal-footer">
 
@@ -139,9 +139,9 @@ body {
 
 					<div class="form-group">
 		        <div class="col-sm-offset-4 col-sm-7">
-		        	<a type="button" class="btn btn-lg btn-default btn-style" onclick="pageUpdate()">JOIN</a>
-							<button type="button" id="modalSuccessButton" class="btn btn-default btn-style" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
-							<button type="button" id="modalErrorButton" class="btn btn-default btn-style" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
+		        	<a type="button" href="#" class="btn btn-lg btn-default" onclick="pageUpdate()">JOIN</a>
+							<button type="button" id="modalSuccessButton" class="btn btn-default" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
+							<button type="button" id="modalErrorButton" class="btn btn-default" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
 		        </div>
 		    	</div>
 
