@@ -12,7 +12,6 @@ div.division-landing-box {
     max-height: 220px;
     min-height: 110px;
     color:#fff;
-<<<<<<< HEAD
     max-width: 600px;
     padding:10px 10px 10px 10px;
     &:hover {
@@ -28,30 +27,21 @@ div.division-landing-box {
     // }
 
   div.division-landing-icon {
-      margin-left:50%;
+      margin-left: calc(50% - 20px);
       z-index: 5;
       width: 140px;
       position: absolute;
       display: block;
       // background-color: red;
     }
-=======
->>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
 
   div.division-landing-color{
       width:90%;
       height:100%;
       opacity: 0.6;
-<<<<<<< HEAD
       z-index: 0;
       position: absolute;
       @include centerer;
-=======
-      position: absolute;
-      @include centerer;
-      z-index: 0;
-      background-color: #fff;
->>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
     }
 
     h3 {

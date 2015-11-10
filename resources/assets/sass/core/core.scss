@@ -16,7 +16,7 @@
 //  Global Variables
 //  =========================================================
 //
-// @import "variables";
+@import "variables";
 //
 //  =========================================================
 //  Global Dependencies // include files in gulpfile.js
@@ -38,7 +38,7 @@
 @import "navigation";
 @import "footer";
 @import "divisions";
-@import "auth.scss";
+@import "auth";
 //
 //  =========================================================
 //  Patterns
@@ -48,6 +48,7 @@
  @import "forms";
  @import "modals";
  @import "newsfeed";
+ @import "alerts";
 //
 //  =========================================================
 //  Utils
@@ -66,9 +67,3 @@
 //  =========================================================
 //
  @import "shame";
- //
- //  =========================================================
- //  Variable file created by Kylo
- //  =========================================================
- //
-@import "variables";

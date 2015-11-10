@@ -1,8 +1,8 @@
-<nav id="guest-menu" class="navbar navbar-default navbar-fixed-top" style="padding-left:30px;max-height:30px">
+<nav id="guest-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="padding-left:30px;max-height:30px">
 	<div class="container-fluid">
 
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
 				<span class="sr-only">{{ trans('labels.toggle_navigation') }}</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -12,7 +12,7 @@
 			<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}</a>
 		</div>
 
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
 
 				<li>

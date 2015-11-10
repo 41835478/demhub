@@ -23,6 +23,20 @@ div.navbar-inverse {
 	color:#666666;
 }
 
+.dropdown-menu {
+	top: 50px !important;
+}
+
+.navbar-nav>li>a {
+    padding-top: 13px;
+    padding-bottom: 12px;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+	background: rgba(0,0,0,0.5) !important;
+}
 
 // division and variables
 
@@ -67,7 +81,6 @@ $div_text_color:  #fff !default;
 	opacity: 0.75;
 	filter: alpha(opacity=75);
 	color: white;
-	background-color: black;
 	text-align:center;
 	padding-top:8px;
 	text-transform:uppercase;
@@ -87,7 +100,6 @@ $div_text_color:  #fff !default;
 	opacity: 0.75;
 	filter: alpha(opacity=75);
 	color: white;
-	background-color: black;
 	text-align:center;
 	padding-top:8px;
 	text-transform:uppercase;
@@ -120,13 +132,6 @@ $div_text_color:  #fff !default;
 .dropdown {
 	height:20px !important;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 08efa05e18cbbdeaead305d75e99edb3e1fc965f
-=======
->>>>>>> 8cc2fe7e84e35498bb3c06c21e9acd86cd73b535
 
 
 // .divisions-navbar-section {
