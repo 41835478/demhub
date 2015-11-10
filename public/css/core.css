@@ -49,6 +49,9 @@ div.navbar-inverse {
 .navbar-inverse a {
   color: #666666; }
 
+.dropdown-toggle:focus {
+  background-color: #60a0ff; }
+
 .dropdown-menu {
   top: 50px !important; }
 

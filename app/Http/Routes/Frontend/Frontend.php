@@ -8,6 +8,9 @@ get('macros', 'FrontendController@macros');
 get('about', 'FrontendController@about');
 get('policy', 'FrontendController@policy');
 get('terms', 'FrontendController@terms');
+
+get('signUpSuccess', 'FrontendController@signUpSuccess')->name('signUpSuccess');
+
 get('forum/all_threads', 'ForumController@getViewAllThreads')->name('all_threads');
 get('forum/9-/thread/create', 'ForumController@getModCreateThread');
 post('forum/9-/thread/create', 'ForumController@postModCreateThread');

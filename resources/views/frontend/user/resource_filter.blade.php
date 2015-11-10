@@ -10,8 +10,10 @@ $( document ).ready(function() {
 </script>
 <div class="row">
 	<h3 style="text-align:center">SELECT A LOCATION</h3>
+	<div class="col-md-9 col-md-offset-2">
 	<span id="mapHideNote" style="display:none">Map navigation is accesible on screens with a width greater than 630px</span>
-	<div class="col-md-9 col-md-offset-2" id="map_container">
+	<button id="backButton" class="btn btn-default btn-style-alt" style="display:none">BACK</button>
+	<div id="map_container">
 
 		<div id="world_map" class="mapContainer" style="">
 		<!-- <h1>The World</h1>
@@ -199,6 +201,7 @@ $( document ).ready(function() {
 
 </div>
 </div>
+</div>
 <div id="polyCounters" style="display:none">
 	<input id="canada_poly_count" value="13"/>
 	<input id="australia_poly_count" value="7"/>
@@ -375,8 +378,8 @@ $( document ).ready(function() {
 				$("#"+country+"_map").show();
 				document.getElementById(country+"_map").style.visibility="";
 				document.getElementById(country+"_map").style.height="";
-
-
+				$("#backButton").attr("onclick","window.location.reload()");
+				document.getElementById("backButton").style.display="";
 			}
 
 	});
@@ -385,9 +388,10 @@ $( document ).ready(function() {
 	function firstFilterF(country){
 
 		var filterVar = country;
+		document.getElementById("country").value=country;
+
 		var country = filterVar.toLowerCase();
 		country=country.replace(/ /g,"_");
-
 		// var list =document.getElementsByClassName(country);
 
 		if($("tr").hasClass('in')) {
@@ -409,6 +413,9 @@ $( document ).ready(function() {
 			document.getElementById(country+"_map").style.visibility="";
 			document.getElementById(country+"_map").style.height="";
 			// document.getElementById("bottomMapSwap").style.height="";
+			$("#backButton").attr("onclick","window.location.reload()");
+
+			document.getElementById("backButton").style.display="";
 
 		}
 	function fillRegions(country){
@@ -441,10 +448,16 @@ $( document ).ready(function() {
 				$(".mapContainer").hide();
 				// document.getElementById(country+"_map").style.display="";
 				document.getElementById("mapListing").style.display="";
+
+				filterVar = $("select#country").val();
+				var country = filterVar.toLowerCase();
+				country=country.replace(/ /g,"_");
+				$("#backButton").attr("onclick","firstFilterF('"+country+"')");
+
 	}
 	});
 	function secondFilterF(region){
-
+		document.getElementById("region").value=region;
 		var filterVar = region;
 		var region = filterVar.toLowerCase();
 		region=region.replace(/ /g,"_");
@@ -461,6 +474,12 @@ $( document ).ready(function() {
 
 			// document.getElementById(country+"_map").style.display="";
 			document.getElementById("mapListing").style.display="";
+
+			filterVar = $("select#country").val();
+			var country = filterVar.toLowerCase();
+			country=country.replace(/ /g,"_");
+			$("#backButton").attr("onclick","firstFilterF('"+country+"')");
+
 	};
 	</script>
 @endsection('content')

@@ -82,11 +82,8 @@ class FrontendController extends Controller {
 		return view('frontend.terms');
 	}
 
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function fullscreen()
+	public function signUpSuccess()
 	{
-		return view('frontend.includes._fullscreen');
+		return view('frontend.signUpSuccess');
 	}
 }
