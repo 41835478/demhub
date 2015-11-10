@@ -125,17 +125,45 @@ class ScraperComponent
 
 		if($method == 'curl')
 		{
-			// Initialize the cURL session with the request URL
-			//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
-			$session = curl_init($url);
-			// Tell cURL to return the request data
+			$header = array();
+			$header[] = 'Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5';
+			$header[] = 'Cache-Control: max-age=0';
+			$header[] = 'Connection: keep-alive';
+			$header[] = 'Keep-Alive: 300';
+			$header[] = 'Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7';
+			$header[] = 'Accept-Language: en-us,en;q=0.5';
+			$header[] = 'Pragma: ';
+			$agent= 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36';
+
+			$session = curl_init();
+			$timeout = 50;
+			curl_setopt($session, CURLOPT_URL, $url);
 			curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($session, CURLOPT_CONNECTTIMEOUT, $timeout);
 			curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
-			// Execute cURL on the session handle
+			curl_setopt($session, CURLOPT_VERBOSE, true);
+			curl_setopt($session, CURLOPT_USERAGENT, $agent);
+			curl_setopt($session, CURLOPT_AUTOREFERER, true);
+			//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+			//curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+			//curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file_path);
+			//curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file_path);
+			//curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 			$response = curl_exec($session);
-			//$results = json_decode($response, true);
-			// Close the cURL session
+			if (curl_error($session))die(curl_error($session).': '.$url);
 			curl_close($session);
+
+//			// Initialize the cURL session with the request URL
+//			//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
+//			$session = curl_init($url);
+//			// Tell cURL to return the request data
+//			curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+//			curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+//			// Execute cURL on the session handle
+//			$response = curl_exec($session);
+//			//$results = json_decode($response, true);
+//			// Close the cURL session
+//			curl_close($session);
 		}
 
 		return $response;
@@ -151,6 +179,7 @@ class ScraperComponent
 	 * 'url'		Url to the complete article
 	 * 'title'		Article title
 	 * 'date'		publish_date of the article
+	 * 'excerpt'	(optional) if not available it'll be extracted from 'text'
 	 * 'lat'		latitude (optional)
 	 * 'lng'		longitude (optional)
 	 * 'location'	if lat, lng is not available, the function attempts to determine te lat, lng from
@@ -167,6 +196,8 @@ class ScraperComponent
 		$all_keywords = Keyword::where('deleted', '=', 0)->get();
 
 		$text = strip_tags(Helpers::verify($params['text'], ''));
+		$excerpt = Helpers::truncate( strip_tags( Helpers::verify($params['excerpt'], $text) ) );
+
 		$keys_divs = self::guessKeywords($text, $all_keywords);
 
 		// Checks if coords given, if not checks for location string.
@@ -186,7 +217,7 @@ class ScraperComponent
 		$model->source_id 	= $source!=null ? $source->id : null;
 		$model->source_url 	= Helpers::truncate(Helpers::verify($params['url']));
 		$model->title 		= Helpers::truncate(Helpers::verify($params['title'], ''));
-		$model->excerpt 	= Helpers::truncate($text);
+		$model->excerpt 	= $excerpt;
 		$model->keywords 	= Helpers::convertDBArrayToString($keys_divs['keywords']);
 		$model->language	= Helpers::verify($params['language']);
 		$model->city 		= $location_info!=null ? $location_info['city'] : null;
@@ -342,6 +373,26 @@ class ScraperComponent
 		}
 
 		return array('keywords'=>$keywords, 'weight'=>$net_weight, 'divisions'=>$divisions);
+	}
+
+	/**
+	 * Saves a given text to a log file
+	 *
+*@param $messages
+	 * @param $filename
+	 * @return int
+	 */
+	public static function saveLog($messages, $filename)
+	{
+		// convert html tags to something easier to read before saving the log file
+		$messages = str_replace("<br>", "\n", $messages);
+		$messages = strip_tags($messages);
+
+		//create the log folder if it doesnt already exist
+		if (!is_dir(storage_path() . "/logs/scheduler"))
+			mkdir(storage_path() . "/logs/scheduler", 0744, true);
+
+		return file_put_contents(storage_path() . "/logs/scheduler/" . $filename, $messages);
 	}
 
 

@@ -59,22 +59,17 @@ class SchedulerController extends Controller
 
 
 		echo $messages;
-		// convert html tags to something easier to read before saving the log file
-		$messages = str_replace("<br>", "\n", $messages);
-		$messages = strip_tags($messages);
 
-		if (!is_dir(storage_path()."/logs/scheduler"))
-			mkdir(storage_path()."/logs/scheduler", 0744, true);
-
-		file_put_contents(storage_path()."/logs/scheduler/scrapeRSS_".date("YmdHis").".log", $messages);
+		ScraperComponent::saveLog($messages, "scrapeRSS_" . date("YmdHis") . ".log");
 	}
 
 	/**
 	 * Downloads articles from http://www.irdrinternational.org/ based on 'IRDR' type sources on the scrape_sources DB table
 	 *
 	 * @param Request $request Accepted indexes:
-	 * - 'id' (optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
-	 * - 'all_pages' (optional) The function will go through up to 3 pages, if all_pages=1 is set it'll go through all but will likely timeout
+	 * - 'id' 			(optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
+	 * - 'page_from' 	(optional) start_page defines the starting page, default = 1
+	 * - 'page_to'	 	(optional) Max page to check, default = 3
 	 *
 	 */
 	public function scrapeIRDR(Request $request)
@@ -84,7 +79,7 @@ class SchedulerController extends Controller
 		set_time_limit(400);
 
 		//only lists the sources if ?id=list
-		if($request->input('id', 0) == 'list'){
+		if($request->input('id') == 'list'){
 			$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
 			foreach($sources as $source){
 				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
@@ -100,20 +95,21 @@ class SchedulerController extends Controller
 		}
 		$messages = '';
 
-		$page_count = $request->input('all_pages', 0)==0 ? 30 : 3;
 
 		foreach($sources as $source){
 			//$return = ScraperComponent::processRSSFeed($source);
 			//$messages .= $return['message'];
 			echo $source->url.'<br>';
-			$page = 1;
+			$page = 	$request->input('page_from', 1);
+			$page_to = 	$request->input('page_to', 3);
 			$end = false;
 			$return['status'] = '';
 			$return['count'] = 0;
 			$return['errors'] = 0;
 
-			while(!$end && $page <= $page_count)
+			while(!$end && $page <= $page_to)
 			{
+				echo '<br>Analysing page: '.$page;
 				$data = array();
 				if($page == 1)
 					$url = $source->url;
@@ -251,15 +247,188 @@ class SchedulerController extends Controller
 
 
 		echo $messages;
-		// convert html tags to something easier to read before saving the log file
-		$messages = str_replace("<br>", "\n", $messages);
-		$messages = strip_tags($messages);
 
-		if (!is_dir(storage_path()."/logs/scheduler"))
-			mkdir(storage_path()."/logs/scheduler", 0744, true);
-
-		file_put_contents(storage_path()."/logs/scheduler/scrapeIRDR_".date("YmdHis").".log", $messages);
+		ScraperComponent::saveLog($messages, "scrapeIRDR_" . date("YmdHis") . ".log");
 	}
+
+	/**
+	 * Downloads articles from http://ec.europa.eu/echo/news_en based on 'EC' type sources on the scrape_sources DB table
+	 *
+	 * @param Request $request Accepted indexes:
+	 * - 'id' 			(optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
+	 * - 'page_from' 	(optional) start_page defines the starting page, default = 1
+	 * - 'page_to'	 	(optional) Max page to check, default = 3
+	 *
+	 */
+	public function scrapeEC(Request $request)
+	{
+		//important to terminate the process in case the while loop goes haywire but shouldnt be
+		//too short for the algo to do it's job
+		set_time_limit(400);
+
+		//only lists the sources if ?id=list
+		if($request->input('id') == 'list'){
+			$sources = ScrapeSource::where('type', 'EC')->where('deleted', 0)->get();
+			foreach($sources as $source){
+				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
+			}
+			return;
+		}
+
+		// only does one source if ?id=<source_id> due to timeout issues or all if not provided
+		if( ($sid = $request->input('id', 0)) != 0){
+			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
+		} else {
+			$sources = ScrapeSource::where('type', 'EC')->where('deleted', 0)->get();
+		}
+		$messages = '';
+
+
+		foreach($sources as $source){
+			//$return = ScraperComponent::processRSSFeed($source);
+			//$messages .= $return['message'];
+			$messages .= $source->url.'<br>';
+			$page = 	$request->input('page_from', 1);
+			$page_to = 	$request->input('page_to', 3);
+			$end = false;
+			$return['status'] = '';
+			$return['count'] = 0;
+			$return['errors'] = 0;
+
+			while(!$end && $page <= $page_to)
+			{
+				$messages .= '<br>Analysing page: '.$page;
+				$data = array();
+				if($page == 1)
+					$url = $source->url;
+				else
+					$url = $source->url.'?page='.($page-1);
+
+				$response = ScraperComponent::getHttpResponse($url);
+				//$messages .= 'Respose: ' .$response;
+				if(trim($response) == ''){
+					$messages .= 'Error retrieving "'.$url.'" url.';
+					break;
+				}
+
+				$doc = new \DOMDocument();
+				@$doc->loadHTML($response);
+				$e1s = $doc->getElementsByTagName('div');
+				foreach($e1s as $e1){
+					if(strpos($e1->getAttribute('class'), 'views-row') !== false){
+						$e2s = $e1->getElementsByTagName('div');
+						foreach($e2s as $e2){
+							if($e2->getAttribute('class') == 'views-field views-field-field-image'){
+								$e3s = $e2->getElementsByTagName('img');
+								foreach($e3s as $e3){
+									$temp = $e3->getAttribute('src');
+									$data['media'][0]['url'] = trim($temp);
+								}
+							}
+
+							if($e2->getAttribute('class') == 'date-display-single'){
+								$data['date'] = date("Y-m-d H:-:s", strtotime($e2->textContent));
+							}
+
+							if(strpos($e2->getAttribute('class'), 'views-field views-field-body') !== false){
+								$e3s = $e2->getElementsByTagName('span');
+								foreach($e3s as $e3){
+									if($e3->getAttribute('class') == 'field-content'){
+										$data['excerpt'] = $e3->textContent;
+									}
+								}
+							}
+
+							if($e2->getAttribute('class') == 'views-field views-field-title'){
+								$e3s = $e2->getElementsByTagName('a');
+								foreach($e3s as $e3){
+									$data['title'] = trim(strip_tags($e3->textContent));
+									if(strpos($e3->getAttribute('href'), 'http') !== false){
+										$data['url'] = $e3->getAttribute('href');
+									} else {
+										$data['url'] = 'http://ec.europa.eu'.$e3->getAttribute('href');
+									}
+
+								}
+
+								$response = ScraperComponent::getHttpResponse($data['url']);
+								$doc = new \DOMDocument();
+								@$doc->loadHTML($response);
+								$e3s = $doc->getElementsByTagName('div');
+								foreach($e3s as $e3){
+									if($e3->getAttribute('class') == 'region region-content'){
+										$data['text'] = $e3->textContent;
+									}
+								}
+							}
+						}
+
+						// item exists in db
+						if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
+							$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
+							unset($data);
+							continue;
+						}
+						// item is older than the last the source was checked
+						elseif(isset($data['date']) && strtotime($data['date']) < strtotime($source->last_checked_item)){
+							$messages .= '<br><b>- Item is older than last check. It must\'ve been reviewed before.</b>';
+							unset($data);
+							continue;
+						}
+
+						var_dump($data);
+						$save_result = ScraperComponent::saveArticle(ArticleController::typeNews, $source, $data);
+
+						if($save_result['status'] == 'ok'){
+							$messages .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
+							$return['status'] = 'ok';
+							$return['count']++;
+						} else {
+							$messages .= '<br><b>- Error adding: '.$data['title'].'</b>';
+							$return['errors']++;
+						}
+					}
+
+					unset($data);
+				}
+
+				if($e1s->length == 0){
+					$end = true;
+				}
+				$page++;
+
+			}
+
+			$messages .= '<br><br><b>';
+			if($return['status'] == 'ok'){
+				$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.$return['errors'].' errors.';
+
+				$source->last_checked_item = date("Y-m-d H:i:s");
+				$source->save();
+
+				$mlog = new ScrapeLog();
+				$mlog->source_id = $source->id;
+				$mlog->automated = 0;
+				$mlog->url = $source->url;
+				$mlog->saved_count = $return['count'];
+				$mlog->last_item = date("Y-m-d H:i:s");
+				$mlog->data = '';//$return['data'];
+				$mlog->save();
+			} elseif($return['count'] == 0 && $return['errors'] == 0){
+				$messages .= 'Source '.$source->id.': Finished with 0 new items';
+			} else {
+				$messages .= 'Source '.$source->id.': DID NOT COMPLETE DUE TO AN ERROR.';
+			}
+			$messages .= '</b><br>';
+
+		}
+
+
+		echo $messages;
+
+		ScraperComponent::saveLog($messages, "scrapeIRDR_" . date("YmdHis") . ".log");
+	}
+
 
 	/**
 	 * Prepares scraper tables based on currently available data in the DB as well as new data
