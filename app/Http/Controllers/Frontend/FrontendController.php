@@ -81,4 +81,12 @@ class FrontendController extends Controller {
 	{
 		return view('frontend.terms');
 	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function fullscreen()
+	{
+		return view('frontend.includes._fullscreen');
+	}
 }

@@ -35,7 +35,8 @@ html, body {
 .wrapper {
   min-height: 100%;
   margin: 0 auto -100px;
-  /* the bottom margin is the negative value of the footer's height */ }
+  /* the bottom margin is the negative value of the footer's height */
+  height: 100%; }
 
 .navbar-default {
   border: none !important; }
@@ -132,6 +133,9 @@ div.navbar-inverse {
 footer, .push {
   height: 100px;
   /* '.push' must be the same height as 'footer' */ }
+
+footer.main-footer {
+  background: white; }
 
 div.division-landing-box {
   max-height: 220px;
@@ -902,6 +906,72 @@ div#conversation-head {
   padding: 5%;
   background-size: cover;
   box-shadow: -1px 0 2px #333; }
+
+/* ---------------------------------------------------------
+  *	Layout
+  * --------------------------------------------------------- */
+.page {
+  padding: 20px 0; }
+
+.wrapper-in {
+  padding: 15px 0;
+  color: white; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .page {
+    display: table;
+    width: 100%;
+    height: 100%;
+    padding: 40px 0; }
+  .wrapper-in {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    padding: 0; } }
+
+/* ---------------------------------------------------------
+ *	Body
+ * --------------------------------------------------------- */
+.main {
+  top: 50px;
+  width: 100%;
+  background-color: transparent;
+  display: block;
+  position: relative;
+  z-index: 2000;
+  text-align: center;
+  color: white; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .main {
+    height: calc(100% - 150px);
+    max-height: calc(100% - 150px); } }
+
+.fullheight-div {
+  height: 100%; }
+
+/* Home */
+.heading {
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 30px 0 10px; }
+
+/* ---------------------------------------------------------
+ *	Backstretch
+ * --------------------------------------------------------- */
+.backstretch:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100; }
 
 /*# sourceMappingURL=core.css.map */
 

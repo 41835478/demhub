@@ -16,6 +16,9 @@ elixir(function(mix) {
         .scripts([ // Combine front-end scripts
                 'plugins.js',
                 'frontend/main.js',
+                'frontend/plugins/jquery.backstretch.min.js',
+                'frontend/fullscreen/init.js',
+                'frontend/forms/register.js',
                 'frontend/coming-soon/jquery.countdown.js', // coming-soon js
                 'frontend/coming-soon/placeholders.min.js', // coming-soon js
                 'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
