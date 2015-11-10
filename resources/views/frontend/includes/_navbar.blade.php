@@ -9,16 +9,12 @@
 				<span class="icon-bar"></span>
 			</button>
 
-			<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}</a>
+			<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white-beta.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="nav navbar-nav">
-
-				<li>
-          <a><kbd>BETA</kbd></a>
-        </li>
-
+				<span>BETA</span>
 				@if (Auth::guest())
 					<li
 						@if (Request::url() === url('about'))
