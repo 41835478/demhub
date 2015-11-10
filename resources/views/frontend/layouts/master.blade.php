@@ -9,7 +9,7 @@
     <meta name="description" content="@yield('meta_description', 'Default Description')">
     <meta name="author" content="@yield('author', 'DEMHUB Developers')">
 
-
+    <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
