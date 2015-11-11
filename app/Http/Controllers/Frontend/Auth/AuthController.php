@@ -45,7 +45,7 @@ class AuthController extends Controller
         } else {
             //Use native auth login because do not need to check status when registering
             auth()->login($this->auth->create($request->all()));
-            return redirect()->route('frontend.dashboard');
+            return redirect()->route('userhome')->withFlashSuccess("Your account was successfully created. Welcome to DEMHUB.");
         }
     }
 
