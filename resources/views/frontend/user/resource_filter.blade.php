@@ -409,13 +409,13 @@ $( document ).ready(function() {
 			if (country == "new_zealand"){
 				document.getElementById("mapListing").style.display="";
 			}
+			$("#backButton").attr("onclick","window.location.reload()");
+
+			document.getElementById("backButton").style.display="";
 			$("#"+country+"_map").show();
 			document.getElementById(country+"_map").style.visibility="";
 			document.getElementById(country+"_map").style.height="";
 			// document.getElementById("bottomMapSwap").style.height="";
-			$("#backButton").attr("onclick","window.location.reload()");
-
-			document.getElementById("backButton").style.display="";
 
 		}
 	function fillRegions(country){
