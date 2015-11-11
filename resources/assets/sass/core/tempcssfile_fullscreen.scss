@@ -75,6 +75,10 @@
  *	Backstretch
  * --------------------------------------------------------- */
 
+.backstretch img {
+  position: fixed !important;
+}
+
 .backstretch:after {
 	content: '';
   position: absolute;

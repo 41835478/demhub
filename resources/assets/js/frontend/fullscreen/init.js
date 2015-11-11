@@ -10,8 +10,11 @@ $(function () {
 	]);
 
 	$(".js-landing-hero").backstretch([
-			"../images/backgrounds/landing-hero.jpg"
-		]);
+		"../images/backgrounds/landing-hero.jpg"
+	]);
 
+	$(".js-thankyou-page").backstretch([
+		"../images/backgrounds/landing-hero.jpg"
+	]);
 
 });

@@ -2,7 +2,11 @@
 	<div class="page">
 		<div class="wrapper-in">
 			<div class="container">
-				@include('forms.'.$form)
+				@if(isset($form))
+					@include('forms.'.$form)
+				@else
+					@include($partial)
+				@endif
 			</div>
 		</div>
 	</div>
