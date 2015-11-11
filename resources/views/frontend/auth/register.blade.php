@@ -11,9 +11,12 @@
 	</style>
 @endsection
 
-@section('fullscreen-content')
+@section('modal')
 	@include('modals._register_prompt')
+@endsection
 
+@section('fullscreen-content')
+<div>
 	<h2> GET THE BETA VERSION</h2>
 	{!! Form::open(['to' => 'auth/register', 'class' => 'form-horizontal', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100' ]) !!}
 	  <div id="form-part-1">
@@ -75,7 +78,7 @@
 	    </div>
 
 	    <div class="form-group">
-	      <div class="col-sm-offset-3 col-sm-7">
+	      <div class="col-sm-offset-2 col-sm-7">
 	        <div class="checkbox">
 	          <label>
 	            <input name="remember" type="checkbox"
@@ -91,7 +94,7 @@
 	      {!! Form::token() !!}
 
 	    <div class="form-group">
-	      <div class="col-sm-offset-3 col-sm-7">
+	      <div class="col-sm-offset-2 col-sm-7">
 	        <a type="button" href="#" class="btn btn-lg btn-default" onclick="pageUpdate()">JOIN</a>
 	        <button type="button" id="modalSuccessButton" class="btn btn-default" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
 	        <button type="button" id="modalErrorButton" class="btn btn-default" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
@@ -195,5 +198,14 @@
 
 	  </div>
 	{!! Form::close() !!}
-
+</div>
+	<script>
+	$(document).ready(function() {
+					    $('#form-part-1').keydown(function(event) {
+					        if (event.keyCode == 13) {
+					            pageUpdate();
+					         }
+					    });
+					});
+	</script>
 @endsection

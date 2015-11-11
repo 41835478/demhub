@@ -70,6 +70,7 @@
       @include('frontend.includes._footer')
     @endif
 
+    @yield('modal')
 
     @include('includes.scripts._google_analytics')
     @include('includes.scripts._hotjar_analytics')

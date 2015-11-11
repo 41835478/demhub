@@ -27,7 +27,7 @@
     <label for="question3">How can we improve DEMHUB?</label>
     <textarea class="form-control" rows="3" name="question3" placeholder="Answer...."></textarea>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="color:#000">
   <a type="button" class="btn btn-default btn-style" data-toggle="modal" data-target="#feedbackModal">DONE</a>
   <button type="submit" id="feedbackSubmit" class="btn btn-default btn-style" style="display:none">SUBMIT</button>
   </div>
