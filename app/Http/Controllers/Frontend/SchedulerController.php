@@ -31,9 +31,9 @@ class SchedulerController extends Controller
 
 		//only lists the sources if ?id=list
 		if($request->input('id') == 'list'){
-			$sources = ScrapeSource::where('type', 'RSS')->where('deleted', 0)->get();
+			$sources = ScrapeSource::where('type', 'RSS')->get();
 			foreach($sources as $source){
-				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
+				echo '<br>'.$source->id.': '.($source->deleted? 'DELETED | ' : '').$source->url.' | last checked:'.$source->last_checked_item;
 			}
 			return;
 		}
