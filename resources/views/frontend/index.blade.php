@@ -103,11 +103,11 @@
 			<div id="welcome_tertiary_text" class="row" >
 				<div class="col-md-12 text-center">
 					<h2>Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
-<<<<<<< HEAD
-					<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
-=======
+
+					<!-- <a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a> -->
+
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
->>>>>>> 3e3ec81a191d8eb7bb76530b6bb0a75e1680f989
+
 				</div>
 			</div>
 

@@ -11,11 +11,9 @@
 	</style>
 @endsection
 
-<<<<<<< HEAD
+
 @section('content')
-	@include('frontend.includes._fullscreen', ['form' => '_login'])
-	<p>Don't have an account? <a type="button" class="btn btn-default btn-style" href={{url('auth/register')}}>REGISTER NOW</a></p>
-=======
+
 @section('fullscreen-content')
 	<h2> LOGIN </h2>
 	{!! Form::open(['url' => 'auth/login', 'class' => 'form-horizontal', 'role' => 'form']) !!}
@@ -47,12 +45,13 @@
 
 		<div class="form-group">
 				<div class="col-md-5 col-md-offset-4">
-						<button type="submit" class="btn btn-default btn-lg btn-style" style="margin-right:10px">LOGIN</button>
+						<a type="submit" class="btn btn-default btn-lg btn-style" style="margin-right:10px">LOGIN</a>
 
 						{!! link_to('password/email', trans('labels.forgot_password'), ['style' => 'color:#60A0FF']) !!}
+							<p>Don't have an account? <a type="button" class="btn btn-default btn-style" href={{url('auth/register')}}>REGISTER NOW</a></p>
 				</div>
 		</div>
 	</div>
 	{!! Form::close() !!}
->>>>>>> 3e3ec81a191d8eb7bb76530b6bb0a75e1680f989
+
 @endsection
