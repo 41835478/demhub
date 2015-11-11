@@ -280,6 +280,9 @@ class SchedulerController extends Controller
 		//too short for the algo to do it's job
 		set_time_limit(400);
 
+		//temp
+		$no_datails = ($request->input('no_details', 0) == 1);
+
 		//only lists the sources if ?id=list
 		if($request->input('id') == 'list'){
 			$sources = ScrapeSource::where('type', 'EC')->where('deleted', 0)->get();
@@ -340,8 +343,14 @@ class SchedulerController extends Controller
 								}
 							}
 
-							if($e2->getAttribute('class') == 'date-display-single'){
-								$data['date'] = date("Y-m-d H:i:s", strtotime($e2->textContent));
+							if(strpos($e2->getAttribute('class'), 'label label-default') !== false){
+								$e3s = $e2->getElementsByTagName('span');
+								foreach($e3s as $e3){
+									if($e3->getAttribute('class') == 'date-display-single'){
+										$data['date'] = date("Y-m-d H:i:s", strtotime($e3->getAttribute('content'))); //$e2->textContent
+									}
+								}
+
 							}
 
 							if(strpos($e2->getAttribute('class'), 'views-field views-field-body') !== false){
@@ -365,24 +374,28 @@ class SchedulerController extends Controller
 
 								}
 
-								$response = ScraperComponent::getHttpResponse($data['url']);
-								$doc = new \DOMDocument();
-								@$doc->loadHTML($response);
-								$e3s = $doc->getElementsByTagName('div');
-								foreach($e3s as $e3){
-									if($e3->getAttribute('class') == 'region region-content'){
-										$data['text'] = $e3->textContent;
+								if(!$no_datails){
+									$response = ScraperComponent::getHttpResponse($data['url']);
+									$doc = new \DOMDocument();
+									@$doc->loadHTML($response);
+									$e3s = $doc->getElementsByTagName('div');
+									foreach($e3s as $e3){
+										if($e3->getAttribute('class') == 'region region-content'){
+											$data['text'] = $e3->textContent;
+										}
 									}
 								}
+
 							}
 						}
 
 						// item exists in db
 						if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
 							$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
-							if($existingart->publish_date == null){
+							if(isset($data['date'])){
 								$existingart->publish_date = $data['date'];
-								$messages .= " | fixed publish date to ".$data['date'];
+								$existingart->save();
+								$messages .= " | publish date: ".$data['date'];
 							}
 							unset($data);
 							continue;
