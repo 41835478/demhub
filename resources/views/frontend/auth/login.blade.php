@@ -13,4 +13,5 @@
 
 @section('content')
 	@include('frontend.includes._fullscreen', ['form' => '_login'])
+	<p>Don't have an account? <a type="button" class="btn btn-default btn-style" href={{url('auth/register')}}>REGISTER NOW</a></p>
 @endsection
