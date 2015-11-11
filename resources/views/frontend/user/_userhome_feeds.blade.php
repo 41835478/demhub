@@ -36,13 +36,13 @@
 
           <div class="inner-feedsbox">
             <h3>
-              <a
+              <a class="text-link-style"
                 @if(Auth::check())
                   target="_blank" href="{{ $item->source_url }}"
                 @else
                   href="" data-toggle="modal" data-target="#myModal"
                   @endif
-              style="color:#000">
+              >
               <?php
                 if (strlen($item->title) > 80){
                   $str = substr($item->title, 0, 80) . '...';
