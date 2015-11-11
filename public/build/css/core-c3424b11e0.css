@@ -1,7 +1,7 @@
 .division_health {
   background-color: #0D8E56; }
 
-.division_academia {
+.division_science {
   background-color: #1D73A3; }
 
 .division_response {
@@ -62,6 +62,22 @@ div.navbar-inverse {
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   background: rgba(0, 0, 0, 0.5) !important; }
+
+#secondary-menu li.active a {
+  background: #666;
+  color: #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff; }
+
+#secondary-menu li a {
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  color: #666; }
+
+#secondary-menu li a:hover, #secondary-menu li a:focus {
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  color: #111; }
 
 .navigation_properties {
   color: #fff;
@@ -196,28 +212,6 @@ div.auth-modal-email {
     width: 100%;
     height: 110px; } }
 
-.authbg {
-  padding: 0px;
-  background: url("http://beta.demhub.net/images/backgrounds/dried_earth.jpg") no-repeat fixed center;
-  background-size: cover;
-  opacity: 0.6;
-  overflow-x: hidden;
-  color: #000;
-  padding-bottom: 25%; }
-
-.authbg1 {
-  padding: 0px;
-  background: url("http://beta.demhub.net/images/backgrounds/dried_earth.jpg") no-repeat fixed center;
-  width: 100%;
-  height: 100%;
-  background-color: #000; }
-
-div.auth-modal-email {
-  width: 100%;
-  height: 100%;
-  padding: auto 20px auto 20px;
-  text-align: center; }
-
 .btn-group-lg > .btn, .btn-lg {
   border-radius: 3px !important; }
 
@@ -276,22 +270,88 @@ button.btn-style-alt:active {
   color: #000;
   border-color: #ccc; }
 
-.feedsbox {
-  min-width: 100%;
-  height: 300px;
-  display: inline-block;
-  margin: 10px 0px 5px 0px;
-  padding: 15px 0px 5px 0px;
-  border: 1px   solid #ddd;
-  float: left;
-  position: relative; }
+.btn-style-w {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border-color: #fff !important;
+  color: #fff !important; }
 
-.inner-feedsbox {
-  padding-left: 10px;
-  padding-right: 10px; }
+.btn-style-w:hover {
+  background-color: rgba(0, 0, 0, 0.6) !important; }
+
+.text-link-style {
+  color: #000; }
+
+.text-link-style:hover, .text-link-style:focus {
+  color: #60A0FF; }
 
 .alert {
   margin: 50px 0 0 0 !important; }
+
+/* ---------------------------------------------------------
+  *	Layout
+  * --------------------------------------------------------- */
+.page {
+  padding: 20px 0; }
+
+.wrapper-in {
+  padding: 15px 0;
+  color: white; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .page {
+    display: table;
+    width: 100%;
+    height: 100%;
+    padding: 40px 0; }
+  .wrapper-in {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    padding: 0; } }
+
+/* ---------------------------------------------------------
+ *	Body
+ * --------------------------------------------------------- */
+.main {
+  top: 50px;
+  width: 100%;
+  background-color: transparent;
+  display: block;
+  position: relative;
+  z-index: 1000;
+  text-align: center;
+  color: white; }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .main {
+    height: calc(100% - 150px);
+    max-height: calc(100% - 150px); } }
+
+.fullheight-div {
+  height: 100%; }
+
+/* Home */
+.heading {
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 30px 0 10px; }
+
+/* ---------------------------------------------------------
+ *	Backstretch
+ * --------------------------------------------------------- */
+.backstretch:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100; }
 
 div#message {
   margin-top: 10%; }
@@ -370,17 +430,6 @@ nav#guest-menu li.active a {
   color: #fff;
   text-decoration: none;
   text-shadow: none; }
-
-div#secondary-menu li.active a {
-  background: #666;
-  color: #fff;
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff; }
-
-div#secondary-menu li a {
-  border-left: 1px solid #fff;
-  border-right: 1px solid #fff;
-  color: #666; }
 
 #welcome_home {
   padding: 15%; }
@@ -901,75 +950,6 @@ div#conversation-head {
   padding: 5%;
   background-size: cover;
   box-shadow: -1px 0 2px #333; }
-
-/* ---------------------------------------------------------
-  *	Layout
-  * --------------------------------------------------------- */
-.page {
-  padding: 20px 0; }
-
-.wrapper-in {
-  padding: 15px 0;
-  color: white; }
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .page {
-    display: table;
-    width: 100%;
-    height: 100%;
-    padding: 40px 0; }
-  .wrapper-in {
-    display: table-cell;
-    vertical-align: middle;
-    height: 100%;
-    padding: 0; } }
-
-/* ---------------------------------------------------------
- *	Body
- * --------------------------------------------------------- */
-.main {
-  top: 50px;
-  width: 100%;
-  background-color: transparent;
-  display: block;
-  position: relative;
-  z-index: 1000;
-  text-align: center;
-  color: white; }
-
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .main {
-    height: calc(100% - 150px);
-    max-height: calc(100% - 150px); } }
-
-.fullheight-div {
-  height: 100%; }
-
-/* Home */
-.heading {
-  color: #fff;
-  font-size: 24px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin: 30px 0 10px; }
-
-/* ---------------------------------------------------------
- *	Backstretch
- * --------------------------------------------------------- */
-.backstretch img {
-  position: fixed !important; }
-
-.backstretch:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 100; }
 
 /*# sourceMappingURL=core.css.map */
 
