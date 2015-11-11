@@ -15,8 +15,8 @@
 
 				<div class="col-md-6 col-md-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '300')) !!}
-
-				<div class="col-md-6 col-md-offset-4 text-center">
+				<br></br>
+				<div class="col-md-6 col-md-offset-1 text-center">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
 				</div>

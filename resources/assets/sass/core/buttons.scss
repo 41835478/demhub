@@ -68,20 +68,16 @@ button.btn-style-alt:active{
 	border-color:#ccc;
 }
 
+
 .btn-style-w{
-	background:none !important;
+	background-color: rgba(0, 0, 0, 0.3)!important;
 	border-color:#fff !important;
 	color:#fff !important;
-}
-
-&:hover {
-	background:#0D1524;
-}
+	}
 
 .text-link-style {
 	color:#000;
 }
-
 .text-link-style:hover, .text-link-style:focus {
 	color:#60A0FF;
 }
