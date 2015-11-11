@@ -27,8 +27,8 @@ class CreateForumTableCategories extends Migration {
 			array(
 				['parent_category' => null, 'title' => 'Health', 										'subtitle' => '',
 				'weight' => 0, 'bg_color' => '0D8E56', 'slug' => 'health'],
-				['parent_category' => null, 'title' => 'Science & Academia', 				'subtitle' => '',
-				'weight' => 0, 'bg_color' => '1D73A3', 'slug' => 'academia'],
+				['parent_category' => null, 'title' => 'Science & Environment', 		'subtitle' => '',
+				'weight' => 0, 'bg_color' => '1D73A3', 'slug' => 'science'],
 				['parent_category' => null, 'title' => 'EM Practitioner & Response','subtitle' => '',
 				'weight' => 0, 'bg_color' => 'DB9421', 'slug' => 'response'],
 				['parent_category' => null, 'title' => 'Civil & Cyber Security', 		'subtitle' => '',
