@@ -13,17 +13,16 @@
 		<div class="col-xs-12">
 			<div id="welcome_home" class="row js-landing-hero">
 
-				<div class="col-md-6 col-md-offset-6 lading-logo">
+				<div class="col-md-6 col-md-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '300')) !!}
+				<br></br>
+				<div class="col-md-6 col-md-offset-1 text-center">
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
-
-				<div class="col-md-6 col-md-offset-4 text-center">
-					<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
-
 			</div>
 
-			<div class="" style='background: url("images/backgrounds/dots.png") repeat scroll 0 0 transparent;'>
+			<div class="" style="background:rgba(0, 0, 0, 0.6);">
 				<div id="welcome_about" class="row">
 
 					<div class="col-md-12">
@@ -31,34 +30,40 @@
 						<p>DEMHUB is a networking platform built to facilitate the exchange of information, experience and resources for the Global Disaster and Emergency Management Industry.</p>
 					</div>
 
-					<div class="col-md-2 col-md-offset-1">
-						<h3>News Feeds</h3>
+					<div class="col-md-2">
+						<h3>News</h3>
 						<h2><i class="fa fa-newspaper-o"></i></h2>
 						<p>Get the NEWS from reliable industry sources.</p>
 					</div>
 
 					<div class="col-md-2">
-						<h3>Join Discussion</h3>
+						<h3>Discuss</h3>
 						<h2><i class="fa fa-comments"></i></h2>
-						<p>Start or Join in discussions people should be talking about.</p>
+						<p>Exchange your thoughts with millions of industry professionals.</p>
 					</div>
 
 					<div class="col-md-2">
-						<h3>Track Events</h3>
-						<h2><i class="fa fa-map-pin"></i></h2>
-						<p>Track NEWS and discussions on issues that matter most to you.</p>
+						<h3>Connect</h3>
+						<h2><i class="fa fa-pencil-square-o"></i></h2>
+						<p>Find </p>
 					</div>
 
 					<div class="col-md-2">
-						<h3>Upload and Share</h3>
+						<h3>Research</h3>
 						<h2><i class="fa fa-files-o"></i></h2>
 						<p>Upload documents, reports, articles, and more to share with your network.</p>
 					</div>
 
 					<div class="col-md-2">
-						<h3>Your Custom Page</h3>
+						<h3>Share</h3>
 						<h2><i class="fa fa-pencil-square-o"></i></h2>
 						<p>Customize your page with the resources and info that are specific to you.</p>
+					</div>
+
+					<div class="col-md-2">
+						<h3>Track</h3>
+						<h2><i class="fa fa-map-pin"></i></h2>
+						<p>Track NEWS and discussions on issues that matter most to you.</p>
 					</div>
 
 				</div>
@@ -71,7 +76,7 @@
 														overflow: hidden;">
 				<div class="row">
 				<div class="col-md-12 text-center">
-					<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">SIX DIVISIONS</a>
 				</div>
 
 				<p>&nbsp;</p>
@@ -98,7 +103,11 @@
 			<div id="welcome_tertiary_text" class="row" >
 				<div class="col-md-12 text-center">
 					<h2>Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
+<<<<<<< HEAD
 					<a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a>
+=======
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
+>>>>>>> 3e3ec81a191d8eb7bb76530b6bb0a75e1680f989
 				</div>
 			</div>
 

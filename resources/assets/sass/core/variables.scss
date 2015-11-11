@@ -9,7 +9,7 @@
 
 $div_text_color:  #fff !default;
 $health_color: #0D8E56;
-$academia_color: #1D73A3;
+$science_color: #1D73A3;
 $response_color: #DB9421;
 $security_color: #848889;
 $continuity_color: #933131;
@@ -22,8 +22,8 @@ $humanitarian_color: #754293;
 //   content: "\f09b";
 // 	font-family: FontAwesome;
 // }
-.division_academia {
-	  background-color:$academia_color;
+.division_science {
+	  background-color:$science_color;
 	}
 .division_response {
 	  background-color:$response_color;
