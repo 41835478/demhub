@@ -44,9 +44,9 @@
 
 				</div><!-- panel body -->
 
-            </div><!-- panel -->
+      </div><!-- panel -->
 
-        </div><!-- col-md-8 -->
+    </div><!-- col-md-8 -->
 
-    </div><!-- row -->
+  </div><!-- row -->
 @endsection

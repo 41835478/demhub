@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "css/backend.css": "css/backend-abe177e953.css",
   "css/coming-soon.css": "css/coming-soon-35217d6844.css",
   "css/core.css": "css/core-aeaad5a5a4.css",
@@ -11,6 +12,12 @@
   "css/coming-soon.css": "css/coming-soon-ccb55490d9.css",
   "css/core.css": "css/core-611baaaaa2.css",
   "css/frontend.css": "css/frontend-0d32185e2a.css",
+=======
+  "css/backend.css": "css/backend-30e6af23eb.css",
+  "css/coming-soon.css": "css/coming-soon-cf025320d2.css",
+  "css/core.css": "css/core-d84f6f90e6.css",
+  "css/frontend.css": "css/frontend-9df27e040d.css",
+>>>>>>> e19ba09cb2c97cb80546b197cccd377859fd04ff
   "js/backend.js": "js/backend-319808775e.js",
   "js/frontend.js": "js/frontend-23dec4d62b.js"
 >>>>>>> f7da941fc8f2ec5903f0b9ff9ad23b0a5067d705
