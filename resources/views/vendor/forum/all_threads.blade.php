@@ -15,7 +15,7 @@
 
     <thead>
         <tr>
-            <th><a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-default btn-style-alt">NEW THREAD</a></th>
+            <th><a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-default btn-style-alt">START A DISCUSSION</a></th>
 			<th>DIVISION</th>
 
 			<th>AUTHOR</th>
@@ -25,7 +25,7 @@
     <tbody>
       @foreach ($threads as $thread)
       <tr>
-        <td><a href="{{$thread->route}}" ><b>{{$thread->title}}</b></a></td>
+        <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread->title}}</b></a></td>
         <td>
         <a href="{{url('/division/'.$thread->category->slug)}}">
 					<img src="/images/backgrounds/nothing.png" alt="" class="img-circle img-responsive" style="background-color:#{{$thread->category->bg_color}};height:22px">
