@@ -1,8 +1,17 @@
 {
+<<<<<<< HEAD
   "css/backend.css": "css/backend-abe177e953.css",
   "css/coming-soon.css": "css/coming-soon-35217d6844.css",
   "css/core.css": "css/core-aeaad5a5a4.css",
   "css/frontend.css": "css/frontend-88de0379bc.css",
   "js/backend.js": "js/backend-864b9e7e0b.js",
   "js/frontend.js": "js/frontend-fcd14fc0e1.js"
+=======
+  "css/backend.css": "css/backend-5cfabe7892.css",
+  "css/coming-soon.css": "css/coming-soon-ccb55490d9.css",
+  "css/core.css": "css/core-611baaaaa2.css",
+  "css/frontend.css": "css/frontend-0d32185e2a.css",
+  "js/backend.js": "js/backend-319808775e.js",
+  "js/frontend.js": "js/frontend-23dec4d62b.js"
+>>>>>>> f7da941fc8f2ec5903f0b9ff9ad23b0a5067d705
 }

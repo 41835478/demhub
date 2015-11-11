@@ -67,6 +67,7 @@ button.btn-style-alt:active{
 	color:#000;
 	border-color:#ccc;
 }
+<<<<<<< HEAD
 
 .btn-style-w{
 	background:none !important;
@@ -75,4 +76,11 @@ button.btn-style-alt:active{
 	&:hover {
 		background:#0D1524;
 	}
+=======
+.text-link-style {
+	color:#000;
+}
+.text-link-style:hover, .text-link-style:focus {
+	color:#60A0FF;
+>>>>>>> f7da941fc8f2ec5903f0b9ff9ad23b0a5067d705
 }

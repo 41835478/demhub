@@ -285,7 +285,7 @@ $( document ).ready(function() {
 				@foreach($resourceEntry as $entry)
 				<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
 				<td>
-    			<a target="_blank" href="{{$entry->url}}" style="text-transform: capitalize">{{$entry->name}}</a>
+    			<a target="_blank" href="{{$entry->url}}" class="text-link-style" style="text-transform: capitalize">{{$entry->name}}</a>
 				</td>
 				</tr>
 				@endforeach
