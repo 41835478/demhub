@@ -23,7 +23,7 @@
 			</div>
 
 			<div class="" style="">
-				<div id="welcome_about" class="row">
+				<div id="welcome_about" class="row"  >
 
 					<div class="col-md-12">
 						<h1>What is DEMHUB?</h1>
