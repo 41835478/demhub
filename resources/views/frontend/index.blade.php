@@ -22,7 +22,7 @@
 				</div>
 			</div>
 
-			<div class="" style="background:rgba(0, 0, 0, 0.6);">
+			<div class="" style="">
 				<div id="welcome_about" class="row">
 
 					<div class="col-md-12">
@@ -45,19 +45,19 @@
 					<div class="col-md-2">
 						<h3>Connect</h3>
 						<h2><i class="fa fa-pencil-square-o"></i></h2>
-						<p>Find </p>
+						<p>Discover and get discovered within professional circles.</p>
 					</div>
 
 					<div class="col-md-2">
 						<h3>Research</h3>
 						<h2><i class="fa fa-files-o"></i></h2>
-						<p>Upload documents, reports, articles, and more to share with your network.</p>
+						<p>Explore the academic researches about disaster management as well as publish your own.</p>
 					</div>
 
 					<div class="col-md-2">
 						<h3>Share</h3>
 						<h2><i class="fa fa-pencil-square-o"></i></h2>
-						<p>Customize your page with the resources and info that are specific to you.</p>
+						<p>Upload documents, reports, articles, and more to share with your network.</p>
 					</div>
 
 					<div class="col-md-2">

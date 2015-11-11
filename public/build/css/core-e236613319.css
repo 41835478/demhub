@@ -212,6 +212,20 @@ div.auth-modal-email {
     width: 100%;
     height: 110px; } }
 
+.feedsbox {
+  min-width: 100%;
+  height: 300px;
+  display: inline-block;
+  margin: 10px 0px 5px 0px;
+  padding: 15px 0px 5px 0px;
+  border: 1px solid #ddd;
+  float: left;
+  position: relative; }
+
+.inner-feedsbox {
+  padding-left: 10px;
+  padding-right: 10px; }
+
 .btn-group-lg > .btn, .btn-lg {
   border-radius: 3px !important; }
 
@@ -436,11 +450,7 @@ nav#guest-menu li.active a {
 
 div#welcome_about {
   padding: 6% 1% 10%;
-  /* Chrome 10+, Saf5.1+ */
-  /* FF3.6+ */
-  /* IE10 */
-  /* Opera 11.10+ */
-  background: linear-gradient(90deg, #16222A 10%, #3A6073 90%);
+  background: #050609;
   /* W3C */
   z-index: -1;
   font-weight: bolder;
