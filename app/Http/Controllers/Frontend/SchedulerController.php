@@ -12,7 +12,6 @@ use App\Models\ScrapeSource;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Nathanmac\Utilities\Parser\Parser;
 
 class SchedulerController extends Controller
 {
@@ -24,11 +23,17 @@ class SchedulerController extends Controller
 	 *
 	 * The results will be logged under /storage/logs/scheduler/scrapeRSS_<YmdHis>.log for future review
 	 */
-	public function scrapeRSS()
+	public function scrapeRSS(Request $request)
 	{
 		set_time_limit(1000);
 		$messages = '';
-		$sources = ScrapeSource::where('deleted', 0)->where('type', 'RSS')->get();
+		//$sources = ScrapeSource::where('deleted', 0)->where('type', 'RSS')->get();
+
+		if( ($sid = $request->input('id', 0)) != 0){
+			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
+		} else {
+			$sources = ScrapeSource::where('type', 'RSS')->where('deleted', 0)->get();
+		}
 
 		foreach($sources as $source){
 			$return = ScraperComponent::processRSSFeed($source);
