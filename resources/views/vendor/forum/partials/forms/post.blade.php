@@ -10,7 +10,7 @@
 
 @if ($division_show == true)
 <div class="form-group">
-  {!! Form::select('division_selection', array('0' => 'Select One','1' => 'Health', '2' => 'Science & Academia', '3' => 'EM Practitioner & Response', '4' => 'Civil & Cyber Security', '5' => 'Business Continuity', '6' => 'NGO & Humanitarian'), '0', array('class' => 'form-control', 'id' => 'division_selection')) !!}
+  {!! Form::select('division_selection', array('0' => 'Select One','1' => 'Health', '2' => 'Science & Environment', '3' => 'EM Practitioner & Response', '4' => 'Civil & Cyber Security', '5' => 'Business Continuity', '6' => 'NGO & Humanitarian'), '0', array('class' => 'form-control', 'id' => 'division_selection')) !!}
 </div>
 @else
 

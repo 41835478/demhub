@@ -29,6 +29,15 @@ class SchedulerController extends Controller
 		$messages = '';
 		//$sources = ScrapeSource::where('deleted', 0)->where('type', 'RSS')->get();
 
+		//only lists the sources if ?id=list
+		if($request->input('id') == 'list'){
+			$sources = ScrapeSource::where('type', 'RSS')->where('deleted', 0)->get();
+			foreach($sources as $source){
+				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
+			}
+			return;
+		}
+
 		if( ($sid = $request->input('id', 0)) != 0){
 			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
 		} else {
@@ -332,7 +341,7 @@ class SchedulerController extends Controller
 							}
 
 							if($e2->getAttribute('class') == 'date-display-single'){
-								$data['date'] = date("Y-m-d H:-:s", strtotime($e2->textContent));
+								$data['date'] = date("Y-m-d H:i:s", strtotime($e2->textContent));
 							}
 
 							if(strpos($e2->getAttribute('class'), 'views-field views-field-body') !== false){
@@ -371,6 +380,10 @@ class SchedulerController extends Controller
 						// item exists in db
 						if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
 							$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
+							if($existingart->publish_date == null){
+								$existingart->publish_date = $data['date'];
+								$messages .= " | fixed publish date to ".$data['date'];
+							}
 							unset($data);
 							continue;
 						}

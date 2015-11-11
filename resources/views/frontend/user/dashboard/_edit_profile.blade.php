@@ -72,7 +72,7 @@
           <label for="division" class="col-sm-4 control-label">Division</label>
           <div class="col-sm-8">
             {!! Form::select('division', array('0' => 'Select One', '1' => 'Health & Epidemics',
-            '2' => 'Science, Research & Academia', '3' => 'EM Practitioner & Response', '4' => 'Civil & Cyber Security',
+            '2' => 'Science & Environment', '3' => 'EM Practitioner & Response', '4' => 'Civil & Cyber Security',
             '5' => 'Business Continuity', '6' => 'NGO & Humanitarian'
             ),'0', array('class' => 'form-control')) !!}
          </div>
