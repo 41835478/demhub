@@ -30,7 +30,7 @@
 	      <div class="col-md-5">
 	        {!! Form::input('user_name','user_name',old('user_name'), ['class' => 'form-control','required','id' => 'user_name']) !!}
 	      </div>
-	      <div class="col-md-7 col-md-offset-4">
+	      <div class="col-md-5 col-md-offset-4">
 	        <div class="help-block with-errors" style="background-color:#fff"></div>
 	      </div>
 	    </div>
@@ -58,7 +58,7 @@
 	      <div class="col-md-5">
 	        {!! Form::input('password', 'password', null, ['class' => 'form-control','data-minlength'=>'6','id' =>'password']) !!}
 	      </div>
-	      <div class="col-md-7 col-md-offset-4">
+	      <div class="col-md-5 col-md-offset-4">
 	        <div class="help-block with-errors" style="background-color:#fff"></div>
 	      </div>
 	    </div>
@@ -72,7 +72,7 @@
 	      <div class="col-md-5">
 	        {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control','data-minlength'=>'6']) !!}
 	      </div>
-	      <div class="col-md-7 col-md-offset-4">
+	      <div class="col-md-5 col-md-offset-4">
 	        <div class="help-block with-errors" style="background-color:#fff"></div>
 	      </div>
 	    </div>
