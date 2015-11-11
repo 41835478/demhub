@@ -13,14 +13,13 @@
 		<div class="col-xs-12">
 			<div id="welcome_home" class="row js-landing-hero">
 
-				<div class="col-md-6 col-md-offset-6 lading-logo">
+				<div class="col-md-6 col-md-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '300')) !!}
-				</div>
 
 				<div class="col-md-6 col-md-offset-4 text-center">
-					<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">TRY THE BETA</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
-
+				</div>
 			</div>
 
 			<div class="" style='background: url("images/backgrounds/dots.png") repeat scroll 0 0 transparent;'>
@@ -71,7 +70,7 @@
 														overflow: hidden;">
 				<div class="row">
 				<div class="col-md-12 text-center">
-					<a type="button" class="btn btn-default btn-lg btn-style" href="{{url('divisions')}}">SIX DIVISIONS</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">SIX DIVISIONS</a>
 				</div>
 
 				<p>&nbsp;</p>
@@ -98,7 +97,7 @@
 			<div id="welcome_tertiary_text" class="row" >
 				<div class="col-md-12 text-center">
 					<h2>Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
-					<a type="button" class="btn btn-default btn-lg" href={{url('auth/register')}}>REGISTER</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
 				</div>
 			</div>
 

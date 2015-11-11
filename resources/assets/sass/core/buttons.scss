@@ -67,3 +67,12 @@ button.btn-style-alt:active{
 	color:#000;
 	border-color:#ccc;
 }
+
+.btn-style-w{
+	background:none !important;
+	border-color:#fff !important;
+	color:#fff !important;
+	&:hover {
+		background:#0D1524;
+	}
+}
