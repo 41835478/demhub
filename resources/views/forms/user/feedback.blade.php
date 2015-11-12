@@ -4,9 +4,9 @@
   <!--App details-->
   <div class="form-group" style="color:#fff">
     <label for="question1">Overall, are you finding DEMHUB useful?</label><br>
-    <label style="font-size:50%">0 - lowest, 5 - highest</label><br>
+    <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
     <?php
-      for($x = 0; $x < 6; $x++){
+      for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">
               <input type="radio" class="form" name="question1" value="'.$x.'">'.$x.'</label>';
       }
@@ -16,9 +16,9 @@
   <br>
   <div class="form-group" style="color:#fff">
     <label for="question2">Do you like the layout of the site?</label><br>
-    <label style="font-size:50%">0 - lowest, 5 - highest</label><br>
+    <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
     <?php
-      for($x = 0; $x < 6; $x++){
+      for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">
               <input type="radio" class="form" name="question2" value="'.$x.'">'.$x.'</label>';
       }
@@ -27,10 +27,10 @@
   </div>
   <br>
   <div class="form-group" style="color:#fff">
-    <label for="question3">Did you find the site navigation?</label><br>
-    <label style="font-size:50%">0 - lowest, 5 - highest</label><br>
+    <label for="question3">Did you find the site easy to navigation?</label><br>
+    <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
     <?php
-      for($x = 0; $x < 6; $x++){
+      for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">
               <input type="radio" class="form" name="question3" value="'.$x.'">'.$x.'</label>';
       }
