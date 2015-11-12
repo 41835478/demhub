@@ -8,7 +8,7 @@
   <div style="padding-bottom:20px"></div>
 @endif
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 
     @foreach($newsFeeds as $item)
@@ -21,7 +21,6 @@
             $width = 100/count($articleDivs);
             $marginLeft = 0;
           }
-
         ?>
 
         <div class = "feedsbox">
