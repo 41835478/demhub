@@ -75,7 +75,7 @@ $( document ).ready(function() {
 	<div id="united_states_map" class="mapContainer" style="visibility:hidden;height:1px">
 	<!-- <h1>The United States of America</h1>
 	<p>This map generated from <a href="http://en.wikipedia.org/wiki/Image:Map_of_USA_with_state_names.svg">"Map of USA with state names.svg"</a>.</p> -->
-	<img class="map" src="./images/maps/demo_usa2.png" style="max-width:100%;" usemap="#usa">
+	<img class="map" src="./images/maps/demo_usa.png" style="max-width:100%;" usemap="#usa">
 	<map name="usa" style="text-transform: capitalize;">
 	<area  onclick="secondFilterF(this.title)" title="south carolina" shape="poly" coords="735,418, 734,419, 731,418, 731,416, 729,413, 727,411, 725,410, 723,405, 720,399, 716,398, 714,396, 713,393, 711,391, 709,390, 707,387, 704,385, 699,383, 699,382, 697,379, 696,378, 693,373, 690,373, 686,371, 684,369, 684,368, 685,366, 687,365, 687,363, 693,360, 701,356, 708,355, 724,355, 727,356, 728,360, 732,359, 745,358, 747,358, 760,366, 769,374, 764,379, 762,385, 761,391, 759,392, 758,394, 756,395, 754,398, 751,401, 749,404, 748,405, 744,408, 741,409, 742,412, 737,417, 735,418">
 	<area  onclick="secondFilterF(this.title)" title="hawaii" shape="poly" coords="225,521, 227,518, 229,517, 229,518, 227,521, 225,521">

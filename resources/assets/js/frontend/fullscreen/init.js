@@ -6,7 +6,7 @@ $(function () {
 	 */
 
 	$(".js-fullheight-body").backstretch([
-		"../images/backgrounds/dried_earth.jpg"
+		"../images/backgrounds/fullscreen.jpg"
 	]);
 
 	$(".js-landing-hero").backstretch([

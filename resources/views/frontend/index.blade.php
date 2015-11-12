@@ -69,7 +69,7 @@
 				</div>
 			</div>
 
-			<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/bridge.jpg') no-repeat fixed;										-webkit-background-size: cover;
+			<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/welcome.jpg') no-repeat fixed;										-webkit-background-size: cover;
 														-moz-background-size: cover;
 														-o-background-size: cover;
 														background-size: cover;

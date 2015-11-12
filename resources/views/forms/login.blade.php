@@ -2,7 +2,7 @@
 	@if (Session::has('message'))
         <span>{{Session::get('message')}}</span>
     @endif
-    <div class="form-group">   
+    <div class="form-group">
         <label for="name" class="col-sm-3 control-label" style="font-size:110%">Username or Email</label>
         <div class="col-sm-9">
         	<input type="text" name="username" class="form-control" id="username" placeholder="Username or Email"
@@ -15,9 +15,9 @@
             <span>{{$errors->first('Username')}}</span>
         @endif
   	</div>
-    
+
     <div class="form-group">
-        
+
         <label for="inputPassword3" class="col-sm-3 control-label" style="font-size:110%">Password</label>
         <div class="col-sm-9">
         	<input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
@@ -41,7 +41,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-10">
-        	<button type="submit" class="btn btn-default btn-lg btn-style">LOG IN</button>
+					{!! Form::submit('LOG IN', ['class' => 'btn btn-default btn-lg btn-style']) !!}
         </div>
     </div>
 	<br><br><br>
