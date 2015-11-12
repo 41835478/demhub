@@ -26,7 +26,7 @@
 					</map>
 				</div>
 
-				<div id="canada_map" class="mapContainer" style="visibility:hidden;height:1px">
+				<div id="canada_map" class="mapContainer" style="visibility:hidden;height:1px;">
 					<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" width="690" height="669" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
 					<map name="canada" style="text-transform: capitalize;">
 					<!-- <area shape="rect" coords="998,967,1000,969" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" /> -->

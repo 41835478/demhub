@@ -1485,6 +1485,9 @@ $("select#country").change(function(){
       if (country == "new_zealand"){
         document.getElementById("mapListing").style.display="";
       }
+			if (country == "canada"){
+        document.getElementById("canada_map").style.marginTop="-200px";
+      }
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
@@ -1518,6 +1521,9 @@ function firstFilterF(country){
     if (country == "new_zealand"){
       document.getElementById("mapListing").style.display="";
     }
+		if (country == "canada"){
+			document.getElementById("canada_map").style.marginTop="-200px";
+		}
     $("#backButton").attr("onclick","window.location.reload()");
 
     document.getElementById("backButton").style.display="";

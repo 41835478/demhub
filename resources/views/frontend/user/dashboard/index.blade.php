@@ -7,12 +7,12 @@
     <div class="dashboard-page sb-l-o sb-r-c onload-check sb-l-m sb-l-disable-animation">
 
 @include('frontend.user.dashboard.menu._dashboard_menu')
-
+  </div>
 
       <div id="content_wrapper">
       	@include ('frontend.user.dashboard._edit_profile')
   		</div>
-    </div>
+
   </div>
 <!-- <script>
 $(document).ready(function(){

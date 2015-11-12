@@ -25,7 +25,7 @@
     @else
       <li>
     @endif
-      <a href="javascript:comingSoonP('connections_title')" id="connections_title"><i class="fa fa-users"></i> CONNECTIONS</a>
+      <a href="javascript:comingSoonP('connections_title')" class="text-primary" data-toggle="tooltip" data-placement="top" id="connections_title"><i class="fa fa-users"></i> CONNECTIONS</a>
     </li>
 
     @if(Request::url() === url('privacy_settings'))
