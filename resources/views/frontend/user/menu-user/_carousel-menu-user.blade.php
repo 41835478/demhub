@@ -13,7 +13,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="./images/backgrounds/bridge.jpg" class="img-responsive" alt="" style="">
+      <img src="./images/backgrounds/welcome.jpg" class="img-responsive" alt="" style="">
       <div class="carousel-control" style="opacity: 1;filter: alpha(opacity=100);padding-left:200px;padding-top:20px">
       	<p>WELCOME<font style="visibility:hidden">*</font>TO<font style="visibility:hidden">*</font>DEMHUB!</p>
       </div>

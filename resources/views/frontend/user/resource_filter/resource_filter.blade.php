@@ -4,9 +4,9 @@
 	<div class="row">
 		<h3 style="text-align:center">SELECT A LOCATION</h3>
 		<div class="col-md-9 col-md-offset-2">
-			<span id="mapHideNote" style="display:none">Map navigation is accesible on screens with a width greater than 630px</span>
+			<span class="hidden-md hidden-lg">Map navigation is currently only accesible on desktop. Mobile map coming soon.</span>
 			<button id="backButton" class="btn btn-default btn-style-alt" style="display:none">BACK</button>
-			<div id="map_container">
+			<div id="map_container" class="visible-md visible-lg">
 
 				<div id="world_map" class="mapContainer">
 					<!-- <h1>The World</h1>
@@ -20,7 +20,7 @@
 				<div id="united_states_map" class="mapContainer" style="visibility:hidden;height:1px">
 					<!-- <h1>The United States of America</h1>
 					<p>This map generated from <a href="http://en.wikipedia.org/wiki/Image:Map_of_USA_with_state_names.svg">"Map of USA with state names.svg"</a>.</p> -->
-					<img class="map" src="./images/maps/demo_usa2.png" style="max-width:100%;" usemap="#usa">
+					<img class="map" src="./images/maps/demo_usa.png" style="max-width:100%;" usemap="#usa">
 					<map name="usa" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter.countries._usa')
 					</map>

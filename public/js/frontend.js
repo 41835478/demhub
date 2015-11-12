@@ -75,7 +75,7 @@ $(function () {
 	 */
 
 	$(".js-fullheight-body").backstretch([
-		"../images/backgrounds/dried_earth.jpg"
+		"../images/backgrounds/fullscreen.jpg"
 	]);
 
 	$(".js-landing-hero").backstretch([
@@ -1442,36 +1442,6 @@ $( document ).ready(function() {
 
 var countries = ["canada","united_states","australia"];
 var counter=0;
-$(document).ready(function(){
-  if ($(window).width() < 630) {
-    $("#map_container").hide();
-    $("#mapHideNote").show();
-  }
-});
-
-$(window).resize(function(){
-  counter++;
-  if ($(window).width() < 600 && counter % 10 === 0) {
-    // for (var i=1;i<=countries.length;i++){
-    // 	changeCoordinates(countries[i]);
-    // }
-    $("#map_container").hide();
-    $("#mapHideNote").show();
-  }
-  else if ($(window).width() > 600 && counter % 10 === 0) {
-    // for (var i=1;i<=countries.length;i++){
-    // 	changeCoordinates(countries[i]);
-    // }
-    $("#map_container").show();
-  }
-  // else if ($(window).width() < 768) {
-  // 	for (var i=1;i<=countries.length;i++){
-  // 		changeCoordinates(countries[i]);
-  // 	}
-  //
-  // 	console.log("working");
-  // }
-});
 
 function changeCoordinates (mapCountry){
   var widthDiff= $("#map_container").width()/$("#"+mapCountry+"_img").attr('orgWidth');
