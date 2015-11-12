@@ -1,8 +1,8 @@
 <div class="row">
-<div style="padding-left:45px;color:#fff" class="col-xs-11">
+<div style="padding-left:45px" class="col-xs-11">
 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{route('post_feedback')}}">
   <!--App details-->
-  <div class="form-group">
+  <div class="form-group" style="color:#fff">
     <label for="question1">Overall, are you finding DEMHUB useful?</label><br>
     <label style="font-size:50%">0 - lowest, 5 - highest</label><br>
     <?php
@@ -14,7 +14,7 @@
 
   </div>
   <br>
-  <div class="form-group">
+  <div class="form-group" style="color:#fff">
     <label for="question2">Do you like the layout of the site?</label><br>
     <label style="font-size:50%">0 - lowest, 5 - highest</label><br>
     <?php
@@ -26,7 +26,7 @@
 
   </div>
   <br>
-  <div class="form-group">
+  <div class="form-group" style="color:#fff">
     <label for="question3">Did you find the site navigation?</label><br>
     <label style="font-size:50%">0 - lowest, 5 - highest</label><br>
     <?php
@@ -46,12 +46,12 @@
     'Uploading & sharing' => 'Uploading & sharing', 'Other' => 'Other'),'0', array('class' => 'form-control')) !!}
 
   </div> -->
-  <div class="form-group">
+  <div class="form-group" style="color:#fff">
     <label for="question4">Any recommendations to improve the site?</label>
     <textarea class="form-control" rows="3" name="question4" placeholder="Answer...."></textarea>
   </div>
-  <div class="form-group" style="color:#000">
-  <a type="button" class="btn btn-default btn-style" data-toggle="modal" data-target="#feedbackModal">DONE</a>
+  <div class="form-group">
+  <button type="button" class="btn btn-default btn-style" data-toggle="modal" data-target="#feedbackModal">DONE</a>
   <button type="submit" id="feedbackSubmit" class="btn btn-default btn-style" style="display:none">SUBMIT</button>
   </div>
 

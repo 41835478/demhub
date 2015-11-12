@@ -16,7 +16,21 @@
 	color:#FFF;
 	border-color:#000;
 }
+button.btn-style{
+	background:#FFF;
+	border-color:#ccc;
+}
 
+button.btn-style:hover, button.btn-style:focus{
+	background:#FFF;
+	color:#60A0FF;
+}
+
+button.btn-style:active{
+	background:#60A0FF;
+	color:#FFF;
+	border-color:#000;
+}
 a.btn-style{
 	background:#FFF;
 	border-color:#ccc;
