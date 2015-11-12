@@ -1,0 +1,309 @@
+body.panel-fullscreen-active #sidebar_left,
+body.panel-fullscreen-active #sidebar_right {
+  z-index: -1;
+  display: none !important;
+}
+body.onload-check #sidebar_left,
+body.onload-check #sidebar_right,
+body.onload-check #content_wrapper,
+body.onload-check #topbar {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.navbar.navbar-fixed-top + #sidebar_left + #content_wrapper {
+  padding-top: 60px;
+}
+/*===============================================
+   Sidebar Settings
+================================================= */
+/* Fixed Sidebar */
+#sidebar_left.affix {
+  position: fixed;
+}
+/* Scrollbar for Sidebars in Fixed Positions */
+#sidebar_left.affix > .sidebar-menu {
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+  top: 85px;
+  bottom: 52px;
+  transition: top 0.2s ease-in-out;
+}
+#sidebar_left.affix > .email-menu + .sidebar-menu {
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+  top: 485px;
+  bottom: 52px;
+  transition: top 0.2s ease-in-out;
+}
+/* Corrects Pseudo sidebar bg when fixed */
+#sidebar_left.affix:before {
+  left: 0;
+}
+body.sidebar-hidden #sidebar_left.affix:before,
+body.sidebar-rtl #sidebar_left.affix:before {
+  left: -250px;
+}
+/* Sidebar User Area - Hidden */
+.user-info.hidden,
+.user-info.hidden + .user-divider {
+  display: none;
+}
+body.usermenu-hidden .user-info,
+body.usermenu-hidden .user-info + .user-divider {
+  display: none;
+}
+body.usermenu-hidden #sidebar_left.affix .user-info + .user-divider + .sidebar-menu,
+body.usermenu-hidden #sidebar_left.affix .user-info + .user-divider + .menu-widget + .sidebar-menu {
+  top: 0;
+}
+#sidebar_left.affix > .menu-widget.menu-widget-open + .sidebar-menu {
+  top: 250px;
+}
+A. Default Open State
+================================================= */
+/* Sidebar Container */
+#sidebar_left {
+color: #fff;
+font-size: 13px;
+position: absolute;
+top: 0;
+left: 0;
+width: 250px;
+min-height: 100%;
+padding-top: 60px;
+padding-bottom: 40px;
+}
+/* Sidebar Content Container */
+.sidebar-left-content {
+height: 100%;
+}
+/* Sidebar-Menu */
+.sidebar-menu {
+padding-bottom: 20px;
+}
+/* Sidebar-Menu Top Level Items */
+.sidebar-menu > li {
+margin: 0;
+}
+.sidebar-menu > li:first-child {
+padding-top: 4px;
+}
+/* Sidebar Menu Links */
+/* Sidebar-Menu Top Level Links */
+.sidebar-menu > li > a {
+padding: 0;
+line-height: 37px;
+height: 37px;
+overflow: hidden;
+}
+/* Sidebar-Menu Top Level - Icon */
+.sidebar-menu > li > a > span:nth-child(1) {
+float: left;
+top: 0;
+line-height: 37px;
+width: 38px;
+font-size: 13px;
+text-align: center;
+padding-left: 13px;
+}
+/* Sidebar-Menu Top Level - Title */
+.sidebar-menu > li > a > span:nth-child(2) {
+font-weight: 600;
+padding-left: 6px;
+}
+/* Sidebar-Menu Top Level - Tray(holds labels,etc) */
+.sidebar-menu li > a > .sidebar-title-tray {
+position: absolute;
+right: 13px;
+top: -2px;
+}
+/* Sidebar-Menu Top Level - Label */
+.sidebar-menu li > a > .sidebar-title-tray .label {
+font-size: 11px;
+padding: .1em .6em .3em;
+}
+/* Sidebar-Menu Top Level - Caret */
+.sidebar-menu li > a > span.caret {
+position: absolute;
+top: 45%;
+right: 15px;
+border-top: 5px solid;
+border-right: 5px solid transparent;
+border-left: 5px solid transparent;
+}
+/* Open Menu Item Caret - we simply flip the carets border */
+.sidebar-menu li > a.menu-open > span.caret {
+border-top: 0;
+border-bottom: 5px solid;
+}
+/* Sidebar-Menu Sub Level */
+.sidebar-menu > li > ul {
+clear: both;
+display: none;
+width: 250px;
+height: auto;
+}
+.sidebar-menu li > a.menu-open + ul {
+display: block;
+}
+/* Sidebar-Menu Sub Level Items */
+.sidebar-menu > li > ul > li > a {
+padding: 11px 20px 11px 30px;
+}
+/* Sidebar-Menu Sub Level - first and last items */
+.sidebar-menu > li > ul > li:first-child > a {
+padding-top: 14px;
+}
+.sidebar-menu > li > ul > li:last-child > a {
+padding-bottom: 17px;
+}
+/* Sidebar-Menu Sub Level Item - Title */
+.sidebar-menu > li > ul > li > a > span:nth-child(1) {
+margin-right: 10px;
+font-size: 11px;
+}
+/* Sidebar-Menu Sub Level Item - Label */
+.sidebar-menu > li > ul > li > a > span.label {
+float: right;
+line-height: 17px;
+}
+/* Sidebar-Menu Multi-level (submenu inside a submenu and so on) */
+.sidebar-menu > li > ul > li ul {
+clear: both;
+display: none;
+width: 250px;
+height: auto;
+}
+/* Sidebar-Menu Multi-level - Links */
+.sidebar-menu > li > ul > li > ul li a {
+padding: 9px 12px 9px 34px;
+}
+.sidebar-menu > li > ul > li > ul li:last-child a {
+padding-bottom: 13px;
+}
+/* Sidebar-Menu Multi-level - Label(xs) */
+.sidebar-menu > li > ul > li > ul li a .label.label-xs {
+float: right;
+line-height: 17px;
+}
+/*===============================================
+B. Sidebar-Menu Active Item Borders
+================================================= */
+/* Top Level - Active Item Border */
+.sidebar-menu > li > a.menu-open:after,
+.sidebar-menu > li.active > a:after,
+.sidebar-menu > li:hover > a:after,
+.sidebar-menu > li:focus > a:after {
+content: "";
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 3px;
+background: #AAA;
+}
+/* Sub Level - Active Item Border */
+.sidebar-menu > li > ul > li > a.menu-open:after,
+.sidebar-menu > li > ul > li.active > a:after,
+.sidebar-menu > li > ul > li:hover > a:after,
+.sidebar-menu > li > ul > li:focus > a:after {
+content: "";
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 3px;
+background: #AAA;
+}
+/* Multi Level - Active Item Border */
+.sidebar-menu > li > ul > li > ul > li.active > a:after,
+.sidebar-menu > li > ul > li > ul > li:hover > a:after,
+.sidebar-menu > li > ul > li > ul > li:focus > a:after {
+content: "";
+position: absolute;
+left: 0;
+top: 5%;
+height: 90%;
+width: 3px;
+background: #999;
+}
+/*===============================================
+C. Sidebar Misc
+================================================= */
+/* Sidebar labels */
+.sidebar-menu .sidebar-label {
+text-transform: uppercase;
+color: #70829a;
+font-weight: 600;
+padding-left: 18px;
+padding-bottom: 3px;
+font-size: 12px;
+}
+/* Sidebar Project Links */
+/* Sidebar Progress Bars */
+.sidebar-menu .sidebar-stat .progress {
+clear: both;
+background-color: #AAA;
+background-color: rgba(0, 0, 0, 0.15);
+}
+/* Sidebar Progress Bars Titles */
+.sidebar-menu .sidebar-stat > a {
+height: auto;
+overflow: visible;
+}
+/* Sidebar Toggle Button */
+.sidebar-toggle-mini {
+width: 35px;
+height: 32px;
+padding: 7px 0;
+}
+.sidebar-toggle-mini a {
+display: block;
+position: absolute;
+right: 0;
+text-align: center;
+padding: 6px 6px 5px;
+background: rgba(0, 0, 0, 0.15);
+}
+.sidebar-toggle-mini span {
+position: relative;
+color: #999;
+font-size: 16px;
+-webkit-transition: all ease-in-out 0.2s;
+transition: all ease-in-out 0.2s;
+-webkit-transform: rotate(180deg);
+transform: rotate(180deg);
+}
+.sidebar-toggle-mini:hover span {
+color: #EEE;
+}
+.sidebar-menu li > a > span.caret,
+.sidebar-menu li > a.menu-open > span.caret {
+color: inherit;
+width: 20px;
+height: 20px;
+top: 0;
+margin: 0;
+border: 0;
+}
+.sidebar-menu li > a > span.caret:after {
+content: "\f105";
+font-family: FontAwesome;
+font-style: normal;
+font-weight: normal;
+text-decoration: inherit;
+font-size: 14px ;
+display: inline-block;
+padding-right: 3px;
+float: right;
+right: 0;
+}
+.sidebar-menu li > a.menu-open > span.caret:after {
+content: "\f107";
+}
+.sidebar-menu li > ul > li > a > span.caret,
+.sidebar-menu li > ul > li > a.menu-open > span.caret {
+top: 11px;
+}

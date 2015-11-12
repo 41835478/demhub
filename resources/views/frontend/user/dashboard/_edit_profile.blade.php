@@ -7,7 +7,7 @@
 
       <div class="col-md-4">
 
-        <div id="avatarSection"class="form-group" style="margin-left:-70px">
+        <div id="avatarSection"class="form-group" style="">
           {!! Form::label('avatar', 'Avatar', ['class' => 'col-sm-4 control-label']) !!}
 
           <div class="col-sm-8">
@@ -28,7 +28,7 @@
 
       </div>
 
-      <div id="infoSectionMiddle" class="col-md-4" style="margin-left:-40px">
+      <div id="infoSectionMiddle" class="col-md-4" style="">
 
         <div class="form-group">
           {!! Form::label('first_name', 'First Name', ['class' => 'col-sm-4 control-label']) !!}

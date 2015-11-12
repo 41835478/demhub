@@ -1,5 +1,9 @@
-<ul class="nav nav-stacked navbar-inverse user_dashboard_menu">
-
+<div class="navbar-branding dark">
+        <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
+</div>
+<aside id ="sidebar_left" class="nano nano-light affix sidebar-default">
+<div class="sidebar-left-content nano-content">
+<ul class="nav sidebar-menu user_dashboard_menu">
     @if(Request::url() == url('dashboard'))
       <li class="active">
     @else
@@ -41,3 +45,6 @@
     </li>
 
 </ul>
+</div>
+<div class="nano-pane"><div class="nano-slider" style="height: 595px; transform: translate(0px, 0px);"></div></div>
+</aside>
