@@ -45,8 +45,8 @@
 
 		<div class="form-group">
 				<div class="col-md-5 col-md-offset-4">
-						<a type="button" onclick="$('#submitForm').click()" class="btn btn-default btn-lg btn-style" style="margin-right:10px">LOGIN</a>
-						<button type="submit" id="submitForm" class="btn btn-default btn-lg btn-style" style="margin-right:10px;display:none">LOGIN</button>
+						<!-- <a type="button" onclick="$('#submitForm').click()" class="btn btn-default btn-lg btn-style" style="margin-right:10px">LOGIN</a> -->
+						<button type="submit" id="submitForm" class="btn btn-default btn-lg btn-style" style="margin-right:10px;">LOGIN</button>
 						{!! link_to('password/email', trans('labels.forgot_password'), ['style' => 'color:#60A0FF']) !!}
 							<p>Don't have an account? <a type="button" class="btn btn-default btn-style-alt" href={{url('auth/register')}}>REGISTER NOW</a></p>
 				</div>
