@@ -27,7 +27,7 @@
   </div>
   <br>
   <div class="form-group" style="color:#fff">
-    <label for="question3">Did you find the site easy to navigation?</label><br>
+    <label for="question3">Did you find the site easy to navigate?</label><br>
     <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
     <?php
       for($x = 1; $x < 6; $x++){
