@@ -1,1 +1,5 @@
-{{ trans('strings.click_here_to_reset_password_') . url('password/reset/' . $token) }}
+<!DOCTYPE html>
+<body>
+<p>Click here to reset your password: {{ url('password/reset/' . $token) }}</p>
+</body>
+</html>
