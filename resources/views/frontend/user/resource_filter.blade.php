@@ -217,12 +217,12 @@ $( document ).ready(function() {
 		<form class="form-inline">
 			<div class="form-group" id="countryFormGroup">
 			    <label for="country">Country</label>
-				<select id="country" class="form-control">
+				<select id="country" class="form-control" style="text-transform: capitalize">
 					<option value="" disabled selected>Select One</option>
-				  <option class="countryOption">Australia</option>
-				  <option class="countryOption">Canada</option>
-				  <option class="countryOption">United States</option>
-				  <option class="countryOption">New Zealand</option>
+					@foreach ($resourceRelation as $relation)
+					{{$country=str_replace("_", " ", $relation->country)}}
+					<option>{{$country}}</option>
+					@endforeach
 				</select>
 			  </div>
   			<div class="form-group" id="regionFormGroup" style="display:none">
@@ -231,6 +231,15 @@ $( document ).ready(function() {
   					<option value="" disabled selected>Select One</option>
   				  <option style="display:none"></option>
 
+  				</select>
+  			</div>
+				<div class="form-group" id="divisionFormGroup" style="display:none">
+  			    <label for="division">Division</label>
+  				<select id="division" class="form-control">
+						<option value="" disabled selected>Select One</option>
+						@foreach ($allDivisions as $division)
+					  <option value="{{$division->slug}}">{{$division->name}}</option>
+						@endforeach
   				</select>
   			</div>
 			  <!-- <div class="form-group">
@@ -287,6 +296,7 @@ $( document ).ready(function() {
 				<td>
     			<a target="_blank" href="{{$entry->url}}" class="text-link-style" style="text-transform: capitalize">{{$entry->name}}</a>
 				</td>
+
 				</tr>
 				@endforeach
 			</tbody>
@@ -380,6 +390,7 @@ $( document ).ready(function() {
 				document.getElementById(country+"_map").style.height="";
 				$("#backButton").attr("onclick","window.location.reload()");
 				document.getElementById("backButton").style.display="";
+				document.getElementById("divisionFormGroup").style.display="";
 			}
 
 	});
@@ -415,7 +426,7 @@ $( document ).ready(function() {
 			$("#"+country+"_map").show();
 			document.getElementById(country+"_map").style.visibility="";
 			document.getElementById(country+"_map").style.height="";
-			// document.getElementById("bottomMapSwap").style.height="";
+			document.getElementById("divisionFormGroup").style.display="";
 
 		}
 	function fillRegions(country){
@@ -429,6 +440,24 @@ $( document ).ready(function() {
 		// console.log(optionHTML);
 		return optionHTML;
 	}
+	$("select#division").change(function(){
+		if (($("select#division").val()) != null){
+			var filterVar = $("select#division").val();
+
+			if($("tr").hasClass('in')) {
+			        $("tr." +filterVar).addClass("in");
+			        $("tr." +filterVar).removeClass("out");
+			    }
+					$(".mapContainer").hide();
+					// document.getElementById(country+"_map").style.display="";
+					document.getElementById("mapListing").style.display="";
+
+			filterVar = $("select#country").val();
+			var country = filterVar.toLowerCase();
+			country=country.replace(/ /g,"_");
+			$("#backButton").attr("onclick","firstFilterF('"+country+"')");
+		}
+	});
 
 	$("select#region").change(function(){
 
