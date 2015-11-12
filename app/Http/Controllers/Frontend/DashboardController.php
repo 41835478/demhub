@@ -21,6 +21,11 @@ class DashboardController extends Controller {
 		return view('frontend.user.dashboard.index')
 			->withUser(auth()->user());
 	}
+	public function test()
+	{
+		return view('frontend.user.dashboard.test')
+			->withUser(auth()->user());
+	}
 	public function showConnections()
 	{
 		$allDivisions = Division::all();

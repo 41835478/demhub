@@ -50,12 +50,18 @@ elixir(function(mix) {
         .sass([ // Process coming soon stylesheets
           'core/coming-soon.scss',
         ], 'resources/assets/css/core/coming-soon.css')
+        .sass([ // Process dashboardtest stylesheets
+          'core/dashboardtest.scss',
+        ], 'resources/assets/css/core/dashboardtest.css')
         .styles([ // Combine pre-processed CSS files
           'core/core.css'
         ], 'public/css/core.css')
         .styles([ // Combine pre-processed CSS files
           'core/coming-soon.css'
         ], 'public/css/coming-soon.css')
+        .styles([ // Combine pre-processed CSS files
+          'core/dashboardtest.css'
+        ], 'public/css/dashboardtest.css')
 
         // Apply version control
         .version([
@@ -64,7 +70,8 @@ elixir(function(mix) {
           "public/css/backend.css",
           "public/js/backend.js",
           "public/css/core.css",
-          "public/css/coming-soon.css"
+          "public/css/coming-soon.css",
+          "public/css/dashboardtest.css"
         ]);
 });
 

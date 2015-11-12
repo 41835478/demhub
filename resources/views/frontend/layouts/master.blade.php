@@ -24,10 +24,15 @@
       $launch_date = "2015-11-10 00:00:00";
       // FALSE if deploying to production // TRUE if testing on development
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
+      $dashboardtest = false;
     ?>
 
     @if($display_coming_soon)
       {!! HTML::style(elixir('css/coming-soon.css')) !!}
+    @endif
+
+    @if($dashboardtest)
+      {!! HTML::style(elixir('css/dashboardtest.css')) !!}
     @endif
 
     <!-- Fonts -->
@@ -71,6 +76,27 @@
     @endif
 
     @yield('modal')
+
+    @if($dashboardtest)
+      {!! HTML::script("js/dashboardtest/utility.js") !!}
+      {!! HTML::script("js/dashboardtest/demo.js") !!}
+      {!! HTML::script("js/dashboardtest/main.js") !!}
+    @endif
+
+    <script type="text/javascript">
+  jQuery(document).ready(function() {
+
+    "use strict";
+
+    // Init Demo JS
+    Demo.init();
+
+
+    // Init Theme Core
+    Core.init();
+
+  });
+  </script>
 
     @include('includes.scripts._google_analytics')
     @include('includes.scripts._hotjar_analytics')
