@@ -28,7 +28,7 @@
         <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread->title}}</b></a></td>
         <td>
         <a href="{{url('/division/'.$thread->category->slug)}}">
-					<img src="/images/backgrounds/nothing.png" alt="" class="img-circle img-responsive" style="background-color:#{{$thread->category->bg_color}};height:22px">
+					<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$thread->category->slug}}" style="height:22px">
 				</a>
         </td>
       <td><img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$thread->author->user_name}}</td>
