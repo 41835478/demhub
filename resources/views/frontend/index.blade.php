@@ -81,7 +81,7 @@
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 
-					<div class="row" style="margin-left: 15px; margin-right: 15px;">
+					<div class="row" style="margin-left: 15px; margin-right: 15px;padding:0px">
 						@foreach($divisions as $div)
 							<a href="{{url('division', $div->slug)}}">
 								<div class="division-landing-box col-md-2">

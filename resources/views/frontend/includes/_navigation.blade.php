@@ -25,6 +25,7 @@ function comingSoon (elementId) {
     document.getElementById(elementId).innerHTML=document.getElementById(elementId).innerHTML+comingSoonText();
     document.getElementById(elementId).style.paddingRight='5px';
     document.getElementById(elementId).style.paddingLeft='5px';
+    document.getElementById(elementId).style.fontSize='90%';
     comingSoonElementNames.push(elementId);
   }
 }
@@ -49,7 +50,7 @@ function comingSoonP (elementId) {
 }
 function comingSoonTextP(){
   var text;
-  text="<i style='color:#98a9c1'> - COMING SOON </i>";
+  text="<span style='color:#98a9c1'> - COMING SOON </span>";
   return text;
 }
 

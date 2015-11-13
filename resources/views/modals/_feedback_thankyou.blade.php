@@ -1,4 +1,4 @@
-<div class="modal fade" id="feedbackModal" style="padding-top:100px">
+{{--<div class="modal fade" id="feedbackModal" style="padding-top:100px">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -18,4 +18,4 @@
 			</div> -->
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div><!-- /.modal -->--}}
