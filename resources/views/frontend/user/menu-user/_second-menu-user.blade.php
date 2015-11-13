@@ -25,6 +25,13 @@
         @endif
         <a href="javascript:comingSoon('publications_title')" id="publications_title" style="padding-left:45px;padding-right:45px;"> PUBLICATIONS</a></li>
 
+        @if(Request::url() == url('publications'))
+          <li class="active">
+        @else
+          <li>
+        @endif
+        <a href="javascript:comingSoon('network_title')" id="network_title" style="padding-left:45px;padding-right:45px;"> NETWORK</a></li>
+
         @if(Request::url() === url('resource_filter'))
           <li class="active">
         @else
