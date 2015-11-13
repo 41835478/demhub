@@ -7,7 +7,7 @@
       {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
 
         <div class="col-md-4">
-
+        
           <div id="avatarSection" class="form-group">
             {!! Form::label('avatar', 'Avatar', ['class' => 'col-lg-3 control-label']) !!}
             <div class="col-lg-8">

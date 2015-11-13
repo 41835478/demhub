@@ -9,8 +9,8 @@
 @endsection
 
 @section('content')
-	<div class="row">
-		<div class="col-xs-12">
+	<div>
+		<div>
 			<div id="welcome_home" class="row js-landing-hero">
 
 				<div class="col-md-6 col-md-offset-6 lading-content-1">
@@ -113,4 +113,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 @stop
