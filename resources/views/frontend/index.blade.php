@@ -13,7 +13,7 @@
 		<div class="col-xs-12">
 			<div id="welcome_home" class="row js-landing-hero">
 
-				<div class="col-md-6 col-md-offset-6 lading-content-1">
+				<div class="col-sm-6 col-sm-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '300')) !!}
 					<div style="color:#FFF;">
 					<h3 >THE DISASTER & EMERGENCY</h3>
