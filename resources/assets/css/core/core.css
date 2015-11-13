@@ -383,9 +383,7 @@ button.btn-style-alt:active {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100; }
 
-#canada_map {
-  width: 690px;
-  height: 600px;
+#map_container {
   overflow: hidden; }
 
 div#message {
