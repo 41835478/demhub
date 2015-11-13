@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Components\Helpers;
-use App\Http\Components\ScraperComponent;
+use App\Http\Components\Scraper;
 use App\Models\Article;
 use App\Models\Keyword;
 use App\Models\NewsFeed;
@@ -44,37 +44,29 @@ class SchedulerController extends Controller
 			$sources = ScrapeSource::where('type', 'RSS')->where('deleted', 0)->get();
 		}
 
-		foreach($sources as $source){
-			$return = ScraperComponent::processRSSFeed($source);
-			$messages .= $return['message'];
-			$messages .= '<br><br><b>';
-			if($return['status'] == 'ok'){
-				$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.$return['errors'].' errors.';
+		foreach($sources as $source)
+		{
+			$start = microtime(true);
+			$return = Scraper::processRSSFeed($source);
+			$time = (microtime(true) - $start)*1000;
 
+
+			$messages .= $return['messages'];
+			$messages .= '<br><b>';
+			$messages .= 'Process took: '.$time.'ms<br>';
+			$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.($return['errors'] > 0 ? '<h1>'.$return['errors'].'</h1>' : $return['errors']).' errors.';
+			$messages .= '</b><br>';
+
+			if($return['errors'] == 0){
 				$source->last_checked_item = date("Y-m-d H:i:s");
 				$source->save();
-
-				$mlog = new ScrapeLog();
-				$mlog->source_id = $source->id;
-				$mlog->automated = 0;
-				$mlog->url = $source->url;
-				$mlog->saved_count = $return['count'];
-				$mlog->last_item = $return['last_saved_item'];
-				$mlog->data = $return['data'];
-				$mlog->save();
-
-			} elseif($return['status'] == 'nothing'){
-				$messages .= 'Source '.$source->id.': Had no new items to fetch';
-			} else {
-				$messages .= 'Source '.$source->id.': DID NOT COMPLETE DUE TO AN ERROR.';
 			}
-			$messages .= '</b><br>';
 		}
 
 
 		echo $messages;
 
-		ScraperComponent::saveLog($messages, "scrapeRSS_" . date("YmdHis") . ".log");
+		//Scraper::saveLog($messages, "scrapeRSS_" . date("YmdHis") . ".log");
 	}
 
 	/**
@@ -84,7 +76,6 @@ class SchedulerController extends Controller
 	 * - 'id' 			(optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
 	 * - 'page_from' 	(optional) start_page defines the starting page, default = 1
 	 * - 'page_to'	 	(optional) Max page to check, default = 3
-	 *
 	 */
 	public function scrapeIRDR(Request $request)
 	{
@@ -107,162 +98,33 @@ class SchedulerController extends Controller
 		} else {
 			$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
 		}
-		$messages = '';
 
 
-		foreach($sources as $source){
-			//$return = ScraperComponent::processRSSFeed($source);
-			//$messages .= $return['message'];
-			$messages .= $source->url.'<br>';
+		foreach($sources as $source)
+		{
+			$messages = '';
 			$page = 	$request->input('page_from', 1);
 			$page_to = 	$request->input('page_to', 3);
-			$end = false;
-			$return['status'] = '';
-			$return['count'] = 0;
-			$return['errors'] = 0;
+			$messages .= '<b>'.$source->url.'</b> | last_checked: '.$source->last_checked_item.' | pages '.$page.'-'.$page_to.' | get details: yes<br>';
 
-			while(!$end && $page <= $page_to)
-			{
-				$messages .= '<br>Analysing page: '.$page;
-				$data = array();
-				if($page == 1)
-					$url = $source->url;
-				else
-					$url = $source->url.'page/'.$page.'/';
-				$response = ScraperComponent::getHttpResponse($url);
+			$start = microtime(true);
+			$return = Scraper::scrapeIRDR($source, $page, $page_to);
+			$time = (microtime(true) - $start)*1000;
 
-				if(trim($response) == ''){
-					$messages .= 'Error with "'.$url.'" url.';
-					break;
-				}
-
-				$doc = new \DOMDocument();
-				@$doc->loadHTML($response);
-				$e1s = $doc->getElementsByTagName('article');
-				foreach($e1s as $e1){
-					if(strpos($e1->getAttribute('class'), ' post ') !== false){
-						//$name = $e1->textContent;
-						//echo '----n----'.$name.'<br>';
-
-						$e2s = $e1->getElementsByTagName('header');
-						foreach($e2s as $e2){
-							if($e2->getAttribute('class') == 'entry-header'){
-								$temp = strip_tags($e2->textContent);
-								$data['title'] = trim($temp);
-							}
-						}
-
-						$e2s = $e1->getElementsByTagName('div');
-						foreach($e2s as $e2){
-							if($e2->getAttribute('class') == 'entry-content'){
-								// Excerpt
-								$e3s = $e2->getElementsByTagName('p');
-								foreach($e3s as $e3){
-									//backup, will be overwritten if a better text is found
-									$data['text'] = trim($e3->textContent);
-								}
-
-								// Text and publishdate
-								$e3s = $e2->getElementsByTagName('a');
-								foreach($e3s as $e3){
-									if(strpos($e3->getAttribute('class'), 'read-more') !== false){
-										$data['url'] = $e3->getAttribute('href');
-
-										$response = ScraperComponent::getHttpResponse($data['url']);
-										$doc = new \DOMDocument();
-										@$doc->loadHTML($response);
-										$e4s = $doc->getElementsByTagName('article');
-										foreach($e4s as $e4){
-											$e5s = $e4->getElementsByTagName('p');
-											$text = '';
-											foreach($e5s as $e5){
-												$text .= $e5->textContent;
-											}
-											if(trim($text) != '')
-												$data['text'] = $text;
-
-											$e5s = $e4->getElementsByTagName('time');
-											foreach($e5s as $e5){
-												$data['date'] = $e5->getAttribute('datetime');
-											}
-										}
-									}
-								}
-
-								//Image
-								$e3s = $e2->getElementsByTagName('img');
-								foreach($e3s as $e3){
-									if(strpos($e3->getAttribute('class'), 'wp-post-image') !== false){
-										$data['media'][0]['url'] = $e3->getAttribute('src');
-									}
-								}
-							}
-						}
-					}
-
-					// item exists in db
-					if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
-						$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
-						unset($data);
-						continue;
-					}
-					// item is older than the last the source was checked
-					elseif(isset($data['date']) && strtotime($data['date']) < strtotime($source->last_checked_item)){
-						$messages .= '<br><b>- Item is older than last check. It must\'ve been reviewed before.</b>';
-						unset($data);
-						continue;
-					}
-
-					//var_dump($data);
-					$save_result = ScraperComponent::saveArticle($source->article_type, $source, $data);
-
-					if($save_result['status'] == 'ok'){
-						$messages .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
-						$return['status'] = 'ok';
-						$return['count']++;
-					} else {
-						$messages .= '<br><b>- Error adding: '.$data['title'].'</b>';
-						$return['errors']++;
-					}
-
-					unset($data);
-				}
-
-				if($e1s->length == 0){
-					$end = true;
-				}
-				$page++;
-
-			}
-
+			$messages .= $return['messages'];
 			$messages .= '<br><br><b>';
-			if($return['status'] == 'ok'){
-				$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.$return['errors'].' errors.';
-
-				$source->last_checked_item = date("Y-m-d H:i:s");
-				$source->save();
-
-				$mlog = new ScrapeLog();
-				$mlog->source_id = $source->id;
-				$mlog->automated = 0;
-				$mlog->url = $source->url;
-				$mlog->saved_count = $return['count'];
-				$mlog->last_item = date("Y-m-d H:i:s");
-				$mlog->data = '';//$return['data'];
-				$mlog->save();
-			} elseif($return['count'] == 0 && $return['errors'] == 0){
-				$messages .= 'Source '.$source->id.': Finished with 0 new items';
-			} else {
-				$messages .= 'Source '.$source->id.': DID NOT COMPLETE DUE TO AN ERROR.';
-			}
+			$messages .= 'Process took: '.$time.'ms<br>';
+			$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.($return['errors'] > 0 ? '<h1>'.$return['errors'].'</h1>' : $return['errors']).' errors.';
 			$messages .= '</b><br>';
 
+			if($return['errors'] == 0){
+				$source->last_checked_item = date("Y-m-d H:i:s");
+				$source->save();
+			}
+
+			echo $messages;
+			Scraper::saveLog($source, $messages, "scrapeIRDR_".$source->id."_" . date("YmdHis") . ".log", $return['count']);
 		}
-
-
-		echo $messages;
-
-		ScraperComponent::saveLog($messages, "scrapeIRDR_" . date("YmdHis") . ".log");
 	}
 
 	/**
@@ -281,7 +143,7 @@ class SchedulerController extends Controller
 		set_time_limit(400);
 
 		//temp
-		$no_datails = ($request->input('no_details', 0) == 1);
+		$get_details = ($request->input('get_details', 1) == 1);
 
 		//only lists the sources if ?id=list
 		if($request->input('id') == 'list'){
@@ -298,166 +160,32 @@ class SchedulerController extends Controller
 		} else {
 			$sources = ScrapeSource::where('type', 'EC')->where('deleted', 0)->get();
 		}
-		$messages = '';
 
 
 		foreach($sources as $source){
-			//$return = ScraperComponent::processRSSFeed($source);
-			//$messages .= $return['message'];
-			$messages .= $source->url.'<br>';
+			$messages = '';
 			$page = 	$request->input('page_from', 1);
 			$page_to = 	$request->input('page_to', 3);
-			$end = false;
-			$return['status'] = '';
-			$return['count'] = 0;
-			$return['errors'] = 0;
+			$messages .= '<b>'.$source->url.'</b> | last_checked: '.$source->last_checked_item.' | pages '.$page.'-'.$page_to.' | get details: '.($get_details?'yes':'no').'<br>';
 
-			while(!$end && $page <= $page_to)
-			{
-				$messages .= '<br>Analysing page: '.$page;
-				$data = array();
-				if($page == 1)
-					$url = $source->url;
-				else
-					$url = $source->url.'?page='.($page-1);
+			$start = microtime(true);
+			$return = Scraper::scrapeEC($source, $page, $page_to, $get_details);
+			$time = (microtime(true) - $start)*1000;
 
-				$response = ScraperComponent::getHttpResponse($url);
-				//$messages .= 'Respose: ' .$response;
-				if(trim($response) == ''){
-					$messages .= 'Error retrieving "'.$url.'" url.';
-					break;
-				}
-
-				$doc = new \DOMDocument();
-				@$doc->loadHTML($response);
-				$e1s = $doc->getElementsByTagName('div');
-				foreach($e1s as $e1){
-					if(strpos($e1->getAttribute('class'), 'views-row') !== false){
-						$e2s = $e1->getElementsByTagName('div');
-						foreach($e2s as $e2){
-							if($e2->getAttribute('class') == 'views-field views-field-field-image'){
-								$e3s = $e2->getElementsByTagName('img');
-								foreach($e3s as $e3){
-									$temp = $e3->getAttribute('src');
-									$data['media'][0]['url'] = trim($temp);
-								}
-							}
-
-							if(strpos($e2->getAttribute('class'), 'label label-default') !== false){
-								$e3s = $e2->getElementsByTagName('span');
-								foreach($e3s as $e3){
-									if($e3->getAttribute('class') == 'date-display-single'){
-										$data['date'] = date("Y-m-d H:i:s", strtotime($e3->getAttribute('content'))); //$e2->textContent
-									}
-								}
-
-							}
-
-							if(strpos($e2->getAttribute('class'), 'views-field views-field-body') !== false){
-								$e3s = $e2->getElementsByTagName('span');
-								foreach($e3s as $e3){
-									if($e3->getAttribute('class') == 'field-content'){
-										$data['excerpt'] = $e3->textContent;
-									}
-								}
-							}
-
-							if($e2->getAttribute('class') == 'views-field views-field-title'){
-								$e3s = $e2->getElementsByTagName('a');
-								foreach($e3s as $e3){
-									$data['title'] = trim(strip_tags($e3->textContent));
-									if(strpos($e3->getAttribute('href'), 'http') !== false){
-										$data['url'] = $e3->getAttribute('href');
-									} else {
-										$data['url'] = 'http://ec.europa.eu'.$e3->getAttribute('href');
-									}
-
-								}
-
-								if(!$no_datails){
-									$response = ScraperComponent::getHttpResponse($data['url']);
-									$doc = new \DOMDocument();
-									@$doc->loadHTML($response);
-									$e3s = $doc->getElementsByTagName('div');
-									foreach($e3s as $e3){
-										if($e3->getAttribute('class') == 'region region-content'){
-											$data['text'] = $e3->textContent;
-										}
-									}
-								}
-
-							}
-						}
-
-						// item exists in db
-						if($existingart = Article::where('title', Helpers::truncate(Helpers::verify($data['title'])))->first()){
-							$messages .= '<br><b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
-							if(isset($data['date'])){
-								$existingart->publish_date = $data['date'];
-								$existingart->save();
-								$messages .= " | publish date: ".$data['date'];
-							}
-							unset($data);
-							continue;
-						}
-						// item is older than the last the source was checked
-						elseif(isset($data['date']) && strtotime($data['date']) < strtotime($source->last_checked_item)){
-							$messages .= '<br><b>- Item is older than last check. It must\'ve been reviewed before.</b>';
-							unset($data);
-							continue;
-						}
-
-						//var_dump($data);
-						$save_result = ScraperComponent::saveArticle($source->article_type, $source, $data);
-
-						if($save_result['status'] == 'ok'){
-							$messages .= '<br><b>- Added '.$save_result['model']->id.':</b> '.$save_result['model']->excerpt;
-							$return['status'] = 'ok';
-							$return['count']++;
-						} else {
-							$messages .= '<br><b>- Error adding: '.$data['title'].'</b>';
-							$return['errors']++;
-						}
-					}
-
-					unset($data);
-				}
-
-				if($e1s->length == 0){
-					$end = true;
-				}
-				$page++;
-
-			}
-
+			$messages .= $return['messages'];
 			$messages .= '<br><br><b>';
-			if($return['status'] == 'ok'){
-				$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.$return['errors'].' errors.';
-
-				$source->last_checked_item = date("Y-m-d H:i:s");
-				$source->save();
-
-				$mlog = new ScrapeLog();
-				$mlog->source_id = $source->id;
-				$mlog->automated = 0;
-				$mlog->url = $source->url;
-				$mlog->saved_count = $return['count'];
-				$mlog->last_item = date("Y-m-d H:i:s");
-				$mlog->data = '';//$return['data'];
-				$mlog->save();
-			} elseif($return['count'] == 0 && $return['errors'] == 0){
-				$messages .= 'Source '.$source->id.': Finished with 0 new items';
-			} else {
-				$messages .= 'Source '.$source->id.': DID NOT COMPLETE DUE TO AN ERROR.';
-			}
+			$messages .= 'Process took: '.$time.'ms<br>';
+			$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.($return['errors'] > 0 ? '<h1>'.$return['errors'].'</h1>' : $return['errors']).' errors.';
 			$messages .= '</b><br>';
 
+			if($return['errors'] == 0){
+				$source->last_checked_item = date("Y-m-d H:i:s");
+				$source->save();
+			}
+
+			echo $messages;
+			Scraper::saveLog($source, $messages, "scrapeEC_".$source->id."_" . date("YmdHis") . ".log", $return['count']);
 		}
-
-
-		echo $messages;
-
-		ScraperComponent::saveLog($messages, "scrapeEC_" . date("YmdHis") . ".log");
 	}
 
 

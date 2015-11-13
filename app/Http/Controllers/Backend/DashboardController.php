@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Backend;
 
 use App\Http\Components\Helpers;
-use App\Http\Components\ScraperComponent;
+use App\Http\Components\Scraper;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Models\Article;
