@@ -477,7 +477,8 @@ nav#guest-menu div.container div#navbar {
   margin-left: 1%; }
 
 nav#guest-menu li a {
-  color: #fff; }
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7); }
 
 nav#guest-menu li a:hover {
   color: #60a0ff;

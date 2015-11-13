@@ -13,11 +13,17 @@
 			<div id="welcome_home" class="row js-landing-hero">
 				<div class="col-md-6 col-md-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '300')) !!}
-				<br></br>
+					<div style="color:#FFF;">
+					<h3 >THE DISASTER & EMERGENCY</h3>
+					<h3 style="padding-left:20px">MANAGEMENT NETWORK</h3>
+				</div>
+				<br>
 				<div class="col-md-6 col-md-offset-1 text-center">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
+				<br>
 				</div>
+
 			</div>
 
 			<div class="" style="">
