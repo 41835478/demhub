@@ -60,7 +60,7 @@ $("select#country").change(function(){
       document.getElementById(country+"_map").style.height="";
       $("#backButton").attr("onclick","window.location.reload()");
       document.getElementById("backButton").style.display="";
-			document.getElementById("divisionFormGroup").style.display="";
+			// document.getElementById("divisionFormGroup").style.display="";
     }
 
 });
@@ -103,7 +103,7 @@ function firstFilterF(country){
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
     // document.getElementById("bottomMapSwap").style.height="";
-		document.getElementById("divisionFormGroup").style.display="";
+		// document.getElementById("divisionFormGroup").style.display="";
 
   }
 function fillRegions(country){

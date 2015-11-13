@@ -20,6 +20,7 @@ elixir(function(mix) {
                 'frontend/fullscreen/init.js',
                 'frontend/forms/register.js',
                 'frontend/resource_filter/map.js',
+                'frontend/plugins/jquery.maphilight.js',
                 'frontend/coming-soon/jquery.countdown.js', // coming-soon js
                 'frontend/coming-soon/placeholders.min.js', // coming-soon js
                 'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
