@@ -17,7 +17,7 @@ $('div#dashboard-icon > i').click(function(){
 			right:'-350px'
 		}, function(){
 			$('div#dashboard-icon > i').removeClass();
-			$('div#dashboard-icon > i').addClass('glyphicon glyphicon-flag');
+			$('div#dashboard-icon > i').addClass('icon-pencil');
 			$('div#dashboard-icon').css('right', '0');
 		});
 	}
