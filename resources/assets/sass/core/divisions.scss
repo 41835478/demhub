@@ -12,6 +12,18 @@
   .division-landing-name {
     font-size: 18px;
   }
+  div.division-landing-box {
+    max-height: 170px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .division-landing-name {
+    font-size: 22px;
+  }
+  div.division-landing-box .division-landing-name {
+    padding-top: 37px !important;
+  }
 }
 
 div.division-landing-box {

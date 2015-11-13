@@ -16,3 +16,9 @@
 .lading-content-1 {
   vertical-align: middle;
 }
+
+@media (max-width: 991px) {
+  .feedback-h2 {
+    font-size: 35px !important;
+  }
+}
