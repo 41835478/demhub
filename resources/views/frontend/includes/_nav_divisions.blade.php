@@ -2,7 +2,7 @@
   <div class="division-navbar">
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12" style="padding:0px">
 
           @foreach($allDivisions as $div)
             <a href="{{url('division', array('id' => $div->slug))}}">
