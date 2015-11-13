@@ -17814,7 +17814,7 @@ body.sb-top #toggle_sidemenu_t {
     left: -1px;
     min-width: 101%;
     list-style: none;
-    background-color: #FFF;
+    background-color: rgba(0,0,0,0.7);
     border: 1px solid rgba(0, 0, 0, 0.15);
     background-clip: padding-box;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
