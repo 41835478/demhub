@@ -20,7 +20,7 @@
 				<div id="united_states_map" class="mapContainer" style="visibility:hidden;height:1px">
 					<!-- <h1>The United States of America</h1>
 					<p>This map generated from <a href="http://en.wikipedia.org/wiki/Image:Map_of_USA_with_state_names.svg">"Map of USA with state names.svg"</a>.</p> -->
-					<img class="map" src="./images/maps/demo_usa.png" style="max-width:100%;" usemap="#usa">
+					<img class="map" src="./images/maps/demo_usa.png"  style="max-width:100%;padding-left:4px" usemap="#usa">
 					<map name="usa" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter.countries._usa')
 					</map>
