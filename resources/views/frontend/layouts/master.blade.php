@@ -81,22 +81,22 @@
       {!! HTML::script("js/dashboardtest/utility.js") !!}
       {!! HTML::script("js/dashboardtest/demo.js") !!}
       {!! HTML::script("js/dashboardtest/main.js") !!}
+
+      <script type="text/javascript">
+        jQuery(document).ready(function() {
+
+          "use strict";
+
+          // Init Demo JS
+          Demo.init();
+
+
+          // Init Theme Core
+          Core.init();
+
+        });
+      </script>
     @endif
-
-    <script type="text/javascript">
-  jQuery(document).ready(function() {
-
-    "use strict";
-
-    // Init Demo JS
-    Demo.init();
-
-
-    // Init Theme Core
-    Core.init();
-
-  });
-  </script>
 
     @include('includes.scripts._google_analytics')
     @include('includes.scripts._hotjar_analytics')
