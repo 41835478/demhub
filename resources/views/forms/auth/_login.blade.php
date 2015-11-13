@@ -1,63 +1,63 @@
-<div class="container">
+{!! Form::open(['url' => 'auth/login', 'class' => 'omb_loginForm', 'role' => 'form']) !!}
 
-    <div class="omb_login">
+  <div class="container">
 
-  		<div class="row omb_row-sm-offset-3">
-  			<div class="col-xs-12 col-sm-6">
+      <div class="omb_login">
 
-          {!! Form::open(['url' => 'auth/login', 'class' => 'omb_loginForm', 'role' => 'form']) !!}
+    		<div class="row omb_row-sm-offset-3">
+    			<div class="col-xs-12 col-sm-6">
 
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            {!! Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => 'Email Address']) !!}
-          </div>
-          <span class="help-block"></span>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              {!! Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => 'Email Address']) !!}
+            </div>
+            <span class="help-block"></span>
 
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            {!! Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => 'Password']) !!}
-          </div>
-          {{-- <span class="help-block">Password error</span> --}}
-          <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              {!! Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+            </div>
+            {{-- <span class="help-block">Password error</span> --}}
+            <br>
 
-          {!! Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
+            {!! Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
 
-          {!! Form::close() !!}
-
-  			</div>
-      </div>
-
-      <div class="row omb_row-sm-offset-3">
-  			<div class="col-xs-12 col-sm-3">
-  				<label class="checkbox">
-            {!! Form::checkbox('remember-me') !!} {{ trans('labels.remember_me') }}
-  				</label>
-  			</div>
-  			<div class="col-xs-12 col-sm-3">
-  				<p class="omb_forgotPwd">
-            {!! link_to('password/email', trans('labels.forgot_password')) !!}
-  				</p>
-  			</div>
-  		</div>
-
-      <div class="row omb_row-sm-offset-3 omb_loginOr">
-  			<div class="col-xs-12 col-sm-6">
-  				<hr class="omb_hrOr">
-  			</div>
-  		</div>
-
-      <div class="form-group">
-        <div class="col-md-12 control">
-          Don't have an account yet?
-          <a href="{{url('auth/register')}}">
-          Register Here
-          </a>
+    			</div>
         </div>
-      </div>
 
-	</div>
+        <div class="row omb_row-sm-offset-3">
+    			<div class="col-xs-12 col-sm-3">
+    				<label class="checkbox">
+              {!! Form::checkbox('remember') !!} {{ trans('labels.remember_me') }}
+    				</label>
+    			</div>
+    			<div class="col-xs-12 col-sm-3">
+    				<p class="omb_forgotPwd">
+              {!! link_to('password/email', trans('labels.forgot_password')) !!}
+    				</p>
+    			</div>
+    		</div>
 
-</div>
+        <div class="row omb_row-sm-offset-3 omb_loginOr">
+    			<div class="col-xs-12 col-sm-6">
+    				<hr class="omb_hrOr">
+    			</div>
+    		</div>
+
+        <div class="form-group">
+          <div class="col-md-12 control">
+            Don't have an account yet?
+            <a href="{{url('auth/register')}}">
+            Register Here
+            </a>
+          </div>
+        </div>
+
+  	</div>
+
+  </div>
+
+{!! Form::close() !!}
 
 <style media="screen">
   @media (min-width: 768px) {
