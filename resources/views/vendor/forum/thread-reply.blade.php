@@ -11,6 +11,7 @@
     array(
         'form_url'          => $thread->replyRoute,
         'form_classes'      => '',
+        'division_show'     => false,
         'show_title_field'  => false,
         'post_content'      => '',
         'submit_label'      => trans('forum::base.reply'),
