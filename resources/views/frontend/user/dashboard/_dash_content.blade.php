@@ -1,95 +1,130 @@
-<!-- Start: Content-Wrapper -->
-    <section id="content_wrapper">
+<section id="content_wrapper" style="margin-top: 60px;">
 
-      <!-- Start: Topbar-Dropdown -->
-      <div id="topbar-dropmenu" class="alt">
-        <div class="topbar-menu row">
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="metro-tile bg-primary light">
-              <span class="glyphicon glyphicon-inbox text-muted"></span>
-              <span class="metro-title">Messages</span>
-            </a>
+  <!-- Begin: Content -->
+  <div id="content" class="animated fadeIn" style="padding-bottom: 0;">
+    <div class="row center-block mt10" style="">
+
+      {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
+
+        <div class="col-md-4">
+
+          <div id="avatarSection" class="form-group">
+            {!! Form::label('avatar', 'Avatar', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              <img src="{{ $user->avatar->url('medium') }}" style="height: 200px; max-width: 200px !important;" >
+
+              {!! Form::file('avatar', null, ['class' => 'col-sm-4 control-label']) !!}
+
+              <br><span class="text-primary">JPEGs and PNG accepted.</span>
+              <br><span class="text-danger">Max File size: 2MB</span>
+            </div>
           </div>
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="metro-tile bg-info light">
-              <span class="glyphicon glyphicon-user text-muted"></span>
-              <span class="metro-title">Users</span>
-            </a>
+
+          <div class="form-group">
+              <div class="col-lg-3">
+                  	<button type="submit" class="btn btn-style-alt">SAVE</button>
+              </div>
           </div>
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="metro-tile bg-success light">
-              <span class="glyphicon glyphicon-headphones text-muted"></span>
-              <span class="metro-title">Support</span>
-            </a>
-          </div>
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="metro-tile bg-system light">
-              <span class="glyphicon glyphicon-facetime-video text-muted"></span>
-              <span class="metro-title">Videos</span>
-            </a>
-          </div>
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="metro-tile bg-warning light">
-              <span class="fa fa-gears text-muted"></span>
-              <span class="metro-title">Settings</span>
-            </a>
-          </div>
-          <div class="col-xs-4 col-sm-2">
-            <a href="#" class="metro-tile bg-alert light">
-              <span class="glyphicon glyphicon-picture text-muted"></span>
-              <span class="metro-title">Pictures</span>
-            </a>
-          </div>
+
         </div>
-      </div>
-      <!-- End: Topbar-Dropdown -->
 
-      <!-- Start: Topbar -->
-      <header id="topbar" class="alt">
-        <div class="topbar-left">
-          <ol class="breadcrumb">
-            <li class="crumb-active">
-              <a href="dashboard.html">Dashboard</a>
-            </li>
-            <li class="crumb-icon">
-              <a href="dashboard.html">
-                <span class="glyphicon glyphicon-home"></span>
-              </a>
-            </li>
-            <li class="crumb-link">
-              <a href="index-2.html">Home</a>
-            </li>
-            <li class="crumb-trail">Dashboard</li>
-          </ol>
-        </div>
-        <div class="topbar-right">
-          <div class="ib topbar-dropdown">
-            <label for="topbar-multiple" class="control-label pr10 fs11 text-muted">Reporting Period</label>
-            <select id="topbar-multiple" class="hidden">
-              <optgroup label="Filter By:">
-                <option value="1-1">Last 30 Days</option>
-                <option value="1-2" selected="selected">Last 60 Days</option>
-                <option value="1-3">Last Year</option>
-              </optgroup>
-            </select>
+        <div id="infoSectionMiddle" class="col-md-4" style="">
+
+          <div class="form-group">
+            {!! Form::label('first_name', 'First Name', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
+            </div>
           </div>
-          <div class="ml15 ib va-m" id="toggle_sidemenu_r">
-            <a href="#">
-              <i class="ad ad-sort"></i>
-              <span class="badge badge-warning badge-hero">3</span>
-            </a>
+
+          <div class="form-group">
+            {!! Form::label('last_name', 'Last Name', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
+            </div>
           </div>
+
+          <div class="form-group">
+            {!! Form::label('user_name', 'Username', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('user_name', $user->user_name, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('job_title', 'Job Title', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('job_title', $user->job_title, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('organization_name', 'Organization', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('organization_name', $user->organization_name, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
         </div>
-      </header>
-      <!-- End: Topbar -->
 
-      <!-- Begin: Content -->
-      <section id="content" class="table-layout animated fadeIn">
+        <div class="col-md-4">
 
-        <p>Empty</p>
+          <div class="form-group">
+            {!! Form::label('division', 'Division', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!!
+                Form::select('division', array('0' => 'Select One', '1' => 'Health & Epidemics',
+                '2' => 'Science & Environment', '3' => 'EM Practitioner & Response', '4' => 'Civil & Cyber Security',
+                '5' => 'Business Continuity', '6' => 'NGO & Humanitarian'
+                ),'0', array('class' => 'form-control'))
+              !!}
+            </div>
+          </div>
 
-      </section>
-      <!-- End: Content -->
+          <div class="form-group">
+            {!! Form::label('specialization', 'Specialization', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('specialization', $user->specialization, ['class' => 'form-control']) !!}
+            </div>
+          </div>
 
-    </section>
-    <!-- End: Content-Wrapper -->
+          <div class="form-group">
+            {!! Form::label('location', 'Location', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('location', $user->location, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('phone_number', 'Phone N.', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          @if ($user->canChangeEmail())
+            <div class="form-group">
+              {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-lg-3 control-label']) !!}
+              <div class="col-lg-8">
+                {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
+              </div>
+            </div>
+          @endif
+
+          {{-- <div class="form-group" style="visibility:hidden">
+            <label for="inputLinkedIn" class="col-sm-4 control-label">LinkedIn</label>
+            <div class="col-sm-8">
+              <input type="text" name="linkedIn" class="form-control" id="inputLinkedIn" placeholder="ca.linkedin.com/in/..." >
+            </div>
+          </div> --}}
+
+        </div>
+
+      {!! Form::close() !!}
+
+    </div>
+
+  </div>
+  <!-- End: Content -->
+
+</section>

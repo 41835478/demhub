@@ -36,7 +36,7 @@
       <div class="col-sm-6 col-sm-offset-3">
         <h3 style="text-align:center">Jennifer Duke Holmes, Founder, CEO </h3>
         <p style="text-align:left">
-          Jennifer has spent over 5 years in the Disaster and Emergency Management field as both an academic and an entrepreneur. She founded Hybrid Intuition Media in 2013 which develops digital media materials within an emergency management context. Jen has also been President of the global student membership for the International Association of Emergency Managers, the world’s largest association of its kind.
+          Jennifer has spent over 5 years in the Disaster and Emergency Management field as both an academic and an entrepreneur. She founded Hybrid Intuition Media in 2013 which develops digital media materials within an emergency management context. Jen has also been President of the global student membership for the International Association of Emergency Managers, the world's largest association of its kind.
         </p>
       </div>
     </div>
@@ -55,7 +55,7 @@
       <div class="col-sm-8 col-sm-offset-4" style="text-align:left">
         <h3>Sean William Kondra, Co-Founder, Director Operations & Development</h3>
         <p>
-          Sean has spent over 16 years in various pillars of the investment industry. He has spent time as an investment advisor, an investor communications director and, most recently, was the co- founder of a venture capital/corporate consulting corporation. Sean’s passion is assisting entrepreneurs and inventors at the genesis of an idea in commercializing their vision and creating successful ventures.
+          Sean has spent over 16 years in various pillars of the investment industry. He has spent time as an investment advisor, an investor communications director and, most recently, was the co- founder of a venture capital/corporate consulting corporation. Sean's passion is assisting entrepreneurs and inventors at the genesis of an idea in commercializing their vision and creating successful ventures.
         </p>
       </div>
 
@@ -70,7 +70,7 @@
       </div>
 
       <div class="col-sm-8" style="text-align:left;padding-top:8px">
-        <h3>Aldo Ruíz Luna, Lead Developer</h3>
+        <h3>Aldo Rui­z Luna, Lead Developer</h3>
         <p>
           Results-driven, user-focused software developer with 3+ years of cumulative industry experience in automation, scripting and web applications. Deep understanding of MVC architecture and translating business needs into technical requirements.  Articulate and strategic lateral thinker with an entrepreneurial spirit.
         </p>

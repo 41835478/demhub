@@ -1,35 +1,27 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+  {{-- @include('frontend.user.dashboard._navtest') --}}
+  @include('frontend.user.dashboard._sidebar')
+  {{-- @include('frontend.user.dashboard._dash_content') --}}
+  @include('frontend.user.dashboard._dash_content')
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  {!! HTML::script("js/dashboardtest/utility.js") !!}
+  {!! HTML::script("js/dashboardtest/demo.js") !!}
+  {!! HTML::script("js/dashboardtest/main.js") !!}
 
-  <div id="main" class="row">
-    <!-- id="user-settings" -->
-    <div class="dashboard-page sb-l-o sb-r-c onload-check sb-l-m sb-l-disable-animation">
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
 
-@include('frontend.user.dashboard.menu._dashboard_menu')
-  </div>
+      "use strict";
 
-      <div id="content_wrapper">
-      	@include ('frontend.user.dashboard._edit_profile')
-  		</div>
+      // Init Demo JS
+      Demo.init();
 
-  </div>
-<!-- <script>
-$(document).ready(function(){
-  if ($(window).width() < 750) {
-    document.getElementById("editProfile").style.marginLeft=0;
-    document.getElementById("editProfile").style.paddingLeft=0;
-    document.getElementById("avatarSection").style.marginLeft=0;
-    document.getElementById("infoSectionMiddle").style.marginLeft=0;
-  }
-})
-$(window).resize(function(){
-  if ($(window).width() < 750) {
-    document.getElementById("editProfile").style.marginLeft=0;
-    document.getElementById("editProfile").style.paddingLeft=0;
-    document.getElementById("avatarSection").style.marginLeft=0;
-    document.getElementById("infoSectionMiddle").style.marginLeft=0;
-  }
-})
-</script> -->
-@endsection('content')
+
+      // Init Theme Core
+      Core.init();
+
+    });
+  </script>
+@endsection

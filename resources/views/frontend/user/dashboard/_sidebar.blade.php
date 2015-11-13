@@ -52,3 +52,9 @@
 
 </aside>
 <!-- End: Sidebar Left -->
+
+<style media="screen">
+  body.sb-l-m #sidebar_left.nano{
+    /*height: calc(100% + 60px) !important;*/
+  }
+</style>

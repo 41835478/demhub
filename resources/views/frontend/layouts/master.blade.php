@@ -24,14 +24,9 @@
       $launch_date = "2015-11-10 00:00:00";
       // FALSE if deploying to production // TRUE if testing on development
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
-      $dashboardtest = false;
     ?>
 
-    @if($display_coming_soon)
-      {!! HTML::style(elixir('css/coming-soon.css')) !!}
-    @endif
-
-    @if($dashboardtest)
+    @if(Request::url() === url('dashboard'))
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
     @endif
 
@@ -68,7 +63,6 @@
           @yield('body-style')
           @yield('content')
 
-
         <div class="push"></div>
       </div><!-- ./container-fluid -->
       </div><!-- ./wrapper -->
@@ -76,27 +70,6 @@
     @endif
 
     @yield('modal')
-
-    @if($dashboardtest)
-      {!! HTML::script("js/dashboardtest/utility.js") !!}
-      {!! HTML::script("js/dashboardtest/demo.js") !!}
-      {!! HTML::script("js/dashboardtest/main.js") !!}
-
-      <script type="text/javascript">
-        jQuery(document).ready(function() {
-
-          "use strict";
-
-          // Init Demo JS
-          Demo.init();
-
-
-          // Init Theme Core
-          Core.init();
-
-        });
-      </script>
-    @endif
 
     @include('includes.scripts._google_analytics')
     @include('includes.scripts._hotjar_analytics')
@@ -107,5 +80,6 @@
     @yield('before-scripts-end')
     {!! HTML::script(elixir('js/frontend.js')) !!}
     @yield('after-scripts-end')
+
   </body>
 </html>

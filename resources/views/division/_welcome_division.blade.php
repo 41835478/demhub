@@ -1,13 +1,15 @@
 <nav>
   <div class="welcome-division">
 
-    <div id="welcome-division-category" class="row" style="background:
+    {{-- <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="background:
                                 url('../images/backgrounds/divisions/{{$currentDivision->slug}}.jpg') no-repeat fixed 0% 70%;
                                 -webkit-background-size: cover;
                                 -moz-background-size: cover;
                                 -o-background-size: cover;
                                 background-size: cover;
-                                overflow: hidden;">
+                                overflow: hidden;"> --}}
+
+    <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}">
 
       <div class="row">
         <div class="col-xs-12">
@@ -24,7 +26,7 @@
       </div>
 
       <div class="row">
-        <div class="ph-name col-md-8 col-md-offset-8 division_{{$currentDivision->slug}}">
+        <div class="ph-name col-md-8 col-md-offset-4 division_{{$currentDivision->slug}}">
           <h1>
             <font style="visibility:hidden">**</font>{{$currentDivision->name}}
           </h1>

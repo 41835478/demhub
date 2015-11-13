@@ -8,6 +8,24 @@
   transform: translate(-50%, -50%);
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+  .division-landing-name {
+    font-size: 18px;
+  }
+  div.division-landing-box {
+    max-height: 170px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .division-landing-name {
+    font-size: 22px;
+  }
+  div.division-landing-box .division-landing-name {
+    padding-top: 37px !important;
+  }
+}
+
 div.division-landing-box {
     max-height: 220px;
     min-height: 110px;
@@ -52,7 +70,7 @@ div.division-landing-box {
       @include centerer;
       z-index: 5;
       text-transform: uppercase;
-      width: 80%;
+      // width: 80%;
       height:80%;
       position: relative; }
 }
