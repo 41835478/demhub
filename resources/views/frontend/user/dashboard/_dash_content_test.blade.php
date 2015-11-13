@@ -1,240 +1,130 @@
-<section id="content_wrapper">
+<section id="content_wrapper" style="margin-top: 60px;">
 
-<!-- Begin: Content -->
-      <div id="content" class="animated fadeIn">
-        <div class="row center-block mt10" style="">
+  <!-- Begin: Content -->
+  <div id="content" class="animated fadeIn" style="padding-bottom: 0;">
+    <div class="row center-block mt10" style="">
 
-          <div class="col-md-4">
+      {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
 
-            <!-- Input Fields -->
-            <div class="panel">
-              <div class="panel-heading">
-                <span class="panel-title">Standard Fields</span>
-              </div>
-              <div class="panel-body">
+        <div class="col-md-4">
 
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Static Field</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <p class="form-control-static text-muted">email@example.com</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputStandard" class="col-lg-3 control-label">Standard</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <input type="text" id="inputStandard" class="form-control" placeholder="Type Here...">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSelect" class="col-lg-3 control-label">Select List</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <select class="form-control">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="disabledInput" class="col-lg-3 control-label">Disabled</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <input class="form-control" id="disabledInput" type="text" placeholder="A Disabled Form" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea1">Text Area Expand</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control textarea-grow" id="textArea1" rows="4"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea2">Text Area</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control" id="textArea2" rows="3"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea3">Disabled Text Area</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control" id="textArea3" rows="3" disabled></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+          <div id="avatarSection" class="form-group">
+            {!! Form::label('avatar', 'Avatar', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              <img src="{{ $user->avatar->url('medium') }}" style="height: 200px; max-width: 200px !important;" >
+
+              {!! Form::file('avatar', null, ['class' => 'col-sm-4 control-label']) !!}
+
+              <br><span class="text-primary">JPEGs and PNG accepted.</span>
+              <br><span class="text-danger">Max File size: 2MB</span>
             </div>
-
           </div>
 
-          <div class="col-md-4">
-
-            <!-- Input Fields -->
-            <div class="panel">
-              <div class="panel-heading">
-                <span class="panel-title">Standard Fields</span>
+          <div class="form-group">
+              <div class="col-lg-3">
+                  	<button type="submit" class="btn btn-style-alt">SAVE</button>
               </div>
-              <div class="panel-body">
-
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Static Field</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <p class="form-control-static text-muted">email@example.com</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputStandard" class="col-lg-3 control-label">Standard</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <input type="text" id="inputStandard" class="form-control" placeholder="Type Here...">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSelect" class="col-lg-3 control-label">Select List</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <select class="form-control">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="disabledInput" class="col-lg-3 control-label">Disabled</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <input class="form-control" id="disabledInput" type="text" placeholder="A Disabled Form" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea1">Text Area Expand</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control textarea-grow" id="textArea1" rows="4"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea2">Text Area</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control" id="textArea2" rows="3"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea3">Disabled Text Area</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control" id="textArea3" rows="3" disabled></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-md-4">
-
-            <!-- Input Fields -->
-            <div class="panel">
-              <div class="panel-heading">
-                <span class="panel-title">Standard Fields</span>
-              </div>
-              <div class="panel-body">
-
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Static Field</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <p class="form-control-static text-muted">email@example.com</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputStandard" class="col-lg-3 control-label">Standard</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <input type="text" id="inputStandard" class="form-control" placeholder="Type Here...">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSelect" class="col-lg-3 control-label">Select List</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <select class="form-control">
-                          <option>Option 1</option>
-                          <option>Option 2</option>
-                          <option>Option 3</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="disabledInput" class="col-lg-3 control-label">Disabled</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <input class="form-control" id="disabledInput" type="text" placeholder="A Disabled Form" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea1">Text Area Expand</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control textarea-grow" id="textArea1" rows="4"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea2">Text Area</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control" id="textArea2" rows="3"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label" for="textArea3">Disabled Text Area</label>
-                    <div class="col-lg-8">
-                      <div class="bs-component">
-                        <textarea class="form-control" id="textArea3" rows="3" disabled></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
           </div>
 
         </div>
 
-      </div>
-      <!-- End: Content -->
+        <div id="infoSectionMiddle" class="col-md-4" style="">
+
+          <div class="form-group">
+            {!! Form::label('first_name', 'First Name', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('last_name', 'Last Name', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('user_name', 'Username', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('user_name', $user->user_name, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('job_title', 'Job Title', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('job_title', $user->job_title, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('organization_name', 'Organization', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('organization_name', $user->organization_name, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="form-group">
+            {!! Form::label('division', 'Division', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!!
+                Form::select('division', array('0' => 'Select One', '1' => 'Health & Epidemics',
+                '2' => 'Science & Environment', '3' => 'EM Practitioner & Response', '4' => 'Civil & Cyber Security',
+                '5' => 'Business Continuity', '6' => 'NGO & Humanitarian'
+                ),'0', array('class' => 'form-control'))
+              !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('specialization', 'Specialization', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('specialization', $user->specialization, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('location', 'Location', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('location', $user->location, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('phone_number', 'Phone N.', ['class' => 'col-lg-3 control-label']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          @if ($user->canChangeEmail())
+            <div class="form-group">
+              {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-lg-3 control-label']) !!}
+              <div class="col-lg-8">
+                {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
+              </div>
+            </div>
+          @endif
+
+          {{-- <div class="form-group" style="visibility:hidden">
+            <label for="inputLinkedIn" class="col-sm-4 control-label">LinkedIn</label>
+            <div class="col-sm-8">
+              <input type="text" name="linkedIn" class="form-control" id="inputLinkedIn" placeholder="ca.linkedin.com/in/..." >
+            </div>
+          </div> --}}
+
+        </div>
+
+      {!! Form::close() !!}
+
+    </div>
+
+  </div>
+  <!-- End: Content -->
 
 </section>
