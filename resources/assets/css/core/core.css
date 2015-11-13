@@ -239,7 +239,7 @@ div.auth-modal-email {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px   solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative; }
 
@@ -407,6 +407,196 @@ button.btn-style-alt:active {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100; }
+
+[class^="icon-"] {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("../../images/icons/sprite.svg");
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  z-index: 1000;
+  fill: white;
+  background-color: white;
+  margin-left: 40%; }
+
+.whiltefill {
+  fill: white; }
+
+.icon-add {
+  background-position: 0 0px; }
+
+.icon-comment {
+  background-position: -48px 0px; }
+
+.icon-discuss path {
+  fill: white; }
+
+.icon-continuity {
+  background-position: -96px 0px; }
+
+.icon-continuity-box {
+  background-position: -144px 0px; }
+
+.icon-continuity-circle {
+  background-position: -192px 0px; }
+
+.icon-delete {
+  background-position: -240px 0px; }
+
+.icon-discuss {
+  background-position: -288px 0px; }
+
+.icon-edit {
+  background-position: -336px 0px; }
+
+.icon-health {
+  background-position: -384px 0px; }
+
+.icon-health-box {
+  background-position: -432px 0px; }
+
+.icon-health-circle {
+  background-position: -480px 0px; }
+
+.icon-humanitarian {
+  background-position: -528px 0px; }
+
+.icon-humanitarian-box {
+  background-position: -576px 0px; }
+
+.icon-humanitarian-circle {
+  background-position: -624px 0px; }
+
+.icon-like {
+  background-position: -672px 0px; }
+
+.icon-mail {
+  background-position: -720px 0px; }
+
+.icon-media {
+  background-position: 0px -48px; }
+
+.icon-news {
+  background-position: -48px -48px; }
+
+.icon-practice {
+  background-position: -96px -48px; }
+
+.icon-pracitce-box {
+  background-position: -144px -48px; }
+
+.icon-practice-circle {
+  background-position: -192px -48px; }
+
+.icon-reply {
+  background-position: -240px -48px; }
+
+.icon-report {
+  background-position: -288px -48px; }
+
+.icon-research {
+  background-position: -336px -48px; }
+
+.icon-response {
+  background-position: -384px -48px; }
+
+.icon-science {
+  background-position: -432px -48px; }
+
+.icon-science-box {
+  background-position: -480px -48px; }
+
+.icon-science-circle {
+  background-position: -528px -48px; }
+
+.icon-search {
+  background-position: -576px -48px; }
+
+.icon-searchbox {
+  background-position: -624px -48px; }
+
+.icon-security {
+  background-position: -672px -48px; }
+
+.icon-security-box {
+  background-position: -720px -48px; }
+
+.icon-security-circle {
+  background-position: 0px -96px; }
+
+.icon-share {
+  background-position: -48px -96px; }
+
+.icon-tag {
+  background-position: -96px -96px; }
+
+.icon-track {
+  background-position: -144px -96px; }
+
+.icon-upload {
+  background-position: -192px -96px; }
+
+.icon-view {
+  background-position: -240px -96px; }
+
+.icon-VIP {
+  background-position: -288px -96px; }
+
+.icon-division-01 {
+  background-position: -336px -96px; }
+
+.icon-division-02 {
+  background-position: -384px -96px; }
+
+.icon-division-03 {
+  background-position: -432px -96px; }
+
+.icon-division-04 {
+  background-position: -480px -96px; }
+
+.icon-division-05 {
+  background-position: -528px -96px; }
+
+.icon-division-06 {
+  background-position: -576px -96px; }
+
+.icon-pencil {
+  background-position: 0px -144px; }
+
+.icon-pencil2 {
+  background-position: -48px -144px; }
+
+.icon-users {
+  background-position: -96px -144px; }
+
+.icon-user-plus {
+  background-position: -192px -144px; }
+
+.icon-user-minus {
+  background-position: -240px -144px; }
+
+.icon-cancel-circle {
+  background-position: -288px -144px; }
+
+.icon-cross {
+  background-position: -336px -144px; }
+
+.icon-checkmark {
+  background-position: -384px -144px; }
+
+.icon-feed2 {
+  background-position: -432px -144px; }
+
+.icon-feed4 {
+  background-position: -480px -144px; }
+
+.icon-linkedin {
+  background-position: -528px -144px; }
+
+.icon-linkedin2 {
+  background-position: -576px -144px; }
 
 #map_container {
   overflow: hidden; }
