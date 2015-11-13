@@ -1,7 +1,7 @@
 <nav>
   <div class="welcome-division">
 
-    <div id="welcome-division-category" class="row" style="background:
+    <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="background:
                                 url('../images/backgrounds/divisions/{{$currentDivision->slug}}.jpg') no-repeat fixed 0% 70%;
                                 -webkit-background-size: cover;
                                 -moz-background-size: cover;

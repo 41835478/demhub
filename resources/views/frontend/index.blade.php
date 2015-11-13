@@ -23,7 +23,7 @@
 			</div>
 
 			<div class="" style="">
-				<div id="welcome_about" class="row"  >
+				<div id="welcome_about" class="row">
 
 					<div class="col-md-12">
 						<h1>What is DEMHUB?</h1>
@@ -69,45 +69,46 @@
 				</div>
 			</div>
 
-			<div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/welcome.jpg') no-repeat fixed;										-webkit-background-size: cover;
+			{{-- <div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/welcome.jpg') no-repeat fixed;										-webkit-background-size: cover;
 														-moz-background-size: cover;
 														-o-background-size: cover;
 														background-size: cover;
-														overflow: hidden;">
+														overflow: hidden;"> --}}
+			<div id="welcome_secondary_text" class="row">
 				<div class="row">
-				<div class="col-md-12 text-center">
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">SIX DIVISIONS</a>
-				</div>
+					<div class="col-md-12 text-center">
+						<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">SIX DIVISIONS</a>
+					</div>
 
-				<p>&nbsp;</p>
-				<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
 
-				<div class="row" style="margin-left: 15px; margin-right: 15px;">
-					@foreach($divisions as $div)
-						<a href="{{url('division', $div->slug)}}">
-							<div class="division-landing-box col-md-2">
-								<div id="division_{{$div->id}}">
-									<div class="division-landing-icon">
-										<img src ="/images/icons/division-0{{$div->id}}.svg">
+					<div class="row" style="margin-left: 15px; margin-right: 15px;">
+						@foreach($divisions as $div)
+							<a href="{{url('division', $div->slug)}}">
+								<div class="division-landing-box col-md-2">
+									<div id="division_{{$div->id}}">
+										<div class="division-landing-icon">
+											<img src ="/images/icons/division-0{{$div->id}}.svg">
+										</div>
+										<h3 class="division-landing-name">{{$div->name}}</h3>
 									</div>
-									<h3 class="division-landing-name">{{$div->name}}</h3>
-								</div>
 									<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
-						</div>
-						</a>
-					@endforeach
-				</div>
-
-			</div>
-
-			<div id="welcome_tertiary_text" class="row" >
-				<div class="col-md-12 text-center">
-					<h2 class="feedback-h2">Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
-
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
+								</div>
+							</a>
+						@endforeach
+					</div>
 
 				</div>
-			</div>
+
+				<div id="welcome_tertiary_text" class="row" >
+					<div class="col-md-12 text-center">
+						<h2 class="feedback-h2">Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
+
+						<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
+
+					</div>
+				</div>
 
 			</div>
 		</div>
