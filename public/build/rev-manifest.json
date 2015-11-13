@@ -1,16 +1,9 @@
 {
-  "css/backend.css": "css/backend-5cfabe7892.css",
-  "css/coming-soon.css": "css/coming-soon-ccb55490d9.css",
-<<<<<<< HEAD
-  "css/core.css": "css/core-d78968b757.css",
-  "css/dashboardtest.css": "css/dashboardtest-65e2ddfa95.css",
-  "css/frontend.css": "css/frontend-0d32185e2a.css",
-  "js/backend.js": "js/backend-3b4f70a1d9.js",
-  "js/frontend.js": "js/frontend-7bdd46ca9e.js"
-=======
-  "css/core.css": "css/core-040bfcd1d2.css",
-  "css/frontend.css": "css/frontend-0d32185e2a.css",
-  "js/backend.js": "js/backend-3b4f70a1d9.js",
-  "js/frontend.js": "js/frontend-e0d8a818ac.js"
->>>>>>> 89eddcbb3f55b4c3616d7364bb3648d254cb1ea3
+  "css/backend.css": "css/backend-30e6af23eb.css",
+  "css/coming-soon.css": "css/coming-soon-cf025320d2.css",
+  "css/core.css": "css/core-edc4760f94.css",
+  "css/dashboardtest.css": "css/dashboardtest-fd52b6f1dc.css",
+  "css/frontend.css": "css/frontend-9df27e040d.css",
+  "js/backend.js": "js/backend-319808775e.js",
+  "js/frontend.js": "js/frontend-4af2cde167.js"
 }
