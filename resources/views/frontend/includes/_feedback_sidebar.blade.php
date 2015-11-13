@@ -42,6 +42,4 @@ $("i").hover(
 <div id="dashboard">
 	@include('forms.user.feedback')
 	<br>
-	<br>
 </div>
-@include('modals._feedback_thankyou')

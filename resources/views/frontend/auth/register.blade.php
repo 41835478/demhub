@@ -20,6 +20,7 @@
 		<h2> GET THE BETA VERSION</h2>
 		{{-- @include('forms.auth._register_old') --}}
 		@include('forms.auth._register')
+		<br>
 	</div>
 
 	<script>

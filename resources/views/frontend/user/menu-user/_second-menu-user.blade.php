@@ -23,14 +23,14 @@
         @else
           <li>
         @endif
-        <a href="javascript:comingSoon('publications_title')" id="publications_title" style="padding-left:45px;padding-right:45px;"> PUBLICATIONS</a></li>
+        <a href="javascript:comingSoon('publications_title')" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
 
         @if(Request::url() == url('publications'))
           <li class="active">
         @else
           <li>
         @endif
-        <a href="javascript:comingSoon('network_title')" id="network_title" style="padding-left:45px;padding-right:45px;"> NETWORK</a></li>
+        <a href="javascript:comingSoon('network_title')" id="network_title" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
 
         @if(Request::url() === url('resource_filter'))
           <li class="active">
@@ -39,9 +39,9 @@
         @endif
         <a href="{{url('resource_filter')}}"> RESOURCES</a></li>
 
-        {{-- <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:45px;padding-right:45px;"> MAP</a></li> --}}
+        {{-- <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:15px;padding-right:15px;"> MAP</a></li> --}}
 
-      	<li><a href="javascript:comingSoon('event_tracking_title')" id="event_tracking_title" style="padding-left:45px;padding-right:45px;border-right:2px solid #fff"> TRACK EVENTS</a></li>
+      	<li><a href="javascript:comingSoon('event_tracking_title')" id="event_tracking_title" style="padding-left:15px;padding-right:15px;border-right:2px solid #fff"> TRACK EVENTS</a></li>
 
     	</ul>
     </div>
