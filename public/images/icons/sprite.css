@@ -1,0 +1,291 @@
+.icon {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url(sprite.svg);
+	background-color: #215ab7;
+}
+.icon-add {
+	width: 64px;
+	height: 64px;
+	background-position: 0 0;
+}
+.icon-comment {
+	width: 64px;
+	height: 64px;
+	background-position: -80px 0;
+}
+.icon-continuity {
+	width: 64px;
+	height: 64px;
+	background-position: -160px 0;
+}
+.icon-continuity-box {
+	width: 64px;
+	height: 64px;
+	background-position: -240px 0;
+}
+.icon-continuity-circle {
+	width: 64px;
+	height: 64px;
+	background-position: -320px 0;
+}
+.icon-delete {
+	width: 64px;
+	height: 64px;
+	background-position: -400px 0;
+}
+.icon-discuss {
+	width: 64px;
+	height: 64px;
+	background-position: -480px 0;
+}
+.icon-edit {
+	width: 64px;
+	height: 64px;
+	background-position: -560px 0;
+}
+.icon-health {
+	width: 64px;
+	height: 64px;
+	background-position: -640px 0;
+}
+.icon-health-box {
+	width: 64px;
+	height: 64px;
+	background-position: -720px 0;
+}
+.icon-health-circle {
+	width: 64px;
+	height: 64px;
+	background-position: -800px 0;
+}
+.icon-humanitarian {
+	width: 64px;
+	height: 64px;
+	background-position: -880px 0;
+}
+.icon-humanitarian-box {
+	width: 64px;
+	height: 64px;
+	background-position: -960px 0;
+}
+.icon-humanitarian-circle {
+	width: 64px;
+	height: 64px;
+	background-position: -1040px 0;
+}
+.icon-like {
+	width: 64px;
+	height: 64px;
+	background-position: -1120px 0;
+}
+.icon-mail {
+	width: 64px;
+	height: 64px;
+	background-position: -1200px 0;
+}
+.icon-media {
+	width: 64px;
+	height: 64px;
+	background-position: 0 -80px;
+}
+.icon-news {
+	width: 64px;
+	height: 64px;
+	background-position: -80px -80px;
+}
+.icon-practice {
+	width: 64px;
+	height: 64px;
+	background-position: -160px -80px;
+}
+.icon-practice-box {
+	width: 64px;
+	height: 64px;
+	background-position: -240px -80px;
+}
+.icon-practice-circle {
+	width: 64px;
+	height: 64px;
+	background-position: -320px -80px;
+}
+.icon-reply {
+	width: 64px;
+	height: 64px;
+	background-position: -400px -80px;
+}
+.icon-report {
+	width: 64px;
+	height: 64px;
+	background-position: -480px -80px;
+}
+.icon-research {
+	width: 64px;
+	height: 64px;
+	background-position: -560px -80px;
+}
+.icon-response {
+	width: 64px;
+	height: 64px;
+	background-position: -640px -80px;
+}
+.icon-science {
+	width: 64px;
+	height: 64px;
+	background-position: -720px -80px;
+}
+.icon-science-box {
+	width: 64px;
+	height: 64px;
+	background-position: -800px -80px;
+}
+.icon-science-circle {
+	width: 64px;
+	height: 64px;
+	background-position: -880px -80px;
+}
+.icon-search {
+	width: 64px;
+	height: 64px;
+	background-position: -960px -80px;
+}
+.icon-searchbox {
+	width: 64px;
+	height: 64px;
+	background-position: -1040px -80px;
+}
+.icon-security {
+	width: 64px;
+	height: 64px;
+	background-position: -1120px -80px;
+}
+.icon-security-box {
+	width: 64px;
+	height: 64px;
+	background-position: -1200px -80px;
+}
+.icon-security-circle {
+	width: 64px;
+	height: 64px;
+	background-position: 0 -160px;
+}
+.icon-share {
+	width: 64px;
+	height: 64px;
+	background-position: -80px -160px;
+}
+.icon-tag {
+	width: 64px;
+	height: 64px;
+	background-position: -160px -160px;
+}
+.icon-track {
+	width: 64px;
+	height: 64px;
+	background-position: -240px -160px;
+}
+.icon-upload {
+	width: 64px;
+	height: 64px;
+	background-position: -320px -160px;
+}
+.icon-view {
+	width: 64px;
+	height: 64px;
+	background-position: -400px -160px;
+}
+.icon-VIP {
+	width: 64px;
+	height: 64px;
+	background-position: -480px -160px;
+}
+.icon-division-01 {
+	width: 64px;
+	height: 64px;
+	background-position: -560px -160px;
+}
+.icon-division-02 {
+	width: 64px;
+	height: 64px;
+	background-position: -640px -160px;
+}
+.icon-division-03 {
+	width: 64px;
+	height: 64px;
+	background-position: -720px -160px;
+}
+.icon-division-04 {
+	width: 64px;
+	height: 64px;
+	background-position: -800px -160px;
+}
+.icon-division-05 {
+	width: 64px;
+	height: 64px;
+	background-position: -880px -160px;
+}
+.icon-division-06 {
+	width: 64px;
+	height: 64px;
+	background-position: -960px -160px;
+}
+.icon-pencil {
+	width: 64px;
+	height: 64px;
+	background-position: 0 -240px;
+}
+.icon-pencil2 {
+	width: 64px;
+	height: 64px;
+	background-position: -80px -240px;
+}
+.icon-users {
+	width: 72px;
+	height: 64px;
+	background-position: -160px -240px;
+}
+.icon-user-plus {
+	width: 64px;
+	height: 64px;
+	background-position: -320px -240px;
+}
+.icon-user-minus {
+	width: 64px;
+	height: 64px;
+	background-position: -400px -240px;
+}
+.icon-cancel-circle {
+	width: 64px;
+	height: 64px;
+	background-position: -480px -240px;
+}
+.icon-cross {
+	width: 64px;
+	height: 64px;
+	background-position: -560px -240px;
+}
+.icon-checkmark {
+	width: 64px;
+	height: 64px;
+	background-position: -640px -240px;
+}
+.icon-feed2 {
+	width: 64px;
+	height: 64px;
+	background-position: -720px -240px;
+}
+.icon-feed4 {
+	width: 64px;
+	height: 64px;
+	background-position: -800px -240px;
+}
+.icon-linkedin {
+	width: 64px;
+	height: 64px;
+	background-position: -880px -240px;
+}
+.icon-linkedin2 {
+	width: 64px;
+	height: 64px;
+	background-position: -960px -240px;
+}

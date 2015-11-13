@@ -8,6 +8,29 @@
   transform: translate(-50%, -50%);
 }
 
+@media (min-width: 992px){
+    .division-landing-name {
+      margin-top:-10px;
+    }
+    .icon-response,
+    .icon-health,
+    .icon-science,
+    .icon-practice,
+    .icon-continuity,
+    .icon-humanitarian,
+    .icon-security {
+      opacity:0.0;
+      &:hover{
+        opacity:1.0;
+      }
+      }
+
+      .mouse-scroll,
+      .mouse {
+        margin-top:15% !important;
+        margin-left:-30% !important;
+      }
+}
 @media (min-width: 992px) and (max-width: 1199px) {
   .division-landing-name {
     font-size: 18px;
@@ -21,8 +44,14 @@
   .division-landing-name {
     font-size: 22px;
   }
-  div.division-landing-box .division-landing-name {
-    padding-top: 37px !important;
+  div.division-landing-box  {
+    padding-top: 17px !important;
+    height:100px;
+  }
+  .mouse-scroll,
+  .mouse {
+    margin-top:5% !important;
+    margin-left:23% !important;
   }
 }
 
@@ -35,6 +64,15 @@ div.division-landing-box {
     &:hover {
         div.division-landing-color{
           opacity: 1;
+        }
+        .icon-response,
+        .icon-health,
+        .icon-science,
+        .icon-practice,
+        .icon-continuity,
+        .icon-humanitarian,
+        .icon-security {
+          opacity:0.6;
         }
     }
 
@@ -54,14 +92,14 @@ div.division-landing-box {
     }
 
   .division-landing-name {
-    padding-top:30px;
+    padding-top:0px;
   }
 
   div.division-landing-color{
       width:90%;
       height:100%;
       opacity: 0.6;
-      z-index: 0;
+      z-index: -10;
       position: absolute;
       @include centerer;
     }
@@ -85,7 +123,7 @@ div.auth-modal-email {
 @media only screen and (max-width: 991px) {
   /* For mobile phones and tablets: */
   .division-landing-name {
-    padding-top: 46px;
+    padding-top: 10px;
   }
 
 }
@@ -96,4 +134,13 @@ div.auth-modal-email {
     width:100%;
     height:110px;
     }
+
+    .mouse-scroll,
+    .mouse {
+      margin-top:10px !important;
+    }
+}
+
+.transparent-icon {
+  opacity:0.0;
 }
