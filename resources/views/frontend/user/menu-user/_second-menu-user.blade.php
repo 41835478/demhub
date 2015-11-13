@@ -1,6 +1,6 @@
 <div class="row" >
   <div class="navbar navbar-inverse" id="secondary-menu" role="navigation" style="margin-bottom:0px">
-    <div class="col-lg-10 col-lg-offset-2 col-md-11 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-3">
 
 
       <ul class="nav navbar-nav">

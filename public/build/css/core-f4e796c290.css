@@ -37,16 +37,6 @@ html, body {
   margin: 0 auto -100px;
   /* the bottom margin is the negative value of the footer's height */ }
 
-.lading-content-1 {
-  vertical-align: middle; }
-
-@media (max-width: 991px) {
-  .feedback-h2 {
-    font-size: 35px !important;
-    padding-bottom: 25px !important; }
-  .demhub-logo-landing {
-    margin: auto; } }
-
 .navbar-default {
   border: none !important; }
 
@@ -165,18 +155,6 @@ footer, .push {
 footer.main-footer {
   background: white; }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-  .division-landing-name {
-    font-size: 18px; }
-  div.division-landing-box {
-    max-height: 170px !important; } }
-
-@media (max-width: 991px) {
-  .division-landing-name {
-    font-size: 22px; }
-  div.division-landing-box .division-landing-name {
-    padding-top: 37px !important; } }
-
 div.division-landing-box {
   max-height: 220px;
   min-height: 110px;
@@ -213,6 +191,7 @@ div.division-landing-box {
     transform: translate(-50%, -50%);
     z-index: 5;
     text-transform: uppercase;
+    width: 80%;
     height: 80%;
     position: relative; }
 
@@ -331,10 +310,6 @@ button.btn-style-alt:active {
 
 .text-link-style:hover, .text-link-style:focus {
   color: #60A0FF; }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .control-label {
-    text-align: left !important; } }
 
 .alert {
   margin: 50px 0 0 0 !important; }

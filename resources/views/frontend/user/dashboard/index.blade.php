@@ -24,5 +24,4 @@
 
     });
   </script>
-
 @endsection

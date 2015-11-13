@@ -1,14 +1,18 @@
 <nav>
   <div class="welcome-division">
 
-    {{--  <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="
+    {{-- <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="background:
+                                url('../images/backgrounds/divisions/{{$currentDivision->slug}}.jpg') no-repeat fixed 0% 70%;
+                                -webkit-background-size: cover;
+                                -moz-background-size: cover;
+                                -o-background-size: cover;
+                                background-size: cover;
+                                overflow: hidden;"> --}}
 
-                                "> --}}
-
-    <div id="welcome-division-category" class="welcome-division-{{$currentDivision->slug}}">
+    <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}">
 
       <div class="row">
-
+        <div class="col-xs-12">
 
           @foreach($navDivisions as $div)
             <a href="{{url('division', array('id' => $div->slug))}}">
@@ -18,7 +22,7 @@
             </a>
           @endforeach
 
-
+        </div>
       </div>
 
       <div class="row">
@@ -31,6 +35,5 @@
 
     </div>
 
-  </div>
   </div>
 </nav>
