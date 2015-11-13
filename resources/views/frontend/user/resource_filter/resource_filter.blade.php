@@ -56,26 +56,35 @@
 			<br>
 			<!-- <h3>Filters</h3> -->
 			<!-- <button onclick="changeCoordinates('australia')">Testing
-			</button> -->
-			<form class="form-inline">
-				<div class="form-group" id="countryFormGroup">
-				  <label for="country">Country</label>
-					<select id="country" class="form-control">
-						<option value="" disabled selected>Select One</option>
-					  <option class="countryOption">Australia</option>
-					  <option class="countryOption">Canada</option>
-					  <option class="countryOption">United States</option>
-					  <option class="countryOption">New Zealand</option>
-					</select>
-				</div>
+		</button> -->
+	<form class="form-inline">
+		<div class="form-group" id="countryFormGroup">
+				<label for="country">Country</label>
+			<select id="country" class="form-control" style="text-transform: capitalize">
+				<option value="" disabled selected>Select One</option>
+				@foreach ($resourceRelation as $relation)
+				{{$country=str_replace("_", " ", $relation->country)}}
+				<option>{{$country}}</option>
+				@endforeach
+			</select>
+			</div>
+			<div class="form-group" id="regionFormGroup" style="display:none">
+					<label for="region">Region</label>
+				<select id="region" class="form-control">
+					<option value="" disabled selected>Select One</option>
+					<option style="display:none"></option>
 
-				<div class="form-group" id="regionFormGroup" style="display:none">
-			    <label for="region">Region</label>
-					<select id="region" class="form-control">
-						<option value="" disabled selected>Select One</option>
-					  <option style="display:none"></option>
-					</select>
-				</div>
+				</select>
+			</div>
+			<div class="form-group" id="divisionFormGroup" style="display:none">
+					<label for="division">Division</label>
+				<select id="division" class="form-control">
+					<option value="" disabled selected>Select One</option>
+					@foreach ($allDivisions as $division)
+					<option value="{{$division->slug}}">{{$division->name}}</option>
+					@endforeach
+				</select>
+			</div>
 
 			</form>
 	    <hr>

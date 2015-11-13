@@ -19,8 +19,6 @@ elixir(function(mix) {
                 'frontend/forms/register.js',
                 'frontend/main.js',
                 'frontend/plugins/jquery.backstretch.min.js',
-                'frontend/plugins/AbsoluteAdmin-demo.js',
-                'frontend/plugins/AbsoluteAdmin-main.js',
                 'frontend/resource_filter/map.js',
                 'frontend/coming-soon/jquery.countdown.js', // coming-soon js
                 'frontend/coming-soon/placeholders.min.js', // coming-soon js
