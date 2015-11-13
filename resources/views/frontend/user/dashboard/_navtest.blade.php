@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="dashboard.html">
           <b>Absolute</b>Admin
         </a>
-        <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
+        <span id="toggle_sidemenu_l" class="fa fa-bars"></span>
       </div>
 
       <form class="navbar-form navbar-left navbar-search alt" role="search">

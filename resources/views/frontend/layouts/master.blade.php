@@ -31,7 +31,7 @@
       {!! HTML::style(elixir('css/coming-soon.css')) !!}
     @endif
 
-    @if($dashboardtest)
+    @if(Request::url() === url('dashboardtest'))
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
     @endif
 

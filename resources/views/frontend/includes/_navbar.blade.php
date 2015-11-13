@@ -1,4 +1,5 @@
-<nav id="guest-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="padding-left:30px;">
+<nav id="guest-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top">
+	{{-- style="padding-left:30px;" --}}
 	<div class="container-fluid">
 
 		<div class="navbar-header">
@@ -9,7 +10,15 @@
 				<span class="icon-bar"></span>
 			</button>
 
-			<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white-beta.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px')) !!}</a>
+			@if(Request::url() === url('dashboardtest'))
+				<div class="navbar-branding">
+					<span id="toggle_sidemenu_l" class="fa fa-bars" style="top: 0; position: absolute; left: -10px;"></span>
+				</div>
+				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white-beta.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;position: absolute;top: 7px;left: 45px;')) !!}</a>
+			@else
+				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white-beta.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;')) !!}</a>
+			@endif
+
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
