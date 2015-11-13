@@ -9,10 +9,8 @@
 @endsection
 
 @section('content')
-	<div>
-		<div>
-			<div id="welcome_home" class="row js-landing-hero">
 
+			<div id="welcome_home" class="row js-landing-hero">
 				<div class="col-md-6 col-md-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '300')) !!}
 				<br></br>
@@ -112,6 +110,5 @@
 
 			</div>
 		</div>
-	</div>
-</div>
+
 @stop
