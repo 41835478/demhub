@@ -88,7 +88,7 @@
 							<div class="division-landing-box col-md-2">
 								<div id="division_{{$div->id}}">
 									<div class="division-landing-icon">
-										<img src ="/images/icons/division-0{{$div->id}}.svg">
+										<img src ="/images/icons/{{$div->slug}}.svg">
 									</div>
 									<h3 class="division-landing-name">{{$div->name}}</h3>
 								</div>

@@ -1,0 +1,12 @@
+.iconsall {
+
+}
+
+.fallback {
+  display: none;
+  /* Make sure it's the same size as the SVG takes up */
+}
+
+.no-svg .fallback {
+  background-image: url(../images/icons/iconsall.png); 
+}
