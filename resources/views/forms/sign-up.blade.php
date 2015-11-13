@@ -234,7 +234,7 @@
     <div class="form-group">
 
         <div class="col-sm-offset-2 col-sm-10">
-=======
+
         <div class="col-sm-offset-3 col-sm-7">
 
         	<button type="submit" class="btn btn-default btn-lg btn-style">DONE</button>

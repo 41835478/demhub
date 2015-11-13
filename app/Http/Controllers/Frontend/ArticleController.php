@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Components\Helpers;
-use App\Http\Components\ScraperComponent;
+use App\Http\Components\Scraper;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
