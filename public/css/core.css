@@ -155,10 +155,13 @@ footer, .push {
 footer.main-footer {
   background: white; }
 
+<<<<<<< HEAD
 @media (min-width: 992px) and (max-width: 1199px) {
   .division-landing-name {
     font-size: 18px; } }
 
+=======
+>>>>>>> 1671e6d26063b2fae36909cd9bf35f68b96ff534
 div.division-landing-box {
   max-height: 220px;
   min-height: 110px;
@@ -195,6 +198,10 @@ div.division-landing-box {
     transform: translate(-50%, -50%);
     z-index: 5;
     text-transform: uppercase;
+<<<<<<< HEAD
+=======
+    width: 80%;
+>>>>>>> 1671e6d26063b2fae36909cd9bf35f68b96ff534
     height: 80%;
     position: relative; }
 

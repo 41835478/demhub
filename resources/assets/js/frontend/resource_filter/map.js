@@ -48,14 +48,19 @@ $("select#country").change(function(){
       if (country == "new_zealand"){
         document.getElementById("mapListing").style.display="";
       }
-			if (country == "canada"){
-        document.getElementById("canada_map").style.marginTop="-200px";
-      }
+			else if (country == "canada"){
+				document.getElementById("canada_map").style.marginTop="-200px";
+			}
+			else if (country == "australia"){
+				document.getElementById("australia_map").style.marginTop="-50px";
+				document.getElementById("australia_map").style.marginBottom="-10px";
+			}
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
       $("#backButton").attr("onclick","window.location.reload()");
       document.getElementById("backButton").style.display="";
+			document.getElementById("divisionFormGroup").style.display="";
     }
 
 });
@@ -84,8 +89,12 @@ function firstFilterF(country){
     if (country == "new_zealand"){
       document.getElementById("mapListing").style.display="";
     }
-		if (country == "canada"){
+		else if (country == "canada"){
 			document.getElementById("canada_map").style.marginTop="-200px";
+		}
+		else if (country == "australia"){
+			document.getElementById("australia_map").style.marginTop="-50px";
+			document.getElementById("australia_map").style.marginBottom="-10px";
 		}
     $("#backButton").attr("onclick","window.location.reload()");
 
@@ -94,6 +103,7 @@ function firstFilterF(country){
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
     // document.getElementById("bottomMapSwap").style.height="";
+		document.getElementById("divisionFormGroup").style.display="";
 
   }
 function fillRegions(country){
@@ -107,6 +117,25 @@ function fillRegions(country){
   // console.log(optionHTML);
   return optionHTML;
 }
+
+$("select#division").change(function(){
+		if (($("select#division").val()) != null){
+			var filterVar = $("select#division").val();
+
+			if($("tr").hasClass('in')) {
+			        $("tr." +filterVar).addClass("in");
+			        $("tr." +filterVar).removeClass("out");
+			    }
+					$(".mapContainer").hide();
+					// document.getElementById(country+"_map").style.display="";
+					document.getElementById("mapListing").style.display="";
+
+			filterVar = $("select#country").val();
+			var country = filterVar.toLowerCase();
+			country=country.replace(/ -/g,"_");
+			$("#backButton").attr("onclick","firstFilterF('"+country+"')");
+		}
+	});
 
 $("select#region").change(function(){
 
