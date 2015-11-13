@@ -41,7 +41,7 @@
                   target="_blank" href="{{ $item->source_url }}"
                 @else
                   href="" data-toggle="modal" data-target="#myModal"
-                  @endif
+                @endif
               style="color:#000">
               <?php
                 if (strlen($item->title) > 65){

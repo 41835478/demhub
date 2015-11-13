@@ -5,11 +5,14 @@
     @if (Request::url() == url('thefuture'))
       @include ('frontend.user.menu-user._carousel-menu-user')
     @endif
-    @include ('frontend.user.menu-user._second-menu-user')
   @endif
+  @include ('frontend.user.menu-user._second-menu-user')
 @endif
 @if( isset($navDivisions) && !isset($userMenu))
   @include('frontend.includes._nav_divisions')
+@endif
+@if(Auth::guest() && ! empty($allDivisions))
+  @include('frontend.user.menu-user._second-menu-user-registration-required')
 @endif
 
 <script>
