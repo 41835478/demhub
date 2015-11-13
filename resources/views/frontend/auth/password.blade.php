@@ -13,6 +13,6 @@
 
 @section('fullscreen-content')
 	<h2> RESET PASSWORD </h2>
-	@include('forms.auth._password_old')
+	{{-- @include('forms.auth._password_old') --}}
 	@include('forms.auth._password')
 @endsection

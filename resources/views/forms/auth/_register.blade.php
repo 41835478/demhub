@@ -1,45 +1,44 @@
-<div class="container">
+{!! Form::open(['to' => 'auth/register', 'class' => 'omb_loginForm', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100']) !!}
+  <div class="container">
 
-    <div class="omb_login">
+      <div class="omb_login">
 
-  		<div class="row omb_row-sm-offset-3">
-  			<div class="col-xs-12 col-sm-6">
-
-          {!! Form::open(['to' => 'auth/register', 'class' => 'omb_loginForm', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100']) !!}
+    		<div class="row omb_row-sm-offset-3">
+    			<div class="col-xs-12 col-sm-6">
 
             <div id="form-part-1">
 
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                {!! Form::input('user_name','user_name',old('user_name'), ['class' => 'form-control', 'placeholder' => 'Username','required','id' => 'user_name']) !!}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  {!! Form::input('user_name','user_name',old('user_name'), ['class' => 'form-control', 'placeholder' => 'Username','required','id' => 'user_name']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
               </div>
-              @if ($errors)
-                <span class="help-block">{{$errors->first('Username')}}</span>
-              @endif
 
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                {!! Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => 'Email Address','required','data-error'=> 'Invalid email address','id' => 'email']) !!}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  {!! Form::input('email', 'email', old('email'), ['class' => 'form-control', 'placeholder' => 'Email Address','required','data-error'=> 'Invalid email address','id' => 'email']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
               </div>
-              @if ($errors)
-                <span class="help-block">{{$errors->first('Email')}}</span>
-              @endif
 
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                {!! Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => 'Password','data-minlength'=>'6','required','id' => 'password']) !!}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                  {!! Form::input('password', 'password', null, ['class' => 'form-control', 'placeholder' => 'Password','data-minlength'=>'6','required','id' => 'password']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
               </div>
-              @if ($errors)
-                <span class="help-block">{{$errors->first('Password')}}</span>
-              @endif
 
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Password Confirmation','data-minlength'=>'6','required','id' => 'password']) !!}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                  {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Password Confirmation','data-minlength'=>'6','required','id' => 'password']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
               </div>
-              @if ($errors)
-                <span class="help-block">{{$errors->first('Password')}}</span>
-              @endif
 
               <br>
 
@@ -52,42 +51,72 @@
             </div>
 
             <div id="form-part-2" style="display:none">
-              
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  {!! Form::input('first_name','first_name',old('first_name'), ['class' => 'form-control', 'placeholder' => 'First Name','required','id' => 'first_name']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div>
 
-              {!! Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => 'Last Name','required','id' => 'last_name']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+                  {!! Form::input('job_title', 'job_title', old('job_title'), ['class' => 'form-control', 'placeholder' => 'Job Title','required','id' => 'job_title']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                  {!! Form::input('organization_name', 'organization_name', old('organization_name'), ['class' => 'form-control', 'placeholder' => 'Organization/Agency Name','required','id' => 'organization_name']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div>
+
+              {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
             </div>
 
-          {!! Form::close() !!}
-
-  			</div>
-      </div>
-
-      <div class="row omb_row-sm-offset-3">
-  			<div class="col-xs-12 col-sm-3">
-  				<label class="checkbox">
-            {!! Form::checkbox('remember-me') !!} {{ trans('labels.remember_me') }}
-  				</label>
-  			</div>
-  		</div>
-
-      <div class="row omb_row-sm-offset-3 omb_loginOr">
-  			<div class="col-xs-12 col-sm-6">
-  				<hr class="omb_hrOr">
-  			</div>
-  		</div>
-
-      <div class="form-group">
-        <div class="col-md-12 control">
-          Already a member?
-          <a href="{{url('auth/login')}}">
-          Login Here
-          </a>
+    			</div>
         </div>
-      </div>
 
-	</div>
+        <div class="row omb_row-sm-offset-3">
+    			<div class="col-xs-12 col-sm-3">
+    				<label class="checkbox">
+              {!! Form::checkbox('remember-me') !!} {{ trans('labels.remember_me') }}
+    				</label>
+    			</div>
+    		</div>
 
-</div>
+        <div class="row omb_row-sm-offset-3 omb_loginOr">
+    			<div class="col-xs-12 col-sm-6">
+    				<hr class="omb_hrOr">
+    			</div>
+    		</div>
+
+        <div class="form-group">
+          <div class="col-md-12 control">
+            Already a member?
+            <a href="{{url('auth/login')}}">
+            Login Here
+            </a>
+          </div>
+        </div>
+
+  	</div>
+
+  </div>
+
+{!! Form::close() !!}
 
 <style media="screen">
   @media (min-width: 768px) {

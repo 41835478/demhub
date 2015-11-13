@@ -14,7 +14,7 @@
 			<div id="welcome_home" class="row js-landing-hero">
 
 				<div class="col-md-6 col-md-offset-6 lading-content-1">
-					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive', 'width' => '300')) !!}
+					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '300')) !!}
 				<br></br>
 				<div class="col-md-6 col-md-offset-1 text-center">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
@@ -103,8 +103,6 @@
 			<div id="welcome_tertiary_text" class="row" >
 				<div class="col-md-12 text-center">
 					<h2 class="feedback-h2">Help us develop the world's online DEM network.<br> Test DEMHUB’s beta and give us your feedback.</h2>
-
-					<!-- <a type="button" class="btn btn-default btn-lg btn-style" href={{url('auth/register')}}>REGISTER</a> -->
 
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
 

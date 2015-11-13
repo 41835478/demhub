@@ -70,7 +70,9 @@ class PasswordController extends Controller {
 
 		switch ($response) {
 			case Password::RESET_LINK_SENT:
-				return redirect()->back()->with('status', trans($response));
+				// return redirect()->back()->with('status', trans($response));
+				return redirect()->back()->withFlashSuccess("A reset email was sent successfully. Please wait up to 10 minutes to receive your reset link.");
+				// return redirect()->back()->with('status', trans($response)); //original
 
 			case Password::INVALID_USER:
 				return redirect()->back()->withErrors(['email' => trans($response)]);

@@ -42,7 +42,10 @@ html, body {
 
 @media (max-width: 991px) {
   .feedback-h2 {
-    font-size: 35px !important; } }
+    font-size: 35px !important;
+    padding-bottom: 25px !important; }
+  .demhub-logo-landing {
+    margin: auto; } }
 
 .navbar-default {
   border: none !important; }
