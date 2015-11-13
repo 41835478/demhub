@@ -43,14 +43,13 @@ function comingSoonP (elementId) {
   }
   if (alreadyAdded==false){
     document.getElementById(elementId).innerHTML=document.getElementById(elementId).innerHTML+comingSoonTextP();
-    document.getElementById(elementId).style.paddingRight='5px';
-    document.getElementById(elementId).style.paddingLeft='5px';
+    document.getElementById(elementId).style.fontSize='80%';
     comingSoonElementNames.push(elementId);
   }
 }
 function comingSoonTextP(){
   var text;
-  text="<p style='color:#98a9c1;text-align:center'> - COMING SOON </p>";
+  text="<i style='color:#98a9c1'> - COMING SOON </i>";
   return text;
 }
 

@@ -1,3 +1,4 @@
+
 <!-- Start: Sidebar -->
 <aside id="sidebar_left" class="nano nano-light affix">
 
@@ -6,35 +7,39 @@
 
     <!-- Start: Sidebar Menu -->
     <ul class="nav sidebar-menu">
-      <li class="active">
-        <a href="pages_calendar.html">
-          <span class="fa fa-user"></span>
-          <span class="sidebar-title">PROFILE</span>
-        </a>
-      </li>
+      @if(Request::url() == url('dashboard'))
+        <li class="active">
+      @else
+        <li>
+      @endif
+      <a href="{{url('dashboard')}}">
+        <span class="fa fa-user"></span>
+        <span class="sidebar-title">PROFILE</span>
+      </a>
+    </li>
       <li>
-        <a href="pages_calendar.html">
+        <a href="javascript:comingSoonP('my_publications_title')">
           <span class="fa fa-briefcase"></span>
-          <span class="sidebar-title">MY PUBLICATIONS</span>
+          <span class="sidebar-title" id="my_publications_title">MY PUBLICATIONS</span>
         </a>
       </li>
       <li>
-        <a href="pages_calendar.html">
+        <a href="javascript:comingSoonP('connections_title')">
           <span class="fa fa-users"></span>
-          <span class="sidebar-title">CONNECTIONS</span>
-        </a>
+          <span class="sidebar-title" id="connections_title">CONNECTIONS</span>
+          </a>
       </li>
       <li>
-        <a href="pages_calendar.html">
+        <a href="javascript:comingSoonP('privacy_settings_title')" style="">
           <span class="fa fa-globe"></span>
-          <span class="sidebar-title">PRIVACY</span>
-        </a>
+          <span class="sidebar-title" id="privacy_settings_title">PRIVACY SETTINGS</span>
+          </a>
       </li>
       <li>
-        <a href="pages_calendar.html">
-          <span class="fa fa-file"></span>
-          <span class="sidebar-title">COLLECTION</span>
-        </a>
+        <a href="javascript:comingSoonP('collection_title')" style="">
+          <span class="fa fa-file" style=""></span>
+          <span class="sidebar-title" id="collection_title">COLLECTION</span>
+          </a>
       </li>
     </ul>
     <!-- End: Sidebar Menu -->

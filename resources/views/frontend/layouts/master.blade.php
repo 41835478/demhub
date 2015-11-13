@@ -58,7 +58,7 @@
 
         @include('frontend.includes._navigation')
         @include('includes.partials.messages')
-        <div class="container-fluid @yield('container-class')">
+        <div class="@yield('container-class')">
 
           @yield('body-style')
           @yield('content')
