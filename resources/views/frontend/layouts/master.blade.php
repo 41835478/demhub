@@ -24,14 +24,9 @@
       $launch_date = "2015-11-10 00:00:00";
       // FALSE if deploying to production // TRUE if testing on development
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
-      $dashboardtest = false;
     ?>
 
-    @if($display_coming_soon)
-      {!! HTML::style(elixir('css/coming-soon.css')) !!}
-    @endif
-
-    @if(Request::url() === url('dashboardtest'))
+    @if(Request::url() === url('dashboard'))
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
     @endif
 
@@ -67,7 +62,6 @@
 
           @yield('body-style')
           @yield('content')
-
 
         <div class="push"></div>
       </div><!-- ./container-fluid -->

@@ -10,7 +10,7 @@
 				<span class="icon-bar"></span>
 			</button>
 
-			@if(Request::url() === url('dashboardtest'))
+			@if(Request::url() === url('dashboard'))
 				<div class="navbar-branding">
 					<span id="toggle_sidemenu_l" class="fa fa-bars" style="top: 0; position: absolute; left: -10px;"></span>
 				</div>
