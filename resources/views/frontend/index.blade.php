@@ -23,11 +23,8 @@
 				<div class="col-md-6 col-md-offset-1 text-center">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
-<<<<<<< HEAD
-				<br>
-				</div>
 
-=======
+
 				<a class="mouse-scroll" href="#welcome_about">
 				  <span class="mouse">
 				    <span class="mouse-movement">
@@ -35,7 +32,7 @@
 				  </span>
 				</a>
 			</div>
->>>>>>> 83f95197b4d122b789d773371d523a46ba168886
+
 			</div>
 
 			<div class="" style="">
