@@ -67,8 +67,9 @@ $router->group(['middleware' => 'auth'], function ()
 /**
  * Scheduler routes
  */
-get('scheduler/initialize', 'SchedulerController@initialize');
 get('scheduler/scrapeRSS', 'SchedulerController@scrapeRSS');
+get('scheduler/scrapeCustom', 'SchedulerController@scrapeCustom');
+get('scheduler/initialize', 'SchedulerController@initialize');
 get('scheduler/scrapeIRDR', 'SchedulerController@scrapeIRDR');
 get('scheduler/scrapeEC', 'SchedulerController@scrapeEC');
 get('scheduler/toolbox', 'SchedulerController@toolbox');

@@ -115,7 +115,7 @@ class SchedulerController extends Controller
 			{
 				case 'IRDR': 	$return = Scraper::scrapeIRDR($source, $page, $page_to); break;
 				case 'EC': 		$return = Scraper::scrapeEC($source, $page, $page_to, true); break;
-				case 'EC-PR': 	break;
+				case 'EC-PR': 	$return = Scraper::scrapeECPR($source, $page, $page_to, true); break;
 				default: 		break;
 			}
 			$time = (microtime(true) - $start)*1000;

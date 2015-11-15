@@ -91,9 +91,10 @@ class Scraper
 	 * @param string $target_tag			the tag type of target elements ('div', 'a', etc)
 	 * @param string $target_attr			(optional) attr type if needed null if not
 	 * @param string $target_attr_val		(optional) attr value, null if not needed
+	 * @param boolean $partial_attr_val		(optional) allow partial attr value match or not, default true
 	 * @return array
 	 */
-	public static function htmlElementsGrab($dom, $parent_tag, $target_tag, $target_attr, $target_attr_val)
+	public static function htmlElementsGrab($dom, $parent_tag, $target_tag, $target_attr, $target_attr_val, $partial_attr_val=true)
 	{
 		$result = array();
 
@@ -115,7 +116,10 @@ class Scraper
 		} else {
 			$temp = array();
 			foreach($e1s as $e1){
-				if(strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
+				if($e1->getAttribute($target_attr) == $target_attr_val){
+					$temp[] = $e1;
+				}
+				elseif($partial_attr_val && strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
 				{
 					$temp[] = $e1;
 				}
@@ -575,6 +579,82 @@ class Scraper
 	}
 
 	/**
+	 * Given a specific EC-PR type source, attemps to extract data
+	 * @param ScrapeSource $source
+	 * @param int $page_from
+	 * @param int $page_to
+	 * @param boolean $get_fulltext	 	whether or not to try and capture the full text (takes much longer but is required for new articles)
+	 * @return mixed
+	 */
+	public static function scrapeECPR($source, $page_from, $page_to, $get_fulltext)
+	{
+		$return['status'] = '';
+		$return['count'] = 0;
+		$return['errors'] = 0;
+		$return['messages'] = '';
+		$end = false;
+		$page = $page_from;
+		while(!$end && $page <= $page_to)
+		{
+			$return['messages'] .= '<br>Analysing page: '.$page;
+			$data = array();
+			if($page == 1)	$url = $source->url;
+			else 			$url = $source->url.'?page='.($page-1);
+
+			$response = Scraper::getHttpResponse($url);
+			if(trim($response) == ''){
+				$return['messages'] .= 'Error retrieving "'.$url.'" url.';
+				break;
+			}
+
+			$doc = new \DOMDocument();
+			@$doc->loadHTML($response);
+
+			$article_nodes = Scraper::htmlElementsGrab($doc, null, 'div', 'class', 'feed-item', false);
+			foreach($article_nodes as $article_node)
+			{
+				$data['excerpt'] = Scraper::htmlTextGrab($article_node, 'div', 'class', 'feed-item-body');
+				$data['date'] = Scraper::htmlTextGrab($article_node, 'span', 'class', 'feed-item-date');
+				$title_nodes = Scraper::htmlElementsGrab($article_node, null, 'h3', 'class', 'feed-item-title');
+				foreach($title_nodes as $title_node){
+					$data['title'] = Scraper::htmlTextGrab($title_node, 'a', null, null);
+					$data['url'] = Scraper::htmlAttributeGrab($title_node, 'a', null, null, 'href');
+					if(strpos($data['url'], 'http') === false){
+						$data['url'] = 'http://ec.europa.eu'.$data['url'];
+					}
+				}
+
+				if($get_fulltext && isset($data['url'])){
+					$response2 = Scraper::getHttpResponse($data['url']);
+					$doc2 = new \DOMDocument();
+					@$doc2->loadHTML($response2);
+					$data['text'] = Scraper::htmlTextGrab($doc2, 'div', 'id', 'contentPressRelease');
+				}
+
+				$save_result = Scraper::verifyArticle($source, $data, true);
+
+				$return['status'] = $save_result['status'];
+				$return['messages'] .= '<br>'.$save_result['message'];
+				if($save_result['status'] == 'ok'){
+					$return['count']++;
+				} elseif($save_result['status'] == 'error') {
+					$return['errors']++;
+				}
+				//var_dump($data);
+				unset($data);
+			}
+
+			if( (is_array($article_nodes) && empty($article_nodes))
+				|| (!is_array($article_nodes) && $article_nodes->length == 0) ){
+				$end = true;
+			}
+			$page++;
+		}
+
+		return $return;
+	}
+
+	/**
 	 * Given a specific IRDR source attemps to extract articles
 	 * @param ScrapeSource $source
 	 * @param int $page_from
@@ -641,7 +721,8 @@ class Scraper
 				unset($data);
 			}
 
-			if( (is_array($article_nodes) && empty($article_nodes)) || $article_nodes->length == 0){
+			if( (is_array($article_nodes) && empty($article_nodes))
+				|| (!is_array($article_nodes) && $article_nodes->length == 0) ){
 				$end = true;
 			}
 			$page++;
@@ -653,9 +734,9 @@ class Scraper
 	/**
 	 * Given a specific EC type source attemps to extract data
 	 * @param ScrapeSource $source
-	 * @param $page_from
-	 * @param $page_to
-	 * @param $get_fulltext			whether or not to try and capture the full text (takes much longer but is required for new articles)
+	 * @param int $page_from
+	 * @param int $page_to
+	 * @param boolean $get_fulltext		whether or not to try and capture the full text (takes much longer but is required for new articles)
 	 * @return mixed
 	 */
 	public static function scrapeEC($source, $page_from, $page_to, $get_fulltext)
@@ -717,7 +798,8 @@ class Scraper
 				unset($data);
 			}
 
-			if( (is_array($article_nodes) && empty($article_nodes)) || $article_nodes->length == 0){
+			if( (is_array($article_nodes) && empty($article_nodes))
+				|| (!is_array($article_nodes) && $article_nodes->length == 0) ){
 				$end = true;
 			}
 			$page++;
