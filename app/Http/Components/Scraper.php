@@ -26,77 +26,6 @@ class Scraper
 	////      HELPERS
 	////////////////////////////
 
-
-	public static function htmlElementsGrab($dom, $parent_tag, $tag, $target_attr, $target_attr_val)
-	{
-		$result = array();
-
-		if($parent_tag == null){
-			$e1s = $dom->getElementsByTagName($tag);
-		} else {
-			$parents = $dom->getElementsByTagName($parent_tag);
-			if($parents->length == 0) return array();
-			foreach($parents as $parent){
-				$e1s = $parent->getElementsByTagName($tag);
-				if($e1s->length > 0) break;
-			}
-		}
-
-		if($e1s->length == 0) return array();
-
-		if($target_attr == null){
-			$result = $e1s;
-		} else {
-			$temp = array();
-			foreach($e1s as $e1){
-				if(strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
-				{
-					$temp[] = $e1;
-				}
-			}
-			if(empty($temp)) return array();
-			else $result = $temp;
-		}
-		return $result;
-	}
-
-	public static function htmlTextGrab($dom, $target_tag, $target_attr, $target_attr_val)
-	{
-		$result = null;
-		if($target_tag == null){
-			$result = trim($dom->textContent);
-		} else {
-			$e1s = $dom->getElementsByTagName($target_tag);
-			foreach($e1s as $e1){
-				if($target_attr == null || strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
-				{
-					$result = trim($e1->textContent);
-					break;
-				}
-			}
-		}
-		return $result;
-	}
-
-	public static function htmlAttributeGrab($dom, $target_tag, $target_attr, $target_attr_val, $attr)
-	{
-		$result = null;
-
-		$e1s = $dom->getElementsByTagName($target_tag);
-		foreach($e1s as $e1){
-			if($target_attr == null || strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
-			{
-				if( ($temp = $e1->getAttribute($attr)) !== '')
-				{
-					$result = trim($temp);
-					break;
-				}
-			}
-		}
-
-		return $result;
-	}
-
 	/**
 	 * General method to get http responses of a url designed to allow various methods
 	 *
@@ -154,6 +83,110 @@ class Scraper
 		return $response;
 	}
 
+	/**
+	 * Returns an array of \DOMElements given constraints
+	 *
+	 * @param \DOMDocument|\DOMElement $dom DOM tree
+	 * @param string $parent_tag 			(optional) parent tag to narrow down result, null if not needed
+	 * @param string $target_tag			the tag type of target elements ('div', 'a', etc)
+	 * @param string $target_attr			(optional) attr type if needed null if not
+	 * @param string $target_attr_val		(optional) attr value, null if not needed
+	 * @return array
+	 */
+	public static function htmlElementsGrab($dom, $parent_tag, $target_tag, $target_attr, $target_attr_val)
+	{
+		$result = array();
+
+		if($parent_tag == null){
+			$e1s = $dom->getElementsByTagName($target_tag);
+		} else {
+			$parents = $dom->getElementsByTagName($parent_tag);
+			if($parents->length == 0) return array();
+			foreach($parents as $parent){
+				$e1s = $parent->getElementsByTagName($target_tag);
+				if($e1s->length > 0) break;
+			}
+		}
+
+		if($e1s->length == 0) return array();
+
+		if($target_attr == null){
+			$result = $e1s;
+		} else {
+			$temp = array();
+			foreach($e1s as $e1){
+				if(strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
+				{
+					$temp[] = $e1;
+				}
+			}
+			if(empty($temp)) return array();
+			else $result = $temp;
+		}
+		return $result;
+	}
+
+	/**
+	 * Returns the text content of a specific element
+	 * @param \DOMDocument|\DOMElement $dom	DOM tree to search
+	 * @param string $target_tag			the tag type of target elements ('div', 'a', etc)
+	 * @param string $target_attr			(optional) attr type if needed null if not
+	 * @param string $target_attr_val		(optional) attr value, null if not needed
+	 * @return null|string
+	 */
+	public static function htmlTextGrab($dom, $target_tag, $target_attr, $target_attr_val)
+	{
+		$result = null;
+		if($target_tag == null){
+			$result = trim($dom->textContent);
+		} else {
+			$e1s = $dom->getElementsByTagName($target_tag);
+			foreach($e1s as $e1){
+				if($target_attr == null || strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
+				{
+					$result = trim($e1->textContent);
+					break;
+				}
+			}
+		}
+		return $result;
+	}
+
+	/**
+	 * Returns the attribute content of a specific element
+	 * @param \DOMDocument|\DOMElement $dom	DOM tree to search
+	 * @param string $target_tag			the tag type of target elements ('div', 'a', etc)
+	 * @param string $target_attr			(optional) attr type if needed null if not
+	 * @param string $target_attr_val		(optional) attr value, null if not needed
+	 * @param string $attr					the attribute that you need
+	 * @return null|string
+	 */
+	public static function htmlAttributeGrab($dom, $target_tag, $target_attr, $target_attr_val, $attr)
+	{
+		$result = null;
+
+		$e1s = $dom->getElementsByTagName($target_tag);
+		foreach($e1s as $e1){
+			if($target_attr == null || strpos($e1->getAttribute($target_attr), $target_attr_val) !== false)
+			{
+				if( ($temp = $e1->getAttribute($attr)) !== '')
+				{
+					$result = trim($temp);
+					break;
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Verifies a potential article scraped from a source and offer saving in one step
+	 * @param ScrapeSource $source	source from which the article is from
+	 * @param array $params			params
+	 * @param $save					whether or not to save/update the article or to just check article against db
+	 * @return mixed
+	 */
 	public static function verifyArticle($source, $params, $save)
 	{
 		$return['status'] = 'ok';
@@ -415,23 +448,12 @@ class Scraper
 	/**
 	 * Saves a given text to a log file
 	 *
-	 * @param ScrapeSource $source The current source
 	 * @param string $messages
 	 * @param string $filename
-	 * @param int $saves Number ew articles added
 	 * @return int
 	 */
-	public static function saveLog($source, $messages, $filename, $saves)
+	public static function saveLogFile($messages, $filename)
 	{
-		$mlog = new ScrapeLog();
-		$mlog->source_id = $source->id;
-		$mlog->automated = 0;
-		$mlog->url = $source->url;
-		$mlog->saved_count = $saves;
-		$mlog->last_item = date("Y-m-d H:i:s");
-		$mlog->data = '';//$return['data'];
-		$mlog->save();
-
 		// convert html tags to something easier to read before saving the log file
 		$messages = str_replace("<br>", "\n", $messages);
 		$messages = strip_tags($messages);
@@ -441,6 +463,25 @@ class Scraper
 			mkdir(storage_path() . "/logs/scheduler", 0744, true);
 
 		return file_put_contents(storage_path() . "/logs/scheduler/" . $filename, $messages);
+	}
+
+	/**
+	 * Saves a scrape source action to the db
+	 *
+	 * @param ScrapeSource $source The current source
+	 * @param int $count Number ew articles added
+	 * @return boolean
+	 */
+	public static function saveLogDB($source, $count)
+	{
+		$mlog = new ScrapeLog();
+		$mlog->source_id = $source->id;
+		$mlog->automated = 0;
+		$mlog->url = $source->url;
+		$mlog->saved_count = $count;
+		$mlog->last_item = date("Y-m-d H:i:s");
+		$mlog->data = '';//$return['data'];
+		return $mlog->save();
 	}
 
 
@@ -533,7 +574,13 @@ class Scraper
 		return $return;
 	}
 
-
+	/**
+	 * Given a specific IRDR source attemps to extract articles
+	 * @param ScrapeSource $source
+	 * @param int $page_from
+	 * @param int $page_to
+	 * @return mixed
+	 */
 	public static function scrapeIRDR($source, $page_from, $page_to)
 	{
 		$return['status'] = '';
@@ -603,6 +650,14 @@ class Scraper
 		return $return;
 	}
 
+	/**
+	 * Given a specific EC type source attemps to extract data
+	 * @param ScrapeSource $source
+	 * @param $page_from
+	 * @param $page_to
+	 * @param $get_fulltext			whether or not to try and capture the full text (takes much longer but is required for new articles)
+	 * @return mixed
+	 */
 	public static function scrapeEC($source, $page_from, $page_to, $get_fulltext)
 	{
 		$return['status'] = '';
