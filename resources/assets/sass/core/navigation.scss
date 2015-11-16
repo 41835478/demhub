@@ -83,28 +83,29 @@ $div_text_color:  #fff !default;
 	height:67px;
 }
 
-.division-navbar:hover  .divisions-navbar-item{
+// .division-navbar:hover
+.divisions-navbar-item{
 	height:67px;
 	text-indent: 0%;
-	white-space: normal
+	white-space: normal;
 }
 
-.division-navbar:focus .divisions-navbar-item {
-	height:67px;
-	text-indent: 0%;
-	white-space: normal
-}
+// .division-navbar:focus .divisions-navbar-item {
+// 	height:67px;
+// 	text-indent: 0%;
+// 	white-space: normal
+// }
 
 
 .divisions-navbar-item {
-	height:20px;
+	// height:20px;
 	opacity: 0.75;
 	filter: alpha(opacity=75);
 	color: white;
 	text-align:center;
 	padding-top:8px;
 	text-transform:uppercase;
-	text-indent: 125%;
+	// text-indent: 125%;
     white-space: nowrap;
     overflow: hidden;
 

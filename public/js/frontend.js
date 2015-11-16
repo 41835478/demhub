@@ -154,8 +154,13 @@ var countries = ["canada","united_states","australia"];
 var counter=0;
 
 function changeCoordinates (mapCountry){
+<<<<<<< HEAD
   var widthDiff= 650/$("#"+mapCountry+"_img").attr('orgWidth');
 
+=======
+  var widthDiff= $("#map_container").width()/$("#"+mapCountry+"_img").attr('orgWidth');
+  // alert(widthDiff);
+>>>>>>> 201ffee1b5a8c74657887ddc515c4ae5699536ee
   var polyShapeHighlight;
   var coords;
   var coordsArray=[];
@@ -168,7 +173,10 @@ function changeCoordinates (mapCountry){
       coordsArray[j]=Math.trunc(coordsArray[j]);
     }
     document.getElementById(mapCountry+"_poly_"+i).coords=coordsArray.join();
+<<<<<<< HEAD
 		console.log(document.getElementById(mapCountry+"_poly_"+i).coords);
+=======
+>>>>>>> 201ffee1b5a8c74657887ddc515c4ae5699536ee
   }
 }
 
@@ -203,7 +211,10 @@ $("select#country").change(function(){
 				document.getElementById("australia_map").style.marginTop="-50px";
 				document.getElementById("australia_map").style.marginBottom="-10px";
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 201ffee1b5a8c74657887ddc515c4ae5699536ee
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
@@ -239,12 +250,21 @@ function firstFilterF(country){
       document.getElementById("mapListing").style.display="";
     }
 		else if (country == "canada"){
+<<<<<<< HEAD
 			document.getElementById("canada_map").style.marginTop="-150px";
 		}
 		else if (country == "australia"){
 			document.getElementById("australia_map").style.marginTop="-15px";
 		}
 
+=======
+			document.getElementById("canada_map").style.marginTop="-200px";
+		}
+		else if (country == "australia"){
+			document.getElementById("australia_map").style.marginTop="-50px";
+			document.getElementById("australia_map").style.marginBottom="-10px";
+		}
+>>>>>>> 201ffee1b5a8c74657887ddc515c4ae5699536ee
     $("#backButton").attr("onclick","window.location.reload()");
 
     document.getElementById("backButton").style.display="";
