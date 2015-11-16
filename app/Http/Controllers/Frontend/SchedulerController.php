@@ -61,12 +61,80 @@ class SchedulerController extends Controller
 				$source->last_checked_item = date("Y-m-d H:i:s");
 				$source->save();
 			}
+			Scraper::saveLogDB($source, $return['count']);
 		}
 
 
 		echo $messages;
+		Scraper::saveLogFile($messages, "scrapeRSS_" . date("YmdHis") . ".log");
+	}
 
-		//Scraper::saveLog($messages, "scrapeRSS_" . date("YmdHis") . ".log");
+	/**
+	 * Global scraper for custom sources
+	 *
+	 * @param Request $request Accepted GET variables:
+	 * - 'source'		Source type based on scrape_sources DB table
+	 * - 'id' 			(optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
+	 * - 'page_from' 	(optional) start_page defines the starting page, default = 1
+	 * - 'page_to'	 	(optional) Max page to check, default = 3
+	 */
+	public function scrapeCustom(Request $request)
+	{
+		//important to terminate the process in case the while loop goes haywire but shouldnt be
+		//too short for the algo to do it's job
+		set_time_limit(60*6);
+
+		$source_type = $request->input('source');
+
+		//only lists the sources if ?id=list
+		if($request->input('id') == 'list'){
+			$sources = ScrapeSource::where('type', $source_type)->where('deleted', 0)->get();
+			foreach($sources as $source){
+				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
+			}
+			return;
+		}
+
+		// only does one source if ?id=<source_id> due to timeout issues or all if not provided
+		if( ($sid = $request->input('id', 0)) != 0){
+			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
+		} else {
+			$sources = ScrapeSource::where('type', $source_type)->where('deleted', 0)->get();
+		}
+
+
+		$messages = '';
+		foreach($sources as $source)
+		{
+			$page = 	$request->input('page_from', 1);
+			$page_to = 	$request->input('page_to', 2);
+			$messages .= '<b>'.$source->url.'</b> | last_checked: '.$source->last_checked_item.' | pages '.$page.'-'.$page_to.' | get details: yes<br>';
+
+			$start = microtime(true);
+			switch($source->type)
+			{
+				case 'IRDR': 	$return = Scraper::scrapeIRDR($source, $page, $page_to); break;
+				case 'EC': 		$return = Scraper::scrapeEC($source, $page, $page_to, true); break;
+				case 'EC-PR': 	$return = Scraper::scrapeECPR($source, $page, $page_to, true); break;
+				default: 		break;
+			}
+			$time = (microtime(true) - $start)*1000;
+
+			$messages .= $return['messages'];
+			$messages .= '<br><br><b>';
+			$messages .= 'Process took: '.$time.'ms<br>';
+			$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.($return['errors'] > 0 ? '<h1>'.$return['errors'].'</h1>' : $return['errors']).' errors.';
+			$messages .= '</b><br>';
+
+			if($return['errors'] == 0){
+				$source->last_checked_item = date("Y-m-d H:i:s");
+				$source->save();
+			}
+
+			Scraper::saveLogDB($source, $return['count']);
+		}
+		echo $messages;
+		Scraper::saveLogFile($messages, "scrapeCustom_".$source->type."_".$source->id."_" . date("YmdHis") . ".log");
 	}
 
 	/**
@@ -123,7 +191,8 @@ class SchedulerController extends Controller
 			}
 
 			echo $messages;
-			Scraper::saveLog($source, $messages, "scrapeIRDR_".$source->id."_" . date("YmdHis") . ".log", $return['count']);
+			Scraper::saveLogDB($source, $return['count']);
+			Scraper::saveLogFile($messages, "scrapeIRDR_".$source->id."_" . date("YmdHis") . ".log");
 		}
 	}
 
@@ -184,7 +253,8 @@ class SchedulerController extends Controller
 			}
 
 			echo $messages;
-			Scraper::saveLog($source, $messages, "scrapeEC_".$source->id."_" . date("YmdHis") . ".log", $return['count']);
+			Scraper::saveLogDB($source, $return['count']);
+			Scraper::saveLogFile($messages, "scrapeEC_".$source->id."_" . date("YmdHis") . ".log");
 		}
 	}
 
