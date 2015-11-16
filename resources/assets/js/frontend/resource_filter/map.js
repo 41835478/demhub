@@ -7,8 +7,8 @@ var countries = ["canada","united_states","australia"];
 var counter=0;
 
 function changeCoordinates (mapCountry){
-  var widthDiff= $("#map_container").width()/$("#"+mapCountry+"_img").attr('orgWidth');
-  // alert(widthDiff);
+  var widthDiff= 650/$("#"+mapCountry+"_img").attr('orgWidth');
+
   var polyShapeHighlight;
   var coords;
   var coordsArray=[];
@@ -21,6 +21,7 @@ function changeCoordinates (mapCountry){
       coordsArray[j]=Math.trunc(coordsArray[j]);
     }
     document.getElementById(mapCountry+"_poly_"+i).coords=coordsArray.join();
+		console.log(document.getElementById(mapCountry+"_poly_"+i).coords);
   }
 }
 
@@ -55,6 +56,7 @@ $("select#country").change(function(){
 				document.getElementById("australia_map").style.marginTop="-50px";
 				document.getElementById("australia_map").style.marginBottom="-10px";
 			}
+
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
@@ -90,12 +92,12 @@ function firstFilterF(country){
       document.getElementById("mapListing").style.display="";
     }
 		else if (country == "canada"){
-			document.getElementById("canada_map").style.marginTop="-200px";
+			document.getElementById("canada_map").style.marginTop="-150px";
 		}
 		else if (country == "australia"){
-			document.getElementById("australia_map").style.marginTop="-50px";
-			document.getElementById("australia_map").style.marginBottom="-10px";
+			document.getElementById("australia_map").style.marginTop="-15px";
 		}
+
     $("#backButton").attr("onclick","window.location.reload()");
 
     document.getElementById("backButton").style.display="";
