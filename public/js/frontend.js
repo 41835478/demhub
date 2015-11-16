@@ -169,10 +169,19 @@ function changeCoordinates (mapCountry){
       coordsArray[j]=Math.trunc(coordsArray[j]);
     }
     document.getElementById(mapCountry+"_poly_"+i).coords=coordsArray.join();
-		console.log(document.getElementById(mapCountry+"_poly_"+i).coords);
   }
 }
+function changeTitle (mapCountry){
 
+  var polyShapeHighlight;
+  var coords;
+  var coordsArray=[];
+  for (var i=1;i<=$("#"+mapCountry+"_poly_count").val();i++){
+
+    coords=$("#"+mapCountry+"_poly_"+i).attr('title');
+    document.getElementById(mapCountry+"_poly_"+i).title=coords.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });;
+  }
+}
 $("select#country").change(function(){
   if (($("select#country").val()) !== null){
 
@@ -215,9 +224,8 @@ $("select#country").change(function(){
 });
 
 function firstFilterF(country){
-
+	$('#country option:selected').text(country);
   var filterVar = country;
-  document.getElementById("country").value=country;
 
   country = filterVar.toLowerCase();
   country = country.replace(/ /g,"_");
@@ -312,7 +320,7 @@ if (($("select#region").val()) !== null){
 });
 
 function secondFilterF(region){
-  document.getElementById("region").value=region;
+	$("select#region option:selected").text(region);
   var filterVar = region;
   region = filterVar.toLowerCase();
   region=region.replace(/ /g,"_");

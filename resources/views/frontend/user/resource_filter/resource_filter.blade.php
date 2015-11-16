@@ -6,7 +6,7 @@
 		<div class="col-md-9 col-md-offset-2">
 			<span class="hidden-md hidden-lg">Map navigation is currently only accesible on desktop. Mobile map coming soon.</span>
 			<button id="backButton" class="btn btn-default btn-style-alt" style="display:none">BACK</button>
-			<!-- <button onclick="changeCoordinates('canada')">fix it</button> -->
+			<!-- <button onclick="changeTitle('united_states')">fix it</button> -->
 			<div id="map_container" class="visible-md visible-lg">
 
 				<div id="world_map" class="mapContainer">
