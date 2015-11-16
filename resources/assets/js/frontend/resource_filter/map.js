@@ -4,6 +4,7 @@ $( document ).ready(function() {
 });
 
 var countries = ["canada","united_states","australia"];
+var currentCountry;
 var counter=0;
 
 function changeCoordinates (mapCountry){
@@ -31,7 +32,7 @@ $("select#country").change(function(){
     var filterVar = $("select#country").val();
     var country = filterVar.toLowerCase();
     country=country.replace(/ /g,"_");
-
+		currentCountry=country;
     // var list =document.getElementsByClassName(country);
 
     if($("tr").hasClass('in')) {
@@ -46,15 +47,14 @@ $("select#country").change(function(){
       document.getElementById("region").innerHTML=regionForm;
       document.getElementById("regionFormGroup").style.display="";
       $(".mapContainer").hide();
-      if (country == "new_zealand"){
-        document.getElementById("mapListing").style.display="";
-      }
+			if (country == "new_zealand"){
+	      document.getElementById("mapListing").style.display="";
+	    }
 			else if (country == "canada"){
-				document.getElementById("canada_map").style.marginTop="-200px";
+				document.getElementById("canada_map").style.marginTop="-150px";
 			}
 			else if (country == "australia"){
-				document.getElementById("australia_map").style.marginTop="-50px";
-				document.getElementById("australia_map").style.marginBottom="-10px";
+				document.getElementById("australia_map").style.marginTop="-15px";
 			}
 
       $("#"+country+"_map").show();
@@ -74,6 +74,7 @@ function firstFilterF(country){
 
   country = filterVar.toLowerCase();
   country = country.replace(/ /g,"_");
+	currentCountry=country;
   // var list =document.getElementsByClassName(country);
 
   if($("tr").hasClass('in')) {
@@ -135,7 +136,7 @@ $("select#division").change(function(){
 			filterVar = $("select#country").val();
 			var country = filterVar.toLowerCase();
 			country=country.replace(/ -/g,"_");
-			$("#backButton").attr("onclick","firstFilterF('"+country+"')");
+			$("#backButton").prop("onclick","firstFilterF('"+country+"')");
 		}
 	});
 
@@ -158,10 +159,7 @@ if (($("select#region").val()) !== null){
       // document.getElementById(country+"_map").style.display="";
       document.getElementById("mapListing").style.display="";
 
-      filterVar = $("select#country").val();
-      var country = filterVar.toLowerCase();
-      country=country.replace(/ -/g,"_");
-      $("#backButton").attr("onclick","firstFilterF('"+country+"')");
+      $("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
   }
 });
@@ -181,13 +179,9 @@ function secondFilterF(region){
       }
 
     $(".mapContainer").hide();
-
     // document.getElementById(country+"_map").style.display="";
     document.getElementById("mapListing").style.display="";
+		$("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
-    filterVar = $("select#country").val();
-    var country = filterVar.toLowerCase();
-    country=country.replace(/ /g,"_");
-    $("#backButton").attr("onclick","firstFilterF('"+country+"')");
 
 }
