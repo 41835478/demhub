@@ -57,7 +57,7 @@
         <p>In order to do so, DEMHUB needs a few more details.</p>
       </div>
       <div class="modal-footer" style="border-top: none; padding-top:0px;">
-        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="updateForm()">Continue</button>
+        <button type="button" class="btn btn-default btn-style-alt" data-dismiss="modal" onclick="updateForm()">CONTINUE</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

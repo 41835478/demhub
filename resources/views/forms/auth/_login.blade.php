@@ -20,17 +20,27 @@
             {{-- <span class="help-block">Password error</span> --}}
             <br>
 
-            {!! Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
+            {!! Form::submit('LOGIN', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
 
     			</div>
         </div>
 
         <div class="row omb_row-sm-offset-3">
     			<div class="col-xs-12 col-sm-3">
-    				<label class="checkbox">
+    				<!-- <label class="checkbox">
               {!! Form::checkbox('remember') !!} {{ trans('labels.remember_me') }}
-    				</label>
+    				</label> -->
+            <div class="form-group">
+            <div class="control">
+            <p class="omb_forgotPwd">
+              Don't have an account yet?
+              <a href="{{url('auth/register')}}">
+              Register Here
+              </a>
+            </p>
+          </div>
     			</div>
+        </div>
     			<div class="col-xs-12 col-sm-3">
     				<p class="omb_forgotPwd">
               {!! link_to('password/email', trans('labels.forgot_password')) !!}
@@ -38,7 +48,7 @@
     			</div>
     		</div>
 
-        <div class="row omb_row-sm-offset-3 omb_loginOr">
+        <!-- <div class="row omb_row-sm-offset-3 omb_loginOr">
     			<div class="col-xs-12 col-sm-6">
     				<hr class="omb_hrOr">
     			</div>
@@ -51,7 +61,7 @@
             Register Here
             </a>
           </div>
-        </div>
+        </div> -->
 
   	</div>
 

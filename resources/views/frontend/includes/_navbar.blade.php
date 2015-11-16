@@ -61,7 +61,7 @@
 
 					<li class="dropdown">
 
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;max-height:50px">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase">
 							<img class="img-responsive img-circle" style="height:25px;width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{ Auth::user()->user_name}} <span class="caret"></span>
 						</a>
 

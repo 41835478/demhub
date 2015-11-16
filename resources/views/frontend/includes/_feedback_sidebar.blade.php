@@ -33,7 +33,17 @@ $("i").hover(
 );
 
 });
+function feedbackFormUpdate(){
+  if($( "input:checked" ).length < 3) {
+  // $("#sign-up-form").slideUp();
+  $('#modalErrorButton').click();
+  }
+  else {
+    $('#modalSuccessButton').click();
+  }
+}
 </script>
+
 
 <div id="dashboard-icon">
 	<i class="glyphicon glyphicon-flag" data-toggle="tooltip" data-placement="left" title="FEEDBACK"></i>
