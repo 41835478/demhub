@@ -1,19 +1,27 @@
 <nav>
-  <div class="division-navbar">
+  <div class="welcome-division">
+
+    {{--  <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="
+
+                                "> --}}
+
+    <div id="welcome-division-category">
 
       <div class="row">
-        <div class="col-xs-12" style="padding:0px">
 
-          @foreach($allDivisions as $div)
+
+          @foreach($navDivisions as $div)
             <a href="{{url('division', array('id' => $div->slug))}}">
-              <div style="" class="col-md-2 divisions-navbar-item division_{{$div->slug}}">
+              <div class="col-md-2 divisions-page-item division_{{$div->slug}}">
                 <h4>{{$div->name}}</h4>
               </div>
             </a>
           @endforeach
 
-        </div>
+
       </div>
 
     </div>
+
+  </div>
 </nav>

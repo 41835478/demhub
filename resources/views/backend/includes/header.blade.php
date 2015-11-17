@@ -2,7 +2,7 @@
           <header class="main-header">
 
             <!-- Logo -->
-            <a href="{!!route('home')!!}" class="logo"><b>DEMHub</b> Admin</a>
+            <a href="{!!route('home')!!}" class="logo"><b>DEMHUB</b> Admin</a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -22,7 +22,7 @@
 					  <li>{!! link_to('lang/es', trans('menus.language-picker.langs.es')) !!}</li>
                       <li>{!! link_to('lang/it', trans('menus.language-picker.langs.it')) !!}</li>
                       <li>{!! link_to('lang/pt-BR', trans('menus.language-picker.langs.pt-BR')) !!}</li>
-                      <li>{!! link_to('lang/ru', trans('menus.language-picker.langs.ru')) !!}</li>    
+                      <li>{!! link_to('lang/ru', trans('menus.language-picker.langs.ru')) !!}</li>
                       <li>{!! link_to('lang/sv', trans('menus.language-picker.langs.sv')) !!}</li>
                     </ul>
                   </li>

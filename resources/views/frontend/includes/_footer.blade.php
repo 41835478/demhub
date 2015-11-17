@@ -6,6 +6,11 @@
     {!! link_to('terms', trans('strings.terms')) !!}
   </p>
   <p align="center">
-    <strong>Copyright &copy; 2015 {!! link_to('', 'DEMHub Inc') !!}.</strong> {{ trans('strings.all_rights_reserved') }}
+    <strong>Copyright &copy; <?php
+      $copyYear = 2015;
+      $curYear = date('Y');
+      echo $copyYear . (($copyYear != $curYear) ? '-' . $curYear : '');
+      ?>
+    {!! link_to('', 'DEMHUB Inc') !!}.</strong> {{ trans('strings.all_rights_reserved') }}
   </p>
 </footer>

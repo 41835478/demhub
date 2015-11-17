@@ -29,34 +29,27 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
-     * @Given I am not a registered user
+     * @Given I am a guest
      */
-    public function iAmNotARegisteredUser()
+    public function iAmAGuest()
     {
         PHPUnit::assertFalse(Auth::check());
     }
 
     /**
-     * @Given I am a registered user
+     * @Given /^(?:|I )am on (?:|the )landing(?:| page)$/
+     * @When /^(?:|I )go to (?:|the )landing(?:| page)$/
      */
-    public function iAmARegisteredUser()
+    public function iAmOnLanding()
     {
-        PHPUnit::assertTrue(Auth::check());
-    }
-
-    /**
-     * @Given I am not logged in
-     */
-    public function iAmNotLoggedIn()
-    {
-        PHPUnit::assertFalse(Auth::check());
+        $this->visitPath('/');
     }
 
     /**
      * @When I wait :seconds second(s)
      */
-    public function iWaitSecond($seconds)
-    {
-      $this->getSession()->wait(1000);
-    }
+    // public function iWaitSecond($seconds)
+    // {
+    //   $this->getSession()->wait(1000);
+    // }
 }
