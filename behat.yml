@@ -3,10 +3,11 @@ default:
     Laracasts\Behat:
       env_path: .env.behat
     Behat\MinkExtension:
-      default_session: laravel #selenium2
-      #selenium_session: selenium2
-      base_url: http://demhub.dev #http://staging.demhub.net
-      laravel: ~
+      default_session:    selenium2 #laravel #selenium2
+      browser_name:       firefox         # Use firefox when running test via the selenium driver
+      javascript_session: zombie #selenium2
+      base_url:           http://demhub.dev #http://staging.demhub.net
+      laravel:            ~
+      zombie:             ~
       selenium2:
-        browser: chrome
-        wd_host: "http://127.0.0.1:4444/wd/hub"
+        wd_host:          "http://127.0.0.1:4444/wd/hub"
