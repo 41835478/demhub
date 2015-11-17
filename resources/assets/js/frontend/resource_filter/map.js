@@ -4,11 +4,12 @@ $( document ).ready(function() {
 });
 
 var countries = ["canada","united_states","australia"];
+var currentCountry;
 var counter=0;
 
 function changeCoordinates (mapCountry){
-  var widthDiff= $("#map_container").width()/$("#"+mapCountry+"_img").attr('orgWidth');
-  // alert(widthDiff);
+  var widthDiff= 650/$("#"+mapCountry+"_img").attr('orgWidth');
+
   var polyShapeHighlight;
   var coords;
   var coordsArray=[];
@@ -23,63 +24,73 @@ function changeCoordinates (mapCountry){
     document.getElementById(mapCountry+"_poly_"+i).coords=coordsArray.join();
   }
 }
+function changeTitle (mapCountry){
 
+  var polyShapeHighlight;
+  var coords;
+  var coordsArray=[];
+  for (var i=1;i<=$("#"+mapCountry+"_poly_count").val();i++){
+
+    coords=$("#"+mapCountry+"_poly_"+i).attr('title');
+    document.getElementById(mapCountry+"_poly_"+i).title=coords.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });;
+  }
+}
 $("select#country").change(function(){
   if (($("select#country").val()) !== null){
 
     var filterVar = $("select#country").val();
     var country = filterVar.toLowerCase();
     country=country.replace(/ /g,"_");
-
+		currentCountry=country;
     // var list =document.getElementsByClassName(country);
 
-    if($("tr").hasClass('in')) {
+
             $("tr").addClass("out");
             $("tr").removeClass("in");
             $("tr." +country).addClass("in");
             $("tr." +country).removeClass("out");
-        }
+
 
       fillRegions(country);
       var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
       document.getElementById("region").innerHTML=regionForm;
       document.getElementById("regionFormGroup").style.display="";
       $(".mapContainer").hide();
-      if (country == "new_zealand"){
-        document.getElementById("mapListing").style.display="";
-      }
+			if (country == "new_zealand"){
+	      document.getElementById("mapListing").style.display="";
+	    }
 			else if (country == "canada"){
-				document.getElementById("canada_map").style.marginTop="-200px";
+				document.getElementById("canada_map").style.marginTop="-150px";
 			}
 			else if (country == "australia"){
-				document.getElementById("australia_map").style.marginTop="-50px";
-				document.getElementById("australia_map").style.marginBottom="-10px";
+				document.getElementById("australia_map").style.marginTop="-15px";
 			}
+
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
       $("#backButton").attr("onclick","window.location.reload()");
       document.getElementById("backButton").style.display="";
-			// document.getElementById("divisionFormGroup").style.display="";
+			document.getElementById("divisionFormGroup").style.display="";
     }
 
 });
 
 function firstFilterF(country){
-
+	$('#country option:selected').text(country);
   var filterVar = country;
-  document.getElementById("country").value=country;
 
   country = filterVar.toLowerCase();
   country = country.replace(/ /g,"_");
+	currentCountry=country;
   // var list =document.getElementsByClassName(country);
 
-  if($("tr").hasClass('in')) {
+
           $("tr").addClass("out");
           $("tr").removeClass("in");
           $("tr." +country).addClass("in");
           $("tr." +country).removeClass("out");
-      }
+
     fillRegions(country);
     var regionForm =("<option value='' disabled selected>Select One</option>;"+fillRegions(country));
     document.getElementById("region").innerHTML=regionForm;
@@ -90,12 +101,12 @@ function firstFilterF(country){
       document.getElementById("mapListing").style.display="";
     }
 		else if (country == "canada"){
-			document.getElementById("canada_map").style.marginTop="-200px";
+			document.getElementById("canada_map").style.marginTop="-150px";
 		}
 		else if (country == "australia"){
-			document.getElementById("australia_map").style.marginTop="-50px";
-			document.getElementById("australia_map").style.marginBottom="-10px";
+			document.getElementById("australia_map").style.marginTop="-15px";
 		}
+
     $("#backButton").attr("onclick","window.location.reload()");
 
     document.getElementById("backButton").style.display="";
@@ -103,7 +114,7 @@ function firstFilterF(country){
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
     // document.getElementById("bottomMapSwap").style.height="";
-		// document.getElementById("divisionFormGroup").style.display="";
+		document.getElementById("divisionFormGroup").style.display="";
 
   }
 function fillRegions(country){
@@ -121,19 +132,23 @@ function fillRegions(country){
 $("select#division").change(function(){
 		if (($("select#division").val()) != null){
 			var filterVar = $("select#division").val();
+			var item;
 
-			if($("tr").hasClass('in')) {
-			        $("tr." +filterVar).addClass("in");
-			        $("tr." +filterVar).removeClass("out");
-			    }
+			$("td.division_tags").each(function() {
+			item=this.innerHTML;
+			console.log(item);
+				if(item.indexOf(filterVar) ==-1) {
+					$(this).parent().addClass("out");
+        	$(this).parent().removeClass("in");
+				}
+			});
+
 					$(".mapContainer").hide();
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-			filterVar = $("select#country").val();
-			var country = filterVar.toLowerCase();
-			country=country.replace(/ -/g,"_");
-			$("#backButton").attr("onclick","firstFilterF('"+country+"')");
+
+			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
 		}
 	});
 
@@ -146,46 +161,39 @@ if (($("select#region").val()) !== null){
 
   // var list =document.getElementsByClassName(country);
 
-  if($("tr").hasClass('in')) {
+
           $("tr").addClass("out");
           $("tr").removeClass("in");
           $("tr." +region).addClass("in");
           $("tr." +region).removeClass("out");
-      }
+
       $(".mapContainer").hide();
       // document.getElementById(country+"_map").style.display="";
       document.getElementById("mapListing").style.display="";
 
-      filterVar = $("select#country").val();
-      var country = filterVar.toLowerCase();
-      country=country.replace(/ -/g,"_");
-      $("#backButton").attr("onclick","firstFilterF('"+country+"')");
+      $("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
   }
 });
 
 function secondFilterF(region){
-  document.getElementById("region").value=region;
+	$("select#region option:selected").text(region);
   var filterVar = region;
   region = filterVar.toLowerCase();
   region=region.replace(/ /g,"_");
   // var list =document.getElementsByClassName(country);
 
-  if($("tr").hasClass('in')) {
+
           $("tr").addClass("out");
           $("tr").removeClass("in");
           $("tr." +region).addClass("in");
           $("tr." +region).removeClass("out");
-      }
+
 
     $(".mapContainer").hide();
-
     // document.getElementById(country+"_map").style.display="";
     document.getElementById("mapListing").style.display="";
+		$("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
-    filterVar = $("select#country").val();
-    var country = filterVar.toLowerCase();
-    country=country.replace(/ /g,"_");
-    $("#backButton").attr("onclick","firstFilterF('"+country+"')");
 
 }

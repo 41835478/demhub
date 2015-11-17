@@ -86,8 +86,12 @@ $div_text_color:  #fff !default;
 // .division-navbar:hover
 .divisions-navbar-item{
 	height:67px;
-	text-indent: 0%;
-	white-space: normal;
+	opacity: 0.75;
+	filter: alpha(opacity=75);
+	color: white;
+	text-align:center;
+	padding-top:8px;
+	text-transform:uppercase;
 }
 
 // .division-navbar:focus .divisions-navbar-item {
@@ -97,19 +101,19 @@ $div_text_color:  #fff !default;
 // }
 
 
-.divisions-navbar-item {
-	// height:20px;
-	opacity: 0.75;
-	filter: alpha(opacity=75);
-	color: white;
-	text-align:center;
-	padding-top:8px;
-	text-transform:uppercase;
-	// text-indent: 125%;
-    white-space: nowrap;
-    overflow: hidden;
-
-}
+// .divisions-navbar-item {
+// 	// height:20px;
+// 	opacity: 0.75;
+// 	filter: alpha(opacity=75);
+// 	color: white;
+// 	text-align:center;
+// 	padding-top:8px;
+// 	text-transform:uppercase;
+// 	// text-indent: 125%;
+//     white-space: nowrap;
+//     overflow: hidden;
+//
+// }
 .divisions-navbar-item:hover, .divisions-navbar-item:focus {
 	opacity: 1;
 	filter: alpha(opacity=100);

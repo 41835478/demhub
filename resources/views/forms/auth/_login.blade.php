@@ -24,7 +24,7 @@
 
     			</div>
         </div>
-
+        <br>
         <div class="row omb_row-sm-offset-3">
     			<div class="col-xs-12 col-sm-3">
     				<!-- <label class="checkbox">
@@ -32,17 +32,15 @@
     				</label> -->
             <div class="form-group">
             <div class="control">
-            <p class="omb_forgotPwd">
-              Don't have an account yet?
-              <a href="{{url('auth/register')}}">
-              Register Here
-              </a>
-            </p>
+            <p>
+              No account? <a href="{{url('auth/register')}}">
+              Register
+              </a></p>
           </div>
     			</div>
         </div>
     			<div class="col-xs-12 col-sm-3">
-    				<p class="omb_forgotPwd">
+    				<p>
               {!! link_to('password/email', trans('labels.forgot_password')) !!}
     				</p>
     			</div>

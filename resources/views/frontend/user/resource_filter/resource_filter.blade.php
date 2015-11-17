@@ -6,6 +6,7 @@
 		<div class="col-md-9 col-md-offset-2">
 			<span class="hidden-md hidden-lg">Map navigation is currently only accesible on desktop. Mobile map coming soon.</span>
 			<button id="backButton" class="btn btn-default btn-style-alt" style="display:none">BACK</button>
+			<!-- <button onclick="changeTitle('united_states')">fix it</button> -->
 			<div id="map_container" class="visible-md visible-lg">
 
 				<div id="world_map" class="mapContainer">
@@ -20,14 +21,14 @@
 				<div id="united_states_map" class="mapContainer" style="visibility:hidden;height:1px">
 					<!-- <h1>The United States of America</h1>
 					<p>This map generated from <a href="http://en.wikipedia.org/wiki/Image:Map_of_USA_with_state_names.svg">"Map of USA with state names.svg"</a>.</p> -->
-					<img class="map" src="./images/maps/demo_usa.png"  style="max-width:100%;padding-left:4px" usemap="#usa">
+					<img class="map" id="united_states_img" src="./images/maps/demo_usa.png" width="750" style="max-width:100%;" orgWidth="960" orgHeight="593" usemap="#usa">
 					<map name="usa" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter.countries._usa')
 					</map>
 				</div>
 
 				<div id="canada_map" class="mapContainer" style="visibility:hidden;height:1px;">
-					<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" width="690" height="669" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
+					<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" width="650" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
 					<map name="canada" style="text-transform: capitalize;">
 					<!-- <area shape="rect" coords="998,967,1000,969" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" /> -->
 						@include('frontend.user.resource_filter.countries._canada')
@@ -35,7 +36,7 @@
 				</div>
 
 				<div id="australia_map" class="mapContainer" style="visibility:hidden;height:1px">
-					<img class="map" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" width="690" height="655" orgWidth="690" orgHeight="655" style="max-width:100%;" alt="" />
+					<img class="map" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" width="615" orgWidth="690" orgHeight="655" style="max-width:100%;" alt="" />
 					<map name="australia" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter.countries._australia')
 					</map>
@@ -48,6 +49,7 @@
 	<div id="polyCounters" style="display:none">
 		<input id="canada_poly_count" value="13"/>
 		<input id="australia_poly_count" value="7"/>
+		<input id="united_states_poly_count" value="83"/>
 	</div>
 
 	<div id="user-settings" class="row">
@@ -114,6 +116,25 @@
 				<tbody>
 					@foreach($resourceEntry as $entry)
 						<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
+						<td class="division_tags" style="display:none" value="">
+							<?php
+			          $divisions = array_filter(preg_split("/\,/", $entry->divisions));
+								foreach ($divisions as $division){
+									echo $division." ";
+								}
+
+			        ?>
+							</td>
+							<td class="keywords_tags" style="visibility:hidden" value="
+								<?php
+									$keywords = array_filter(preg_split("/\,/", $entry->keywords));
+									foreach ($keywords as $keyword){
+										echo $keyword;
+									}
+
+				        ?>
+								"></td>
+
 							<td>
 			    			<a target="_blank" href="{{$entry->url}}" class="text-link-style" style="text-transform: capitalize">{{$entry->name}}</a>
 							</td>
