@@ -116,6 +116,25 @@
 				<tbody>
 					@foreach($resourceEntry as $entry)
 						<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
+						<td class="division_tags" style="display:none" value="">
+							<?php
+			          $divisions = array_filter(preg_split("/\,/", $entry->divisions));
+								foreach ($divisions as $division){
+									echo $division." ";
+								}
+
+			        ?>
+							</td>
+							<td class="keywords_tags" style="visibility:hidden" value="
+								<?php
+									$keywords = array_filter(preg_split("/\,/", $entry->keywords));
+									foreach ($keywords as $keyword){
+										echo $keyword;
+									}
+
+				        ?>
+								"></td>
+
 							<td>
 			    			<a target="_blank" href="{{$entry->url}}" class="text-link-style" style="text-transform: capitalize">{{$entry->name}}</a>
 							</td>

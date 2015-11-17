@@ -191,12 +191,12 @@ $("select#country").change(function(){
 		currentCountry=country;
     // var list =document.getElementsByClassName(country);
 
-    if($("tr").hasClass('in')) {
+
             $("tr").addClass("out");
             $("tr").removeClass("in");
             $("tr." +country).addClass("in");
             $("tr." +country).removeClass("out");
-        }
+
 
       fillRegions(country);
       var regionForm =("<option value='' disabled selected>Select One</option>; "+fillRegions(country));
@@ -218,7 +218,7 @@ $("select#country").change(function(){
       document.getElementById(country+"_map").style.height="";
       $("#backButton").attr("onclick","window.location.reload()");
       document.getElementById("backButton").style.display="";
-			// document.getElementById("divisionFormGroup").style.display="";
+			document.getElementById("divisionFormGroup").style.display="";
     }
 
 });
@@ -232,12 +232,12 @@ function firstFilterF(country){
 	currentCountry=country;
   // var list =document.getElementsByClassName(country);
 
-  if($("tr").hasClass('in')) {
+
           $("tr").addClass("out");
           $("tr").removeClass("in");
           $("tr." +country).addClass("in");
           $("tr." +country).removeClass("out");
-      }
+
     fillRegions(country);
     var regionForm =("<option value='' disabled selected>Select One</option>;"+fillRegions(country));
     document.getElementById("region").innerHTML=regionForm;
@@ -261,7 +261,7 @@ function firstFilterF(country){
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
     // document.getElementById("bottomMapSwap").style.height="";
-		// document.getElementById("divisionFormGroup").style.display="";
+		document.getElementById("divisionFormGroup").style.display="";
 
   }
 function fillRegions(country){
@@ -279,19 +279,23 @@ function fillRegions(country){
 $("select#division").change(function(){
 		if (($("select#division").val()) != null){
 			var filterVar = $("select#division").val();
+			var item;
 
-			if($("tr").hasClass('in')) {
-			        $("tr." +filterVar).addClass("in");
-			        $("tr." +filterVar).removeClass("out");
-			    }
+			$("td.division_tags").each(function() {
+			item=this.innerHTML;
+			console.log(item);
+				if(item.indexOf(filterVar) ==-1) {
+					$(this).parent().addClass("out");
+        	$(this).parent().removeClass("in");
+				}
+			});
+
 					$(".mapContainer").hide();
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-			filterVar = $("select#country").val();
-			var country = filterVar.toLowerCase();
-			country=country.replace(/ -/g,"_");
-			$("#backButton").prop("onclick","firstFilterF('"+country+"')");
+
+			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
 		}
 	});
 
@@ -304,12 +308,12 @@ if (($("select#region").val()) !== null){
 
   // var list =document.getElementsByClassName(country);
 
-  if($("tr").hasClass('in')) {
+
           $("tr").addClass("out");
           $("tr").removeClass("in");
           $("tr." +region).addClass("in");
           $("tr." +region).removeClass("out");
-      }
+
       $(".mapContainer").hide();
       // document.getElementById(country+"_map").style.display="";
       document.getElementById("mapListing").style.display="";
@@ -326,12 +330,12 @@ function secondFilterF(region){
   region=region.replace(/ /g,"_");
   // var list =document.getElementsByClassName(country);
 
-  if($("tr").hasClass('in')) {
+
           $("tr").addClass("out");
           $("tr").removeClass("in");
           $("tr." +region).addClass("in");
           $("tr." +region).removeClass("out");
-      }
+
 
     $(".mapContainer").hide();
     // document.getElementById(country+"_map").style.display="";
