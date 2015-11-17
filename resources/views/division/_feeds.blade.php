@@ -44,8 +44,8 @@
                 @endif
               style="color:#000">
               <?php
-                if (strlen($item->title) > 65){
-                  $str = substr($item->title, 0, 65) . '...';
+                if (strlen($item->title) > 66){
+                  $str = substr($item->title, 0, 66) . '...';
                   echo $str;
                 } else{
                   echo $item->title;
@@ -68,8 +68,8 @@
             <p style="padding-top:10px">
               <?php
               $description = $item->excerpt;
-                if (strlen($description) > 180){
-                  $str = substr($description, 0, 180) . '...';
+                if (strlen($description) > 183){
+                  $str = substr($description, 0, 183) . '...';
                   echo strip_tags($str);
                 } else{
                   echo strip_tags($description);
