@@ -103,18 +103,12 @@ div.navbar-inverse {
 
 .divisions-navbar-item {
   height: 67px;
-  text-indent: 0%;
-  white-space: normal; }
-
-.divisions-navbar-item {
   opacity: 0.75;
   filter: alpha(opacity=75);
   color: white;
   text-align: center;
   padding-top: 8px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden; }
+  text-transform: uppercase; }
 
 .divisions-navbar-item:hover, .divisions-navbar-item:focus {
   opacity: 1;
