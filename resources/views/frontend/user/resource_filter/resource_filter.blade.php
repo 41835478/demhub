@@ -71,7 +71,7 @@
 			</select>
 			</div>
 			<div class="form-group" id="regionFormGroup" style="display:none">
-					<label for="region">Region</label>
+					<label for="region">State/Prov/Ter</label>
 				<select id="region" class="form-control">
 					<option value="" disabled selected>Select One</option>
 					<option style="display:none"></option>
@@ -85,6 +85,45 @@
 					@foreach ($allDivisions as $division)
 					<option value="{{$division->slug}}">{{$division->name}}</option>
 					@endforeach
+				</select>
+			</div>
+
+			<div class="form-group" id="keywordFormGroup" style="display:none">
+					<label for="keyword">Keyword</label>
+				<select id="keyword" class="form-control">
+					<option value="" disabled selected>Select One</option>
+					<option>Planning</option>
+					<option>Critical Infrastructure</option>
+					<option>Education</option>
+					<option>Alerts</option>
+					<option>Training</option>
+					<option>Cyclone</option>
+					<option>Flood</option>
+					<option>Tsunami</option>
+					<option>Search</option>
+					<option>Rescue</option>
+					<option>Marine</option>
+					<option>Spill</option>
+					<option>Storm</option>
+					<option>Ocean</option>
+					<option>Flood</option>
+					<option>Volunteer</option>
+					<option>Technology</option>
+					<option>Epidemic</option>
+					<option>Hazardous Materials</option>
+					<option>Air</option>
+					<option>Land</option>
+					<option>Volcano</option>
+					<option>Regulations</option>
+					<option>Avalanche</option>
+					<option>Chemical</option>
+					<option>Biological</option>
+					<option>Radiological</option>
+					<option>Nuclear</option>
+					<option>Explosive</option>
+					<option>Bioterrorism</option>
+					<option>Pandemic</option>
+
 				</select>
 			</div>
 
@@ -125,15 +164,15 @@
 
 			        ?>
 							</td>
-							<td class="keywords_tags" style="visibility:hidden" value="
+							<td class="keyword_tags" style="display:none" value="">
 								<?php
 									$keywords = array_filter(preg_split("/\,/", $entry->keywords));
 									foreach ($keywords as $keyword){
-										echo $keyword;
+										echo $keyword." ";
 									}
 
 				        ?>
-								"></td>
+								</td>
 
 							<td>
 			    			<a target="_blank" href="{{$entry->url}}" class="text-link-style" style="text-transform: capitalize">{{$entry->name}}</a>
