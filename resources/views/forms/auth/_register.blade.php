@@ -88,21 +88,22 @@
 
     			</div>
         </div>
-
-        <div class="row omb_row-sm-offset-3">
+        <br>
+        <!-- <div class="row omb_row-sm-offset-3">
     			<div class="col-xs-12 col-sm-3">
     				<label class="checkbox">
               {!! Form::checkbox('remember') !!} {{ trans('labels.remember_me') }}
     				</label>
     			</div>
-    		</div>
+    		</div> -->
 
-        <div class="row omb_row-sm-offset-3 omb_loginOr">
+        <!-- <div class="row omb_row-sm-offset-3 omb_loginOr">
     			<div class="col-xs-12 col-sm-6">
     				<hr class="omb_hrOr">
     			</div>
-    		</div>
-
+    		</div> -->
+        <!-- <div class="row omb_row-sm-offset-3">
+        <div class="col-xs-12 col-sm-3"> -->
         <div class="form-group">
           <div class="col-md-12 control">
             Already a member?
@@ -111,7 +112,8 @@
             </a>
           </div>
         </div>
-
+      <!-- </div>
+    </div> -->
   	</div>
 
   </div>

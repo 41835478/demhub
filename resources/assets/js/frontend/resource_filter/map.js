@@ -72,6 +72,8 @@ $("select#country").change(function(){
       $("#backButton").attr("onclick","window.location.reload()");
       document.getElementById("backButton").style.display="";
 			document.getElementById("divisionFormGroup").style.display="";
+			// document.getElementById("keywordFormGroup").style.display="";
+			document.getElementById("countryFormGroup").style.display="none";
     }
 
 });
@@ -115,7 +117,8 @@ function firstFilterF(country){
     document.getElementById(country+"_map").style.height="";
     // document.getElementById("bottomMapSwap").style.height="";
 		document.getElementById("divisionFormGroup").style.display="";
-
+		// document.getElementById("keywordFormGroup").style.display="";
+		document.getElementById("countryFormGroup").style.display="none";
   }
 function fillRegions(country){
   var data = document.getElementById(country).innerHTML;
@@ -152,15 +155,41 @@ $("select#division").change(function(){
 		}
 	});
 
+$("select#keyword").change(function(){
+		if (($("select#keyword").val()) != null){
+			var filterVar = $("select#keyword").val();
+			filterVar = filterVar.toLowerCase();
+			alert(filterVar);
+			var item;
+			var parentClass;
+			$("td.keyword_tags").each(function() {
+				item = $(this).html();
+
+				if(item.indexOf(filterVar) == -1 ) {
+        	$(this).parent().removeClass("in");
+					$(this).parent().addClass("out");
+				} else {
+
+				}
+			});
+
+					$(".mapContainer").hide();
+					// document.getElementById(country+"_map").style.display="";
+					document.getElementById("mapListing").style.display="";
+
+
+			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
+		}
+	});
+
 $("select#region").change(function(){
 
 if (($("select#region").val()) !== null){
   var filterVar = $("select#region").val();
   var region = filterVar.toLowerCase();
-  region=region.replace(/ -/g,"_");
+  region = region.replace(/ -/g,"_");
 
   // var list =document.getElementsByClassName(country);
-
 
           $("tr").addClass("out");
           $("tr").removeClass("in");
