@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Components\Helpers;
+use App\Http\Components\PDF2Text;
+use App\Http\Components\PdfParser;
+use App\Http\Components\PDFToText;
 use App\Http\Components\Scraper;
 use App\Models\Article;
 use App\Models\Keyword;
@@ -116,7 +119,8 @@ class SchedulerController extends Controller
 				case 'IRDR': 	$return = Scraper::scrapeIRDR($source, $page, $page_to); break;
 				case 'EC': 		$return = Scraper::scrapeEC($source, $page, $page_to, true); break;
 				case 'EC-PR': 	$return = Scraper::scrapeECPR($source, $page, $page_to, true); break;
-				default: 		break;
+				case 'GIAC': 	$return = Scraper::scrapeGIAC($source, $page); break;
+				default: 		$return = array('messages'=>'error: source not recognized.', 'count'=>0,'errors'=>0); break;
 			}
 			$time = (microtime(true) - $start)*1000;
 
@@ -332,8 +336,19 @@ class SchedulerController extends Controller
 	 */
 	public function toolbox()
 	{
+		set_time_limit(1000);
 		echo 'hi ';
 		echo 'there';
+//		$stdout = 'out: ';
+//		$stderr = 'errors: ';
+//		$return = Scraper::shell_cmd_exec("pdftotext http://www.giac.org/paper/gcia/10673/fingerprinting-windows-10-technical-preview/141146", $stdout, $stderr);
+		//echo PdfParser::parseFile('http://www.giac.org/paper/gcia/10673/fingerprinting-windows-10-technical-preview/141146');
+		//echo PdfParser::parseFile(storage_path() . "/logs/scheduler/".'sample2.pdf');
+		$converter = new PDF2Text();
+		$converter->setFilename(storage_path() . "/logs/scheduler/".'sample2.pdf');
+		$converter->decodePDF();
+		echo $converter->output();
+		//echo PDFToText::convertPDF();
 //		// Initialize the cURL session with the request URL
 //		//$session = curl_init("http://feeds.reuters.com/reuters/topNews");
 //		$session = curl_init($_GET['url']);

@@ -214,7 +214,7 @@ class Scraper
 //		}
 		// item is older than the last the source was checked
 		elseif(isset($params['date']) && strtotime($params['date']) < strtotime($source->last_checked_item)){
-			$return['message'] .= '<b>- Item not found but is older than last check. Ignoring. It must\'ve been reviewed before.</b>';
+			$return['message'] .= '<b>- Item not found in db but is older than last check. Ignoring. It must\'ve been reviewed before.</b>';
 			$return['status'] = 'old';
 		}
 
@@ -486,6 +486,30 @@ class Scraper
 		$mlog->last_item = date("Y-m-d H:i:s");
 		$mlog->data = '';//$return['data'];
 		return $mlog->save();
+	}
+
+	public static function shell_cmd_exec($cmd, &$stdout, &$stderr)
+	{
+		$outfile = tempnam(".", "cmd");
+		$errfile = tempnam(".", "cmd");
+		$descriptorspec = array(
+			0 => array("pipe", "r"),
+			1 => array("file", $outfile, "w"),
+			2 => array("file", $errfile, "w")
+		);
+		$proc = proc_open($cmd, $descriptorspec, $pipes);
+
+		if (!is_resource($proc)) return 255;
+
+		fclose($pipes[0]);    //Don't really want to give any input
+
+		$exit = proc_close($proc);
+		$stdout = file($outfile);
+		$stderr = file($errfile);
+
+		unlink($outfile);
+		unlink($errfile);
+		return $exit;
 	}
 
 
@@ -804,6 +828,81 @@ class Scraper
 			}
 			$page++;
 		}
+
+		return $return;
+	}
+
+	/**
+	 * Given a specific EC type source attemps to extract data
+	 * @param ScrapeSource $source
+	 * @param int $page_from
+	 * @return mixed
+	 */
+	public static function scrapeGIAC($source, $page_from)
+	{
+		$return['status'] = '';
+		$return['count'] = 0;
+		$return['errors'] = 0;
+		$return['messages'] = '';
+		$end = false;
+		$page = $page_from;
+		//while(!$end && $page <= $page_to)
+		//{
+			$return['messages'] .= '<br>Analysing page: '.$page;
+			$data = array();
+			if($page == 1)	$url = $source->url;
+			else 			$url = $source->url.'?page='.($page-1);
+
+			$response = Scraper::getHttpResponse($url);
+			if(trim($response) == ''){
+				$return['messages'] .= 'Error retrieving "'.$url.'" url.';
+				return $return;
+			}
+
+			$doc = new \DOMDocument();
+			@$doc->loadHTML($response);
+
+			$article_nodes = Scraper::htmlElementsGrab($doc, null, 'tr', 'class', 'table-row');
+			foreach($article_nodes as $article_node)
+			{
+				$cell_nodes = Scraper::htmlElementsGrab($article_node, null, 'td', null, null);
+				foreach($cell_nodes as $c=>$cell_node)
+				{
+
+					if($c == 3){
+						$data['title'] = Scraper::htmlTextGrab($cell_node, 'a', null, null);
+						$data['excerpt'] = $data['title'];
+						$data['url'] = Scraper::htmlAttributeGrab($cell_node, 'a', null, null, 'href');
+
+						if(strpos($data['url'], 'http') === false){
+							$data['url'] = 'http://www.giac.org'.$data['url'];
+						}
+					}
+
+					if($c == 5){
+						$data['date'] = Scraper::htmlTextGrab($cell_node, null, null, null);
+					}
+				}
+
+				$save_result = Scraper::verifyArticle($source, $data, true);
+
+				$return['status'] = $save_result['status'];
+				$return['messages'] .= '<br>'.$save_result['message'];
+				if($save_result['status'] == 'ok'){
+					$return['count']++;
+				} elseif($save_result['status'] == 'error') {
+					$return['errors']++;
+				}
+				//var_dump($data);
+				unset($data);
+			}
+
+			if( (is_array($article_nodes) && empty($article_nodes))
+				|| (!is_array($article_nodes) && $article_nodes->length == 0) ){
+				$end = true;
+			}
+			$page++;
+		//}
 
 		return $return;
 	}
