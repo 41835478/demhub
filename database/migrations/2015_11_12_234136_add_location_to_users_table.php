@@ -25,7 +25,7 @@ class AddLocationToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('language');
+            $table->dropColumn('location');
         });
     }
 }
