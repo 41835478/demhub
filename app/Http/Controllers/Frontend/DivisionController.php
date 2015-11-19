@@ -77,7 +77,8 @@ class DivisionController extends Controller
       $last_page = $item_count < $options_count;
 
       return view('division.index', compact([
-        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'threads','query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'threads',
+        'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
       ]));
     }
 
