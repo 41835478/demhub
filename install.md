@@ -83,6 +83,7 @@ alias rl='php artisan route:list'
 alias akey='php artisan key:generate'
 alias mc='php artisan make:controller'
 alias mms='php artisan make:migration:schema'
+alias ams='php artisan migrate:refresh --seed'
 
 alias larafresh='composer dump-autoload && php artisan cache:clear && php artisan clear-compiled && php artisan optimize && php artisan migrate:refresh --seed'
 alias laraquick='composer dump-autoload && php artisan cache:clear && php artisan clear-compiled' #Same as above except without the db refresh
