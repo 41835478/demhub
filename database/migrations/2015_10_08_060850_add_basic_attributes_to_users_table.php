@@ -20,7 +20,6 @@ class AddBasicAttributesToUsersTable extends Migration
           $table->string('phone_number', 22);
           $table->string('division');
           $table->string('specialization');
-          $table->string('location');
       });
   }
 
@@ -40,7 +39,6 @@ class AddBasicAttributesToUsersTable extends Migration
             'phone_number',
             'division',
             'specialization',
-            'location',
           ]);
       });
   }
