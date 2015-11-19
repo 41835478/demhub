@@ -1,11 +1,31 @@
 ### Installation (OSX):
 
-- Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) (`brew install composer`)
+#### Dev basics
+- Install [XCode](https://developer.apple.com/xcode/download/)
+- Install [Homebrew](http://brew.sh/)
+> `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+- Install [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+> `brew install composer`
 - Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 - Install [Vagrant](https://www.vagrantup.com/)
-- Install [Atom](https://atom.io/) (Optional - Recommended)
+- Install [XQuartz](http://www.xquartz.org/) for Browser Automated Testing
+
+#### Highly suggested tools
+- Install [Atom](https://atom.io/) OR [PHPStorm](https://www.jetbrains.com/phpstorm/) for code editing
+- Install [BetterTouchTool](http://www.boastr.net/) for general increased productivity
+- Install [Sequel Pro](http://www.sequelpro.com/) for DB management
+- Install [Slack](https://slack.com/) for team communication
+
+
+#### Before Getting Started
+- Create a bitbucket account
 - Get invited to [DEMHUB Devs Group](https://bitbucket.org/account/user/demhub/groups/developers/) in [Bitbucket](https://bitbucket.org)
-- Add local SSH key to [DEMHUB SSH Keys](https://bitbucket.org/account/user/demhub/ssh-keys/) (`ssh-keygen -t rsa`)
+- Generate and copy SSH key (`ssh-keygen -t rsa` followed by `cat ~/.ssh/id_rsa.pub | pbcopy`)
+- Add local SSH key to [DEMHUB SSH Keys](https://bitbucket.org/account/user/demhub/ssh-keys/)
+> Adding an SSH Key to either [BitBucket](https://bitbucket.org/) or [DigitalOcean](https://www.digitalocean.com/) (for access to the staging and production servers) needs to be done by an administrator.
+> Talk to [Aldo](mailto:aldo.ruiz.luna@gmail.com) or [Leon](mailto:lhaggarty@ryerson.ca) for that
+- Create a [PivotalTracker](https://www.pivotaltracker.com/) account
+- Get invited as a [PivotalTracker DEMHUB Member](https://www.pivotaltracker.com/projects/1425544/memberships)
 
 #### Inside Terminal
 
@@ -13,6 +33,7 @@
 - `git clone git@bitbucket.org:demhub/demhub.git; cd demhub`
 - `vagrant box add laravel/homestead`
 - `composer global require "laravel/homestead=~2.0"`
+- Follow the next two instructions with the following snippet of code:
 
 ```bash
 #################################
@@ -96,7 +117,7 @@ alias .....='cd ../../../..'
 ```
 
 - `vim ~/.bash_profile` (The above snippet should be added at the top of .bash_profile)
-- `vim ~/.homestead/aliases` (The following snippet should be added at the top of aliases)
+- `vim ~/.homestead/aliases` (The above snippet should be added at the top of aliases)
 - `echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bash_profile`
 - `source ~/.bash_profile`
 - `homestead init`
@@ -115,13 +136,46 @@ sites:
 ```
 
 - `echo -e "\n#DEMHUB Dev\n192.168.10.10 demhub.dev" >> /etc/hosts`
+> **Note** that if the previous step fails, you may need to change /etc/hosts file permissions with the following command:
+> `sudo chmod +a "$USER allow read,write" /etc/hosts`
+
 - `homestead up`
+- One by one, visit each one of these links and wait for their individual outputs. These will populate the DB with article entries from various news sources.
+
+```
+http://demhub.net/scheduler/scrapeRSS
+http://demhub.net/scheduler/scrapeCustom?source=IRDR&page_from=1&page_to=1
+http://demhub.net/scheduler/scrapeCustom?source=EC&page_from=1&page_to=1
+http://demhub.net/scheduler/scrapeCustom?source=EC-PR&page_from=1&page_to=1
+http://demhub.net/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
+```
+
+#### First time after starting the Homestead machine
+- `homestead ssh`
+- `export DISPLAY=localhost:10.0`
+- `cd /vagrant`
+- `vim Vagrantfile`
+- Follow the next instruction with the following snippet of code:
+```shell
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    ...etc...
+
+    if File.exists? afterScriptPath then
+        config.vm.provision "shell", path: afterScriptPath
+    end
+
+    config.ssh.forward_x11 = true
+end
+```
+- Add `config.ssh.forward_x11 = true` as indicated in the above snippet
+- `cd ~/workspace/demhub`
+- `larafullnew` (For commands breakdown, refer to aliases above)
+- `exit` in order to let all box changes take effect
 
 #### Start developing
 
 - `homestead ssh`
 - `cd ~/workspace/demhub`
-- `larafullnew` <!-- For commands breakdown, refer to aliases (above) -->
 - Open Chrome (preferably) and visit `demhub.dev`
 
 #### Before commiting (if applicable)
@@ -129,5 +183,25 @@ sites:
 - `git config --global user.email you@example.com`
 
 OR
-
 - commit inside the demhub folder, outside vagrant/homestead
+
+#### Local DB Connection via Sequel Pro
+- On the bottom left corner, select the "+" sign and name the new favorite connection "homestead-demhub"
+- Under "Enter connection details below" choose the SSH tab
+- Fill in the following:
+
+| Field         | Value             |
+| --------------|:-----------------:|
+| Name          | homestead-demhub  |
+| MySQL Host    | 127.0.0.1         |
+| Username      | homestead         |
+| Password      | secret            |
+| Database      | homestead         |
+| Port          | 3306              |
+| SSH Host      | 127.0.0.1         |
+| SSH User      | vagrant           |
+| SSH Password  | ~/.ssh/id_rsa.pub |
+| SSH Port      | 2222              |
+
+- Save Changes
+- Connect
