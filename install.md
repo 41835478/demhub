@@ -44,7 +44,7 @@ alias hsoff='homestead halt'
 alias cu='composer update'
 alias cda='composer dump-autoload -o'
 
-alias selenium-start="xvfb-run --server-args=\"-screen 0, 1366x768x24\" selenium-standalone start" #To run headless selenium
+alias selenium-start='xvfb-run --server-args=\"-screen 0, 1366x768x24\" selenium-standalone start' #To run headless selenium
 
 alias art='php artisan'
 alias migrate='php artisan migrate'
@@ -67,7 +67,7 @@ alias larafresh='composer dump-autoload && php artisan cache:clear && php artisa
 alias laraquick='composer dump-autoload && php artisan cache:clear && php artisan clear-compiled' #Same as above except without the db refresh
 alias larafull='rm -rf vendor && rm -rf node_modules && composer install && npm install && gulp && php artisan clear-compiled && php artisan optimize && php artisan migrate:refresh --seed'
 alias larafullnew='rm -rf vendor && rm -rf node_modules && composer install && npm install && cp .env.example .env && php artisan key:generate && gulp && php artisan clear-compiled && php artisan optimize && php artisan migrate:refresh --seed' #Same as larafull plus .env creation with keys
-alias larafullbow = 'rm -rf vendor && rm -rf node_modules && composer install && npm install && bower install && gulp && php artisan clear-compiled && php artisan optimize && php artisan migrate:refresh --seed' # Same as larafull plus bower
+alias larafullbow='rm -rf vendor && rm -rf node_modules && composer install && npm install && bower install && gulp && php artisan clear-compiled && php artisan optimize && php artisan migrate:refresh --seed' # Same as larafull plus bower
 
 #########
 ## GIT ##
