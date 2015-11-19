@@ -40,12 +40,34 @@ html, body {
 .lading-content-1 {
   vertical-align: middle; }
 
-@media (max-width: 991px) {
+.landing-slogan {
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px auto 20px auto; }
+
+@media (min-width: 1199px) {
+  .landing-slogan {
+    font-size: 25px; } }
+
+@media (min-width: 992px) and (max-width: 1199px) {
   .feedback-h2 {
     font-size: 35px !important;
     padding-bottom: 25px !important; }
   .demhub-logo-landing {
-    margin: auto; } }
+    margin: auto; }
+  .landing-slogan {
+    font-size: 20px; } }
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .inline-about {
+    display: inline-block !important;
+    width: 50% !important;
+    padding: auto 20px auto 20px; } }
+
+@media only screen and (max-width: 768px) {
+  .landing-slogan {
+    font-size: 16px; } }
 
 .navbar-default {
   border: none !important; }

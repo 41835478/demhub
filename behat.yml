@@ -5,7 +5,7 @@ default:
     Behat\MinkExtension:
       default_session:    selenium2 #laravel #selenium2
       browser_name:       firefox         # Use firefox when running test via the selenium driver
-      javascript_session: zombie #selenium2
+      javascript_session: selenium2 #zombie #selenium2
       base_url:           http://demhub.dev #http://staging.demhub.net
       laravel:            ~
       zombie:             ~
