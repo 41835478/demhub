@@ -70,9 +70,10 @@ $router->group(['middleware' => 'auth'], function ()
 get('scheduler/scrapeRSS', 'SchedulerController@scrapeRSS');
 get('scheduler/scrapeCustom', 'SchedulerController@scrapeCustom');
 get('scheduler/initialize', 'SchedulerController@initialize');
+get('scheduler/toolbox', 'SchedulerController@toolbox');
+//deprecated
 get('scheduler/scrapeIRDR', 'SchedulerController@scrapeIRDR');
 get('scheduler/scrapeEC', 'SchedulerController@scrapeEC');
-get('scheduler/toolbox', 'SchedulerController@toolbox');
 
 /**
  * Articles routes
