@@ -14,10 +14,11 @@
 			<div id="welcome_home" class="row js-landing-hero">
 				<div class="col-sm-6 col-sm-offset-6 lading-content-1">
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '300')) !!}
-					<div style="color:#FFF;">
-					<h3 >THE DISASTER & EMERGENCY</h3>
-					<h3 style="padding-left:20px">MANAGEMENT NETWORK</h3>
+
+					<div class ="landing-slogan">
+					THE DISASTER & EMERGENCY MANAGEMENT NETWORK
 				</div>
+
 				<br>
 				<div class="col-md-6 col-md-offset-1 text-center">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
@@ -37,37 +38,37 @@
 						<p>DEMHUB is a networking platform built to facilitate the exchange of information, experience and resources for the Global Disaster and Emergency Management Industry.</p>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-md-2 inline-about">
 						<h3>News</h3>
 						<h2><i class="icon-news"></i></h2>
 						<p>Get the NEWS from reliable industry sources.</p>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-md-2 inline-about">
 						<h3>Discuss</h3>
 						<h2><i class="icon-discuss whiltefill"></i></h2>
 						<p>Exchange your thoughts with millions of industry professionals.</p>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-md-2 inline-about">
 						<h3>Connect</h3>
 						<h2><i class="icon-users"></i></h2>
 						<p>Discover and get discovered within professional circles.</p>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-md-2 inline-about">
 						<h3>Research</h3>
 						<h2><i class="icon-research"></i></h2>
 						<p>Explore the academic researches about disaster management as well as publish your own.</p>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-md-2 inline-about">
 						<h3>Share</h3>
 						<h2><i class="icon-share"></i></h2>
 						<p>Upload documents, reports, articles, and more to share with your network.</p>
 					</div>
 
-					<div class="col-md-2">
+					<div class="col-md-2 inline-about">
 						<h3>Track</h3>
 						<h2><i class="icon-track"></i></h2>
 						<p>Track NEWS and discussions on issues that matter most to you.</p>
