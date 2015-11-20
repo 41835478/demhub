@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use League\Csv\Reader;
 
 class InfoResourceTableSeeder extends Seeder
 {
@@ -11,69 +12,20 @@ class InfoResourceTableSeeder extends Seeder
      */
     public function run()
     {
-      $resources = [
-        [
-          'name' => 'Emergency Management',
-          'url' => 'http://www.ag.gov.au/emergencymanagement/Pages/default.aspx',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'National Security',
-          'url' => 'http://www.ag.gov.au/NationalSecurity/Pages/home.aspx',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'Australian Emergency Managment Knowledge Hub',
-          'url' => 'https://www.emknowledge.gov.au/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'Education and Courses',
-          'url' => 'https://www.emknowledge.gov.au/education-and-courses/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'ABC Emergency',
-          'url' => 'http://www.abc.net.au/news/emergency/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => "Australia's Aid Program",
-          'url' => 'http://dfat.gov.au/aid/Pages/australias-aid-program.aspx',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'Australian Council of State Emergency Services',
-          'url' => 'http://ses.org.au/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'Australian Emergency Management Volunteer Forum',
-          'url' => 'http://www.aemvf.org.au/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'Australian Federal Police',
-          'url' => 'http://www.afp.gov.au/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-        [
-          'name' => 'Australian Fire Authorities Council',
-          'url' => 'http://www.afac.com.au/',
-          'country' => 'australia',
-          'region' => 'all_regions'
-        ],
-      ];
+      $resourcesData = database_path().'/data/info_resources.csv';
+      $csv = Reader::createFromPath($resourcesData);
+      // $csv->setOffset(1) // start from the 2nd row, since the 1st is the CSV header
 
-      DB::table('info_resources')->insert($resources);
+      $nb_iterations = $csv->setOffset(1)->fetchAll(function ($row) {
+        DB::table('info_resources')->insert([
+          // 'id' => $row[0], // id is assigned automatically, so we don't need it
+          'name' => $row[1],
+          'url' => $row[2],
+          'country' => $row[3],
+          'region' => $row[4],
+          'divisions' => $row[5],
+          'keywords' => $row[6]
+        ]);
+      });
     }
 }

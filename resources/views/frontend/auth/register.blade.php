@@ -17,7 +17,7 @@
 
 @section('fullscreen-content')
 	<div>
-		<h2> GET THE BETA VERSION</h2>
+		<h2>REGISTER NOW, IT'S FREE!</h2>
 		{{-- @include('forms.auth._register_old') --}}
 		@include('forms.auth._register')
 		<br>

@@ -21,7 +21,8 @@
 		"riari/laravel-forum": "~2.0",
 		"intervention/image": "^2.3",
 		"codesleeve/stapler": "1.0.*",
-    "codesleeve/laravel-stapler": "1.0.*"
+    "codesleeve/laravel-stapler": "1.0.*",
+		"league/csv": "^7.2"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
