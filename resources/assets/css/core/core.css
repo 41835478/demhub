@@ -699,7 +699,7 @@ button.btn-style-alt:active {
   background-position: -960px -160px; }
 
 .icon-pencil {
-  width: 64px;
+  max-width: 64px;
   height: 64px;
   background-position: 0 -240px; }
 
@@ -849,7 +849,6 @@ div#dashboard-icon {
   bottom: 10%;
   padding-left: 7px;
   padding-right: 7px;
-  font-size: 2em;
   z-index: 100;
   cursor: pointer;
   background: rgba(20, 20, 20, 0.9);

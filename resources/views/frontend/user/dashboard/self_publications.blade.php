@@ -2,6 +2,6 @@
 
 @section('content')
   @include('frontend.user.dashboard.style')
-  @include('frontend.user.dashboard._sidebar')
+  @include('frontend.navigation._user-dashboard-sidebar')
   @include('frontend.user.dashboard.publication.index')
 @endsection

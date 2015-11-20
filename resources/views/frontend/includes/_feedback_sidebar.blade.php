@@ -46,7 +46,7 @@ function feedbackFormUpdate(){
 
 
 <div id="dashboard-icon">
-	<i class="icon-pencil" data-toggle="tooltip" data-placement="left" title="FEEDBACK"></i>
+	<i class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="left" title="FEEDBACK" style="font-size:250%"></i>
 </div>
 
 <div id="dashboard">
