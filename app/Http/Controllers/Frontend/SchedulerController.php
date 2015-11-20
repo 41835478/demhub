@@ -120,6 +120,7 @@ class SchedulerController extends Controller
 				case 'EC': 		$return = Scraper::scrapeEC($source, $page, $page_to, true); break;
 				case 'EC-PR': 	$return = Scraper::scrapeECPR($source, $page, $page_to, true); break;
 				case 'GIAC': 	$return = Scraper::scrapeGIAC($source, $page); break;
+				case 'BCI': 	$return = Scraper::scrapeBCI($source, $page, $page_to, true); break;
 				default: 		$return = array('messages'=>'error: source not recognized.', 'count'=>0,'errors'=>0); break;
 			}
 			$time = (microtime(true) - $start)*1000;
@@ -142,6 +143,7 @@ class SchedulerController extends Controller
 	}
 
 	/**
+	 * @deprecated
 	 * Downloads articles from http://www.irdrinternational.org/ based on 'IRDR' type sources on the scrape_sources DB table
 	 *
 	 * @param Request $request Accepted indexes:
@@ -201,6 +203,7 @@ class SchedulerController extends Controller
 	}
 
 	/**
+	 * @deprecated Use scrapeCustom?source=EC instead
 	 * Downloads articles from http://ec.europa.eu/echo/news_en based on 'EC' type sources on the scrape_sources DB table
 	 *
 	 * @param Request $request Accepted indexes:
