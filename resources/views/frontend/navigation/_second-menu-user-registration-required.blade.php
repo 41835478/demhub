@@ -4,11 +4,12 @@
 
 
       <ul class="nav navbar-nav">
-        @if(Request::url() === url('userhome'))
+        @if( strpos(Request::url(), 'division') ==true || Request::url() == url('divisions') )
           <li class="active">
         @else
           <li>
         @endif
+
         <a href="" data-toggle="modal" data-target="#DEMHUBModal" style="border-left:2px solid #fff"> NEWS FEED</a></li>
 
         @if(Request::url() == url('forum/all_threads'))

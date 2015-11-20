@@ -4,7 +4,7 @@
 
 
       <ul class="nav navbar-nav">
-        @if(Request::url() === url('userhome'))
+        @if(Request::url() === url('userhome') || strpos(Request::url(), 'division') ==true || Request::url() == url('divisions'))
           <li class="active">
         @else
           <li>
