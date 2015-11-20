@@ -38,7 +38,7 @@
         @else
           <li>
         @endif
-        <a href="" data-toggle="modal" data-target="#DEMHUBModal"> RESOURCES</a></li>
+        <a href="{{url('resource_filter')}}" data-toggle="modal" data-target="#DEMHUBModal"> RESOURCES</a></li>
 
         {{-- <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:15px;padding-right:15px;"> MAP</a></li> --}}
 
