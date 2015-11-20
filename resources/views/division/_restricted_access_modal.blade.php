@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
 
-          @include('forms.auth._register')
+          @include('forms.auth._register_single')
 
       </div>
 
@@ -25,7 +25,7 @@
       </div>
       <div class="modal-body">
 
-          @include('forms.auth._register')
+          @include('forms.auth._register_single')
 
       </div>
 
