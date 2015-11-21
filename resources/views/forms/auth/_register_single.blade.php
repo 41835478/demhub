@@ -4,9 +4,7 @@
       <div class="omb_login">
 
     		<div class="row omb_row-sm-offset-3">
-    			
 
-            <div id="form-part-1">
 
               <div class="form-group">
                 <div class="input-group">
@@ -44,13 +42,7 @@
 
               {!! Form::token() !!}
 
-              <a type="button" href="#" class="btn btn-lg btn-primary btn-block" onclick="pageUpdate()">JOIN</a>
-              <button type="button" id="modalSuccessButton" class="btn btn-default" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
-              <button type="button" id="modalErrorButton" class="btn btn-default" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
 
-            </div>
-
-            <div id="form-part-2" style="display:none">
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -84,7 +76,7 @@
               </div>
 
               {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
-            </div>
+
 
 
         </div>

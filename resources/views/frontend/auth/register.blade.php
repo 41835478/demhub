@@ -16,7 +16,7 @@
 @endsection
 
 @section('fullscreen-content')
-	<div>
+	<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 		<h2>REGISTER NOW, IT'S FREE!</h2>
 		{{-- @include('forms.auth._register_old') --}}
 		@include('forms.auth._register')
