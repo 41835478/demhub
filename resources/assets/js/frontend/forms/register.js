@@ -8,6 +8,6 @@ function pageUpdate(){
   }
 }
 function updateForm(){
-  document.getElementById("form-part-1").style.display="none";
+  // document.getElementById("form-part-1").style.display="none";
   document.getElementById("form-part-2").style.display="";
 }

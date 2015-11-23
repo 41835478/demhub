@@ -4,7 +4,7 @@
       <div class="omb_login">
 
     		<div class="row omb_row-sm-offset-3">
-    			
+
 
             <div id="form-part-1">
 
@@ -32,25 +32,29 @@
                 <div class="help-block with-errors"></div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                   {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Password Confirmation','data-minlength'=>'6','required','id' => 'password']) !!}
                 </div>
                 <div class="help-block with-errors"></div>
-              </div>
+              </div> -->
 
               <br>
 
               {!! Form::token() !!}
 
-              <a type="button" href="#" class="btn btn-lg btn-primary btn-block" onclick="pageUpdate()">JOIN</a>
-              <button type="button" id="modalSuccessButton" class="btn btn-default" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
-              <button type="button" id="modalErrorButton" class="btn btn-default" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
+              <!-- <a type="button" href="#" class="btn btn-lg btn-primary btn-block" onclick="pageUpdate()">JOIN</a> -->
+              <!-- <button type="button" id="modalSuccessButton" class="btn btn-default" data-toggle="modal" data-target="#successModal" style="display:none">MODAL S</button>
+              <button type="button" id="modalErrorButton" class="btn btn-default" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button> -->
 
             </div>
 
             <div id="form-part-2" style="display:none">
+              <div class="well" style="background-color:#ccc;color:#000;padding-bottom:0px;padding-top:10px">
+                <p>Just a few more details and you're set.</p>
+              </div>
+
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -83,9 +87,9 @@
                 <div class="help-block with-errors"></div>
               </div>
 
-              {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
-            </div>
 
+            </div>
+            {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-style-alt btn-block']) !!}
 
         </div>
         <br>

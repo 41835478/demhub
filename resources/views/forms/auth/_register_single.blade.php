@@ -30,13 +30,13 @@
                 <div class="help-block with-errors"></div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                   {!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Password Confirmation','data-minlength'=>'6','required','id' => 'password']) !!}
                 </div>
                 <div class="help-block with-errors"></div>
-              </div>
+              </div> -->
 
               <br>
 
@@ -75,7 +75,7 @@
                 <div class="help-block with-errors"></div>
               </div>
 
-              {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
+              {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-style-alt btn-block']) !!}
 
 
 
