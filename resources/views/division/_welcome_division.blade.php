@@ -8,8 +8,6 @@
     <div id="welcome-division-category" class="welcome-division-{{$currentDivision->slug}}">
 
       <div class="row">
-
-
           @foreach($navDivisions as $div)
             <a href="{{url('division', array('id' => $div->slug))}}">
               <div class="col-md-2 divisions-page-item division_{{$div->slug}}">
