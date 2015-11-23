@@ -143,7 +143,8 @@ div.navbar-inverse {
   color: white;
   text-align: center;
   padding-top: 8px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  z-index: 9999; }
 
 .divisions-page-item:hover, .divisions-page-item:focus {
   opacity: 1;
@@ -284,13 +285,26 @@ div.auth-modal-email {
 .transparent-icon {
   opacity: 0.0; }
 
+div#welcome-division {
+  text-align: center; }
+
+#welcome-division-bar {
+  overflow: hidden; }
+
+.fix-division-bar {
+  margin-top: -50px;
+  opacity: 1;
+  position: fixed;
+  z-index: 99999 !important;
+  transition: all 0.5s ease; }
+
 .feedsbox {
   min-width: 100%;
   height: 300px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px   solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative; }
 
@@ -461,9 +475,10 @@ button.btn-style-alt:active {
 
 [class^="icon-"] {
   display: block;
-  width: 52px;
-  height: 52px;
+  width: 1em;
+  height: 1em;
   background: url("../../images/icons/sprite.svg");
+  background-size: none;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -766,76 +781,6 @@ button.btn-style-alt:active {
   .icon-humanitarian,
   .icon-security {
     display: none; } }
-
-@-webkit-keyframes scroll-ani {
-  0% {
-    opacity: 1;
-    top: 29%; }
-  15% {
-    opacity: 1;
-    top: 50%; }
-  50% {
-    opacity: 0;
-    top: 50%; }
-  100% {
-    opacity: 0;
-    top: 29%; } }
-
-@keyframes scroll-ani {
-  0% {
-    opacity: 1;
-    top: 29%; }
-  15% {
-    opacity: 1;
-    top: 50%; }
-  50% {
-    opacity: 0;
-    top: 50%; }
-  100% {
-    opacity: 0;
-    top: 29%; } }
-
-.mouse-scroll {
-  display: inline;
-  line-height: 18px;
-  font-size: 13px;
-  font-weight: normal;
-  color: #7F8C8D;
-  color: #FFF;
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: 2px;
-  margin-top: 10%;
-  text-decoration: none;
-  overflow: hidden; }
-  .mouse-scroll .mouse {
-    position: absolute;
-    display: inline;
-    width: 25px;
-    height: 38px;
-    margin: 0 auto 20px;
-    box-sizing: border-box;
-    border: 3px solid #FFF;
-    border-radius: 23px; }
-    .mouse-scroll .mouse .mouse-movement {
-      position: absolute;
-      display: inline;
-      top: 29%;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      margin: -4px 0 0 -4px;
-      background: #FFF;
-      border-radius: 50%;
-      -webkit-animation: scroll-ani 4s linear infinite;
-      animation: scroll-ani 4s linear infinite; }
-  .mouse-scroll .mouse-message {
-    float: left;
-    margin: -200px 0 0 7px;
-    padding: 0;
-    -webkit-animation: scroll-ani 4s linear infinite;
-    animation: scroll-ani 4s linear infinite; }
-  .mouse-scroll:hover .mouse-message {
-    margin-top: 0; }
 
 #map_container {
   overflow: hidden; }
@@ -1216,9 +1161,6 @@ div#social-actions ul#social li a:hover {
 div#social-actions ul#social li span.badge {
   background: #fff;
   color: #333; }
-
-div#welcome-division {
-  text-align: center; }
 
 div#user-email {
   padding: 0 0 0 5%; }
