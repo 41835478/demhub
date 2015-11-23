@@ -27,6 +27,7 @@ elixir(function(mix) {
                 'frontend/plugins/validator.js', // coming-soon js
                 'frontend/coming-soon/main.config.js', // coming-soon js
                 'frontend/coming-soon/shader.js', // coming-soon js
+                'frontend/Page-animate/page-specific-animation.js', //some animations for multiple pages
                 'frontend/coming-soon/demo.js' // coming-soon js
             ], 'public/js/frontend.js')
         .sass([ // Process back-end stylesheets

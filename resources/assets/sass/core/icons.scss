@@ -2,19 +2,22 @@
 //defines all icon properties//
 [class^="icon-"]{
   display:block;
-  width:52px;
-  height:52px;
+  width:1em;
+  height:1em;
   background:url('../../images/icons/sprite.svg');
+  background-size:none;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
   z-index:1000;
   fill:white;
+  
   margin-left: auto;
-   margin-right: auto;
+  margin-right: auto;
   //just an inspiration if want to fill icon with gradient/images. use mask
   //-webkit-mask: url('../../images/icons/sprite.svg');
  //mask: url('../../images/icons/sprite.svg');
+
 }
 
 // .icon {
@@ -273,6 +276,7 @@
 	height: 64px;
 	background-position: -400px -240px;
 }
+
 .icon-cancel-circle {
 	width: 64px;
 	height: 64px;
@@ -319,128 +323,4 @@
   .icon-security {
     display:none;
     }
-  }
-
-  // arrow icon scroll down Animations
-  @-webkit-keyframes scroll-ani {
-    0% {
-      opacity: 1;
-      top: 29%;
-    }
-    15% {
-      opacity: 1;
-      top: 50%;
-    }
-    50% {
-      opacity: 0;
-      top: 50%;
-    }
-    100% {
-      opacity: 0;
-      top: 29%;
-    }
-  }
-
-  @-moz-keyframes scroll-ani {
-    0% {
-      opacity: 1;
-      top: 29%;
-    }
-    15% {
-      opacity: 1;
-      top: 50%;
-    }
-    50% {
-      opacity: 0;
-      top: 50%;
-    }
-    100% {
-      opacity: 0;
-      top: 29%;
-    }
-  }
-
-  @keyframes scroll-ani {
-    0% {
-      opacity: 1;
-      top: 29%;
-    }
-    15% {
-      opacity: 1;
-      top: 50%;
-    }
-    50% {
-      opacity: 0;
-      top: 50%;
-    }
-    100% {
-      opacity: 0;
-      top: 29%;
-    }
-  }
-
-  // Mouse & Message Styles
-
-  // The Scroll Link
-  .mouse-scroll {
-    display: inline;
-    line-height: 18px;
-    font-size: 13px;
-    font-weight: normal;
-    color: #7F8C8D;
-    color: #FFF;
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: 2px;
-    margin-top: 10%;
-    text-decoration: none;
-    overflow: hidden;
-
-    // The Mouse
-    .mouse {
-      position: absolute;
-      display: inline;
-      width: 25px;
-      height: 38px;
-      margin: 0 auto 20px;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      border: 3px solid #FFF;
-      border-radius: 23px;
-
-      // Scroll Indicator
-      .mouse-movement {
-        position: absolute;
-        display: inline;
-        top: 29%;
-        left: 50%;
-        width: 8px;
-        height: 8px;
-        margin: -4px 0 0 -4px;
-        background: #FFF;
-        border-radius: 50%;
-        -webkit-animation: scroll-ani 4s linear infinite;
-        -moz-animation: scroll-ani 4s linear infinite;
-        animation: scroll-ani 4s linear infinite;
-      }
-
-    }
-
-    // The Scroll Message
-    .mouse-message {
-        float: left;
-        margin: -200px 0 0 7px;
-        padding: 0;
-        -webkit-animation: scroll-ani 4s linear infinite;
-      -moz-animation: scroll-ani 4s linear infinite;
-      animation: scroll-ani 4s linear infinite;
-    }
-
-    // shown on Hover of The Mouse
-    &:hover {
-      .mouse-message {
-        margin-top: 0;
-      }
-    }
-
   }

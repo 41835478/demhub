@@ -144,3 +144,64 @@ div.auth-modal-email {
 .transparent-icon {
   opacity:0.0;
 }
+
+//division navigation
+div#welcome-division {
+
+  text-align: center;
+}
+
+#welcome-division-bar {
+  overflow: hidden;
+}
+
+.fix-division-bar {
+  margin-top:-50px;
+  opacity:1;
+  position:fixed;
+  z-index:10000 !important;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.float-top{
+  position: absolute;
+  left:0;
+  top:0;
+  right:0;
+  z-index:10000 !important;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+// #welcome-division-category {
+//   color: #fff;
+//   height: 452px;
+//   font-family: 'Open Sans', sans-serif;
+//   text-shadow: 1px 1px 1px #333;
+// }
+//
+// div#welcome-division div#ph-text {
+//   margin: 1% 0;
+//   padding: 1% 0;
+// }
+// div#welcome-division div#ph-text img {
+//   max-width: 25%;
+//   max-height: 20%;
+//   display: block;
+//   padding: 1% 1% 1% 0;
+//   margin-left: 0;
+// }
+// div#welcome-division div#ph-text h3 a {
+//   color: #333;
+// }
+// div#welcome-division div#ph-text span {
+//   // background: #333;
+//   font-size: 1.0em;
+// }
+// div#welcome-division div#ph-text p {
+//   font-size: 1.2em;
+//   padding: 1% 0;
+// }
