@@ -141,7 +141,7 @@ function pageUpdate(){
   }
 }
 function updateForm(){
-  document.getElementById("form-part-1").style.display="none";
+  // document.getElementById("form-part-1").style.display="none";
   document.getElementById("form-part-2").style.display="";
 }
 
@@ -1779,19 +1779,6 @@ $(function() {
         }
     });
 });
-$(window).on('scroll', function() {
-    var y_scroll_pos = window.pageYOffset;
-    var scroll_pos_test = 450;             // set to whatever you want it to be
-
-    if(y_scroll_pos > scroll_pos_test) {
-      $('#welcome-division-bar').addClass('fix-division-bar ');
-      $('.divisions-page-item').addClass('float-top');
-    }
-    else {
-      $('#welcome-division-bar').removeClass('fix-division-bar ');
-    }
-});
-
 $(function() {
     var $html = $('html'),
         $demo_panel = $('#demo-panel'),

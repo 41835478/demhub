@@ -24,12 +24,19 @@
 	</div>
 
 	<script>
-		$(document).ready(function() {
-		    $('#form-part-1').keydown(function(event) {
-		        if (event.keyCode == 13) {
-		            pageUpdate();
-		         }
-		    });
-		});
+$("input#password").click(function(){
+	setTimeout(function(){updateForm()},500);
+
+});
+
+
+
+		// $(document).ready(function() {
+		//     $('#form-part-1').keydown(function(event) {
+		//         if (event.keyCode == 13) {
+		//             pageUpdate();
+		//          }
+		//     });
+		// });
 	</script>
 @endsection
