@@ -2,9 +2,10 @@
 //defines all icon properties//
 [class^="icon-"]{
   display:block;
-  width:52px;
-  height:52px;
+  width:1em;
+  height:1em;
   background:url('../../images/icons/sprite.svg');
+  background-size:
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
