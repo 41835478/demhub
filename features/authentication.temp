@@ -17,13 +17,13 @@ Feature: Membership
     Given I am not a registered user
     When I go to the homepage
     And I follow "REGISTER"
-    Then I should see "GET THE BETA VERSION"
+    Then I should see "REGISTER NOW, IT'S FREE!"
 
   # Scenario: Guest Wants to Register from final landing page section
   #   Given I am not a registered user
   #   When I go to the homepage
   #   And I follow "REGISTER"
-  #   Then I should see "GET THE BETA VERSION"
+  #   Then I should see "REGISTER NOW, IT'S FREE!"
 
   Scenario: Guest Wants to Register - Part 2
     Given I am not logged in

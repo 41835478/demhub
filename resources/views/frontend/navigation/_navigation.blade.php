@@ -1,18 +1,18 @@
-@include('frontend.includes._navbar')
+@include('frontend.navigation._navbar')
 
 @if (Auth::user() && ! empty($allDivisions))
   @if (!isset($userMenu))
     @if (Request::url() == url('thefuture'))
-      @include ('frontend.user.menu-user._carousel-menu-user')
+      @include ('frontend.navigation._carousel-menu-user')
     @endif
   @endif
-  @include ('frontend.user.menu-user._second-menu-user')
+  @include ('frontend.navigation._second-menu-user')
 @endif
 @if( isset($navDivisions) && !isset($userMenu))
-  @include('frontend.includes._nav_divisions')
+  @include('frontend.navigation._nav_divisions')
 @endif
 @if(Auth::guest() && ! empty($allDivisions))
-  @include('frontend.user.menu-user._second-menu-user-registration-required')
+  @include('frontend.navigation._second-menu-user-registration-required')
 @endif
 
 <script>

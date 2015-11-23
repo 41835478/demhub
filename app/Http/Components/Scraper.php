@@ -316,17 +316,17 @@ class Scraper
 			// Handle media (images) rlated to the article
 			if(isset($params['media'])){
 				foreach($params['media'] as $i=>$media){
-					$save_ready = false;
-					$media_model = new ArticleMedia();
-					$media_model->article_id = $model->id;
-					$media_model->view_order = $i;
 					if(isset($media['url'])){
-						$media_model->filename = $media['url'];
-						$media_model->filetype = 'url';
-						$save_ready = true;
+						$media_exists= ArticleMedia::where('filename', $media['url'])->first();
+						if(!$media_exists){
+							$media_model = new ArticleMedia();
+							$media_model->article_id = $model->id;
+							$media_model->view_order = $i;
+							$media_model->filename = $media['url'];
+							$media_model->filetype = 'url';
+							$media_model->save();
+						}
 					}
-					if($save_ready)
-						$media_model->save();
 				}
 			}
 
@@ -903,6 +903,85 @@ class Scraper
 			}
 			$page++;
 		//}
+
+		return $return;
+	}
+
+	/**
+	 * Given a specific EC type source attempts to extract data
+	 * @param ScrapeSource $source
+	 * @param int $page_from
+	 * @param int $page_to
+	 * @param boolean $get_fulltext
+	 * @return mixed
+	 */
+	public static function scrapeBCI($source, $page_from, $page_to, $get_fulltext)
+	{
+		$return['status'] = '';
+		$return['count'] = 0;
+		$return['errors'] = 0;
+		$return['messages'] = '';
+		$end = false;
+		$page = $page_from;
+		while(!$end && $page <= $page_to)
+		{
+			$return['messages'] .= '<br>Analysing page: '.$page;
+			$data = array();
+			if($page == 1)	$url = $source->url;
+			else 			$url = $source->url.'/page/'.($page-1);
+
+			$response = Scraper::getHttpResponse($url);
+			if(trim($response) == ''){
+				$return['messages'] .= 'Error retrieving "'.$url.'" url.';
+				return $return;
+			}
+			$doc = new \DOMDocument();
+			@$doc->loadHTML($response);
+
+			$article_nodes = Scraper::htmlElementsGrab($doc, null, 'div', 'class', 'article');
+			foreach($article_nodes as $article_node)
+			{
+				$data['media'][0]['url'] = Scraper::htmlAttributeGrab($article_node, 'img', null, null, 'src');
+				$date_temp = Scraper::htmlTextGrab($article_node, 'h4', 'class', 'meta');
+				$data['date'] = substr($date_temp, 56);
+				$data['excerpt'] = Scraper::htmlTextGrab($article_node, 'p', 'class', 'hidden-small');
+
+				$cell_nodes = Scraper::htmlElementsGrab($article_node, null, 'h2', 'class', 'newsroom-list-header');
+				foreach($cell_nodes as $c=>$cell_node)
+				{
+					$data['title'] = Scraper::htmlTextGrab($cell_node, 'a', null,null);
+					$data['url'] = Scraper::htmlAttributeGrab($cell_node, 'a', null, null, 'href');
+					if(strpos($data['url'], 'http') === false){
+						$data['url'] = 'http://business-continuity-institute.mynewsdesk.com'.$data['url'];
+					}
+				}
+
+				if($get_fulltext){
+					$response2 = Scraper::getHttpResponse($data['url']);
+					$doc2 = new \DOMDocument();
+					@$doc2->loadHTML($response2);
+					$data['text'] = Scraper::htmlTextGrab($doc2, 'div', 'class', 'newsroom-article');
+				}
+
+				$save_result = Scraper::verifyArticle($source, $data, true);
+
+				$return['status'] = $save_result['status'];
+				$return['messages'] .= '<br>'.$save_result['message'];
+				if($save_result['status'] == 'ok'){
+					$return['count']++;
+				} elseif($save_result['status'] == 'error') {
+					$return['errors']++;
+				}
+				//var_dump($data);
+				unset($data);
+			}
+
+			if( (is_array($article_nodes) && empty($article_nodes))
+				|| (!is_array($article_nodes) && $article_nodes->length == 0) ){
+				$end = true;
+			}
+			$page++;
+		}
 
 		return $return;
 	}

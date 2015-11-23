@@ -17,7 +17,7 @@ $('div#dashboard-icon > i').click(function(){
 			right:'-350px'
 		}, function(){
 			$('div#dashboard-icon > i').removeClass();
-			$('div#dashboard-icon > i').addClass('icon-pencil');
+			$('div#dashboard-icon > i').addClass('fa fa-pencil-square-o');
 			$('div#dashboard-icon').css('right', '0');
 		});
 	}
@@ -46,7 +46,7 @@ function feedbackFormUpdate(){
 
 
 <div id="dashboard-icon">
-	<i class="icon-pencil" data-toggle="tooltip" data-placement="left" title="FEEDBACK"></i>
+	<i class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="left" title="FEEDBACK" style="font-size:250%"></i>
 </div>
 
 <div id="dashboard">

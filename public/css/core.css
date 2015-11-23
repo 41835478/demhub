@@ -43,12 +43,11 @@ html, body {
 .landing-slogan {
   color: #fff;
   font-weight: bold;
-  text-align: center;
-  margin: 20px auto 20px auto; }
+  margin: auto auto 20px auto; }
 
 @media (min-width: 1199px) {
   .landing-slogan {
-    font-size: 25px; } }
+    font-size: 12px; } }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .feedback-h2 {
@@ -57,7 +56,7 @@ html, body {
   .demhub-logo-landing {
     margin-left: 400px; }
   .landing-slogan {
-    font-size: 20px; } }
+    font-size: 11px; } }
 
 @media (min-width: 768px) and (max-width: 992px) {
   .inline-about {
@@ -291,7 +290,7 @@ div.auth-modal-email {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px solid #ddd;
+  border: 1px   solid #ddd;
   float: left;
   position: relative; }
 
@@ -699,7 +698,7 @@ button.btn-style-alt:active {
   background-position: -960px -160px; }
 
 .icon-pencil {
-  width: 64px;
+  max-width: 64px;
   height: 64px;
   background-position: 0 -240px; }
 
@@ -849,7 +848,6 @@ div#dashboard-icon {
   bottom: 10%;
   padding-left: 7px;
   padding-right: 7px;
-  font-size: 2em;
   z-index: 100;
   cursor: pointer;
   background: rgba(20, 20, 20, 0.9);

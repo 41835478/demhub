@@ -57,9 +57,9 @@
             	@include('modals._feedback_thankyou')
         @endif
 
-        @include('frontend.includes._navigation')
+        @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
-        <div class="@yield('container-class')" style="overflow-x:hidden">
+        <div class="container-fluid @yield('container-class')" style="overflow-x:hidden">
 
           @yield('body-style')
           @yield('content')

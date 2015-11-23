@@ -19,13 +19,13 @@
 .landing-slogan {
   color:#fff;
   font-weight: bold;
-  text-align:center;
-  margin:20px auto 20px auto;
+  margin:auto auto 20px auto;
 }
 
 @media (min-width: 1199px){
   .landing-slogan {
-    font-size: 25px;
+    font-size: 12px;
+
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -39,7 +39,7 @@
   }
 
   .landing-slogan {
-    font-size: 20px;
+    font-size: 11px;
   }
 }
 

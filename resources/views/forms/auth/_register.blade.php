@@ -1,10 +1,10 @@
 {!! Form::open(['to' => 'auth/register', 'class' => 'omb_loginForm', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100']) !!}
-  <div class="container">
+
 
       <div class="omb_login">
 
     		<div class="row omb_row-sm-offset-3">
-    			<div class="col-xs-12 col-sm-6">
+    			
 
             <div id="form-part-1">
 
@@ -86,7 +86,7 @@
               {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
             </div>
 
-    			</div>
+
         </div>
         <br>
         <!-- <div class="row omb_row-sm-offset-3">
@@ -116,7 +116,7 @@
     </div> -->
   	</div>
 
-  </div>
+
 
 {!! Form::close() !!}
 

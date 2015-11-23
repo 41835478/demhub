@@ -1,27 +1,32 @@
-<div class="modal fade" id="myModal" style="padding-top:100px">
+<div class="modal fade" id="DEMHUBModal" style="padding-top:100px">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">REGISTER for full access.  It's free!</h3>
+      </div>
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3>You can access the articles once you {!! link_to('auth/register', trans('REGISTER')) !!}</h3>
+
+          @include('forms.auth._register_single')
+
       </div>
 
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="DEMHUBModal" style="padding-top:100px">
+<div class="modal fade" id="myModal" style="padding-top:100px">
   <div class="modal-dialog">
     <div class="modal-content">
 
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">REGISTER for full access.  It's free!</h3>
+      </div>
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3>You can access the DEMHUB tools once you {!! link_to('auth/register', trans('REGISTER')) !!}</h3>
+
+          @include('forms.auth._register_single')
+
       </div>
 
     </div><!-- /.modal-content -->

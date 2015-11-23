@@ -13,14 +13,14 @@
 		<div class="col-xs-12">
 			<div id="welcome_home" class="row js-landing-hero">
 				<div class="col-sm-6 col-sm-offset-6 lading-content-1">
-					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '300')) !!}
+					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '340')) !!}
 
-					<div class ="landing-slogan">
-					THE DISASTER & EMERGENCY MANAGEMENT NETWORK
-				</div>
+					<div class ="landing-slogan col-md-10">
+						THE DISASTER & EMERGENCY MANAGEMENT NETWORK
+					</div>
 
 				<br>
-				<div class="col-md-6 col-md-offset-1 text-center">
+				<div class="col-md-6 col-md-offset-1 text-center" style="padding-left:10px">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
 			</div>
