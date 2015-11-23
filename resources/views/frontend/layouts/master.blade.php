@@ -59,7 +59,7 @@
 
         @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
-        <div class="container-fluid @yield('container-class')" style="overflow-x:hidden">
+        <div class="@yield('container-class')" style="overflow-x:hidden">
 
           @yield('body-style')
           @yield('content')
