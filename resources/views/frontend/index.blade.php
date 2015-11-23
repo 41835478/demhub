@@ -20,7 +20,7 @@
 					</div>
 
 				<br>
-				<div class="col-md-6 col-md-offset-1 text-center" style="padding-left:10px">
+				<div class="col-md-4 col-md-offset-1 text-center" style="padding-left:10px">
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
 				</div>
 			</div>

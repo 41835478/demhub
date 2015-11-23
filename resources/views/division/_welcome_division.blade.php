@@ -42,7 +42,7 @@ $(window).on('scroll', function() {
 
     if(y_scroll_pos > scroll_pos_test) {
       $('#welcome-division-bar').addClass('fix-division-bar ');
-      // $('.divisions-page-item').css('opacity': '1','filter': 'alpha(opacity=100);');
+      $('.divisions-page-item').addClass('float-top');
     }
     else {
       $('#welcome-division-bar').removeClass('fix-division-bar ');

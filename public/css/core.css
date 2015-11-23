@@ -295,8 +295,17 @@ div#welcome-division {
   margin-top: -50px;
   opacity: 1;
   position: fixed;
-  z-index: 99999 !important;
-  transition: all 0.5s ease; }
+  z-index: 10000 !important;
+  transition: all 0.3s ease; }
+
+.float-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 10000 !important;
+  opacity: 1;
+  filter: alpha(opacity=100); }
 
 .feedsbox {
   min-width: 100%;
