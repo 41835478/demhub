@@ -33,8 +33,8 @@
 			<div class="" style="">
 				<div id="welcome_about" class="row">
 
-					<div class="col-md-12" >
-						<h1>What is DEMHUB?</h1>
+					<div class="col-md-12">
+						<h1 style="padding-right:5px">What is DEMHUB?</h1>
 						<p>DEMHUB is a networking platform built to facilitate the exchange of information, experience and resources for the Global Disaster and Emergency Management Industry.</p>
 					</div>
 
@@ -92,7 +92,7 @@
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 
-					<div class="row" style="margin-left: 15px; margin-right: 15px;">
+					<div class="row">
 						@foreach($divisions as $div)
 							<a href="{{url('division', $div->slug)}}">
 								<div class="division-landing-box col-md-2">
