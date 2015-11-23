@@ -147,23 +147,25 @@ div.auth-modal-email {
 
 //division navigation
 div#welcome-division {
-
   text-align: center;
+  position: relative;
 }
 
 #welcome-division-bar {
-  overflow: hidden;
+  z-index:10;
 }
 
 .fix-division-bar {
   margin-top:-50px;
   opacity:1;
+  -khtml-opacity: 1;
   position:fixed;
-  z-index:10000 !important;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  right: 0;
+  left: 0;
 }
 
 .float-top{
@@ -171,7 +173,7 @@ div#welcome-division {
   left:0;
   top:0;
   right:0;
-  z-index:10000 !important;
+  z-index:999 !important;
   opacity: 1;
   filter: alpha(opacity=100);
 }

@@ -25,31 +25,31 @@ $(function () {
 	 * Background (Backstretch) - Divisions
 	 */
 
-	$(".welcome-division-all").backstretch([
+	$(".welcome-division-all-img").backstretch([
 		"../images/backgrounds/divisions/all.jpg"
 	]);
 
-	$(".welcome-division-health").backstretch([
+	$(".welcome-division-health-img").backstretch([
 		"../images/backgrounds/divisions/health.jpg"
 	]);
 
-	$(".welcome-division-science").backstretch([
+	$(".welcome-division-science-img").backstretch([
 		"../images/backgrounds/divisions/science.jpg"
 	]);
 
-	$(".welcome-division-response").backstretch([
+	$(".welcome-division-response-img").backstretch([
 		"../images/backgrounds/divisions/response.jpg"
 	]);
 
-	$(".welcome-division-security").backstretch([
+	$(".welcome-division-security-img").backstretch([
 		"../images/backgrounds/divisions/security.jpg"
 	]);
 
-	$(".welcome-division-continuity").backstretch([
+	$(".welcome-division-continuity-img").backstretch([
 		"../images/backgrounds/divisions/continuity.jpg"
 	]);
 
-	$(".welcome-division-humanitarian").backstretch([
+	$(".welcome-division-humanitarian-img").backstretch([
 		"../images/backgrounds/divisions/humanitarian.jpg"
 	]);
 

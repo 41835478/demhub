@@ -10,6 +10,7 @@ $(window).on('scroll', function() {
     }
     else {
       $('#welcome-division-bar').removeClass('fix-division-bar ');
+      $('.divisions-page-item').removeClass('float-top');
     }
 });
 

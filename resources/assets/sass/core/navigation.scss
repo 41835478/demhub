@@ -128,7 +128,8 @@ $div_text_color:  #fff !default;
 	text-align:center;
 	padding-top:8px;
 	text-transform:uppercase;
-	z-index:9999;
+	position:absolute;
+	z-index:999;
 }
 
 .divisions-page-item:hover, .divisions-page-item:focus {
