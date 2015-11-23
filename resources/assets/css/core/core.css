@@ -80,7 +80,7 @@ div.navbar-inverse {
   color: #666666; }
 
 .dropdown-toggle:focus {
-  background-color: #60a0ff; }
+  background-color: #337ab7; }
 
 .dropdown-menu {
   top: 50px !important; }
@@ -330,10 +330,10 @@ div#welcome-division {
 
 .btn-style:hover, .btn-style:focus {
   background: #FFF;
-  color: #60A0FF; }
+  color: #337ab7; }
 
 .btn-style:active {
-  background: #60A0FF;
+  background: #337ab7;
   color: #FFF;
   border-color: #000; }
 
@@ -343,10 +343,10 @@ button.btn-style {
 
 button.btn-style:hover, button.btn-style:focus {
   background: #FFF;
-  color: #60A0FF; }
+  color: #337ab7; }
 
 button.btn-style:active {
-  background: #60A0FF;
+  background: #337ab7;
   color: #FFF;
   border-color: #000; }
 
@@ -356,21 +356,21 @@ a.btn-style {
 
 a.btn-style:hover, a.btn-style:focus {
   background: #FFF;
-  color: #60A0FF; }
+  color: #337ab7; }
 
 a.btn-style:active {
-  background: #60A0FF;
+  background: #337ab7;
   color: #FFF;
   border-color: #000; }
 
 a.btn-style-alt {
-  background: #60A0FF;
+  background: #337ab7;
   color: #FFF;
   border-color: #ccc; }
 
 a.btn-style-alt:hover, a.btn-style-alt:focus {
   background: #FFF;
-  color: #60A0FF; }
+  color: #337ab7; }
 
 a.btn-style-alt:active {
   background: #FFF;
@@ -378,13 +378,13 @@ a.btn-style-alt:active {
   border-color: #ccc; }
 
 button.btn-style-alt {
-  background: #60A0FF;
+  background: #337ab7;
   color: #FFF;
   border-color: #ccc; }
 
 button.btn-style-alt:hover, a.btn-style-alt:focus {
   background: #FFF;
-  color: #60A0FF;
+  color: #337ab7;
   border-color: #ccc; }
 
 button.btn-style-alt:active {
@@ -404,7 +404,7 @@ button.btn-style-alt:active {
   color: #000; }
 
 .text-link-style:hover, .text-link-style:focus {
-  color: #60A0FF; }
+  color: #337ab7; }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .control-label {
@@ -850,7 +850,7 @@ nav#guest-menu div.container div.navbar-header a {
   font-weight: 700; }
 
 nav#guest-menu div.container div.navbar-header a:hover {
-  color: #60A0FF; }
+  color: #337ab7; }
 
 nav#guest-menu div.container div.navbar-header img {
   margin-top: -25px; }
@@ -862,12 +862,12 @@ nav#guest-menu li a {
   color: #fff; }
 
 nav#guest-menu li a:hover {
-  color: #60a0ff;
+  color: #337ab7;
   text-decoration: none;
   text-shadow: none; }
 
 nav#guest-menu li.active a {
-  background: #60a0ff;
+  background: #337ab7;
   color: #fff;
   text-decoration: none;
   text-shadow: none; }
@@ -1185,7 +1185,7 @@ div img {
   max-width: 30%; }
 
 .user_dashboard_menu li.active a {
-  background: #60A0FF;
+  background: #337ab7;
   color: #fff; }
 
 .user_dashboard_menu i {

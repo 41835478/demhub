@@ -8,10 +8,15 @@
 
             <div id="form-part-1">
 
-              <div class="form-group">
+              <div class="form-group" style="padding-top:15px">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  {!! Form::input('user_name','user_name',old('user_name'), ['class' => 'form-control', 'placeholder' => 'Username','required','id' => 'user_name']) !!}
+                  <div class="col-xs-6" style="padding:0px">
+                  {!! Form::input('first_name','first_name',old('first_name'), ['class' => 'form-control', 'placeholder' => 'First Name','required','id' => 'first_name']) !!}
+                </div>
+                <div class="col-xs-6" style="padding:0px">
+                  {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => 'Last Name','required','id' => 'last_name']) !!}
+                </div>
                 </div>
                 <div class="help-block with-errors"></div>
               </div>
@@ -51,25 +56,18 @@
             </div>
 
             <div id="form-part-2" style="display:none">
-              <div class="well" style="background-color:#ccc;color:#000;padding-bottom:0px;padding-top:10px">
-                <p>Just a few more details and you're set.</p>
+              <div class="alert alert-dismissible" role="alert" style="background-color:#ccc;color:#000;">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Just a few more details and you're set.
               </div>
 
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  {!! Form::input('first_name','first_name',old('first_name'), ['class' => 'form-control', 'placeholder' => 'First Name','required','id' => 'first_name']) !!}
-                </div>
-                <div class="help-block with-errors"></div>
-              </div>
-
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
                   {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => 'Last Name','required','id' => 'last_name']) !!}
                 </div>
                 <div class="help-block with-errors"></div>
-              </div>
+              </div> -->
 
               <div class="form-group">
                 <div class="input-group">
@@ -89,7 +87,7 @@
 
 
             </div>
-            {!! Form::submit('DONE', ['class' => 'btn btn-lg btn-style-alt btn-block']) !!}
+            {!! Form::button('DONE', ['class' => 'btn btn-lg btn-style-alt btn-block','type'=>'submit']) !!}
 
         </div>
         <br>
@@ -111,7 +109,7 @@
         <div class="form-group">
           <div class="col-md-12 control">
             Already a member?
-            <a href="{{url('auth/login')}}">
+            <a href="{{url('auth/login')}}" style="color:#60A0FF">
             Login Here
             </a>
           </div>
