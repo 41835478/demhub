@@ -1,10 +1,8 @@
 <nav>
   <div class="welcome-division">
-    {{--  <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="
+    {{--  <div id="welcome-division-category" class="row welcome-division-{{$currentDivision->slug}}" style="z-index:10
 
                                 "> --}}
-
-    <div id="welcome-division-category">
 
 
           <div class="row">
