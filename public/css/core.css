@@ -326,6 +326,24 @@ div#welcome-division {
   padding-left: 10px;
   padding-right: 10px; }
 
+.mask-large {
+  width: 300px;
+  height: 300px;
+  /* Saf3+, Chrome */
+  border-radius: 150px;
+  /* Opera 10.5, IE 9 */
+  -moz-border-radius: 150px;
+  /* Disabled for FF1+ */ }
+
+.mask-medium {
+  width: 200px;
+  height: 200px;
+  /* Saf3+, Chrome */
+  border-radius: 100px;
+  /* Opera 10.5, IE 9 */
+  -moz-border-radius: 100px;
+  /* Disabled for FF1+ */ }
+
 .btn-group-lg > .btn, .btn-lg {
   border-radius: 3px !important; }
 
@@ -1185,9 +1203,6 @@ div#user-email h1 {
 
 div#user-email p {
   color: #333; }
-
-div img {
-  max-width: 30%; }
 
 .user_dashboard_menu li.active a {
   background: #337ab7;

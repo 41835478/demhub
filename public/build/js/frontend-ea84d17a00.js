@@ -97,6 +97,10 @@ $(function () {
 		"../images/backgrounds/welcome.jpg"
 	]);
 
+	$(".js-about-hero").backstretch([
+		"../images/about/ryersonslc.jpg"
+	]);
+
 	/* ---------------------------------------------------------
 	 * Background (Backstretch) - Divisions
 	 */

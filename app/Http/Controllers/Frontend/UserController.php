@@ -61,30 +61,6 @@ class UserController extends Controller {
 
 	}
 
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function about()
-	{
-		return view('frontend.about');
-	}
-
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function policy()
-	{
-		return view('frontend.policy');
-	}
-
-	/**
-	 * @return \Illuminate\View\View
-	 */
-	public function terms()
-	{
-		return view('frontend.terms');
-	}
-
 	// private function paginate($newsFeeds){
 	//
 	// 	// Set our paging values
