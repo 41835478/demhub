@@ -27,9 +27,9 @@
 
           @forelse($articleDivs as $div)
             <a style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></a>
-            <?php
-              $marginLeft += $width;
-            ?>
+
+              <!-- $marginLeft += $width; -->
+
           @empty
           	<div class="color-label division_{{$currentDivision->slug}}"></div>
           @endforelse
