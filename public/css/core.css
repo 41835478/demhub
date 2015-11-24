@@ -421,6 +421,9 @@ button.btn-style-alt:active {
 .userhome-body .alert {
   margin: -48px 0 0 0 !important; }
 
+.userhome-body .wrapper {
+  min-height: 26%; }
+
 /* ---------------------------------------------------------
   *	Layout
   * --------------------------------------------------------- */
