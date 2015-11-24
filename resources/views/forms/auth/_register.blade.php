@@ -8,7 +8,7 @@
 
             <div id="form-part-1">
 
-              <div class="form-group" style="padding-top:15px">
+              <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
                   <div class="col-xs-6" style="padding:0px">
@@ -69,7 +69,7 @@
                 <div class="help-block with-errors"></div>
               </div> -->
 
-              <div class="form-group">
+              <div class="form-group" style="padding-top:15px">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
                   {!! Form::input('job_title', 'job_title', old('job_title'), ['class' => 'form-control', 'placeholder' => 'Job Title','required','id' => 'job_title']) !!}
@@ -85,6 +85,13 @@
                 <div class="help-block with-errors"></div>
               </div>
 
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                  {!! Form::input('location', 'location', old('location'), ['class' => 'form-control', 'placeholder' => 'Country/Region/City','required','id' => 'location']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div>
 
             </div>
             {!! Form::button('DONE', ['class' => 'btn btn-lg btn-style-alt btn-block','type'=>'submit']) !!}
