@@ -31,6 +31,9 @@ class RegisterRequest extends Request {
 			'last_name' 		=> 'required|max:255',
 			'email' 	=> 'required|email|max:255|unique:users',
 			'password'  => 'required|min:6',
+			'job_title'			=> 'max:255',
+			'organization_name'			=> 'max:255',
+			'location'			=> 'max:255',
 		];
 	}
 }
