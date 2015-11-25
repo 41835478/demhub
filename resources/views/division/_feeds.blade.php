@@ -65,14 +65,14 @@
           }
           ?>>
           <div style=
-          @if ($neededObject)
+          @if (isset($neededObject[0]))
           "background-color:rgba(255, 255, 255, 0.6);height:175px;"
           @else
           ""
           @endif
           >
             <h3 class=
-            @if ($neededObject)
+            @if (isset($neededObject[0]))
             "article-title-box" style="padding-top:55px"
             @else
             "" style="padding-top:37px"
@@ -97,7 +97,7 @@
             </h3>
 
             <span class="label label-default
-            @if ($neededObject)
+            @if (isset($neededObject[0]))
             article-title-box
             @endif
             " style="font-size:82%">
@@ -111,7 +111,7 @@
               <?php
               $description = $item->excerpt;
 
-                if ($neededObject && strlen($description) > 170){
+                if (isset($neededObject[0]) && strlen($description) > 170){
                   $str = substr($description, 0, 170) . '...';
                   echo strip_tags($str);
                 } else{
