@@ -48,15 +48,16 @@
             }
           );
           if (isset($neededObject[0])){
-            echo '"background-image:url('.$neededObject[0]->filename.') ;
+            echo '"background-image:url('.$neededObject[0]->filename.');
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
               background-size: cover;
-              margin-top:-15px;
+              margin-top:-19px;
               margin-left:-10px;
               margin-right:-10px;
-              height:250px;
+              height:175px;
+              background-position-y: 30%;
                                 "';
           }
           else {
@@ -65,16 +66,16 @@
           ?>>
           <div style=
           @if ($neededObject)
-          "background-color:rgba(255, 255, 255, 0.7);height:250px;"
+          "background-color:rgba(255, 255, 255, 0.6);height:175px;"
           @else
           ""
           @endif
           >
             <h3 class=
             @if ($neededObject)
-            "article-title-box" style="padding-top:85px"
+            "article-title-box" style="padding-top:55px"
             @else
-            "" style="padding-top:70px"
+            "" style="padding-top:37px"
             @endif
             >
               <a
