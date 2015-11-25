@@ -4,6 +4,7 @@ use App\Models\Division;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\ArticleMedia;
 
 /**
  * Class FrontendController
@@ -52,11 +53,20 @@ class UserController extends Controller {
 		$query = $query->take( $options_count );
 		$newsFeeds = $query->get();
 
+		$articleMediaArray=[];
+		foreach ($newsFeeds as $item){
+			$itemMedia=ArticleMedia::where('article_id',$item->id)->first();
+			if ($itemMedia){
+			array_push($articleMediaArray,$itemMedia);
+			}
+		}
+
 		$item_count = count($newsFeeds);
 		$last_page = $item_count < $options_count;
 
     return view('frontend.user.userhome', compact([
-      'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
+      'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'query_term', 'articleMediaArray', 
+			'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
     ]));
 
 	}
