@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 use App\Models\Division;
+use App\Models\ArticleMedia;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Riari\Forum\Models\Thread;
@@ -45,6 +46,8 @@ class DivisionController extends Controller
       $query = DB::table('articles')->select("*");
       $query = $query->where('deleted', 0);
 
+
+
       if ($request) {
         $options_query = 	$request->input('query_term', '');	// (optional) search query
         $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
@@ -66,18 +69,24 @@ class DivisionController extends Controller
       	$query_term = NULL;
 
       } // if ($request) ends
-
+      $articleMediaArray=[];
       $query = $query->orderBy('publish_date', 'desc');
+
       $total_count = $query->count();
       $query = $query->skip( ($options_page - 1) * $options_count );
       $query = $query->take( $options_count );
       $newsFeeds = $query->get();
-
+      foreach ($newsFeeds as $item){
+        $itemMedia=ArticleMedia::where('article_id',$item->id)->first();
+        if ($itemMedia){
+        array_push($articleMediaArray,$itemMedia);
+        }
+      }
       $item_count = count($newsFeeds);
       $last_page = $item_count < $options_count;
 
       return view('division.index', compact([
-        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'threads',
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'articleMediaArray', 'userMenu', 'threads',
         'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
       ]));
     }
@@ -122,6 +131,14 @@ class DivisionController extends Controller
       $query = $query->take( $options_count );
       $newsFeeds = $query->get();
 
+      $articleMediaArray=[];
+      foreach ($newsFeeds as $item){
+        $itemMedia=ArticleMedia::where('article_id',$item->id)->first();
+        if ($itemMedia){
+        array_push($articleMediaArray,$itemMedia);
+        }
+      }
+
       $item_count = count($newsFeeds);
       $last_page = $item_count < $options_count;
 
@@ -137,7 +154,8 @@ class DivisionController extends Controller
       }
 
       return view('division.index', compact([
-        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'threads','query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
+        'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'articleMediaArray',
+        'threads','query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
       ]));
 
     }

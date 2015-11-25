@@ -80,7 +80,11 @@ div.navbar-inverse {
   color: #666666; }
 
 .dropdown-toggle:focus {
+<<<<<<< HEAD
   background-color: #60a0ff; }
+=======
+  background-color: #337ab7; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 .dropdown-menu {
   top: 50px !important; }
@@ -213,10 +217,15 @@ footer.main-footer {
     height: 100px; }
   .mouse-scroll,
   .mouse {
+<<<<<<< HEAD
     margin-top: 5%;
     margin-left: 23%; }
   .fix-division-bar {
     position: absolute !important; } }
+=======
+    margin-top: 5% !important;
+    margin-left: 23% !important; } }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 div.division-landing-box {
   max-height: 220px;
@@ -315,11 +324,19 @@ div#welcome-division {
 
 .feedsbox {
   min-width: 100%;
+<<<<<<< HEAD
   height: 300px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
   border: 1px solid #ddd;
+=======
+  height: 350px;
+  display: inline-block;
+  margin: 10px 0px 5px 0px;
+  padding: 15px 0px 5px 0px;
+  border: 1px   solid #ddd;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   float: left;
   position: relative;
   z-index: 0 !important; }
@@ -328,6 +345,31 @@ div#welcome-division {
   padding-left: 10px;
   padding-right: 10px; }
 
+<<<<<<< HEAD
+=======
+.article-title-box {
+  margin-left: 10px;
+  margin-right: 5px; }
+
+.mask-large {
+  width: 300px;
+  height: 300px;
+  /* Saf3+, Chrome */
+  border-radius: 150px;
+  /* Opera 10.5, IE 9 */
+  -moz-border-radius: 150px;
+  /* Disabled for FF1+ */ }
+
+.mask-medium {
+  width: 200px;
+  height: 200px;
+  /* Saf3+, Chrome */
+  border-radius: 100px;
+  /* Opera 10.5, IE 9 */
+  -moz-border-radius: 100px;
+  /* Disabled for FF1+ */ }
+
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 .btn-group-lg > .btn, .btn-lg {
   border-radius: 3px !important; }
 
@@ -337,10 +379,17 @@ div#welcome-division {
 
 .btn-style:hover, .btn-style:focus {
   background: #FFF;
+<<<<<<< HEAD
   color: #60A0FF; }
 
 .btn-style:active {
   background: #60A0FF;
+=======
+  color: #337ab7; }
+
+.btn-style:active {
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #FFF;
   border-color: #000; }
 
@@ -350,10 +399,17 @@ button.btn-style {
 
 button.btn-style:hover, button.btn-style:focus {
   background: #FFF;
+<<<<<<< HEAD
   color: #60A0FF; }
 
 button.btn-style:active {
   background: #60A0FF;
+=======
+  color: #337ab7; }
+
+button.btn-style:active {
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #FFF;
   border-color: #000; }
 
@@ -363,21 +419,36 @@ a.btn-style {
 
 a.btn-style:hover, a.btn-style:focus {
   background: #FFF;
+<<<<<<< HEAD
   color: #60A0FF; }
 
 a.btn-style:active {
   background: #60A0FF;
+=======
+  color: #337ab7; }
+
+a.btn-style:active {
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #FFF;
   border-color: #000; }
 
 a.btn-style-alt {
+<<<<<<< HEAD
   background: #60A0FF;
+=======
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #FFF;
   border-color: #ccc; }
 
 a.btn-style-alt:hover, a.btn-style-alt:focus {
   background: #FFF;
+<<<<<<< HEAD
   color: #60A0FF; }
+=======
+  color: #337ab7; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 a.btn-style-alt:active {
   background: #FFF;
@@ -385,13 +456,21 @@ a.btn-style-alt:active {
   border-color: #ccc; }
 
 button.btn-style-alt {
+<<<<<<< HEAD
   background: #60A0FF;
+=======
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #FFF;
   border-color: #ccc; }
 
 button.btn-style-alt:hover, a.btn-style-alt:focus {
   background: #FFF;
+<<<<<<< HEAD
   color: #60A0FF;
+=======
+  color: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   border-color: #ccc; }
 
 button.btn-style-alt:active {
@@ -411,7 +490,11 @@ button.btn-style-alt:active {
   color: #000; }
 
 .text-link-style:hover, .text-link-style:focus {
+<<<<<<< HEAD
   color: #60A0FF; }
+=======
+  color: #337ab7; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 @media (min-width: 768px) and (max-width: 991px) {
   .control-label {
@@ -423,6 +506,12 @@ button.btn-style-alt:active {
 .userhome-body .alert {
   margin: -48px 0 0 0 !important; }
 
+<<<<<<< HEAD
+=======
+.userhome-body .wrapper {
+  min-height: 26%; }
+
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 /* ---------------------------------------------------------
   *	Layout
   * --------------------------------------------------------- */
@@ -857,7 +946,11 @@ nav#guest-menu div.container div.navbar-header a {
   font-weight: 700; }
 
 nav#guest-menu div.container div.navbar-header a:hover {
+<<<<<<< HEAD
   color: #60A0FF; }
+=======
+  color: #337ab7; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 nav#guest-menu div.container div.navbar-header img {
   margin-top: -25px; }
@@ -869,12 +962,20 @@ nav#guest-menu li a {
   color: #fff; }
 
 nav#guest-menu li a:hover {
+<<<<<<< HEAD
   color: #60a0ff;
+=======
+  color: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   text-decoration: none;
   text-shadow: none; }
 
 nav#guest-menu li.active a {
+<<<<<<< HEAD
   background: #60a0ff;
+=======
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #fff;
   text-decoration: none;
   text-shadow: none; }
@@ -1188,11 +1289,16 @@ div#user-email h1 {
 div#user-email p {
   color: #333; }
 
+<<<<<<< HEAD
 div img {
   max-width: 30%; }
 
 .user_dashboard_menu li.active a {
   background: #60A0FF;
+=======
+.user_dashboard_menu li.active a {
+  background: #337ab7;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   color: #fff; }
 
 .user_dashboard_menu i {

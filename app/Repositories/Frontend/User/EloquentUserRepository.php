@@ -42,14 +42,19 @@ class EloquentUserRepository implements UserContract {
 	 * @return static
 	 */
 	public function create($data, $provider = false) {
+		$username= $data['first_name'].$data['last_name'];
+		if (strlen($username) > 255){
+			substr($username,0, (255-strlen($username)));
+		}
 		$user = User::create([
-			'user_name' => $data['user_name'],
+			'user_name' => $username,
 			'first_name' => $data['first_name'],
 			'last_name' => $data['last_name'],
 			'job_title' => $data['job_title'],
 			'organization_name' => $data['organization_name'],
 			'email' => $data['email'],
 			'password' => $provider ? null : $data['password'],
+			'location' => $data['location'],
 			'confirmation_code' => md5(uniqid(mt_rand(), true)),
 			'confirmed' => config('access.users.confirm_email') ? 0 : 1,
 		]);

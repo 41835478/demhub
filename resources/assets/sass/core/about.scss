@@ -1,0 +1,15 @@
+.mask-large {
+  width: 300px;
+	height: 300px;
+	-webkit-border-radius: 150px; /* Saf3+, Chrome */
+	border-radius: 150px; /* Opera 10.5, IE 9 */
+	-moz-border-radius: 150px; /* Disabled for FF1+ */
+}
+
+.mask-medium {
+  width: 200px;
+	height: 200px;
+	-webkit-border-radius: 100px; /* Saf3+, Chrome */
+	border-radius: 100px; /* Opera 10.5, IE 9 */
+	-moz-border-radius: 100px; /* Disabled for FF1+ */
+}

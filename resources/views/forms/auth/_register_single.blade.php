@@ -6,13 +6,18 @@
     		<div class="row omb_row-sm-offset-3">
 
 
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  {!! Form::input('user_name','user_name',old('user_name'), ['class' => 'form-control', 'placeholder' => 'Username','required','id' => 'user_name']) !!}
-                </div>
-                <div class="help-block with-errors"></div>
-              </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <div class="col-xs-6" style="padding:0px">
+              {!! Form::input('first_name','first_name',old('first_name'), ['class' => 'form-control', 'placeholder' => 'First Name','required','id' => 'first_name']) !!}
+            </div>
+            <div class="col-xs-6" style="padding:0px">
+              {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => 'Last Name','required','id' => 'last_name']) !!}
+            </div>
+            </div>
+            <div class="help-block with-errors"></div>
+          </div>
 
               <div class="form-group">
                 <div class="input-group">
@@ -43,21 +48,6 @@
               {!! Form::token() !!}
 
 
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  {!! Form::input('first_name','first_name',old('first_name'), ['class' => 'form-control', 'placeholder' => 'First Name','required','id' => 'first_name']) !!}
-                </div>
-                <div class="help-block with-errors"></div>
-              </div>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  {!! Form::input('last_name', 'last_name', old('last_name'), ['class' => 'form-control', 'placeholder' => 'Last Name','required','id' => 'last_name']) !!}
-                </div>
-                <div class="help-block with-errors"></div>
-              </div>
 
               <div class="form-group">
                 <div class="input-group">
@@ -71,6 +61,14 @@
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-building"></i></span>
                   {!! Form::input('organization_name', 'organization_name', old('organization_name'), ['class' => 'form-control', 'placeholder' => 'Organization/Agency Name','required','id' => 'organization_name']) !!}
+                </div>
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                  {!! Form::input('location', 'location', old('location'), ['class' => 'form-control', 'placeholder' => 'Country/Region/City','required','id' => 'location']) !!}
                 </div>
                 <div class="help-block with-errors"></div>
               </div>

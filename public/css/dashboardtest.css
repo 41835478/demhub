@@ -1506,7 +1506,11 @@ Copyright (c) 2014 Daniel Eden
   left: -1.85714286em; }
 
 .fa-border {
+<<<<<<< HEAD
   padding: .2em .25em .15em;
+=======
+  padding: 0.2em 0.25em 0.15em;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   border: solid 0.08em #eeeeee;
   border-radius: .1em; }
 
@@ -4251,7 +4255,11 @@ fieldset[disabled] .fc button.active {
 /* icons in buttons */
 .fc button .fc-icon {
   position: relative;
+<<<<<<< HEAD
   margin: 0 .1em; }
+=======
+  margin: 0 0.1em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 /*  button states
 */
@@ -4349,7 +4357,11 @@ previous button's border...
 .minimal-mp .ui-datepicker td span,
 .minimal-mp .ui-datepicker td a {
   background: #DDD;
+<<<<<<< HEAD
   padding: .50em .20em; }
+=======
+  padding: 0.5em 0.2em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 /*===============================================
   Gmap
@@ -5394,7 +5406,11 @@ table.fancytree-ext-columnview tbody tr #preview {
   color: white;
   margin-right: 5px;
   line-height: 36px;
+<<<<<<< HEAD
   padding: .6em .7em .7em;
+=======
+  padding: 0.6em 0.7em 0.7em;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   border-radius: 2px; }
 
 .bootstrap-tagsinput .tag.label-default {
@@ -5402,7 +5418,11 @@ table.fancytree-ext-columnview tbody tr #preview {
   font-weight: 500;
   background-color: #fff;
   border: 1px solid #eee;
+<<<<<<< HEAD
   padding: .5em .7em .6em; }
+=======
+  padding: 0.5em 0.7em 0.6em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 .bootstrap-tagsinput .tag [data-role="remove"] {
   margin-left: 8px;
@@ -9473,7 +9493,11 @@ output {
   background-image: none;
   border: 1px solid #dddddd;
   border-radius: 4px;
+<<<<<<< HEAD
   transition: border-color ease-in-out .15s; }
+=======
+  transition: border-color ease-in-out 0.15s; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 .form-control:focus {
   border-color: #5faee3;
@@ -11645,7 +11669,11 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 ==================================================== */
 .label {
   display: inline;
+<<<<<<< HEAD
   padding: .3em .7em .4em;
+=======
+  padding: 0.3em 0.7em 0.4em;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   font-size: 84%;
   font-weight: 600;
   line-height: 24px;
@@ -11656,6 +11684,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   border-radius: .25em; }
 
 .label.label-xs {
+<<<<<<< HEAD
   padding: 0 .35em .1em;
   font-size: 75%; }
 
@@ -11679,6 +11708,31 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 
 .label.label-rounded.label-lg {
   padding: .4em .9em .5em; }
+=======
+  padding: 0 0.35em 0.1em;
+  font-size: 75%; }
+
+.label.label-sm {
+  padding: 0.1em 0.65em 0.2em;
+  font-size: 75%; }
+
+.label.label-lg {
+  padding: 0.4em 0.9em 0.5em;
+  font-size: 95%; }
+
+.label.label-rounded {
+  padding: 0.2em 0.85em 0.3em;
+  border-radius: 1em; }
+
+.label.label-rounded.label-xs {
+  padding: 0 0.35em 0.1em; }
+
+.label.label-rounded.label-sm {
+  padding: 0.1em 0.65em 0.2em; }
+
+.label.label-rounded.label-lg {
+  padding: 0.4em 0.9em 0.5em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 a.label:hover,
 a.label:focus {
@@ -12142,7 +12196,11 @@ a.list-group-item:focus {
 .list-group.list-group-links .list-group-item .label {
   float: right;
   line-height: inherit;
+<<<<<<< HEAD
   padding: .1em .6em .2em; }
+=======
+  padding: 0.1em 0.6em 0.2em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 .list-group.list-group-links .list-group-item i.fa {
   padding-right: 5px; }
@@ -16963,7 +17021,11 @@ body.sidebar-collapsed #sidebar:before {
 
 .navbar .dropdown-menu > li.dropdown-header .label {
   font-size: 75%;
+<<<<<<< HEAD
   padding: .1em .6em .2em;
+=======
+  padding: 0.1em 0.6em 0.2em;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   float: right;
   height: 20px;
   line-height: 20px;
@@ -17167,7 +17229,11 @@ body.sidebar-collapsed #sidebar:before {
 
 .navbar .nav .list-group > li.list-group-item > a .label {
   font-size: 75%;
+<<<<<<< HEAD
   padding: .1em .65em .2em;
+=======
+  padding: 0.1em 0.65em 0.2em;
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
   float: right;
   height: 20px;
   line-height: 20px; }
@@ -18408,7 +18474,11 @@ body.tray-rescale .tray-right:hover {
 /* Sidebar-Menu Top Level - Label */
 .sidebar-menu li > a > .sidebar-title-tray .label {
   font-size: 11px;
+<<<<<<< HEAD
   padding: .1em .6em .3em; }
+=======
+  padding: 0.1em 0.6em 0.3em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 /* Sidebar-Menu Top Level - Caret */
 .sidebar-menu li > a > span.caret {
@@ -20071,7 +20141,11 @@ body.calendar-page .tray .ui-datepicker td {
 body.calendar-page .tray .ui-datepicker td span,
 body.calendar-page .tray .ui-datepicker td a {
   background: #DDD;
+<<<<<<< HEAD
   padding: .50em .20em; }
+=======
+  padding: 0.5em 0.2em; }
+>>>>>>> 7c4479eadf4161768e4c8e9b591e0b4f54f9c0e8
 
 body.calendar-page .tray #compose-event-btn {
   cursor: pointer;

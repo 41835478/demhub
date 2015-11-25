@@ -33,7 +33,7 @@
             <div class="form-group">
             <div class="control">
             <p>
-              No account? <a href="{{url('auth/register')}}">
+              No account? <a href="{{url('auth/register')}}" style="color:#60A0FF">
               Register
               </a></p>
           </div>
@@ -41,7 +41,7 @@
         </div>
     			<div class="col-xs-12 col-sm-3">
     				<p>
-              {!! link_to('password/email', trans('labels.forgot_password')) !!}
+              {!! link_to('password/email', trans('labels.forgot_password'), ['style'=>'color:#60A0FF']) !!}
     				</p>
     			</div>
     		</div>

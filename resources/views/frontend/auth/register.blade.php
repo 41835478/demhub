@@ -24,8 +24,8 @@
 	</div>
 
 	<script>
-$("input#password").click(function(){
-	setTimeout(function(){updateForm()},500);
+$("input#password").focus(function(){
+	setTimeout(function(){updateForm()},600);
 
 });
 
