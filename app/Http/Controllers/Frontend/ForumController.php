@@ -27,7 +27,7 @@ class ForumController extends \Riari\Forum\Controllers\BaseController
 {
 	public function getViewAllThreads()
 	{
-			$threads = Thread::orderBy('updated_at')->simplePaginate(10);
+			$threads = Thread::orderBy('updated_at', 'desc')->simplePaginate(10);
 
 			$categories = $this->categories->getAll();
 

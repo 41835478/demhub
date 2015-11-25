@@ -27,15 +27,57 @@
 
           @forelse($articleDivs as $div)
             <a style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></a>
-            <?php
-              $marginLeft += $width;
-            ?>
+
+              <!-- $marginLeft += $width; -->
+
           @empty
           	<div class="color-label division_{{$currentDivision->slug}}"></div>
           @endforelse
 
           <div class="inner-feedsbox">
-            <h3>
+          <div class="article-background" style=
+          <?php
+          $neededSearchValue=$item->id;
+          $neededObject = array_filter(
+            $articleMediaArray,
+            function ($e) use (&$neededSearchValue){
+              if ($e->article_id == $neededSearchValue){
+                return $e;
+
+              }
+            }
+          );
+          if (isset($neededObject[0])){
+            echo '"background-image:url('.$neededObject[0]->filename.');
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              margin-top:-19px;
+              margin-left:-10px;
+              margin-right:-10px;
+              height:175px;
+              background-position-y: 30%;
+                                "';
+          }
+          else {
+            echo '""';
+          }
+          ?>>
+          <div style=
+          @if (isset($neededObject[0]))
+          "background-color:rgba(255, 255, 255, 0.6);height:175px;"
+          @else
+          ""
+          @endif
+          >
+            <h3 class=
+            @if (isset($neededObject[0]))
+            "article-title-box" style="padding-top:55px"
+            @else
+            "" style="padding-top:37px"
+            @endif
+            >
               <a
                 @if(Auth::check())
                   target="_blank" href="{{ $item->source_url }}"
@@ -54,22 +96,23 @@
               </a>
             </h3>
 
-            <span class="label label-default" style="font-size:82%">
+            <span class="label label-default
+            @if (isset($neededObject[0]))
+            article-title-box
+            @endif
+            " style="font-size:82%">
               {{ date_format(new DateTime($item->publish_date), 'j F Y | g:i a') }}
             </span>
+          </div>
+          </div>
 
-            <?php
-              $description = $item->excerpt;
-              if (preg_match_all('/(https?:\/\/\S+\.(?:jpg|png|gif))\s+/', $description, $img)){
-                echo '<img class="img-responsive">'.$img[0][0].'</img>';
-              }
-            ?>
 
             <p style="padding-top:10px">
               <?php
               $description = $item->excerpt;
-                if (strlen($description) > 183){
-                  $str = substr($description, 0, 183) . '...';
+
+                if (isset($neededObject[0]) && strlen($description) > 170){
+                  $str = substr($description, 0, 170) . '...';
                   echo strip_tags($str);
                 } else{
                   echo strip_tags($description);
