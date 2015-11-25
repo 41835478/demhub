@@ -137,7 +137,7 @@
                 }
               ?>
             </p>
-            <div style="bottom:50px; position:absolute;z-index:0.5;">
+            <div style="bottom:50px; position:absolute;z-index:0.5;width:100%">
               <?php
               $articleKeywords = array_filter(preg_split("/\|/", $item->keywords));
               ?>
