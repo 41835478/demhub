@@ -83,7 +83,7 @@ div.navbar-inverse {
   background-color: #337ab7; }
 
 .dropdown-menu {
-  top: 50px !important; }
+  top: auto !important; }
 
 .navbar-nav > li > a {
   padding-top: 13px;
@@ -92,7 +92,11 @@ div.navbar-inverse {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background: rgba(0, 0, 0, 0.5) !important; }
+  background: rgba(255, 255, 255, 0.7) !important;
+  height: 50px; }
+
+.navbar-right .dropdown-menu {
+  left: 0 !important; }
 
 #secondary-menu li.active a {
   background: #666;
@@ -1079,9 +1083,13 @@ div#welcome_sign-up form span {
   background-repeat: no-repeat; }
 
 .label-default {
-  opacity: 0.45;
-  filter: alpha(opacity=35);
-  /* For IE8 and earlier */ }
+  background-color: #cccccc !important; }
+
+.label-default li a {
+  color: #fff !important; }
+
+.label-default li a:hover {
+  color: #000 !important; }
 
 div#welcome_login {
   padding: 3% 1% 0;
