@@ -144,11 +144,11 @@ sites:
 - One by one, visit each one of these links and wait for their individual outputs. These will populate the DB with article entries from various news sources.
 
 ```
-http://demhub.net/scheduler/scrapeRSS
-http://demhub.net/scheduler/scrapeCustom?source=IRDR&page_from=1&page_to=1
-http://demhub.net/scheduler/scrapeCustom?source=EC&page_from=1&page_to=1
-http://demhub.net/scheduler/scrapeCustom?source=EC-PR&page_from=1&page_to=1
-http://demhub.net/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeRSS
+http://demhub.dev/scheduler/scrapeCustom?source=IRDR&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeCustom?source=EC&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeCustom?source=EC-PR&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
 ```
 
 #### First time after starting the Homestead machine
