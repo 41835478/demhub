@@ -96,16 +96,34 @@
               </a>
             </h3>
 
-            <span class="label label-default
+            <span class=
             @if (isset($neededObject[0]))
-            article-title-box
+            "article-title-box"
             @endif
-            " style="font-size:82%">
+            "" style="font-size:82%;color:#777777">
               {{ date_format(new DateTime($item->publish_date), 'j F Y | g:i a') }}
             </span>
-          </div>
-          </div>
 
+            <span class=
+            @if (isset($neededObject[0]))
+            "article-title-box"
+            @endif
+            "" style="font-size:82%;color:#000;padding-left:5%">
+            <?php
+              $parse=parse_url($item->source_url);
+              $host=$parse['host'];
+              $host=substr($host,4);
+
+              if (substr_count($host,".")>1){
+                $period=strpos($host,".");
+                $host=substr($host,$period+1);
+              }
+              echo '<a href="http://www.'.$host.'">'.$host.'</a>';
+            ?>
+            </span>
+
+          </div>
+          </div>
 
             <p style="padding-top:10px">
               <?php
@@ -119,7 +137,48 @@
                 }
               ?>
             </p>
+            <div style="bottom:50px; position:absolute;z-index:0.5;width:100%">
+              <?php
+              $articleKeywords = array_filter(preg_split("/\|/", $item->keywords));
+              ?>
+              @if(count($articleKeywords) > 4)
+                @foreach($articleKeywords as $key=>$keyword)
 
+                  @if($key==1)
+
+                  <span class="label label-default" style="font-size:82%;margin-right:2px">
+                    {{ $keyword }}
+                  </span>
+                  @elseif($key==2)
+
+                  <div class="dropup" style="display:inline">
+                    <a type="button" class="label label-default dropdown-toggle"
+                    data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
+                    style="font-size:82%;margin-right:2px">
+                    and {{count($articleKeywords)}} other keywords
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
+                      <li><a href="">{{$keyword}}</a></li>
+                    @elseif($key>2)
+                      <li><a href="" >{{$keyword}}</a></li>
+
+                  @endif
+                @endforeach
+                </ul>
+              </div>
+              @elseif(count($articleKeywords) <5)
+                @foreach($articleKeywords as $key=>$keyword)
+                  @if ($keyword)
+
+                  <span class="label label-default" style="font-size:82%;margin-right:2px">
+                    {{ $keyword }}
+                  </span>
+                  @endif
+                @endforeach
+
+              @endif
+            </div>
             <div onclick="comingSoon(this.id)" id="article_{{$item->id}}" style="width:100%; height:42px; bottom:0px; position:absolute;">
 
               <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite" disabled>
@@ -159,10 +218,13 @@
 
 
             </div>
+
+
+          </div>
           </div>
         </div> <!-- the div that closes the box -->
 
-      </div>
+
     @endforeach
 
   </div>

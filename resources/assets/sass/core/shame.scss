@@ -301,9 +301,13 @@ div#welcome_sign-up form span {
   background-repeat: no-repeat;
 }
 .label-default {
-  opacity: 0.45;
-  filter:alpha(opacity=35);
-  /* For IE8 and earlier */
+  background-color: #cccccc !important;
+}
+.label-default li a {
+  color:#fff !important;
+}
+.label-default li a:hover {
+  color:#000 !important;
 }
 div#welcome_login {
   padding: 3% 1% 0;
@@ -498,6 +502,7 @@ div#user-email p {
 // nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li a:hover {
 //   color: #337ab7;
 // }
+
 .dots {
   height: 100%;
 }
