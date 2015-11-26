@@ -115,10 +115,12 @@
               $host=substr($host,4);
 
               if (substr_count($host,".")>1){
-                $period=strpos($host,".");
-                $host=substr($host,$period+1);
+                // $period=strpos($host,".");
+                // $host=substr($host,$period+1);
               }
+              else {
               echo '<a href="http://www.'.$host.'">'.$host.'</a>';
+              }
             ?>
             </span>
 
@@ -146,9 +148,9 @@
 
                   @if($key==1)
 
-                  <span class="label label-default" style="font-size:82%;margin-right:2px">
+                  <a class="label label-default" style="font-size:82%;margin-right:2px" href="/?query_term={{$keyword}}">
                     {{ $keyword }}
-                  </span>
+                  </a>
                   @elseif($key==2)
 
                   <div class="dropup" style="display:inline">
@@ -159,9 +161,9 @@
                       <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
-                      <li><a href="">{{$keyword}}</a></li>
+                      <li><a href="?query_term={{$keyword}}">{{$keyword}}</a></li>
                     @elseif($key>2)
-                      <li><a href="" >{{$keyword}}</a></li>
+                      <li><a href="?query_term={{$keyword}}" >{{$keyword}}</a></li>
 
                   @endif
                 @endforeach
@@ -171,9 +173,9 @@
                 @foreach($articleKeywords as $key=>$keyword)
                   @if ($keyword)
 
-                  <span class="label label-default" style="font-size:82%;margin-right:2px">
+                  <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
                     {{ $keyword }}
-                  </span>
+                  </a>
                   @endif
                 @endforeach
 
