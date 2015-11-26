@@ -174,7 +174,11 @@
                   @if ($keyword)
 
                   <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
+                    @if($keyword = "virus")
+                    viral
+                    @else
                     {{ $keyword }}
+                    @endif
                   </a>
                   @endif
                 @endforeach
