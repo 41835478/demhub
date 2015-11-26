@@ -9,7 +9,7 @@ return [
 	|
 	| The application name for use within the UI of the application
 	*/
-	'name' => 'DEMHub',
+	'name' => 'DEMHUB',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -169,7 +169,8 @@ return [
 		// 'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 		'Riari\Forum\ForumServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
-		'Codesleeve\LaravelStapler\Providers\L5ServiceProvider'
+		'Codesleeve\LaravelStapler\Providers\L5ServiceProvider',
+		'Weblee\Mandrill\MandrillServiceProvider'
 	],
 
 	/*
@@ -224,7 +225,8 @@ return [
 		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-		'Image' => 'Intervention\Image\Facades\Image'
+		'Image' => 'Intervention\Image\Facades\Image',
+		'MandrillMail'  => 'Weblee\Mandrill\MandrillFacade'
 
 	],
 ];
