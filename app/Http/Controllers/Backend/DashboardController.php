@@ -5,6 +5,7 @@ use App\Http\Components\Scraper;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Models\Article;
+use App\Models\ArticleReport;
 use App\Models\Division;
 use App\Models\Keyword;
 use App\Models\ScrapeSource;
@@ -157,13 +158,50 @@ class DashboardController extends Controller {
 			$request->session()->flash('status', 'Deleted.');
 		}
 
-		$items = Article::where('deleted', 0)->orderBy('id', 'DESC')->get();
+		if( ($id = $request->input("id", 0)) ){
+			$items = Article::where('id', $id)->get();
+		} else {
+			$items = Article::where('deleted', 0)->orderBy('id', 'DESC')->get();
+		}
+
 		$divisions = Division::all();
 
 		if($form_submit){
 			return redirect()->route('backend.articles');
 		} else {
 			return view('backend.articles', compact('items', 'divisions'));
+		}
+
+	}
+
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function reports(Request $request)
+	{
+
+		$form_submit = false;
+
+		if($request->input("submit", "") == "save"){
+			$form_submit = true;
+			$item = ArticleReport::find($request->input("id"));
+			$item->result = $request->input("result");
+			$item->data = $request->input("data");
+
+			if($item->save()){
+				$request->session()->flash('status', 'Success');
+			} else {
+				$request->session()->flash('status', 'Failed!');
+			}
+		}
+
+		$items = ArticleReport::orderBy('id', 'DESC')->get();
+
+		if($form_submit){
+			return redirect()->route('backend.reports');
+		} else {
+			return view('backend.reports', compact('items'));
 		}
 
 	}
