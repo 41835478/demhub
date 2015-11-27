@@ -119,7 +119,7 @@
                 // $host=substr($host,$period+1);
               }
               else {
-              echo '<a href="http://www.'.$host.'">'.$host.'</a>';
+              echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
               }
             ?>
             </span>
@@ -148,7 +148,7 @@
 
                   @if($key==1)
 
-                  <a class="label label-default" style="font-size:82%;margin-right:2px" target="_blank" href="/?query_term={{$keyword}}">
+                  <a class="label label-default" style="font-size:82%;margin-right:2px" href="/?query_term={{$keyword}}">
                     {{ $keyword }}
                   </a>
                   @elseif($key==2)
@@ -161,9 +161,9 @@
                       <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
-                      <li><a target="_blank" href="?query_term={{$keyword}}">{{$keyword}}</a></li>
+                      <li><a href="?query_term={{$keyword}}">{{$keyword}}</a></li>
                     @elseif($key>2)
-                      <li><a target="_blank" href="?query_term={{$keyword}}" >{{$keyword}}</a></li>
+                      <li><a href="?query_term={{$keyword}}" >{{$keyword}}</a></li>
 
                   @endif
                 @endforeach
@@ -173,7 +173,7 @@
                 @foreach($articleKeywords as $key=>$keyword)
                   @if ($keyword)
 
-                  <a class="label label-default" style="font-size:82%;margin-right:2px" target="_blank" href="?query_term={{$keyword}}">
+                  <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
                     @if($keyword == "virus")
                     viral
                     @else
@@ -195,13 +195,13 @@
                 <div class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> xxx</div>
               </button> -->
 
-              <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;" disabled>
+              <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
                 <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
               </button>
 
-              <a button type="button" class="btn btn-default btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
+              <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
                 <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
-              </a>
+              </button>
 
               <!-- data-toggle="dropdown" -->
               <ul class="dropdown-menu" aria-labelledby="dLabel" style="width:100%; heigth:auto; margin-left:-30px; padding: 15px 15px 15px 15px;">
