@@ -80,4 +80,4 @@ get('scheduler/scrapeEC', 'SchedulerController@scrapeEC');
  */
 get('article/browse', 'ArticleController@browse');
 get('article/stream', 'ArticleController@stream');
-get('article/keywordlist', 'ArticleController@keywordlist');
+get('article/report', 'ArticleController@report');

@@ -1,10 +1,10 @@
 <nav>
-  <div class="welcome-division">
+  <div class="welcome-division-{{$currentDivision->slug}}-img">
 
     {{--  <div class="row welcome-division-{{$currentDivision->slug}}" > --}}
 
       <div id="welcome-division-bar">
-        <div class="welcome-division-{{$currentDivision->slug}}-img">
+        
           <div class="row">
             @foreach($navDivisions as $div)
               <a href="{{url('division', array('id' => $div->slug))}}">
@@ -14,10 +14,10 @@
               </a>
             @endforeach
           </div>
-        </div>
+
       </div>
 
-      <div class="welcome-division-{{$currentDivision->slug}}-img">
+      <div>
         <div class="row">
           <div class="ph-name col-md-8 col-md-offset-4 division_{{$currentDivision->slug}}">
             <h1>

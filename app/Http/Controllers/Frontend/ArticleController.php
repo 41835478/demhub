@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Components\Helpers;
 use App\Http\Components\Scraper;
 use App\Http\Requests;
+use App\Models\Article;
+use App\Models\ArticleReport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ArticleController extends Controller
@@ -166,6 +169,49 @@ class ArticleController extends Controller
 			echo '<br>Last page: '.(int)$d['last_page'].'<br>';
 		}
 
+	}
+
+	public function report(Request $request)
+	{
+		$id = 	    $request->input('article_id', 0);
+		$reason = 	$request->input('reason', null);
+		$data = 	$request->input('data', null);
+		$result['status'] = '';
+		$result['msg'] = '';
+
+		$article = Article::find($id);
+
+		if($article){
+			if(Auth::user() != null) $user_id = Auth::user()->id;
+			else $user_id = null;
+
+			$exists = ArticleReport::where("article_id", $article->id)->where("user_id", $user_id)->first();
+
+			if($exists){
+				$result['status'] = 'error';
+				$result['msg'] = 'Already reported.';
+			} else {
+				$model = new ArticleReport();
+				$model->article_id = $article->id;
+				$model->user_id = $user_id;
+				$model->reason = $reason;
+				$model->data = $data;
+				if($model->save()){
+					$result['status'] = 'ok';
+					$result['msg'] = 'Successfully reported.';
+				} else {
+					$result['status'] = 'error';
+					$result['msg'] = 'Error saving the record.';
+				}
+			}
+
+
+		} else {
+			$result['status'] = 'error';
+			$result['msg'] = 'Article not found';
+		}
+
+		return @json_encode($result);
 	}
 
 }
