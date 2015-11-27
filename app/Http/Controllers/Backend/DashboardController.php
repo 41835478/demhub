@@ -227,13 +227,29 @@ class DashboardController extends Controller {
 	    $csv = Reader::createFromPath($csv_file);
 
 			$csv->setOffset(1)->fetchAll(function ($row) {
+				if (!empty($row[10])) {
+					$location = $row[10];
+				}
+
+				if (!empty($location) && !empty($row[11])) {
+					$location = $location . ', ' . $row[11];
+				} else if (empty($location) && !empty($row[11])) {
+					$location = $row[11];
+				}
+
+				if (!empty($location) && !empty($row[12])) {
+					$location = $location . ', ' . $row[12];
+				} else if (empty($location) && !empty($row[12])) {
+					$location = $row[12];
+				}
+
 				$data = [
 					"first_name" => $row[0],
 					"last_name" => $row[1],
 					"email" => $row[5],
 					"job_title" => $row[8],
 					"organization_name" => $row[4],
-					"location" => $row[10] . ', ' . $row[11] . ', ' . $row[12]
+					"location" => $location
 				];
 				$this->sendEmail($data);
 	    });
