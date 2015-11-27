@@ -12,24 +12,7 @@
     .division-landing-name {
       margin-top:-10px;
     }
-    .icon-response,
-    .icon-health,
-    .icon-science,
-    .icon-practice,
-    .icon-continuity,
-    .icon-humanitarian,
-    .icon-security {
-      opacity:0.0;
-      &:hover{
-        opacity:1.0;
-      }
-      }
 
-      .mouse-scroll,
-      .mouse {
-        margin-top:15% !important;
-        margin-left:-30% !important;
-      }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .division-landing-name {
@@ -62,20 +45,21 @@ div.division-landing-box {
     max-height: 220px;
     min-height: 110px;
     color:#fff;
+    display: table-cell;
     // max-width: 600px;
     padding:10px 10px 10px 10px;
+    -webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
     &:hover {
-        div.division-landing-color{
+        div.division-landing-color,
+        .landing-icon{
           opacity: 1;
-        }
-        .icon-response,
-        .icon-health,
-        .icon-science,
-        .icon-practice,
-        .icon-continuity,
-        .icon-humanitarian,
-        .icon-security {
-          opacity:0.6;
+          -webkit-transition: opacity .15s ease-in-out;
+          -moz-transition: opacity .15s ease-in-out;
+          -ms-transition: opacity .15s ease-in-out;
+          -o-transition: opacity .15s ease-in-out;
+          transition: opacity .15s ease-in-out;
+
         }
     }
 
@@ -95,7 +79,7 @@ div.division-landing-box {
     }
 
   .division-landing-name {
-    padding-top:0px;
+    margin: 15% auto;
   }
 
   div.division-landing-color{

@@ -20,8 +20,9 @@
 					</div>
 
 				<br>
-				<div class="col-md-4 col-md-offset-1 text-center" style="padding-left:10px">
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
+				<div class="col-md-10" style="padding-left:10px">
+					<a type="button" class="btn-default btn-lg btn-style-w" href="{{url('divisions')}}" style="border:1px solid white;">TRY THE BETA</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}" style= "margin-top:0px; margin-left:30px;"">REGISTER</a>
 				</div>
 			</div>
 			<a class="col-md-offset-6 col-xs-offset-5" href="#welcome_about">
@@ -93,12 +94,12 @@
 					<p>&nbsp;</p>
 
 					<div class="row">
-					<div class="col-xs-12 container">
+					<div class="col-xs-12 ">
 						@foreach($divisions as $div)
 							<a href="{{url('division', $div->slug)}}">
 								<div class="division-landing-box col-md-2">
 									<div id="division_{{$div->id}}">
-										<div class="icon-{{$div->slug}}">
+										<div class="icon division_{{$div->slug}} landing-icon x-lrg">
 											<!-- <img src ="/images/icons/division-0{{$div->id}}.svg"> -->
 										</div>
 										<h3 class="division-landing-name"

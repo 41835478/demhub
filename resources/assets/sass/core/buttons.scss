@@ -84,13 +84,18 @@ button.btn-style-alt:active{
 
 
 .btn-style-w{
-	background-color: rgba(0, 0, 0, 0.3)!important;
+	background-color: rgba(51, 122, 188, 0.3)!important;
 	border-color:#fff !important;
 	color:#fff !important;
 	}
 
 	.btn-style-w:hover{
-		background-color: rgba(0, 0, 0, 0.6)!important;
+		background-color: rgba(0, 0, 0, 0.4)!important;
+		-webkit-transition: opacity .15s ease-in-out;
+		-moz-transition: opacity .15s ease-in-out;
+		-ms-transition: opacity .15s ease-in-out;
+		-o-transition: opacity .15s ease-in-out;
+		transition: opacity .15s ease-in-out;
 		}
 
 .text-link-style {
