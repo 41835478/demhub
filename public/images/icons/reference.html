@@ -3,7 +3,6 @@
 <head>
 	<title>CSS Sprite</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="icon.scss" rel="stylesheet">
 
 	<script>
@@ -49,6 +48,14 @@
 		width: 17em;
 		overflow: hidden;
 	}
+
+	.cell1 {
+		float: left;
+		margin-right: 1.5em;
+		margin-bottom: .25em;
+		width: 27em;
+		overflow: hidden;
+	}
 	.cell span {
 		margin-right: .25em;
 	}
@@ -59,44 +66,41 @@
 	.clearfix:after {
 		clear: both;
 	}
-	.fs1 {
-		font-size: 14px;
+	/*.fs1 {
+		font-size: 24px;
 	}
 	.fs2 {
 		font-size: 14px;
 	}
 	.fs3 {
 		font-size: 12px;
-	}
+	}*/
 
 </style>
 <body>
 <header class="clearfix">
 	<div class="clearfix mhl">
-		<h1>Color & Size</h1>
-		<div class="cell fs3">
-			<span class="icon google"></span> icon
-			google
+		<h1>Icon Size avalaibility</h1>
+		<div class="cell1">
+			<span class="icon division_demhub x-sml"></span> icon
+			icon division_demhub x-sml
 		</div>
-		<div class="cell fs3">
-			<span class="icon google-plus"></span> icon
-			google-plus
+		<div class="cell1">
+			<span class="icon division_demhub sml"></span> icon
+			icon division_demhub sml
 		</div>
-		<div class="cell fs3">
-			<span class="icon google-plus2"></span> icon
-			google-plus2
+		<div class="cell1">
+			<span class="icon division_demhub mdm"></span> icon
+			icon division_demhub mdm
 		</div>
-		<div class="cell fs3">
-			<span class="icon google-plus3"></span> icon
-			google-plus3
+
+		<div class="cell1">
+			<span class="icon division_demhub lrg"></span> icon
+			icon division_demhub lrg
 		</div>
-		<div class="cell fs3">
-			<span class="icon google-drive"></span> icon
-			google-drive
-		</div>
-		<div class="cell fs3">
-			<span class="icon facebook"></span> icon
-			facebook
+		<div class="cell1">
+			<span class="icon division_demhub x-lrg"></span> icon
+			icon division_demhub x-lrg
 		</div>
 
 	</div>
