@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App\Http\Requests\Frontend\Access\LoginRequest;
 use App\Http\Requests\Frontend\Access\RegisterRequest;
 use App\Repositories\Frontend\Auth\AuthenticationContract;
+use Input;
 
 /**
  * Class AuthController
@@ -31,6 +32,26 @@ class AuthController extends Controller
     public function getRegister()
     {
         return view('frontend.auth.register');
+    }
+
+    /**
+     * @param $input
+     * @return static
+     */
+    public function store($input) {
+        $group = new PermissionGroup;
+        $group->name = $input['name'];
+        return $group->save();
+    }
+
+    /**
+     * @param $input
+     * @return \Illuminate\View\View
+     */
+    public function getAutoregister()
+    {
+        return view('frontend.auth.autoregister')
+                    ->withInput(Input::all());
     }
 
     /**

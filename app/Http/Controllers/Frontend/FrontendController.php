@@ -64,7 +64,7 @@ class FrontendController extends Controller {
 			"AndrewC" => [
 				"name" => "Andrew Cram",
 				"position" => "Director Of Finance",
-				"description" => "Through work experience with Coca-Cola, Thomson Reuters and State Street, combined with University of Western Ontario Finance & Accounting degree (passed CMA entrance Exam), Chartered Financial Analyst (CFA) studies, has developed a thorough knowledge and understanding of contract and securities valuations, corporate finance, financial analysis, and capital markets."
+				"description" => "An adventurous, entrepreneurially-minded Financial professional who has worked for Coca-Cola as a Senior Financial Analyst, Thomson Reuters and State Street. Through his work experience, education at The University of Western Ontario in Finance & Accounting, and continuing Chartered Financial Analyst (CFA) studies, Andrew has exceptional knowledge in valuations, financial modeling & analysis, contract negotiation, corporate finance, and project management."
 			],
 			"AldoR" => [
 				"name" => "Aldo Rui­z Luna",
