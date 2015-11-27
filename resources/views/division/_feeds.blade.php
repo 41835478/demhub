@@ -1,3 +1,4 @@
+
 @if (! url('userhome'))
   <div class="row">
     <div class="col-md-10 col-md-offset-2" style="overflow-x:hidden">
@@ -73,7 +74,7 @@
           >
             <h3 class=
             @if (isset($neededObject[0]))
-            "article-title-box" style="padding-top:55px"
+            "article-title-box article-link" style="padding-top:55px"
             @else
             "" style="padding-top:37px"
             @endif
@@ -185,7 +186,7 @@
 
               @endif
             </div>
-            <div onclick="comingSoon(this.id)" id="article_{{$item->id}}" style="width:100%; height:42px; bottom:0px; position:absolute;">
+            <div style="width:100%; height:42px; bottom:0px; position:absolute;">
 
               <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite" disabled>
                 <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:#000"></span>
@@ -194,11 +195,19 @@
               <!-- <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
                 <div class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> xxx</div>
               </button> -->
-
-              <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
-                <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
-              </button>
-
+              <div class="btn-group dropup">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:5px;">
+                  <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
+                </button>
+                <ul class="dropdown-menu">
+                 <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item->title}}"
+                 data-url="{{$item->source_url}}">TWEET</a> </li>
+                 <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item->title}}%0D%0A{{$item->source_url}}" target="_top">EMAIL</a></li>
+                 <li role="separator" class="divider"></li>
+                 <li><button type="button" class="btn btn-style" id="copy-button"><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span id="copy-button-text"> Double Click To Copy</span></button></li>
+                </ul>
+              </div>
+              <div class="btn-group">
               <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
                 <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
               </button>
@@ -220,7 +229,7 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
               </ul>
-
+               </div>
 
 
             </div>
@@ -232,6 +241,53 @@
 
 
     @endforeach
+    <!-- Twitter Button Javascript -->
+<script>
+var twitterElement;
+var newScript;
+$(".feedsbox").mouseenter(function() {
+  twitterElement=$(this).find(".article_twitter");
+  $(twitterElement).addClass("twitter-share-button");
+
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(document.body){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+});
+$(document).ready(function(){
+
+	    $("button#copy-button").zclip({
+	        path:"js/ZeroClipboard.swf",
+	        copy:$("button#copy-button").closest(".article-link").attr("href"),
+			afterCopy:function(){
+				setInterval(function(){myTimer()},500);
+				function myTimer() {
+				document.getElementById("copy-button-text").innerHTML=" Copied To Clipboard";
+				}
+			}
+	});
+});
+// var twitterElementNames=[];
+// function twitterButton (elementId) {
+//   var alreadyAdded=false;
+//   for (var i=0;i<twitterElementNames.length;i++){
+//     if (elementId==twitterElementNames[i]){
+//       alreadyAdded=true;
+//     }
+//   }
+//   if (alreadyAdded==false){
+//     newElement=document.createElement("a");
+//     newElement=document.createElement("a");
+//     newElement.href="https://twitter.com/intent/tweet?button_hashtag=DEMHUBnetwork";
+//     newElement.className="twitter-hashtag-button";
+//     $("#"+newElement).attr("data-url","{{$item->source_url}}");
+//     newElement.innerHTML = "Tweet #DEMHUBnetwork";
+//     newElement.appendChild(elementId);
+//
+//     twitterElementNames.push(elementId);
+//   }
+// }
+
+
+</script>
 
   </div>
 </div>

@@ -11,11 +11,12 @@
 
     <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+    <script type="text/javascript" src='js/jquery.zclip.js'></script>
     @yield('meta')
     @yield('before-styles-end')
     {!! HTML::style(elixir('css/core.css')) !!}
     {!! HTML::style(elixir('css/frontend.css')) !!}
+
     @yield('after-styles-end')
 
     <?php // "coming soon" logic
