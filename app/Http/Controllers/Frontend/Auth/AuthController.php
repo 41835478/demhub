@@ -58,6 +58,22 @@ class AuthController extends Controller
      * @param RegisterRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
+    public function postAutoregister(RegisterRequest $request)
+    {
+        if (config('access.users.confirm_email')) {
+            $this->auth->create($request->all());
+            return redirect()->route('signUpSuccess')->withFlashSuccess("Your account was successfully created. We have sent you an e-mail to confirm your account.");
+        } else {
+            //Use native auth login because do not need to check status when registering
+            auth()->login($this->auth->create($request->all()));
+            return redirect()->route('userhome')->withFlashSuccess("Your account was successfully created. Welcome to DEMHUB.");
+        }
+    }
+
+    /**
+     * @param RegisterRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postRegister(RegisterRequest $request)
     {
         if (config('access.users.confirm_email')) {
