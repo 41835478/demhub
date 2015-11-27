@@ -221,7 +221,7 @@ div.division-landing-box {
   div.division-landing-box:hover div.division-landing-color,
   div.division-landing-box:hover .landing-icon {
     opacity: 1;
-    transition: opacity .15s ease-in-out; }
+    transition: opacity 0.15s ease-in-out; }
   div.division-landing-box div.division-landing-icon {
     margin-left: calc(50% - 20px);
     z-index: 5;
@@ -308,7 +308,7 @@ div#welcome-division {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px solid #ddd;
+  border: 1px   solid #ddd;
   float: left;
   position: relative; }
 
@@ -416,7 +416,7 @@ button.btn-style-alt:active {
 
 .btn-style-w:hover {
   background-color: rgba(0, 0, 0, 0.4) !important;
-  transition: opacity .15s ease-in-out; }
+  transition: opacity 0.15s ease-in-out; }
 
 .text-link-style {
   color: #000; }
@@ -507,7 +507,7 @@ button.btn-style-alt:active {
   display: inline-block;
   background-repeat: no-repeat;
   background: url("../../images/icons/icon.svg");
-  background-size: 47.0em 41.5em; }
+  background-size: 47em 41.5em; }
 
 .x-sml {
   font-size: 12px; }
