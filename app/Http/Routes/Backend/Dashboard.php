@@ -5,4 +5,4 @@ get('keywords', 'DashboardController@keywords')->name('backend.keywords');
 get('sources', 'DashboardController@sources')->name('backend.sources');
 get('articles', 'DashboardController@articles')->name('backend.articles');
 get('reports', 'DashboardController@reports')->name('backend.reports');
-get('signup', 'DashboardController@signup');
+get('signup', 'DashboardController@signup')->name('backend.signup');

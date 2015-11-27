@@ -46,8 +46,6 @@ class DivisionController extends Controller
       $query = DB::table('articles')->select("*");
       $query = $query->where('deleted', 0);
 
-
-
       if ($request) {
         $options_query = 	$request->input('query_term', '');	// (optional) search query
         $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
