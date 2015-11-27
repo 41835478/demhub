@@ -99,7 +99,7 @@
 							<a href="{{url('division', $div->slug)}}">
 								<div class="division-landing-box col-md-2">
 									<div id="division_{{$div->id}}">
-										<div class="icon division_{{$div->slug}} landing-icon x-lrg">
+										<div class="icon division-{{$div->slug}} landing-icon x-lrg">
 											<!-- <img src ="/images/icons/division-0{{$div->id}}.svg"> -->
 										</div>
 										<h3 class="division-landing-name"
