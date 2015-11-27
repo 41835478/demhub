@@ -227,6 +227,8 @@ class DashboardController extends Controller {
 	    $csv = Reader::createFromPath($csv_file);
 
 			$csv->setOffset(1)->fetchAll(function ($row) {
+				$location = "";
+
 				if (!empty($row[10])) {
 					$location = $row[10];
 				}
