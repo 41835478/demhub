@@ -142,128 +142,6 @@ class SchedulerController extends Controller
 		Scraper::saveLogFile($messages, "scrapeCustom_".$source->type."_".$source->id."_" . date("YmdHis") . ".log");
 	}
 
-	/**
-	 * @deprecated
-	 * Downloads articles from http://www.irdrinternational.org/ based on 'IRDR' type sources on the scrape_sources DB table
-	 *
-	 * @param Request $request Accepted indexes:
-	 * - 'id' 			(optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
-	 * - 'page_from' 	(optional) start_page defines the starting page, default = 1
-	 * - 'page_to'	 	(optional) Max page to check, default = 3
-	 */
-	public function scrapeIRDR(Request $request)
-	{
-		//important to terminate the process in case the while loop goes haywire but shouldnt be
-		//too short for the algo to do it's job
-		set_time_limit(400);
-
-		//only lists the sources if ?id=list
-		if($request->input('id') == 'list'){
-			$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
-			foreach($sources as $source){
-				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
-			}
-			return;
-		}
-
-		// only does one source if ?id=<source_id> due to timeout issues or all if not provided
-		if( ($sid = $request->input('id', 0)) != 0){
-			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
-		} else {
-			$sources = ScrapeSource::where('type', 'IRDR')->where('deleted', 0)->get();
-		}
-
-
-		foreach($sources as $source)
-		{
-			$messages = '';
-			$page = 	$request->input('page_from', 1);
-			$page_to = 	$request->input('page_to', 3);
-			$messages .= '<b>'.$source->url.'</b> | last_checked: '.$source->last_checked_item.' | pages '.$page.'-'.$page_to.' | get details: yes<br>';
-
-			$start = microtime(true);
-			$return = Scraper::scrapeIRDR($source, $page, $page_to);
-			$time = (microtime(true) - $start)*1000;
-
-			$messages .= $return['messages'];
-			$messages .= '<br><br><b>';
-			$messages .= 'Process took: '.$time.'ms<br>';
-			$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.($return['errors'] > 0 ? '<h1>'.$return['errors'].'</h1>' : $return['errors']).' errors.';
-			$messages .= '</b><br>';
-
-			if($return['errors'] == 0){
-				$source->last_checked_item = date("Y-m-d H:i:s");
-				$source->save();
-			}
-
-			echo $messages;
-			Scraper::saveLogDB($source, $return['count']);
-			Scraper::saveLogFile($messages, "scrapeIRDR_".$source->id."_" . date("YmdHis") . ".log");
-		}
-	}
-
-	/**
-	 * @deprecated Use scrapeCustom?source=EC instead
-	 * Downloads articles from http://ec.europa.eu/echo/news_en based on 'EC' type sources on the scrape_sources DB table
-	 *
-	 * @param Request $request Accepted indexes:
-	 * - 'id' 			(optional) chooses which specific source_id to check, if id=list is sent, the function will only list available ids
-	 * - 'page_from' 	(optional) start_page defines the starting page, default = 1
-	 * - 'page_to'	 	(optional) Max page to check, default = 3
-	 *
-	 */
-	public function scrapeEC(Request $request)
-	{
-		//important to terminate the process in case the while loop goes haywire but shouldnt be
-		//too short for the algo to do it's job
-		set_time_limit(400);
-
-		//temp
-		$get_details = ($request->input('get_details', 1) == 1);
-
-		//only lists the sources if ?id=list
-		if($request->input('id') == 'list'){
-			$sources = ScrapeSource::where('type', 'EC')->where('deleted', 0)->get();
-			foreach($sources as $source){
-				echo '<br>'.$source->id.': '.$source->url.' | last checked:'.$source->last_checked_item;
-			}
-			return;
-		}
-
-		// only does one source if ?id=<source_id> due to timeout issues or all if not provided
-		if( ($sid = $request->input('id', 0)) != 0){
-			$sources = ScrapeSource::where('id', $sid)->where('deleted', 0)->get();
-		} else {
-			$sources = ScrapeSource::where('type', 'EC')->where('deleted', 0)->get();
-		}
-
-
-		foreach($sources as $source){
-			$messages = '';
-			$page = 	$request->input('page_from', 1);
-			$page_to = 	$request->input('page_to', 3);
-			$messages .= '<b>'.$source->url.'</b> | last_checked: '.$source->last_checked_item.' | pages '.$page.'-'.$page_to.' | get details: '.($get_details?'yes':'no').'<br>';
-
-			$start = microtime(true);
-			$return = Scraper::scrapeEC($source, $page, $page_to, $get_details);
-			$time = (microtime(true) - $start)*1000;
-
-			$messages .= $return['messages'];
-			$messages .= '<br><br><b>';
-			$messages .= 'Process took: '.$time.'ms<br>';
-			$messages .= 'Source '.$source->id.': done with '.$return['count'].' new items and '.($return['errors'] > 0 ? '<h1>'.$return['errors'].'</h1>' : $return['errors']).' errors.';
-			$messages .= '</b><br>';
-
-			if($return['errors'] == 0){
-				$source->last_checked_item = date("Y-m-d H:i:s");
-				$source->save();
-			}
-
-			echo $messages;
-			Scraper::saveLogDB($source, $return['count']);
-			Scraper::saveLogFile($messages, "scrapeEC_".$source->id."_" . date("YmdHis") . ".log");
-		}
-	}
 
 
 	/**
@@ -271,68 +149,68 @@ class SchedulerController extends Controller
 	 * Currently fills in ScrapeSource table based on NewsFeeds table and populates keywords table
 	 * based on a batch of preliminary keywords
 	 */
-	public function initialize()
-	{
-		// add all current rss sources to the source list
-		$sources = NewsFeed::all();
-		foreach($sources as $s){
-			$exists = ScrapeSource::where(array('url'=>$s->url))->first();
-			if(!$exists){
-				$model = new ScrapeSource();
-				$model->type = 'RSS';
-				$model->url = $s->url;
-				$model->division_id = $s->division_id;
-				$model->save();
-
-				echo '<br>Added RSS source: '.$s->url;
-			}
-
-		}
-
-		//populate the keywords table with some basic keys
-		$keys = array('Terrorism'=>[4], 'Terrorist'=>[4], 'Breach'=>[4], 'Security'=>[4], 'Cybersecurity'=>[4], 'Threat'=>[4], 'Cybercrime'=>[4],
-			'Civil Protection'=>[4], 'Risk Reduction'=>[3,4], 'Preparedness'=>[3,4], 'Mitigation'=>[3], 'Infrastructure'=>[3], 'Recovery'=>[3], 'Response'=>[3], 'Humanitarian'=>[6],
-			'Pandemic'=>[1], 'Epidemic'=>[1], 'Endemic'=>[1], 'Outbreak'=>[1], 'Quarentine'=>[1], 'Virus'=>[1],
-			'Risk Management'=>[5], 'Continuity'=>[5], 'Resiliency'=>[5], 'Resilience'=>[5], 'Communication'=>[3,5], 'Training'=>[3,5], 'Exercise'=>[3,5],
-			'Relief'=>[3,6], 'Aid'=>[3,6], 'Coordination'=>[3,6],
-			'Earthquake'=>[6], 'Hurricane'=>[6], 'Cyclone'=>[6], 'Typhoon'=>[6], 'Tsunami'=>[6], 'Tornado'=>[6], 'Tropical Storm'=>[6], 'Landslide'=>[6], 'Mudslide'=>[6], 'Flood'=>[6], 'Ice Storm'=>[6], 'Volcano'=>[6], 'Storm Surge'=>[6], 'Severe Weather'=>[6],
-			'Oil Spill'=>[1,3,6], 'Nuclear'=>[1,3,6], 'Chemical Spill'=>[1,3,6], 'Train Derailment'=>[5,3], 'Bridge Collapse'=>[5,3], 'Active Shooter'=>[3] );
-		$negative_keys = array('newsletter', 'workshop');
-		foreach($keys as $k=>$d){
-			$slug = Helpers::generateSlug($k);
-			$exists = Keyword::where(array('slug'=>$slug))->first();
-			if(!$exists){
-				$model = new Keyword();
-				$model->weight = 1;
-				$model->keyword = strtolower($k);
-				$model->slug = $slug;
-				$model->divisions = Helpers::convertDBArrayToString($d);
-				$model->save();
-
-				echo '<br>Added keyword: '.$k.'      with divisions: '. Helpers::convertDBArrayToString($d);
-			}
-
-		}
-
-		// Add custom sources
-		$irdr_urls = array('http://www.irdrinternational.org/irdr-publications/'=>['IRDR'],
-						   'http://www.irdrinternational.org/other-publications/'=>['IRDR'],
-						   'http://www.irdrinternational.org/co-sponsors-publications/'=>['IRDR'],
-						   'http://feeds.sciencedaily.com/sciencedaily/earth_climate/natural_disasters'=>['RSS']);
-		foreach($irdr_urls as $irdr_url=>$meta){
-			$exists = ScrapeSource::where(array('url'=>$irdr_url))->first();
-			if(!$exists){
-				$model = new ScrapeSource();
-				$model->type = $meta[0];
-				$model->url = $irdr_url;
-				$model->division_id = 0;
-				$model->save();
-
-				echo '<br>Added '.$meta[0].' source: '.$irdr_url;
-			}
-		}
-
-	}
+//	public function initialize()
+//	{
+//		// add all current rss sources to the source list
+//		$sources = NewsFeed::all();
+//		foreach($sources as $s){
+//			$exists = ScrapeSource::where(array('url'=>$s->url))->first();
+//			if(!$exists){
+//				$model = new ScrapeSource();
+//				$model->type = 'RSS';
+//				$model->url = $s->url;
+//				$model->division_id = $s->division_id;
+//				$model->save();
+//
+//				echo '<br>Added RSS source: '.$s->url;
+//			}
+//
+//		}
+//
+//		//populate the keywords table with some basic keys
+//		$keys = array('Terrorism'=>[4], 'Terrorist'=>[4], 'Breach'=>[4], 'Security'=>[4], 'Cybersecurity'=>[4], 'Threat'=>[4], 'Cybercrime'=>[4],
+//			'Civil Protection'=>[4], 'Risk Reduction'=>[3,4], 'Preparedness'=>[3,4], 'Mitigation'=>[3], 'Infrastructure'=>[3], 'Recovery'=>[3], 'Response'=>[3], 'Humanitarian'=>[6],
+//			'Pandemic'=>[1], 'Epidemic'=>[1], 'Endemic'=>[1], 'Outbreak'=>[1], 'Quarentine'=>[1], 'Virus'=>[1],
+//			'Risk Management'=>[5], 'Continuity'=>[5], 'Resiliency'=>[5], 'Resilience'=>[5], 'Communication'=>[3,5], 'Training'=>[3,5], 'Exercise'=>[3,5],
+//			'Relief'=>[3,6], 'Aid'=>[3,6], 'Coordination'=>[3,6],
+//			'Earthquake'=>[6], 'Hurricane'=>[6], 'Cyclone'=>[6], 'Typhoon'=>[6], 'Tsunami'=>[6], 'Tornado'=>[6], 'Tropical Storm'=>[6], 'Landslide'=>[6], 'Mudslide'=>[6], 'Flood'=>[6], 'Ice Storm'=>[6], 'Volcano'=>[6], 'Storm Surge'=>[6], 'Severe Weather'=>[6],
+//			'Oil Spill'=>[1,3,6], 'Nuclear'=>[1,3,6], 'Chemical Spill'=>[1,3,6], 'Train Derailment'=>[5,3], 'Bridge Collapse'=>[5,3], 'Active Shooter'=>[3] );
+//		$negative_keys = array('newsletter', 'workshop');
+//		foreach($keys as $k=>$d){
+//			$slug = Helpers::generateSlug($k);
+//			$exists = Keyword::where(array('slug'=>$slug))->first();
+//			if(!$exists){
+//				$model = new Keyword();
+//				$model->weight = 1;
+//				$model->keyword = strtolower($k);
+//				$model->slug = $slug;
+//				$model->divisions = Helpers::convertDBArrayToString($d);
+//				$model->save();
+//
+//				echo '<br>Added keyword: '.$k.'      with divisions: '. Helpers::convertDBArrayToString($d);
+//			}
+//
+//		}
+//
+//		// Add custom sources
+//		$irdr_urls = array('http://www.irdrinternational.org/irdr-publications/'=>['IRDR'],
+//						   'http://www.irdrinternational.org/other-publications/'=>['IRDR'],
+//						   'http://www.irdrinternational.org/co-sponsors-publications/'=>['IRDR'],
+//						   'http://feeds.sciencedaily.com/sciencedaily/earth_climate/natural_disasters'=>['RSS']);
+//		foreach($irdr_urls as $irdr_url=>$meta){
+//			$exists = ScrapeSource::where(array('url'=>$irdr_url))->first();
+//			if(!$exists){
+//				$model = new ScrapeSource();
+//				$model->type = $meta[0];
+//				$model->url = $irdr_url;
+//				$model->division_id = 0;
+//				$model->save();
+//
+//				echo '<br>Added '.$meta[0].' source: '.$irdr_url;
+//			}
+//		}
+//
+//	}
 
 	/**
 	 * All purpose function to allow code testing and on-the-fly adjustments using various $_GET params

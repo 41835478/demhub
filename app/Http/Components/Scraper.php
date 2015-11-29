@@ -908,7 +908,7 @@ class Scraper
 	}
 
 	/**
-	 * Given a specific EC type source attempts to extract data
+	 * Given a specific BCI type source attempts to extract data
 	 * @param ScrapeSource $source
 	 * @param int $page_from
 	 * @param int $page_to
