@@ -2,7 +2,7 @@
 
 @section('page-header')
     <h1>
-		Keyword management
+		Article management
     </h1>
 @endsection
 
@@ -14,7 +14,15 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Keywords</h3>
+          <h3 class="box-title">
+			  Articles
+			  <small>
+				  Page:
+				  @for($i=0; $i<5; $i++)
+				  <a href="{!!route('backend.articles', array('page'=>($i+1)))!!}">{{$i+1}}</a> -
+				  @endfor
+			  </small>
+		  </h3>
           <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           </div>

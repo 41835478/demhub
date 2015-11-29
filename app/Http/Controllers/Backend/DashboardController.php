@@ -163,7 +163,11 @@ class DashboardController extends Controller {
 		if( ($id = $request->input("id", 0)) ){
 			$items = Article::where('id', $id)->get();
 		} else {
-			$items = Article::where('deleted', 0)->orderBy('id', 'DESC')->get();
+			$items = Article::where('deleted', 0)
+				->skip(($request->input("page",1)-1) * 500)
+				->take(500)
+				->orderBy('id', 'DESC')
+				->get();
 		}
 
 		$divisions = Division::all();
