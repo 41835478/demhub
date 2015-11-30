@@ -20,9 +20,9 @@
 					</div>
 
 				<br>
-				<div class="col-md-10" style="padding-left:10px">
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}" style="border:1px solid white;">TRY THE BETA</a>
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}" style= "margin-top:0px; margin-left:30px;"">JOIN NOW</a>
+				<div class="col-md-12" style="padding-left:10px">
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}"">JOIN NOW</a>
 				</div>
 			</div>
 			<a class="col-md-offset-6 col-xs-offset-5" href="#welcome_about">
