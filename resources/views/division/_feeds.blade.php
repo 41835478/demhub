@@ -305,26 +305,7 @@ $(document).ready(function () {
   // });
 });
 
-// var twitterElementNames=[];
-// function twitterButton (elementId) {
-//   var alreadyAdded=false;
-//   for (var i=0;i<twitterElementNames.length;i++){
-//     if (elementId==twitterElementNames[i]){
-//       alreadyAdded=true;
-//     }
-//   }
-//   if (alreadyAdded==false){
-//     newElement=document.createElement("a");
-//     newElement=document.createElement("a");
-//     newElement.href="https://twitter.com/intent/tweet?button_hashtag=DEMHUBnetwork";
-//     newElement.className="twitter-hashtag-button";
-//     $("#"+newElement).attr("data-url","{{$item->source_url}}");
-//     newElement.innerHTML = "Tweet #DEMHUBnetwork";
-//     newElement.appendChild(elementId);
-//
-//     twitterElementNames.push(elementId);
-//   }
-// }
+
 
 
 </script>
