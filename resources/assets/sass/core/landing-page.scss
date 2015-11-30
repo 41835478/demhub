@@ -54,8 +54,9 @@
 @media (min-width: 768px) and (max-width: 992px) {
   .inline-about {
     display: inline-block !important;
-    width:50% !important;
+    width:300px !important;
     padding:auto 20px auto 20px;
+    margin:auto 20px auto 20px;
   }
 }
 
