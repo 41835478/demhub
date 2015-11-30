@@ -29,11 +29,11 @@ $(function () {
 	 * Background (Backstretch) - Divisions
 	 */
 
-	$(".welcome-division-all-img").backstretch([
+	$(".welcome-division-all").backstretch([
 		"../images/backgrounds/divisions/all.jpg"
 	]);
 
-	$(".welcome-division-health-img").backstretch([
+	$(".welcome-division-health").backstretch([
 		"../images/backgrounds/divisions/health.jpg"
 	]);
 
