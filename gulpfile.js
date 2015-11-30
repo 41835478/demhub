@@ -6,6 +6,8 @@ elixir(function(mix) {
         .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
         .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/build/fonts/bootstrap')
         .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
+        .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
+        .copy('resources/assets/js/frontend/plugins/ZeroClipboard.swf', 'public/js')
 
         .sass([ // Process front-end stylesheets
                 'frontend/main.scss'
@@ -20,6 +22,8 @@ elixir(function(mix) {
                 'frontend/fullscreen/init.js',
                 'frontend/forms/register.js',
                 'frontend/resource_filter/map.js',
+                'frontend/plugins/modernizr-2.8.3.min.js',
+                'frontend/plugins/jquery.zclip.js',
                 'frontend/plugins/jquery.maphilight.js',
                 'frontend/coming-soon/jquery.countdown.js', // coming-soon js
                 'frontend/coming-soon/placeholders.min.js', // coming-soon js

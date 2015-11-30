@@ -20,9 +20,9 @@
 					</div>
 
 				<br>
-				<div class="col-md-10" style="padding-left:10px">
-					<a type="button" class="btn-default btn-lg btn-style-w" href="{{url('divisions')}}" style="border:1px solid white;">TRY THE BETA</a>
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}" style= "margin-top:0px; margin-left:30px;"">REGISTER</a>
+				<div class="col-md-12" style="padding-left:10px">
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
+					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}"">JOIN NOW</a>
 				</div>
 			</div>
 			<a class="col-md-offset-6 col-xs-offset-5" href="#welcome_about">
@@ -41,37 +41,37 @@
 
 					<div class="col-md-2 inline-about">
 						<h3>News</h3>
-						<h2><i class="icon-news"></i></h2>
+						<i class="icon public x-lrg"></i>
 						<p>Get the NEWS from reliable industry sources.</p>
 					</div>
 
 					<div class="col-md-2 inline-about">
 						<h3>Discuss</h3>
-						<h2><i class="icon-discuss whiltefill"></i></h2>
+						<i class="icon message x-lrg"></i>
 						<p>Exchange your thoughts with millions of industry professionals.</p>
 					</div>
 
 					<div class="col-md-2 inline-about">
 						<h3>Connect</h3>
-						<h2><i class="icon-users"></i></h2>
+						<i class="icon people x-lrg"></i>
 						<p>Discover and get discovered within professional circles.</p>
 					</div>
 
 					<div class="col-md-2 inline-about">
 						<h3>Research</h3>
-						<h2><i class="icon-research"></i></h2>
+						<i class="icon local_library x-lrg"></i>
 						<p>Explore the academic researches about disaster management as well as publish your own.</p>
 					</div>
 
 					<div class="col-md-2 inline-about">
 						<h3>Share</h3>
-						<h2><i class="icon-share"></i></h2>
+						<i class="icon share x-lrg"></i>
 						<p>Upload documents, reports, articles, and more to share with your network.</p>
 					</div>
 
 					<div class="col-md-2 inline-about">
 						<h3>Track</h3>
-						<h2><i class="icon-track"></i></h2>
+						<i class="icon place x-lrg"></i>
 						<p>Track NEWS and discussions on issues that matter most to you.</p>
 					</div>
 

@@ -110,21 +110,32 @@ div.auth-modal-email {
 @media only screen and (max-width: 991px) {
   /* For mobile phones and tablets: */
   .division-landing-name {
-    padding-top: 10px;
+    text-align: center;
+    margin-top:5% !important;
+    position:absolute;
   }
-
+  div.division-landing-box {
+    width:45%;
+    height:70px;
+    display: inline-block;
+    margin:20px 0px 20px 30px;
+    }
+.landing-icon{
+    display: none;
+    visibility: hidden;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
   div.division-landing-box {
     width:100%;
-    height:110px;
+    height:70px;
+    margin:5px 20px 5px 20px;
     }
-
-    .mouse-scroll,
-    .mouse {
-      margin-top:10px !important;
+    .division-landing-name {
+      margin-top:2% !important;
+      position:absolute;
     }
 }
 

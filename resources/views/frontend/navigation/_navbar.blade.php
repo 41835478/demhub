@@ -34,7 +34,7 @@
 						@if (Request::url() === url('auth/register'))
 						 class="active"
 						@endif
-					>{!! link_to('auth/register', trans('REGISTER')) !!}</li>
+					>{!! link_to('auth/register', trans('JOIN NOW')) !!}</li>
 				@endif
 
 			</ul>

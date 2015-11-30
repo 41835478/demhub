@@ -4,7 +4,7 @@
     {{--  <div class="row welcome-division-{{$currentDivision->slug}}" > --}}
 
       <div id="welcome-division-bar">
-        
+
           <div class="row">
             @foreach($navDivisions as $div)
               <a href="{{url('division', array('id' => $div->slug))}}">
