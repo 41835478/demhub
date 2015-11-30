@@ -11,7 +11,7 @@
 
     <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script type="text/javascript" src='js/jquery.zclip.js'></script>
+
     @yield('meta')
     @yield('before-styles-end')
     {!! HTML::style(elixir('css/core.css')) !!}
@@ -38,8 +38,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
-    {!! HTML::script("js/vendor/jquery.maphilight.min.js") !!}
+    
 
   </head>
 
