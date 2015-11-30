@@ -196,15 +196,18 @@
                 <div class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> xxx</div>
               </button> -->
               <div class="btn-group dropup">
-                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:5px;">
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                 style="margin-left:5px;">
                   <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
                 </button>
                 <ul class="dropdown-menu">
                  <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item->title}}"
                  data-url="{{$item->source_url}}">TWEET</a> </li>
-                 <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item->title}}%0D%0A{{$item->source_url}}" target="_top">EMAIL</a></li>
+                 <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item->title}}%0D%0A{{$item->source_url}}"
+                   target="_top" class="article_email">EMAIL</a></li>
                  <li role="separator" class="divider"></li>
-                 <li><button type="button" class="btn btn-style" id="copy-button"><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span id="copy-button-text"> Double Click To Copy</span></button></li>
+                 <li><button type="button" class="btn btn-style copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Double Click To Copy</span>
+                   <span class="copy-button-link" style="display:none">{{$item->source_url}}</span></button></li>
                 </ul>
               </div>
               <div class="btn-group">
@@ -245,26 +248,63 @@
 <script>
 var twitterElement;
 var newScript;
+var copyLink;
 $(".feedsbox").mouseenter(function() {
   twitterElement=$(this).find(".article_twitter");
   $(twitterElement).addClass("twitter-share-button");
+  copyLink=$(this).find(".copy-button");
+  $(copyLink).attr('id', 'copy-button');
+  copyLink=$(this).find(".copy-button-text");
+  $(copyLink).attr('id', 'copy-button-text');
+  copyLink=$(this).find(".copy-button-link");
+  $(copyLink).attr('id', 'copy-button-link');
 
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(document.body){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
 });
-$(document).ready(function(){
+// function toggleMenuOff() {
+//   var Toggle=("#copy-button").parent(".dropdown-toggle");
+//   $(Toggle).attr("data-toggle","");
+// }
+// function toggleMenu() {
+//   // element.closest(".dropdown-toggle");
+//   //  $(element).children('ul').stop().slideToggle(400);
+//   //  $(element).dropdown("toggle");
+//   $('#copy-button').preventDefault();
+// }
+$(".copy-button").click(function(e){
+  $("#copy-button").preventDefault();
+});
 
-	    $("button#copy-button").zclip({
+$(".feedsbox").mouseleave(function() {
+  copyLink=$(this).find(".copy-button");
+  $(copyLink).attr('id', '');
+  copyLink=$(this).find(".copy-button-text");
+  $(copyLink).attr('id', '');
+  copyLink=$(this).find(".copy-button-link");
+  $(copyLink).attr('id', '');
+
+});
+$(document).ready(function () {
+  $(".copy-button").zclip({
 	        path:"js/ZeroClipboard.swf",
-	        copy:$("button#copy-button").closest(".article-link").attr("href"),
+	        copy:function(){return $("#copy-button-link").text();},
+      beforeCopy: function () {
+
+                  console.log('hello');
+                },
 			afterCopy:function(){
-				setInterval(function(){myTimer()},500);
-				function myTimer() {
 				document.getElementById("copy-button-text").innerHTML=" Copied To Clipboard";
-				}
+        setInterval(function(){
+        toggle.click();
+        },500);
 			}
 	});
+  // $(".copy-button").click(function(){
+  //     alert($("#copy-button-link").text());
+  // });
 });
+
 // var twitterElementNames=[];
 // function twitterButton (elementId) {
 //   var alreadyAdded=false;
