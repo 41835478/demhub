@@ -1,47 +1,45 @@
 <script type="text/javascript">
-$(document).ready(function(){
+	$(document).ready(function(){
 
-$('div#dashboard-icon > i').click(function(){
+		$('div#dashboard-icon > i').click(function(){
 
-	if ($('div#dashboard').css('right') == '-350px'){
-		$('div#dashboard').animate({
-			right:'0px'
-		}, function(){
-			$('div#dashboard-icon > i').removeClass();
-			$('div#dashboard-icon > i').addClass('fa fa-angle-double-right');
-			$('div#dashboard-icon').css('right', '350px');
+			if ($('div#dashboard').css('right') == '-350px'){
+				$('div#dashboard').animate({
+					right:'0px'
+				}, function(){
+					$('div#dashboard-icon > i').removeClass();
+					$('div#dashboard-icon > i').addClass('fa fa-angle-double-right');
+					$('div#dashboard-icon').css('right', '350px');
+				});
+			}
+			else if ($('div#dashboard').css('right') == '0px'){
+				$('div#dashboard').animate({
+					right:'-350px'
+				}, function(){
+					$('div#dashboard-icon > i').removeClass();
+					$('div#dashboard-icon > i').addClass('fa fa-pencil-square-o');
+					$('div#dashboard-icon').css('right', '0');
+				});
+			}
 		});
-	}
-	else if ($('div#dashboard').css('right') == '0px'){
-		$('div#dashboard').animate({
-			right:'-350px'
-		}, function(){
-			$('div#dashboard-icon > i').removeClass();
-			$('div#dashboard-icon > i').addClass('fa fa-pencil-square-o');
-			$('div#dashboard-icon').css('right', '0');
-		});
-	}
-});
 
+		$("i").hover(
+			function(){
+				$(this).tooltip('show');
+			}, function() {
+				$(this).tooltip('hide');
+			}
+		);
 
-$("i").hover(
-	function(){
-		$(this).tooltip('show');
-	}, function() {
-		$(this).tooltip('hide');
+	});
+
+	function feedbackFormUpdate(){
+	  if($( "input:checked" ).length < 3) {
+	  	$('#modalErrorButton').click();
+	  } else {
+	    $('#modalSuccessButton').click();
+	  }
 	}
-);
-
-});
-function feedbackFormUpdate(){
-  if($( "input:checked" ).length < 3) {
-  // $("#sign-up-form").slideUp();
-  $('#modalErrorButton').click();
-  }
-  else {
-    $('#modalSuccessButton').click();
-  }
-}
 </script>
 
 

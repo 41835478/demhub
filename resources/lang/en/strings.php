@@ -73,4 +73,8 @@ return [
     'role' => '[0,1]Role|[2,Inf]Roles',
     'user' => '[0,1]User|[2,Inf]Users',
 
+    'no_account' => 'Don\'t have an account yet?',
+    'no_account_short' => "No account?",
+    'register' => "Join now"
+
 ];

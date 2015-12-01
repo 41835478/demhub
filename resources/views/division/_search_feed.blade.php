@@ -14,7 +14,7 @@
               @if(Auth::check())
                 target="_blank" href="{{ $item->get_link() }}"
               @else
-                href="" data-toggle="modal" data-target="#myModal"
+                href="" data-toggle="modal" data-target="#DEMHUBModal"
                 @endif
             style="color:#000">
             {{ $item->get_title() }}

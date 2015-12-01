@@ -8,46 +8,52 @@ elixir(function(mix) {
         .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
         .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
         .copy('resources/assets/js/frontend/plugins/ZeroClipboard.swf', 'public/js')
+        .copy('resources/assets/js/frontend/dashboardtest/utility.js', 'public/js/dashboardtest')
+        .copy('resources/assets/js/frontend/dashboardtest/demo.js', 'public/js/dashboardtest')
+        .copy('resources/assets/js/frontend/dashboardtest/main.js', 'public/js/dashboardtest')
 
         .sass([ // Process front-end stylesheets
-                'frontend/main.scss'
-            ], 'resources/assets/css/frontend/main.css')
+            'frontend/main.scss'
+        ], 'resources/assets/css/frontend/main.css')
         .styles([  // Combine pre-processed CSS files
-                'frontend/main.css'
-            ], 'public/css/frontend.css')
+            'frontend/main.css'
+        ], 'public/css/frontend.css')
         .scripts([ // Combine front-end scripts
-                'plugins.js',
-                'frontend/main.js',
-                'frontend/plugins/jquery.backstretch.min.js',
-                'frontend/fullscreen/init.js',
-                'frontend/forms/register.js',
-                'frontend/resource_filter/map.js',
-                'frontend/plugins/modernizr-2.8.3.min.js',
-                'frontend/plugins/jquery.zclip.js',
-                'frontend/plugins/jquery.maphilight.js',
-                'frontend/coming-soon/jquery.countdown.js', // coming-soon js
-                'frontend/coming-soon/placeholders.min.js', // coming-soon js
-                'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
-                'frontend/plugins/validator.js', // coming-soon js
-                'frontend/coming-soon/main.config.js', // coming-soon js
-                'frontend/coming-soon/shader.js', // coming-soon js
-                'frontend/Page-animate/page-specific-animation.js', //some animations for multiple pages
-                'frontend/coming-soon/demo.js' // coming-soon js
-            ], 'public/js/frontend.js')
+            'plugins.js',
+            'frontend/main.js',
+            'frontend/plugins/jquery.backstretch.min.js',
+            'frontend/fullscreen/init.js',
+            'frontend/forms/register.js',
+            'frontend/resource_filter/map.js',
+            'frontend/plugins/modernizr-2.8.3.min.js',
+            'frontend/plugins/jquery.zclip.js',
+            'frontend/plugins/jquery.maphilight.js',
+            'frontend/coming-soon/jquery.countdown.js', // coming-soon js
+            'frontend/coming-soon/placeholders.min.js', // coming-soon js
+            'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
+            'frontend/plugins/validator.js', // coming-soon js
+            'frontend/coming-soon/main.config.js', // coming-soon js
+            'frontend/coming-soon/shader.js', // coming-soon js
+            'frontend/Page-animate/page-specific-animation.js', //some animations for multiple pages
+            'frontend/coming-soon/demo.js', // coming-soon js
+            'frontend/divisions/feeds.js'
+        ], 'public/js/frontend.js')
+
         .sass([ // Process back-end stylesheets
             'backend/main.scss',
             'backend/skin.scss',
             'backend/plugin/toastr/toastr.scss'
         ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
-                'backend/main.css'
-            ], 'public/css/backend.css')
+            'backend/main.css'
+        ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
-                'plugins.js',
-                'backend/main.js',
-                'backend/plugin/toastr/toastr.min.js',
-                'backend/custom.js'
-            ], 'public/js/backend.js')
+            'plugins.js',
+            'backend/main.js',
+            'backend/plugin/toastr/toastr.min.js',
+            'backend/custom.js'
+        ], 'public/js/backend.js')
+
         .sass([ // Process core stylesheets
           'core/core.scss',
         ], 'resources/assets/css/core/core.css')
