@@ -65,12 +65,10 @@
             echo '""';
           }
           ?>>
-          <div style=
-          @if (isset($neededObject[0]))
-          "background-color:rgba(255, 255, 255, 0.6);height:175px;"
-          @else
-          ""
-          @endif
+          <div
+            @if (isset($neededObject[0]))
+              style="background-color:rgba(255, 255, 255, 0.6);height:175px;"
+            @endif
           >
             <h3 class=
             @if (isset($neededObject[0]))
@@ -83,7 +81,7 @@
                 @if(Auth::check())
                   target="_blank" href="{{ $item->source_url }}"
                 @else
-                  href="" data-toggle="modal" data-target="#myModal"
+                  href="" data-toggle="modal" data-target="#DEMHUBModal"
                 @endif
               style="color:#000">
               <?php
