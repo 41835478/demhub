@@ -18,7 +18,7 @@
 @section('fullscreen-content')
 	<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 		<h2>REGISTER NOW, IT'S FREE!</h2>
-			@include('forms.auth._autoregister')
+			@include('forms.auth._register_auto')
 		<br>
 	</div>
 

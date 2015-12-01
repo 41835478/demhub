@@ -64,18 +64,22 @@ a.btn-style-alt:active{
 	color:#000;
 	border-color:#ccc;
 }
+
+input.btn-style-alt,
 button.btn-style-alt{
 	background:#337ab7;
 	color:#FFF;
 	border-color:#ccc;
 }
 
+input.btn-style-alt:hover, input.btn-style-alt:focus,
 button.btn-style-alt:hover, a.btn-style-alt:focus{
 	background:#FFF;
 	color:#337ab7;
 	border-color:#ccc;
 }
 
+input.btn-style-alt:active,
 button.btn-style-alt:active{
 	background:#FFF;
 	color:#000;
