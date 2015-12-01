@@ -16,7 +16,7 @@
         <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item->title}}%0D%0A{{$item->source_url}}"
         target="_top" class="article_email">EMAIL</a></li>
         <li role="separator" class="divider"></li>
-        <li><button type="button" class="btn btn-style copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Double Click To Copy</span>
+        <li><button type="button" class="btn btn-style copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Article Link</span>
         <span class="copy-button-link" style="display:none">{{$item->source_url}}</span></button></li>
       </ul>
     @else
