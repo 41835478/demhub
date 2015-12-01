@@ -21,12 +21,12 @@
     <div class="form-group">
       <div class="col-md-12 control">
         Already a member?
-        <a href="{{url('auth/login')}}">
+        <a href="{{url('auth/login')}}" style="color:#60A0FF">
         Login Here
         </a>
       </div>
     </div>
 
-	</div>
+  </div>
 
 {!! Form::close() !!}
