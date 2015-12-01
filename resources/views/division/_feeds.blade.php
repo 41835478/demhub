@@ -205,9 +205,9 @@
                  data-url="{{$item->source_url}}">TWEET</a> </li>
                  <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item->title}}%0D%0A{{$item->source_url}}"
                    target="_top" class="article_email">EMAIL</a></li>
-                 <!-- <li role="separator" class="divider"></li>
+                 <li role="separator" class="divider"></li>
                  <li><button type="button" class="btn btn-style copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Double Click To Copy</span>
-                   <span class="copy-button-link" style="display:none">{{$item->source_url}}</span></button></li> -->
+                   <span class="copy-button-link" style="display:none">{{$item->source_url}}</span></button></li>
                 </ul>
               </div>
               <div class="btn-group">
@@ -272,9 +272,34 @@ $(".feedsbox").mouseenter(function() {
 //   //  $(element).dropdown("toggle");
 //   $('#copy-button').preventDefault();
 // }
-$(".copy-button").click(function(e){
-  $("#copy-button").preventDefault();
+$(".dropdown-toggle").mouseenter(function(){
+  $(this).attr("data-toggle","dropdown");
 });
+
+$(".dropdown-toggle").mouseleave(function(){
+  // e.preventDefault();
+  // $(this).removeClass("dropdown-toggle");
+  $(this).addClass("t0ggle");
+  $(this).attr("data-toggle","");
+  // $(Toggle).attr('class','');
+  $(".copy-button").zclip({
+	        path:"../js/ZeroClipboard.swf",
+	        copy:function(){return $("#copy-button-link").text();},
+			afterCopy:function(){
+				document.getElementById("copy-button-text").innerHTML=" Copied To Clipboard";
+        setTimeout(function(){
+          $('.t0ggle').attr("data-toggle","dropdown");
+          $('.t0ggle').click();
+          $('.t0ggle').removeClass('t0ggle');
+          // $(Toggle).addClass("dropdown-toggle");
+          // $(Toggle).attr("data-toggle","dropdown");
+        },500);
+			}
+	});
+});
+// document.getElementById("copy-button").addEventListener("click", function(event){
+//     event.preventDefault()
+// });
 
 $(".feedsbox").mouseleave(function() {
   copyLink=$(this).find(".copy-button");
@@ -286,20 +311,7 @@ $(".feedsbox").mouseleave(function() {
 
 });
 $(document).ready(function () {
-  $(".copy-button").zclip({
-	        path:"js/ZeroClipboard.swf",
-	        copy:function(){return $("#copy-button-link").text();},
-      beforeCopy: function () {
 
-                  console.log('hello');
-                },
-			afterCopy:function(){
-				document.getElementById("copy-button-text").innerHTML=" Copied To Clipboard";
-        setInterval(function(){
-        toggle.click();
-        },500);
-			}
-	});
   // $(".copy-button").click(function(){
   //     alert($("#copy-button-link").text());
   // });
