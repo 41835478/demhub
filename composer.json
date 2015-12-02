@@ -49,7 +49,7 @@
 		},
         "files": [
             "app/helpers.php",
-						"App/Providers/LinkedInProvider.php"
+						"https://bitbucket.org/demhub/demhub/raw/2d56ee7817d0d9bb79931633607a6831b44697d5/app/Providers/LinkedInProvider.php"
         ]
 	},
 	"autoload-dev": {
