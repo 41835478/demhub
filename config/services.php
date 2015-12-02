@@ -45,7 +45,7 @@ return [
 	'linkedin' => [
 		    'client_id'     => '779m8gco96zvki',
 		    'client_secret' => 'GZ6jXXJzhQrYD8Ll',
-				'redirect' => 'http://demhub.net/auth/login/linkedin',
+				'redirect' => env('APP_URL').'/auth/login/linkedin',
 	],
 	'github' => [
 		'client_id' => env('GITHUB_CLIENT_ID'),
