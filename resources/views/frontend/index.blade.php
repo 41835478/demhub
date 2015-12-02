@@ -18,20 +18,20 @@
 					<div class ="landing-slogan col-md-10">
 						THE DISASTER & EMERGENCY MANAGEMENT NETWORK
 					</div>
+					<br>
 
-				<br>
-				<div class="col-md-12" style="padding-left:10px">
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
-					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}"">JOIN NOW</a>
+					<div class="col-md-12" style="padding-left:10px">
+						<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">TRY THE BETA</a>
+						<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('auth/register')}}">{{ strtoupper(trans('labels.register_button')) }}</a>
+					</div>
 				</div>
-			</div>
-			<a class="col-md-offset-6 col-xs-offset-5" href="#welcome_about">
-					<h3 class="glyphicon glyphicon-chevron-down" style="text-align:center;padding-top:4%">
-				</h3>
-			</a>
+
+				<a class="col-md-offset-6 col-xs-offset-5" href="#welcome_about">
+					<h3 class="glyphicon glyphicon-chevron-down" style="text-align:center;padding-top:4%"></h3>
+				</a>
 			</div>
 
-			<div class="" style="">
+			<div class="">
 				<div id="welcome_about" class="row">
 
 					<div class="col-md-12">
@@ -78,48 +78,36 @@
 				</div>
 			</div>
 
-			{{-- <div id="welcome_secondary_text" class="row" style="background: url('/images/backgrounds/welcome.jpg') no-repeat fixed;										-webkit-background-size: cover;
-														-moz-background-size: cover;
-														-o-background-size: cover;
-														background-size: cover;
-														overflow: hidden;"> --}}
 			<div id="welcome_secondary_text" class="row">
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">SIX DIVISIONS</a>
 					</div>
 
-
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 
 					<div class="row">
-					<div class="col-xs-12 ">
-						@foreach($divisions as $div)
-							<a href="{{url('division', $div->slug)}}">
-								<div class="division-landing-box col-md-2">
-									<div id="division_{{$div->id}}">
-										<div class="icon division-{{$div->slug}} landing-icon x-lrg">
-											<!-- <img src ="/images/icons/division-0{{$div->id}}.svg"> -->
+						<div class="col-xs-12">
+							@foreach($divisions as $div)
+								<a href="{{url('division', $div->slug)}}">
+									<div class="division-landing-box col-md-2">
+										<div id="division_{{$div->id}}">
+											<div class="icon division-{{$div->slug}} landing-icon x-lrg"></div>
+											<h3 class="division-landing-name">{{$div->name}}</h3>
 										</div>
-										<h3 class="division-landing-name"
-
-										>{{$div->name}}</h3>
+										<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
 									</div>
-									<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
-								</div>
-							</a>
-						@endforeach
+								</a>
+							@endforeach
+						</div>
 					</div>
 				</div>
-				</div>
 
-				<div id="welcome_tertiary_text" class="row" >
+				<div id="welcome_tertiary_text" class="row">
 					<div class="col-md-12 text-center">
-						<h2 class="feedback-h2">Help us develop the world's online DEM network.<br> Test DEMHUBâ€™s beta and give us your feedback.</h2>
-
-						<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>REGISTER</a>
-
+						<h2 class="feedback-h2">Help us develop the world's online DEM network.<br> Test DEMHUB's beta and give us your feedback.</h2>
+						<a type="button" class="btn btn-default btn-lg btn-style-w" href={{url('auth/register')}}>{{ strtoupper(trans('labels.register_button')) }}</a>
 					</div>
 				</div>
 

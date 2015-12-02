@@ -65,12 +65,10 @@
             echo '""';
           }
           ?>>
-          <div style=
-          @if (isset($neededObject[0]))
-          "background-color:rgba(255, 255, 255, 0.6);height:175px;"
-          @else
-          ""
-          @endif
+          <div
+            @if (isset($neededObject[0]))
+              style="background-color:rgba(255, 255, 255, 0.6);height:175px;"
+            @endif
           >
             <h3 class=
             @if (isset($neededObject[0]))
@@ -83,7 +81,7 @@
                 @if(Auth::check())
                   target="_blank" href="{{ $item->source_url }}"
                 @else
-                  href="" data-toggle="modal" data-target="#myModal"
+                  href="" data-toggle="modal" data-target="#DEMHUBModal"
                 @endif
               style="color:#000">
               <?php
@@ -206,7 +204,7 @@
                  <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item->title}}%0D%0A{{$item->source_url}}"
                    target="_top" class="article_email">EMAIL</a></li>
                  <li role="separator" class="divider"></li>
-                 <li><button type="button" class="btn btn-style copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Double Click To Copy</span>
+                 <li><button type="button" class="btn btn-style copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Article Link</span>
                    <span class="copy-button-link" style="display:none">{{$item->source_url}}</span></button></li>
                 </ul>
               </div>

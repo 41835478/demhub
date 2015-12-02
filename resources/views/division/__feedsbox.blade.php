@@ -14,15 +14,13 @@
 
       @forelse($articleDivs as $div)
         <a style="width:{{$width}}%; margin-left:{{$marginLeft}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"></a>
-
-          <!-- $marginLeft += $width; -->
-
+        <?php $marginLeft += $width; ?>
       @empty
         <div class="color-label division_{{$currentDivision->slug}}"></div>
       @endforelse
 
       <div class="inner-feedsbox">
-      <div class="article-background" style="">
+      <div class="article-background">
       <div style=
       @if (isset($neededObject[0]))
       "background-color:rgba(255, 255, 255, 0.6);height:175px;"
@@ -41,7 +39,7 @@
             @if(Auth::check())
               target="_blank" href="{{ $item->source_url }}"
             @else
-              href="" data-toggle="modal" data-target="#myModal"
+              href="" data-toggle="modal" data-target="#DEMHUBModal"
             @endif
           style="color:#000">
           <?php
@@ -57,30 +55,26 @@
 
         <span class=
         @if (isset($neededObject[0]))
-        "article-title-box"
+          "article-title-box"
         @endif
         "" style="font-size:82%;color:#777777">
           {{ date_format(new DateTime($item->publish_date), 'j F Y | g:i a') }}
         </span>
 
-        <span class=
-        @if (isset($neededObject[0]))
-        "article-title-box"
-        @endif
-        "" style="font-size:82%;color:#000;padding-left:5%">
-        <?php
-          $parse=parse_url($item->source_url);
-          $host=$parse['host'];
-          $host=substr($host,4);
+        <span
+          @if (isset($neededObject[0]))
+            class= "article-title-box"
+          @endif
+            style="font-size:82%;color:#000;padding-left:5%">
+          <?php
+            $parse=parse_url($item->source_url);
+            $host=$parse['host'];
+            $host=substr($host,4);
 
-          if (substr_count($host,".")>1){
-            // $period=strpos($host,".");
-            // $host=substr($host,$period+1);
-          }
-          else {
-          echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
-          }
-        ?>
+            if (substr_count($host,".") <= 1){
+              echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+            }
+          ?>
         </span>
 
       </div>
