@@ -50,7 +50,7 @@ class AuthController extends Controller
      */
     public function getAutoregister()
     {
-        return view('frontend.auth.autoregister')
+        return view('frontend.auth.register')
                     ->withInput(Input::all());
     }
 

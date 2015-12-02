@@ -46,12 +46,12 @@
                     {{ trans('forum::base.newest_thread') }}:
                     <a href="{{ $subcategory->newestThread->route }}">
                         {{ $subcategory->newestThread->title }}
-                        ({{ $subcategory->newestThread->author->user_name }})</a>
+                        ({{ $subcategory->newestThread->author->first_name }} {{ $subcategory->newestThread->author->last_name }})</a>
                     <br>
                     {{ trans('forum::base.last_post') }}:
                     <a href="{{ $subcategory->latestActiveThread->lastPost->route }}">
                         {{ $subcategory->latestActiveThread->title }}
-                        ({{ $subcategory->latestActiveThread->lastPost->author->user_name }})</a>
+                        ({{ $subcategory->latestActiveThread->lastPost->author->first_name }} {{ $subcategory->newestThread->author->last_name }})</a>
 				</div>
                 @endif
             </td>

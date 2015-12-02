@@ -10,7 +10,7 @@
       </div>
 
       <div class="modal-body">
-        @include('forms.auth._register_single')
+        @include('forms.auth._register')
       </div>
 
     </div><!-- /.modal-content -->

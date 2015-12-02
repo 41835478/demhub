@@ -22,9 +22,16 @@
 		<br>
 	</div>
 
-	<script>
-		$("input#password").focus(function(){
-			setTimeout(function(){updateForm()},600);
-		});
-	</script>
+	@if(Request::url() == url('auth/register'))
+		<script>
+			$("input#password").focus(function(){
+				setTimeout(function(){updateForm()},600);
+			});
+		</script>
+	@elseif(Request::url() == url('auth/autoregister'))
+		<script charset="utf-8">
+			document.getElementById("password").focus();
+		</script>
+  @endif
+
 @endsection

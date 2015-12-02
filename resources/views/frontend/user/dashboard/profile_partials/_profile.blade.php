@@ -21,9 +21,9 @@
           </div>
 
           <div class="form-group">
-              <div class="col-lg-3">
-                  	<button type="submit" class="btn btn-style-alt">SAVE</button>
-              </div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn btn-style-alt">SAVE</button>
+            </div>
           </div>
 
         </div>
@@ -47,7 +47,7 @@
           <div class="form-group">
             {!! Form::label('user_name', 'Username', ['class' => 'col-lg-3 control-label']) !!}
             <div class="col-lg-8">
-              {!! Form::text('user_name', $user->user_name, ['class' => 'form-control']) !!}
+              {!! Form::text('user_name', $user->user_name, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
             </div>
           </div>
 

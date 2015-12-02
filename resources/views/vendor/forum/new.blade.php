@@ -36,7 +36,7 @@
 							<a href="{{ $thread->route }}">{{ $thread->title }}</a>
 						</p>
 						<p>
-                            {{ $thread->author->user_name }}
+            	{{ $thread->author->first_name }} {{ $thread->author->last_name }}
 							<span class="text-muted">(<em><a href="{{ $thread->category->route }}">{{ $thread->category->title }}</a></em>, {{ $thread->posted }})</span>
 						</p>
 					</td>
@@ -44,7 +44,7 @@
 					    {{ $thread->replyCount }}
 					</td>
 					<td class="text-right">
-					    {{ $thread->lastPost->author->user_name }}
+					  {{ $thread->lastPost->author->first_name }} {{ $thread->lastPost->author->last_name }}
 						<p class="text-muted">({{ $thread->lastPost->posted }})</p>
 						<a href="{{ URL::to( $thread->lastPostRoute ) }}" class="btn btn-primary btn-xs">{{ trans('forum::base.view_post') }} &raquo;</a>
 					</td>

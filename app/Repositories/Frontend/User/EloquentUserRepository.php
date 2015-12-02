@@ -274,7 +274,7 @@ class EloquentUserRepository implements UserContract {
 			return $unique_user_name;
 		} else {
 			// This function is rarely (or pretty much never) recursively called
-			// Only recursively available in case of extreme case
+			// Only recursively available in extreme case
 			return $this->generateUniqueUserName($unique_user_name, $user_name_offset + 1);
 		}
 	}
