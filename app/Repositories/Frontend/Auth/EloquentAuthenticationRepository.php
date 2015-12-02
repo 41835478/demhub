@@ -103,10 +103,11 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	 */
 	public function loginThirdParty($request, $provider) {
 		if (! $request) return $this->getAuthorizationFirst($provider);
+
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 		$this->auth->login($user, true);
 		event(new UserLoggedIn($user));
-		return redirect()->route('frontend.dashboard');
+		return redirect()->route('userhome');
 	}
 
 	/**
@@ -126,6 +127,7 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 			];
 			return $this->socialite->driver($provider)->scopes($scopes)->redirect();
 		}
+
 		return $this->socialite->driver($provider)->redirect();
 	}
 
@@ -136,6 +138,14 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	public function getSocialUser($provider) {
 		return $this->socialite->driver($provider)->user();
 	}
+	public function execute($request, $listener, $provider) {
+	      if (!$request) return $this->getAuthorizationFirst($provider);
+	      $user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider));
+
+	      $this->auth->login($user, true);
+
+	      return $listener->userHasLoggedIn($user);
+	   }
 
 	/**
 	 * @param $token

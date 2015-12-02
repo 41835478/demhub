@@ -21,6 +21,9 @@
 		{{-- @include('forms.auth._register_old') --}}
 		@include('forms.auth._register')
 		<br>
+		<a href="{{url('auth/login/linkedin')}}">
+		<img src="/images/icons/Sign-In-Large---Default.png">
+		</a>
 	</div>
 
 	<script>

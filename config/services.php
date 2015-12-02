@@ -42,7 +42,11 @@ return [
 	 * http://localhost/public/auth/login/SERVICE
 	 * Where service can github, facebook, twitter, or google
 	 */
-
+	'linkedin' => [
+		    'client_id'     => '779m8gco96zvki',
+		    'client_secret' => 'GZ6jXXJzhQrYD8Ll',
+				'redirect' => 'http://demhub.net/auth/login/linkedin',
+	],
 	'github' => [
 		'client_id' => env('GITHUB_CLIENT_ID'),
 		'client_secret' => env('GITHUB_CLIENT_SECRET'),

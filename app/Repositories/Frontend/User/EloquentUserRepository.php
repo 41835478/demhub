@@ -6,6 +6,7 @@ use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use Socialize;
 
 /**
  * Class EloquentUserRepository
@@ -41,7 +42,9 @@ class EloquentUserRepository implements UserContract {
 	 * @param bool $provider
 	 * @return static
 	 */
-	public function create($data, $provider = false) {
+	public function create($data, $provider=false) {
+
+
 		$unique_user_name = $this->generateUniqueUserName($data['first_name'].' '.$data['last_name']);
 
 		$user = User::create([
@@ -81,8 +84,13 @@ class EloquentUserRepository implements UserContract {
 
 		if(! $user) {
 			$user = $this->create([
-				'name' => $data->name,
+				'first_name' => $data->user['firstName'],
+				'last_name' => $data->user['lastName'],
 				'email' => $data->email,
+				'division' => $data->user['industry'],
+				'location' => $data->user['location']['name'],
+				'job_title' => $data->user['positions']['values']['0']['title'],
+				'organization_name' => $data->user['positions']['values']['0']['company']['name'],
 			], true);
 		}
 
@@ -117,18 +125,34 @@ class EloquentUserRepository implements UserContract {
 	 */
 	public function checkIfUserNeedsUpdating($provider, $providerData, $user) {
 		//Have to first check to see if name and email have to be updated
+
 		$userData = [
+			'first_name' => $providerData->user['firstName'],
+			'last_name' => $providerData->user['lastName'],
 			'email' => $providerData->email,
-			'name' => $providerData->name,
+			'division' => $providerData->user['industry'],
+			'location' => $providerData->user['location']['name'],
+			'job_title' => $providerData->user['positions']['values']['0']['title'],
+			'organization_name' => $providerData->user['positions']['values']['0']['company']['name'],
 		];
 		$dbData = [
+			'first_name' => $user->first_name,
+			'last_name' => $user->last_name,
 			'email' => $user->email,
-			'name' => $user->name,
+			'division' => $user->division,
+			'location' => $user->location,
+			'job_title' => $user->job_title,
+			'organization_name' => $user->organization_name,
 		];
 		$differences = array_diff($userData, $dbData);
 		if (! empty($differences)) {
+			$user->first_name = $providerData->user['firstName'];
+			$user->last_name = $providerData->user['lastName'];
 			$user->email = $providerData->email;
-			$user->name = $providerData->name;
+			$user->division = $providerData->user['industry'];
+			$user->location = $providerData->user['location']['name'];
+			$user->job_title = $providerData->user['positions']['values']['0']['title'];
+			$user->organization_name = $providerData->user['positions']['values']['0']['company']['name'];
 			$user->save();
 		}
 
