@@ -119,6 +119,44 @@ alias .....='cd ../../../..'
 
 - `vim ~/.bash_profile` (The above snippet should be added at the top of .bash_profile)
 - `vim ~/.homestead/aliases` (The above snippet should be added at the top of aliases)
+
+```bash
+#!/bin/sh
+
+# If you would like to do some extra provisioning you may
+# add any commands you wish to this file and they will
+# be run after the Homestead machine is provisioned.
+
+echo('Updating app-get')
+apt-get update
+
+echo('Installing Java, Firefox, and Xvfb')
+apt-get install -y openjdk-7-jre firefox xvfb
+
+echo('Installng Selenium')
+npm install -g selenium-standalone
+selenium-standalone install
+
+echo('Installing Elasticsearch Public Signing Key')
+wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+
+echo('Adding repository')
+echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+
+echo('Updating Aptitude')
+sudo apt-get update
+
+echo('Installing Elasticsearch')
+sudo apt-get install elasticsearch
+
+echo('Setting Elasticsearch to run on startup')
+update-rc.d elasticsearch defaults 95 10
+
+echo('Starting Elasticsearch server')
+/etc/init.d/elasticsearch start
+```
+
+- `vim ~/.homestead/after.sh` (The above snippet should replace the contents of after.sh)
 - `echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bash_profile`
 - `source ~/.bash_profile`
 - `homestead init`
@@ -166,6 +204,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.ssh.forward_x11 = true
+    config.vm.network "forwarded_port", guest: 9200, host: 62000
 end
 ```
 - Add `config.ssh.forward_x11 = true` as indicated in the above snippet
