@@ -87,8 +87,9 @@
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 
-					<div class="row">
-						<div class="col-xs-12">
+
+					<div class="splash-row">
+
 							@foreach($divisions as $div)
 								<a href="{{url('division', $div->slug)}}">
 									<div class="division-landing-box col-md-2">
@@ -100,9 +101,9 @@
 									</div>
 								</a>
 							@endforeach
-						</div>
+				
 					</div>
-				</div>
+
 
 				<div id="welcome_tertiary_text" class="row">
 					<div class="col-md-12 text-center">

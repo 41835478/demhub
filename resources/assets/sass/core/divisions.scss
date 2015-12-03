@@ -10,44 +10,24 @@
 
 @media (min-width: 992px){
     .division-landing-name {
-      margin-top:-10px;
+      font-size: 20px;
     }
 
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .division-landing-name {
-    font-size: 18px;
-  }
-  div.division-landing-box {
-    max-height: 170px !important;
+    font-size: 16px;
   }
 }
 
-@media (max-width: 991px) {
-  .division-landing-name {
-    font-size: 22px;
-  }
-  div.division-landing-box  {
-    padding-top: 17px !important;
-    height:100px;
-  }
-  .mouse-scroll,
-  .mouse {
-    margin-top:5% ;
-    margin-left:23% ;
-  }
-  .fix-division-bar{
-    position:absolute !important;
-  }
-}
 
 div.division-landing-box {
-    max-height: 220px;
-    min-height: 110px;
+    height:190px;
     color:#fff;
     display: table-cell;
+    position: relative;
     // max-width: 600px;
-    padding:10px 10px 10px 10px;
+    padding:15px 15px 15px 15px;
     -webkit-transition: width 2s; /* Safari */
     transition: width 2s;
     &:hover {
@@ -80,6 +60,14 @@ div.division-landing-box {
 
   .division-landing-name {
     margin: 15% auto;
+    padding:10px 10px 10px 10px;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 100;
+    position:absolute;
+    width:100%;
+    height:100%;
+    vertical-align: middle;
   }
 
   div.division-landing-color{
@@ -111,20 +99,22 @@ div.auth-modal-email {
   /* For mobile phones and tablets: */
   .division-landing-name {
     text-align: center;
-    margin-top:5% !important;
+    margin-top:auto !important;
     position:absolute;
+    font-size: 19px;
   }
   div.division-landing-box {
-    width:45%;
+    width:47%;
     height:70px;
     display: inline-block;
-    margin:20px 0px 20px 30px;
+    margin-bottom: 5px;
     }
 .landing-icon{
     display: none;
     visibility: hidden;
     }
 }
+
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -134,7 +124,6 @@ div.auth-modal-email {
     margin:5px 20px 5px 20px;
     }
     .division-landing-name {
-      margin-top:2% !important;
       position:absolute;
     }
 }
