@@ -41,12 +41,12 @@ get('resources', 'InfoResourceController@index');
  * Publication Routes
  */
 // resource('publication', 'PublicationController');
-get('publications', 'PublicationController@index')->name('publications');
-get('publication/new', 'PublicationController@create')->name('new_publication');
-post('publication/store', 'PublicationController@store')->name('store_publication');
-get('publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
-patch('publication/{id}', 'PublicationController@update')->name('update_publication');
-get('publication/{id}', 'PublicationController@show')->name('show_publication');
+get('my_publications', 'PublicationController@index')->name('my_publications');
+get('my_publication/new', 'PublicationController@create')->name('new_publication');
+post('my_publication/store', 'PublicationController@store')->name('store_publication');
+get('my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
+patch('my_publication/{id}', 'PublicationController@update')->name('update_publication');
+get('my_publication/{id}', 'PublicationController@show')->name('show_publication');
 
 /**
  * These frontend controllers require the user to be logged in

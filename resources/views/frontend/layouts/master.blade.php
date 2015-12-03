@@ -27,7 +27,7 @@
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
     ?>
 
-    @if(Request::url() === url('dashboard'))
+    @if(Request::url() === url('dashboard') || strpos(Request::url(), "publication")!==false)
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
     @endif
 
@@ -38,7 +38,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    
+
 
   </head>
 

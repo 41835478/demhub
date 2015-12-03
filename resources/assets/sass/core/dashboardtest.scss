@@ -17488,7 +17488,7 @@ body.sidebar-collapsed #sidebar:before {
 .navbar {
   z-index: 1030;
   margin-bottom: 0;
-  height: 60px;
+  height: 50px;
   color: #666;
   background-color: #FFF;
   border-radius: 0;
@@ -17517,10 +17517,8 @@ body.sidebar-collapsed #sidebar:before {
   color: #666;
   font-size: 13px;
   font-weight: 600;
-  padding-top: 20px;
   padding-bottom: 20px;
-  height: 59px;
-  max-height: 59px;
+  height: 50px;
 }
 .navbar .nav > li.open > a,
 .navbar .nav > li:hover > a,

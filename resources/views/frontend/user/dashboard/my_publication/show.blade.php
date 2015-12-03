@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  <a class="btn btn-small btn-success" href="{{ URL::to('publications') }}">Show All Publications</a>
+  <a class="btn btn-small btn-success" href="{{ URL::to('my_publications') }}">Show All Publications</a>
 
   <table class="table table-striped table-bordered">
       <tr>
@@ -17,7 +17,7 @@
               <!-- we will add this later since its a little more complicated than the other two buttons -->
 
               <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-              <a class="btn btn-small btn-info" href="{{ URL::to('publication/' . $publication->id . '/edit') }}">Edit this Publication</a>
+              <a class="btn btn-small btn-info" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}">Edit this Publication</a>
 
           </td>
       </tr>

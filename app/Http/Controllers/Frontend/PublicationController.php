@@ -33,7 +33,7 @@ class PublicationController extends Controller
       $publications = Auth::user()->publications;
 
       return view(
-        'frontend.user.dashboard.publication.index', compact(['publications'])
+        'frontend.user.dashboard.my_publication.index', compact(['publications'])
       );
     }
 
@@ -44,7 +44,7 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        return view('frontend.user.dashboard.publication.new');
+        return view('frontend.user.dashboard.my_publication.new');
     }
 
     /**
@@ -58,7 +58,7 @@ class PublicationController extends Controller
         $publication = new Publication($request->all());
         Auth::user()->publications()->save($publication);
 
-        return redirect('publications')
+        return redirect('my_publications')
         ->withFlashSuccess("Successfully created publication!");
     }
 
@@ -72,7 +72,7 @@ class PublicationController extends Controller
     {
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.publication.show', compact(['publication'])
+        'frontend.user.dashboard.my_publication.show', compact(['publication'])
       );
     }
 
@@ -86,7 +86,7 @@ class PublicationController extends Controller
     {
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.publication.edit', compact(['publication'])
+        'frontend.user.dashboard.my_publication.edit', compact(['publication'])
       );
     }
 
@@ -102,7 +102,7 @@ class PublicationController extends Controller
       $publication = Publication::findOrFail($id);
       $publication->fill($request->all())->save();
 
-      return redirect('publications')
+      return redirect('my_publications')
       ->withFlashSuccess("Successfully created publication!");
     }
 
