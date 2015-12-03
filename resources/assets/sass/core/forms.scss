@@ -1,5 +1,15 @@
-@media (min-width: 768px) and (max-width: 991px) {
-  .control-label {
-    text-align: left !important;
-  }
-}
+//
+//  =========================================================
+//  DEMHUB
+//  Sass Stylesheet
+//  =========================================================
+//
+//  =========================================================
+//  Forms
+//  =========================================================
+//
+@import "forms/general";
+@import "forms/register";
+@import "forms/login";
+@import "forms/reset";
+@import "forms/password";

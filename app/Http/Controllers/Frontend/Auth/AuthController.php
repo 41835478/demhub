@@ -8,6 +8,7 @@ use App\Http\Requests\Frontend\Access\LoginRequest;
 use App\Http\Requests\Frontend\Access\RegisterRequest;
 use App\Repositories\Frontend\Auth\AuthenticationContract;
 use Input;
+use Socialite;
 
 /**
  * Class AuthController
@@ -50,7 +51,7 @@ class AuthController extends Controller
      */
     public function getAutoregister()
     {
-        return view('frontend.auth.autoregister')
+        return view('frontend.auth.register')
                     ->withInput(Input::all());
     }
 
@@ -115,7 +116,7 @@ class AuthController extends Controller
 
             if ($throttles)
                 $this->clearLoginAttempts($request);
-
+            // return $authenticateUser->execute($request->all(), $this, $provider);
             return redirect()->intended('userhome');
         } catch (GeneralException $e) {
             // If the login attempt was unsuccessful we will increment the number of attempts
@@ -126,6 +127,90 @@ class AuthController extends Controller
 
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
+    }
+    public function redirectToProvider()
+    {
+    return Socialize::with('linkedin')->scopes(['r_basicprofile'])->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+    $user = Socialize::with('linkedin')->user();
+
+    $user->token;
+
+    $user->getId();
+    $user->getNickname();
+    $user->getName();
+    $user->getEmail();
+    $user->getAvatar();
+    }
+    public function loginWithLinkedin() {
+    return Socialite::with('linkedin')->redirect();
+    }
+    public function loginWithLinkedinOLD() {
+	 	// $linkedin = array(
+	 	// 				'client_id'     => '785y5med7h97c5',
+			//             'redirect_uri'   =>  'http://localhost/demhub_v3/public/linkedin',
+			//             'scope'         => 'r_basicprofile&r_emailaddress&r_contactinfo&r_fullprofile&r_network&rw_groups',
+			//             'client_secret' => 'v911EVQopiSlQBCz',
+	 	// 			);
+	 	// $url = 'https://www.linkedin.com/uas/oauth2/authorization?
+	 	// 			response_type=code&
+	 	// 			client_id=785y5med7h97c5&
+	 	// 			redirect_uri=http://localhost/demhub_v3/public&
+	 	// 			state=190231278N&
+	 	// 			scope=r_basicprofile&r_emailaddress&r_fullprofile&r_network&rw_groups';
+
+	 	// $url = preg_replace('/\s+/', '', $url);
+
+	 	// $code = Input::get('code');
+	 	// $state = Input::get('state');
+	 	// if (!$code){
+	 	// 	return Redirect::to($url);
+	 	// }
+	 	// else {
+	 	// 	if ($state === '190231278N'){
+	 	// 		if ($code){
+
+	 	// 		}
+	 	// 	}
+	 	// 	else {
+	 	// 		return Redirect::route('login');
+	 	// 	}
+	 	// }
+	 	$provider = new Linkedin(Config::get('social.linkedin'));
+	    if ( !Input::has('code')) {
+	        // If we don't have an authorization code, get one
+	        $provider->authorize();
+	    }
+	    else {
+	        try {
+	            // Try to get an access token (using the authorization code grant)
+	            $t = $provider->getAccessToken('authorization_code', array('code' => Input::get('code')));
+	            try {
+	                // We got an access token, let's now get the user's details
+	                $userDetails = $provider->getUserDetails($t);
+	                $resource = '/v1/people/~:(firstName,lastName,pictureUrl,positions,educations,threeCurrentPositions,threePastPositions,dateOfBirth,location)';
+	                $params = array('oauth2_access_token' => $t->accessToken, 'format' => 'json');
+	                $url = 'https://api.linkedin.com' . $resource . '?' . http_build_query($params);
+	                $context = stream_context_create(array('http' => array('method' => 'GET')));
+	                $response = file_get_contents($url, false, $context);
+	                $data = json_decode($response);
+	                echo '<pre>';
+	                print_r($data);
+	                echo '/<pre>';
+	                //return Redirect::to('/')->with('data',$data);
+	            }
+	            catch (Exception $e) {
+	                echo 'Unable to get user details';
+	            }
+
+	        }
+	        catch (Exception $e) {
+	            echo 'Unable to get access token';
+	        }
+	    }
     }
 
     /**

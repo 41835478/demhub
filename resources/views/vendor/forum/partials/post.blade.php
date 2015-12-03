@@ -1,6 +1,6 @@
 <tr id="post-{{ $post->id }}">
 	<td>
-		<img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> <strong>{!! $post->author->user_name !!}</strong>
+		<img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> <strong>{!! $post->author->first_name !!} {!! $post->author->last_name !!}</strong>
 	</td>
 	<td>
 		<?php

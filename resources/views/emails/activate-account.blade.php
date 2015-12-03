@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<div>
-			<h3>Hello, {{$user_name}}!</h3>
+			<h3>Hello, {{$first_name}}!</h3>
 
 				<p>Your DEMHUB account has been activated.  You can now access your acccount. </p>
 				<p>Confirm your account here: {{ url('account/confirm/' . $token) }}</p>

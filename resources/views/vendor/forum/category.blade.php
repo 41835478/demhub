@@ -27,13 +27,13 @@
 					{{ trans('forum::base.newest_thread') }}:
 					<a href="{{ $subcategory->newestThread->route }}">
 						{{ $subcategory->newestThread->title }}
-						({{ $subcategory->newestThread->author->user_name }})
+						({{ $subcategory->newestThread->author->first_name }} {{ $subcategory->newestThread->author->last_name }})
 					</a>
 					<br>
 					{{ trans('forum::base.last_post') }}:
 					<a href="{{ $subcategory->latestActiveThread->lastPost->route }}">
 						{{ $subcategory->latestActiveThread->title }}
-						({{ $subcategory->latestActiveThread->lastPost->author->user_name }})
+						({{ $subcategory->latestActiveThread->lastPost->author->first_name }} {{ $subcategory->newestThread->author->last_name }})
 					</a>
 				@endif
 			</td>
@@ -85,7 +85,7 @@
 						<p class="lead">
 							<a href="{{ $thread->route }}">{{ $thread->title }}</a>
 						</p>
-						<p>{{ $thread->author->user_name }} <span class="text-muted">({{ $thread->posted }})</span></p>
+						<p>{{ $thread->author->first_name }} {{ $thread->author->last_name }} <span class="text-muted">({{ $thread->posted }})</span></p>
 					</td>
 					<td class="text-right">
 							{{ $thread->viewCount }}

@@ -174,8 +174,8 @@ class ArticleController extends Controller
 	public function report(Request $request)
 	{
 		$id = 	    $request->input('article_id', 0);
-		$reason = 	$request->input('reason', null);
-		$data = 	$request->input('data', null);
+		$reason = 	$request->input('reason', null); //string
+		$data = 	$request->input('data', null); //by admin or user comments // future use
 		$result['status'] = '';
 		$result['msg'] = '';
 

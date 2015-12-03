@@ -3,7 +3,7 @@
   {!! HTML::script("js/dashboardtest/utility.js") !!}
   {!! HTML::script("js/dashboardtest/demo.js") !!}
   {!! HTML::script("js/dashboardtest/main.js") !!}
-  
+
   <script type="text/javascript">
     jQuery(document).ready(function() {
 
@@ -11,7 +11,6 @@
 
       // Init Demo JS
       Demo.init();
-
 
       // Init Theme Core
       Core.init();

@@ -1,0 +1,21 @@
+@media (min-width: 768px) and (max-width: 991px) {
+  .control-label {
+    text-align: left !important;
+  }
+}
+
+.provider-header-text-or:before, .provider-header-text-or:after {
+   background-color: rgba(255,255,255,0.2);
+   content: "";
+   display: inline-block;
+   height: 1px;
+   position: relative;
+   vertical-align: middle;
+   width: 40%;
+}
+.provider-header-text-or {
+   font-size: 20px;
+   overflow: hidden;
+   text-align: center;
+   margin-top: 0px;
+}

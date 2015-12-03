@@ -20,6 +20,7 @@ $router->group(['namespace' => 'Auth'], function () use ($router)
 	 */
 	$router->group(['middleware' => 'guest'], function () use ($router)
 	{
+		// get('auth/linkedin', 'AuthController@loginWithLinkedin')->name('linkedin-login');
 		get('auth/login/{provider}', 'AuthController@loginThirdParty')->name('auth.provider');
 		get('account/confirm/{token}', 'AuthController@confirmAccount')->name('account.confirm');
 		get('account/confirm/resend/{user_id}', 'AuthController@resendConfirmationEmail')->name('account.confirm.resend');

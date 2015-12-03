@@ -22,7 +22,7 @@ return [
     'login' => 'Log In',
     'logout' => 'Logout',
     'macros' => 'Macros',
-    'register' => 'Register',
+    'register' => 'Join Now',
     'button' => 'Button',
 
 ];

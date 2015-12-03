@@ -17,26 +17,28 @@
 
 @section('fullscreen-content')
 	<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-		<h2>REGISTER NOW, IT'S FREE!</h2>
-		{{-- @include('forms.auth._register_old') --}}
-		@include('forms.auth._register')
+		<h2>{{ strtoupper(trans('forms.register_title')) }}</h2>
+		<a class="btn btn-primary btn-block btn-linkedin" href="{{url('auth/login/linkedin')}}" style="font-size: 15px; margin-bottom: 20px;" tabindex="6">
+    	<i class="fa fa-linkedin" style="font-size: 1.8em; margin-right: 5px; padding-right: 10px; border-right: 1px solid #ffffff ;"></i>
+      <span style="text-transform: none;">via LinkedIn</span>
+		</a>
+		<h2 class="provider-header-text-or">OR</h2>
+			@include('forms.auth._register')
 		<br>
+
+
 	</div>
 
-	<script>
-$("input#password").focus(function(){
-	setTimeout(function(){updateForm()},600);
+	@if(Request::url() == url('auth/register'))
+		<script>
+			$("input#password").focus(function(){
+				setTimeout(function(){updateForm()},600);
+			});
+		</script>
+	@elseif(Request::url() == url('auth/autoregister'))
+		<script charset="utf-8">
+			document.getElementById("password").focus();
+		</script>
+  @endif
 
-});
-
-
-
-		// $(document).ready(function() {
-		//     $('#form-part-1').keydown(function(event) {
-		//         if (event.keyCode == 13) {
-		//             pageUpdate();
-		//          }
-		//     });
-		// });
-	</script>
 @endsection
