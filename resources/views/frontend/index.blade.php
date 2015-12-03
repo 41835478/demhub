@@ -93,8 +93,8 @@
 					<p>&nbsp;</p>
 					<p>&nbsp;</p>
 
-					<div class="row">
-					<div class="col-xs-12 ">
+					<div class="splash-row">
+
 						@foreach($divisions as $div)
 							<a href="{{url('division', $div->slug)}}">
 								<div class="division-landing-box col-md-2">
@@ -102,15 +102,13 @@
 										<div class="icon division-{{$div->slug}} landing-icon x-lrg">
 											<!-- <img src ="/images/icons/division-0{{$div->id}}.svg"> -->
 										</div>
-										<h3 class="division-landing-name"
-
-										>{{$div->name}}</h3>
+										<div class="division-landing-name">{{$div->name}}</div>
 									</div>
 									<div class= "division-landing-color"style="background-color: #{{$div->bg_color}};"></div>
 								</div>
 							</a>
 						@endforeach
-					</div>
+
 				</div>
 				</div>
 
