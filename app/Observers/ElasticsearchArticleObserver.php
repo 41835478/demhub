@@ -11,12 +11,12 @@ class ElasticsearchArticleObserver
             'index' => 'news',
             'type' => 'articles',
             'id' => $article->id,
-            // 'body' => $article->toArray() // call to add all fields
-            'body' => [
-              'title' => $article->title,
-              'excerpt' => $article->excerpt,
-              'keywords' => $article->keywords
-            ]
+            'body' => $article->toArray() // call to add all fields
+            // 'body' => [ // call to add specific fields
+            //   'title' => $article->title,
+            //   'excerpt' => $article->excerpt,
+            //   'keywords' => $article->keywords
+            // ]
         ]);
     }
 
@@ -26,12 +26,12 @@ class ElasticsearchArticleObserver
             'index' => 'news',
             'type' => 'articles',
             'id' => $article->id,
-            // 'body' => $article->toArray() // call to add all fields
-            'body' => [
-              'title' => $article->title,
-              'excerpt' => $article->excerpt,
-              'keywords' => $article->keywords
-            ]
+            'body' => $article->toArray() // call to add all fields
+            // 'body' => [ // call to add specific fields
+            //   'title' => $article->title,
+            //   'excerpt' => $article->excerpt,
+            //   'keywords' => $article->keywords
+            // ]
         ]);
     }
 
