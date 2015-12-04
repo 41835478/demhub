@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "985b996215006980c2234d2d1693eb53",
-    "content-hash": "bc6afe70bae0e569a9a2e1a85d40bbe7",
+    "hash": "ee7d109630b7117962e92f0abd7fe21e",
+    "content-hash": "da4ea5a14023ad700ef8db78aaefbfd9",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -880,6 +880,61 @@
             "time": "2014-09-09 13:34:57"
         },
         {
+            "name": "elasticsearch/elasticsearch",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elastic/elasticsearch-php.git",
+                "reference": "3a5573cf3223d5646a76a5f8ce938048ca340680"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/3a5573cf3223d5646a76a5f8ce938048ca340680",
+                "reference": "3a5573cf3223d5646a76a5f8ce938048ca340680",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "guzzle/guzzle": "~3.0",
+                "monolog/monolog": "~1.11",
+                "php": ">=5.3.9",
+                "pimple/pimple": "~3.0",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "cpliakas/git-wrapper": "~1.0",
+                "mikey179/vfsstream": "~1.2",
+                "mockery/mockery": "0.9.4",
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "dev-master",
+                "symfony/yaml": "2.4.3 as 2.4.2",
+                "twig/twig": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Elasticsearch\\": "src/Elasticsearch/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2"
+            ],
+            "authors": [
+                {
+                    "name": "Zachary Tong"
+                }
+            ],
+            "description": "PHP Client for Elasticsearch",
+            "keywords": [
+                "client",
+                "elasticsearch",
+                "search"
+            ],
+            "time": "2015-09-17 22:01:44"
+        },
+        {
             "name": "fortawesome/font-awesome",
             "version": "v4.5.0",
             "source": {
@@ -1408,101 +1463,6 @@
                 "watermark"
             ],
             "time": "2015-11-30 17:03:21"
-        },
-        {
-            "name": "ircmaxell/random-lib",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ircmaxell/RandomLib.git",
-                "reference": "13efa4368bb2ac88bb3b1459b487d907de4dbf7c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/RandomLib/zipball/13efa4368bb2ac88bb3b1459b487d907de4dbf7c",
-                "reference": "13efa4368bb2ac88bb3b1459b487d907de4dbf7c",
-                "shasum": ""
-            },
-            "require": {
-                "ircmaxell/security-lib": "1.0.*@dev",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "1.1.*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "RandomLib": "lib"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anthony Ferrara",
-                    "email": "ircmaxell@ircmaxell.com",
-                    "homepage": "http://blog.ircmaxell.com"
-                }
-            ],
-            "description": "A Library For Generating Secure Random Numbers",
-            "homepage": "https://github.com/ircmaxell/RandomLib",
-            "keywords": [
-                "cryptography",
-                "random",
-                "random-numbers",
-                "random-strings"
-            ],
-            "time": "2015-01-15 16:31:45"
-        },
-        {
-            "name": "ircmaxell/security-lib",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ircmaxell/SecurityLib.git",
-                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ircmaxell/SecurityLib/zipball/80934de3c482dcafb46b5756e59ebece082b6dc7",
-                "reference": "80934de3c482dcafb46b5756e59ebece082b6dc7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "1.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "SecurityLib": "lib"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anthony Ferrara",
-                    "email": "ircmaxell@ircmaxell.com",
-                    "homepage": "http://blog.ircmaxell.com"
-                }
-            ],
-            "description": "A Base Security Library",
-            "homepage": "https://github.com/ircmaxell/PHP-SecurityLib",
-            "time": "2013-04-30 18:00:34"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2081,125 +2041,6 @@
             "time": "2015-10-23 04:02:07"
         },
         {
-            "name": "league/oauth2-client",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/oauth2-client.git",
-                "reference": "b523109adfdab8ec7d45c7fb2ced16ce36138ca9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/b523109adfdab8ec7d45c7fb2ced16ce36138ca9",
-                "reference": "b523109adfdab8ec7d45c7fb2ced16ce36138ca9",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "~6.0",
-                "ircmaxell/random-lib": "~1.1",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "0.8.*",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "0.6.*",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\OAuth2\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alex Bilbie",
-                    "email": "hello@alexbilbie.com",
-                    "homepage": "http://www.alexbilbie.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "OAuth 2.0 Client Library",
-            "keywords": [
-                "Authentication",
-                "SSO",
-                "authorization",
-                "identity",
-                "idp",
-                "oauth",
-                "oauth2",
-                "single sign on"
-            ],
-            "time": "2015-11-13 16:55:24"
-        },
-        {
-            "name": "league/oauth2-linkedin",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/oauth2-linkedin.git",
-                "reference": "04d30e7c59963396156daf39aa84e8521ca470e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-linkedin/zipball/04d30e7c59963396156daf39aa84e8521ca470e1",
-                "reference": "04d30e7c59963396156daf39aa84e8521ca470e1",
-                "shasum": ""
-            },
-            "require": {
-                "league/oauth2-client": "~1.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\OAuth2\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steven Maguire",
-                    "email": "stevenmaguire@gmail.com",
-                    "homepage": "https://github.com/stevenmaguire"
-                }
-            ],
-            "description": "LinkedIn OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
-            "keywords": [
-                "authorisation",
-                "authorization",
-                "client",
-                "linkedin",
-                "oauth",
-                "oauth2"
-            ],
-            "time": "2015-08-20 14:59:40"
-        },
-        {
             "name": "mandrill/mandrill",
             "version": "1.0.55",
             "source": {
@@ -2504,6 +2345,52 @@
             "time": "2015-12-01 02:52:15"
         },
         {
+            "name": "pimple/pimple",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/a30f7d6e57565a2e1a316e1baf2a483f788b258a",
+                "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple, a simple Dependency Injection Container",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2015-09-11 15:10:35"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0",
             "source": {
@@ -2705,6 +2592,44 @@
                 "laravel-5"
             ],
             "time": "2015-11-20 13:23:01"
+        },
+        {
+            "name": "shift31/laravel-elasticsearch",
+            "version": "1.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shift31/laravel-elasticsearch.git",
+                "reference": "5341998fc1d87a21ee44e44482d07de297b1b515"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shift31/laravel-elasticsearch/zipball/5341998fc1d87a21ee44e44482d07de297b1b515",
+                "reference": "5341998fc1d87a21ee44e44482d07de297b1b515",
+                "shasum": ""
+            },
+            "require": {
+                "elasticsearch/elasticsearch": "~1.3",
+                "illuminate/support": "~4|~5",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Shift31\\LaravelElasticsearch": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Shift 31 Consulting",
+                    "email": "code@shift31.com"
+                }
+            ],
+            "description": "A Laravel Service Provider for the Elasticsearch API client",
+            "time": "2015-08-10 02:30:03"
         },
         {
             "name": "simplepie/simplepie",

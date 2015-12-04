@@ -170,7 +170,8 @@ return [
 		'Riari\Forum\ForumServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Codesleeve\LaravelStapler\Providers\L5ServiceProvider',
-		'Weblee\Mandrill\MandrillServiceProvider'
+		'Weblee\Mandrill\MandrillServiceProvider',
+		'Shift31\LaravelElasticsearch\ElasticsearchServiceProvider'
 	],
 
 	/*

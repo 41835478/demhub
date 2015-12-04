@@ -14,6 +14,7 @@ use Riari\Forum\Libraries\Alerts;
 use Riari\Forum\Libraries\Utils;
 use Riari\Forum\Libraries\Validation;
 use DB;
+use Es;
 
 class DivisionController extends Controller
 {
