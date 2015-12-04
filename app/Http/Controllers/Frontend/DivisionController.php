@@ -15,6 +15,7 @@ use Riari\Forum\Libraries\Utils;
 use Riari\Forum\Libraries\Validation;
 use DB;
 use Es;
+use Config;
 
 class DivisionController extends Controller
 {
@@ -44,13 +45,35 @@ class DivisionController extends Controller
         $threads[1]=$tempThreads[0];
       }
 
+      if ($request) {
+        $options_query = 	$request->input('query_term', '');	// (optional) search query
+        $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
+      	$options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
+
+        if(trim($options_query) != ''){
+      		$keywords = explode(' ', $options_query);
+      		foreach($keywords as $keyword){
+      			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
+      		}
+      	} // if ($options_query) ends
+
+      	$query_term = $options_query;
+
+      } else {
+
+        $options_page   = 1;		// (optional) page number defaults to 1
+      	$options_count  = 30;		// (optional) items per page defaults to 30
+      	$query_term = NULL;
+
+      } // if ($request) ends
+
       $query = DB::table('articles')->select("*");
       $query = $query->where('deleted', 0);
 
       if ($request) {
         $options_query = 	$request->input('query_term', '');	// (optional) search query
         $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-      	$options_count = 	$request->input('count', 60);				// (optional) items per page defaults to 30
+      	$options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
 
         if(trim($options_query) != ''){
       		$keywords = explode(' ', $options_query);
@@ -68,6 +91,7 @@ class DivisionController extends Controller
       	$query_term = NULL;
 
       } // if ($request) ends
+
       $articleMediaArray=[];
       $query = $query->orderBy('publish_date', 'desc');
 
@@ -75,6 +99,37 @@ class DivisionController extends Controller
       $query = $query->skip( ($options_page - 1) * $options_count );
       $query = $query->take( $options_count );
       $newsFeeds = $query->get();
+
+      $filter = [
+        'bool' => [
+          'should' => [
+            // the language fields should either be the current locale
+            ['term' => [ 'language' => Config::get('app.locale') ]],
+            // or it should be NULL
+            ['missing' => [ 'field' => 'language' ]]
+          ],
+          'minimum_number_should_match' => 1
+        ]
+      ];
+      $query = [
+          'match' => [ 'title' => 'mexico' ]
+      ];
+      $query = [
+          'match' => [ 'title' => 'mexico' ]
+      ];
+      $query = [
+          "match_all" => []
+      ];
+      $sort = [
+          'publish_date' => [
+              'order' => 'desc'
+          ]
+      ];
+      $results = $this->elasticSearchResults($filter, $query, $sort);
+      // dd($results['hits']['hits']);
+      // dd($newsFeeds);
+
+      // Gather media for each article retreived
       foreach ($newsFeeds as $item){
         $itemMedia=ArticleMedia::where('article_id',$item->id)->first();
         if ($itemMedia){
@@ -160,4 +215,30 @@ class DivisionController extends Controller
     }
 
 
+    /**
+    * Perform elasticsearch query and return json
+    * @param  array   $filter
+    * @param  string  $query
+    * @param  integer $size
+    * @param  integer $page
+    * @return JSON
+    */
+    private function elasticSearchResults($filter, $query, $sort, $size = 30, $page = 0) {
+      $params = [
+          'index' => 'news',
+          'type' => 'articles',
+          'size' => $size,
+          'from' => $size * $page,
+          'body' => [
+              'query' => [
+                  'filtered' => [
+                      'filter' => $filter,
+                      'query' => $query
+                  ]
+              ],
+              'sort' => $sort
+          ]
+      ];
+      return Es::search($params);
+    }
 }
