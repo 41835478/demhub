@@ -1,14 +1,14 @@
 <div style="width:100%; height:42px; bottom:0px; position:absolute;">
 
-  <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite" disabled>
-    <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:#000"></span>
+  <button type="button" class="btn btn-greytone btn-sm" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite" disabled>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   </button>
 
   <div class="btn-group dropup">
     @if(Auth::user())
-      <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+      <button type="button" class="btn btn-greytone btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
        style="margin-left:5px;">
-        <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
+        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item->title}}"
@@ -28,7 +28,7 @@
   </div>
 
   <div class="btn-group">
-  <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
+  <button type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
     <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
   </button>
 

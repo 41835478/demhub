@@ -23,7 +23,19 @@
 .x-lrg{
 	font-size:65px;
 }
+.greytone{
+	color:#ccc;
+}
 
+.greytone:hover, .greytone:focus{
+	color:#337ab7;
+
+}
+
+.greytone:active{
+
+	color:#000;
+}
 //individual icons
 .division-continity-circle {
 	width: 2em;

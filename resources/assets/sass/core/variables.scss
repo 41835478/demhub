@@ -40,6 +40,27 @@ $humanitarian_color: #754293;
 .division_all {
   	  background-color:#ccc;
   	}
+.division_1 {
+	  background-color:$health_color;
+	}
+.division_2 {
+	  background-color:$science_color;
+	}
+.division_3 {
+	  background-color:$response_color;
+	}
+.division_4{
+	  background-color:$security_color;
+		}
+.division_5 {
+	  background-color:$continuity_color;
+	}
+.division_6 {
+	  background-color:$humanitarian_color;
+	}
+.division_7 {
+  	  background-color:#fff;
+  	}
 
 .color-label {
     width:100%;
