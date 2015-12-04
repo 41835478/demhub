@@ -25,7 +25,7 @@ post('feedback', 'FrontendController@postFeedback')->name('post_feedback');
  * TODO - Implement folder structure
  */
 get('divisions', 'DivisionController@index');
-get('division/{slug}', 'DivisionController@show')->where('slug', '[A-Za-z_\-]+');
+get('division/{slug}', 'DivisionController@show')->where('slug', '[A-Za-z0-9_\-]+');
 get('divisions/results', 'DivisionController@index');
 post('divisions/results', 'DivisionController@results');
 

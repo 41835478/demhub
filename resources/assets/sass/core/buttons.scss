@@ -109,3 +109,23 @@ button.btn-style-alt:active{
 .text-link-style:hover, .text-link-style:focus {
 	color:#337ab7;
 }
+
+input[type="radio"] {
+    border-radius: 0px !important;
+}
+
+button.btn-greytone{
+	background:#fff;
+	border-color: #ccc;
+	color:#333;
+}
+
+button.btn-greytone:hover, button.btn-greytone:focus{
+	color:#337ab7;
+	background:#d6d6d6;
+}
+
+button.btn-greytone:active{
+	background:#ccc;
+	color:#000;
+}

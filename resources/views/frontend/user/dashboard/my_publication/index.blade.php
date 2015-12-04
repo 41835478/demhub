@@ -15,35 +15,51 @@
           </div>
 
         @if($publications)
-          <table class="table table-striped table-bordered">
+          <table class="table table-striped table-bordered" style="background-color:#ccc">
             <thead>
                 <tr>
+                    <td><span class="caret"></span></td>
                     <td>TITLE</td>
                     <td>AUTHOR</td>
                     <td>DATE</td>
                     <td>ACTIONS</td>
                     <td>DIVISIONS</td>
-                    <td>KEYWORDS</td>
+                    <td>VIEWS</td>
                 </tr>
             </thead>
             <tbody>
               @foreach ($publications as $pub)
                 <tr>
-                    <td>{{ $pub->title }}</td>
-                    <td>{{ $pub->description }}</td>
+                    <td><label>
+                      <input type="checkbox" class="radio-inline" id="{{ $pub->title }}" name="{{ $pub->title }}" style=""></label>
+                    </td>
+                    <td><a href="{{ URL::to('my_publication/' . $pub->id) }}">{{ $pub->title }}</a></td>
                     <td>{{ $pub->author->full_name() }}</td>
-                    <td><a href="{{ $pub->document->url() }}" download>Download</a></td>
+                    <td>{{ date_format(new DateTime($pub->updated_at ), 'j F Y | g:i a') }}</td>
+
+                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $pub->id . '/edit') }}"><h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
+                    <a class="greytone" href="{{ $pub->document->url() }}" download style="padding-left:5px"><h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
+                    <a  class="greytone" href="{{ URL::to('my_publication/' . $pub->id) }}" style="padding-left:5px"><h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
 
                     <td>
+                      <?php
+                      if ($pub->divisions !=null){
+                      $publicationDivisions = array_filter(preg_split("/\|/", $pub->divisions));
+                      }
+                      ?>
+                      @if ($publicationDivisions)
+                        @foreach ($publicationDivisions as $publicationDivision)
 
-                        <!-- TODO - ADD delete -->
-                        <!-- we will add this later since its a little more complicated than the other two buttons -->
+                        <a href="{{url('/division/'.$publicationDivision)}}" >
+                        <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationDivision }}">
+                      </a>
 
-                        <a class="btn btn-small btn-success" href="{{ URL::to('my_publication/' . $pub->id) }}">Show this Publication</a>
 
-                        <a class="btn btn-small btn-info" href="{{ URL::to('my_publication/' . $pub->id . '/edit') }}">Edit this Publication</a>
+                        @endforeach
+                      @endif
+        						</td>
+                    <td></td>
 
-                    </td>
                 </tr>
               @endforeach
             </tbody>

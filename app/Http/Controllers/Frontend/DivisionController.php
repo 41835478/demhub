@@ -148,8 +148,12 @@ class DivisionController extends Controller
 
     public function show($divisionSlug, Request $request)
     {
+      if (is_numeric($divisionSlug)){
+        $currentDivision = Division::where('id', $divisionSlug)->firstOrFail();
+      }
+      else {
       $currentDivision = Division::where('slug', $divisionSlug)->firstOrFail();
-
+      }
       $allDivisions = $navDivisions = Division::all();
 	    $userMenu = false;
 
