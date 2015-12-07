@@ -7,9 +7,9 @@
 <section id="content_wrapper" style="margin-top: 60px;">
 
   <!-- Begin: Content -->
-  <div id="content" class="animated fadeIn" style="padding-bottom: 0;">
+  <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
-        <div class="panel panel-default" style="padding-bottom:15%">
+
           <div class="col-sm-offset-9">
             <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">CREATE</a>
           </div>
@@ -67,7 +67,7 @@
         @else
           <p>No publications</p>
         @endif
-      </div>
+
       </div>
     </div>
   </section>

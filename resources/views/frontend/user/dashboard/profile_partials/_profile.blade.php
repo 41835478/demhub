@@ -1,7 +1,7 @@
 <section id="content_wrapper" style="margin-top: 60px;">
 
   <!-- Begin: Content -->
-  <div id="content" class="animated fadeIn" style="padding-bottom: 0;">
+  <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
 
       {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
