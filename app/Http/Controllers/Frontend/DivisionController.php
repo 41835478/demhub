@@ -32,7 +32,7 @@ class DivisionController extends Controller
       $currentDivision->name      = "All Divisions";
 
       $allDivisions = $navDivisions = Division::all();
-	    $userMenu = false;
+      $userMenu = false;
 
       $threads = array();
       $tempThreads = array();
@@ -117,9 +117,9 @@ class DivisionController extends Controller
       $query = [
           'match' => [ 'title' => 'mexico' ]
       ];
-      $query = [
-          "match_all" => []
-      ];
+    //   $query = [
+    //       "match_all" => []
+    //   ];
       $sort = [
           'publish_date' => [
               'order' => 'desc'
@@ -149,13 +149,13 @@ class DivisionController extends Controller
     public function show($divisionSlug, Request $request)
     {
       if (is_numeric($divisionSlug)){
-        $currentDivision = Division::where('id', $divisionSlug)->firstOrFail();
+          $currentDivision = Division::where('id', $divisionSlug)->firstOrFail();
       }
       else {
-      $currentDivision = Division::where('slug', $divisionSlug)->firstOrFail();
+          $currentDivision = Division::where('slug', $divisionSlug)->firstOrFail();
       }
       $allDivisions = $navDivisions = Division::all();
-	    $userMenu = false;
+      $userMenu = false;
 
       $query = DB::table('articles')->select("*");
       $query = $query->where('deleted', 0);
