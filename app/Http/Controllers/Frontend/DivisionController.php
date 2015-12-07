@@ -107,8 +107,7 @@ class DivisionController extends Controller
             ['term' => [ 'language' => Config::get('app.locale') ]],
             // or it should be NULL
             ['missing' => [ 'field' => 'language' ]]
-          ],
-           'minimum_should_match' => 1
+          ]
         ]
       ];
       $query = [
