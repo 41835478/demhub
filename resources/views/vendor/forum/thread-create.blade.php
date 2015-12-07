@@ -22,13 +22,4 @@
 )
 </div>
 </div>
-<script>
-$("button#submit").attr("disabled", true);
-
-$("select#division_selection").change(function(){
-
-    $("button#submit").attr("disabled", false);
-
-});
-</script>
 @overwrite

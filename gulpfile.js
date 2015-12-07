@@ -28,6 +28,8 @@ elixir(function(mix) {
             'frontend/plugins/modernizr-2.8.3.min.js',
             'frontend/plugins/jquery.zclip.js',
             'frontend/plugins/jquery.maphilight.js',
+            'frontend/plugins/moment.js',
+            'frontend/plugins/bootstrap-datetimepicker.js',
             'frontend/coming-soon/jquery.countdown.js', // coming-soon js
             'frontend/coming-soon/placeholders.min.js', // coming-soon js
             'frontend/coming-soon/flat-surface-shader.js', // coming-soon js

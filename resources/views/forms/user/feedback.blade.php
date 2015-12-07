@@ -54,7 +54,7 @@
     <textarea class="form-control" rows="3" name="question4" placeholder="Answer...."></textarea>
   </div>
   <div class="form-group">
-  <button type="button" class="btn btn-default btn-style" onclick="feedbackFormUpdate()">DONE</a>
+  <button type="button" class="btn btn-default btn-style" onclick="feedbackFormUpdate()">SUBMIT</a>
     <button type="button" id="modalSuccessButton" class="btn btn-default" data-toggle="modal" data-target="#feedbackSuccessModal" style="display:none">MODAL S</button>
     <button type="button" id="modalErrorButton" class="btn btn-default" data-toggle="modal" data-target="#errorModal" style="display:none">MODAL ERROR</button>
     <button type="submit" id="feedbackSubmit" class="btn btn-default btn-style" style="display:none">SUBMIT</button>
