@@ -45,60 +45,60 @@ class DivisionController extends Controller
         $threads[1]=$tempThreads[0];
       }
 
-      if ($request) {
-        $options_query = 	$request->input('query_term', '');	// (optional) search query
-        $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-      	$options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
+    //   if ($request) {
+    //     $options_query = 	$request->input('query_term', '');	// (optional) search query
+    //     $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
+    //     $options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
+    //
+    //     if(trim($options_query) != ''){
+    //   		$keywords = explode(' ', $options_query);
+    //   		foreach($keywords as $keyword){
+    //   			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
+    //   		}
+    //   	} // if ($options_query) ends
+    //
+    //   	$query_term = $options_query;
+    //
+    //   } else {
+    //
+    //     $options_page   = 1;		// (optional) page number defaults to 1
+    //   	$options_count  = 30;		// (optional) items per page defaults to 30
+    //   	$query_term = NULL;
+    //
+    //   } // if ($request) ends
 
-        if(trim($options_query) != ''){
-      		$keywords = explode(' ', $options_query);
-      		foreach($keywords as $keyword){
-      			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
-      		}
-      	} // if ($options_query) ends
+    //   $query = DB::table('articles')->select("*");
+    //   $query = $query->where('deleted', 0);
 
-      	$query_term = $options_query;
-
-      } else {
-
-        $options_page   = 1;		// (optional) page number defaults to 1
-      	$options_count  = 30;		// (optional) items per page defaults to 30
-      	$query_term = NULL;
-
-      } // if ($request) ends
-
-      $query = DB::table('articles')->select("*");
-      $query = $query->where('deleted', 0);
-
-      if ($request) {
-        $options_query = 	$request->input('query_term', '');	// (optional) search query
-        $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-      	$options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
-
-        if(trim($options_query) != ''){
-      		$keywords = explode(' ', $options_query);
-      		foreach($keywords as $keyword){
-      			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
-      		}
-      	} // if ($options_query) ends
-
-      	$query_term = $options_query;
-
-      } else {
-
-        $options_page   = 1;		// (optional) page number defaults to 1
-      	$options_count  = 60;		// (optional) items per page defaults to 30
-      	$query_term = NULL;
-
-      } // if ($request) ends
+    //   if ($request) {
+    //     $options_query = 	$request->input('query_term', '');	// (optional) search query
+    //     $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
+    //   	$options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
+      //
+    //     if(trim($options_query) != ''){
+    //   		$keywords = explode(' ', $options_query);
+    //   		foreach($keywords as $keyword){
+    //   			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
+    //   		}
+    //   	} // if ($options_query) ends
+      //
+    //   	$query_term = $options_query;
+      //
+    //   } else {
+      //
+    //     $options_page   = 1;		// (optional) page number defaults to 1
+    //   	$options_count  = 60;		// (optional) items per page defaults to 30
+    //   	$query_term = NULL;
+      //
+    //   } // if ($request) ends
 
       $articleMediaArray=[];
-      $query = $query->orderBy('publish_date', 'desc');
-
-      $total_count = $query->count();
-      $query = $query->skip( ($options_page - 1) * $options_count );
-      $query = $query->take( $options_count );
-      $newsFeeds = $query->get();
+    //   $query = $query->orderBy('publish_date', 'desc');
+      //
+    //   $total_count = $query->count();
+    //   $query = $query->skip( ($options_page - 1) * $options_count );
+    //   $query = $query->take( $options_count );
+    //   $newsFeeds = $query->get();
 
       $filter = [
         'bool' => [
@@ -126,7 +126,7 @@ class DivisionController extends Controller
           ]
       ];
       $results = $this->elasticSearchResults($filter, $query, $sort);
-      // dd($results['hits']['hits']);
+      dd($results['hits']['hits']);
       // dd($newsFeeds);
 
       // Gather media for each article retreived
