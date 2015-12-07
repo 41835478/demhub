@@ -1,10 +1,11 @@
 <div class="row">
+  <p>&nbsp;</p>
 <div style="padding-left:45px" class="col-xs-11">
 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{route('post_feedback')}}" data-toggle='validator' data-delay='1100'>
   <!--App details-->
-  <div class="form-group" style="color:#fff">
+  <div class="form-group">
     <label for="question1">Overall, are you finding DEMHUB useful?</label><br>
-    <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
+    <label style="font-size:80%">1 - Not at alll useful, 5 - Very useful</label><br>
     <?php
       for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">
@@ -14,9 +15,9 @@
     <div class="help-block"></div>
   </div>
   <br>
-  <div class="form-group" style="color:#fff">
+  <div class="form-group">
     <label for="question2">Do you like the layout of the site?</label><br>
-    <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
+    <label style="font-size:80%">1 - Not liking it at all, 5 - Like it very much</label><br>
     <?php
       for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">
@@ -26,10 +27,10 @@
     <div class="help-block"></div>
   </div>
   <br>
-  <div class="form-group" style="color:#fff">
+  <div class="form-group">
     <div class="input-group">
     <label for="question3">Did you find the site easy to navigate?</label><br>
-    <label style="font-size:50%">1 - lowest, 5 - highest</label><br>
+    <label style="font-size:80%">1 - Hard to navigate, 5 - Very easy to navigate</label><br>
     <?php
       for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">
@@ -48,7 +49,7 @@
     'Uploading & sharing' => 'Uploading & sharing', 'Other' => 'Other'),'0', array('class' => 'form-control')) !!}
 
   </div> -->
-  <div class="form-group" style="color:#fff">
+  <div class="form-group">
     <label for="question4">Any recommendations to improve the site?</label>
     <textarea class="form-control" rows="3" name="question4" placeholder="Answer...."></textarea>
   </div>

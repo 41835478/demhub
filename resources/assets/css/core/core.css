@@ -93,6 +93,10 @@ html, body {
     padding-left: 0px;
     padding-right: 35px; } }
 
+.publication-update-number {
+  float: right;
+  margin-right: 40px; }
+
 .navbar-default {
   border: none !important; }
 
@@ -223,7 +227,7 @@ div.division-landing-box {
   div.division-landing-box:hover div.division-landing-color,
   div.division-landing-box:hover .landing-icon {
     opacity: 1;
-    transition: opacity 0.15s ease-in-out; }
+    transition: opacity .15s ease-in-out; }
   div.division-landing-box div.division-landing-icon {
     margin-left: calc(50% - 20px);
     z-index: 5;
@@ -329,7 +333,7 @@ div#welcome-division {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px   solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative; }
 
@@ -441,7 +445,7 @@ button.btn-style-alt:active {
 
 .btn-style-w:hover {
   background-color: rgba(0, 0, 0, 0.4) !important;
-  transition: opacity 0.15s ease-in-out; }
+  transition: opacity .15s ease-in-out; }
 
 .text-link-style {
   color: #000; }
@@ -819,7 +823,7 @@ button.btn-style-alt:active {
   display: inline-block;
   background-repeat: no-repeat;
   background: url("../../images/icons/icon.svg");
-  background-size: 47em 41.5em; }
+  background-size: 47.0em 41.5em; }
 
 .x-sml {
   font-size: 12px; }
@@ -2013,8 +2017,8 @@ div#dashboard-icon {
   padding-right: 7px;
   z-index: 100;
   cursor: pointer;
-  background: rgba(20, 20, 20, 0.9);
-  color: #fff;
+  background: #C92420;
+  color: white;
   right: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px; }
@@ -2024,10 +2028,12 @@ div#dashboard {
   overflow-y: scroll;
   width: 350px;
   height: 100%;
-  background: rgba(20, 20, 20, 0.9);
+  background: #fafafa;
+  color: #282828;
   z-index: 100;
-  font-size: 1.5em;
-  right: -350px; }
+  font-size: 1.0em;
+  right: -350px;
+  border: 1px solid #717173; }
 
 div#dashboard ul {
   margin-top: 25%; }

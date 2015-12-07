@@ -32,4 +32,16 @@ class InfoResourceController extends Controller
 					'resourceEntry' =>  $InfoResource]);
 
 	}
+  public function showpublicFilter(){
+    $regions= Region::all();
+    $InfoResource= InfoResource::all();
+    $categories = Division::all();
+
+    return view('frontend.user.publication_filter.publication_filter', [
+
+          'allDivisions' =>  $categories,
+          'resourceRelation'  => $regions,
+          'resourceEntry' =>  $InfoResource]);
+
+  }
 }
