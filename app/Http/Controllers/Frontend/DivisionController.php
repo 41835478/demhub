@@ -243,6 +243,6 @@ class DivisionController extends Controller
               'sort' => $sort
           ]
       ];
-      return Es::search($params);
+    //   return Es::search($params);
     }
 }
