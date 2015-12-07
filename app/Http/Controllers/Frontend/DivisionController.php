@@ -108,7 +108,7 @@ class DivisionController extends Controller
             // or it should be NULL
             ['missing' => [ 'field' => 'language' ]]
           ],
-          'minimum_number_should_match' => 1
+           'minimum_should_match' => 1
         ]
       ];
       $query = [
@@ -243,6 +243,6 @@ class DivisionController extends Controller
               'sort' => $sort
           ]
       ];
-    //   return Es::search($params);
+      return Es::search($params);
     }
 }
