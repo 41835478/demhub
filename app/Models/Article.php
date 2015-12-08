@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+
 	/**
 	 * The table associated with the model.
 	 *
@@ -19,6 +20,4 @@ class Article extends Model
 	 * @var array
 	 */
 	protected $guarded = ['id'];
-
-	
 }

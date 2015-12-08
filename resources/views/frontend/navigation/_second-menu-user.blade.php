@@ -25,7 +25,7 @@
         @endif
         <a href="javascript:comingSoon('publications_title')" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
 
-        @if(Request::url() == url('publications'))
+        @if(Request::url() == url('publication_filter'))
           <li class="active">
         @else
           <li>
