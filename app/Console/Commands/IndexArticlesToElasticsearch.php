@@ -24,10 +24,10 @@ class IndexArticlesToElasticsearch extends Command
         $models = Article::all();
 
         // Uncomment if index needs to be created
-        // $indexParams = [
-        //     'index' => 'news'
-        // ];
-        // Es::indices()->create($indexParams);
+        $indexParams = [
+            'index' => 'news'
+        ];
+        Es::indices()->create($indexParams);
 
         $mappingProperties = [
             'index' => 'news',
