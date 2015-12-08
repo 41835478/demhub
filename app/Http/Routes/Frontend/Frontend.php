@@ -49,6 +49,11 @@ patch('my_publication/{id}', 'PublicationController@update')->name('update_publi
 get('my_publication/{id}', 'PublicationController@show')->name('show_publication');
 
 /**
+ * Public Publication Route
+ */
+get('publication_filter', 'InfoResourceController@showpublicFilter')->name('publication_filter');
+
+/**
  * These frontend controllers require the user to be logged in
  */
 $router->group(['middleware' => 'auth'], function ()

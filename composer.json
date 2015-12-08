@@ -25,8 +25,7 @@
 		"league/csv": "^7.2",
 		"weblee/mandrill": "dev-master",
 		"socialiteproviders/linkedin": "^1.1",
-		"shift31/laravel-elasticsearch": "~1.0",
-		"elasticquent/elasticquent": "dev-master"
+		"shift31/laravel-elasticsearch": "~1.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
