@@ -31,7 +31,7 @@
 
 - `mkdir ~/workspace; cd ~/workspace`
 - `git clone git@bitbucket.org:demhub/demhub.git; cd demhub`
-- `vagrant box add laravel/homestead`
+- `vagrant box add laravel/homestead` (may need to run with sudo)
 - `composer global require "laravel/homestead=~2.0"`
 - Follow the next two instructions with the following snippet of code:
 
@@ -208,6 +208,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 ```
 - Add `config.ssh.forward_x11 = true` as indicated in the above snippet
+- Add `config.vm.network "forwarded_port", guest: 9200, host: 62000` as indicated in the above snippet
 - `cd ~/workspace/demhub`
 - `larafullnew` (For commands breakdown, refer to aliases above)
 - `exit` in order to let all box changes take effect

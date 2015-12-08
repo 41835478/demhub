@@ -9,7 +9,7 @@
   <div class="form-group">
         {!! Form::label('description', "DESCRIPTION", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class=" col-sm-6">
-            {!! Form::input('description', 'description', null, ['class' => 'form-control']) !!}
+            {!! Form::input('description', 'description', null, ['class' => 'form-control ', 'placeholder' => '250 words or less']) !!}
         </div>
   </div>
 
@@ -50,20 +50,20 @@
   </div>
 
   <div class="form-group">
-        {!! Form::label('Division', "DIVISION", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+        {!! Form::label('null', "DIVISION", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class=" col-sm-6" style='padding-top:8px'>
 
-            {!! Form::checkbox('division', 'health', ['class' => 'form-control']) !!}
+            {!! Form::checkbox('division_1', 'health', ['class' => 'form-control']) !!}
             <span style="color:#0D8E56">Health & Epidemics</span></br>
-            {!! Form::checkbox('division', 'science', ['class' => 'form-control']) !!}
+            {!! Form::checkbox('division_2', 'science', ['class' => 'form-control']) !!}
             <span style="color:#1D73A3">Science & Environment</span><br>
-            {!! Form::checkbox('division', 'response', ['class' => 'form-control']) !!}
+            {!! Form::checkbox('division_3', 'response', ['class' => 'form-control']) !!}
             <span style="color:#DB9421">EM Practitioner & Response</span><br>
-            {!! Form::checkbox('division', 'security', ['class' => 'form-control']) !!}
+            {!! Form::checkbox('division_4', 'security', ['class' => 'form-control']) !!}
             <span style="color:#848889">Civil & Cyber Security</span><br>
-            {!! Form::checkbox('division', 'continuity', ['class' => 'form-control']) !!}
+            {!! Form::checkbox('division_5', 'continuity', ['class' => 'form-control']) !!}
             <span style="color:#933131">Business Continuity</span><br>
-            {!! Form::checkbox('division', 'humanitarian', ['class' => 'form-control']) !!}
+            {!! Form::checkbox('divisio_6', 'humanitarian', ['class' => 'form-control']) !!}
             <span style="color:#754293">NGO & Humanitarian</span><br>
         </div>
   </div>
@@ -73,12 +73,12 @@
             {!! Form::input('keywords', 'keywords', null, ['class' => 'form-control', 'placeholder' => 'tsunami, tornado, ebola']) !!}
         </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
         {!! Form::label('description', "description", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
         <div class=" col-sm-6">
             {!! Form::input('description', 'description', null, ['class' => 'form-control', 'placeholder' => '250 words or less']) !!}
         </div>
-  </div>
+  </div> -->
 </div>
 <div class="row">
 <hr class="col-sm-10">
