@@ -226,8 +226,8 @@ class DivisionController extends Controller
       $params = [
           'index' => 'news',
           'type' => 'articles',
-        //   'size' => $size,
-        //   'from' => $size * $page,
+          'size' => $size,
+          'from' => $size * $page,
           'body' => [
               'query' => [
                   'filtered' => [
@@ -238,6 +238,6 @@ class DivisionController extends Controller
               'sort' => $sort
           ]
       ];
-    //   return Es::search($params);
+      return Es::search($params);
     }
 }
