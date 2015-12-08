@@ -30,113 +30,44 @@ class DivisionController extends Controller
       $currentDivision = Division::find(1);
       $currentDivision->slug      = "all";
       $currentDivision->name      = "All Divisions";
+      $currentDivision->id        = 0;
 
       $allDivisions = $navDivisions = Division::all();
       $userMenu = false;
 
-      $threads = array();
-      $tempThreads = array();
-      $threads[0] = Thread::where('parent_category', $currentDivision->id)->orderBy('created_at', 'desc')->first();
-      $tempThreads = Thread::where('parent_category', $currentDivision->id)->orderBy('updated_at', 'desc')->get();
-      if ($tempThreads[0] = $threads[0]){
-        $threads[1]=$tempThreads[1];
+      $threads = $this->getDivisionThreads($currentDivision->id);
+
+      if ($request) {
+          $query = [
+            "match_all" => []
+          ];
+          $options_query = $request->input('query_term', '');	// (optional) search query
+          if(trim($options_query) != ''){
+              $query = [
+                  'multi_match' => [
+                      'query' => $options_query,
+                      'fields' => ['title', 'excerpt', 'keywords']
+                  ]
+              ];
+          }
+          $size = $request->input('count', 30);
+          $page = $request->input('page', 1);
+          $page -= 1;
+
+          $results = $this->elasticSearchResults($query, $size, $page, $currentDivision->id);
+      } else {
+          $results = $this->defaultElasticResults($currentDivision->id);
       }
-      else {
-        $threads[1]=$tempThreads[0];
-      }
 
-    //   if ($request) {
-    //     $options_query = 	$request->input('query_term', '');	// (optional) search query
-    //     $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-    //     $options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
-    //
-    //     if(trim($options_query) != ''){
-    //   		$keywords = explode(' ', $options_query);
-    //   		foreach($keywords as $keyword){
-    //   			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
-    //   		}
-    //   	} // if ($options_query) ends
-    //
-    //   	$query_term = $options_query;
-    //
-    //   } else {
-    //
-    //     $options_page   = 1;		// (optional) page number defaults to 1
-    //   	$options_count  = 30;		// (optional) items per page defaults to 30
-    //   	$query_term = NULL;
-    //
-    //   } // if ($request) ends
+      $results_hits = $results['hits']['hits'];
+      $articleMediaArray = $this->getArticleMedia($results_hits);
+      $newsFeeds = $this->formatNewsFeed($results_hits);
 
-    //   $query = DB::table('articles')->select("*");
-    //   $query = $query->where('deleted', 0);
-
-    //   if ($request) {
-    //     $options_query = 	$request->input('query_term', '');	// (optional) search query
-    //     $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-    //   	$options_count = 	$request->input('count', 30);				// (optional) items per page defaults to 30
-      //
-    //     if(trim($options_query) != ''){
-    //   		$keywords = explode(' ', $options_query);
-    //   		foreach($keywords as $keyword){
-    //   			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
-    //   		}
-    //   	} // if ($options_query) ends
-      //
-    //   	$query_term = $options_query;
-      //
-    //   } else {
-      //
-    //     $options_page   = 1;		// (optional) page number defaults to 1
-    //   	$options_count  = 60;		// (optional) items per page defaults to 30
-    //   	$query_term = NULL;
-      //
-    //   } // if ($request) ends
-
-      $articleMediaArray=[];
-    //   $query = $query->orderBy('publish_date', 'desc');
-      //
-    //   $total_count = $query->count();
-    //   $query = $query->skip( ($options_page - 1) * $options_count );
-    //   $query = $query->take( $options_count );
-    //   $newsFeeds = $query->get();
-
-      $filter = [
-        'bool' => [
-          'should' => [
-            // the language fields should either be the current locale
-            ['term' => [ 'language' => Config::get('app.locale') ]],
-            // or it should be NULL
-            ['missing' => [ 'field' => 'language' ]]
-          ]
-        ]
-      ];
-      $query = [
-          'match' => [ 'title' => 'mexico' ]
-      ];
-      $query = [
-          'match' => [ 'title' => 'mexico' ]
-      ];
-    //   $query = [
-    //       "match_all" => []
-    //   ];
-      $sort = [
-          'publish_date' => [
-              'order' => 'desc'
-          ]
-      ];
-      $results = $this->elasticSearchResults($filter, $query, $sort);
-      dd($results['hits']['hits']);
-      // dd($newsFeeds);
-
-      // Gather media for each article retreived
-      foreach ($newsFeeds as $item){
-        $itemMedia=ArticleMedia::where('article_id',$item->id)->first();
-        if ($itemMedia){
-        array_push($articleMediaArray,$itemMedia);
-        }
-      }
+      $total_count = $results['hits']['total'];
       $item_count = count($newsFeeds);
-      $last_page = $item_count < $options_count;
+      $last_page = $size*(1+$page) >= $total_count;
+      $options_page = $page + 1;
+      $options_count = $size;
 
       return view('division.index', compact([
         'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'articleMediaArray', 'userMenu', 'threads',
@@ -149,66 +80,45 @@ class DivisionController extends Controller
     {
       if (is_numeric($divisionSlug)){
           $currentDivision = Division::where('id', $divisionSlug)->firstOrFail();
-      }
-      else {
+      } else {
           $currentDivision = Division::where('slug', $divisionSlug)->firstOrFail();
       }
       $allDivisions = $navDivisions = Division::all();
       $userMenu = false;
 
-      $query = DB::table('articles')->select("*");
-      $query = $query->where('deleted', 0);
-      $query = $query->where('divisions', 'LIKE', '%|'.$currentDivision->id.'|%');
+      $threads = $this->getDivisionThreads($currentDivision->id);
 
       if ($request) {
-        $options_query = 	$request->input('query_term', '');	// (optional) search query
-        $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-      	$options_count = 	$request->input('count', 60);				// (optional) items per page defaults to 30
+          $query = [
+            "match_all" => []
+          ];
+          $options_query = $request->input('query_term', '');	// (optional) search query
+          if(trim($options_query) != ''){
+              $query = [
+                  'multi_match' => [
+                      'query' => $options_query,
+                      'fields' => ['title', 'excerpt', 'keywords']
+                  ]
+              ];
+          }
+          $size = $request->input('count', 30);
+          $page = $request->input('page', 1);
+          $page -= 1;
 
-        if(trim($options_query) != ''){
-      		$keywords = explode(' ', $options_query);
-      		foreach($keywords as $keyword){
-      			$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
-      		}
-      	} // if ($options_query) ends
-
-      	$query_term = $options_query;
-
+          $results = $this->elasticSearchResults($query, $size, $page, $currentDivision->id);
       } else {
-
-        $options_page   = 1;		// (optional) page number defaults to 1
-      	$options_count  = 60;		// (optional) items per page defaults to 30
-      	$query_term = NULL;
-
-      } // if ($request) ends
-
-      $query = $query->orderBy('publish_date', 'desc');
-      $total_count = $query->count();
-      $query = $query->skip( ($options_page - 1) * $options_count );
-      $query = $query->take( $options_count );
-      $newsFeeds = $query->get();
-
-      $articleMediaArray=[];
-      foreach ($newsFeeds as $item){
-        $itemMedia=ArticleMedia::where('article_id',$item->id)->first();
-        if ($itemMedia){
-        array_push($articleMediaArray,$itemMedia);
-        }
+          $results = $this->defaultElasticResults($currentDivision->id);
       }
 
+      $results_hits = $results['hits']['hits'];
+      $articleMediaArray = $this->getArticleMedia($results_hits);
+      $newsFeeds = $this->formatNewsFeed($results_hits);
+
+      $total_count = $results['hits']['total'];
       $item_count = count($newsFeeds);
-      $last_page = $item_count < $options_count;
-
-      $threads = array();
-      $tempThreads = array();
-      $threads[0] = Thread::where('parent_category', $currentDivision->id)->orderBy('created_at', 'desc')->first();
-      $tempThreads = Thread::where('parent_category', $currentDivision->id)->orderBy('updated_at', 'desc')->get();
-      if ($tempThreads[0] = $threads[0]){
-        $threads[1]=$tempThreads[1];
-      }
-      else {
-        $threads[1]=$tempThreads[0];
-      }
+      $last_page = $size*(1+$page) >= $total_count;
+      $options_page = $page + 1;
+      $options_count = $size;
 
       return view('division.index', compact([
         'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'articleMediaArray',
@@ -218,6 +128,65 @@ class DivisionController extends Controller
     }
 
 
+    private function getArticleMedia($results_hits) {
+        // Gather media for each article retreived
+        $articleMediaArray = [];
+        foreach ($results_hits as $item){
+          $itemMedia = ArticleMedia::where('article_id', $item['_id'])->first();
+          if ($itemMedia)
+              array_push($articleMediaArray, $itemMedia);
+        }
+        return $articleMediaArray;
+    }
+
+    private function formatNewsFeed($results_hits) {
+        $newsFeeds = [];
+        foreach ($results_hits as $item){
+          array_push($newsFeeds, $item['_source']);
+        }
+        return $newsFeeds;
+    }
+
+    /**
+    * Return current div's discussion threads
+    * @param  int   $divID
+    * @return array $threads
+    * FIXME: Currently the "All Divisions" $divID is the same as the health div
+    * However, "All Divisions" should have their own $divID
+    */
+    private function getDivisionThreads($divID) {
+        $threads = [];
+        $tempThreads = [];
+        $threads[0] = Thread::where('parent_category', $divID)->orderBy('created_at', 'desc')->first();
+        $tempThreads = Thread::where('parent_category', $divID)->orderBy('updated_at', 'desc')->get();
+        if ($tempThreads[0] = $threads[0]){
+          $threads[1]=$tempThreads[1];
+        }
+        else {
+          $threads[1]=$tempThreads[0];
+        }
+
+        return $threads;
+    }
+
+    /**
+    * Perform elasticsearch default search per division
+    * @param  array   $filterhgkjhgkjhgkjh
+    * @param  string  $querydfsgsdfgdf
+    * @param  integer $sizegsdfgsdfg
+    * @param  integer $pagedsfgsdfgsdf
+    * @return JSON (from elasticSearchResults() function)
+    */
+    private function defaultElasticResults($divID) {
+        $query = [
+          "match_all" => []
+        ];
+        $size = 30;
+        $page = 0;
+
+        return $this->elasticSearchResults($query, $size, $page, $divID);
+    }
+
     /**
     * Perform elasticsearch query and return json
     * @param  array   $filter
@@ -226,12 +195,38 @@ class DivisionController extends Controller
     * @param  integer $page
     * @return JSON
     */
-    private function elasticSearchResults($filter, $query, $sort, $size = 30, $page = 0) {
+    private function elasticSearchResults($query, $size, $page, $divID) {
+        $filter = [
+          'and' => [
+              ['bool' => [
+                'should' => [
+                  // the language fields should either be the current locale
+                  ['term' => [ 'language' => Config::get('app.locale') ]],
+                  // or it should be NULL, which by default is expected to be english
+                  ['missing' => [ 'field' => 'language' ]]
+                ]
+              ]],
+              ['term' => ['deleted' => 0]],
+          ]
+        ];
+        if ($divID != 0) {
+            // Add the division id as one of the "AND" filters
+            array_push($filter['and'],
+                ['term' => ['divisions' => $divID]]
+            );
+        }
+
+        $sort = [
+            'publish_date' => [
+                'order' => 'desc'
+            ]
+        ];
+
       $params = [
           'index' => 'news',
           'type' => 'articles',
-        //   'size' => $size,
-        //   'from' => $size * $page,
+          'size' => $size,
+          'from' => $size * $page,
           'body' => [
               'query' => [
                   'filtered' => [
