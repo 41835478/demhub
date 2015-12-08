@@ -1,8 +1,7 @@
 @foreach($newsFeeds as $item)
   <div class="col-xs-12 col-sm-6 col-md-4">
-
     <?php
-      $articleDivs = array_filter(preg_split("/\|/", $item->divisions));
+      $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
         sort($articleDivs);
         $width = 100/count($articleDivs);
@@ -37,17 +36,17 @@
         >
           <a
             @if(Auth::check())
-              target="_blank" href="{{ $item->source_url }}"
+              target="_blank" href="{{ $item['source_url'] }}"
             @else
               href="" data-toggle="modal" data-target="#DEMHUBModal"
             @endif
           style="color:#000">
           <?php
-            if (strlen($item->title) > 66){
-              $str = substr($item->title, 0, 66) . '...';
+            if (strlen($item['title']) > 66){
+              $str = substr($item['title'], 0, 66) . '...';
               echo $str;
             } else{
-              echo $item->title;
+              echo $item['title'];
             }
           ?>
           </a>
@@ -58,7 +57,7 @@
           "article-title-box"
         @endif
         "" style="font-size:82%;color:#777777">
-          {{ date_format(new DateTime($item->publish_date), 'j F Y | g:i a') }}
+          {{ date_format(new DateTime($item['publish_date']), 'j F Y | g:i a') }}
         </span>
 
         <span
@@ -67,7 +66,7 @@
           @endif
             style="font-size:82%;color:#000;padding-left:5%">
           <?php
-            $parse=parse_url($item->source_url);
+            $parse=parse_url($item['source_url']);
             $host=$parse['host'];
             $host=substr($host,4);
 
@@ -82,7 +81,7 @@
 
         <p style="padding-top:10px">
           <?php
-          $description = $item->excerpt;
+          $description = $item['excerpt'];
 
             if (isset($neededObject[0]) && strlen($description) > 170){
               $str = substr($description, 0, 170) . '...';
@@ -98,7 +97,7 @@
         </p>
         <div style="bottom:50px; position:absolute;z-index:0.5;width:100%">
           <?php
-          $articleKeywords = array_filter(preg_split("/\|/", $item->keywords));
+          $articleKeywords = array_filter(preg_split("/\|/", $item['keywords']));
           ?>
           @if(count($articleKeywords) > 4)
             @foreach($articleKeywords as $key=>$keyword)

@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\ArticleMedia;
+use Es;
+use Config;
 
 /**
  * Class FrontendController
@@ -16,95 +18,142 @@ class UserController extends Controller {
 	 * User Homepage
 	 */
 	public function index(Request $request){
-
+		// FIXME avoid duplication with Division Controller
 		$allDivisions = $navDivisions = Division::all();
 		$currentDivision = Division::find(1);
 		$currentDivision->slug      = "all";
 		$currentDivision->name      = "All Divisions";
 
-		$query = DB::table('articles')->select("*");
-		$query = $query->where('deleted', 0);
+		if ($request) {
+		   $query = [
+		     "match_all" => []
+		   ];
+		   $options_query = $request->input('query_term', '');	// (optional) search query
+		   if(trim($options_query) != ''){
+		       $query = [
+		           'multi_match' => [
+		               'query' => $options_query,
+		               'fields' => ['title', 'excerpt', 'keywords']
+		           ]
+		       ];
+		   }
+		   $size = $request->input('count', 30);
+		   $page = $request->input('page', 1);
+		   $page -= 1;
 
-    if ($request) {
-      $options_query = 	$request->input('query_term', '');	// (optional) search query
-      $options_page = 	$request->input('page', 1);					// (optional) page number defaults to 1
-  		$options_count = 	$request->input('count', 60);				// (optional) items per page defaults to 30
-
-      if(trim($options_query) != ''){
-  			$keywords = explode(' ', $options_query);
-  			foreach($keywords as $keyword){
-  				$query = $query->whereRaw("(`title` LIKE ? OR `keywords` LIKE ?)", array('%'.$keyword.'%', '%|'.$keyword.'|%'));
-  			}
-  		} // if ($options_query) ends
-
-			$query_term = $options_query;
-
-    } else {
-
-      $options_page   = 1;		// (optional) page number defaults to 1
-  		$options_count  = 60;		// (optional) items per page defaults to 30
-			$query_term = NULL;
-
-    } // if ($request) ends
-
-    $query = $query->orderBy('publish_date', 'desc');
-		$total_count = $query->count();
-		$query = $query->skip( ($options_page - 1) * $options_count );
-		$query = $query->take( $options_count );
-		$newsFeeds = $query->get();
-
-		$articleMediaArray=[];
-		foreach ($newsFeeds as $item){
-			$itemMedia=ArticleMedia::where('article_id',$item->id)->first();
-			if ($itemMedia){
-			array_push($articleMediaArray,$itemMedia);
-			}
+		   $results = $this->elasticSearchResults($query, $size, $page, $currentDivision->id);
+		} else {
+		   $results = $this->defaultElasticResults($currentDivision->id);
 		}
 
+		$results_hits = $results['hits']['hits'];
+		$articleMediaArray = $this->getArticleMedia($results_hits);
+		$newsFeeds = $this->formatNewsFeed($results_hits);
+
+		$total_count = $results['hits']['total'];
 		$item_count = count($newsFeeds);
-		$last_page = $item_count < $options_count;
+		$last_page = $size*(1+$page) >= $total_count;
+		$options_page = $page + 1;
+		$options_count = $size;
 
     return view('frontend.user.userhome', compact([
-      'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'query_term', 'articleMediaArray', 
+      'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'query_term', 'articleMediaArray',
 			'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
     ]));
 
 	}
 
-	// private function paginate($newsFeeds){
-	//
-	// 	// Set our paging values
-	// 	$start = (isset($_GET['start']) && !empty($_GET['start'])) ? $_GET['start'] : 0; // Where do we start?
-	// 	$length = (isset($_GET['length']) && !empty($_GET['length'])) ? $_GET['length'] : 5; // How many per page?
-	// 	$max = $newsFeeds->get_item_quantity(); // Where do we end?
-	//
-	//
-	// 	// Let's do our paging controls
-	// 	 $next = (int) $start + (int) $length;
-	// 	 $prev = (int) $start - (int) $length;
-	//
-	// 	// Create the NEXT link
-	// 	 $nextlink = '<a href="?start=' . $next . '&length=' . $length . '">Next &raquo;</a>';
-	// 	if ($next > $max)
-	// 	{
-	// 		$nextlink = 'Next &raquo;';
-	// 	}
-	//
-	// 	// Create the PREVIOUS link
-	// 	 $prevlink = '<a href="?start=' . $prev . '&length=' . $length . '">&laquo; Previous</a>';
-	// 	if ($prev < 0 && (int) $start > 0)
-	// 	{
-	// 		$prevlink = '<a href="?start=0&length=' . $length . '">&laquo; Previous</a>';
-	// 	}
-	// 	else if ($prev < 0)
-	// 	{
-	// 		$prevlink = '&laquo; Previous';
-	// 	}
-	//
-	// 	// Normalize the numbering for humans
-	// 	 $begin = (int) $start + 1;
-	// 	 $end = ($next > $max) ? $max : $next;
-	// 	 $variables = array($start,$length,$max,$next,$prev,$nextlink,$prevlink,$begin,$end);
-	// 	 return $variables;
-	// }
+	private function getArticleMedia($results_hits) {
+		// FIXME avoid duplication with Division Controller
+        // Gather media for each article retreived
+        $articleMediaArray = [];
+        foreach ($results_hits as $item){
+          $itemMedia = ArticleMedia::where('article_id', $item['_id'])->first();
+          if ($itemMedia)
+              array_push($articleMediaArray, $itemMedia);
+        }
+        return $articleMediaArray;
+    }
+
+    private function formatNewsFeed($results_hits) {
+			// FIXME avoid duplication with Division Controller
+        $newsFeeds = [];
+        foreach ($results_hits as $item){
+          array_push($newsFeeds, $item['_source']);
+        }
+        return $newsFeeds;
+    }
+
+	/**
+    * Perform elasticsearch default search per division
+    * @param  array   $filterhgkjhgkjhgkjh
+    * @param  string  $querydfsgsdfgdf
+    * @param  integer $sizegsdfgsdfg
+    * @param  integer $pagedsfgsdfgsdf
+    * @return JSON (from elasticSearchResults() function)
+    */
+    private function defaultElasticResults($divID) {
+			// FIXME avoid duplication with Division Controller
+        $query = [
+          "match_all" => []
+        ];
+        $size = 30;
+        $page = 0;
+
+        return $this->elasticSearchResults($query, $size, $page, $divID);
+    }
+
+    /**
+    * Perform elasticsearch query and return json
+    * @param  array   $filter
+    * @param  string  $query
+    * @param  integer $size
+    * @param  integer $page
+    * @return JSON
+    */
+    private function elasticSearchResults($query, $size, $page, $divID) {
+			// FIXME avoid duplication with Division Controller
+        $filter = [
+          'and' => [
+              ['bool' => [
+                'should' => [
+                  // the language fields should either be the current locale
+                  ['term' => [ 'language' => Config::get('app.locale') ]],
+                  // or it should be NULL, which by default is expected to be english
+                  ['missing' => [ 'field' => 'language' ]]
+                ]
+              ]],
+              ['term' => ['deleted' => 0]],
+          ]
+        ];
+        if ($divID != 0) {
+            // Add the division id as one of the "AND" filters
+            array_push($filter['and'],
+                ['term' => ['divisions' => $divID]]
+            );
+        }
+
+        $sort = [
+            'publish_date' => [
+                'order' => 'desc'
+            ]
+        ];
+
+      $params = [
+          'index' => 'news',
+          'type' => 'articles',
+          'size' => $size,
+          'from' => $size * $page,
+          'body' => [
+              'query' => [
+                  'filtered' => [
+                      'filter' => $filter,
+                      'query' => $query
+                  ]
+              ],
+              'sort' => $sort
+          ]
+      ];
+      return Es::search($params);
+    }
 }
