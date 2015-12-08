@@ -37,6 +37,7 @@ class DivisionController extends Controller
 
       $threads = $this->getDivisionThreads($currentDivision->id);
 
+
       if ($request) {
           $query = [
             "match_all" => []

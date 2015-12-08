@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ee7d109630b7117962e92f0abd7fe21e",
-    "content-hash": "da4ea5a14023ad700ef8db78aaefbfd9",
+    "hash": "011ea4282d3ea83cc58485c1694c284a",
+    "content-hash": "cf6958f6f57c23635752c17a4075bd86",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -878,6 +878,61 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+        },
+        {
+            "name": "elasticquent/elasticquent",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elasticquent/Elasticquent.git",
+                "reference": "a43ec357a2c11bb89f567e560116dcc87af144f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elasticquent/Elasticquent/zipball/a43ec357a2c11bb89f567e560116dcc87af144f3",
+                "reference": "a43ec357a2c11bb89f567e560116dcc87af144f3",
+                "shasum": ""
+            },
+            "require": {
+                "elasticsearch/elasticsearch": "~1.0",
+                "illuminate/database": "~4.2|~5.0",
+                "illuminate/support": "~4.2|~5.0",
+                "nesbot/carbon": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elasticquent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Fairholm",
+                    "email": "adam.fairholm@gmail.com",
+                    "homepage": "http://adamfairholm.com"
+                }
+            ],
+            "description": "Map Laravel Eloquent models to Elasticsearch types.",
+            "homepage": "https://github.com/elasticquent/Elasticquent",
+            "keywords": [
+                "elasticsearch",
+                "eloquent",
+                "laravel"
+            ],
+            "time": "2015-08-21 01:06:40"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -6058,7 +6113,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "simplepie/simplepie": 20,
-        "weblee/mandrill": 20
+        "weblee/mandrill": 20,
+        "elasticquent/elasticquent": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
