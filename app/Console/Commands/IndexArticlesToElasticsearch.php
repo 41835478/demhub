@@ -48,7 +48,6 @@ class IndexArticlesToElasticsearch extends Command
 
         Article::chunk(100, function($articles) {
             foreach ($articles as $article) {
-                dd($article->toArray());
                 $params = [
                     'index' => 'news',
                     'type' => 'articles',
