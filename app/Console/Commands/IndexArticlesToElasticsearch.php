@@ -21,8 +21,6 @@ class IndexArticlesToElasticsearch extends Command
      */
     public function fire()
     {
-        $models = Article::all();
-
         // Uncomment if index needs to be created
         $indexParams = [
             'index' => 'news'
@@ -48,16 +46,18 @@ class IndexArticlesToElasticsearch extends Command
         ];
         Es::indices()->putMapping($mappingProperties);
 
-        foreach ($models as $model)
-        {
-            $params = [
-                'index' => 'news',
-                'type' => 'articles',
-                'id' => $model->id,
-                'body' => $model->toArray()
-            ];
-            Es::index($params);
-        }
+        Article::chunk(100, function($articles) {
+            foreach ($articles as $article) {
+                dd($article->toArray());
+                $params = [
+                    'index' => 'news',
+                    'type' => 'articles',
+                    'id' => $article->id,
+                    'body' => $article->toArray()
+                ];
+                Es::index($article);
+            }
+        });
 
     }
 }
