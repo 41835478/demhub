@@ -19,20 +19,22 @@ class UserController extends Controller {
 	 */
 	public function index(Request $request){
 		// FIXME avoid duplication with Division Controller
-		$allDivisions = $navDivisions = Division::all();
 		$currentDivision = Division::find(1);
 		$currentDivision->slug      = "all";
 		$currentDivision->name      = "All Divisions";
+		$currentDivision->id        = 0;
+
+		$allDivisions = $navDivisions = Division::all();
 
 		if ($request) {
 		   $query = [
 		     "match_all" => []
 		   ];
-		   $options_query = $request->input('query_term', '');	// (optional) search query
-		   if(trim($options_query) != ''){
+		   $query_term = $request->input('query_term', '');	// (optional) search query
+		   if(trim($query_term) != ''){
 		       $query = [
 		           'multi_match' => [
-		               'query' => $options_query,
+		               'query' => $query_term,
 		               'fields' => ['title', 'excerpt', 'keywords']
 		           ]
 		       ];
@@ -126,7 +128,7 @@ class UserController extends Controller {
               ['term' => ['deleted' => 0]],
           ]
         ];
-        if ($divID != 0) {
+        if ($divID > 0 && $divID < 7) {
             // Add the division id as one of the "AND" filters
             array_push($filter['and'],
                 ['term' => ['divisions' => $divID]]
@@ -135,7 +137,8 @@ class UserController extends Controller {
 
         $sort = [
             'publish_date' => [
-                'order' => 'desc'
+                'order' => 'desc',
+								'missing' => PHP_INT_MAX -1, // fixes json_decode() error
             ]
         ];
 
@@ -154,6 +157,7 @@ class UserController extends Controller {
               'sort' => $sort
           ]
       ];
+			// dd($params);
       return Es::search($params);
     }
 }
