@@ -18,7 +18,7 @@
       </a>
     </li>
       <li>
-        <a  href="{{ URL::to('my_publications') }}">
+        <a href="javascript:comingSoonP('my_publications_title')">
           <span class="fa fa-briefcase"></span>
           <span class="sidebar-title" id="my_publications_title">MY PUBLICATIONS</span>
         </a>
