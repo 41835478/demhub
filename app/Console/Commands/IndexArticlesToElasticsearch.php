@@ -25,7 +25,8 @@ class IndexArticlesToElasticsearch extends Command
         $indexParams = [
             'index' => 'news'
         ];
-        // Es::indices()->create($indexParams);
+        Es::indices()->delete($indexParams);
+        Es::indices()->create($indexParams);
 
         $mappingProperties = [
             'index' => 'news',
@@ -54,7 +55,7 @@ class IndexArticlesToElasticsearch extends Command
                     'id' => $article->id,
                     'body' => $article->toArray()
                 ];
-                Es::index($article);
+                Es::index($params);
             }
         });
 
