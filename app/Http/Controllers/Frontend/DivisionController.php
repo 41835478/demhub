@@ -218,7 +218,8 @@ class DivisionController extends Controller
 
         $sort = [
             'publish_date' => [
-                'order' => 'desc'
+                'order' => 'desc',
+                'missing' => PHP_INT_MAX -1, // fixes json_decode() error
             ]
         ];
 
