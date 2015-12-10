@@ -67,6 +67,11 @@ $router->group(['middleware' => 'auth'], function ()
 	get('connections', 'DashboardController@showConnections')->name('connections');
 	// get('profile/edit', 'ProfileController@edit')->name('edit_profile');
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
+
+	/**
+	 * Search
+	 */
+	get('search', 'SearchController@index')->name('search');
 });
 
 /**
