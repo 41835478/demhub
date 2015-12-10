@@ -23,7 +23,7 @@
         @else
           <li>
         @endif
-        <a href="javascript:comingSoon('publications_title')" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
+        <a href="{{url('publication_filter')}}" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
 
         @if(Request::url() == url('publication_filter'))
           <li class="active">
