@@ -1,7 +1,7 @@
 
-$( document ).ready(function() {
-	$('.map').maphilight({fade: true});
-});
+// $( document ).ready(function() {
+// 	$('.map').maphilight({fade: true});
+// });
 
 var countries = ["canada","united_states","australia"];
 var currentCountry;

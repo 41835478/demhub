@@ -37,7 +37,6 @@ class DivisionController extends Controller
 
       $threads = $this->getDivisionThreads($currentDivision->id);
 
-
       if ($request) {
           $query = [
             "match_all" => []
@@ -93,11 +92,11 @@ class DivisionController extends Controller
           $query = [
             "match_all" => []
           ];
-          $options_query = $request->input('query_term', '');	// (optional) search query
-          if(trim($options_query) != ''){
+          $query_term = $request->input('query_term', '');	// (optional) search query
+          if(trim($query_term) != ''){
               $query = [
                   'multi_match' => [
-                      'query' => $options_query,
+                      'query' => $query_term,
                       'fields' => ['title', 'excerpt', 'keywords']
                   ]
               ];
@@ -219,7 +218,8 @@ class DivisionController extends Controller
 
         $sort = [
             'publish_date' => [
-                'order' => 'desc'
+                'order' => 'desc',
+                'missing' => PHP_INT_MAX -1, // fixes json_decode() error
             ]
         ];
 

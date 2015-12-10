@@ -33,6 +33,9 @@
 - `git clone git@bitbucket.org:demhub/demhub.git; cd demhub`
 - `vagrant box add laravel/homestead` (may need to run with sudo)
 - `composer global require "laravel/homestead=~2.0"`
+- `echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bash_profile`
+- `source ~/.bash_profile`
+- `homestead init`
 - Follow the next two instructions with the following snippet of code:
 
 ```bash
@@ -119,6 +122,7 @@ alias .....='cd ../../../..'
 
 - `vim ~/.bash_profile` (The above snippet should be added at the top of .bash_profile)
 - `vim ~/.homestead/aliases` (The above snippet should be added at the top of aliases)
+- `source ~/.bash_profile`
 
 ```bash
 #!/bin/sh
@@ -127,39 +131,36 @@ alias .....='cd ../../../..'
 # add any commands you wish to this file and they will
 # be run after the Homestead machine is provisioned.
 
-echo('Updating app-get')
-apt-get update
-
-echo('Installing Java, Firefox, and Xvfb')
-apt-get install -y openjdk-7-jre firefox xvfb
-
-echo('Installng Selenium')
-npm install -g selenium-standalone
-selenium-standalone install
-
-echo('Installing Elasticsearch Public Signing Key')
-wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-
-echo('Adding repository')
-echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
-
-echo('Updating Aptitude')
+# Update app-get
 sudo apt-get update
 
-echo('Installing Elasticsearch')
+# Install Java, Firefox, and Xvfb
+sudo apt-get install -y openjdk-7-jre firefox xvfb
+
+# Install Selenium
+sudo npm install -g selenium-standalone
+sudo selenium-standalone install
+
+# Install Elasticsearch Public Signing Key
+wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+
+# Add repository
+echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+
+# Update Aptitude
+sudo apt-get update
+
+# Install Elasticsearch
 sudo apt-get install elasticsearch
 
-echo('Setting Elasticsearch to run on startup')
-update-rc.d elasticsearch defaults 95 10
+# Set Elasticsearch to run on startup
+sudo update-rc.d elasticsearch defaults 95 10
 
-echo('Starting Elasticsearch server')
-/etc/init.d/elasticsearch start
+# Start Elasticsearch server
+sudo /etc/init.d/elasticsearch start
 ```
 
 - `vim ~/.homestead/after.sh` (The above snippet should replace the contents of after.sh)
-- `echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bash_profile`
-- `source ~/.bash_profile`
-- `homestead init`
 - `homestead edit`
 
 ```yaml
@@ -179,15 +180,6 @@ sites:
 > `sudo chmod +a "$USER allow read,write" /etc/hosts`
 
 - `homestead up`
-- One by one, visit each one of these links and wait for their individual outputs. These will populate the DB with article entries from various news sources.
-
-```
-http://demhub.dev/scheduler/scrapeRSS
-http://demhub.dev/scheduler/scrapeCustom?source=IRDR&page_from=1&page_to=1
-http://demhub.dev/scheduler/scrapeCustom?source=EC&page_from=1&page_to=1
-http://demhub.dev/scheduler/scrapeCustom?source=EC-PR&page_from=1&page_to=1
-http://demhub.dev/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
-```
 
 #### First time after starting the Homestead machine
 - `homestead ssh`
@@ -211,6 +203,16 @@ end
 - Add `config.vm.network "forwarded_port", guest: 9200, host: 62000` as indicated in the above snippet
 - `cd ~/workspace/demhub`
 - `larafullnew` (For commands breakdown, refer to aliases above)
+- One by one, visit each one of these links and wait for their individual outputs. These will populate the DB with article entries from various news sources.
+
+```
+http://demhub.dev/scheduler/scrapeRSS
+http://demhub.dev/scheduler/scrapeCustom?source=IRDR&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeCustom?source=EC&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeCustom?source=EC-PR&page_from=1&page_to=1
+http://demhub.dev/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
+```
+- `php artisan app:es-index`
 - `exit` in order to let all box changes take effect
 
 #### Start developing

@@ -12,7 +12,7 @@
 				<div id="world_map" class="mapContainer">
 					<!-- <h1>The World</h1>
 					<p>SVG world maps are really helpful for demoing this thing.  (Try the insanely huge <a href="http://commons.wikimedia.org/wiki/Image_talk:BlankMap-World6.svg">SVG world map available on Wikipedia</a>.)</p> -->
-					<img class="map" src="./images/maps/demo_world_current.png" width="800" height="400" style="max-width:100%" usemap="#world">
+					<img class="map" src="./images/maps/demo_world_current.png" style="max-width:100%;width:800px;height:400px" usemap="#world">
 					<map name="world" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter._north_america')
 					</map>
@@ -21,14 +21,14 @@
 				<div id="united_states_map" class="mapContainer" style="visibility:hidden;height:1px">
 					<!-- <h1>The United States of America</h1>
 					<p>This map generated from <a href="http://en.wikipedia.org/wiki/Image:Map_of_USA_with_state_names.svg">"Map of USA with state names.svg"</a>.</p> -->
-					<img class="map" id="united_states_img" src="./images/maps/demo_usa.png" width="750" style="max-width:100%;" orgWidth="960" orgHeight="593" usemap="#usa">
+					<img class="map" id="united_states_img" src="./images/maps/demo_usa.png" style="max-width:100%;width:750px;height:463px" orgWidth="960" orgHeight="593" usemap="#usa">
 					<map name="usa" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter.countries._usa')
 					</map>
 				</div>
 
 				<div id="canada_map" class="mapContainer" style="visibility:hidden;height:1px;">
-					<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" width="650" orgWidth="690" orgHeight="669" style="max-width:100%;" usemap="#canada" />
+					<img class="map" id="canada_img" src="./images/maps/1000px-Canada_labelled_map.png" border="0" orgWidth="690" orgHeight="669" style="max-width:100%;width:650px;height:670px" usemap="#canada" />
 					<map name="canada" style="text-transform: capitalize;">
 					<!-- <area shape="rect" coords="998,967,1000,969" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" /> -->
 						@include('frontend.user.resource_filter.countries._canada')
@@ -36,7 +36,7 @@
 				</div>
 
 				<div id="australia_map" class="mapContainer" style="visibility:hidden;height:1px">
-					<img class="map" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" width="615" orgWidth="690" orgHeight="655" style="max-width:100%;" alt="" />
+					<img class="map" id="australia_img" src="./images/maps/australia_map.png" usemap="#australia" border="0" orgWidth="690" orgHeight="655" style="max-width:100%;width:615px;height:584px" alt="" />
 					<map name="australia" style="text-transform: capitalize;">
 						@include('frontend.user.resource_filter.countries._australia')
 					</map>
