@@ -1,10 +1,40 @@
 //main design
+.pub-space {
+  margin-top:60px;
+}
+.publication-list{
+  height:100%;
+}
+
 .publication-update {
-
+ @extend .pub-space;
+display: block;
+height:300px;
+width:100%;
+background-color: #ddd;
 }
-.Public-landing-box{
 
+.publication-each{
+  ul{
+    list-style: none;
+    line-height: 95%;
+  }
+  li{
+
+  }
 }
+.pub-author{
+  line-height: 90%;
+}
+.pub-title{
+  color:#000;
+  font-weight: 300;
+}
+
+.pub-descrip{
+  line-height:90%;
+}
+
 .publication-update-number{
   float:right;
   margin-right:40px;

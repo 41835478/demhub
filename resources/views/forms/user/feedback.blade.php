@@ -5,7 +5,7 @@
   <!--App details-->
   <div class="form-group">
     <label for="question1">Overall, are you finding DEMHUB useful?</label><br>
-    <label style="font-size:80%">1 - Not at alll useful, 5 - Very useful</label><br>
+    <label style="font-size:80%">1 - Not at all useful, 5 - Very useful</label><br>
     <?php
       for($x = 1; $x < 6; $x++){
         echo '<label class="radio-inline">

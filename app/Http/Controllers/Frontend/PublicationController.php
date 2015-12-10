@@ -116,4 +116,19 @@ class PublicationController extends Controller
     {
         //
     }
+
+    /**
+     * Display publications in main page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function public_publication()
+    {
+        $publications = Publication::all();
+        $secondMenu = true;
+        // dd($publications);
+        return view('frontend.user.publication_filter.publication_filter', compact([
+          'publications', 'secondMenu'
+        ]));
+    }
 }

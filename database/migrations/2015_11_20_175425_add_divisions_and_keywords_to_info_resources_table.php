@@ -13,8 +13,8 @@ class AddDivisionsAndKeywordsToInfoResourcesTable extends Migration
     public function up()
     {
         Schema::table('info_resources', function (Blueprint $table) {
-            // $table->string('divisions');
-            // $table->string('keywords');
+            $table->string('divisions');
+            $table->string('keywords');
         });
     }
 

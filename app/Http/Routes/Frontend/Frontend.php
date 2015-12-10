@@ -51,7 +51,7 @@ get('my_publication/{id}', 'PublicationController@show')->name('show_publication
 /**
  * Public Publication Route
  */
-get('publication_filter', 'InfoResourceController@showpublicFilter')->name('publication_filter');
+get('publication_filter', 'PublicationController@public_publication')->name('publication_filter');
 
 /**
  * These frontend controllers require the user to be logged in
