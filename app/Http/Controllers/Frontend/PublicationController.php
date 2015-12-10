@@ -7,6 +7,7 @@ use App\Models\Publication;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use Carbon\Carbon as Carbon;
 
 class PublicationController extends Controller
 {
@@ -55,7 +56,33 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        $publication = new Publication($request->all());
+
+      $divisions="";
+      for ($i = 1;$i < 7; $i++){
+        $field='division_'.$i;
+        if (! empty ($request->$field)){
+        $divisions = $divisions.'|'.$request->$field;
+      }
+      }
+      $divisions = $divisions.'|';
+
+      $inputs = [
+        'title' => $request->title,
+        'description' => $request->description,
+        'publication_author' => $request->author,
+        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->date),
+        'privacy' => $request->privacy,
+        'divisions' => $divisions,
+        'keywords' => $request->keywords,
+        'volume' => $request->volume,
+        'issues' => $request->issue,
+        'pages' => $request->pages,
+        'publisher' => $request->publisher,
+        'institution' => $request->institution,
+        'conference' => $request->conference,
+      ];
+        $publication = new Publication($inputs);
+
         Auth::user()->publications()->save($publication);
 
         return redirect('my_publications')
@@ -70,9 +97,10 @@ class PublicationController extends Controller
      */
     public function show($id)
     {
+      $publications = Auth::user()->publications;
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.my_publication.show', compact(['publication'])
+        'frontend.user.dashboard.my_publication.show', compact(['publication','publications'])
       );
     }
 
@@ -99,8 +127,33 @@ class PublicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $publication = Publication::findOrFail($id);
-      $publication->fill($request->all())->save();
+      $divisions="";
+      for ($i = 1;$i < 7; $i++){
+        $field='division_'.$i;
+        if (! empty ($request->$field)){
+        $divisions = $divisions.'|'.$request->$field;
+      }
+      }
+      $divisions = $divisions.'|';
+
+      $inputs = [
+        'title' => $request->title,
+        'description' => $request->description,
+        'publication_author' => $request->author,
+        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->date),
+        'privacy' => $request->privacy,
+        'divisions' => $divisions,
+        'keywords' => $request->keywords,
+        'volume' => $request->volume,
+        'issues' => $request->issue,
+        'pages' => $request->pages,
+        'publisher' => $request->publisher,
+        'institution' => $request->institution,
+        'conference' => $request->conference,
+      ];
+      Publication::updateOrCreate(['id'=>$id], $inputs);
+
+      // $publication->fill($inputs)->save();
 
       return redirect('my_publications')
       ->withFlashSuccess("Successfully created publication!");
@@ -115,5 +168,20 @@ class PublicationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display publications in main page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function public_publication()
+    {
+        $publications = Publication::all();
+        $secondMenu = true;
+        // dd($publications);
+        return view('frontend.user.publication_filter.publication_filter', compact([
+          'publications', 'secondMenu'
+        ]));
     }
 }

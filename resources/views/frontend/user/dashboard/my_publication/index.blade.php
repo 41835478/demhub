@@ -15,8 +15,9 @@
           </div>
 
         @if($publications)
-          <table class="table table-striped table-bordered" style="background-color:#ccc">
-            <thead>
+
+          <table class="table table-hover table-bordered">
+            <thead style="background-color:#ccc">
                 <tr>
                     <td><span class="caret"></span></td>
                     <td>TITLE</td>
@@ -28,30 +29,31 @@
                 </tr>
             </thead>
             <tbody>
-              @foreach ($publications as $pub)
+              @for ($i=(sizeof($publications)-1);$i>-1;$i--)
+
                 <tr>
                     <td><label>
-                      <input type="checkbox" class="radio-inline" id="{{ $pub->title }}" name="{{ $pub->title }}" style=""></label>
+                      <input type="checkbox" class="radio-inline" id="{{ $publications[$i]->title }}" name="{{ $publications[$i]->title }}" style=""></label>
                     </td>
-                    <td><a href="{{ URL::to('my_publication/' . $pub->id) }}">{{ $pub->title }}</a></td>
-                    <td>{{ $pub->author->full_name() }}</td>
-                    <td>{{ date_format(new DateTime($pub->updated_at ), 'j F Y | g:i a') }}</td>
+                    <td><a href="{{ URL::to('my_publication/' . $publications[$i]->id) }}">{{ $publications[$i]->title }}</a></td>
+                    <td>{{ $publications[$i]->author->full_name() }}</td>
+                    <td>{{ date_format(new DateTime($publications[$i]->publication_date ), 'j F Y') }}</td>
 
-                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $pub->id . '/edit') }}"><h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ $pub->document->url() }}" download style="padding-left:5px"><h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
-                    <a  class="greytone" href="{{ URL::to('my_publication/' . $pub->id) }}" style="padding-left:5px"><h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
+                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $publications[$i]->id . '/edit') }}"><h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
+                    <a class="greytone" href="{{ $publications[$i]->document->url() }}" download style="padding-left:5px"><h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
+                    <a  class="greytone" href="{{ url('my_publication/' . $publications[$i]->id) }}" style="padding-left:5px"><h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
 
                     <td>
                       <?php
-                      if ($pub->divisions !=null){
-                      $publicationDivisions = array_filter(preg_split("/\|/", $pub->divisions));
+                      if ($publications[$i]->divisions !=null){
+                      $publicationsDivisions = array_filter(preg_split("/\|/", $publications[$i]->divisions));
                       }
                       ?>
-                      @if ($publicationDivisions)
-                        @foreach ($publicationDivisions as $publicationDivision)
+                      @if ($publicationsDivisions)
+                        @foreach ($publicationsDivisions as $publicationsDivision)
 
-                        <a href="{{url('/division/'.$publicationDivision)}}" >
-                        <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationDivision }}">
+                        <a href="{{url('/division/'.$publicationsDivision)}}" >
+                        <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationsDivision }}">
                       </a>
 
 
@@ -61,7 +63,7 @@
                     <td></td>
 
                 </tr>
-              @endforeach
+              @endfor
             </tbody>
           </table>
         @else

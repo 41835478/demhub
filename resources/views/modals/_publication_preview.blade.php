@@ -1,70 +1,78 @@
 <div class="modal fade" id="publicationModal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-body" style="text-align: center;">
+      <div class="modal-header" style="text-align:center">
+        <h3 style="display:inline">{{ $publication->title }}</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <table class="table table-striped table-bordered" style="background-color:#ccc">
-          <thead>
-              <tr>
-                  <td>{{ $publication->title }}</td>
-              </tr>
-          </thead>
+      </div>
+      <div class="modal-body" style="text-align:center">
+        <div class="row">
+        <table class="table table-hover table-bordered">
+
           <tbody>
             <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DESCRIPTION</td>
               <td>{{ $publication->description }}</td>
             </tr>
-            <tr>
-              <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DATE</td>
-              <td>{{ $publication->document_content_type }}</td>
+            <!-- <tr>
+              <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">AUTHOR</td>
+              <td>{{ $publication->author->full_name() }}</td>
             </tr>
             <tr>
+              <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DATE</td>
+              <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
+            </tr> -->
+
+            <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PRIVACY</td>
-              <td>{{ $publication->privacy }}</td>
+              <td style="text-transform:capitalize">{{ $publication->privacy }}</td>
             </tr>
             <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DIVISIONS</td>
-              <td>{{ $publication->divisions}}</td>
+              <td>
+                <?php
+                if ($publication->divisions !=null){
+                $publicationsDivisions = array_filter(preg_split("/\|/", $publication->divisions));
+                }
+                ?>
+                @if ($publicationsDivisions)
+                  @foreach ($publicationsDivisions as $publicationsDivision)
+
+                  <a href="{{url('/division/'.$publicationsDivision)}}" >
+                  <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationsDivision }}">
+                </a>
+
+
+                  @endforeach
+                @endif
+              </td>
             </tr>
+            @if(! empty($publication->keywords))
+            <tr>
+              <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase">keywords</td>
+              <td style="text-transform:capitalize">{{ $publication->keywords }}</td>
+            </tr>
+            @endif
+            @if(! empty($publication->publisher))
             <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PUBLISHER</td>
-              <td>{{ $publication->publisher}}</td>
+              <td style="text-transform:capitalize">{{ $publication->publisher}}</td>
             </tr>
-              <tr>
-                  <td><label>
-                    <input type="checkbox" class="radio-inline" id="{{ $pub->title }}" name="{{ $pub->title }}" style=""></label>
-                  </td>
-                  <td><a href="{{ URL::to('my_publication/' . $pub->id) }}">{{ $pub->title }}</a></td>
-                  <td>{{ $pub->author->full_name() }}</td>
-                  <td>{{ date_format(new DateTime($pub->updated_at ), 'j F Y | g:i a') }}</td>
-
-                  <td><a class="greytone" href="{{ URL::to('my_publication/' . $pub->id . '/edit') }}"><h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
-                  <a class="greytone" href="{{ $pub->document->url() }}" download style="padding-left:5px"><h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
-                  <a  class="greytone" href="{{ URL::to('my_publication/' . $pub->id) }}" style="padding-left:5px"><h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
-
-                  <td>
-                    <?php
-                    if ($pub->divisions !=null){
-                    $publicationDivisions = array_filter(preg_split("/\|/", $pub->divisions));
-                    }
-                    ?>
-                    @if ($publicationDivisions)
-                      @foreach ($publicationDivisions as $publicationDivision)
-
-                      <a href="{{url('/division/'.$publicationDivision)}}" >
-                      <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationDivision }}">
-                    </a>
-
-
-                      @endforeach
-                    @endif
-                  </td>
-                  <td></td>
-
-              </tr>
-
+            @endif
+            @if(! empty($publication->pages))
+            <tr>
+              <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase">pages</td>
+              <td style="text-transform:capitalize">{{ $publication->pages }}</td>
+            </tr>
+            @endif
           </tbody>
         </table>
+      </div>
+        <div class="row">
+          <a class="btn btn-style-alt" style="margin-right:10px;text-transform:uppercase" href="{{ $publication->document->url() }}" download>show</a>
+          <a class="btn btn-style-alt" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}">edit</a>
+          <button class="btn btn-style-alt" style="text-transform:uppercase" data-dismiss="modal" aria-label="Close">close</button>
+        </div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
