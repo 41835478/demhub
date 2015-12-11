@@ -71,7 +71,7 @@
         <div class="row">
           <a class="btn btn-style-alt" style="margin-right:10px;text-transform:uppercase" href="{{ $publication->document->url() }}" download>show</a>
           <a class="btn btn-style-alt" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}">edit</a>
-          <button class="btn btn-style-alt" style="text-transform:uppercase" data-dismiss="modal" aria-label="Close">close</button>
+          <a class="btn btn-style-alt" style="text-transform:uppercase" href="{{url('publication_filter')}}">PUBLICATIONS</button>
         </div>
       </div>
     </div><!-- /.modal-content -->
