@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'store_publication', 'files' => true, 'class' => 'form-horizontal', 'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form']) !!}
+
 <div id="main_publication_form">
   <div class="form-group">
         {!! Form::label('title', "TITLE", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
@@ -10,8 +10,8 @@
   <div class="form-group">
         {!! Form::label('description', "DESCRIPTION", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class="col-sm-6">
-            {!! Form::input('text', 'description', null, ['class' => 'form-control ', 'maxlength'=>'255', 'placeholder' => '50 words or less', 'id' => 'description']) !!}
-
+            {!! Form::input('text', 'description', null,
+            ['class' => 'form-control ', 'maxlength'=>'255', 'placeholder' => '50 words or less', 'id' => 'description']) !!}
         </div>
         <div class="help-block with-errors"></div>
   </div>
@@ -19,7 +19,7 @@
   <div class="form-group">
         {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
         <div class="col-sm-6">
-            {!! Form::input('text', 'author', null, ['class' => 'form-control ', 'maxlength'=>'255']) !!}
+            {!! Form::input('text', 'publication_author', null, ['class' => 'form-control ', 'maxlength'=>'255']) !!}
 
         </div>
         <div class="help-block with-errors"></div>
@@ -27,20 +27,32 @@
 
   <div class="form-group">
         {!! Form::label('document', "DOCUMENT", ['class' => 'col-xs-3 col-sm-2 control-label','style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
-        <div class=" col-sm-6" style='padding-top:8px'>
+        <div class=" col-sm-6"
+          @if (empty($publication->document_file_name))
+          style='padding-top:8px'>
             {!! Form::file('document', null, ['class' => 'form-control']) !!}
+          @elseif (! empty($publication->document_file_name))
+          >
+            <input type="text" class="form-control" value="{{$publication->document_file_name}}" disabled/>
+
+          @endif
         </div>
   </div>
 
   <div class="form-group">
-        {!! Form::label('date', "DATE", ['class' => 'col-xs-3 col-sm-2 control-label', "data-date-format"=>"mm/dd/yyyy", 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+        {!! Form::label('publication_date', "DATE", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class="col-sm-6 input-group date" id='datetimepicker1' style="padding-left:10px;padding-right:10px">
           <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
           </span>
-            {!! Form::input('date', 'date', null, ['class' => 'form-control','required']) !!}
-            <div class="help-block with-errors"></div>
+          @if (empty($publication->publication_date))
+            {!! Form::input('publication_date', 'publication_date', null, ['class' => 'form-control','required', 'id' => 'publication_date']) !!}
+          @elseif (! empty($publication->publication_date))
+
+            <input type="text" name="publication_date" id="publication_date" class="form-control" value="{{date_format(new DateTime($publication->publication_date ), 'd/m/Y')}}" style="" required/>
+          @endif
         </div>
+        <div class="help-block with-errors"></div>
   </div>
 
   <div class="form-group">
@@ -111,7 +123,7 @@
   <div class="form-group">
         {!! Form::label('issue', "ISSUE", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class=" col-sm-6">
-            {!! Form::input('issue', 'issue', null, ['class' => 'form-control']) !!}
+            {!! Form::input('issue', 'issues', null, ['class' => 'form-control']) !!}
         </div>
   </div>
 
@@ -146,15 +158,16 @@
         {!! Form::submit('SAVE', ['class' => 'btn btn-style-alt']) !!}
     </div>
 </div>
-{!! Form::close() !!}
+
 <br>
 <script type="text/javascript">
 
             $(function () {
-                // $.defaults.format = "mm/dd/yyyy";
-                $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
 
                 $('#more_options').toggle();
+            });
+            $('#publication_date').click( function (){
+              $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
             });
             function showMore () {
                 $('#more_options').toggle();

@@ -70,7 +70,8 @@ class PublicationController extends Controller
         'title' => $request->title,
         'description' => $request->description,
         'publication_author' => $request->author,
-        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->date),
+        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
+        'document' => $request->document,
         'privacy' => $request->privacy,
         'divisions' => $divisions,
         'keywords' => $request->keywords,
@@ -127,6 +128,7 @@ class PublicationController extends Controller
      */
     public function update(Request $request, $id)
     {
+
       $divisions="";
       for ($i = 1;$i < 7; $i++){
         $field='division_'.$i;
@@ -140,7 +142,11 @@ class PublicationController extends Controller
         'title' => $request->title,
         'description' => $request->description,
         'publication_author' => $request->author,
-        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->date),
+        'document' => $request->document,
+        // 'publication_author' => $request->document_file_size,
+        // 'publication_author' => $request->document_content_type,
+        // 'publication_author' => $request->document_updated_at,
+        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
         'privacy' => $request->privacy,
         'divisions' => $divisions,
         'keywords' => $request->keywords,
