@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel {
 		'App\Console\Commands\IndexArticlesToElasticsearch',
 		// 'App\Console\Commands\IndexDiscussionsToElasticsearch',
 		'App\Console\Commands\IndexInfoResourcesToElasticsearch',
-		// 'App\Console\Commands\IndexPublicationsToElasticsearch',
+		'App\Console\Commands\IndexPublicationsToElasticsearch',
 		'App\Console\Commands\IndexUsersToElasticsearch'
 	];
 

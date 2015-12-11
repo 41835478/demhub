@@ -22,7 +22,6 @@ class SearchController extends Controller
 
         $userResults = Search::queryUsers();
         $userResults = Search::formatElasticSearchToArray($userResults['hits']);
-        $userResults = [];
 
         $publicationResults = Search::queryPublications();
         $publicationResults = Search::formatElasticSearchToArray($publicationResults['hits']);
