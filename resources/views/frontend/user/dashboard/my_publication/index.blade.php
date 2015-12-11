@@ -14,7 +14,7 @@
             <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">CREATE</a>
           </div>
 
-        @if($publications)
+
 
           <table class="table table-hover table-bordered">
             <thead style="background-color:#ccc">
@@ -29,6 +29,7 @@
                 </tr>
             </thead>
             <tbody>
+              @if(! empty($publications))
               @for ($i=(sizeof($publications)-1);$i>-1;$i--)
 
                 <tr>
@@ -70,11 +71,16 @@
 
                 </tr>
               @endfor
+              @else
+              <tr>
+                <td>
+                  <p>No publications</p>
+                </td>
+              </tr>
+              @endif
+
             </tbody>
           </table>
-        @else
-          <p>No publications</p>
-        @endif
 
       </div>
     </div>
