@@ -18,7 +18,6 @@ use App\Models\NewsFeed;
 use App\Models\ScrapeSource;
 use App\Models\ScrapeLog;
 
-
 class Scraper
 {
 
@@ -985,4 +984,4 @@ class Scraper
 
 		return $return;
 	}
-} 
+}
