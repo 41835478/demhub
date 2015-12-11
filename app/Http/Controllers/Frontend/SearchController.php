@@ -19,7 +19,7 @@ class SearchController extends Controller
     {
         $articleResults = Search::queryArticles();
         $articleResults = Search::formatElasticSearchToArray($articleResults['hits']);
-        
+
         $userResults = Search::queryUsers();
         $userResults = Search::formatElasticSearchToArray($userResults['hits']);
         $userResults = [];
@@ -28,13 +28,12 @@ class SearchController extends Controller
         $publicationResults = Search::formatElasticSearchToArray($publicationResults['hits']);
         $publicationResults = [];
 
-        $discussionResults = Search::queryDiscussions();
-        $discussionResults = Search::formatElasticSearchToArray($discussionResults['hits']);
+        // $discussionResults = Search::queryDiscussions();
+        // $discussionResults = Search::formatElasticSearchToArray($discussionResults['hits']);
         $discussionResults = [];
 
         $resourceResults = Search::queryResources();
         $resourceResults = Search::formatElasticSearchToArray($resourceResults['hits']);
-        $resourceResults = [];
 
         return view('frontend.search.index', compact([
           'articleResults', 'userResults', 'publicationResults', 'discussionResults', 'resourceResults'

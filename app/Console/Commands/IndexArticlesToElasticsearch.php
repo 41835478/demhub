@@ -9,7 +9,7 @@ class IndexArticlesToElasticsearch extends Command
     /**
      * {@inheritdoc}
      */
-    protected $name = "app:es-index";
+    protected $name = "es:articles-index";
 
     /**
      * {@inheritdoc}
