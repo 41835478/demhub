@@ -55,7 +55,7 @@
                       $publicationsDivisions = array_filter(preg_split("/\|/", $publications[$i]->divisions));
                       }
                       ?>
-                      @if ($publicationsDivisions)
+                      @if (! empty($publicationsDivisions))
                         @foreach ($publicationsDivisions as $publicationsDivision)
 
                         <a href="{{url('/division/'.$publicationsDivision)}}" >
