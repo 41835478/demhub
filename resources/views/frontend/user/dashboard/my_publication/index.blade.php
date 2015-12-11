@@ -35,13 +35,13 @@
                     <td><label>
                       <input type="checkbox" class="radio-inline" id="{{ $publications[$i]->title }}" name="{{ $publications[$i]->title }}" style=""></label>
                     </td>
-                    <td><a href="{{ URL::to('my_publication/' . $publications[$i]->id) }}">{{ $publications[$i]->title }}</a></td>
+                    <td><a href="{{ $publications[$i]->document->url() }}">{{ $publications[$i]->title }}</a></td>
                     <td>{{ $publications[$i]->author->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publications[$i]->publication_date ), 'j F Y') }}</td>
 
                     <td><a class="greytone" href="{{ URL::to('my_publication/' . $publications[$i]->id . '/edit') }}"><h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
                     <a class="greytone" href="{{ $publications[$i]->document->url() }}" download style="padding-left:5px"><h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
-                    <a  class="greytone" href="{{ url('my_publication/' . $publications[$i]->id) }}" style="padding-left:5px"><h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
+                    <a  class="greytone" href="{{ URL::to('my_publication/' . $publications[$i]->id) }}" style="padding-left:5px"><h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
 
                     <td>
                       <?php

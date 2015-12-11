@@ -1,6 +1,6 @@
 @include('frontend.navigation._navbar')
 
-@if (Auth::user() && (!empty($allDivisions) || $secondMenu))
+@if (Auth::user() && (!empty($allDivisions)))
   @if (!isset($userMenu))
     @if (Request::url() == url('thefuture'))
       @include ('frontend.navigation._carousel-menu-user')

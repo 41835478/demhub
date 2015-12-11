@@ -9,16 +9,17 @@
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
 
-          <div class="col-sm-10 col-sm-offset-2">
-  <h1>NEW PUBLICATION</h1>
+      <div class="col-sm-10 col-sm-offset-2">
+        <h1>NEW PUBLICATION</h1>
 
-  <!-- if there are creation errors, they will show here -->
-  {!! HTML::ul($errors->all()) !!}
+        <!-- if there are creation errors, they will show here -->
+        {!! HTML::ul($errors->all()) !!}
 
-
-    @include('frontend.user.dashboard.my_publication._form')
-
-          </div>
+        {!! Form::open(['route' => 'store_publication', 'files' => true, 'class' => 'form-horizontal',
+        'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form']) !!}
+          @include('frontend.user.dashboard.my_publication._form')
+        {!! Form::close() !!}
+      </div>
 
     </div>
 </section>

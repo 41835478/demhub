@@ -2,7 +2,7 @@
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
-    <div class="row center-block mt10" style="">
+    <div class="row center-block mt10" style="text-transform:uppercase">
 
       {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
 
@@ -96,7 +96,7 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('phone_number', 'Phone N.', ['class' => 'col-lg-3 control-label']) !!}
+            {!! Form::label('phone_number', 'Phone', ['class' => 'col-lg-3 control-label']) !!}
             <div class="col-lg-8">
               {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
             </div>
