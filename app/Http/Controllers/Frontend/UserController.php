@@ -9,8 +9,8 @@ use Es;
 use Config;
 
 /**
- * Class FrontendController
- * @package App\Http\Controllers
+ * Class UserController
+ * @package App\Http\Controllers\Frontend
  */
 class UserController extends Controller {
 

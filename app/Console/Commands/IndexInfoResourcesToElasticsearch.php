@@ -25,8 +25,8 @@ class IndexInfoResourcesToElasticsearch extends Command
         $indexParams = [
             'index' => 'info'
         ];
-        Es::indices()->delete($indexParams);
-        Es::indices()->create($indexParams);
+        // Es::indices()->delete($indexParams);
+        // Es::indices()->create($indexParams);
 
         InfoResource::chunk(100, function($resources) {
             foreach ($resources as $resource) {

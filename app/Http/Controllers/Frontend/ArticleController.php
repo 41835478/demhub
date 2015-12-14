@@ -12,7 +12,10 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
-
+/**
+ * Class ArticleController
+ * @package App\Http\Controllers\Frontend
+ */
 class ArticleController extends Controller
 {
 

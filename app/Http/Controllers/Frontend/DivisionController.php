@@ -15,14 +15,17 @@ use Riari\Forum\Libraries\Alerts;
 use Riari\Forum\Libraries\Utils;
 use Riari\Forum\Libraries\Validation;
 
+/**
+ * Class DivisionController
+ * @package App\Http\Controllers\Frontend
+ */
 class DivisionController extends Controller
 {
     /**
-    * Show a list of all available divisions.
-    *
-    * @return Response
-    */
-
+     * Show a list of all available divisions
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function index(Request $request)
     {
       $currentDivision = Division::find(1);
@@ -70,7 +73,6 @@ class DivisionController extends Controller
         'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
       ]));
     }
-
 
     public function show($divisionSlug, Request $request)
     {

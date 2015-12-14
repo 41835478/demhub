@@ -221,6 +221,9 @@ http://demhub.dev/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
 - `cd ~/workspace/demhub`
 - Open Chrome (preferably) and visit `demhub.dev`
 
+##### Documentation
+- `apigen generate -s app -d api --template-theme bootstrap --tree`
+
 #### Before commiting (if applicable)
 - `git config --global user.name "Your Name"`
 - `git config --global user.email you@example.com`
