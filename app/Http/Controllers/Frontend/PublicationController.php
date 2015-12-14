@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Carbon\Carbon as Carbon;
 
+/**
+ * Class PublicationController
+ * @package App\Http\Controllers\Frontend
+ */
 class PublicationController extends Controller
 {
 

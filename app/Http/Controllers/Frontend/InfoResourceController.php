@@ -5,6 +5,10 @@ use App\Models\InfoResource;
 use App\Models\Region;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class InfoResourceController
+ * @package App\Http\Controllers\Frontend
+ */
 class InfoResourceController extends Controller
 {
     /**

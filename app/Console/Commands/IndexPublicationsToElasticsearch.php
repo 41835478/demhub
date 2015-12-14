@@ -25,10 +25,10 @@ class IndexPublicationsToElasticsearch extends Command
         $indexParams = [
             'index' => 'info'
         ];
-        Es::indices()->delete($indexParams);
-        Es::indices()->create($indexParams);
+        // Es::indices()->delete($indexParams);
+        // Es::indices()->create($indexParams);
 
-        User::chunk(100, function($publications) {
+        Publication::chunk(100, function($publications) {
             foreach ($publications as $publication) {
                 $params = [
                     'index' => 'info',
