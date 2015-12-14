@@ -22,30 +22,80 @@
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publications[$i]->id}}" aria-expanded="false" aria-controls="collapseExample">
 
                   </li>
-                  <li> <i class="icon expand_more"></i>description</a></li>
+                  <li> <i class="icon expand_more"></i>More</a></li>
                 </ul>
                 <div class="collapse linkpub-{{$publications[$i]->id}} pub-dropdown" >
                   <div class="well">
-                    {{$publications[$i]->description}}
-                    <?php
-                    $articleKeywords = array_filter(preg_split("/\|/", $publications[$i]->keywords));
-                    ?>
+                    <div class ="pub-descrip-content">{{$publications[$i]->description}}</div>
 
-                      @foreach($articleKeywords as $key=>$keyword)
+                      <?php
+                      $articleKeywords = array_filter(preg_split("/\|/", $publications[$i]->keywords));
+                      ?>
+                      @if(count($articleKeywords) > 1)
+                        @foreach($articleKeywords as $key=>$keyword)
 
-                        <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
-                          <li><a href="?query_term={{$keyword}}">{{$keyword}}</a></li>
-                      </ul>
+                          @if($key==1)
 
-                      @endforeach
-                    <div class="label label-default"><h3>{{$publications[$i]->keywords}}</h3></div> 
+                          <a class="label label-default" style="font-size:82%;margin-right:2px" href="/?query_term={{$keyword}}">
+                            {{ $keyword }}
+                          </a>
+                          @elseif($key==2)
+
+                          <div class="dropup" style="display:inline">
+                            <a type="button" class="label label-default dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
+                            style="font-size:82%;margin-right:2px">
+                            and {{count($articleKeywords)}} other keywords
+                              <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
+                              <li><a href="?query_term={{$keyword}}">{{$keyword}}</a></li>
+                            @elseif($key>2)
+                              <li><a href="?query_term={{$keyword}}" >{{$keyword}}</a></li>
+
+                          @endif
+                        @endforeach
+                        </ul>
+                      </div>
+                      @elseif(count($articleKeywords) <5)
+                        @foreach($articleKeywords as $key=>$keyword)
+                          @if ($keyword)
+
+                          <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
+                            @if($keyword == "virus")
+                            viral
+                            @else
+                            {{ $keyword }}
+                            @endif
+                          </a>
+                          @endif
+                        @endforeach
+
+                      @endif
+                    </div>
+
+
                   </div>
                 </div>
-            </div>
+
             <div class="publication-right">
               <ul>
                 <li>
-                  <div class ="division-icon"> {{$publications[$i]->divisions}}</div>
+                  <?php
+                  if ($publications[$i]->divisions !=null){
+                  $publicationsDivisions = array_filter(preg_split("/\|/", $publications[$i]->divisions));
+                  }
+                  ?>
+                  @if (! empty($publicationsDivisions))
+                    @foreach ($publicationsDivisions as $publicationsDivision)
+
+                    <a href="{{url('/division/'.$publicationsDivision)}}" >
+                    <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationsDivision }}">
+                  </a>
+
+
+                    @endforeach
+                  @endif
                 </li>
 
                 <li>
