@@ -42,6 +42,7 @@ get('resources', 'InfoResourceController@index');
  */
 // resource('publication', 'PublicationController');
 get('my_publications', 'PublicationController@index')->name('my_publications');
+post('my_publications/{caret}', 'PublicationController@caret_publication_action')->name('caret_publication_action');
 get('my_publication/new', 'PublicationController@create')->name('new_publication');
 post('my_publication/store', 'PublicationController@store')->name('store_publication');
 get('my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');

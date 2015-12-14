@@ -32,11 +32,40 @@ class PublicationController extends Controller
     public function index()
     {
       $publications = Auth::user()->publications;
-
+      $caret = 000;
       return view(
-        'frontend.user.dashboard.my_publication.index', compact(['publications'])
+        'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
       );
     }
+    public function caret_publication_action($caret)
+    {
+      $caretAction=substr($caret, 0, 1);
+      $parseCaret=substr($caret, 2);
+      // $publications = Auth::user()->publications;
+
+      $ids = array_filter(preg_split("/\|/", $parseCaret));
+      if ($caretAction="d"){
+        $inputs = [
+          'deleted' => 1
+        ];
+        foreach ($ids as $id){
+          // $publications[$key]=Publication::findOrFail($id);
+          // $publications[$key]->deleted=1;
+          Publication::updateOrCreate(['id'=>$id], $inputs);
+        }
+        // Publication::saveMany($publications);
+        // Publication::where('id'=>$id[0]);
+        // ->update
+        //  Publication::whereIn('id', array_values($ids));
+        // $publications =
+        // Publication::updateOrCreate(['id',=>,array_values($ids),$inputs]
+      }
+
+      return view(
+        'frontend.user.dashboard.my_publication.caret', compact(['caret'])
+      );
+    }
+
 
     /**
      * Show the form for creating a new resource.

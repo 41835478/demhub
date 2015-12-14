@@ -6,7 +6,7 @@
 
     		<div class="row omb_row-sm-offset-3">
     			<div class="col-xs-12 col-sm-6">
-            <a class="btn btn-primary btn-block btn-linkedin" href="{{url('auth/login/linkedin')}}" style="font-size: 15px; margin-bottom: 20px;" tabindex="6">
+            <a class="btn btn-style-alt btn-block btn-linkedin" href="{{url('auth/login/linkedin')}}" style="font-size: 15px; margin-bottom: 20px;" tabindex="6">
           		<i class="fa fa-linkedin" style="font-size: 1.8em; margin-right: 5px; padding-right: 10px; border-right: 1px solid #ffffff ;"></i>
           		<span style="text-transform: none;">via LinkedIn</span>
           	</a>
@@ -24,7 +24,7 @@
             <span class="help-block"></span>
             <br>
 
-            {!! Form::submit('LOGIN', ['class' => 'btn btn-lg btn-primary btn-block']) !!}
+            {!! Form::submit('LOGIN', ['class' => 'btn btn-lg btn-style-alt btn-block']) !!}
 
     			</div>
         </div>
