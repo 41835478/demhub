@@ -25,8 +25,27 @@ class IndexPublicationsToElasticsearch extends Command
         $indexParams = [
             'index' => 'info'
         ];
-        // Es::indices()->delete($indexParams);
-        // Es::indices()->create($indexParams);
+        Es::indices()->delete($indexParams);
+        Es::indices()->create($indexParams);
+
+        $mappingProperties = [
+            'index' => 'info',
+            'type' => 'publications',
+            'body' => [
+                'publications' => [
+                    '_source' => [
+                        'enabled' => true
+                    ],
+                    'properties' => [
+                        'publication_date' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        Es::indices()->putMapping($mappingProperties);
 
         Publication::chunk(100, function($publications) {
             foreach ($publications as $publication) {

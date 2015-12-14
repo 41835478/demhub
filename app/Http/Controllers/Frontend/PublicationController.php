@@ -35,7 +35,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Auth::user()->publications;
+      $publications = Auth::user()->publications->where('deleted','!=',1);
       $caret = 000;
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
@@ -53,16 +53,10 @@ class PublicationController extends Controller
           'deleted' => 1
         ];
         foreach ($ids as $id){
-          // $publications[$key]=Publication::findOrFail($id);
-          // $publications[$key]->deleted=1;
+
           Publication::updateOrCreate(['id'=>$id], $inputs);
         }
-        // Publication::saveMany($publications);
-        // Publication::where('id'=>$id[0]);
-        // ->update
-        //  Publication::whereIn('id', array_values($ids));
-        // $publications =
-        // Publication::updateOrCreate(['id',=>,array_values($ids),$inputs]
+
       }
 
       return view(
@@ -216,7 +210,7 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::all();
+        $publications = Publication::where('deleted','!=',1)->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.publication_filter', compact([
