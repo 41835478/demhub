@@ -21,7 +21,7 @@
                     <td><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;padding-right:5px;padding-left:5px">
                       <span class="caret" style="color:#333"></span></a>
                       <ul class="dropdown-menu navbar-inverse" role="menu">
-          						  <li><a href="javascript:caretSet('d')">DELETE</a></li>
+          						  <li><a href="javascript:caretSet('del')">DELETE</a></li>
                       </ul>
                     </td>
                     <td>TITLE</td>
