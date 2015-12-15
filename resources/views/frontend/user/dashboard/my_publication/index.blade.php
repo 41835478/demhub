@@ -29,7 +29,7 @@
                     <td>DATE</td>
                     <td>ACTIONS</td>
                     <td>DIVISIONS</td>
-                    <td>VIEWS <i style="color:#337ab7;font-size:80%">- COMING SOON</i></td>
+                    <td>VIEWS</td>
                 </tr>
             </thead>
             <tbody>
@@ -75,7 +75,7 @@
                         @endforeach
                       @endif
         						</td>
-                    <td></td>
+                    <td>{{ $publications[$i]->views }}</td>
 
                 </tr>
               @endfor

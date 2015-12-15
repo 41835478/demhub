@@ -104,7 +104,9 @@ class PublicationController extends Controller
         'publisher' => $request->publisher,
         'institution' => $request->institution,
         'conference' => $request->conference,
-        'deleted' => 0
+        'deleted' => 0,
+        'views' => 0,
+        'favorites' => 0
       ];
         $publication = new Publication($inputs);
 
@@ -139,6 +141,9 @@ class PublicationController extends Controller
      {
        $publications = Auth::user()->publications;
        $publication = Publication::findOrFail($id);
+       Publication::where('id', $id)
+                   ->update(['views' => ($publication->views+1)]);
+
        return view(
          'frontend.user.dashboard.my_publication.view', compact(['publication','publications'])
        );
@@ -186,7 +191,9 @@ class PublicationController extends Controller
         'publisher' => $request->publisher,
         'institution' => $request->institution,
         'conference' => $request->conference,
-        'deleted' => 0
+        'deleted' => 0,
+        'views' => 0,
+        'favorites' => 0
       ];
       Publication::updateOrCreate(['id'=>$id], $inputs);
 
