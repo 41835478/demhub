@@ -50,14 +50,10 @@ class PublicationController extends Controller
 
       $ids = array_filter(preg_split("/\|/", $parseCaret));
       if ($caretAction="del"){
-        $inputs = [
-          'deleted' => 1
-        ];
         foreach ($ids as $id){
-
-          Publication::updateOrCreate(['id'=>$id], $inputs);
+            Publication::where('id', $id)
+                        ->update(['deleted' => 1]);
         }
-
       }
 
       return redirect('my_publications')
