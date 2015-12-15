@@ -30,7 +30,7 @@
         <div class=" col-sm-6"
           @if (empty($publication->document_file_name))
           style='padding-top:8px'>
-            {!! Form::file('document', null, ['class' => 'form-control']) !!}
+            {!! Form::file('document', null, ['class' => 'form-control', 'required']) !!}
           @elseif (! empty($publication->document_file_name))
           >
             <input type="text" class="form-control" value="{{$publication->document_file_name}}" disabled/>
@@ -59,15 +59,15 @@
         {!! Form::label('privacy', "PRIVACY", ['class' => 'col-xs-3 col-sm-2 control-label','style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class="col-sm-6">
             <label class="radio-inline">
-              {!! Form::radio('privacy', 'public',true) !!}
+              {!! Form::radio('privacy', '0',true) !!}
               Public
             </label>
             <label class="radio-inline">
-              {!! Form::radio('privacy', 'private',false) !!}
+              {!! Form::radio('privacy', '1',false) !!}
               Visible to me
             </label>
             <label class="radio-inline">
-              {!! Form::radio('privacy', 'network_only',false) !!}
+              {!! Form::radio('privacy', '2',false) !!}
               Visible to contacts
             </label>
         </div>

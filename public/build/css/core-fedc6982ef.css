@@ -161,111 +161,38 @@ body {
   margin-top: 60px;
 }
 
-hr.style1 {
-  border-top: 1px solid #ddd;
-  margin-top: 40px;
-  height: 10%;
-  width: 100%;
-}
-
-hr.style1 {
-  border-top: 1px solid #ddd;
-  height: 60%;
-}
-
-hr.style4 {
-  border-top: 1px dotted #8c8b8b;
-}
-
 .publication-list {
-  position: relative;
+  height: 100%;
 }
 
 .publication-update {
   display: block;
   height: 300px;
   width: 100%;
-  background-color: #fff;
-}
-
-.publication-each {
-  width: 100%;
-  height: auto;
-  line-height: 95%;
-  display: block;
+  background-color: #ddd;
 }
 
 .publication-each ul {
   list-style: none;
+  line-height: 95%;
 }
 
-.publication-left {
-  width: 70%;
-  padding-right: 10px;
-  display: inline-block;
-  height: 100%;
-  float: left;
-  margin-bottom: 20px;
+.pub-author {
+  line-height: 90%;
 }
 
-li.pub-author {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-li.pub-title {
-  color: #337AB7;
+.pub-title {
+  color: #000;
   font-weight: 300;
-  margin-top: -15px;
-  line-height: 97%;
-  display: inline-block;
-  float: left;
-  max-width: calc(100% - 70px);
-  overflow-x: hidden;
 }
 
-li.pub-descrip {
-  margin-top: 10px;
-  style: none;
-}
-
-.publication-right {
-  width: 30%;
-  float: right;
-  height: 100%;
-  display: inline;
-}
-
-.publication-right li {
-  display: block;
-  margin-right: 7px;
-  min-height: 15px;
-}
-
-.icon-container {
-  margin-left: -42px;
-}
-
-.icon-container li {
-  display: inline-block;
-}
-
-.icon-container i {
-  margin: 0px 4px 0px 0px;
-  opacity: 0.4;
-}
-
-.pub-dropdown {
-  margin-top: 30px;
-  width: 140%;
-  margin-left: 5%;
+.pub-descrip {
+  line-height: 90%;
 }
 
 .publication-update-number {
   float: right;
   margin-right: 40px;
-  padding-right: 10px;
-  height: 100%;
 }
 
 .navbar-default {
@@ -556,13 +483,6 @@ div#welcome-division {
   z-index: 999 !important;
   opacity: 1;
   filter: alpha(opacity=100);
-}
-
-.division-icon {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #000;
 }
 
 .feedsbox {
