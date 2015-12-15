@@ -87,12 +87,6 @@ class Search
   * @return JSON
   */
   public static function queryUsers($page = 0, $size = 30, $query = ["match_all" => []]) {
-      // $sort = [
-      //     'last_name' => [
-      //         'order' => 'desc',
-      //     ]
-      // ];
-
     $params = [
         'index' => 'access',
         'type' => 'users',
@@ -101,12 +95,9 @@ class Search
         'body' => [
             'query' => [
                 'filtered' => [
-                    // 'filter' => $filter,
                     'query' => $query
                 ]
             ]
-            // ,
-            // 'sort' => $sort
         ]
     ];
     $results = Es::search($params);
@@ -121,37 +112,12 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
-      $filter = [
-        'and' => [
-            ['bool' => [
-              'should' => [
-                // the language fields should either be the current locale
-                ['term' => [ 'language' => Config::get('app.locale') ]],
-                // or it should be NULL, which by default is expected to be english
-                ['missing' => [ 'field' => 'language' ]]
-              ]
-            ]],
-            ['term' => ['deleted' => 0]],
-        ]
-      ];
-      if ($divID != NULL) {
-          // Add the division id as one of the "AND" filters
-          array_push($filter['and'],
-              ['term' => ['divisions' => $divID]]
-          );
-      }
+  public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []]) {
+      $filter = ['missing' => [ 'field' => 'deleted_at' ]];
 
-      $sort = [
-          'publish_date' => [
-              'order' => 'desc',
-              'missing' => PHP_INT_MAX -1, // fixes json_decode() error
-          ]
-      ];
-
-    $params = [
-        'index' => 'news',
-        'type' => 'articles',
+      $params = [
+        'index' => 'info',
+        'type' => 'publications',
         'size' => $size,
         'from' => $size * $page,
         'body' => [
@@ -160,12 +126,11 @@ class Search
                     'filter' => $filter,
                     'query' => $query
                 ]
-            ],
-            'sort' => $sort
+            ]
         ]
-    ];
-    $results = Es::search($params);
-    return $results['hits'];
+      ];
+      $results = Es::search($params);
+      return $results['hits'];
   }
 
   /**
@@ -232,12 +197,6 @@ class Search
   * @return JSON
   */
   public static function queryResources($page = 0, $size = 30, $query = ["match_all" => []]) {
-      // $sort = [
-      //     'publish_date' => [
-      //         'order' => 'desc'
-      //     ]
-      // ];
-
     $params = [
         'index' => 'info',
         'type' => 'resources',
@@ -246,12 +205,9 @@ class Search
         'body' => [
             'query' => [
                 'filtered' => [
-                    // 'filter' => $filter,
                     'query' => $query
                 ]
             ]
-            // ,
-            // 'sort' => $sort
         ]
     ];
     $results = Es::search($params);

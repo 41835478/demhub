@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Carbon\Carbon as Carbon;
 
+/**
+ * Class PublicationController
+ * @package App\Http\Controllers\Frontend
+ */
 class PublicationController extends Controller
 {
 
@@ -31,12 +35,35 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Auth::user()->publications;
-
+      $publications = Auth::user()->publications->where('deleted','!=',1);
+      $caret = 000;
       return view(
-        'frontend.user.dashboard.my_publication.index', compact(['publications'])
+        'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
       );
     }
+    public function caret_publication_action($caret)
+    {
+      $caretAction=substr($caret, 0, 1);
+      $parseCaret=substr($caret, 2);
+      // $publications = Auth::user()->publications;
+
+      $ids = array_filter(preg_split("/\|/", $parseCaret));
+      if ($caretAction="d"){
+        $inputs = [
+          'deleted' => 1
+        ];
+        foreach ($ids as $id){
+
+          Publication::updateOrCreate(['id'=>$id], $inputs);
+        }
+
+      }
+
+      return view(
+        'frontend.user.dashboard.my_publication.caret', compact(['caret'])
+      );
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -183,7 +210,7 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::all();
+        $publications = Publication::where('deleted','!=',1)->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.publication_filter', compact([

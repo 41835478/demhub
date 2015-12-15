@@ -52,9 +52,13 @@
 					<li style="padding:0;">
 							<a style="padding:5% 0 0 0;">
 								@if (isset($navDivisions))
-										{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+									{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control', 'placeholder' => 'Search News']) !!}
-										{!! Form::close() !!}
+									{!! Form::close() !!}
+								@elseif(isset($searchBar))
+									{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control', 'placeholder' => 'Search DEMHUB']) !!}
+									{!! Form::close() !!}
 								@endif
 							</a>
 					</li>
