@@ -3,7 +3,7 @@
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="padding-bottom: 0;">
     <div class="row center-block mt10" style="">
-      
+
         @foreach($users as $user)
 
 
@@ -14,7 +14,7 @@
               <div class ="color-label division_all"></div>
               <div class="inner-feedsbox" style="text-align:center;width:250px">
 
-              <a href="{{ URL::to('profile/' . $user->id) }}">
+              <a href="{{ URL::to('profile/' . $user->user_name) }}">
                 <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
               </a>
               <p>

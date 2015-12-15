@@ -20,10 +20,10 @@ class ProfileController extends Controller {
 			->withUser(auth()->user());
 	}
 
-	public function view_public_profile($id) {
-
-		$user = User::findOrFail($id);
-		return view('frontend.user.public_profile', compact(['user'])
+	public function view_public_profile($user_name) {
+		$secondMenu = true;
+		$user = User::where('user_name', '=', $user_name)->firstOrFail();
+		return view('frontend.user.public_profile', compact(['user', 'secondMenu'])
 	);
 	}
 
