@@ -18,6 +18,11 @@ class ProfileController extends Controller {
 			->withUser(auth()->user());
 	}
 
+	public function view_public_profile() {
+		return view('frontend.user.public_profile')
+			->withUser(auth()->user());
+	}
+
 	/**
 	 * @param UserContract $user
 	 * @param UpdateProfileRequest $request

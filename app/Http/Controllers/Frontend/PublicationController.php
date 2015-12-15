@@ -223,9 +223,10 @@ class PublicationController extends Controller
     {
         $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->get();
         $secondMenu = true;
+
         // dd($publications);
         return view('frontend.user.publication_filter.publication_filter', compact([
-          'publications', 'secondMenu'
+          'publications', 'secondMenu',
         ]));
     }
 }
