@@ -7,6 +7,7 @@ use App\Models\Publication;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use DB;
 use Carbon\Carbon as Carbon;
 
 /**
@@ -35,7 +36,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Auth::user()->publications->where('deleted','!=',1);
+      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->get();
       $caret = 000;
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
@@ -43,25 +44,20 @@ class PublicationController extends Controller
     }
     public function caret_publication_action($caret)
     {
-      $caretAction=substr($caret, 0, 1);
-      $parseCaret=substr($caret, 2);
+      $caretAction=substr($caret, 0, 3);
+      $parseCaret=substr($caret, 4);
       // $publications = Auth::user()->publications;
 
       $ids = array_filter(preg_split("/\|/", $parseCaret));
-      if ($caretAction="d"){
-        $inputs = [
-          'deleted' => 1
-        ];
+      if ($caretAction="del"){
         foreach ($ids as $id){
-
-          Publication::updateOrCreate(['id'=>$id], $inputs);
+            Publication::where('id', $id)
+                        ->update(['deleted' => 1]);
         }
-
       }
 
-      return view(
-        'frontend.user.dashboard.my_publication.caret', compact(['caret'])
-      );
+      return redirect('my_publications')
+      ->withFlashSuccess("Publication(s) have been deleted");
     }
 
 
@@ -108,6 +104,9 @@ class PublicationController extends Controller
         'publisher' => $request->publisher,
         'institution' => $request->institution,
         'conference' => $request->conference,
+        'deleted' => 0,
+        'views' => 0,
+        'favorites' => 0
       ];
         $publication = new Publication($inputs);
 
@@ -123,12 +122,12 @@ class PublicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function preview($id)
     {
       $publications = Auth::user()->publications;
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.my_publication.show', compact(['publication','publications'])
+        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications'])
       );
     }
 
@@ -138,6 +137,18 @@ class PublicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     public function view($id)
+     {
+       $publications = Auth::user()->publications;
+       $publication = Publication::findOrFail($id);
+       Publication::where('id', $id)
+                   ->update(['views' => ($publication->views+1)]);
+
+       return view(
+         'frontend.user.dashboard.my_publication.view', compact(['publication','publications'])
+       );
+     }
+
     public function edit($id)
     {
       $publication = Publication::findOrFail($id);
@@ -170,9 +181,6 @@ class PublicationController extends Controller
         'description' => $request->description,
         'publication_author' => $request->author,
         'document' => $request->document,
-        // 'publication_author' => $request->document_file_size,
-        // 'publication_author' => $request->document_content_type,
-        // 'publication_author' => $request->document_updated_at,
         'publication_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
         'privacy' => $request->privacy,
         'divisions' => $divisions,
@@ -183,6 +191,9 @@ class PublicationController extends Controller
         'publisher' => $request->publisher,
         'institution' => $request->institution,
         'conference' => $request->conference,
+        'deleted' => 0,
+        'views' => 0,
+        'favorites' => 0
       ];
       Publication::updateOrCreate(['id'=>$id], $inputs);
 
@@ -210,7 +221,7 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->get();
+        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.publication_filter', compact([

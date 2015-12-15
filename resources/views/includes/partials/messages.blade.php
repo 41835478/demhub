@@ -1,13 +1,13 @@
 @if ($errors->any() || Session::get('flash_success') || Session::get('flash_danger')|| Session::get('flash_info')|| Session::get('flash_message'))
   @if ($errors->any())
-      <div class="alert alert-danger">
+      <div class="alert alert-danger" style="text-align:center">
           @foreach ($errors->all() as $error)
               {!! $error !!}
           @endforeach
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
   @elseif (Session::get('flash_success'))
-      <div class="alert alert-success">
+      <div class="alert alert-success" style="text-align:center">
           @if(is_array(json_decode(Session::get('flash_success'),true)))
               {!! implode('', Session::get('flash_success')->all(':message<br/>')) !!}
           @else

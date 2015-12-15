@@ -70,8 +70,6 @@ class SearchController extends Controller
             $resourceResults = Search::queryResources($page, $size);
         }
 
-        dd(get_declared_classes());
-
         $articleResults = Search::formatElasticSearchToArray($articleResults['hits']);
         $userResults = Search::formatElasticSearchToArray($userResults['hits']);
         $publicationResults = Search::formatElasticSearchToArray($publicationResults['hits']);

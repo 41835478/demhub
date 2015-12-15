@@ -21,7 +21,7 @@
                     <td><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;padding-right:5px;padding-left:5px">
                       <span class="caret" style="color:#333"></span></a>
                       <ul class="dropdown-menu navbar-inverse" role="menu">
-          						  <li><a href="javascript:caretSet('d')">DELETE</a></li>
+          						  <li><a href="javascript:caretSet('del')">DELETE</a></li>
                       </ul>
                     </td>
                     <td>TITLE</td>
@@ -29,7 +29,7 @@
                     <td>DATE</td>
                     <td>ACTIONS</td>
                     <td>DIVISIONS</td>
-                    <td>VIEWS <i style="color:#337ab7;font-size:80%">- COMING SOON</i></td>
+                    <td>VIEWS</td>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@
 
                       <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publications[$i]->id }}" style=""></label>
                     </td>
-                    <td><a href="{{ url('publication_filter') }}">{{ $publications[$i]->title }}</a></td>
+                    <td><a href="{{ URL::to('my_publication/' . $publications[$i]->id . '/view') }}">{{ $publications[$i]->title }}</a></td>
                     <td>{{ $publications[$i]->author->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publications[$i]->publication_date ), 'j F Y') }}</td>
 
@@ -75,7 +75,7 @@
                         @endforeach
                       @endif
         						</td>
-                    <td></td>
+                    <td>{{ $publications[$i]->views }}</td>
 
                 </tr>
               @endfor
