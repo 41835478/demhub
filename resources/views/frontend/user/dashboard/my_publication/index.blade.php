@@ -44,7 +44,7 @@
 
                       <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publications[$i]->id }}" style=""></label>
                     </td>
-                    <td><a href="{{ url('publication_filter') }}">{{ $publications[$i]->title }}</a></td>
+                    <td><a href="{{ URL::to('my_publication/' . $publications[$i]->id . '/view') }}">{{ $publications[$i]->title }}</a></td>
                     <td>{{ $publications[$i]->author->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publications[$i]->publication_date ), 'j F Y') }}</td>
 

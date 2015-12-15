@@ -124,12 +124,12 @@ class PublicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function preview($id)
     {
       $publications = Auth::user()->publications;
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.my_publication.show', compact(['publication','publications'])
+        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications'])
       );
     }
 
@@ -139,6 +139,15 @@ class PublicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     public function view($id)
+     {
+       $publications = Auth::user()->publications;
+       $publication = Publication::findOrFail($id);
+       return view(
+         'frontend.user.dashboard.my_publication.view', compact(['publication','publications'])
+       );
+     }
+
     public function edit($id)
     {
       $publication = Publication::findOrFail($id);
