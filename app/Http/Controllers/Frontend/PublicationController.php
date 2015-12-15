@@ -225,7 +225,7 @@ class PublicationController extends Controller
         $secondMenu = true;
 
         // dd($publications);
-        return view('frontend.user.publication_filter.publication_filter', compact([
+        return view('frontend.user.publication_filter.pubs', compact([
           'publications', 'secondMenu',
         ]));
     }

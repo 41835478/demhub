@@ -54,7 +54,7 @@ get('my_publication/{id}', 'PublicationController@preview')->name('preview_publi
 /**
  * Public Publication Route
  */
-get('publication_filter', 'PublicationController@public_publication')->name('publication_filter');
+get('pubs', 'PublicationController@public_publication')->name('pubs');
 
 /**
  * Public Profiles

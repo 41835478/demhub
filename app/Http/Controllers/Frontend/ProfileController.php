@@ -28,9 +28,9 @@ class ProfileController extends Controller {
 	}
 
 	public function listing_of_profiles() {
-
+		$secondMenu = true;
 		$users = User::orderBy('id','DESC')->get();
-		return view('frontend.user.profiles', compact(['users'])
+		return view('frontend.user.profiles', compact(['users','secondMenu'])
 	);
 	}
 
