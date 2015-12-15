@@ -4,7 +4,7 @@
 <div class="row" style="padding-top:40px">
   <div class="col-sm-8 col-sm-offset-2" style="background-color:#fff !important;">
     <div id="publication-update">
-      <h2> Recent Update </h2>
+      <h2> Publications </h2>
 
     </div>
 
@@ -73,19 +73,12 @@
 
                       @endif
                     </div>
-
-
-<<<<<<< HEAD
-=======
-                      @endforeach
-                    <div class="label label-default"><h3>{{$publications[$i]->keywords}}</h3></div>
->>>>>>> 64a186617878e9318509076178ee27e50bedc4b4
                   </div>
                 </div>
 
             <div class="publication-right">
               <ul>
-                <li>
+                <li class ="pub-division">
                   <?php
                   if ($publications[$i]->divisions !=null){
                   $publicationsDivisions = array_filter(preg_split("/\|/", $publications[$i]->divisions));
@@ -95,10 +88,8 @@
                     @foreach ($publicationsDivisions as $publicationsDivision)
 
                     <a href="{{url('/division/'.$publicationsDivision)}}" >
-                    <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationsDivision }}">
+                    <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}">
                   </a>
-
-
                     @endforeach
                   @endif
                 </li>
