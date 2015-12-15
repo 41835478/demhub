@@ -57,6 +57,10 @@ get('my_publication/{id}', 'PublicationController@preview')->name('preview_publi
 get('publication_filter', 'PublicationController@public_publication')->name('publication_filter');
 
 /**
+ * Public Profiles
+ */
+get('profile/{id}', 'ProfileController@view_public_profile')->name('view_public_profile');
+/**
  * These frontend controllers require the user to be logged in
  */
 $router->group(['middleware' => 'auth'], function ()

@@ -3,7 +3,6 @@
 
 @section('content')
 @include('frontend.user.dashboard.style')
-
 <section id="content_wrapper" style="margin-top: 60px;">
 
   <!-- Begin: Content -->

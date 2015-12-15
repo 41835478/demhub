@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row" style="padding-top:40px">
-  <div class="col-sm-8 col-sm-offset-2 style="background-color:#fff !important;"">
+  <div class="col-sm-8 col-sm-offset-2" style="background-color:#fff !important;">
     <div id="publication-update">
       <h2> Recent Update </h2>
 
@@ -38,7 +38,7 @@
                       </ul>
 
                       @endforeach
-                    <div class="label label-default"><h3>{{$publications[$i]->keywords}}</h3></div> 
+                    <div class="label label-default"><h3>{{$publications[$i]->keywords}}</h3></div>
                   </div>
                 </div>
             </div>
@@ -73,5 +73,5 @@
     </div>
   </div>
 </div>
-@stop
+@endsection
 {{-- @stop --}}
