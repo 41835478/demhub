@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 
+use App\Models\Access\User\User;
+
 /**
  * Class ProfileController
  * @package App\Http\Controllers\Frontend
@@ -18,9 +20,18 @@ class ProfileController extends Controller {
 			->withUser(auth()->user());
 	}
 
-	public function view_public_profile() {
-		return view('frontend.user.public_profile')
-			->withUser(auth()->user());
+	public function view_public_profile($id) {
+
+		$user = User::findOrFail($id);
+		return view('frontend.user.public_profile', compact(['user'])
+	);
+	}
+
+	public function listing_of_profiles() {
+
+		$users = User::orderBy('id','DESC')->get();
+		return view('frontend.user.profiles', compact(['users'])
+	);
 	}
 
 	/**

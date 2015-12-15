@@ -30,7 +30,7 @@
         @else
           <li>
         @endif
-        <a href="javascript:comingSoon('network_title')" id="network_title" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
+        <a href="{{url('profiles')}}" id="network_title" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
 
         @if(Request::url() === url('resource_filter'))
           <li class="active">

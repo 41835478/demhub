@@ -23,7 +23,7 @@
 }
 
 .division_all {
-  background-color: #ccc;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .division_1 {
@@ -51,7 +51,11 @@
 }
 
 .division_7 {
-  background-color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.greytone {
+  background-color: #ccc;
 }
 
 .color-label {

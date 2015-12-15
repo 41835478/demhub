@@ -36,7 +36,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->get();
+      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $caret = 000;
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
@@ -221,7 +221,7 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->get();
+        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
 
         // dd($publications);

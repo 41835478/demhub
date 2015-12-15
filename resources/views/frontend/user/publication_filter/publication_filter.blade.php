@@ -12,23 +12,23 @@
         <h2> Articles </h2>
         <hr class="style4">
         @if($publications)
-        @for ($i=(sizeof($publications)-1);$i>-1;$i--)
+        @foreach ($publications as $publication)
           <div class="publication-each">
             <div class="publication-left">
               <ul>
-                  <li class= "pub-date">{{ date_format(new DateTime($publications[$i]->publication_date), 'j F Y | g:i a') }}
-                  <li class= "pub-author"><h5>{{$publications[$i]->author->full_name()}}</h5></li>
-                  <li class= "pub-title"><h3>{{$publications[$i]->title}}</h3></li>
-                  <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publications[$i]->id}}" aria-expanded="false" aria-controls="collapseExample">
+                  <li class= "pub-date">{{ date_format(new DateTime($publication->publication_date), 'j F Y | g:i a') }}
+                  <li class= "pub-author"><h5>{{$publication->author->full_name()}}</h5></li>
+                  <li class= "pub-title"><h3>{{$publication->title}}</h3></li>
+                  <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
 
                   </li>
                   <li> <i class="icon expand_more"></i>description</a></li>
                 </ul>
-                <div class="collapse linkpub-{{$publications[$i]->id}} pub-dropdown" >
+                <div class="collapse linkpub-{{$publication->id}} pub-dropdown" >
                   <div class="well">
-                    {{$publications[$i]->description}}
+                    {{$publication->description}}
                     <?php
-                    $articleKeywords = array_filter(preg_split("/\|/", $publications[$i]->keywords));
+                    $articleKeywords = array_filter(preg_split("/\|/", $publication->keywords));
                     ?>
 
                       @foreach($articleKeywords as $key=>$keyword)
@@ -38,19 +38,19 @@
                       </ul>
 
                       @endforeach
-                    <div class="label label-default"><h3>{{$publications[$i]->keywords}}</h3></div>
+                    <div class="label label-default"><h3>{{$publication->keywords}}</h3></div>
                   </div>
                 </div>
             </div>
             <div class="publication-right">
               <ul>
                 <li>
-                  <div class ="division-icon"> {{$publications[$i]->divisions}}</div>
+                  <div class ="division-icon"> {{$publication->divisions}}</div>
                 </li>
 
                 <li>
                   <ul class="icon-container">
-                    <li><a class="greytone" href="{{ $publications[$i]->document->url() }}" download style="padding-left:5px"
+                    <li><a class="greytone" href="{{ $publication->document->url() }}" download style="padding-left:5px"
                   data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                   <h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a></li>
                    <li><a class="greytone"><h3 class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="top" title="PREVIEW"></h3></a></li>
@@ -68,7 +68,7 @@
             </div>
             <hr class="style1">
          </div>
-          @endfor
+          @endforeach
         @endif
     </div>
   </div>

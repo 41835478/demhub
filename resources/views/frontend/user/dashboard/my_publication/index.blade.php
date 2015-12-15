@@ -37,31 +37,31 @@
                 {!! Form::open(['route' => ['caret_publication_action', $caret], 'files' => true, 'class' => 'form-horizontal',
                 'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form', 'id' => 'caretForm']) !!}
               @if(! empty($publications))
-              @for ($i=(sizeof($publications)-1);$i>-1;$i--)
+              @foreach ($publications as $publication)
 
                 <tr>
                     <td><label>
 
-                      <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publications[$i]->id }}" style=""></label>
+                      <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publication->id }}" style=""></label>
                     </td>
-                    <td><a href="{{ URL::to('my_publication/' . $publications[$i]->id . '/view') }}">{{ $publications[$i]->title }}</a></td>
-                    <td>{{ $publications[$i]->author->full_name() }}</td>
-                    <td>{{ date_format(new DateTime($publications[$i]->publication_date ), 'j F Y') }}</td>
+                    <td><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
+                    <td>{{ $publication->author->full_name() }}</td>
+                    <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
 
-                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $publications[$i]->id . '/edit') }}"
+                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}"
                       data-toggle="tooltip" data-placement="top" title="EDIT">
                       <h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ $publications[$i]->document->url() }}" download style="padding-left:5px"
+                    <a class="greytone" href="{{ $publication->document->url() }}" download style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                       <h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ URL::to('my_publication/' . $publications[$i]->id) }}" style="padding-left:5px"
+                    <a class="greytone" href="{{ URL::to('my_publication/' . $publication->id) }}" style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
                       <h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
 
                     <td>
                       <?php
-                      if ($publications[$i]->divisions !=null){
-                      $publicationsDivisions = array_filter(preg_split("/\|/", $publications[$i]->divisions));
+                      if ($publication->divisions !=null){
+                      $publicationsDivisions = array_filter(preg_split("/\|/", $publication->divisions));
                       }
                       ?>
                       @if (! empty($publicationsDivisions))
@@ -75,10 +75,10 @@
                         @endforeach
                       @endif
         						</td>
-                    <td>{{ $publications[$i]->views }}</td>
+                    <td>{{ $publication->views }}</td>
 
                 </tr>
-              @endfor
+              @endforeach
               {!! Form::submit('SAVE', ['class' => 'btn btn-style-alt', 'id' => 'saveButton', 'style' => 'visibility:hidden']) !!}
               {!! Form::close() !!}
               @else

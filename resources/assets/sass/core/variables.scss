@@ -38,7 +38,7 @@ $humanitarian_color: #754293;
 	  background-color:$humanitarian_color;
 	}
 .division_all {
-  	  background-color:#ccc;
+    background: rgba(0, 0, 0, 0.7);
   	}
 .division_1 {
 	  background-color:$health_color;
@@ -59,8 +59,11 @@ $humanitarian_color: #754293;
 	  background-color:$humanitarian_color;
 	}
 .division_7 {
-  	  background-color:#fff;
+  	  background: rgba(0, 0, 0, 0.7);
   	}
+.greytone {
+  background-color:#ccc;
+}
 
 .color-label {
     width:100%;
