@@ -25,8 +25,11 @@ class IndexUsersToElasticsearch extends Command
         $indexParams = [
             'index' => 'access'
         ];
-        Es::indices()->delete($indexParams);
-        Es::indices()->create($indexParams);
+
+        // Es::indices()->delete($indexParams);
+        if (!Es::indices()->exists($indexParams)) {
+            Es::indices()->create($indexParams);
+        }
 
         User::chunk(100, function($users) {
             foreach ($users as $user) {

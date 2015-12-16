@@ -9,7 +9,8 @@
   @forelse($userResults as $user)
   <tr>
     <td class="va-m fw600 text-muted">
-      <span class="fa fa-circle text-info fs14 mr10"></span>{{ $user['first_name'] }} {{ $user['last_name'] }}
+      {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
+      {{ $user['first_name'] }} {{ $user['last_name'] }}
     </td>
     <td class="fs15 fw600 text-right">{{ $user['job_title'] }}</td>
   </tr>

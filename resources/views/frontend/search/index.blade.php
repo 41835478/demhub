@@ -45,7 +45,7 @@
         @include('frontend.search._results', [
           'model' => 'publication',
           'title' => 'Publications',
-          'url' => "/publication_filter",
+          'url' => "/pub_article",
           'total' => $publicationTotalCount
         ])
       </div>
