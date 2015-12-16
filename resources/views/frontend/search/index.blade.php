@@ -60,20 +60,4 @@
     </div>
   @endif
 
-  <style media="screen">
-    thead {
-      width: calc( 100% - 1em );
-    }
-    tbody {
-      display:block;
-      height: calc( 100vh - 280px);
-      overflow:auto;
-    }
-    thead, tbody tr {
-      display:table;
-      width:100%;
-      table-layout:fixed;
-    }
-  </style>
-
 @stop

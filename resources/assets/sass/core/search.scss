@@ -164,5 +164,36 @@
 }
 
 .search-row {
-  height: calc(100vh - 150px);  
+  height: calc(100vh - 245px);
+}
+
+.search-row thead {
+  width: calc( 100% - 1em );
+}
+.search-row tbody {
+  display:block;
+  height: calc( 100vh - 319px);
+  overflow:auto;
+}
+.search-row thead,
+.search-row tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
+.search-row::-webkit-scrollbar,
+.search-row tbody::-webkit-scrollbar {
+    width: 1em;
+}
+
+.search-row::-webkit-scrollbar-track,
+.search-row tbody::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.search-row::-webkit-scrollbar-thumb,
+.search-row tbody::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
