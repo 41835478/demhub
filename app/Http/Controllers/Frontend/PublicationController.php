@@ -70,7 +70,9 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        return view('frontend.user.dashboard.my_publication.new');
+      $user =Auth::user();
+        return view('frontend.user.dashboard.my_publication.new', compact(['user'])
+      );
     }
 
     /**

@@ -59,7 +59,7 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('organization_name', 'Organization', ['class' => 'col-lg-3 control-label']) !!}
+            {!! Form::label('organization_name', 'Organization', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
             <div class="col-lg-8">
               {!! Form::text('organization_name', $user->organization_name, ['class' => 'form-control']) !!}
             </div>
@@ -82,7 +82,7 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('specialization', 'Specialization', ['class' => 'col-lg-3 control-label']) !!}
+            {!! Form::label('specialization', 'Specialization', ['class' => 'col-lg-3 control-label','style' => 'font-size:81%']) !!}
             <div class="col-lg-8">
               {!! Form::text('specialization', $user->specialization, ['class' => 'form-control']) !!}
             </div>
