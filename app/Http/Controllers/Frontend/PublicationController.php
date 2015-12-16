@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Auth;
 use DB;
 use Carbon\Carbon as Carbon;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Division;
 
 /**
  * Class PublicationController
@@ -223,9 +225,8 @@ class PublicationController extends Controller
     {
         $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
-
         // dd($publications);
-        return view('frontend.user.publication_filter.pubs', compact([
+        return view('frontend.user.publication_filter.pub_article', compact([
           'publications', 'secondMenu',
         ]));
     }
