@@ -25,8 +25,11 @@ class IndexArticlesToElasticsearch extends Command
         $indexParams = [
             'index' => 'news'
         ];
-        Es::indices()->delete($indexParams);
-        Es::indices()->create($indexParams);
+
+        // Es::indices()->delete($indexParams);
+        if (!Es::indices()->exists($indexParams)) {
+            Es::indices()->create($indexParams);
+        }
 
         $mappingProperties = [
             'index' => 'news',

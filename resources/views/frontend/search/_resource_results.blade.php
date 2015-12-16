@@ -9,7 +9,8 @@
   @forelse($resourceResults as $resource)
     <tr>
       <td class="va-m fw600 text-muted">
-        <span class="fa fa-circle text-info fs14 mr10"></span>{{ $resource['name'] }}
+        {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
+        {{ $resource['name'] }}
       </td>
       <td class="fs15 fw600 text-right">{{ $resource['name'] }}</td>
     </tr>
