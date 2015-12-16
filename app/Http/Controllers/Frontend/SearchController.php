@@ -21,7 +21,7 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        $options_query = $request->input('query_term', '');	// (optional) search query
+        $queryTerm = $options_query = $request->input('query_term', '');	// (optional) search query
         $size = $request->input('count', 30);
         $page = $request->input('page', 1);
         $page--;
@@ -70,17 +70,26 @@ class SearchController extends Controller
             $resourceResults = Search::queryResources($page, $size);
         }
 
+        $articleTotalCount = $articleResults['total'];
+        $userTotalCount = $userResults['total'];
+        $publicationTotalCount = $publicationResults['total'];
+        // $discussionTotalCount = $discussionResults['total'];
+        $resourceTotalCount = $resourceResults['total'];
+
         $articleResults = Search::formatElasticSearchToArray($articleResults['hits']);
         $userResults = Search::formatElasticSearchToArray($userResults['hits']);
         $publicationResults = Search::formatElasticSearchToArray($publicationResults['hits']);
         // $discussionResults = Search::formatElasticSearchToArray($discussionResults['hits']);
         $resourceResults = Search::formatElasticSearchToArray($resourceResults['hits']);
 
+        $discussionTotalCount = 0;
         $discussionResults = [];
         $searchBar = true;
 
         return view('frontend.search.index', compact([
-          'articleResults', 'userResults', 'publicationResults', 'discussionResults', 'resourceResults', 'searchBar'
+          'articleResults', 'userResults', 'publicationResults', 'discussionResults','resourceResults',
+          'articleTotalCount','userTotalCount','publicationTotalCount','discussionTotalCount','resourceTotalCount',
+          'searchBar', 'queryTerm'
         ]));
     }
 }

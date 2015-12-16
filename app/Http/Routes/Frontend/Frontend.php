@@ -60,7 +60,7 @@ get('_update_article', 'PublicationController@public_publication')->name('_updat
 /**
  * Public Profiles
  */
-get('profile/{id}', 'ProfileController@view_public_profile')->name('view_public_profile');
+get('profile/{user_name}', 'ProfileController@view_public_profile')->name('view_public_profile');
 get('profiles', 'ProfileController@listing_of_profiles')->name('profiles');
 /**
  * These frontend controllers require the user to be logged in

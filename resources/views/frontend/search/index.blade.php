@@ -2,188 +2,77 @@
 
 @section('content')
   @if(true)
-    <div class="row row-horizon">
+
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center">
+          @if(empty($queryTerm))
+            All Results
+          @else
+            Results for "{{ $queryTerm }}"
+          @endif
+        </h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row row-horizon search-row">
       <div class="col-sm-6">
-        @include('frontend.search._article_results')
+        @include('frontend.search._results', [
+          'model' => 'article',
+          'title' => 'News',
+          'url' => "/divisions" . (empty($queryTerm) ? '' : '?query_term='.$queryTerm),
+          'total' => $articleTotalCount
+        ])
       </div>
       <div class="col-sm-6">
-        @include('frontend.search._user_results')
+        @include('frontend.search._results', [
+          'model' => 'user',
+          'title' => 'Members',
+          'url' => "/profiles",
+          'total' => $userTotalCount
+        ])
+      </div>
+      {{-- <div class="col-sm-6">
+        @include('frontend.search._results', [
+          'model' => 'discussion',
+          'title' => 'Discussions',
+          'url' => "/forum/all_threads",
+          'total' => $discussionTotalCount
+        ])
+      </div> --}}
+      <div class="col-sm-6">
+        @include('frontend.search._results', [
+          'model' => 'publication',
+          'title' => 'Publications',
+          'url' => "/publication_filter",
+          'total' => $publicationTotalCount
+        ])
       </div>
       <div class="col-sm-6">
-        @include('frontend.search._publication_results')
-      </div>
-      <div class="col-sm-6">
-        @include('frontend.search._resource_results')
+        @include('frontend.search._results', [
+          'model' => 'resource',
+          'title' => 'Resources',
+          'url' => "/resource_filter",
+          'total' => $resourceTotalCount
+        ])
       </div>
     </div>
   @endif
 
-  {{-- @include('frontend.search._discussion_results') --}}
-
   <style media="screen">
-    .row-horizon {
-      overflow-x: scroll;
-      overflow-y: hidden;
-      white-space: nowrap;
+    thead {
+      width: calc( 100% - 1em );
     }
-    .row-horizon > [class*="col-lg"], .row-horizon > [class*="col-md"], .row-horizon > [class*="col-sm"], .row-horizon > [class*="col-xs"] {
-      float: none;
-      display: inline-block;
-      white-space: normal;
-      vertical-align: top;
+    tbody {
+      display:block;
+      height: calc( 100vh - 280px);
+      overflow:auto;
     }
-    .row-horizon > .col-xs-12 {
-      width: 90%;
-    }
-    .row-horizon > .col-xs-11 {
-      width: 82.5%;
-    }
-    .row-horizon > .col-xs-10 {
-      width: 75%;
-    }
-    .row-horizon > .col-xs-9 {
-      width: 67.5%;
-    }
-    .row-horizon > .col-xs-8 {
-      width: 60%;
-    }
-    .row-horizon > .col-xs-7 {
-      width: 52.5%;
-    }
-    .row-horizon > .col-xs-6 {
-      width: 45%;
-    }
-    .row-horizon > .col-xs-5 {
-      width: 37.5%;
-    }
-    .row-horizon > .col-xs-4 {
-      width: 30%;
-    }
-    .row-horizon > .col-xs-3 {
-      width: 22.5%;
-    }
-    .row-horizon > .col-xs-2 {
-      width: 15%;
-    }
-    .row-horizon > .col-xs-1 {
-      width: 7.5%;
-    }
-
-    @media (min-width: 768px) {
-      .row-horizon > .col-sm-12 {
-        width: 90%;
-      }
-      .row-horizon > .col-sm-11 {
-        width: 82.5%;
-      }
-      .row-horizon > .col-sm-10 {
-        width: 75%;
-      }
-      .row-horizon > .col-sm-9 {
-        width: 67.5%;
-      }
-      .row-horizon > .col-sm-8 {
-        width: 60%;
-      }
-      .row-horizon > .col-sm-7 {
-        width: 52.5%;
-      }
-      .row-horizon > .col-sm-6 {
-        width: 45%;
-      }
-      .row-horizon > .col-sm-5 {
-        width: 37.5%;
-      }
-      .row-horizon > .col-sm-4 {
-        width: 30%;
-      }
-      .row-horizon > .col-sm-3 {
-        width: 22.5%;
-      }
-      .row-horizon > .col-sm-2 {
-        width: 15%;
-      }
-      .row-horizon > .col-sm-1 {
-        width: 7.5%;
-      }
-    }
-
-    @media (min-width: 992px) {
-      .row-horizon > .col-md-12 {
-        width: 90%;
-      }
-      .row-horizon > .col-md-11 {
-        width: 82.5%;
-      }
-      .row-horizon > .col-md-10 {
-        width: 75%;
-      }
-      .row-horizon > .col-md-9 {
-        width: 67.5%;
-      }
-      .row-horizon > .col-md-8 {
-        width: 60%;
-      }
-      .row-horizon > .col-md-7 {
-        width: 52.5%;
-      }
-      .row-horizon > .col-md-6 {
-        width: 45%;
-      }
-      .row-horizon > .col-md-5 {
-        width: 37.5%;
-      }
-      .row-horizon > .col-md-4 {
-        width: 30%;
-      }
-      .row-horizon > .col-md-3 {
-        width: 22.5%;
-      }
-      .row-horizon > .col-md-2 {
-        width: 15%;
-      }
-      .row-horizon > .col-md-1 {
-        width: 7.5%;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .row-horizon > .col-lg-12 {
-        width: 90%;
-      }
-      .row-horizon > .col-lg-11 {
-        width: 82.5%;
-      }
-      .row-horizon > .col-lg-10 {
-        width: 75%;
-      }
-      .row-horizon > .col-lg-9 {
-        width: 67.5%;
-      }
-      .row-horizon > .col-lg-8 {
-        width: 60%;
-      }
-      .row-horizon > .col-lg-7 {
-        width: 52.5%;
-      }
-      .row-horizon > .col-lg-6 {
-        width: 45%;
-      }
-      .row-horizon > .col-lg-5 {
-        width: 37.5%;
-      }
-      .row-horizon > .col-lg-4 {
-        width: 30%;
-      }
-      .row-horizon > .col-lg-3 {
-        width: 22.5%;
-      }
-      .row-horizon > .col-lg-2 {
-        width: 15%;
-      }
-      .row-horizon > .col-lg-1 {
-        width: 7.5%;
-      }
+    thead, tbody tr {
+      display:table;
+      width:100%;
+      table-layout:fixed;
     }
   </style>
 
