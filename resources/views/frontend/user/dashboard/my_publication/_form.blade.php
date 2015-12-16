@@ -19,8 +19,8 @@
   <div class="form-group">
         {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
         <div class="col-sm-6">
-            <input type="text" name="publication_author" class="form-control" value="{{$user->first_name}} {{$user->last_name}}" maxlength="255"/>
-            {{-- {!! Form::input('text', 'publication_author',null, ['class' => 'form-control ', 'maxlength'=>'255', 'value' => '{{$user->first_name}} {{$user->last_name}}']) !!} --}}
+            {{-- <input type="text" name="publication_author" class="form-control" value="{{$user->first_name}} {{$user->last_name}}" maxlength="255"/> --}}
+            {!! Form::input('text', 'publication_author',"$user->first_name $user->last_name", ['class' => 'form-control ', 'maxlength'=>'255']) !!} 
 
         </div>
         <div class="help-block with-errors"></div>

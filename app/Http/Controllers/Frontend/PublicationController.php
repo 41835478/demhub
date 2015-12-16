@@ -109,7 +109,7 @@ class PublicationController extends Controller
         'institution' => $request->institution,
         'conference' => $request->conference,
         'deleted' => 0,
-        'views' => 0,
+        'views' => 1,
         'favorites' => 0
       ];
         $publication = new Publication($inputs);
@@ -128,10 +128,11 @@ class PublicationController extends Controller
      */
     public function preview($id)
     {
-      $publications = Auth::user()->publications;
+      $caret = 000;
+      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications'])
+        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])
       );
     }
 
@@ -194,10 +195,7 @@ class PublicationController extends Controller
         'pages' => $request->pages,
         'publisher' => $request->publisher,
         'institution' => $request->institution,
-        'conference' => $request->conference,
-        'deleted' => 0,
-        'views' => 0,
-        'favorites' => 0
+        'conference' => $request->conference
       ];
       Publication::updateOrCreate(['id'=>$id], $inputs);
 
@@ -228,7 +226,7 @@ class PublicationController extends Controller
         $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
         // dd($publications);
-        return view('frontend.user.publication_filter.pub_listing', compact([
+        return view('frontend.user.publication_filter.public_journal', compact([
           'publications', 'secondMenu',
         ]));
     }

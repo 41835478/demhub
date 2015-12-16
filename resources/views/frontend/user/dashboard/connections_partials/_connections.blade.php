@@ -12,73 +12,35 @@
 
 
               <div class ="color-label division_all"></div>
-              <div class="inner-feedsbox" style="text-align:center;width:250px">
-
+              <div class="inner-feedsbox" style="text-align:center">
+              <div class="row">
+              <div class="col-xs-6" >
               <a href="{{ URL::to('profile/' . $user->user_name) }}">
                 <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
               </a>
+
+
+                <div class="member">
+
+                  {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "mask-medium"]) !!}
+                </div>
+              <!-- <span class="label label-default" style="font-size:82%">
+              </span> -->
+            </div>
+            <div class="col-xs-6" style="padding-top:50px">
               <p>
                 {{$user->job_title}}
               </p>
               <p>
                 {{$user->organization_name}}
               </p>
-              <img class="img-responsive img-circle" style="width:150px;display:inline" src="{{$user->avatar->url('medium')}}"><span style="visibility:hidden">*</span>
-              <!-- <span class="label label-default" style="font-size:82%">
-
-              </span> -->
-
               <p>
                 {{$user->location}}
-
               </p>
 
-      <div style="width:100%; height:40px; bottom:0px; position:absolute;">
-
-                  <!-- <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover"
-                  data-content="Feed successfully added to your favourite">
-
-
-          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </button> -->
-
-        <!-- <button type="button" class="btn btn-default btn-sm" style="margin-left:5px;">
-          <div class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> xxx</div>
-        </button> -->
-
-
-
-        <a type="button" class="btn btn-default btn-style-alt" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
-          <div class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</div>
-        </a>
-
-
-
-            <!-- <a button type="button" class="btn btn-default btn-sm" style="margin-left:5px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-              <div class="glyphicon glyphicon-comment" aria-hidden="true"> COMMENT</div>
-            </button></a>
-            <ul class="dropdown-menu" aria-labelledby="dLabel" style="width:100%; heigth:auto; margin-left:-30px; padding: 15px 15px 15px 15px;">
-            <li>Place Holder
-            </li>
-            <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-            <hr>
-            <li>Place Holder
-            </li>
-            <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-            <hr>
-            <li>Place Holder
-            </li>
-            <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-            <hr>
-
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Comment" style="width:100%; height: 100px;">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+          </div>
 
-          </ul> -->
-
-      </div>
             </div>
           </div> <!-- the div that closes the box -->
         </div>

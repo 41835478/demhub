@@ -14,14 +14,14 @@
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DESCRIPTION</td>
               <td>{{ $publication->description }}</td>
             </tr>
-            <!-- <tr>
+            <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">AUTHOR</td>
-              <td>{{ $publication->author->full_name() }}</td>
+              <td>{{ $publication->publication_author }}</td>
             </tr>
             <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DATE</td>
               <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
-            </tr> -->
+            </tr>
 
             <tr>
               <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PRIVACY</td>
@@ -69,9 +69,9 @@
         </table>
       </div>
         <div class="row">
-          <a class="btn btn-style-alt" style="margin-right:10px;text-transform:uppercase" href="{{ $publication->document->url() }}" download>show</a>
-          <a class="btn btn-style-alt" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}">edit</a>
-          <a class="btn btn-style-alt" style="text-transform:uppercase" href="{{url('publication_filter')}}">PUBLICATIONS</button>
+          <a class="btn btn-style-alt" type="button" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/view') }}">show</a>
+          <a class="btn btn-style-alt" type="button" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}">edit</a>
+          <a class="btn btn-style-alt" type="button" style="text-transform:uppercase" href="{{url('public_journal')}}">PUBLICATIONS</a>
         </div>
       </div>
     </div><!-- /.modal-content -->
