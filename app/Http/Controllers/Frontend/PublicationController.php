@@ -228,7 +228,7 @@ class PublicationController extends Controller
         $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
         // dd($publications);
-        return view('frontend.user.publication_filter.pub_article', compact([
+        return view('frontend.user.publication_filter.pub_listing', compact([
           'publications', 'secondMenu',
         ]));
     }

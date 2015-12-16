@@ -16,7 +16,7 @@
             <div class="publication-each">
               <div class="col-sm-8">
                 <ul>
-                  <li class= "pub-date">{{ date_format(new DateTime($publication->publication_date), 'j F Y | g:i a') }}
+                  <li class= "pub-date">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}
                   <li class= "pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}"><h5>{{$publication->author->full_name()}}</h5></li>
                   <li class= "pub-title"><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}"><h4>{{$publication->title}}</a></h4></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
@@ -91,7 +91,7 @@
                   </li>
 
               <li>
-              <a href="{{ $publication->document->url() }}" data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
+              <a href="{{ $publication->document->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                       <h4 class="icon file_download"></h4></a>
                  <a><h4 class="icon assignment" data-toggle="tooltip" data-placement="top" title="PREVIEW"></h4></a>
                 <a><h4 class="icon report2" data-toggle="tooltip" data-placement="top" title="REPORT"></h4></a>
