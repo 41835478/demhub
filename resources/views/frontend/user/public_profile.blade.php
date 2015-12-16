@@ -2,11 +2,12 @@
 
 
 @section('content')
-@include('frontend.user.dashboard.style')
+
+dd{{$user}}
 <section id="content_wrapper" style="margin-top: 60px;">
 
   <!-- Begin: Content -->
-  <div id="content" class="animated fadeIn" style="">
+  {{-- <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
         <a type="button" class="btn btn-style-alt col-md-offset-1" href="{{ URL::to('publication_filter') }}">ALL PUBLICATIONS</a>
           <div class="col-sm-offset-6" style="display:inline">
@@ -33,6 +34,6 @@
 
 
       </div>
-    </div>
+    </div> --}}
 </section>
 @endsection

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Auth;
 use DB;
 use Carbon\Carbon as Carbon;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Division;
 
 /**
  * Class PublicationController
@@ -36,7 +38,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->get();
+      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $caret = 000;
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
@@ -221,11 +223,10 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->get();
+        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
-
         // dd($publications);
-        return view('frontend.user.publication_filter.publication_filter', compact([
+        return view('frontend.user.publication_filter.pub_article', compact([
           'publications', 'secondMenu',
         ]));
     }

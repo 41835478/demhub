@@ -23,7 +23,7 @@
 }
 
 .division_all {
-  background-color: #ccc;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .division_1 {
@@ -51,7 +51,11 @@
 }
 
 .division_7 {
-  background-color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.greytone {
+  background-color: #ccc;
 }
 
 .color-label {
@@ -200,16 +204,6 @@ hr.style4 {
   list-style: none;
 }
 
-.publication-left {
-  width: 70%;
-  padding-right: 10px;
-  display: inline-block;
-  height: 100%;
-  float: left;
-  margin-bottom: 20px;
-  background-color: #fff;
-}
-
 li.pub-author {
   font-weight: bold;
   margin-top: 10px;
@@ -222,13 +216,13 @@ li.pub-title {
   line-height: 97%;
   display: inline-block;
   float: left;
-  max-width: calc(100% - 70px);
+  max-width: calc(100% - 40px);
   overflow-x: hidden;
 }
 
 li.pub-descrip {
-  margin-top: 10px;
   style: none;
+  margin-top: -7px;
 }
 
 .pub-descrip-content {
@@ -237,50 +231,35 @@ li.pub-descrip {
   padding-bottom: 10px;
 }
 
-.publication-right {
-  width: 30%;
-  float: right;
-  height: 100%;
-  display: inline;
-}
-
-.publication-right li {
-  display: block;
-  margin-right: 7px;
-  min-height: 15px;
-}
-
 .icon-container {
-  margin-left: -42px;
+  width: 100%;
+  display: inline-block;
+  margin: -5px auto auto -40px;
 }
 
 .icon-container li {
-  display: inline-block;
+  float: left;
 }
 
 .icon-container i {
-  margin: 0px 4px 0px 0px;
-  opacity: 0.4;
+  margin: auto 4px auto 4px;
+  opacity: 0.5;
+}
+
+.icon-container a {
+  opacity: 0.5;
 }
 
 .pub-dropdown {
-  margin-top: 30px;
   width: 130%;
-  margin-left: 5%;
-}
-
-.publication-update-number {
-  float: right;
-  margin-right: 40px;
-  padding-right: 10px;
-  height: 100%;
+  margin: 5% 5% auto 5%;
 }
 
 .pub-division {
   width: 100%;
   height: 20px;
   display: block;
-  margin: -10px auto auto auto;
+  margin: -6px auto auto auto;
 }
 
 .pub-division-icon {
@@ -289,6 +268,24 @@ li.pub-descrip {
   float: left;
   margin-right: 8px;
   display: inline;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pub-dropdown {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .pub-dropdown {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .pub-dropdown {
+    width: 90%;
+  }
 }
 
 .navbar-default {

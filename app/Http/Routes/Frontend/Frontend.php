@@ -54,12 +54,14 @@ get('my_publication/{id}', 'PublicationController@preview')->name('preview_publi
 /**
  * Public Publication Route
  */
-get('publication_filter', 'PublicationController@public_publication')->name('publication_filter');
+get('pub_article', 'PublicationController@public_publication')->name('pub_article');
+get('_update_article', 'PublicationController@public_publication')->name('_update_article');
 
 /**
  * Public Profiles
  */
 get('profile/{id}', 'ProfileController@view_public_profile')->name('view_public_profile');
+get('profiles', 'ProfileController@listing_of_profiles')->name('profiles');
 /**
  * These frontend controllers require the user to be logged in
  */
