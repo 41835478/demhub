@@ -14,18 +14,24 @@
               <div class ="color-label division_all"></div>
               <div class="inner-feedsbox" style="text-align:center;width:250px">
 
-              <h3>
-                {{$user->first_name}} {{$user->last_name}}
-
-              </h3>
+              <a href="{{ URL::to('profile/' . $user->user_name) }}">
+                <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
+              </a>
+              <p>
+                {{$user->job_title}}
+              </p>
+              <p>
+                {{$user->organization_name}}
+              </p>
               <img class="img-responsive img-circle" style="width:150px;display:inline" src="{{$user->avatar->url('medium')}}"><span style="visibility:hidden">*</span>
               <!-- <span class="label label-default" style="font-size:82%">
 
               </span> -->
 
+              <p>
+                {{$user->location}}
 
-
-
+              </p>
 
       <div style="width:100%; height:40px; bottom:0px; position:absolute;">
 
@@ -84,5 +90,3 @@
       </div>
       </div>
     </section>
-
-      @endsection('content')

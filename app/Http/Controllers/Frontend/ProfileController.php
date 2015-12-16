@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 
+use App\Models\Access\User\User;
+
 /**
  * Class ProfileController
  * @package App\Http\Controllers\Frontend
@@ -16,6 +18,20 @@ class ProfileController extends Controller {
 	public function edit() {
 		return view('frontend.user.profile.edit')
 			->withUser(auth()->user());
+	}
+
+	public function view_public_profile($user_name) {
+		$secondMenu = true;
+		$user = User::where('user_name', '=', $user_name)->firstOrFail();
+		return view('frontend.user.public_profile', compact(['user', 'secondMenu'])
+	);
+	}
+
+	public function listing_of_profiles() {
+		$secondMenu = true;
+		$users = User::orderBy('id','DESC')->get();
+		return view('frontend.user.profiles', compact(['users','secondMenu'])
+	);
 	}
 
 	/**

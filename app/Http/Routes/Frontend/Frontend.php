@@ -43,17 +43,24 @@ get('resources', 'InfoResourceController@index');
 // resource('publication', 'PublicationController');
 get('my_publications', 'PublicationController@index')->name('my_publications');
 post('my_publications/{caret}', 'PublicationController@caret_publication_action')->name('caret_publication_action');
+
 get('my_publication/new', 'PublicationController@create')->name('new_publication');
 post('my_publication/store', 'PublicationController@store')->name('store_publication');
 get('my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
+get('my_publication/{id}/view', 'PublicationController@view')->name('view_publication');
 patch('my_publication/{id}', 'PublicationController@update')->name('update_publication');
-get('my_publication/{id}', 'PublicationController@show')->name('show_publication');
+get('my_publication/{id}', 'PublicationController@preview')->name('preview_publication');
 
 /**
  * Public Publication Route
  */
-get('publication_filter', 'PublicationController@public_publication')->name('publication_filter');
+get('pubs', 'PublicationController@public_publication')->name('pubs');
 
+/**
+ * Public Profiles
+ */
+get('profile/{user_name}', 'ProfileController@view_public_profile')->name('view_public_profile');
+get('profiles', 'ProfileController@listing_of_profiles')->name('profiles');
 /**
  * These frontend controllers require the user to be logged in
  */

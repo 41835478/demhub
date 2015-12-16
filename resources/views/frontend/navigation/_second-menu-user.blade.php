@@ -18,19 +18,19 @@
         @endif
         <a href="{{url('forum/all_threads')}}" style=""> DISCUSSION</a></li>
 
-        @if(Request::url() == url('publications'))
+        @if(Request::url() == url('pubs'))
           <li class="active">
         @else
           <li>
         @endif
-        <a href="{{url('publication_filter')}}" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
+        <a href="{{url('pubs')}}" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
 
-        @if(Request::url() == url('publication_filter'))
+        @if(Request::url() == url('profiles'))
           <li class="active">
         @else
           <li>
         @endif
-        <a href="javascript:comingSoon('network_title')" id="network_title" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
+        <a href="{{url('profiles')}}" id="network_title" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
 
         @if(Request::url() === url('resource_filter'))
           <li class="active">

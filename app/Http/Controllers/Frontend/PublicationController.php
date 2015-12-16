@@ -36,7 +36,7 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->get();
+      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $caret = 000;
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
@@ -104,7 +104,9 @@ class PublicationController extends Controller
         'publisher' => $request->publisher,
         'institution' => $request->institution,
         'conference' => $request->conference,
-        'deleted' => 0
+        'deleted' => 0,
+        'views' => 0,
+        'favorites' => 0
       ];
         $publication = new Publication($inputs);
 
@@ -120,12 +122,12 @@ class PublicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function preview($id)
     {
       $publications = Auth::user()->publications;
       $publication = Publication::findOrFail($id);
       return view(
-        'frontend.user.dashboard.my_publication.show', compact(['publication','publications'])
+        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications'])
       );
     }
 
@@ -135,6 +137,18 @@ class PublicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     public function view($id)
+     {
+       $publications = Auth::user()->publications;
+       $publication = Publication::findOrFail($id);
+       Publication::where('id', $id)
+                   ->update(['views' => ($publication->views+1)]);
+
+       return view(
+         'frontend.user.dashboard.my_publication.view', compact(['publication','publications'])
+       );
+     }
+
     public function edit($id)
     {
       $publication = Publication::findOrFail($id);
@@ -177,7 +191,9 @@ class PublicationController extends Controller
         'publisher' => $request->publisher,
         'institution' => $request->institution,
         'conference' => $request->conference,
-        'deleted' => 0
+        'deleted' => 0,
+        'views' => 0,
+        'favorites' => 0
       ];
       Publication::updateOrCreate(['id'=>$id], $inputs);
 
@@ -205,11 +221,12 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->get();
+        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
+
         // dd($publications);
-        return view('frontend.user.publication_filter.publication_filter', compact([
-          'publications', 'secondMenu'
+        return view('frontend.user.publication_filter.pubs', compact([
+          'publications', 'secondMenu',
         ]));
     }
 }
