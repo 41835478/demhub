@@ -32,7 +32,6 @@
       @else
         <li>
       @endif
-      <li>
         <a href="{{url('connections')}}">
           <span class="fa fa-users"></span>
           <span class="sidebar-title" id="connections_title">CONNECTIONS</span>
