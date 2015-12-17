@@ -204,10 +204,7 @@ end
 - `cd ~/workspace/demhub`
 - `larafullnew` (For commands breakdown, refer to aliases above)
 - Enter the following token when prompted to do so: `c31a99fcf70c55e8572aec063a3cca6f3f5f510c` while packages are being installed
-- `php artisan es:articles-index`
-- `php artisan es:publication-index`
-- `php artisan es:resources-index`
-- `php artisan es:users-index`
+- `php artisan es:articles-index && php artisan es:publication-index && php artisan es:resources-index && php artisan es:users-index`
 - One by one, visit each one of these links and wait for their individual outputs. These will populate the DB with article entries from various news sources.
 ```
 http://demhub.dev/scheduler/scrapeRSS
@@ -226,6 +223,7 @@ http://demhub.dev/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
 
 ##### Documentation
 - `apigen generate -s app -d api --template-theme bootstrap --tree`
+- Browse the index.html page inside the api folder
 
 #### Before commiting (if applicable)
 - `git config --global user.name "Your Name"`

@@ -42,6 +42,13 @@
         {{-- <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:15px;padding-right:15px;"> MAP</a></li> --}}
 
       	<li><a href="javascript:comingSoon('event_tracking_title')" id="event_tracking_title" style="padding-left:15px;padding-right:15px;border-right:2px solid #fff"> TRACK EVENTS</a></li>
+        
+        @if(Request::url() === url('search'))
+          <li class="active">
+        @else
+          <li>
+        @endif
+        <a href="{{url('search')}}"> SEARCH ALL</a></li>
 
     	</ul>
     </div>

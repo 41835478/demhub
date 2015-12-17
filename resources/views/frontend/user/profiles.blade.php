@@ -21,19 +21,18 @@
 
                   {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-rounded img-responsive"]) !!}
                 </div>
-              <a href="{{ URL::to('profile/' . $user->user_name) }}">
-                <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
-              </a>
+                <a href="{{ URL::to('profile/' . $user->user_name) }}">
+                  <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
+                </a>
 
 
-            <div>
+              <div>
               <p>
                 {{$user->job_title}}
               </p>
               <p>
                 @if ($user->organization_name)
                   at
-                @else
                 @endif
                 {{$user->organization_name}}
               </p>
