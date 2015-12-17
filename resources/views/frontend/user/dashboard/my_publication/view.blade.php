@@ -9,7 +9,7 @@
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
-        <a type="button" class="btn btn-style-alt col-md-offset-1" href="{{ URL::to('publication_filter') }}">ALL PUBLICATIONS</a>
+        <a type="button" class="btn btn-style-alt col-md-offset-1" href="{{ URL::to('public_journal') }}">ALL PUBLICATIONS</a>
           <div class="col-sm-offset-6" style="display:inline">
             <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">CREATE</a>
           </div>

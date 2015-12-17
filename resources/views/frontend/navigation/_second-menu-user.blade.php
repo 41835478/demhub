@@ -18,12 +18,12 @@
         @endif
         <a href="{{url('forum/all_threads')}}" style=""> DISCUSSION</a></li>
 
-        @if(Request::url() == url('pub_listing'))
+        @if(Request::url() == url('public_journal'))
           <li class="active">
         @else
           <li>
         @endif
-        <a href="{{url('pub_listing')}}" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
+        <a href="{{url('public_journal')}}" id="publications_title" style="padding-left:15px;padding-right:15px;"> PUBLICATIONS</a></li>
 
         @if(Request::url() == url('profiles'))
           <li class="active">

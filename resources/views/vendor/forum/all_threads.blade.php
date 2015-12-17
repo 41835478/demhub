@@ -30,7 +30,7 @@
 							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$thread->category->slug}}" style="height:22px">
 						</a>
 			      </td>
-			    <td><img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$thread->author->first_name}} {{$thread->author->last_name}}</td>
+			    <td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$thread->author->first_name}} {{$thread->author->last_name}}</td>
 			    <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td>
 			    </tr>
 
