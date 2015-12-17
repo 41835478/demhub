@@ -8,6 +8,7 @@
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
+      <a type="button" class="btn btn-style-alt" href="{{ route('connections') }}">YOUR NETWORK</a>
       <div class="col-md-3 col-sm-offset-1">
 
         <div id="avatarSection" class="form-group">
@@ -30,7 +31,7 @@
           <p>{{$user->specialization}}</p>
           <p>{{$user->location}}</p>
           <p>{{$user->email}}</p>
-        
+
 
       </div>
 

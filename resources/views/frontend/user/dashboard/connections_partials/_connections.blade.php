@@ -2,12 +2,12 @@
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="padding-bottom: 0px;">
+    <a type="button" class="btn btn-style-alt" href="{{ route('profiles') }}">DEMHUB NETWORK</a>
     <div class="row center-block mt10" style="">
       <?php $counter=0; ?>
-        @foreach($users as $user)
+        @foreach($users as $key => $user)
         @if(Auth::user()->is_following($user))
-
-
+          <?php $counter++; ?>
             <div class="col-xs-12 col-sm-6 col-md-4">
             <div class = "peoplebox">
 
@@ -60,7 +60,7 @@
             </div>
           </div> <!-- the div that closes the box -->
         </div>
-        @elseif(! Auth::user()->is_following($user) && $counter < 1)
+        @elseif($key = sizeof($users) && $counter = 0)
         <?php $counter++; ?>
         <div class="col-xs-12 col-sm-6 col-md-4">
         <h4 style="">You Haven't Followed Anyone yet. </h4>

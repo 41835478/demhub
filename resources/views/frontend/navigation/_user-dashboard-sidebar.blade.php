@@ -17,14 +17,23 @@
         <span class="sidebar-title">PROFILE</span>
       </a>
     </li>
+    @if(strpos(Request::url(), "publication")!==false)
+      <li class="active">
+    @else
       <li>
+    @endif
         <a href="{{url('my_publications')}}">
           <span class="fa fa-briefcase"></span>
           <span class="sidebar-title" id="my_publications_title">MY PUBLICATIONS</span>
         </a>
       </li>
+      @if(Request::url() == url('connections'))
+        <li class="active">
+      @else
+        <li>
+      @endif
       <li>
-        <a href="javascript:comingSoonP('connections_title')">
+        <a href="{{url('connections')}}">
           <span class="fa fa-users"></span>
           <span class="sidebar-title" id="connections_title">CONNECTIONS</span>
           </a>

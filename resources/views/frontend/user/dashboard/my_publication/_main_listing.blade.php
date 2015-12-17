@@ -3,8 +3,8 @@
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
-
-          <div class="col-sm-offset-9">
+      <a type="button" class="btn btn-style-alt" href="{{ route('publications') }}">ALL PUBLICATIONS</a>
+          <div class="col-sm-offset-7" style="display:inline">
             <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">CREATE</a>
           </div>
 
@@ -15,7 +15,7 @@
                     <td><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;padding-right:5px;padding-left:5px">
                       <span class="caret" style="color:#333"></span></a>
                       <ul class="dropdown-menu navbar-inverse" role="menu">
-          						  <li><a href="javascript:caretSet('del')">DELETE</a></li>
+          						  <li><a class="text-alt" href="javascript:caretSet('del')">DELETE</a></li>
                       </ul>
                     </td>
                     <td>TITLE</td>

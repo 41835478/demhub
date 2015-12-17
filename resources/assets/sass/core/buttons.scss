@@ -69,7 +69,7 @@ input.btn-style-alt,
 button.btn-style-alt{
 	background:#337ab7;
 	color:#FFF;
-	
+
 }
 
 input.btn-style-alt:hover, input.btn-style-alt:focus,
@@ -128,4 +128,19 @@ button.btn-greytone:hover, button.btn-greytone:focus{
 button.btn-greytone:active{
 	background:#ccc;
 	color:#000;
+}
+.text-alt{
+	color:#FFF !important;
+
+}
+
+.text-alt:hover, .text-alt:focus{
+	color:#337ab7 !important;
+
+}
+
+.text-alt:active{
+
+	color:#000 !important;
+
 }
