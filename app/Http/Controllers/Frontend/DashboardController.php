@@ -28,11 +28,11 @@ class DashboardController extends Controller {
 	}
 	public function showConnections()
 	{
-		$allDivisions = Division::all();
+
 		$users = User::all();
 
 		return view('frontend.user.dashboard.connections', compact([
-					'allDivisions', 'users'
+					'users'
 		]));
 	}
 }

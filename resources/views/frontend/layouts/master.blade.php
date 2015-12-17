@@ -27,7 +27,7 @@
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
     ?>
 
-    @if(Request::url() === url('dashboard') || strpos(Request::url(), "publication")!==false)
+    @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
     @endif
 
