@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
+use DB;
 
 /**
  * Class User
@@ -85,6 +86,29 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function full_name() {
 		return $this->first_name." ".$this->last_name;
+	}
+
+	public function followers() {
+		return $this->belongsToMany('App\Models\Access\User\User','follow_relationships','followed_id','follower_id')
+								->withTimestamps();
+	}
+
+	public function following() {
+		return $this->belongsToMany('App\Models\Access\User\User','follow_relationships','follower_id','followed_id')
+								->withTimestamps();
+	}
+
+	public function is_following($followed_user) {
+		if (is_numeric($followed_user)) {
+			$followed_user_id = $followed_user;
+		} else {
+			$followed_user_id = $followed_user->id;
+		}
+
+		return DB::table('follow_relationships')
+					    ->whereFollowerId($this->id)
+					    ->whereFollowedId($followed_user_id)
+					    ->count() > 0;
 	}
 
 }

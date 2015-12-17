@@ -81,6 +81,10 @@ $router->group(['middleware' => 'auth'], function ()
 	 * Search
 	 */
 	get('search', 'SearchController@index')->name('search');
+
+	// Follow/unfollow
+	post('follow/{id}', 'ProfileController@followUser')->name('follow_user');
+	post('unfollow/{id}', 'ProfileController@unfollowUser')->name('unfollow_user');
 });
 
 /**

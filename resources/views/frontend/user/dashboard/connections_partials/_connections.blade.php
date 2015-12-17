@@ -33,7 +33,7 @@
 
               </p>
 
-      <div style="width:100%; height:40px; bottom:0px; position:absolute;">
+              <div style="width:100%; height:40px; bottom:0px; position:absolute;">
 
                   <!-- <button type="button" class="btn btn-default btn-style-alt" aria-label="Left Align" data-toggle="popover"
                   data-content="Feed successfully added to your favourite">
@@ -48,9 +48,19 @@
 
 
 
-        <a type="button" class="btn btn-default btn-style-alt" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
-          <div class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</div>
-        </a>
+              <a type="button" class="btn btn-default btn-style-alt pull-left" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
+                <div class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</div>
+              </a>
+
+              @if(Auth::user()->is_following($user))
+                {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'class' => 'form-horizontal pull-right', 'role' => 'form', 'method' => 'POST']) !!}
+                  {!! Form::submit("Unfollow", ['class' => 'btn btn-default btn-style-alt']) !!}
+                {!! Form::close() !!}
+              @else
+                {!! Form::model($user, ['route' => ['follow_user', $user->id], 'class' => 'form-horizontal pull-right', 'role' => 'form', 'method' => 'POST']) !!}
+                  {!! Form::submit("Follow", ['class' => 'btn btn-default btn-style-alt']) !!}
+                {!! Form::close() !!}
+              @endif
 
 
 

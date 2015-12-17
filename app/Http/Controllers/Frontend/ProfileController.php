@@ -5,6 +5,7 @@ use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 
 use App\Models\Access\User\User;
+use Auth;
 
 /**
  * Class ProfileController
@@ -23,15 +24,15 @@ class ProfileController extends Controller {
 	public function view_public_profile($user_name) {
 		$secondMenu = true;
 		$user = User::where('user_name', '=', $user_name)->firstOrFail();
-		return view('frontend.user.public_profile', compact(['user', 'secondMenu'])
-	);
+			return view('frontend.user.public_profile', compact(['user', 'secondMenu'])
+		);
 	}
 
 	public function listing_of_profiles() {
 		$secondMenu = true;
 		$users = User::orderBy('id','DESC')->get();
-		return view('frontend.user.profiles', compact(['users','secondMenu'])
-	);
+			return view('frontend.user.profiles', compact(['users','secondMenu'])
+		);
 	}
 
 	/**
@@ -42,5 +43,19 @@ class ProfileController extends Controller {
 	public function update(UserContract $user, UpdateProfileRequest $request) {
 		$user->updateProfile($request->all());
 		return redirect()->route('dashboard')->withFlashSuccess(trans("strings.profile_successfully_updated"));
+	}
+
+	public function followUser($id) {
+		if (!Auth::user()->is_following($id)) {
+			Auth::user()->following()->attach($id);
+		}
+		return $this->listing_of_profiles();
+	}
+
+	public function unfollowUser($id) {
+		if (Auth::user()->is_following($id)) {
+			Auth::user()->following()->detach($id);
+		}
+		return $this->listing_of_profiles();
 	}
 }
