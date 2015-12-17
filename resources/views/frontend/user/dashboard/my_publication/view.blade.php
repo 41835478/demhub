@@ -9,6 +9,7 @@
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
+
         <a type="button" class="btn btn-style-alt" href="{{ URL::to('public_journal') }}" style="margin-left:10px">
           <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS
         </a>
@@ -16,31 +17,24 @@
             <a type="button" class="btn btn-style-alt" href="{{ $publication->document->url() }}">FULL SCREEN</a>
           </div>
         <div class="row">
-        <div class="col-sm-9">
-        <table class="table">
-          <thead>
-            <tr>
-              <td>
-                <h3 style="text-align:center">{{ $publication->title }}</h3>
-              </td>
-              <td>
+          <div class="col-sm-6">
 
-              </td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
+
+                <h3 style="text-align:center">{{ $publication->title }}</h3>
+
                 <embed class="img-responsive" src="{{ $publication->document->url() }}"></embed>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
+
     </div>
 
 
-      </div>
+    <div class="col-sm-6">
+      <br></br><br></br>
+      @include('frontend.user.dashboard.my_publication._publication_details_listing')
+    </div>
+    </div>
+
+    </div>
     </div>
 </section>
 @endsection

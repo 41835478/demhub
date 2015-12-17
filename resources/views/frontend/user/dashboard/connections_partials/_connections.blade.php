@@ -2,7 +2,8 @@
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="padding-bottom: 0px;">
-    <a type="button" class="btn btn-style-alt" href="{{ route('profiles') }}">DEMHUB NETWORK</a>
+    <a type="button" class="btn btn-style-alt" href="{{ route('profiles') }}"><span class="fa fa-users"></span> DEMHUB NETWORK</a>
+    
     <div class="row center-block mt10" style="">
       <?php $counter=0; ?>
         @foreach($users as $key => $user)
