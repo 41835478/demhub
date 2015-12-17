@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call(ForumThreadsTableSeeder::class);
 		$this->call(InfoResourceTableSeeder::class);
 		$this->call(KeywordsTableSeeder::class);
+		$this->call(PublicationsTableSeeder::class);
 		$this->call(RegionsTableSeeder::class);
 		$this->call(ScrapeSourcesTableSeeder::class);
 

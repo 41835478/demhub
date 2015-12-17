@@ -203,8 +203,12 @@ end
 - Add `config.vm.network "forwarded_port", guest: 9200, host: 62000` as indicated in the above snippet
 - `cd ~/workspace/demhub`
 - `larafullnew` (For commands breakdown, refer to aliases above)
+- Enter the following token when prompted to do so: `c31a99fcf70c55e8572aec063a3cca6f3f5f510c` while packages are being installed
+- `php artisan es:articles-index`
+- `php artisan es:publication-index`
+- `php artisan es:resources-index`
+- `php artisan es:users-index`
 - One by one, visit each one of these links and wait for their individual outputs. These will populate the DB with article entries from various news sources.
-
 ```
 http://demhub.dev/scheduler/scrapeRSS
 http://demhub.dev/scheduler/scrapeCustom?source=IRDR&page_from=1&page_to=1
@@ -212,7 +216,6 @@ http://demhub.dev/scheduler/scrapeCustom?source=EC&page_from=1&page_to=1
 http://demhub.dev/scheduler/scrapeCustom?source=EC-PR&page_from=1&page_to=1
 http://demhub.dev/scheduler/scrapeCustom?source=GIAC&page_from=1&page_to=1
 ```
-- `php artisan app:es-index`
 - `exit` in order to let all box changes take effect
 
 #### Start developing
