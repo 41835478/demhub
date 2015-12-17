@@ -8,11 +8,13 @@
 <tbody>
   @forelse($resourceResults as $resource)
     <tr>
-      <td class="va-m fw600 text-muted">
+      <td>
         {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
         {{ $resource['name'] }}
       </td>
-      <td class="fs15 fw600 text-right">{{ $resource['name'] }}</td>
+      {{-- <td class="text-muted text-right">
+        {{ $resource['country'] }}, {{ $resource['region'] }}
+      </td> --}}
     </tr>
   @empty
     <br>No resources to show<br>

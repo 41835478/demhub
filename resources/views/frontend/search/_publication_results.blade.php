@@ -8,11 +8,16 @@
 <tbody>
   @forelse($publicationResults as $publication)
     <tr>
-      <td class="va-m fw600 text-muted">
+      <td>
+
+        <a href="{{ $article['source_url'] }}" style="color:#000">
+          {{ $publication['title'] }}
+        </a>
+
         {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
-        {{ $publication['title'] }}
+
       </td>
-      <td class="fs15 fw600 text-right">{{ $publication['publication_author'] }}</td>
+      <td class="text-muted text-right">{{ $publication['publication_author'] }}</td>
     </tr>
   @empty
     <br>No publications to show<br>

@@ -8,7 +8,7 @@
 <tbody>
   @forelse($articleResults as $article)
     <tr>
-      <td class="">
+      <td>
         <a target="_blank" href="{{ $article['source_url'] }}" style="color:#000">
           {{ $article['title'] }}
         </a>
