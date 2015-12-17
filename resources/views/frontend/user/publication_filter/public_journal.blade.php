@@ -3,13 +3,15 @@
 @section('content')
 <div class="row" style="padding-top:20px; font-size:0.86em;">
   <div class="col-sm-8 col-sm-offset-2" style="background-color:#fff !important;">
-    <div id="publication-update">
-      <h3> Publications </h3>
+    <a type="button" class="btn btn-style-alt" href="{{ url('my_publications') }}">
+      <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> MY PUBLICATIONS</a>
 
+    <div class="col-sm-offset-7" style="display:inline">
+      <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">CREATE</a>
     </div>
 
     <div class="publication-list">
-      <h3> Articles </h3>
+      {{-- <h3> Articles </h3> --}}
         <hr class="style4">
         @if($publications)
           @foreach ($publications as $publication)

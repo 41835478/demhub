@@ -11,6 +11,7 @@ use DB;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Division;
+use App\Http\Requests\Frontend\PublicationRequest;
 
 /**
  * Class PublicationController
@@ -59,7 +60,7 @@ class PublicationController extends Controller
       }
 
       return redirect('my_publications')
-      ->withFlashSuccess("Publication(s) have been deleted");
+      ->withFlashSuccess("Publication(s) deleted");
     }
 
 
@@ -110,14 +111,14 @@ class PublicationController extends Controller
         'conference' => $request->conference,
         'deleted' => 0,
         'views' => 1,
-        'favorites' => 0
+        'favorites' => 0,
       ];
         $publication = new Publication($inputs);
 
         Auth::user()->publications()->save($publication);
 
         return redirect('my_publications')
-        ->withFlashSuccess("Successfully created publication!");
+        ->withFlashSuccess("Publication created successfully!");
     }
 
     /**

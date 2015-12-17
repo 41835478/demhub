@@ -7,8 +7,11 @@
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
-    <div class="row center-block mt10" style="">
-      <a type="button" class="btn btn-style-alt" href="{{ route('connections') }}">YOUR NETWORK</a>
+    <a type="button" class="btn btn-style-alt col-xs-offset-1" href="{{ route('publications') }}"><span class="fa fa-users"></span> DEMHUB NETWORK</a>
+    <a type="button" class="btn btn-style-alt" href="{{ route('connections') }}"><span class="fa fa-users"></span> MY NETWORK</a>
+
+    <div class="row center-block mt10" style="padding-top:15px">
+
       <div class="col-md-3 col-sm-offset-1">
 
         <div id="avatarSection" class="form-group">

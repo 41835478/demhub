@@ -20,7 +20,7 @@
         {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
         <div class="col-sm-6">
             {{-- <input type="text" name="publication_author" class="form-control" value="{{$user->first_name}} {{$user->last_name}}" maxlength="255"/> --}}
-            {!! Form::input('text', 'publication_author',"$user->first_name $user->last_name", ['class' => 'form-control ', 'maxlength'=>'255']) !!} 
+            {!! Form::input('text', 'publication_author',"$user->first_name $user->last_name", ['class' => 'form-control ', 'maxlength'=>'255']) !!}
 
         </div>
         <div class="help-block with-errors"></div>
@@ -98,12 +98,7 @@
             {!! Form::input('keywords', 'keywords', null, ['class' => 'form-control', 'placeholder' => 'tsunami, tornado, ebola']) !!}
         </div>
   </div>
-  <!-- <div class="form-group">
-        {!! Form::label('description', "description", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
-        <div class=" col-sm-6">
-            {!! Form::input('description', 'description', null, ['class' => 'form-control', 'placeholder' => '250 words or less']) !!}
-        </div>
-  </div> -->
+
 </div>
 <div class="row">
 <hr class="col-sm-10">
@@ -117,8 +112,9 @@
   <div class="form-group">
         {!! Form::label('volume', "VOLUME", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class=" col-sm-6">
-            {!! Form::input('volume', 'volume', null, ['class' => 'form-control']) !!}
+            {!! Form::input('volume', 'volume', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
         </div>
+        <div class="help-block with-errors">Must be numbers only</div>
   </div>
 
   <div class="form-group">
@@ -131,8 +127,9 @@
   <div class="form-group">
         {!! Form::label('pages', "PAGES", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class=" col-sm-6">
-            {!! Form::input('pages', 'pages', null, ['class' => 'form-control']) !!}
+            {!! Form::input('pages', 'pages', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
         </div>
+        <div class="help-block with-errors">Must be numbers only</div>
   </div>
 
   <div class="form-group">
