@@ -8,12 +8,13 @@
 
 	<!-- <h2>{{ trans('forum::base.index') }}</h2> -->
 
-	<div class="row" style="padding-top:15px">
+	<div class="row container-fluid" style="padding-top:15px">
 		<div class="col-md-8 col-md-offset-2">
+			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-xs-offset-8">NEW DISCUSSION</a>
 			<table class="table table-index table-hover">
 			  <thead>
 			    <tr>
-			      <th><a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-default btn-style-alt">START A DISCUSSION</a></th>
+			      <th></th>
 						<th>DIVISION</th>
 
 						<th>AUTHOR</th>
