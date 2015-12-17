@@ -40,7 +40,6 @@
 
             <div style="margin: 0 auto;width:100%; height:40px; bottom:0px; position:absolute;">
 
-
               @if(Auth::user()->is_following($user))
                 {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => 'float:left;margin-left:120px;margin-right:-120px;', 'role' => 'form', 'method' => 'POST']) !!}
                   {!! Form::token() !!}

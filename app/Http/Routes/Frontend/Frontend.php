@@ -38,30 +38,11 @@ get('resource_filter', 'InfoResourceController@showResourceFilter')->name('resou
 get('resources', 'InfoResourceController@index');
 
 /**
- * Publication Routes
- */
-// resource('publication', 'PublicationController');
-get('my_publications', 'PublicationController@index')->name('my_publications');
-post('my_publications/{caret}', 'PublicationController@caret_publication_action')->name('caret_publication_action');
-
-get('my_publication/new', 'PublicationController@create')->name('new_publication');
-post('my_publication/store', 'PublicationController@store')->name('store_publication');
-get('my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
-get('my_publication/{id}/view', 'PublicationController@view')->name('view_publication');
-patch('my_publication/{id}', 'PublicationController@update')->name('update_publication');
-get('my_publication/{id}', 'PublicationController@preview')->name('preview_publication');
-
-/**
  * Public Publication Route
  */
 get('public_journal', 'PublicationController@public_publication')->name('public_journal');
-get('_update_article', 'PublicationController@public_publication')->name('_update_article');
+// get('_update_article', 'PublicationController@public_publication')->name('_update_article');
 
-/**
- * Public Profiles
- */
-get('profile/{user_name}', 'ProfileController@view_public_profile')->name('view_public_profile');
-get('profiles', 'ProfileController@listing_of_profiles')->name('profiles');
 /**
  * These frontend controllers require the user to be logged in
  */
@@ -76,6 +57,26 @@ $router->group(['middleware' => 'auth'], function ()
 	get('connections', 'DashboardController@showConnections')->name('connections');
 	// get('profile/edit', 'ProfileController@edit')->name('edit_profile');
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
+
+	/**
+	 * Publication Routes
+	 */
+	// resource('publication', 'PublicationController');
+	get('my_publications', 'PublicationController@index')->name('my_publications');
+	post('my_publications/{caret}', 'PublicationController@caret_publication_action')->name('caret_publication_action');
+
+	get('my_publication/new', 'PublicationController@create')->name('new_publication');
+	post('my_publication/store', 'PublicationController@store')->name('store_publication');
+	get('my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
+	get('my_publication/{id}/view', 'PublicationController@view')->name('view_publication');
+	patch('my_publication/{id}', 'PublicationController@update')->name('update_publication');
+	get('my_publication/{id}', 'PublicationController@preview')->name('preview_publication');
+
+	/**
+	 * Public Profiles
+	 */
+	get('profile/{user_name}', 'ProfileController@view_public_profile')->name('view_public_profile');
+	get('profiles', 'ProfileController@listing_of_profiles')->name('profiles');
 
 	/**
 	 * Search
