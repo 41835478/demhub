@@ -43,15 +43,15 @@
                     <td>{{ $publication->author->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
 
-                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}"
+                    <td><a class="" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}"
                       data-toggle="tooltip" data-placement="top" title="EDIT">
-                      <h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ $publication->document->url() }}" download style="padding-left:5px"
+                      <h2 class="glyphicon glyphicon-edit" style="margin:0px;color:#000"></h2></a>
+                    <a class="" href="{{ $publication->document->url() }}" download style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
-                      <h3 class="icon file_download" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ URL::to('publication/' . $publication->id) }}" style="padding-left:5px"
+                      <h3 class="icon file_download" style="margin:-2px;"></h3></a>
+                    <a class="" href="{{ URL::to('publication/' . $publication->id) }}" style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
-                      <h3 class="icon assignment" style="margin:0px"></h3></a></td>
+                      <h3 class="icon assignment" style="margin:-2px"></h3></a></td>
 
                     <td>
                       <?php
