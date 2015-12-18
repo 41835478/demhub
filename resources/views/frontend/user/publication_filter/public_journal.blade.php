@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row" style="padding-top:20px; font-size:0.86em;">
-  <div class="col-sm-8 col-sm-offset-2" style="background-color:#fff !important;">
+  <div class="col-sm-7 col-sm-offset-2" style="background-color:#fff !important;">
     <a type="button" class="btn btn-style-alt" href="{{ url('my_publications') }}">
       <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> MY PUBLICATIONS</a>
 
@@ -18,12 +18,13 @@
             <div class="publication-each">
               <div class="col-sm-8">
                 <ul>
-                  <li class= "pub-date">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}
-                  <li class= "pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}"><h5>{{$publication->author->full_name()}}</h5></li>
-                  <li class= "pub-title"><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}"><h4>{{$publication->title}}</a></h4></li>
-                  <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
+                  <li>
+                  <div class= "col-sm-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
+                  <div class= "col-sm-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->author->full_name()}}</div>
                   </li>
-                  <li> <i class="icon expand_more"></i>More</a></li>
+                  <li class= "pub-title"><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
+                  <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
+                  <i class="icon expand_more" style="margin-top:20px;"></i>More</a></li>
                 </ul>
                   <div class="collapse linkpub-{{$publication->id}} pub-dropdown" >
                     <div class="well">
@@ -74,25 +75,28 @@
                     </div>
                   </div>
 
-            <div class="col-sm-4">
-              <ul>
-                <li class ="pub-division">
-                  <?php
-                  if ($publication->divisions !=null){
-                  $publicationsDivisions = array_filter(preg_split("/\|/", $publication->divisions));
-                  }
-                  ?>
-                  @if (! empty($publicationsDivisions))
-                    @foreach ($publicationsDivisions as $publicationsDivision)
+            <div class ="col-md-1">
+              <div class ="pub-division" style="-15px;">
+                <?php
+                if ($publication->divisions !=null){
+                $publicationsDivisions = array_filter(preg_split("/\|/", $publication->divisions));
+                }
+                ?>
+                @if (! empty($publicationsDivisions))
+                  @foreach ($publicationsDivisions as $publicationsDivision)
 
-                    <a href="{{url('/division/'.$publicationsDivision)}}" >
-                    <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}" title = "{{ $publicationsDivision }}">
-                  </a>
-                    @endforeach
-                  @endif
-                  </li>
+                  <a href="{{url('/division/'.$publicationsDivision)}}" >
+                  <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}" title = "{{ $publicationsDivision }}">
+                </a>
+                  @endforeach
+                @endif
+                </li>
+              </div>
+            </div>
 
-              <li>
+            <div class="col-sm-3">
+              <ul style="margin-top:-15px">
+                <li>
               <a href="{{ $publication->document->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                       <h4 class="icon file_download"></h4></a>
                  <a><h4 class="icon assignment" data-toggle="tooltip" data-placement="top" title="PREVIEW"></h4></a>
@@ -108,6 +112,7 @@
                 </li>
               </ul>
             </div>
+
             <hr class="style1">
          </div>
           @endforeach
