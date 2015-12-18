@@ -8,7 +8,7 @@
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
-    <div class="row center-block mt10" style="">
+    <div class="row center-block mt10" style="margin-left:-75px">
 
         <a type="button" class="btn btn-style-alt" href="{{ URL::to('public_journal') }}" style="margin-left:10px">
           <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS
@@ -27,7 +27,7 @@
     </div>
 
 
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="padding-right:75px">
       <br></br><br></br>
       @include('frontend.user.dashboard.my_publication._publication_details_listing')
     </div>
