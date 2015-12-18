@@ -25,7 +25,7 @@
                 <a href="{{ URL::to('profile/' . $user->user_name) }}">
                   <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
                 </a>
-              <div>
+              </div>
 
               <p>{{$user->job_title}}</p>
               @if ($user->organization_name)
