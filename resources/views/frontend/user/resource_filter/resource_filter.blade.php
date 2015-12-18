@@ -154,7 +154,7 @@
 			<table id="resource-table" class="table table-hover">
 				<tbody>
 					@foreach($resourceEntry as $entry)
-						<tr class="collapse in {{$entry ->country}} {{$entry ->region}}">
+						<tr class="collapse in {{preg_replace('/\ /','_',$entry ->country)}} {{preg_replace('/\ /','_',$entry ->region)}}">
 						<td class="division_tags" style="display:none" value="">
 							<?php
 			          $divisions = array_filter(preg_split("/\,/", $entry->divisions));

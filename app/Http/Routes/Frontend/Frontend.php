@@ -68,9 +68,9 @@ $router->group(['middleware' => 'auth'], function ()
 	get('my_publication/new', 'PublicationController@create')->name('new_publication');
 	post('my_publication/store', 'PublicationController@store')->name('store_publication');
 	get('my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
-	get('my_publication/{id}/view', 'PublicationController@view')->name('view_publication');
+	get('publication/{id}/view', 'PublicationController@view')->name('view_publication');
 	patch('my_publication/{id}', 'PublicationController@update')->name('update_publication');
-	get('my_publication/{id}', 'PublicationController@preview')->name('preview_publication');
+	get('publication/{id}', 'PublicationController@preview')->name('preview_publication');
 
 	/**
 	 * Public Profiles
