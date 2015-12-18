@@ -48,10 +48,10 @@
                       <h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
                     <a class="greytone" href="{{ $publication->document->url() }}" download style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
-                      <h3 class="glyphicon glyphicon-save" style="margin:0px"></h3></a>
+                      <h3 class="icon file_download" style="margin:0px"></h3></a>
                     <a class="greytone" href="{{ URL::to('my_publication/' . $publication->id) }}" style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
-                      <h3 class="glyphicon glyphicon-info-sign" style="margin:0px"></h3></a></td>
+                      <h3 class="icon assignment" style="margin:0px"></h3></a></td>
 
                     <td>
                       <?php

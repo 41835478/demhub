@@ -96,7 +96,7 @@
               <a href="{{ $publication->document->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                       <h4 class="icon file_download"></h4></a>
                  <a><h4 class="icon assignment" data-toggle="tooltip" data-placement="top" title="PREVIEW"></h4></a>
-                <a><h4 class="icon report2" data-toggle="tooltip" data-placement="top" title="REPORT"></h4></a>
+                {{-- <a><h4 class="icon report2" data-toggle="tooltip" data-placement="top" title="REPORT"></h4></a> --}}
               </li>
 
                 <li>
