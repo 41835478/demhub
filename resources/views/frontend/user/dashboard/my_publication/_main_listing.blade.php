@@ -39,7 +39,7 @@
 
                       <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publication->id }}" style=""></label>
                     </td>
-                    <td><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
+                    <td><a href="{{ URL::to('publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
                     <td>{{ $publication->author->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
 
@@ -49,7 +49,7 @@
                     <a class="greytone" href="{{ $publication->document->url() }}" download style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                       <h3 class="icon file_download" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ URL::to('my_publication/' . $publication->id) }}" style="padding-left:5px"
+                    <a class="greytone" href="{{ URL::to('publication/' . $publication->id) }}" style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
                       <h3 class="icon assignment" style="margin:0px"></h3></a></td>
 

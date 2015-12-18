@@ -10,9 +10,9 @@
           @include('frontend.user.dashboard.my_publication._publication_details_listing')
         </div>
         <div class="row">
-          <a class="btn btn-style-alt" type="button" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/view') }}">show</a>
+          <a class="btn btn-style-alt" type="button" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('publication/' . $publication->id . '/view') }}">show</a>
           <a class="btn btn-style-alt" type="button" style="margin-right:10px;text-transform:uppercase" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}">edit</a>
-          <a class="btn btn-style-alt" type="button" style="text-transform:uppercase" href="{{url('public_journal')}}">PUBLICATIONS</a>
+          <a class="btn btn-style-alt" type="button" style="text-transform:uppercase" href="{{route('publications')}}">PUBLICATIONS</a>
         </div>
       </div>
     </div><!-- /.modal-content -->

@@ -22,7 +22,7 @@
                   <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
                   <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->author->full_name()}}</div>
                   </li>
-                  <li class= "pub-title"><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
+                  <li class= "pub-title"><a href="{{ URL::to('publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
                   <i class="icon expand_more" style="margin-top:20px;"></i>More</a></li>
                 </ul>
