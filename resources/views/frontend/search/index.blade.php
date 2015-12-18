@@ -54,19 +54,19 @@
           @include('frontend.search._results', [
             'model' => 'publication',
             'title' => 'Publications',
-            'url' => "/pub_article",
+            'url' => "/public_journal",
             'total' => $publicationTotalCount
           ])
         </div>
       @endif
 
-      @if($userTotalCount > 0)
+      @if($resourceTotalCount > 0)
         <div class="col-sm-6">
           @include('frontend.search._results', [
             'model' => 'resource',
             'title' => 'Resources',
             'url' => "/resource_filter",
-            'total' => $userTotalCount
+            'total' => $resourceTotalCount
           ])
         </div>
       @endif

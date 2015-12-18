@@ -1,6 +1,6 @@
-<div class = "container feed_width">
+<div class = "feed_width">
 @foreach($newsFeeds as $item)
-  <div class="col-xs-12 col-sm-6 col-md-4">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <?php
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
@@ -84,12 +84,12 @@
           <?php
           $description = $item['excerpt'];
 
-            if (isset($neededObject[0]) && strlen($description) > 170){
-              $str = substr($description, 0, 170) . '...';
+            if (isset($neededObject[0]) && strlen($description) > 150){
+              $str = substr($description, 0, 150) . '...';
               echo strip_tags($str);
             }
-            elseif (strlen($description) > 170){
-              $str = substr($description, 0, 170) . '...';
+            elseif (strlen($description) > 140){
+              $str = substr($description, 0, 140) . '...';
               echo strip_tags($str);
             } else{
               echo strip_tags($description);
