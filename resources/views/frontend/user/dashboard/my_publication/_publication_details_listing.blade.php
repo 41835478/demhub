@@ -27,7 +27,7 @@
       }
        ?>
       <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PRIVACY</td>
-      <td style="text-transform:capitalize">{{ $publication->privacy }}</td>
+      <td style="text-transform:capitalize">{{ $privacy }}</td>
     </tr>
     <tr>
       <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DIVISIONS</td>
