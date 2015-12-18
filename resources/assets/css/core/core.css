@@ -604,6 +604,7 @@ div#welcome-division {
   border: 1px solid #ddd;
   float: left;
   position: relative;
+  text-transform: capitalize;
 }
 
 .inner-feedsbox {
