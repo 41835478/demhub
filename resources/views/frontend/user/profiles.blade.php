@@ -25,16 +25,16 @@
                 <a href="{{ URL::to('profile/' . $user->user_name) }}">
                   <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
                 </a>
+
+                <p>{{$user->job_title}}</p>
+                @if ($user->organization_name)
+                  <p>at {{$user->organization_name}}</p>
+                @endif
+
+                <span style="color:#999">
+                  {{$user->location}}
+                </span>
               </div>
-
-              <p>{{$user->job_title}}</p>
-              @if ($user->organization_name)
-                <p>at {{$user->organization_name}}</p>
-              @endif
-
-              <span style="color:#999">
-                {{$user->location}}
-              </span>
 
             </div>
 
