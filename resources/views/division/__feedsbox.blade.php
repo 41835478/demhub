@@ -1,3 +1,4 @@
+<div class = "container feed_width">
 @foreach($newsFeeds as $item)
   <div class="col-xs-12 col-sm-6 col-md-4">
     <?php
@@ -150,3 +151,4 @@
 
 
 @endforeach
+</div>

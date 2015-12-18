@@ -2,25 +2,25 @@
 
 @section('content')
 <div class="row" style="padding-top:20px; font-size:0.86em;">
-  <div class="col-sm-7 col-sm-offset-2" style="background-color:#fff !important;">
+  <div class="col-sm-7" style="background-color:#fff !important;">
     <a type="button" class="btn btn-style-alt" href="{{ url('my_publications') }}">
       <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> MY PUBLICATIONS</a>
 
-    <div class="col-sm-offset-7" style="display:inline">
+    <div class="col--offset-7" style="display:inline">
       <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">CREATE</a>
     </div>
 
-    <div class="publication-list">
+    <div class="publication-list container col-md-offset-1">
       {{-- <h3> Articles </h3> --}}
         <hr class="style4">
         @if($publications)
           @foreach ($publications as $publication)
             <div class="publication-each">
-              <div class="col-sm-8">
+              <div class="col-md-8">
                 <ul>
                   <li>
-                  <div class= "col-sm-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
-                  <div class= "col-sm-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->author->full_name()}}</div>
+                  <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
+                  <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->author->full_name()}}</div>
                   </li>
                   <li class= "pub-title"><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
@@ -94,7 +94,7 @@
               </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-md-3">
               <ul style="margin-top:-15px">
                 <li>
               <a href="{{ $publication->document->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">

@@ -29,3 +29,33 @@
   margin-left:10px;
   margin-right:5px;
 }
+
+//responsive
+@media (min-width: 1300px){
+  .feed_width{
+    width: 1300px;
+  }
+  .feedsbox{
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1199px)and (max-width: 1299px) {
+  .feed_width{
+    width: 1199px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .feed_width{
+    width: 100vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+}
+
+@media only screen and (max-width: 768px) {
+  .feed_width{
+    width: 100vw;
+  }
+}

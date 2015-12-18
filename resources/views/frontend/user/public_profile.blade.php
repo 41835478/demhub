@@ -19,24 +19,25 @@
           <div class="col-lg-8">
             <img src="{{ $user->avatar->url('medium') }}" style="height: 200px; max-width: 200px !important;" >
           </div>
+          <div id="infoSectionMiddle" class="col-lg-10" style="">
+
+              <h3>{{$user->first_name}} {{$user->last_name}}</h3>
+
+
+              <p>{{$user->job_title}}</p>
+              <p>{{$user->organization_name}}</p>
+
+
+              <p>{{$user->specialization}}</p>
+              <p>{{$user->location}}</p>
+              <p>{{$user->email}}</p>
+
+
+          </div>
         </div>
       </div>
 
-      <div id="infoSectionMiddle" class="col-md-2" style="">
 
-          <h3>{{$user->first_name}} {{$user->last_name}}</h3>
-
-
-          <p>{{$user->job_title}}</p>
-          <p>{{$user->organization_name}}</p>
-
-
-          <p>{{$user->specialization}}</p>
-          <p>{{$user->location}}</p>
-          <p>{{$user->email}}</p>
-
-
-      </div>
 
 
 
