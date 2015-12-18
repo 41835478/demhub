@@ -904,6 +904,7 @@ div#welcome-division {
   display: block;
   height: calc( 100vh - 319px);
   overflow: auto;
+  text-transform: capitalize;
 }
 
 .search-row thead,
