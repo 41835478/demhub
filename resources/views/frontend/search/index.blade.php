@@ -17,22 +17,29 @@
     </div>
 
     <div class="row row-horizon search-row">
-      <div class="col-sm-6">
-        @include('frontend.search._results', [
-          'model' => 'article',
-          'title' => 'News',
-          'url' => "/divisions" . (empty($queryTerm) ? '' : '?query_term='.$queryTerm),
-          'total' => $articleTotalCount
-        ])
-      </div>
-      <div class="col-sm-6">
-        @include('frontend.search._results', [
-          'model' => 'user',
-          'title' => 'Members',
-          'url' => "/profiles",
-          'total' => $userTotalCount
-        ])
-      </div>
+
+      @if($articleTotalCount > 0)
+        <div class="col-sm-6">
+          @include('frontend.search._results', [
+            'model' => 'article',
+            'title' => 'News',
+            'url' => "/divisions" . (empty($queryTerm) ? '' : '?query_term='.$queryTerm),
+            'total' => $articleTotalCount
+          ])
+        </div>
+      @endif
+
+      @if($userTotalCount > 0)
+        <div class="col-sm-6">
+          @include('frontend.search._results', [
+            'model' => 'user',
+            'title' => 'Members',
+            'url' => "/profiles",
+            'total' => NULL
+          ])
+        </div>
+      @endif
+
       {{-- <div class="col-sm-6">
         @include('frontend.search._results', [
           'model' => 'discussion',
@@ -41,22 +48,29 @@
           'total' => $discussionTotalCount
         ])
       </div> --}}
-      <div class="col-sm-6">
-        @include('frontend.search._results', [
-          'model' => 'publication',
-          'title' => 'Publications',
-          'url' => "/pub_article",
-          'total' => $publicationTotalCount
-        ])
-      </div>
-      <div class="col-sm-6">
-        @include('frontend.search._results', [
-          'model' => 'resource',
-          'title' => 'Resources',
-          'url' => "/resource_filter",
-          'total' => $resourceTotalCount
-        ])
-      </div>
+
+      @if($publicationTotalCount > 0)
+        <div class="col-sm-6">
+          @include('frontend.search._results', [
+            'model' => 'publication',
+            'title' => 'Publications',
+            'url' => "/pub_article",
+            'total' => $publicationTotalCount
+          ])
+        </div>
+      @endif
+
+      @if($userTotalCount > 0)
+        <div class="col-sm-6">
+          @include('frontend.search._results', [
+            'model' => 'resource',
+            'title' => 'Resources',
+            'url' => "/resource_filter",
+            'total' => $userTotalCount
+          ])
+        </div>
+      @endif
+
     </div>
   @endif
 
