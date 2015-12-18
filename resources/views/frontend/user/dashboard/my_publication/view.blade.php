@@ -21,7 +21,7 @@
 
                 <h3 style="text-align:center">{{ $publication->title }}</h3>
 
-                <embed class="img-responsive" src="{{ $publication->document->url() }}" style="height:175%;max-width:600px;max-height:1000px;"></embed>
+                <embed class="" src="{{ $publication->document->url() }}" style="height:175%;height:175%;max-width:600px;max-height:1000px;"></embed>
 
 
     </div>
