@@ -19,10 +19,9 @@
         <div class="row">
           <div class="col-sm-6">
 
-
                 <h3 style="text-align:center">{{ $publication->title }}</h3>
 
-                <embed src="{{ $publication->document->url() }}" style="max-width:600px;max-height:1000px;"></embed>
+                <embed class="img-responsive" src="{{ $publication->document->url() }}" style="width:150%;max-width:600px;max-height:1000px;"></embed>
 
 
     </div>
