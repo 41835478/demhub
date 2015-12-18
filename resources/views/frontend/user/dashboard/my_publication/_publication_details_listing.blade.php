@@ -15,6 +15,17 @@
     </tr>
 
     <tr>
+      <?php
+      if ($publication->privacy = 0){
+        $privacy = "public";
+      }
+      elseif ($publication->privacy = 1){
+        $privacy = "private";
+      }
+      elseif ($publication->privacy = 2){
+        $privacy = "network only";
+      }
+       ?>
       <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PRIVACY</td>
       <td style="text-transform:capitalize">{{ $publication->privacy }}</td>
     </tr>

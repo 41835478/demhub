@@ -9,7 +9,7 @@
   @forelse($articleResults as $article)
     <tr>
       <td>
-        <a target="_blank" href="{{ $article['source_url'] }}" style="color:#000">
+        <a target="_blank" href="{{ $article['source_url'] }}">
           {{ $article['title'] }}
         </a>
         <p class="text-muted">

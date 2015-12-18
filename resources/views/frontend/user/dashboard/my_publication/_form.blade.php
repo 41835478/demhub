@@ -123,7 +123,8 @@
         <div class=" col-sm-6">
             {!! Form::input('volume', 'volume', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
         </div>
-        <div class="help-block with-errors">Must be numbers only</div>
+        
+        <span class="help-block">Must be numbers only</span>
   </div>
 
   <div class="form-group">
@@ -138,7 +139,7 @@
         <div class=" col-sm-6">
             {!! Form::input('pages', 'pages', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
         </div>
-        <div class="help-block with-errors">Must be numbers only</div>
+        <span class="help-block">Must be numbers only</span>
   </div>
 
   <div class="form-group">

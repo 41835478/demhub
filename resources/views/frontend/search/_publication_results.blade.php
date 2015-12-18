@@ -10,10 +10,9 @@
     <tr>
       <td>
 
-        <a href="{{ $article['source_url'] }}" style="color:#000">
+        <a href="{{ URL::to('my_publication/' . $publication['id'] . '/view') }}">
           {{ $publication['title'] }}
         </a>
-
         {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
 
       </td>

@@ -10,7 +10,7 @@
   <tr>
     <td class="va-m fw600 text-muted">
       {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
-      <a href="{{ URL::to('profile/' . $user['user_name']) }}" style="color:#000">
+      <a href="{{ URL::to('profile/' . $user['user_name']) }}">
         {{$user['first_name']}} {{$user['last_name']}}
       </a>
     </td>
