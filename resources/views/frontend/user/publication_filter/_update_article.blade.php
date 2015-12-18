@@ -18,7 +18,7 @@
               <ul>
                   <li class= "pub-date">{{ date_format(new DateTime($publication->publication_date), 'j F Y | g:i a') }}
                   <li class= "pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}"><h5>{{$publication->author->full_name()}}</h5></li>
-                  <li class= "pub-title"><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}"><h4>{{$publication->title}}</a></h4></li>
+                  <li class= "pub-title"><a href="{{ URL::to('publication/' . $publication->id . '/view') }}"><h4>{{$publication->title}}</a></h4></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
                   </li>
                   <li> <i class="icon expand_more"></i>More</a></li>
