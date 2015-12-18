@@ -10,7 +10,9 @@
     <tr>
       <td>
         {{-- <span class="fa fa-circle text-info fs14 mr10"></span> --}}
-        {{ $resource['name'] }}
+        <a target="_blank" href="{{ $resource['url'] }}">
+          {{ $resource['name'] }}
+        </a>
       </td>
       {{-- <td class="text-muted text-right">
         {{ $resource['country'] }}, {{ $resource['region'] }}
