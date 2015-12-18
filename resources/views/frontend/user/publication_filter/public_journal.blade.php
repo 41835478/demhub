@@ -106,7 +106,7 @@
                 <li>
                   <ul class="icon-container">
                     <li><i class="icon remove_red_eye" data-toggle="tooltip" data-placement="top" title="VIEWS"></i>{{ $publication->views }}</li>
-                    <li><i class="icon thumb_up" data-toggle="tooltip" data-placement="top" title="LIKES"></i>34</li>
+                    <li><i class="icon add_circle_outline" data-toggle="tooltip" data-placement="top" title="BOOKMARKS"></i>34</li>
                     <li><i class="icon chat" data-toggle="tooltip" data-placement="top" title="COMMENTS"></i>21</li>
                   </ul>
                 </li>
