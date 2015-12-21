@@ -44,13 +44,6 @@
 
       	<li><a href="" data-toggle="modal" data-target="#DEMHUBModal" style="padding-left:15px;padding-right:15px;border-right:2px solid #fff"> TRACK EVENTS</a></li>
 
-        @if(Request::url() === url('search'))
-          <li class="active">
-        @else
-          <li>
-        @endif
-        <a href="" data-toggle="modal" data-target="#DEMHUBModal"> SEARCH ALL</a></li>
-
     	</ul>
     </div>
   </div>

@@ -604,6 +604,7 @@ div#welcome-division {
   border: 1px solid #ddd;
   float: left;
   position: relative;
+  text-transform: capitalize;
 }
 
 .inner-feedsbox {
@@ -622,27 +623,13 @@ div#welcome-division {
     margin-left: auto;
     margin-right: auto;
   }
-
-  .col-lg-feed {
-    float: left;
-    width: 90%;
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-  }
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .feed_width {
-    width: 90%;
-    margin-left: 5%;
-  }
-
   .feedsbox {
-    min-width: 320px;
-    max-width: 30%;
-    display: inline-block;
+    min-width: 320px !important;
+    display: block;
+    margin-right: 5px;
   }
 }
 

@@ -36,8 +36,11 @@ class ProfileController extends Controller {
 
 	public function listing_of_profiles() {
 		$secondMenu = true;
-		$users = User::orderBy('id','DESC')->get();
-			return view('frontend.user.profiles', compact(['users','secondMenu'])
+		$users = User::where('id', '!=', Auth::id())
+									->where('user_name', '!=', 'demhub')
+									->orderBy('id','DESC')->get();
+		return view('frontend.user.profiles',
+			compact(['users','secondMenu'])
 		);
 	}
 

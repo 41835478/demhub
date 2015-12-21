@@ -18,6 +18,7 @@
   solid #ddd;
   float:left;
   position:relative;
+  text-transform: capitalize;
 }
 .inner-feedsbox {
   padding-left: 10px;
@@ -49,11 +50,8 @@
   }
 }
 
+
 @media (min-width: 1200px)and (max-width: 1399px) {
-  .feed_width{
-    width:90%;
-    margin-left:5%;
-  }
   .feedsbox{
     min-width: 320px;
     max-width:30%;

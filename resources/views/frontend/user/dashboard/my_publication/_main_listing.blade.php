@@ -39,19 +39,19 @@
 
                       <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publication->id }}" style=""></label>
                     </td>
-                    <td><a href="{{ URL::to('my_publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
+                    <td><a href="{{ URL::to('publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
                     <td>{{ $publication->author->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
 
-                    <td><a class="greytone" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}"
+                    <td><a class="" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}"
                       data-toggle="tooltip" data-placement="top" title="EDIT">
-                      <h3 class="glyphicon glyphicon-edit" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ $publication->document->url() }}" download style="padding-left:5px"
+                      <h2 class="glyphicon glyphicon-edit" style="margin:0px;color:#000"></h2></a>
+                    <a class="" href="{{ $publication->document->url() }}" download style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
-                      <h3 class="icon file_download" style="margin:0px"></h3></a>
-                    <a class="greytone" href="{{ URL::to('my_publication/' . $publication->id) }}" style="padding-left:5px"
+                      <h3 class="icon file_download" style="margin:-2px;"></h3></a>
+                    <a class="" href="{{ URL::to('publication/' . $publication->id) }}" style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
-                      <h3 class="icon assignment" style="margin:0px"></h3></a></td>
+                      <h3 class="icon assignment" style="margin:-2px"></h3></a></td>
 
                     <td>
                       <?php
@@ -62,7 +62,7 @@
                       @if (! empty($publicationsDivisions))
                         @foreach ($publicationsDivisions as $publicationsDivision)
 
-                        <a href="{{url('/division/'.$publicationsDivision)}}" >
+                        <a href="" >
                         <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationsDivision }}">
                       </a>
 
