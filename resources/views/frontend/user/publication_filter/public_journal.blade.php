@@ -19,8 +19,13 @@
               <div class="col-md-8">
                 <ul>
                   <li>
+
+
+                    <?php dd($publication->author->full_name()) ?>
+                    {{-- $users->id->($publication->user_id)->full_name() --}}
+
                   <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
-                  <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->author->full_name()}}</div>
+                  <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->uploader->full_name()}}</div>
                   </li>
                   <li class= "pub-title"><a href="{{ URL::to('publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
@@ -85,7 +90,7 @@
                 @if (! empty($publicationsDivisions))
                   @foreach ($publicationsDivisions as $publicationsDivision)
 
-                  <a href="{{url('/division/'.$publicationsDivision)}}" >
+                  <a href="" >
                   <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}" title = "{{ $publicationsDivision }}">
                 </a>
                   @endforeach

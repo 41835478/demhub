@@ -27,7 +27,7 @@
 			    <tr>
 			      <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread->title}}</b></a></td>
 			      <td>
-			      <a href="{{url('/division/'.$thread->category->slug)}}">
+			      <a href="">
 							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$thread->category->slug}}" style="height:22px">
 						</a>
 			      </td>

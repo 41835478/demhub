@@ -62,7 +62,7 @@
                       @if (! empty($publicationsDivisions))
                         @foreach ($publicationsDivisions as $publicationsDivision)
 
-                        <a href="{{url('/division/'.$publicationsDivision)}}" >
+                        <a href="" >
                         <img style="width:18px;height:18px;margin-top:-10px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive division_{{ $publicationsDivision }}">
                       </a>
 

@@ -50,7 +50,7 @@ class Publication extends Model implements StaplerableInterface {
    *
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
-	public function author()
+	public function uploader()
   {
       return $this->belongsTo('App\Models\Access\User\User', 'user_id');
   }
