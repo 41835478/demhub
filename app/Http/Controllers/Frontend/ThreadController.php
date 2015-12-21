@@ -21,7 +21,7 @@ class ThreadController extends BaseController
   public function getViewAllThreads()
   {
       $threads = $this->api('thread.index-new')->orderBy('updated_at', 'desc')->simplePaginate(10);
-      // orderBy('updated_at', 'desc');
+      dd($threads);
       event(new UserViewingNew($threads));
       $categories = $this->categories->getAll();
 
@@ -50,38 +50,28 @@ class ThreadController extends BaseController
 	}
 
 	public function postModCreateThread()
-	{
-			$user = Utils::getCurrentUser();
+	
+  {
+      $category = $this->api('category.fetch', $request->route('category'))->get();
 
+      if (!$category->threadsEnabled) {
+          Forum::alert('warning', 'categories.threads_disabled');
 
-			$thread_valid = Validation::check('thread');
-			$post_valid = Validation::check('post');
+          return redirect(Forum::route('category.show', $category));
+      }
 
-			if (Input::get('title'))
-			{
-					$thread = array(
-							'author_id'       => $user->id,
-							'parent_category' => Input::get('division_selection'),
-							'title'           => Input::get('title')
-					);
+      $thread = [
+          'author_id'        => auth()->user()->id,
+          'category_id'      => $category->id,
+          'title'            => $request->input('title'),
+          'parent_category'  => $request->input('division_selection'),
+          'content'          => $request->input('content')
+      ];
 
-					$thread = $this->threads->create($thread);
+      $thread = $this->api('thread.store')->parameters($thread)->post();
 
-					$post = array(
-							'parent_thread'   => $thread->id,
-							'author_id'       => $user->id,
-							'content'         => Input::get('content')
-					);
+      Forum::alert('success', 'threads.created');
 
-					$this->posts->create($post);
-
-					Alerts::add('success', trans('forum::base.thread_created'));
-
-					return Redirect::to($thread->route);
-			}
-			else
-			{
-					return Redirect::to($this->collections['category']->newThreadRoute)->withInput();
-			}
-	}
+      return redirect(Forum::route('thread.show', $thread));
+  }
 }
