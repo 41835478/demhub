@@ -21,11 +21,10 @@
                   <li>
 
 
-                    <?php dd($publication->author->full_name()) ?>
-                    {{-- $users->id->($publication->user_id)->full_name() --}}
+
 
                   <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
-                  <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">{{$publication->uploader->full_name()}}</div>
+                  <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">@if($publication->uploader){{$publication->uploader->full_name()}}@endif</div>
                   </li>
                   <li class= "pub-title"><a href="{{ URL::to('publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
