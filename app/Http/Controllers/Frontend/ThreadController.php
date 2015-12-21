@@ -14,6 +14,8 @@ use Riari\Forum\Frontend\Events\UserMarkingNew;
 use Riari\Forum\Frontend\Events\UserViewingNew;
 use Riari\Forum\Frontend\Events\UserViewingThread;
 
+use Riari\Forum\Controllers\BaseController;
+
 class ThreadController extends BaseController
 {
   public function getViewAllThreads()
