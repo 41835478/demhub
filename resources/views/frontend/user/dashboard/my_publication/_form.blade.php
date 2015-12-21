@@ -12,10 +12,19 @@
         <div class=" col-sm-6"
           @if (empty($publication->document_file_name))
           style='padding-top:8px'>
+          <div class="col-xs-6" style="padding:0px">
             {!! Form::file('document', null, ['class' => 'form-control', 'required']) !!}
+          </div>
+          <div class="col-xs-6" style="padding:0px">
+            {!! Form::input('external_url', 'external_url', null,
+            ['class' => 'form-control ', 'id' => 'description']) !!}
+          </div>
           @elseif (! empty($publication->document_file_name))
           >
             <input type="text" class="form-control" value="{{$publication->document_file_name}}" disabled/>
+          @elseif (! empty($publication->external_url))
+          >
+            <input type="text" class="form-control" value="{{$publication->external_url}}" disabled/>
 
           @endif
         </div>
@@ -123,7 +132,7 @@
         <div class=" col-sm-6">
             {!! Form::input('volume', 'volume', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
         </div>
-        
+
         <span class="help-block">Must be numbers only</span>
   </div>
 

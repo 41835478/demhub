@@ -169,6 +169,7 @@ return [
 		'Laravel\Socialite\SocialiteServiceProvider',
 		// 'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 		'Riari\Forum\ForumServiceProvider',
+		'Riari\Forum\Frontend\ForumFrontendServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Codesleeve\LaravelStapler\Providers\L5ServiceProvider',
 		'Weblee\Mandrill\MandrillServiceProvider',

@@ -20,6 +20,9 @@
                 <ul>
                   <li>
 
+
+
+
                   <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
                   <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">@if($publication->uploader){{$publication->uploader->full_name()}}@endif</div>
                   </li>
