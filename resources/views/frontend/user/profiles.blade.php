@@ -35,7 +35,6 @@
                   {{$user->location}}
                 </span>
 
-
                 <div style="margin: 0 auto; width:100%; height:40px; bottom:0px; position:absolute; margin-left:-11px">
                   @if(Auth::user()->is_following($user))
                     {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
@@ -59,6 +58,7 @@
                     {!! Form::close() !!}
                   @endif
                 </div>
+                
               </div> <!-- the div that closes the inner-feedsbox -->
 
             </div> <!-- the div that closes the peoplebox -->
