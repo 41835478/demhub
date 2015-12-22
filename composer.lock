@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c52ef5a72e424a1e1073d88a31b8e220",
-    "content-hash": "ab6eaa6b4ce81b6421c9432597dd8b89",
+    "hash": "ee7d109630b7117962e92f0abd7fe21e",
+    "content-hash": "da4ea5a14023ad700ef8db78aaefbfd9",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -279,20 +279,20 @@
         },
         {
             "name": "creativeorange/gravatar",
-            "version": "v1.0.6",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/creativeorange/gravatar.git",
-                "reference": "5f4c144e942c6a0d99197c723f6cb4d237be40e7"
+                "reference": "77d0dcb6af3c5862164cd2a225bb6460cd47cad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/5f4c144e942c6a0d99197c723f6cb4d237be40e7",
-                "reference": "5f4c144e942c6a0d99197c723f6cb4d237be40e7",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/77d0dcb6af3c5862164cd2a225bb6460cd47cad7",
+                "reference": "77d0dcb6af3c5862164cd2a225bb6460cd47cad7",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.0.*|5.1.*",
+                "illuminate/support": "5.0.*|5.1.*|5.2.*",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -313,13 +313,13 @@
                     "role": "Developer"
                 }
             ],
-            "description": "A Laravel 5.0 & 5.1 gravatar package for retrieving gravatar image URLs or checking the existance of an image.",
+            "description": "A Laravel 5.0, 5.1 and 5.2 gravatar package for retrieving gravatar image URLs or checking the existance of an image.",
             "keywords": [
                 "avatar",
                 "gravatar",
                 "laravel"
             ],
-            "time": "2015-08-25 11:21:47"
+            "time": "2015-12-22 14:04:01"
         },
         {
             "name": "danielstjules/stringy",
@@ -2556,30 +2556,26 @@
         },
         {
             "name": "riari/laravel-forum",
-            "version": "3.0.2",
+            "version": "2.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Riari/laravel-forum.git",
-                "reference": "6d707d739d077591a22907be11ca35c51209229c"
+                "reference": "8532a18c6a6410a62e44558979512b174fd983d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/6d707d739d077591a22907be11ca35c51209229c",
-                "reference": "6d707d739d077591a22907be11ca35c51209229c",
+                "url": "https://api.github.com/repos/Riari/laravel-forum/zipball/8532a18c6a6410a62e44558979512b174fd983d8",
+                "reference": "8532a18c6a6410a62e44558979512b174fd983d8",
                 "shasum": ""
             },
             "require": {
-                "doctrine/dbal": "^2.5",
                 "illuminate/support": "~5.0",
                 "php": ">=5.4.0"
             },
-            "suggest": {
-                "riari/laravel-forum-frontend": "The standard forum frontend that provides views written with Bootstrap 3"
-            },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Riari\\Forum\\": "src"
+                "psr-0": {
+                    "Riari\\Forum\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2592,7 +2588,7 @@
                     "email": "hello@ricko.me"
                 }
             ],
-            "description": "A Laravel 4/5 package providing a solid foundation for building discussion forums",
+            "description": "A complete forum package designed for easy integration into any Laravel 4/5 application",
             "keywords": [
                 "discuss",
                 "forum",
@@ -2600,52 +2596,7 @@
                 "laravel-4",
                 "laravel-5"
             ],
-            "time": "2015-12-09 13:21:50"
-        },
-        {
-            "name": "riari/laravel-forum-frontend",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Riari/laravel-forum-frontend.git",
-                "reference": "64b54162fbd7359b8cf7934c387dc463ce0b1b2e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Riari/laravel-forum-frontend/zipball/64b54162fbd7359b8cf7934c387dc463ce0b1b2e",
-                "reference": "64b54162fbd7359b8cf7934c387dc463ce0b1b2e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "riari/laravel-forum": "~3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Riari\\Forum\\Frontend\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Riari",
-                    "email": "hello@ricko.me"
-                }
-            ],
-            "description": "A frontend for riari/laravel-forum providing views written with Bootstrap 3",
-            "keywords": [
-                "discuss",
-                "forum",
-                "frontend",
-                "laravel",
-                "laravel-4",
-                "laravel-5"
-            ],
-            "time": "2015-12-08 18:21:01"
+            "time": "2015-11-20 13:23:01"
         },
         {
             "name": "shift31/laravel-elasticsearch",
