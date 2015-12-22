@@ -24,11 +24,13 @@
 
 			  <tbody>
 			    @foreach ($threads as $thread)
+
+
 			    <tr>
 			      <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread->title}}</b></a></td>
 			      <td>
 			      <a href="">
-							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$thread->category->slug}}" style="height:22px">
+							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$thread->category->id}}" style="height:22px">
 						</a>
 			      </td>
 			    <td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$thread->author->first_name}} {{$thread->author->last_name}}</td>
@@ -40,7 +42,7 @@
 			</table>
 		</div>
 	</div>
-	{!! $threads->render() !!}
+	{{-- {!! $threads->render() !!} --}}
 </div>
 
 @overwrite

@@ -14,16 +14,20 @@ use Riari\Forum\Frontend\Events\UserMarkingNew;
 use Riari\Forum\Frontend\Events\UserViewingNew;
 use Riari\Forum\Frontend\Events\UserViewingThread;
 
-use Riari\Forum\Controllers\BaseController;
+use App\Models\Division;
+use Riari\Forum\Frontend\Http\Controllers\BaseController;
+use View;
+use Riari\Forum\Models\Category;
+use Riari\Forum\Models\Thread;
 
 class ThreadController extends BaseController
 {
   public function getViewAllThreads()
   {
-      $threads = $this->api('thread.index-new')->orderBy('updated_at', 'desc')->simplePaginate(10);
-      dd($threads);
+      $threads = Thread::orderBy('updated_at', 'desc')->get();
       event(new UserViewingNew($threads));
-      $categories = $this->categories->getAll();
+
+      $categories = Category::all();
 
       $allDivisions = Division::all();
 
@@ -50,7 +54,7 @@ class ThreadController extends BaseController
 	}
 
 	public function postModCreateThread()
-	
+
   {
       $category = $this->api('category.fetch', $request->route('category'))->get();
 
