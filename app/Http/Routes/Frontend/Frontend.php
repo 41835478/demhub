@@ -11,9 +11,9 @@ get('terms', 'FrontendController@terms');
 
 get('signUpSuccess', 'FrontendController@signUpSuccess')->name('signUpSuccess');
 
-get('forum/all_threads', 'ThreadController@getViewAllThreads')->name('all_threads');
-get('forum/9-/thread/create', 'ThreadController@getModCreateThread');
-post('forum/9-/thread/create', 'ThreadController@postModCreateThread');
+get('forum/all_threads', 'ForumController@getViewAllThreads')->name('all_threads');
+get('forum/9-/thread/create', 'ForumController@getModCreateThread');
+post('forum/9-/thread/create', 'ForumController@postModCreateThread');
 
 get('feedback', 'FrontendController@getFeedback');
 post('feedback', 'FrontendController@postFeedback')->name('post_feedback');
