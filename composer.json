@@ -50,8 +50,7 @@
 		},
         "files": [
             "app/helpers.php",
-						"app/Providers/LinkedInProvider.php",
-						"app/Models/BaseModel.php"
+						"app/Providers/LinkedInProvider.php"
         ]
 	},
 	"autoload-dev": {

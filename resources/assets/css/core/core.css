@@ -3008,7 +3008,7 @@ div#dashboard {
   height: 100%;
   background: #fafafa;
   color: #282828;
-  z-index: 100;
+  z-index: 1000;
   font-size: 1.0em;
   right: -350px;
   border: 1px solid #717173;
