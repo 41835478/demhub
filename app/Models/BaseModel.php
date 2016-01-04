@@ -4,9 +4,9 @@ use Cache;
 use Carbon\Carbon;
 use Eloquent;
 // use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Str;
+// use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\App;
+// use Illuminate\Support\Str;
 
 abstract class BaseModel extends Model {
 
