@@ -1,8 +1,8 @@
 <?php namespace Riari\Forum\Models;
 
-// use Cache;
-// use Carbon\Carbon;
-// use Eloquent;
+use Cache;
+use Carbon\Carbon;
+use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
