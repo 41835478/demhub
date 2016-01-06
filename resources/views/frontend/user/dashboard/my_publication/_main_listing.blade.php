@@ -20,7 +20,7 @@
                       </ul>
                     </td>
                     <td>TITLE</td>
-                    <td>AUTHOR</td>
+                    <td>UPLOADER</td>
                     <td>DATE</td>
                     <td>ACTIONS</td>
                     <td>DIVISIONS</td>
@@ -40,7 +40,7 @@
                       <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publication->id }}" style=""></label>
                     </td>
                     <td><a href="{{ URL::to('publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
-                    <td>{{ $publication->author->full_name() }}</td>
+                    <td>{{ $publication->uploader->full_name() }}</td>
                     <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
 
                     <td><a class="" href="{{ URL::to('my_publication/' . $publication->id . '/edit') }}"
