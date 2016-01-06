@@ -461,7 +461,7 @@ Illuminate\Routing\Controller
 		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Http.html">Http</a>\<a href="namespace-App.Http.Controllers.html">Controllers</a>\<a href="namespace-App.Http.Controllers.Frontend.html">Frontend</a><br>
 		<b>Package:</b> App\Http\Controllers\Frontend<br>
 
-			<b>Located at</b> <a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#12-197" title="Go to source code">Http/Controllers/Frontend/PublicationController.php</a>
+			<b>Located at</b> <a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#16-244" title="Go to source code">Http/Controllers/Frontend/PublicationController.php</a>
 		<br>
 	</div>
 
@@ -481,7 +481,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#___construct">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#20-29" title="Go to source code">__construct</a>( <span>array <var>$attributes</var> = <span class="php-keyword1">array</span>()</span> )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#24-33" title="Go to source code">__construct</a>( <span>array <var>$attributes</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 			<div class="description short">
 				<p>Create a new publication instance with a document attachment.</p>
@@ -515,7 +515,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_index">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#31-43" title="Go to source code">index</a>( )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#35-47" title="Go to source code">index</a>( )</code>
 
 			<div class="description short">
 				<p>Display a listing of the resource.</p>
@@ -537,6 +537,35 @@ Illuminate\Routing\Controller
 			</div>
 			</div></td>
 		</tr>
+		<tr data-order="caret_publication_action" id="_caret_publication_action">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_caret_publication_action">#</a>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#48-64" title="Go to source code">caret_publication_action</a>( <span> <var>$caret</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
 		<tr data-order="create" id="_create">
 
 			<td class="attributes"><code>
@@ -548,7 +577,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_create">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#45-53" title="Go to source code">create</a>( )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#67-77" title="Go to source code">create</a>( )</code>
 
 			<div class="description short">
 				<p>Show the form for creating a new resource.</p>
@@ -581,7 +610,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_store">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#55-95" title="Go to source code">store</a>( <span>Illuminate\Http\Request <var>$request</var></span> )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#79-122" title="Go to source code">store</a>( <span>Illuminate\Http\Request <var>$request</var></span> )</code>
 
 			<div class="description short">
 				<p>Store a newly created resource in storage.</p>
@@ -608,7 +637,7 @@ Illuminate\Routing\Controller
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="show" id="_show">
+		<tr data-order="preview" id="_preview">
 
 			<td class="attributes"><code>
 				 public 
@@ -618,8 +647,8 @@ Illuminate\Routing\Controller
 			</td>
 
 			<td class="name"><div>
-			<a class="anchor" href="#_show">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#97-110" title="Go to source code">show</a>( <span>integer <var>$id</var></span> )</code>
+			<a class="anchor" href="#_preview">#</a>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#124-138" title="Go to source code">preview</a>( <span>integer <var>$id</var></span> )</code>
 
 			<div class="description short">
 				<p>Display the specified resource.</p>
@@ -627,6 +656,44 @@ Illuminate\Routing\Controller
 
 			<div class="description detailed hidden">
 				<p>Display the specified resource.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$id</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						Illuminate\Http\Response
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="view" id="_view">
+
+			<td class="attributes"><code>
+				 public 
+				Illuminate\Http\Response
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_view">#</a>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#140-156" title="Go to source code">view</a>( <span>integer <var>$id</var></span> )</code>
+
+			<div class="description short">
+				<p>Show the form for editing the specified resource.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Show the form for editing the specified resource.</p>
 
 
 					<h4>Parameters</h4>
@@ -650,33 +717,24 @@ Illuminate\Routing\Controller
 
 			<td class="attributes"><code>
 				 public 
-				Illuminate\Http\Response
+				
 				
 				</code>
 			</td>
 
 			<td class="name"><div>
 			<a class="anchor" href="#_edit">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#112-124" title="Go to source code">edit</a>( <span>integer <var>$id</var></span> )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#158-174" title="Go to source code">edit</a>( <span> <var>$id</var></span> )</code>
 
 			<div class="description short">
-				<p>Show the form for editing the specified resource.</p>
+				
 			</div>
 
 			<div class="description detailed hidden">
-				<p>Show the form for editing the specified resource.</p>
+				
 
 
-					<h4>Parameters</h4>
-					<div class="list"><dl>
-						<dt><var>$id</var></dt>
-						<dd></dd>
-					</dl></div>
 
-					<h4>Returns</h4>
-					<div class="list">
-						Illuminate\Http\Response
-					</div>
 
 
 
@@ -695,7 +753,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_update">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#126-170" title="Go to source code">update</a>( <span>Illuminate\Http\Request <var>$request</var></span>, <span>integer <var>$id</var></span> )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#176-217" title="Go to source code">update</a>( <span>Illuminate\Http\Request <var>$request</var></span>, <span>integer <var>$id</var></span> )</code>
 
 			<div class="description short">
 				<p>Update the specified resource in storage.</p>
@@ -735,7 +793,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_destroy">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#172-181" title="Go to source code">destroy</a>( <span>integer <var>$id</var></span> )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#219-228" title="Go to source code">destroy</a>( <span>integer <var>$id</var></span> )</code>
 
 			<div class="description short">
 				<p>Remove the specified resource from storage.</p>
@@ -773,7 +831,7 @@ Illuminate\Routing\Controller
 
 			<td class="name"><div>
 			<a class="anchor" href="#_public_publication">#</a>
-			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#183-196" title="Go to source code">public_publication</a>( )</code>
+			<code><a href="source-class-App.Http.Controllers.Frontend.PublicationController.html#230-243" title="Go to source code">public_publication</a>( )</code>
 
 			<div class="description short">
 				<p>Display publications in main page</p>
