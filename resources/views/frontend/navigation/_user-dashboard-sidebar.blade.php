@@ -23,7 +23,7 @@
       <li>
     @endif
         <a href="{{url('my_publications')}}">
-          <span class="fa fa-briefcase"></span>
+          <span class="glyphicon glyphicon-folder-close"></span>
           <span class="sidebar-title" id="my_publications_title">MY PUBLICATIONS</span>
         </a>
       </li>

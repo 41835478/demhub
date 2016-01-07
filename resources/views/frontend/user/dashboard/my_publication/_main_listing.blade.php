@@ -4,7 +4,7 @@
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="">
       <a type="button" class="btn btn-style-alt" href="{{ route('publications') }}" style="margin-left:1px">
-        <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS</a>
+        <span class="glyphicon glyphicon-folder-close"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS</a>
           <div class="col-sm-offset-7" style="display:inline">
             <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">NEW</a>
           </div>

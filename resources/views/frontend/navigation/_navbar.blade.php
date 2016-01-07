@@ -1,4 +1,4 @@
-<nav id="guest-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top">
+<nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top">
 	{{-- style="padding-left:30px;" --}}
 	<div class="container-fluid">
 
@@ -12,34 +12,98 @@
 
 			@if(Request::url() === url('dashboard'))
 				<div class="navbar-branding">
-					<span id="toggle_sidemenu_l" class="fa fa-bars" style="top: 0; position: absolute; left: -10px;"></span>
+					<span id="toggle_sidemenu_l" class="fa fa-bars" style="position: absolute; left: -10px;"></span>
 				</div>
-				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;position: absolute;top: 7px;left: 45px;')) !!}</a>
+				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive nav-top-adjust','style' => 'width:175px;padding-left:30px;position: absolute;top: 7px;left: 45px;')) !!}</a>
 			@else
-				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;')) !!}</a>
+				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive nav-top-adjust','style' => 'width:175px;padding-left:30px')) !!}</a>
 			@endif
 
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				@if (Auth::guest())
-					<li
-						@if (Request::url() === url('about'))
-						 class="active"
-						@endif
-					>{!! link_to('about', trans('ABOUT')) !!}</li>
+			<ul class="navbar col-md-offset-2 col-sm-offset-2" style="">
 
-					<li
-						@if (Request::url() === url('auth/register'))
-						 class="active"
+
+
+							@if(isset($searchBar))
+							<li class="col-md-7 col-sm-6 nav-top-adjust" style="">
+								<div class="input-group">
+									{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control nav-searchbar', 'placeholder' => 'Search','style' => '']) !!}
+									{!! Form::close() !!}
+								</div>
+							@elseif (Auth::user())
+							<li class="col-md-7 col-sm-6 nav-top-adjust" style="">
+
+								{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon nav-search-text">All<i class="fa fa-chevron-down"></i></span>
+										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control nav-searchbar', 'placeholder' => 'Search','style' => '']) !!}
+										<span class="input-group-addon nav-search-icon-style" style=""><i class="fa fa-search"></i></span>
+									</div>
+								</div>
+								{!! Form::close() !!}
+
+							@endif
+
+				</li>
+				@if (Auth::guest())
+					<li class=
+						@if (Request::url() === url('about'))
+						 "active col-md-1 col-sm-1 nav-middle"
 						@endif
-					>{!! link_to('auth/register', trans('JOIN NOW')) !!}</li>
+					"col-md-1 col-sm-1 nav-middle"><a href="{{url('about')}}">{!! trans('ABOUT') !!}</a></li>
+
+					<li class=
+						@if (Request::url() === url('auth/register'))
+						 "active nav-middle"
+						@endif
+					"col-md-2 col-sm-2 nav-middle"><a href="{{url('auth/register')}}">{!! trans('JOIN NOW') !!}</a>
+					</li>
+
+				@elseif(Auth::user())
+
 				@endif
 
-			</ul>
 
-			<ul class="nav navbar-nav navbar-right" style="padding-right:180px">
+			<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="display:inline;">
+
+				{{-- <li
+				@if (Request::url() === url('public_journal'))
+				 class="active"
+				@endif
+				><a href="{{url('public_journal')}}" class="" style="">
+
+						<h3 class="glyphicon glyphicon-folder-close" style="margin: 0 auto;padding-left:13px;margin-top:-17px;"></h3>
+
+					<p style="font-size:55%">{!! trans('PUBLICATIONS') !!}<p>
+				</a>
+
+				</li> --}}
+				<li
+				@if (Request::url() === url('resource_filter'))
+				 class="active"
+				@endif
+				>
+				<a href="{{url('resource_filter')}}">
+					<h3 class="glyphicon glyphicon-book" style="margin: 0 auto;padding-left:13px;"></h3>
+					<p style="font-size:55%">{!! trans('RESOURCES') !!}<p>
+				</a>
+
+
+				</li>
+				<li
+				@if (Request::url() === url('forum/all_threads'))
+				 class="active"
+				@endif
+				><a href="{{url('forum/all_threads')}}">
+					<i class="fa fa-comments fa-2x" style="margin: 0 auto;padding-left:13px;"></i>
+					<p style="font-size:55%">{!! trans('DISCUSSIONS') !!}<p>
+				</a>
+
+				</li>
 
 				@if (Auth::guest())
 					<li
@@ -49,24 +113,15 @@
 						>{!! link_to('auth/login', trans('LOGIN')) !!}</li>
 				@else
 
-					<li style="padding:0;">
-							<a style="padding:5% 0 0 0;">
-								@if (isset($navDivisions))
-									{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control', 'placeholder' => 'Search News']) !!}
-									{!! Form::close() !!}
-								@elseif(isset($searchBar))
-									{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control', 'placeholder' => 'Search DEMHUB']) !!}
-									{!! Form::close() !!}
-								@endif
-							</a>
-					</li>
+
 
 					<li class="dropdown">
 
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase">
-							<img class="img-responsive img-circle" style="height:25px;width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{ Auth::user()->first_name}} <span class="caret"></span>
+							<img class="img-responsive img-circle seventy-transparent" style="height:25px;width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}">
+
+							<p style="font-size:55%">{{ Auth::user()->first_name}}<span class="caret"></span></p>
+
 						</a>
 
 						<ul class="dropdown-menu navbar-inverse" role="menu">
@@ -82,7 +137,24 @@
 				@endif
 
 			</ul>
+			</ul>
 
 		</div>
 	</div>
 </nav>
+<script>
+$("input[type=text]").focus(function() {
+    $(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
+		$(this).siblings(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+});
+
+$("input[type=text]").mouseenter(function() {
+    $(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
+		$(this).siblings(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+});
+$("#top-menu").mouseleave(function() {
+    $("input[type=text]").siblings(".nav-search-icon-style").attr("style","background-color: #546f7a;color: #fff;");
+		$("input[type=text]").siblings(".nav-search-text").attr("style","background-color:#455a63;color:#fff;");
+});
+
+</script>
