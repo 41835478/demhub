@@ -1094,44 +1094,34 @@ a.btn-style:active {
   border-color: #000;
 }
 
-a.btn-style-alt {
-  background: #337ab7;
-  color: #FFF;
-}
-
-a.btn-style-alt:hover,
-a.btn-style-alt:focus {
-  background: #FFF;
-  color: #337ab7;
-  border-color: #ccc;
-}
-
-a.btn-style-alt:active {
-  background: #FFF;
-  color: #000;
-  border-color: #ccc;
-}
-
+.btn-style-alt,
+button.btn-style-alt,
 input.btn-style-alt,
-button.btn-style-alt {
-  background: #337ab7;
-  color: #FFF;
+a.btn-style-alt {
+  background: #628296;
+  border-color: #628296;
+  color: #a9b9c2;
 }
 
+.btn-style-alt:hover,
+.btn-style-alt:focus,
+button.btn-style-alt:hover,
+button.btn-style-alt:focus,
 input.btn-style-alt:hover,
 input.btn-style-alt:focus,
-button.btn-style-alt:hover,
+a.btn-style-alt:hover,
 a.btn-style-alt:focus {
-  background: #FFF;
-  color: #337ab7;
-  border-color: #ccc;
+  background: #526b77;
+  color: #fff;
 }
 
+.btn-style-alt:active,
 input.btn-style-alt:active,
-button.btn-style-alt:active {
-  background: #FFF;
-  color: #000;
-  border-color: #ccc;
+button.btn-style-alt:active,
+a.btn-style-alt:active {
+  background: #fff;
+  color: #526b77;
+  border-color: #526b77;
 }
 
 .btn-style-w {
