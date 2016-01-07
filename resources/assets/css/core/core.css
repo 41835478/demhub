@@ -702,18 +702,6 @@ div#welcome-division {
   position: relative;
 }
 
-.peoplebox {
-  min-width: 100%;
-  height: 370px;
-  display: inline-block;
-  margin: 10px 0px 5px 0px;
-  padding: 15px 0px 5px 0px;
-  border: 1px solid #ddd;
-  float: left;
-  position: relative;
-  text-transform: capitalize;
-}
-
 .inner-feedsbox {
   padding-left: 10px;
   padding-right: 10px;
@@ -3080,6 +3068,30 @@ button.btn-greytone:active {
 
 #map_container {
   overflow: hidden;
+}
+
+.peoplebox {
+  min-width: 100%;
+  height: 370px;
+  display: inline-block;
+  margin: 10px 0px 5px 0px;
+  padding: 15px 0px 5px 0px;
+  border: 1px solid #ddd;
+  float: left;
+  position: relative;
+  text-transform: capitalize;
+}
+
+.peoplebox-teaser {
+  min-width: 75%;
+  height: 200px;
+  display: inline-block;
+  margin: 10px 0px 5px 0px;
+  padding: 15px 0px 5px 0px;
+  border: 1px solid #ddd;
+  float: left;
+  position: relative;
+  text-transform: capitalize;
 }
 
 div#message {
