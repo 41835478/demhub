@@ -11,7 +11,7 @@ class ElasticsearchDiscussionObserver
             'index' => 'discussions',
             'type' => 'threads',
             'id' => $thread->id,
-            'body' => $thread->toArray()
+            'body' => $thread['attributes']//alternative to $thread->toArray()
         ]);
     }
 
@@ -21,7 +21,7 @@ class ElasticsearchDiscussionObserver
             'index' => 'discussions',
             'type' => 'threads',
             'id' => $thread->id,
-            'body' => $thread->toArray()
+            'body' => $thread['attributes']//alternative to $thread->toArray()
         ]);
     }
 

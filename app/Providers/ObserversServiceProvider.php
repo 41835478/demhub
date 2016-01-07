@@ -17,7 +17,7 @@ class ObserversServiceProvider extends ServiceProvider
     public function boot()
     {
         Article::observe($this->app->make(ElasticsearchArticleObserver::class));
-        // Threads::observe($this->app->make(ElasticsearchDiscussionObserver::class));
+        Thread::observe($this->app->make(ElasticsearchDiscussionObserver::class));
         InfoResource::observe($this->app->make(ElasticsearchInfoResourceObserver::class));
         Publication::observe($this->app->make(ElasticsearchPublicationObserver::class));
         User::observe($this->app->make(ElasticsearchUserObserver::class));
@@ -29,10 +29,10 @@ class ObserversServiceProvider extends ServiceProvider
         {
             return new ElasticsearchArticleObserver();
         });
-        // $this->app->bindShared(ElasticsearchDiscussionObserver::class, function()
-        // {
-        //     return new ElasticsearchDiscussionObserver();
-        // });
+        $this->app->bindShared(ElasticsearchDiscussionObserver::class, function()
+        {
+            return new ElasticsearchDiscussionObserver();
+        });
         $this->app->bindShared(ElasticsearchInfoResourceObserver::class, function()
         {
             return new ElasticsearchInfoResourceObserver();

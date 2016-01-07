@@ -389,6 +389,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-App.Console.Commands.IndexArticlesToElasticsearch.html">App\Console\Commands\IndexArticlesToElasticsearch</a></li>
+				<li><a href="class-App.Console.Commands.IndexDiscussionsToElasticsearch.html">App\Console\Commands\IndexDiscussionsToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexInfoResourcesToElasticsearch.html">App\Console\Commands\IndexInfoResourcesToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexPublicationsToElasticsearch.html">App\Console\Commands\IndexPublicationsToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexUsersToElasticsearch.html">App\Console\Commands\IndexUsersToElasticsearch</a></li>
@@ -460,6 +461,7 @@
 				<li><a href="class-App.Http.Requests.Frontend.Access.LoginRequest.html">App\Http\Requests\Frontend\Access\LoginRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.Access.RegisterRequest.html">App\Http\Requests\Frontend\Access\RegisterRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.Access.ResetPasswordEmailRequest.html">App\Http\Requests\Frontend\Access\ResetPasswordEmailRequest</a></li>
+				<li><a href="class-App.Http.Requests.Frontend.PublicationRequest.html">App\Http\Requests\Frontend\PublicationRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.User.UpdateProfileRequest.html">App\Http\Requests\Frontend\User\UpdateProfileRequest</a></li>
 				<li><a href="class-App.Http.Requests.Request.html">App\Http\Requests\Request</a></li>
 				<li><a href="class-App.Jobs.ExampleJob.html">App\Jobs\ExampleJob</a></li>
@@ -476,6 +478,8 @@
 				<li><a href="class-App.Models.ArticleDetail.html">App\Models\ArticleDetail</a></li>
 				<li><a href="class-App.Models.ArticleMedia.html">App\Models\ArticleMedia</a></li>
 				<li><a href="class-App.Models.ArticleReport.html">App\Models\ArticleReport</a></li>
+				<li><a href="class-App.Models.Content.html">App\Models\Content</a></li>
+				<li><a href="class-App.Models.ContentMedia.html">App\Models\ContentMedia</a></li>
 				<li><a href="class-App.Models.Division.html">App\Models\Division</a></li>
 				<li><a href="class-App.Models.InfoResource.html">App\Models\InfoResource</a></li>
 				<li><a href="class-App.Models.Keyword.html">App\Models\Keyword</a></li>
@@ -615,7 +619,7 @@
 </span></span><span id="50" class="l"><a href="#50">50 </a><span class="php-comment">   *
 </span></span><span id="51" class="l"><a href="#51">51 </a><span class="php-comment">   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 </span></span><span id="52" class="l"><a href="#52">52 </a><span class="php-comment">   */</span>
-</span><span id="53" class="l"><a href="#53">53 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> author()
+</span><span id="53" class="l"><a href="#53">53 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> uploader()
 </span><span id="54" class="l"><a href="#54">54 </a>  {
 </span><span id="55" class="l"><a href="#55">55 </a>      <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;belongsTo(<span class="php-quote">'App\Models\Access\User\User'</span>, <span class="php-quote">'user_id'</span>);
 </span><span id="56" class="l"><a href="#56">56 </a>  }
@@ -628,6 +632,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?533e23ef2f02bd4b20548834a028566b6eb403e0"></script>
-<script src="elementlist.js?38cec8af318b94ec89199ff824bcbbb92d656c7f"></script>
+<script src="elementlist.js?5c1b08799d72fe23af777fafc0d48e6037adc06d"></script>
 </body>
 </html>
