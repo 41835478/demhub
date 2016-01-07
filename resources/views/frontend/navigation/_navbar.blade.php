@@ -125,12 +125,7 @@
 						</a>
 
 						<ul class="dropdown-menu navbar-inverse user-dropdown" role="menu">
-						  <li>{!! link_to('dashboard', 'USER DASHBOARD') !!}</li>
-						  @permission('view-backend')
-						    <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
-						  @endauth
-							<li class="divider"></li>
-							<li>{!! link_to('auth/logout', trans('navs.logout')) !!}</li>
+						  	@include('frontend.navigation._user-dashboard-sidebar')
 						</ul>
 					</li>
 

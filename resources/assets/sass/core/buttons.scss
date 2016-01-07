@@ -51,9 +51,11 @@ a.btn-style:active{
 button.btn-style-alt,
 input.btn-style-alt,
 a.btn-style-alt {
-	background:#628296;
-	border-color:#628296;
-	color:#a9b9c2;
+	background:#526b77;
+	border-color: #526b77;
+	color:#fff;
+	border-radius: 1px;
+
 }
 
 .btn-style-alt:hover,
@@ -64,8 +66,9 @@ input.btn-style-alt:hover,
 input.btn-style-alt:focus,
 a.btn-style-alt:hover,
 a.btn-style-alt:focus {
-	background:#526b77;
-	color:#fff;
+	background:#628296;
+	border-color:#628296;
+	color:#a9b9c2;
 }
 
 .btn-style-alt:active,
