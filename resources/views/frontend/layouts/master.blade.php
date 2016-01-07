@@ -59,7 +59,13 @@
 
         @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
-        <div class="@yield('container-class')" style="overflow-x:hidden">
+        <div
+        @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+        class="@yield('container-class') container-fluid"
+        @else
+        class="@yield('container-class')"
+        @endif
+        style="overflow-x:hidden">
 
           @yield('body-style')
           @yield('content')
