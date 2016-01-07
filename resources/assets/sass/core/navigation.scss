@@ -21,6 +21,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   box-shadow: none!important;
+	border:none;
   margin-bottom: 1%;
 }
 
@@ -132,8 +133,15 @@ border-radius:1px
 	background: rgba(255,255,255,0.7) !important;
 	height:50px;
 }
+.dropdown-menu {
+	background-color: #35464d !important;
+	border-color: #35464d !important;
+}
+.dropdown-menu li a{
+	color:#999 !important;
+}
 .navbar-right .dropdown-menu {
-	left: 0 !important;
+
 }
 #secondary-menu li.active a{
     background: #666;

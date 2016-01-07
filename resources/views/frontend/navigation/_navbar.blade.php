@@ -95,7 +95,7 @@
 
 				</li>
 				<li
-				@if (Request::url() === url('forum/all_threads'))
+				@if (strpos(Request::url(), 'forum') ==true)
 				 class="active"
 				@endif
 				><a href="{{url('forum/all_threads')}}">
@@ -124,7 +124,7 @@
 
 						</a>
 
-						<ul class="dropdown-menu navbar-inverse" role="menu">
+						<ul class="dropdown-menu navbar-inverse user-dropdown" role="menu">
 						  <li>{!! link_to('dashboard', 'USER DASHBOARD') !!}</li>
 						  @permission('view-backend')
 						    <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
