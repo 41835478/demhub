@@ -1,4 +1,4 @@
-### Installation (OSX): 
+### Installation (OSX):
 
 #### Dev basics
 - Install [XCode](https://developer.apple.com/xcode/download/)
