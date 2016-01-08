@@ -139,15 +139,18 @@
 </nav>
 <script>
 $("input[type=text]").focus(function() {
+		$(this).attr("style","color: #ed6b00;background-color:#fff !important;");
     $(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
 		$(this).siblings(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
 });
 
-$("input[type=text]").mouseenter(function() {
-    $(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
+$(".nav-searchbar").mouseenter(function() {
+		$(this).attr("style","color: #ed6b00;background-color:#fff !important;");
+		$(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
 		$(this).siblings(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
 });
 $("#top-menu").mouseleave(function() {
+		$(".nav-searchbar").attr("style","background-color:#546f7a;");
     $("input[type=text]").siblings(".nav-search-icon-style").attr("style","background-color: #546f7a;color: #fff;");
 		$("input[type=text]").siblings(".nav-search-text").attr("style","background-color:#455a63;color:#fff;");
 });

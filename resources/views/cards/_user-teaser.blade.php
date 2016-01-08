@@ -1,14 +1,15 @@
 @foreach($users as $user)
 
-  <div class = "col-xs-12 col-sm-6 col-md-4">
+  <div class = "col-xs-12 col-sm-8 col-md-8">
     <div class="peoplebox-teaser">
 
-      <div class="color-label division_all"></div>
       <div class="inner-feedsbox" style="text-align:center;">
-        <div class="member" style="margin: 0 auto; width:150px; padding-top:15px;">
-          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-rounded img-responsive", 'style' => 'max-height:150px']) !!}
+        <div class="col-sm-2">
+          <div class="member" style="margin: 0 auto; width:150px; padding-top:15px;">
+            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-rounded img-responsive", 'style' => 'max-height:150px']) !!}
+          </div>
         </div>
-
+        <div class="col-sm-5">
         <a href="{{ URL::to('profile/' . $user->user_name) }}">
           <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
         </a>
@@ -21,8 +22,9 @@
         <span style="color:#999">
           {{$user->location}}
         </span>
-
-        <div style="margin: 0 auto; width:100%; height:40px; bottom:0px; position:absolute; margin-left:-11px">
+        </div>
+        <div class="col-sm-2">
+        <div style="margin: 0 auto; width:100%; height:40px; position:absolute;">
           @if(Auth::user()->is_following($user))
             {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
               {!! Form::token() !!}
@@ -45,7 +47,7 @@
             {!! Form::close() !!}
           @endif
         </div>
-
+      </div>
       </div> <!-- the div that closes the inner-feedsbox -->
 
     </div> <!-- the div that closes the peoplebox -->

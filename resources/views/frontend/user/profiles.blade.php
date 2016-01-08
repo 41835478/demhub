@@ -11,7 +11,7 @@
 
       <div class="row center-block mt10">
 
-        @include('cards._user-card')
+        @include('cards._user-teaser')
 
       </div>
 
