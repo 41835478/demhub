@@ -6,12 +6,12 @@
       <div class="inner-feedsbox">
         <div class="col-sm-2">
           <div class="member" style="margin: 0 auto; width:150px;">
-            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:150px']) !!}
+            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:150px;padding-top:15px']) !!}
           </div>
         </div>
         <div class="col-sm-7 col-sm-offset-1" style="text-align:left;">
         <a href="{{ URL::to('profile/' . $user->user_name) }}">
-          <h3>  {{$user->full_name()}}  </h3>
+          <h3 style="margin-top:5px">  {{$user->full_name()}}  </h3>
         </a>
 
         <p style="margin-bottom:0px">{{$user->job_title}}
