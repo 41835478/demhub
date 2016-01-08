@@ -10,17 +10,21 @@
         </div>
 
         <a href="{{ URL::to('profile/' . $user->user_name) }}">
-          <h3>  {{$user->first_name}} {{$user->last_name}}  </h3>
+          <h3>  {$user->full_name()}}  </h3>
         </a>
 
-        <p>{{$user->job_title}}
+        <p style="margin-bottom:0px">{{$user->job_title}}
         @if ($user->organization_name)
           at {{$user->organization_name}}</p>
         @endif
 
-        <span style="color:#999">
+        <p style="color:#999">
           {{$user->location}}
-        </span>
+        </p>
+
+        @if ($user->division)
+          <p style="color:#999">{{$user->division}}</p>
+        @endif
 
         <div style="margin: 0 auto; width:100%; height:40px; bottom:0px; position:absolute; margin-left:-11px">
           @if(Auth::user()->is_following($user))

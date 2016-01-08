@@ -10,34 +10,30 @@
 				<span class="icon-bar"></span>
 			</button>
 
-			@if(Request::url() === url('dashboard'))
-				<div class="navbar-branding">
-					<span id="toggle_sidemenu_l" class="fa fa-bars" style="position: absolute; left: -10px;"></span>
-				</div>
-				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive nav-top-adjust','style' => 'width:175px;padding-left:30px;position: absolute;top: 7px;left: 45px;')) !!}</a>
-			@else
-				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive nav-top-adjust','style' => 'width:175px;padding-left:30px')) !!}</a>
-			@endif
 
+
+
+				<div class="nav-top-adjust">
+					<a href="{{url('')}}" class="">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width:150px')) !!}</a>
+
+				</div>
 		</div>
 
-		<div class="collapse navbar-collapse" id="navbar-collapse-1">
-			<ul class="navbar col-md-offset-2 col-sm-offset-2" style="">
-
-
+		<div class="collapse navbar-collapse col-md-offset-1 col-sm-offset-1" id="navbar-collapse-1">
+			<ul class="navbar">
 
 							@if(isset($searchBar))
-							<li class="col-md-7 col-sm-6 nav-top-adjust" style="">
+							<li class="col-md-8 col-sm-7 nav-top-adjust">
 								<div class="input-group">
 									{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control nav-searchbar', 'placeholder' => 'Search','style' => '']) !!}
 									{!! Form::close() !!}
 								</div>
 							@elseif (Auth::user())
-							<li class="col-md-7 col-sm-6 nav-top-adjust" style="">
+							<li class="col-md-8 col-sm-7 nav-top-adjust" style="">
 
 								{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-								<div class="form-group">
+								<div class="form-group" style="padding-left:50px">
 									<div class="input-group searchbar-group">
 										<span class="input-group-addon nav-search-text">All<i class="fa fa-chevron-down"></i></span>
 										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control nav-searchbar', 'placeholder' => 'Search','style' => '']) !!}
