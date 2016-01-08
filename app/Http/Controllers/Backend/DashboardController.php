@@ -13,6 +13,8 @@ use App\Models\ScrapeSource;
 use App\Models\Content;
 use App\Models\ContentMedia;
 use App\Models\InfoResource;
+use App\Models\Publication;
+use Riari\Forum\Models\Thread;
 use Illuminate\Http\Request;
 use Weblee\Mandrill\Mail;
 use League\Csv\Reader;
@@ -417,6 +419,8 @@ class DashboardController extends Controller {
 					$article['language'],
 					$article['type']
 				]);
+				$publish_date = $article['publish_date'] ?
+					Carbon::parse($article['publish_date']) : NULL;
 
 				$content = Content::firstOrCreate([
 					'subclass' => 'article',
@@ -438,7 +442,7 @@ class DashboardController extends Controller {
 					'status_flag' => $article['review'],
 					'owner_id' => $article['source_id'],
 					'deleted' => $article['deleted'],
-					'publish_date' => $article['publish_date']
+					'publish_date' => $publish_date
 				]);
 
 				$media = ArticleMedia::where('article_id', $article['id'])->first();
@@ -450,17 +454,15 @@ class DashboardController extends Controller {
 						'resource_file_name' => $media['filename'],
 						'resource_file_size' => NULL,
 						'resource_content_type' => $media['filetype'],
+						'resource_updated_at' => $media['updated_at'],
 						'description' => $media['description'],
 						'view_order' => $media['view_order'],
 						'deleted' => $media['deleted']
 					]);
-					if ($newMedia['resource_updated_at'] != NULL) {
-						$newMedia['resource_updated_at'] = Carbon::now();
-					}
 				}
       }
     });
-		
+
 		InfoResource::chunk(100, function($infoResources) {
       foreach ($infoResources as $infoResource) {
         $content = Content::firstOrCreate([
@@ -485,6 +487,93 @@ class DashboardController extends Controller {
 					'deleted' => false,
 					'publish_date' => $infoResource['publish_date']
 				]);
+      }
+    });
+
+		Thread::chunk(100, function($threads) {
+      foreach ($threads as $thread) {
+				$pinned_date = $thread['pinned'] ? Carbon::now() : NULL;
+				$division = Division::where('id', '=', $thread['parent_category'])->first();
+				$deleted = $thread['deleted_at'] ? true : false;
+
+				$content = Content::firstOrCreate([
+					'subclass' => 'thread',
+					'name' => $thread['title'],
+					'description' => NULL,
+					'data' => json_encode([
+						$thread['view_count']
+					]),
+					'divisions' => '|'.$division->id.'|',
+					'keywords' => NULL,
+					'slug' => NULL,
+					'url' => NULL,
+					'country' => NULL,
+					'state' => NULL,
+					'city' => NULL,
+					'lat' => NULL,
+					'lng' => NULL,
+					'pinned_by' => NULL,
+					'pinned_at' => $pinned_date,
+					'visibility' => 1,
+					'status_flag' => $thread['locked'],
+					'owner_id' => $thread['author_id'],
+					'deleted' => $deleted,
+					'publish_date' => NULL
+				]);
+      }
+    });
+
+		Publication::chunk(100, function($publications) {
+      foreach ($publications as $publication) {
+        $data = json_encode([
+					$publication['volume'],
+					$publication['issues'],
+					$publication['pages'],
+					$publication['publisher'],
+					$publication['institution'],
+					$publication['conference'],
+					$publication['pubilcation_author'],
+					$publication['favorites'],
+					$publication['views']
+				]);
+				$publish_date = $publication['publication_date'] ?
+					Carbon::parse($publication['publication_date']) : NULL;
+
+				$content = Content::firstOrCreate([
+					'subclass' => 'publication',
+					'name' => $publication['title'],
+					'description' => $publication['description'],
+					'data' => $data,
+					'divisions' => $publication['divisions'],
+					'keywords' => $publication['keywords'],
+					'slug' => NULL,
+					'url' => NULL,
+					'country' => NULL,
+					'state' => NULL,
+					'city' => NULL,
+					'lat' => NULL,
+					'lng' => NULL,
+					'pinned_by' => NULL,
+					'pinned_at' => NULL,
+					'visibility' => $publication['privacy'],
+					'status_flag' => NULL,
+					'owner_id' => $publication['user_id'],
+					'deleted' => $publication['deleted'],
+					'publish_date' => $publish_date
+				]);
+
+				if ($publication['document_file_name']) {
+					$newMedia = ContentMedia::firstOrCreate([
+						'content_id' => $content['id'],
+						'resource_file_name' => $publication['document_file_name'],
+						'resource_file_size' => $publication['document_file_size'],
+						'resource_content_type' => $publication['document_content_type'],
+						'resource_updated_at' => $publication['document_updated_at'],
+						'description' => NULL,
+						'view_order' => 0,
+						'deleted' => false
+					]);
+				}
       }
     });
 
