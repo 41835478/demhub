@@ -5,7 +5,7 @@
 
       <div class="inner-feedsbox">
         <div class="col-sm-2">
-          <div class="member" style="margin: 0 auto; width:150px; padding-top:15px;">
+          <div class="member" style="margin: 0 auto; width:150px;">
             {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:150px']) !!}
           </div>
         </div>
