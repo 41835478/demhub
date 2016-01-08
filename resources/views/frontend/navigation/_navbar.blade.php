@@ -38,7 +38,7 @@
 
 								{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 								<div class="form-group">
-									<div class="input-group">
+									<div class="input-group searchbar-group">
 										<span class="input-group-addon nav-search-text">All<i class="fa fa-chevron-down"></i></span>
 										{!! Form::text('query_term', (isset($query_term)) ? $query_term : NULL, ['class' => 'form-control nav-searchbar', 'placeholder' => 'Search','style' => '']) !!}
 										<span class="input-group-addon nav-search-icon-style" style=""><i class="fa fa-search"></i></span>
@@ -139,15 +139,15 @@
 </nav>
 <script>
 $("input[type=text]").focus(function() {
-		$(this).attr("style","color: #ed6b00;background-color:#fff !important;");
-    $(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
-		$(this).siblings(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+		$(".nav-searchbar").attr("style","color: #ed6b00;background-color:#fff;");
+    $(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
+		$(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
 });
 
-$(".nav-searchbar").mouseenter(function() {
-		$(this).attr("style","color: #ed6b00;background-color:#fff !important;");
-		$(this).siblings(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
-		$(this).siblings(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+$(".searchbar-group").mouseenter(function() {
+		$(".nav-searchbar").attr("style","color: #ed6b00;background-color:#fff;");
+		$(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
+		$(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
 });
 $("#top-menu").mouseleave(function() {
 		$(".nav-searchbar").attr("style","background-color:#546f7a;");

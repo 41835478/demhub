@@ -91,21 +91,22 @@
 #top-menu li .nav-search-icon-style{
 	color:#fff;
 	background-color:#546f7a;
+	border-color:#546f7a;
+	border-radius:1px
 }
 
 #top-menu li .nav-search-icon-style {
-border-color:#546f7a;
-border-radius:1px
+
 }
-#top-menu li:hover .nav-search-icon-style,
-#top-menu li:focus .nav-search-icon-style {
-	color: #ed6b00;
-	background-color: #fff;
-}
-#top-menu .input-group:focus .nav-search-icon-style {
-	color: #ed6b00;
-	background-color: #fff;
-}
+// #top-menu li:hover .nav-search-icon-style,
+// #top-menu li:focus .nav-search-icon-style {
+// 	color: #ed6b00;
+// 	background-color: #fff;
+// }
+// #top-menu .input-group:focus .nav-search-icon-style {
+// 	color: #ed6b00;
+// 	background-color: #fff;
+// }
 
 
 .dropdown-menu {
