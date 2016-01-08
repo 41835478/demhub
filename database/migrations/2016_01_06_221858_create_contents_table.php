@@ -18,9 +18,9 @@ class CreateContentsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->json('data')->nullable();
-            $table->string('divisions');
-            $table->string('keywords');
-            $table->string('slug');
+            $table->string('divisions')->nullable();
+            $table->string('keywords')->nullable();
+            $table->string('slug')->nullable();
             $table->string('url')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();

@@ -18,13 +18,13 @@ class InfoResourceTableSeeder extends Seeder
 
       $nb_iterations = $csv->setOffset(1)->fetchAll(function ($row) {
         DB::table('info_resources')->insert([
-          // 'id' => $row[0], // id is assigned automatically, so we don't need it
-          'name' => $row[1],
-          'url' => $row[2],
-          'country' => $row[3],
-          'region' => $row[4],
-          'divisions' => $row[5],
-          'keywords' => $row[6]
+          // 'id' => ..., // id is assigned automatically, so we don't need it
+          'name' => $row[0],
+          'url' => $row[1],
+          'country' => $row[2],
+          'region' => $row[3],
+          'divisions' => $row[4],
+          'keywords' => $row[5]
         ]);
       });
     }
