@@ -1,10 +1,8 @@
-<?php
+<?php namespace App\Models;
 
-namespace App\Models;
+use App\Models\Content;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Article extends Model
+class Article extends Content
 {
 
 	/**
@@ -12,7 +10,9 @@ class Article extends Model
 	 *
 	 * @var string
 	 */
-	protected $table = 'articles';
+	// protected $table = 'articles';
+
+	protected static $singleTableType = 'article';
 
 	/**
 	 * The attributes that are not mass assignable.

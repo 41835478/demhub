@@ -1,13 +1,8 @@
 <?php namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Content;
 
-class InfoResource extends Model
+class InfoResource extends Content
 {
-  /**
-   * Indicates if the model should be timestamped.
-   *
-   * @var bool
-   */
-  public $timestamps = false;
+  protected static $singleTableType = 'infoResource';
 }

@@ -31,7 +31,8 @@
 		"weblee/mandrill": "dev-master",
 		"socialiteproviders/linkedin": "^1.1",
 		"shift31/laravel-elasticsearch": "~1.0",
-		"riari/laravel-forum": "2.0.*@dev"
+		"riari/laravel-forum": "2.0.*@dev",
+		"nanigans/single-table-inheritance": "0.5.*"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
