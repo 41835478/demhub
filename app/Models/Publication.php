@@ -6,9 +6,21 @@ use App\Models\Content;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
-class Publication extends Content implements StaplerableInterface {
+// class Publication extends Model implements StaplerableInterface
+class Publication extends Content implements StaplerableInterface
+{
 
 	use EloquentTrait;
+
+	const VOLUME = 0;
+	const ISSUES = 1;
+	const PAGES = 2;
+	const PUBLISHER = 3;
+	const INSTITUTION = 4;
+	const CONFERENCE = 5;
+	const AUTHOR = 6;
+	const FAVORITES = 7;
+	const VIEWS = 8;
 
   /**
 	 * The database table used by the model.
@@ -46,6 +58,11 @@ class Publication extends Content implements StaplerableInterface {
   //     parent::__construct($attributes);
   // }
 
+	public function views()
+	{
+		return json_decode($this->data, true)[self::VIEWS];
+	}
+
 	/**
    * One-to-Many relations with Publication.
    *
@@ -53,7 +70,7 @@ class Publication extends Content implements StaplerableInterface {
    */
 	public function medias()
   {
-      return $this->hasMany('App\Models\ContentMedia');
+      return $this->hasMany('App\Models\ContentMedia', 'content_id');
   }
 
 	/**
