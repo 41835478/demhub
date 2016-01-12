@@ -73,51 +73,51 @@
           <div class="form-group">
               {!! Form::label(null, "DIVISION", ['class' => 'col-lg-3 control-label']) !!}
 
-                @if(strpos($user->division, "|") ==false && ! empty($user->division))
-                <div class="col-lg-8">
-                {!! Form::text('division', $user->division, ['class' => 'form-control']) !!}
+              @if(!empty($user->division) && strpos($user->division, "|") === false)
+                  <div class="col-lg-8">
+                    {!! Form::text('division', $user->division, ['class' => 'form-control']) !!}
                 @else
                 <div class="col-lg-8" style="padding-top:5px">
 
                   @if (! empty($user->division))
 
-                    @if (strpos($user->division, "health")==false)
-                      {!! Form::checkbox('division_1', false) !!}
+                    @if (strpos($user->division, "health")===false)
+                      {!! Form::checkbox('division_1', 'health', false) !!}
                     @else
                       {!! Form::checkbox('division_1', 'health', ['class' => 'form-control']) !!}
                     @endif
                     <span style="color:#0D8E56;">Health & Epidemics</span><br>
 
-                    @if (strpos($user->division, "science")==false)
-                      {!! Form::checkbox('division_2', false) !!}
+                    @if (strpos($user->division, "science")===false)
+                      {!! Form::checkbox('division_2', 'science', false) !!}
                     @else
-                      {!! Form::checkbox('division_2', 'health', ['class' => 'form-control']) !!}
+                      {!! Form::checkbox('division_2', 'science', ['class' => 'form-control']) !!}
                     @endif
                     <span style="color:#1D73A3">Science & Environment</span><br>
 
-                    @if (strpos($user->division, "response")==false)
-                      {!! Form::checkbox('division_3', false) !!}
+                    @if (strpos($user->division, "response")===false)
+                      {!! Form::checkbox('division_3','response', false) !!}
                     @else
                       {!! Form::checkbox('division_3', 'response', ['class' => 'form-control']) !!}
                     @endif
                     <span style="color:#DB9421">EM Practitioner & Response</span><br>
 
-                    @if (strpos($user->division, "security")==false)
-                      {!! Form::checkbox('division_4', false) !!}
+                    @if (strpos($user->division, "security")===false)
+                      {!! Form::checkbox('division_4', 'security', false) !!}
                     @else
                       {!! Form::checkbox('division_4', 'security', ['class' => 'form-control']) !!}
                     @endif
                     <span style="color:#848889">Civil & Cyber Security</span><br>
 
-                    @if (strpos($user->division, 'continuity')==false)
-                      {!! Form::checkbox('division_5', false) !!}
+                    @if (strpos($user->division, 'continuity')===false)
+                      {!! Form::checkbox('division_5', 'continuity', false) !!}
                     @else
                       {!! Form::checkbox('division_5', 'continuity', ['class' => 'form-control']) !!}
                     @endif
                     <span style="color:#933131">Business Continuity</span><br>
 
-                    @if (strpos($user->division, 'humanitarian')==false)
-                      {!! Form::checkbox('division_6', false) !!}
+                    @if (strpos($user->division, 'humanitarian')===false)
+                      {!! Form::checkbox('division_6', 'humanitarian', false) !!}
                     @else
                       {!! Form::checkbox('divisio_6', 'humanitarian', ['class' => 'form-control']) !!}
                     @endif
@@ -135,10 +135,10 @@
                     <span style="color:#933131">Business Continuity</span><br>
                     {!! Form::checkbox('divisio_6', 'humanitarian', ['class' => 'form-control']) !!}
                     <span style="color:#754293">NGO & Humanitarian</span><br>
-                    @endif
+                  @endif
 
 
-              @endif
+                @endif
             </div>
           </div>
 
