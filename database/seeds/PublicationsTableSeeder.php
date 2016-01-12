@@ -12,6 +12,137 @@ class PublicationsTableSeeder extends Seeder
      */
     public function run()
     {
+        $data_one = json_encode([
+            1,
+            'Cool issue',
+            280,
+            'Bob Ross',
+            'Evergreen',
+            'Fluff that up, Vegas',
+            'Aldo Ruiz Monsieur',
+            '',
+            1
+        ]);
+
+        $data_two = json_encode([
+            $request->volume,
+            $request->issues,
+            $request->pages,
+            $request->publisher,
+            $request->institution,
+            $request->conference,
+            $request->publication_author,
+            $request->favorites,
+            $request->views
+        ]);
+
+        // $data_three = json_encode([
+        //     $request->volume,
+        //     $request->issues,
+        //     $request->pages,
+        //     $request->publisher,
+        //     $request->institution,
+        //     $request->conference,
+        //     $request->publication_author,
+        //     $request->favorites,
+        //     $request->views
+        // ]);
+        //
+        // $data_four = json_encode([
+        //     $request->volume,
+        //     $request->issues,
+        //     $request->pages,
+        //     $request->publisher,
+        //     $request->institution,
+        //     $request->conference,
+        //     $request->publication_author,
+        //     $request->favorites,
+        //     $request->views
+        // ]);
+        //
+        // $data_five = json_encode([
+        //     $request->volume,
+        //     $request->issues,
+        //     $request->pages,
+        //     $request->publisher,
+        //     $request->institution,
+        //     $request->conference,
+        //     $request->publication_author,
+        //     $request->favorites,
+        //     $request->views
+        // ]);
+        //
+        // $data_six = json_encode([
+        //     $request->volume,
+        //     $request->issues,
+        //     $request->pages,
+        //     $request->publisher,
+        //     $request->institution,
+        //     $request->conference,
+        //     $request->publication_author,
+        //     $request->favorites,
+        //     $request->views
+        // ]);
+
+        DB::table('contents')->insert([
+          [
+              'name' => 'Trees grow in all kinds of ways',
+              'description' => "They're not all perfectly straight. Not every limb is perfect. If these lines aren't straight, your water's going to run right out of your painting and get your floor wet. I thought today we would do a happy little picture.",
+              'data' => $data_one,
+              'divisions' => '|science|response|security|continuity|',
+              'keywords' => 'trees, bob ross, stuff',
+              'visibility' => 1,
+              'owner_id' => 1,
+              'deleted' => 0,
+              'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
+          ],
+        ]);
+
+        DB::table('content_media')->insert([
+          [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => NULL,
+              'content_id' => 1
+          ],
+          [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => NULL,
+              'content_id' => 2
+          ],
+          [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => NULL,
+              'content_id' => 3
+          ],
+          [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => NULL,
+              'content_id' => 4
+          ],
+          [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => NULL,
+              'content_id' => 5
+          ],
+          [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => NULL,
+              'content_id' => 6
+          ],
+        ]);
+
         DB::table('publications')->insert([
           [
               'user_id' => 1,
@@ -168,8 +299,7 @@ class PublicationsTableSeeder extends Seeder
               'deleted' => '',
               'favorites' => '',
               'views' => 1,
-          ],
-
+          ]
         ]);
     }
 }

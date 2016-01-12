@@ -87,7 +87,6 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-
       $divisions = "";
       for ($i = 1;$i < 7; $i++){
         $field = 'division_'.$i;
@@ -113,25 +112,27 @@ class PublicationController extends Controller
         'name' => $request->title,
         'description' => $request->description,
         'data' => $data,
-        // 'document' => $request->document,
-        'divisions' => $request->divisions,
+        'divisions' => $divisions,
         'keywords' => $request->keywords,
         'visibility' => $request->privacy,
-        // 'owner_id' => Auth::user()->id,
+        'owner_id' => Auth::user()->id,
         'deleted' => 0,
         'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
       ];
 
+      $publication = new Publication($inputs);
+      $publication->save();
+
       $contentMediaData = [
           'description' => NULL,
           'view_order' => 0,
-          'deleted' => false
+          'deleted' => false,
+          'resource' => $request->document,
+          'content_id' => $publication->id
       ];
-
-      $publication = new Publication($inputs);
+      
       $contentMedia = new ContentMedia($contentMediaData);
-      dd($contentMedia);
-      $publication->medias()->save($contentMedia);
+      $contentMedia->save();
 
       return redirect('my_publications')
             ->withFlashSuccess("Publication created successfully!");

@@ -9,7 +9,7 @@ use Codesleeve\Stapler\ORM\EloquentTrait;
 class ContentMedia extends Model implements StaplerableInterface
 {
   use EloquentTrait;
-  
+
   /**
    * The table associated with the model.
    *
