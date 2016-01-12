@@ -248,7 +248,10 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted', 0)->where('visibility',1)->orderBy('id','DESC')->get();
+        $publications = Publication::where('deleted', 0)
+                                    ->where('visibility',1)
+                                    ->orderBy('id','DESC')
+                                    ->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.public_journal', compact([
