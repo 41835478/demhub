@@ -25,64 +25,64 @@ class PublicationsTableSeeder extends Seeder
         ]);
 
         $data_two = json_encode([
-            $request->volume,
-            $request->issues,
-            $request->pages,
-            $request->publisher,
-            $request->institution,
-            $request->conference,
-            $request->publication_author,
-            $request->favorites,
-            $request->views
+            1,
+            'Cool issue',
+            280,
+            'Bob Ross',
+            'Evergreen',
+            'Fluff that up, China',
+            'Aldo Ruiz Luna',
+            '',
+            1
         ]);
 
-        // $data_three = json_encode([
-        //     $request->volume,
-        //     $request->issues,
-        //     $request->pages,
-        //     $request->publisher,
-        //     $request->institution,
-        //     $request->conference,
-        //     $request->publication_author,
-        //     $request->favorites,
-        //     $request->views
-        // ]);
-        //
-        // $data_four = json_encode([
-        //     $request->volume,
-        //     $request->issues,
-        //     $request->pages,
-        //     $request->publisher,
-        //     $request->institution,
-        //     $request->conference,
-        //     $request->publication_author,
-        //     $request->favorites,
-        //     $request->views
-        // ]);
-        //
-        // $data_five = json_encode([
-        //     $request->volume,
-        //     $request->issues,
-        //     $request->pages,
-        //     $request->publisher,
-        //     $request->institution,
-        //     $request->conference,
-        //     $request->publication_author,
-        //     $request->favorites,
-        //     $request->views
-        // ]);
-        //
-        // $data_six = json_encode([
-        //     $request->volume,
-        //     $request->issues,
-        //     $request->pages,
-        //     $request->publisher,
-        //     $request->institution,
-        //     $request->conference,
-        //     $request->publication_author,
-        //     $request->favorites,
-        //     $request->views
-        // ]);
+        $data_three = json_encode([
+            1,
+            'Cool issue',
+            280,
+            'Bob Ross',
+            'Evergreen',
+            'Fluff that up, Mexico',
+            'DEMHUB',
+            '',
+            1
+        ]);
+
+        $data_four = json_encode([
+            1,
+            'Cool issue',
+            280,
+            'Bob Ross',
+            'Evergreen',
+            'Fluff that up, Amsterdam',
+            'Aldo Ruiz Chulo',
+            '',
+            1
+        ]);
+
+        $data_five = json_encode([
+            1,
+            'Cool issue',
+            280,
+            'Bob Ross',
+            'Evergreen',
+            'Fluff that up, Toronto, Canada',
+            'Aldo Ruiz El Capitan',
+            '',
+            1
+        ]);
+
+        $data_six = json_encode([
+            1,
+            'Cool issue',
+            280,
+            'Bob Ross',
+            'Evergreen',
+            'Fluff that up, Canada',
+            'Aldo Luna',
+            '',
+            1
+        ]);
 
         DB::table('contents')->insert([
           [
@@ -96,52 +96,107 @@ class PublicationsTableSeeder extends Seeder
               'deleted' => 0,
               'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
           ],
+          [
+              'name' => 'Anything',
+              'description' => "The secret to doing anything is believing that you can do it. Anything that you believe you can do strong enough, you can do",
+              'data' => $data_two,
+              'divisions' => '|health|response|security|continuity|',
+              'keywords' => 'trees, bob ross, stuff',
+              'visibility' => 1,
+              'owner_id' => 1,
+              'deleted' => 0,
+              'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
+          ],
+          [
+              'name' => 'This is your creation',
+              'description' => "The secret to doing anything is believing that you can do it. Anything that you believe you can do strong enough, you can do",
+              'data' => $data_three,
+              'divisions' => '|health|science|security|continuity|',
+              'keywords' => 'trees, bob ross, stuff',
+              'visibility' => 1,
+              'owner_id' => 2,
+              'deleted' => 0,
+              'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
+          ],
+          [
+              'name' => "I guess I'm a little weird",
+              'description' => "I like to talk to trees and animals. That's okay though; I have more fun than most people.",
+              'data' => $data_four,
+              'divisions' => '|health|science|response|continuity|',
+              'keywords' => 'trees, bob ross, stuff',
+              'visibility' => 1,
+              'owner_id' => 2,
+              'deleted' => 0,
+              'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
+          ],
+          [
+              'name' => "It's life",
+              'description' => "It's life. It's interesting. It's fun. Let's have a nice tree right here. That's a crooked tree. We'll send him to Washington.",
+              'data' => $data_five,
+              'divisions' => '|health|science|response|security|',
+              'keywords' => 'trees, bob ross, stuff',
+              'visibility' => 1,
+              'owner_id' => 3,
+              'deleted' => 0,
+              'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
+          ],
+          [
+              'name' => 'A happy cloud',
+              'description' => "Maybe there's a happy little bush that lives right there. This is the time to get out all your flustrations, much better than kicking the dog around the house or taking it out on your spouse.",
+              'data' => $data_six,
+              'divisions' => '|health|science|response|security|continuity|humanitarian|',
+              'keywords' => 'trees, bob ross, stuff',
+              'visibility' => 1,
+              'owner_id' => 3,
+              'deleted' => 0,
+              'publish_date' => Carbon::createFromFormat('d/m/Y', '17/03/1990'),
+          ],
         ]);
 
-        DB::table('content_media')->insert([
-          [
-              'description' => NULL,
-              'view_order' => 0,
-              'deleted' => false,
-              'resource' => NULL,
-              'content_id' => 1
-          ],
-          [
-              'description' => NULL,
-              'view_order' => 0,
-              'deleted' => false,
-              'resource' => NULL,
-              'content_id' => 2
-          ],
-          [
-              'description' => NULL,
-              'view_order' => 0,
-              'deleted' => false,
-              'resource' => NULL,
-              'content_id' => 3
-          ],
-          [
-              'description' => NULL,
-              'view_order' => 0,
-              'deleted' => false,
-              'resource' => NULL,
-              'content_id' => 4
-          ],
-          [
-              'description' => NULL,
-              'view_order' => 0,
-              'deleted' => false,
-              'resource' => NULL,
-              'content_id' => 5
-          ],
-          [
-              'description' => NULL,
-              'view_order' => 0,
-              'deleted' => false,
-              'resource' => NULL,
-              'content_id' => 6
-          ],
-        ]);
+        // DB::table('content_media')->insert([
+        //   [
+        //       'description' => NULL,
+        //       'view_order' => 0,
+        //       'deleted' => false,
+        //       'resource' => NULL,
+        //       'content_id' => 1
+        //   ],
+        //   [
+        //       'description' => NULL,
+        //       'view_order' => 0,
+        //       'deleted' => false,
+        //       'resource' => NULL,
+        //       'content_id' => 2
+        //   ],
+        //   [
+        //       'description' => NULL,
+        //       'view_order' => 0,
+        //       'deleted' => false,
+        //       'resource' => NULL,
+        //       'content_id' => 3
+        //   ],
+        //   [
+        //       'description' => NULL,
+        //       'view_order' => 0,
+        //       'deleted' => false,
+        //       'resource' => NULL,
+        //       'content_id' => 4
+        //   ],
+        //   [
+        //       'description' => NULL,
+        //       'view_order' => 0,
+        //       'deleted' => false,
+        //       'resource' => NULL,
+        //       'content_id' => 5
+        //   ],
+        //   [
+        //       'description' => NULL,
+        //       'view_order' => 0,
+        //       'deleted' => false,
+        //       'resource' => NULL,
+        //       'content_id' => 6
+        //   ],
+        // ]);
 
         DB::table('publications')->insert([
           [

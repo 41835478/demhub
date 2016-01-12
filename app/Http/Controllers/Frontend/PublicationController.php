@@ -42,7 +42,7 @@ class PublicationController extends Controller
     {
       $publications = Publication::where('deleted','!=',1)->where('owner_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $caret = 000;
-      $publications = [];
+
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
       );
@@ -50,12 +50,12 @@ class PublicationController extends Controller
 
     public function caret_publication_action($caret)
     {
-      $caretAction=substr($caret, 0, 3);
-      $parseCaret=substr($caret, 4);
+      $caretAction = substr($caret, 0, 3);
+      $parseCaret = substr($caret, 4);
       // $publications = Auth::user()->publications;
 
       $ids = array_filter(preg_split("/\|/", $parseCaret));
-      if ($caretAction="del"){
+      if ($caretAction = "del"){
         foreach ($ids as $id){
             Publication::where('id', $id)
                         ->update(['deleted' => 1]);
@@ -63,7 +63,7 @@ class PublicationController extends Controller
       }
 
       return redirect('my_publications')
-      ->withFlashSuccess("Publication(s) deleted");
+            ->withFlashSuccess("Publication(s) deleted");
     }
 
 
@@ -104,8 +104,8 @@ class PublicationController extends Controller
           $request->institution,
           $request->conference,
           $request->publication_author,
-          $request->favorites,
-          $request->views
+          0, //favorites
+          1 //view
       ]);
 
       $inputs = [
@@ -147,7 +147,7 @@ class PublicationController extends Controller
     public function preview($id)
     {
       $caret = 000;
-      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
+      $publications = Publication::where('deleted', 0)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $publication = Publication::findOrFail($id);
       return view(
         'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])
@@ -178,14 +178,12 @@ class PublicationController extends Controller
       $pubUploaderId = $publication->uploader->id;
       // FIXME Move authorization if statement to request section
       if ($pubUploaderId==Auth::user()->id){
-
-      return view(
-        'frontend.user.dashboard.my_publication.edit', compact(['publication'])
-      );
-      }
-      else {
         return view(
-          'frontend.user.dashboard.my_publication.view', compact(['publication'])
+            'frontend.user.dashboard.my_publication.edit', compact(['publication'])
+        );
+      } else {
+        return view(
+            'frontend.user.dashboard.my_publication.view', compact(['publication'])
         );
       };
     }
@@ -199,7 +197,6 @@ class PublicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-
       $divisions="";
       for ($i = 1;$i < 7; $i++){
         $field = 'division_'.$i;
@@ -251,7 +248,10 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->where('visibility','!=',0)->orderBy('id','DESC')->get();
+        $publications = Publication::where('deleted', 0)
+                                    ->where('visibility',1)
+                                    ->orderBy('id','DESC')
+                                    ->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.public_journal', compact([

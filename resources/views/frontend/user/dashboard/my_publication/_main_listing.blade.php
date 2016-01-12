@@ -38,14 +38,12 @@
 
               @foreach ($publications as $publication)
 
-                <?php dd($publication) ?>
-
                 <tr>
                   <td><label>
                     <input type="checkbox" class="radio-inline pub_checkbox" id="{{ $publication->id }}" style="">
                   </label></td>
 
-                  <td><a href="{{ URL::to('publication/' . $publication->id . '/view') }}">{{ $publication->title }}</a></td>
+                  <td><a href="{{ URL::to('publication/' . $publication->id . '/view') }}">{{ $publication->name }}</a></td>
                   <td>{{ $publication->uploader->full_name() }}</td>
                   <td>{{ date_format(new DateTime($publication->publish_date ), 'j F Y') }}</td>
 
@@ -55,10 +53,12 @@
                       <h2 class="glyphicon glyphicon-edit" style="margin:0px;color:#000"></h2>
                     </a>
 
-                    <a class="" href="{{ $publication->document->url() }}" download style="padding-left:5px"
-                      data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
-                      <h3 class="icon file_download" style="margin:-2px;"></h3>
-                    </a>
+                    @if($publication->medias()->count() > 0 && $publication->medias()->first()->resource)
+                      <a class="" href="{{ $publication->medias()->first()->resource->url() }}" download style="padding-left:5px"
+                        data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
+                        <h3 class="icon file_download" style="margin:-2px;"></h3>
+                      </a>
+                    @endif
 
                     <a class="" href="{{ URL::to('publication/' . $publication->id) }}" style="padding-left:5px"
                       data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
@@ -81,7 +81,7 @@
                     @endif
                   </td>
 
-                  <td>{{ $publication->views }}</td>
+                  <td>{{ $publication->views() }}</td>
 
                 </tr>
 
