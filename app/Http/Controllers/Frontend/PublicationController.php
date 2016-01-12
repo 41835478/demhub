@@ -11,6 +11,7 @@ use DB;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Division;
+use App\Models\ContentMedia;
 use App\Http\Requests\Frontend\PublicationRequest;
 
 /**
@@ -21,7 +22,7 @@ class PublicationController extends Controller
 {
 
     /**
-     * Create a new publication instance with a document attachment.
+     * Create a new publication controller instance
      *
      * @param  Array $attributes
      *
@@ -39,12 +40,14 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
+      $publications = Publication::where('deleted','!=',1)->where('owner_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $caret = 000;
+      $publications = [];
       return view(
         'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
       );
     }
+
     public function caret_publication_action($caret)
     {
       $caretAction=substr($caret, 0, 3);
@@ -84,41 +87,55 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-
-      $divisions="";
+      $divisions = "";
       for ($i = 1;$i < 7; $i++){
-        $field='division_'.$i;
-        if (! empty ($request->$field)){
-        $divisions = $divisions.'|'.$request->$field;
-      }
+        $field = 'division_'.$i;
+        if (!empty($request->$field)) {
+            $divisions = $divisions.'|'.$request->$field;
+        }
       }
       $divisions = $divisions.'|';
 
+      $data = json_encode([
+          $request->volume,
+          $request->issues,
+          $request->pages,
+          $request->publisher,
+          $request->institution,
+          $request->conference,
+          $request->publication_author,
+          $request->favorites,
+          $request->views
+      ]);
+
       $inputs = [
-        'title' => $request->title,
+        'name' => $request->title,
         'description' => $request->description,
-        'publication_author' => $request->author,
-        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
-        'document' => $request->document,
-        'privacy' => $request->privacy,
+        'data' => $data,
         'divisions' => $divisions,
         'keywords' => $request->keywords,
-        'volume' => $request->volume,
-        'issues' => $request->issue,
-        'pages' => $request->pages,
-        'publisher' => $request->publisher,
-        'institution' => $request->institution,
-        'conference' => $request->conference,
+        'visibility' => $request->privacy,
+        'owner_id' => Auth::user()->id,
         'deleted' => 0,
-        'views' => 1,
-        'favorites' => 0,
+        'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
       ];
-        $publication = new Publication($inputs);
 
-        Auth::user()->publications()->save($publication);
+      $publication = new Publication($inputs);
+      $publication->save();
 
-        return redirect('my_publications')
-        ->withFlashSuccess("Publication created successfully!");
+      $contentMediaData = [
+          'description' => NULL,
+          'view_order' => 0,
+          'deleted' => false,
+          'resource' => $request->document,
+          'content_id' => $publication->id
+      ];
+      
+      $contentMedia = new ContentMedia($contentMediaData);
+      $contentMedia->save();
+
+      return redirect('my_publications')
+            ->withFlashSuccess("Publication created successfully!");
     }
 
     /**
@@ -185,10 +202,10 @@ class PublicationController extends Controller
 
       $divisions="";
       for ($i = 1;$i < 7; $i++){
-        $field='division_'.$i;
-        if (! empty ($request->$field)){
-        $divisions = $divisions.'|'.$request->$field;
-      }
+        $field = 'division_'.$i;
+        if (!empty($request->$field)) {
+            $divisions = $divisions.'|'.$request->$field;
+        }
       }
       $divisions = $divisions.'|';
 

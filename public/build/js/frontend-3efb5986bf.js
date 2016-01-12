@@ -184,7 +184,7 @@ function changeTitle (mapCountry){
   for (var i=1;i<=$("#"+mapCountry+"_poly_count").val();i++){
 
     coords=$("#"+mapCountry+"_poly_"+i).attr('title');
-    document.getElementById(mapCountry+"_poly_"+i).title=coords.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });;
+    document.getElementById(mapCountry+"_poly_"+i).title=coords.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
   }
 }
 $("select#country").change(function(){
@@ -285,17 +285,19 @@ function fillRegions(country){
 }
 
 $("select#division").change(function(){
-		if (($("select#division").val()) != null){
+		if (($("select#division").val()) !== null){
 			var filterVar = $("select#division").val();
 			var item;
 
 			$("td.division_tags").each(function() {
-			item=this.innerHTML;
-			console.log(item);
+			  item = this.innerHTML;
 				if(item.indexOf(filterVar) ==-1) {
 					$(this).parent().addClass("out");
         	$(this).parent().removeClass("in");
-				}
+				} else {
+          $(this).parent().addClass("in");
+        	$(this).parent().removeClass("out");
+        }
 			});
 
 					$(".mapContainer").hide();
@@ -308,7 +310,7 @@ $("select#division").change(function(){
 	});
 
 $("select#keyword").change(function(){
-		if (($("select#keyword").val()) != null){
+		if (($("select#keyword").val()) !== null){
 			var filterVar = $("select#keyword").val();
 			filterVar = filterVar.toLowerCase();
 			alert(filterVar);
@@ -320,8 +322,6 @@ $("select#keyword").change(function(){
 				if(item.indexOf(filterVar) == -1 ) {
         	$(this).parent().removeClass("in");
 					$(this).parent().addClass("out");
-				} else {
-
 				}
 			});
 

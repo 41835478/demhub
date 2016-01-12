@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cb310709f8aac64e0b727a314730f615",
-    "content-hash": "916bd642f76c8e300f668d4605ae5719",
+    "hash": "643730cd53fb478f29ac4318fa2a3f9f",
+    "content-hash": "e8cd989e2589f4d54e021a29eaf1dc48",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -940,12 +940,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "dbc8d1b9b67daaab357bcc41dbf549c3684cf5f1"
+                "reference": "fddd2c240452e6c8990c4ef75e0265b455aa7968"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/fddd2c240452e6c8990c4ef75e0265b455aa7968",
-                "reference": "dbc8d1b9b67daaab357bcc41dbf549c3684cf5f1",
+                "reference": "fddd2c240452e6c8990c4ef75e0265b455aa7968",
                 "shasum": ""
             },
             "require-dev": {
@@ -980,7 +980,7 @@
                 "font",
                 "icon"
             ],
-            "time": "2015-11-23 14:42:32"
+            "time": "2015-11-30 17:28:02"
         },
         {
             "name": "guzzle/guzzle",
@@ -2202,6 +2202,57 @@
                 "schedule"
             ],
             "time": "2015-01-11 23:07:46"
+        },
+        {
+            "name": "nanigans/single-table-inheritance",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nanigans/single-table-inheritance.git",
+                "reference": "c481d035ae0471fda3d33810b0f8abb158bdcfa0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nanigans/single-table-inheritance/zipball/c481d035ae0471fda3d33810b0f8abb158bdcfa0",
+                "reference": "c481d035ae0471fda3d33810b0f8abb158bdcfa0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "3.1.*",
+                "phpunit/phpunit": "4.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nanigans\\SingleTableInheritance\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Palmer",
+                    "email": "jpalmer@nanigans.com"
+                }
+            ],
+            "description": "Single Table Inheritance Trait",
+            "keywords": [
+                "eloquent",
+                "inheritance",
+                "laravel",
+                "model",
+                "single",
+                "table"
+            ],
+            "time": "2015-07-25 10:58:32"
         },
         {
             "name": "nesbot/carbon",
