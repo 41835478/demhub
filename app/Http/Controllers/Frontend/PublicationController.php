@@ -147,7 +147,7 @@ class PublicationController extends Controller
     public function preview($id)
     {
       $caret = 000;
-      $publications = Publication::where('deleted','!=',1)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
+      $publications = Publication::where('deleted', 0)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
       $publication = Publication::findOrFail($id);
       return view(
         'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])
@@ -248,7 +248,7 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->where('visibility',1)->orderBy('id','DESC')->get();
+        $publications = Publication::where('deleted', 0)->where('visibility',1)->orderBy('id','DESC')->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.public_journal', compact([

@@ -58,6 +58,46 @@ class Publication extends Content implements StaplerableInterface
   //     parent::__construct($attributes);
   // }
 
+	public function volume()
+	{
+		return json_decode($this->data, true)[self::VOLUME];
+	}
+
+	public function issues()
+	{
+		return json_decode($this->data, true)[self::ISSUES];
+	}
+
+	public function pages()
+	{
+		return json_decode($this->data, true)[self::PAGES];
+	}
+
+	public function publisher()
+	{
+		return json_decode($this->data, true)[self::PUBLISHER];
+	}
+
+	public function institution()
+	{
+		return json_decode($this->data, true)[self::INSTITUTION];
+	}
+
+	public function conference()
+	{
+		return json_decode($this->data, true)[self::CONFERENCE];
+	}
+
+	public function author()
+	{
+		return json_decode($this->data, true)[self::AUTHOR];
+	}
+
+	public function favorites()
+	{
+		return json_decode($this->data, true)[self::FAVORITES];
+	}
+
 	public function views()
 	{
 		return json_decode($this->data, true)[self::VIEWS];
