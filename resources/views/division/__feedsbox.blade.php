@@ -41,7 +41,7 @@
             @else
               href="" data-toggle="modal" data-target="#DEMHUBModal"
             @endif
-          style="color:#000">
+          class="main-blue-color">
           <?php
             if (strlen($item['title']) > 66){
               $str = substr($item['title'], 0, 66) . '...';

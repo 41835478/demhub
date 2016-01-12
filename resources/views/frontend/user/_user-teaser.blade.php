@@ -10,13 +10,13 @@
           </div>
         </div>
         <div class="col-sm-7 col-sm-offset-1" style="text-align:left;">
-        <a href="{{ URL::to('profile/' . $user->user_name) }}">
+        <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
           <h3 style="margin-top:5px">  {{$user->full_name()}}  </h3>
         </a>
 
-        <p style="margin-bottom:0px">{{$user->job_title}}
+        <p class="orange-hover" style="margin-bottom:0px">{{$user->job_title}}
         @if ($user->organization_name)
-          at {{$user->organization_name}}</p>
+          <span style="text-transform:lowercase">at</span> {{$user->organization_name}}</p>
         @endif
 
         <p style="color:#999">
