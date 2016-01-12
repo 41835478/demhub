@@ -10,9 +10,6 @@
 				<span class="icon-bar"></span>
 			</button>
 
-
-
-
 				<div class="nav-top-adjust">
 					<a href="{{url('')}}" class="">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width:150px')) !!}</a>
 

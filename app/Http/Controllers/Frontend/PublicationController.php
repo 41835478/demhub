@@ -159,7 +159,7 @@ class PublicationController extends Controller
     {
       $publication = Publication::findOrFail($id);
       $pubUploaderId = $publication->uploader->id;
-      // FIXME Move authorization if statement to request section 
+      // FIXME Move authorization if statement to request section
       if ($pubUploaderId==Auth::user()->id){
 
       return view(
@@ -234,7 +234,7 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted','!=',1)->where('privacy','!=',1)->orderBy('id','DESC')->get();
+        $publications = Publication::where('deleted','!=',1)->where('visibility','!=',0)->orderBy('id','DESC')->get();
         $secondMenu = true;
         // dd($publications);
         return view('frontend.user.publication_filter.public_journal', compact([
