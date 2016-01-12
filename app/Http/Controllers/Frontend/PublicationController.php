@@ -130,7 +130,7 @@ class PublicationController extends Controller
           'resource' => $request->document,
           'content_id' => $publication->id
       ];
-      
+
       $contentMedia = new ContentMedia($contentMediaData);
       $contentMedia->save();
 

@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="collapse navbar-collapse col-md-offset-1 col-sm-offset-1" id="navbar-collapse-1">
-			<ul class="navbar">
+			<ul class="navbar" style="margin-bottom:-8px">
 
 							@if(isset($searchBar))
 							<li class="col-md-8 col-sm-7 nav-top-adjust">
@@ -61,7 +61,7 @@
 				@endif
 
 
-			<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="display:inline;">
+			<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="display:inline;margin-top:-5px">
 
 				{{-- <li
 				@if (Request::url() === url('public_journal'))
@@ -81,8 +81,8 @@
 				@endif
 				>
 				<a href="{{url('resource_filter')}}">
-					<h3 class="glyphicon glyphicon-book" style="margin: 0 auto;padding-left:13px;"></h3>
-					<p style="font-size:55%">{!! trans('RESOURCES') !!}<p>
+					<h2 class="glyphicon glyphicon-book" style="margin: 0 auto;padding-left:13px;font-size:215%"></h2>
+					<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
 				</a>
 
 
@@ -91,9 +91,9 @@
 				@if (strpos(Request::url(), 'forum') ==true)
 				 class="active"
 				@endif
-				><a href="{{url('forum/all_threads')}}">
-					<i class="fa fa-comments fa-2x" style="margin: 0 auto;padding-left:13px;"></i>
-					<p style="font-size:55%">{!! trans('DISCUSSIONS') !!}<p>
+				style="margin-top:-5px"><a href="{{url('forum/all_threads')}}">
+					<i class="fa fa-comments fa-3x" style="margin: 0 auto;padding-left:13px;"></i>
+					<p style="font-size:55%;margin-top:-2px">{!! trans('DISCUSSIONS') !!}<p>
 				</a>
 
 				</li>
@@ -110,10 +110,10 @@
 
 					<li class="dropdown">
 
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase">
-							<img class="img-responsive img-circle seventy-transparent" style="height:25px;width:25px;display:inline;" src="{{Auth::user()->avatar->url('thumb')}}">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase; padding-left:8px;">
+							<img class="img-circle" style="height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});">
 
-							<p style="font-size:55%">{{ Auth::user()->first_name}}<span class="caret"></span></p>
+							<p style="font-size:55%;text-align:center;padding-left:11px">{{ Auth::user()->first_name}}<span class="caret"></span></p>
 
 						</a>
 
@@ -141,6 +141,12 @@ $(".searchbar-group").mouseenter(function() {
 		$(".nav-searchbar").attr("style","color: #ed6b00;background-color:#fff;");
 		$(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
 		$(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+});
+$("#top-menu li a").mouseenter(function() {
+		$(this).children("img").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});height:35px;width:35px;display:inline;");
+});
+$("#top-menu li a").mouseleave(function() {
+		$(this).children("img").attr("style","height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});");
 });
 $("#top-menu").mouseleave(function() {
 		$(".nav-searchbar").attr("style","background-color:#546f7a;");
