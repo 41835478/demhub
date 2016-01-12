@@ -88,43 +88,43 @@
         <div class="col-sm-6" style='padding-top:8px'>
           @if (! empty($publication->divisions))
 
-              @if (strpos($publication->divisions, "health")==false)
+              @if (strpos($publication->divisions, "health")===false)
                 {!! Form::checkbox('division_1', false) !!}
               @else
                 {!! Form::checkbox('division_1', 'health', ['class' => 'form-control']) !!}
               @endif
             <span style="color:#0D8E56;">Health & Epidemics</span><br>
 
-            @if (strpos($publication->divisions, "science")==false)
+            @if (strpos($publication->divisions, "science")===false)
               {!! Form::checkbox('division_2', false) !!}
             @else
               {!! Form::checkbox('division_2', 'health', ['class' => 'form-control']) !!}
             @endif
             <span style="color:#1D73A3">Science & Environment</span><br>
 
-            @if (strpos($publication->divisions, "response")==false)
+            @if (strpos($publication->divisions, "response")===false)
               {!! Form::checkbox('division_3', false) !!}
             @else
               {!! Form::checkbox('division_3', 'response', ['class' => 'form-control']) !!}
             @endif
             <span style="color:#DB9421">EM Practitioner & Response</span><br>
 
-            @if (strpos($publication->divisions, "security")==false)
+            @if (strpos($publication->divisions, "security")===false)
               {!! Form::checkbox('division_4', false) !!}
             @else
               {!! Form::checkbox('division_4', 'security', ['class' => 'form-control']) !!}
             @endif
             <span style="color:#848889">Civil & Cyber Security</span><br>
 
-            @if (strpos($publication->divisions, 'continuity')==false)
+            @if (strpos($publication->divisions, 'continuity')===false)
               {!! Form::checkbox('division_5', false) !!}
             @else
               {!! Form::checkbox('division_5', 'continuity', ['class' => 'form-control']) !!}
             @endif
             <span style="color:#933131">Business Continuity</span><br>
 
-            @if (strpos($publication->divisions, 'humanitarian')==false)
-              {!! Form::checkbox('division_6', false) !!}
+            @if (strpos($publication->divisions, 'humanitarian')===false)
+              {!! Form::checkbox('division_6', 'humanitarian', false) !!}
             @else
               {!! Form::checkbox('divisio_6', 'humanitarian', ['class' => 'form-control']) !!}
             @endif
@@ -221,6 +221,7 @@
             $('#publication_date').click( function (){
               $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
             });
+            
             function showMore () {
                 $('#more_options').toggle();
 

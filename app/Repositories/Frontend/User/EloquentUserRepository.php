@@ -87,7 +87,7 @@ class EloquentUserRepository implements UserContract {
 				'first_name' => $data->user['firstName'],
 				'last_name' => $data->user['lastName'],
 				'email' => $data->email,
-				'division' => $data->user['industry'],
+				// 'division' => $data->user['industry'],
 				'location' => $data->user['location']['name'],
 				'job_title' => $data->user['positions']['values']['0']['title'],
 				'organization_name' => $data->user['positions']['values']['0']['company']['name'],
@@ -130,7 +130,7 @@ class EloquentUserRepository implements UserContract {
 			'first_name' => $providerData->user['firstName'],
 			'last_name' => $providerData->user['lastName'],
 			'email' => $providerData->email,
-			'division' => $providerData->user['industry'],
+			// 'division' => $providerData->user['industry'],
 			'location' => $providerData->user['location']['name'],
 			'job_title' => $providerData->user['positions']['values']['0']['title'],
 			'organization_name' => $providerData->user['positions']['values']['0']['company']['name'],
@@ -139,7 +139,7 @@ class EloquentUserRepository implements UserContract {
 			'first_name' => $user->first_name,
 			'last_name' => $user->last_name,
 			'email' => $user->email,
-			'division' => $user->division,
+			// 'division' => $user->division,
 			'location' => $user->location,
 			'job_title' => $user->job_title,
 			'organization_name' => $user->organization_name,
@@ -149,7 +149,7 @@ class EloquentUserRepository implements UserContract {
 			$user->first_name = $providerData->user['firstName'];
 			$user->last_name = $providerData->user['lastName'];
 			$user->email = $providerData->email;
-			$user->division = $providerData->user['industry'];
+			// $user->division = $providerData->user['industry'];
 			$user->location = $providerData->user['location']['name'];
 			$user->job_title = $providerData->user['positions']['values']['0']['title'];
 			$user->organization_name = $providerData->user['positions']['values']['0']['company']['name'];
@@ -180,18 +180,21 @@ class EloquentUserRepository implements UserContract {
 		$user->specialization = $input['specialization'];
 		$user->phone_number = $input['phone_number'];
 		$user->location = $input['location'];
-		if (! empty $input['division']){
+		if (! empty($input['division'])){
 		$user->division = $input['division'];
 		}
 		else {
+
 			$divisions="";
       for ($i = 1;$i < 7; $i++){
         $field='division_'.$i;
-        if (! empty ($input[$field])){
+        if (! empty($input[$field])){
         $divisions = $divisions.'|'.$input[$field];
       }
       }
+			if (! empty($divisions)){
       $divisions = $divisions.'|';
+			}
 			$user->division = $divisions;
 		}
 
