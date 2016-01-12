@@ -180,6 +180,20 @@ class EloquentUserRepository implements UserContract {
 		$user->specialization = $input['specialization'];
 		$user->phone_number = $input['phone_number'];
 		$user->location = $input['location'];
+		if (! empty $input['division']){
+		$user->division = $input['division'];
+		}
+		else {
+			$divisions="";
+      for ($i = 1;$i < 7; $i++){
+        $field='division_'.$i;
+        if (! empty ($input[$field])){
+        $divisions = $divisions.'|'.$input[$field];
+      }
+      }
+      $divisions = $divisions.'|';
+			$user->division = $divisions;
+		}
 
 		if ($user->canChangeEmail()) {
 			//Address is not current address

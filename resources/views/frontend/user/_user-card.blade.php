@@ -5,23 +5,28 @@
 
       <div class="color-label division_all"></div>
       <div class="inner-feedsbox" style="text-align:center;">
-        <div class="member" style="margin: 0 auto; width:150px; padding-top:15px;">
-          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:150px']) !!}
+        <div class="row">
+        <div class="col-xs-4" style="padding-top:2px;">
+          {!! HTML::image('http://www.demhub.net/system/App/Models/Access/User/User/avatars/000/000/012/medium/chimp transparent backgroung.jpg', '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => '']) !!}
+          {{-- $user->avatar->url('medium'); --}}
         </div>
 
-        <a href="{{ URL::to('profile/' . $user->user_name) }}">
-          <h3>  {$user->full_name()}}  </h3>
+        <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
+          <h3>  {{$user->full_name()}}  </h3>
         </a>
 
-        <p style="margin-bottom:0px">{{$user->job_title}}
+        <p class="main-orange" style="margin-bottom:0px">{{$user->job_title}}
         @if ($user->organization_name)
-          at {{$user->organization_name}}</p>
+          <span style="text-transform:lowercase">at</span> {{$user->organization_name}}</p>
         @endif
 
         <p style="color:#999">
           {{$user->location}}
         </p>
-
+        </div>
+        @if ($user->bio)
+          <p style="color:#999">{{$user->bio}}</p>
+        @endif
         @if ($user->division)
           <p style="color:#999">{{$user->division}}</p>
         @endif
