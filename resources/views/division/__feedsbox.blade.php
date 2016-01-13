@@ -98,36 +98,12 @@
         </p>
         <div style="bottom:50px; position:absolute;z-index:0.5;width:100%">
           <?php
-          $articleKeywords = array_filter(preg_split("/\|/", $item['keywords']));
+          $keywords = array_filter(preg_split("/\|/", $item['keywords']));
           ?>
-          @if(count($articleKeywords) > 4)
-            @foreach($articleKeywords as $key=>$keyword)
-
-              @if($key==1)
-
-              <a class="label label-default" style="font-size:82%;margin-right:2px" href="/?query_term={{$keyword}}">
-                {{ $keyword }}
-              </a>
-              @elseif($key==2)
-
-              <div class="dropup" style="display:inline">
-                <a type="button" class="label label-default dropdown-toggle"
-                data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
-                style="font-size:82%;margin-right:2px">
-                and {{count($articleKeywords)}} other keywords
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
-                  <li><a href="?query_term={{$keyword}}">{{$keyword}}</a></li>
-                @elseif($key>2)
-                  <li><a href="?query_term={{$keyword}}" >{{$keyword}}</a></li>
-
-              @endif
-            @endforeach
-            </ul>
-          </div>
-          @elseif(count($articleKeywords) <5)
-            @foreach($articleKeywords as $key=>$keyword)
+          @if(count($keywords) > 4)
+            @include('division.__keyword-dropup-foreach')
+          @elseif(count($keywords) <5)
+            @foreach($keywords as $key=>$keyword)
               @if ($keyword)
 
               <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
