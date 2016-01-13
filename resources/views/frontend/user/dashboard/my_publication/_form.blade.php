@@ -69,11 +69,11 @@
         {!! Form::label('privacy', "PRIVACY", ['class' => 'col-xs-3 col-sm-2 control-label','style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
         <div class="col-sm-6">
             <label class="radio-inline">
-              {!! Form::radio('privacy', '0',true) !!}
+              {!! Form::radio('privacy', '1',true) !!}
               Public
             </label>
             <label class="radio-inline">
-              {!! Form::radio('privacy', '1',false) !!}
+              {!! Form::radio('privacy', '0',false) !!}
               Visible to me
             </label>
             <label class="radio-inline">
@@ -221,7 +221,7 @@
             $('#publication_date').click( function (){
               $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
             });
-            
+
             function showMore () {
                 $('#more_options').toggle();
 

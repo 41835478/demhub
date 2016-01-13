@@ -304,25 +304,6 @@ li.pub-descrip {
   margin-bottom: 1%;
 }
 
-#top-menu li img {
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-  /* For IE8 and earlier */
-}
-
-#top-menu li:hover img,
-#top-menu li:focus img {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  /* For IE8 and earlier */
-}
-
-#top-menu li.active img {
-  opacity: 1;
-  filter: alpha(opacity=100);
-  /* For IE8 and earlier */
-}
-
 #top-menu li a:hover,
 #top-menu li a:focus {
   color: #ed6b00;
@@ -384,7 +365,7 @@ li.pub-descrip {
 }
 
 .nav-middle {
-  padding-top: 20px;
+  padding-top: 27px;
 }
 
 .nav-top-adjust {
@@ -410,6 +391,20 @@ li.pub-descrip {
 
 .dropdown-menu li a {
   color: #999 !important;
+}
+
+.dropdown-menu li:hover a,
+.dropdown-menu li:focus a {
+  color: #ed6b00 !important;
+}
+
+.dropdown-menu li.active a {
+  color: #fff !important;
+}
+
+#secondary-menu {
+  background: #ddd;
+  border: none;
 }
 
 #secondary-menu li.active a {
