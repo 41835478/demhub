@@ -60,7 +60,7 @@
         @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
         <div
-        @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+        @if(Request::url() == url('dashboard') || Request::url() == url('') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
         class="@yield('container-class') container-fluid"
         @else
         class="@yield('container-class')"
