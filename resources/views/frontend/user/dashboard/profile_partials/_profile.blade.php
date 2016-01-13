@@ -1,4 +1,4 @@
-<section id="content_wrapper" style="margin-top: 60px;">
+<section id="content_wrapper" class="col-md-10 col-md-offset-1" style="margin-top: 60px;">
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
@@ -31,44 +31,30 @@
         <div id="infoSectionMiddle" class="col-md-4" style="">
 
           <div class="form-group">
-            {!! Form::label('first_name', 'First Name', ['class' => 'col-lg-3 control-label']) !!}
+            {!! Form::label('first_name', 'First Name', ['class' => 'col-lg-3 control-label','style' => 'font-size:88%']) !!}
             <div class="col-lg-8">
               {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
             </div>
           </div>
 
           <div class="form-group">
-            {!! Form::label('last_name', 'Last Name', ['class' => 'col-lg-3 control-label']) !!}
+            {!! Form::label('last_name', 'Last Name', ['class' => 'col-lg-3 control-label','style' => 'font-size:88%']) !!}
             <div class="col-lg-8">
               {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
             </div>
           </div>
 
           <div class="form-group">
-            {!! Form::label('user_name', 'Username', ['class' => 'col-lg-3 control-label']) !!}
+            {!! Form::label('bio', 'Bio', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
             <div class="col-lg-8">
-              {!! Form::text('user_name', $user->user_name, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+              {!! Form::textarea('bio', $user->bio, ['class' => 'form-control']) !!}
             </div>
           </div>
 
-          <div class="form-group">
-            {!! Form::label('job_title', 'Job Title', ['class' => 'col-lg-3 control-label']) !!}
-            <div class="col-lg-8">
-              {!! Form::text('job_title', $user->job_title, ['class' => 'form-control']) !!}
-            </div>
-          </div>
-
-          <div class="form-group">
-            {!! Form::label('organization_name', 'Organization', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
-            <div class="col-lg-8">
-              {!! Form::text('organization_name', $user->organization_name, ['class' => 'form-control']) !!}
-            </div>
-          </div>
 
         </div>
 
         <div class="col-md-4">
-
 
           <div class="form-group">
               {!! Form::label(null, "DIVISION", ['class' => 'col-lg-3 control-label']) !!}
@@ -139,6 +125,20 @@
 
 
                 @endif
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('job_title', 'Job Title', ['class' => 'col-lg-3 control-label','style' => 'font-size:88%']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('job_title', $user->job_title, ['class' => 'form-control']) !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            {!! Form::label('organization_name', 'Organization', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
+            <div class="col-lg-8">
+              {!! Form::text('organization_name', $user->organization_name, ['class' => 'form-control']) !!}
             </div>
           </div>
 

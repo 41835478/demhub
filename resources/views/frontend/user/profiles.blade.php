@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  <section id="content_wrapper" style="margin-top: 60px;">
+  <section id="content_wrapper" class="col-md-10 col-md-offset-1" style="margin-top: 60px;">
     <!-- Begin: Content -->
     <div id="content" class="animated fadeIn col-sm-offset-2" style="">
 
