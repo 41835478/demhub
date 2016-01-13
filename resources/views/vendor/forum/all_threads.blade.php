@@ -10,7 +10,7 @@
 
 	<div class="row container-fluid" style="padding-top:15px">
 		<div class="col-md-8 col-md-offset-2">
-
+			
 			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-xs-offset-8">NEW DISCUSSION</a>
 			<table class="table table-index table-hover">
 			  <thead>
@@ -24,7 +24,7 @@
 			  </thead>
 
 			  <tbody>
-					
+
 			    @foreach ($threads as $thread)
 
 

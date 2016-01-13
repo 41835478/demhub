@@ -1,6 +1,6 @@
 <div class = "feed_width">
 @foreach($newsFeeds as $item)
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
     <?php
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
