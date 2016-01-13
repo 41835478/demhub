@@ -69,7 +69,7 @@ class ForumController extends BaseController
 	public function getModCreateThread()
 	{
 			$allDivisions = Division::all();
-			 
+			$categories = Category::where('category','=','9');
 
 
 			return $this->makeView('forum::thread-create', compact('allDivisions'));

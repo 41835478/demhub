@@ -44,7 +44,17 @@ div#dashboard a:hover {
   text-decoration: none;
 }
 
-nav#top-menu div.container div.navbar-header a {
+nav#guest-menu {
+  background: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  box-shadow: none!important;
+  margin-bottom: 1%;
+}
+nav#guest-menu div.container div.navbar-f a {
   font-weight: 700;
 }
 nav#top-menu div.container div.navbar-header a:hover {
@@ -59,21 +69,10 @@ nav#top-menu div.container div#navbar {
 
 
 #welcome_home {
-  // font-weight: bolder;
-  // font-family: 'Open Sans', sans-serif;
-  //
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  // background-position: center center;
-  // overflow-x: hidden;
-  // margin-top: 0px;
-  padding: 15%;
 }
 div#welcome_about {
   padding: 6% 1% 10%;
-  background:rgba(20, 23, 32, 1.0);
+  background:#35474f;
   // background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%);
   // /* Chrome 10+, Saf5.1+ */
   // background: -moz-linear-gradient(90deg, #16222A 10%, #3A6073 90%);

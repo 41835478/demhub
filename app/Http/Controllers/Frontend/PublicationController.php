@@ -253,9 +253,10 @@ class PublicationController extends Controller
                                     ->orderBy('id','DESC')
                                     ->get();
         $secondMenu = true;
-        // dd($publications);
+        $keywords = [];
+
         return view('frontend.user.publication_filter.public_journal', compact([
-          'publications', 'secondMenu',
+          'publications', 'secondMenu','keywords'
         ]));
     }
 }

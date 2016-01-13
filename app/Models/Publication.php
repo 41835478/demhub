@@ -105,7 +105,8 @@ class Publication extends Content implements StaplerableInterface
 
 	public function keywords()
 	{
-		return array_filter(preg_split("/\|/", $this->keywords));
+		$keywords = str_replace('|virus|', '|viral|', $this->keywords);
+		return array_filter(preg_split("/\|/", $keywords));
 	}
 
 	/**
