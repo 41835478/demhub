@@ -20,6 +20,7 @@
             <div class="publication-each">
 
               <div class="col-md-8">
+
                 <ul>
                   <li>
                     <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publication_date), 'j F Y') }}</div>
@@ -38,41 +39,14 @@
                 <div class="collapse linkpub-{{$publication->id}} pub-dropdown">
                   <div class="well">
                     <div class ="pub-descrip-content">{{$publication->description}}</div>
-                    <?php
-                      $articleKeywords = array_filter(preg_split("/\|/", $publication->keywords));
-                    ?>
+                    {{$keywords=$publication->keywords()}}
+                    @if(count($keywords) > 1)
 
-                    @if(count($articleKeywords) > 1)
+                      @include('division.__keyword-dropup-foreach')
 
-                      @foreach($articleKeywords as $key=>$keyword)
+                    @elseif(count($keywords) <5)
 
-                        @if($key == 1)
-                          <a class="label label-default" style="font-size:82%;margin-right:2px" href="/?query_term={{$keyword}}">
-                            {{ $keyword }}
-                          </a>
-                        @elseif($key==2)
-                          <div class="dropup" style="display:inline">
-                            <a type="button" class="label label-default dropdown-toggle"
-                              data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
-                              style="font-size:82%;margin-right:2px">
-                              and {{count($articleKeywords)}} other keywords
-                              <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu label-default" aria-labelledby="dropdownMenu2">
-                              <li><a href="?query_term={{$keyword}}">{{$keyword}}</a></li>
-                        @elseif($key>2)
-                                <li><a href="?query_term={{$keyword}}" >{{$keyword}}</a></li>
-
-                        @endif
-
-                        </ul>
-                        </div>
-
-                      @endforeach
-
-                    @elseif(count($articleKeywords) <5)
-
-                      @foreach($articleKeywords as $key=>$keyword)
+                      @foreach($keywords as $key=>$keyword)
                         @if ($keyword)
                           <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
                           @if($keyword == "virus")
@@ -87,6 +61,7 @@
                     @endif
                   </div>
                 </div>
+
               </div>
 
               <div class ="col-md-1">
@@ -110,16 +85,18 @@
               <div class="col-md-3">
                 <ul style="margin-top:-15px">
                   <li>
-                    <a href="{{ $publication->document->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
-                      <h4 class="icon file_download"></h4>
-                    </a>
+                    @if($publication->medias()->count() > 0 && $publication->medias()->first()->resource)
+                      <a href="{{ $publication->medias()->first()->resource->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
+                        <h4 class="icon file_download"></h4>
+                      </a>
+                    @endif
                     <a><h4 class="icon assignment" data-toggle="tooltip" data-placement="top" title="PREVIEW"></h4></a>
                     {{-- <a><h4 class="icon report2" data-toggle="tooltip" data-placement="top" title="REPORT"></h4></a> --}}
                   </li>
 
                   <li>
                     <ul class="icon-container">
-                      <li><i class="icon remove_red_eye" data-toggle="tooltip" data-placement="top" title="VIEWS"></i>{{ $publication->views }}</li>
+                      <li><i class="icon remove_red_eye" data-toggle="tooltip" data-placement="top" title="VIEWS"></i>{{ $publication->views() }}</li>
                       <li><i class="icon add_circle_outline" data-toggle="tooltip" data-placement="top" title="BOOKMARKS"></i>34</li>
                       <li><i class="icon chat" data-toggle="tooltip" data-placement="top" title="COMMENTS"></i>21</li>
                     </ul>

@@ -103,6 +103,11 @@ class Publication extends Content implements StaplerableInterface
 		return json_decode($this->data, true)[self::VIEWS];
 	}
 
+	public function keywords()
+	{
+		return array_filter(preg_split("/\|/", $this->keywords));
+	}
+
 	/**
    * One-to-Many relations with Publication.
    *
