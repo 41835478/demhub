@@ -36,7 +36,7 @@ class ForumController extends BaseController
 	{
 			$threads = Thread::orderBy('updated_at', 'desc')->simplePaginate(10);
 
-			$categories = $this->categories->getAll();
+			$categories = Category::all();
 
 			$allDivisions = Division::all();
 
@@ -52,7 +52,7 @@ class ForumController extends BaseController
 	public function getViewIndex()
 	{
 	$allDivisions = Division::all();
-			$categories = $this->categories->getAll();
+			$categories = Category::all();
 
 			return View::make('forum::index', compact('categories', 'allDivisions'));
 	}
@@ -69,7 +69,8 @@ class ForumController extends BaseController
 	public function getModCreateThread()
 	{
 			$allDivisions = Division::all();
-			$this->load(['category' => 9]);
+			$categories = Category::where('category','=','9');
+
 
 			return $this->makeView('forum::thread-create', compact('allDivisions'));
 	}

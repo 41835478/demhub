@@ -1,18 +1,129 @@
 //landing page styles
 //
-
+.w-c{
+  color:white;
+}
 #welcome_home {
-  // font-weight: bolder;
-  // font-family: 'Open Sans', sans-serif;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  // background-position: center center;
-  // overflow-x: hidden;
-  // margin-top: 0px;
+  font-weight: bolder;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+  width:100vw;
+  height:100vh;
+  margin-top: 0px;
+}
+.card-selector{
+  height:70vh;
+  width:30vw;
+  z-index: 10;
+  position: absolute;
+  top:120px;
+  left: 10%;
+}
+.ajax-selector {
+  margin-top:50vh;
+  padding-top:16px;
+  padding-left:30px;
+  padding-bottom: 30px;
+  background-color: rgba(0,0,0, 0.4);
+  width:480px;
 }
 
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   border-radius: 0px;
+   padding: 5px 10px 5px 10px;
+   margin-left:10px;
+   border: 1px solid #ddd;
+   background-color: none;
+   background:none;
+   color:#fff;
+}
+
+option {
+  border-radius: 0px;
+}
+.card-ajax{
+   height:80vh;
+   width:30vw;
+   background-color: rgba(255,255,255,0.2);
+   z-index: 10;
+   position: absolute;
+   top:60px;
+   left: 60%;
+   padding:20px;
+   overflow-y: hidden;
+}
+.DrpDwn{
+  color:white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin-right: 60px;
+}
+
+
+.table-details {
+  width: 100%;
+    div {
+      width:100%;
+      display: block;
+      margin-bottom: 15px;
+      padding-top:15px;
+      background-color: rgba(255,255,255,0.6);
+    }
+
+    ul {
+      display: inline-block;
+      overflow: hidden;
+    }
+    //image ul
+    ul:first-child{
+      width:15%;
+
+    }
+    //information ul
+    ul:nth-child(2){
+      width:60%;
+      li:first-child{
+        font-size:1.2em;
+        color:#ED6C1F;
+      }
+      li:nth-child(3), li:nth-child(4) {
+        opacity:0.7;
+      }
+    }
+    //followers ul
+    ul:nth-child(3){
+      width:20%;
+      button {
+        -webkit-appearance: none;
+        background-color: #638395;
+        color:#A7B8C2;
+        border: none;
+        border-radius: 0px;
+        width:100%;
+        padding:10px auto 10px auto;
+      }
+      li{
+        margin-left:-40px;
+      }
+      li:nth-child(2){
+      }
+    }
+  li {
+    list-style: none;
+    font-size: 0.7em;
+  }
+}
+
+.landing-button1{
+  margin-top:50px;
+}
 .lading-content-1 {
   vertical-align: middle;
 }
@@ -33,7 +144,98 @@
   margin-left: -1em;
   margin-top:-1em;
 }
+.carousel {
+  top:0px;
+  left:0px;
+}
+.carousel, .carousel-inner, .carousel-inner .item{
+    height: 100vh !important;
+    width: 100vw !important;
+    position: absolute;
+    display: block;
+    background-color: black;
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        opacity: 0.6;
+    }
+}
 
+.carousel-caption {
+  top:600px;
+  margin-top:41vh;
+  text-align: left !important;
+  text-transform: uppercase;
+  max-width:400px;
+  line-height: 1.8em;
+}
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+            -webkit-transition-duration: 3s; /* Safari */
+            transition-duration: 3s;
+        }
+
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0.2;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 0.2;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+//eah of the card style in the white box
+.card-style{
+  width:100%;
+  height:100px;
+  // border:2px solid #a8a8a8;
+  background-color: rgba(255,255,255, 0.6);
+  padding:15px;
+  font-size: 10px;
+  text-align: left;
+  opacity:0;
+  li{
+      list-style-type: none;
+  }
+}
+.card-img{
+  width:20%;
+}
+.card-info{
+  width:50%;
+}
+.card-social{
+  width:30%;
+}
+
+.carousel-caption{
+  top:20px;
+  width: 400px;
+  height: auto;
+  float:right;
+  line-height: 1.9em;
+}
+
+////responsive
 
 @media (min-width: 1199px){
   .landing-slogan {
@@ -60,7 +262,6 @@
   }
 }
 
-
 @media (min-width: 768px) and (max-width: 992px) {
   .inline-about {
     display: inline-block !important;
@@ -72,6 +273,15 @@
   .splash-row {
     padding-left: 40px;
     padding-right:40px;
+  }
+  .card-ajax {
+    display:none;
+  }
+  .ajax-selector{
+    display:none;
+  }
+  .carousel-caption{
+    margin-top:60vh;
   }
 }
 
@@ -85,5 +295,22 @@
   .splash-row {
     padding-left: 0px;
     padding-right:35px;
+  }
+  .card-ajax {
+    display:none;
+  }
+  .ajax-selector{
+    display:none;
+  }
+  .demhub-logo-landing{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    min-width: 200px;
+    display: inline;
+  }
+
+  .carousel-caption{
+    margin-top:60vh;
   }
 }

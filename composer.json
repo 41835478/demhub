@@ -18,15 +18,14 @@
 		"arcanedev/log-viewer": "~3.4.0",
 		"creativeorange/gravatar": "~1.0",
 		"simplepie/simplepie": "dev-master",
-		"riari/laravel-forum": "~3.0",
+		"riari/laravel-forum": "~2.0",
 		"intervention/image": "^2.3",
 		"codesleeve/stapler": "1.0.*",
     "codesleeve/laravel-stapler": "1.0.*",
 		"league/csv": "^7.2",
 		"weblee/mandrill": "dev-master",
 		"socialiteproviders/linkedin": "^1.1",
-		"shift31/laravel-elasticsearch": "~1.0",
-		"riari/laravel-forum-frontend": "~1.0"
+		"shift31/laravel-elasticsearch": "~1.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
@@ -51,7 +50,8 @@
 		},
         "files": [
             "app/helpers.php",
-						"app/Providers/LinkedInProvider.php"
+						"app/Providers/LinkedInProvider.php",
+						"app/Models/BaseModel.php"
         ]
 	},
 	"autoload-dev": {

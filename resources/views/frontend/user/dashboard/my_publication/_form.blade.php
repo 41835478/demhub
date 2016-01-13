@@ -123,7 +123,7 @@
         <div class=" col-sm-6">
             {!! Form::input('volume', 'volume', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
         </div>
-        
+
         <span class="help-block">Must be numbers only</span>
   </div>
 
