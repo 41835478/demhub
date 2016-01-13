@@ -463,6 +463,9 @@ class DashboardController extends Controller {
       }
     });
 
+		// TODO - Parse divisions function
+		$infoDivs = $infoResource['divisions'];
+
 		InfoResource::chunk(100, function($infoResources) {
       foreach ($infoResources as $infoResource) {
         $content = Content::firstOrCreate([
@@ -470,7 +473,7 @@ class DashboardController extends Controller {
 					'name' => $infoResource['name'],
 					'description' => NULL,
 					'data' => NULL,
-					'divisions' => $infoResource['divisions'],
+					'divisions' => $infoDivs,
 					'keywords' => $infoResource['keywords'],
 					'slug' => NULL,
 					'url' => $infoResource['url'],

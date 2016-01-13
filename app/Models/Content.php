@@ -29,4 +29,34 @@ class Content extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    /**
+	 * Publication date attribute
+	 *
+	 * @var array
+	 */
+	protected $dates = ['publish_date'];
+
+    public function divisions()
+    {
+		// $keywords = str_replace('|virus|', '|viral|', $this->keywords);
+		// return array_filter(preg_split("/\|/", $keywords));
+        return true;
+    }
+
+    public function keywords()
+    {
+		$keywords = str_replace('|virus|', '|viral|', $this->keywords);
+		return array_filter(preg_split("/\|/", $keywords));
+    }
+
+    /**
+     * One-to-Many relations with Publication.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+	  public function medias()
+    {
+        return $this->hasMany('App\Models\ContentMedia', 'content_id');
+    }
 }

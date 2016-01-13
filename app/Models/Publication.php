@@ -2,14 +2,12 @@
 
 // use Illuminate\Database\Eloquent\Model;
 use App\Models\Content;
-// use Illuminate\Database\Eloquent\SoftDeletes;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 
 // class Publication extends Model implements StaplerableInterface
 class Publication extends Content implements StaplerableInterface
 {
-
 	use EloquentTrait;
 
 	const VOLUME = 0;
@@ -37,13 +35,6 @@ class Publication extends Content implements StaplerableInterface
 	 * @var array
 	 */
 	protected $guarded = ['id'];
-
-	/**
-	 * For soft deletes
-	 *
-	 * @var array
-	 */
-	protected $dates = ['publish_date'];
 
 	/**
    * Create a new publication instance with a document attachment.
@@ -103,21 +94,13 @@ class Publication extends Content implements StaplerableInterface
 		return json_decode($this->data, true)[self::VIEWS];
 	}
 
-	public function keywords()
+	public function incrementViewCount()
 	{
-		$keywords = str_replace('|virus|', '|viral|', $this->keywords);
-		return array_filter(preg_split("/\|/", $keywords));
+		$json = json_decode($this->data, true);
+		$json[self::VIEWS] += 1;
+		$this->data = json_encode($json);
+		return $this->save();
 	}
-
-	/**
-   * One-to-Many relations with Publication.
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\hasMany
-   */
-	public function medias()
-  {
-      return $this->hasMany('App\Models\ContentMedia', 'content_id');
-  }
 
 	/**
    * Many-to-One relations with User.

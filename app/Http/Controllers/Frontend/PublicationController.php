@@ -162,10 +162,11 @@ class PublicationController extends Controller
      */
      public function view($id)
      {
-
        $publication = Publication::findOrFail($id);
-       Publication::where('id', $id)
-                   ->update(['views' => ($publication->views+1)]);
+
+       // TODO - check 'status' to see if increment happened successfully
+       // $status should be true
+       $status = $publication->incrementViewCount();
 
        return view(
          'frontend.user.dashboard.my_publication.view', compact(['publication'])
