@@ -3,7 +3,7 @@
 @section('content')
 {{-- @include('frontend.user.dashboard.style')
 @include('frontend.navigation._user-dashboard-sidebar') --}}
-<section id="content_wrapper" style="margin-top: 60px;">
+<section id="content_wrapper" class="col-md-10 col-md-offset-1" style="margin-top: 60px;">
 
   <!-- Begin: Content -->
   <div id="content" class="animated fadeIn" style="">
