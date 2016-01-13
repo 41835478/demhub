@@ -11,16 +11,13 @@
 			</button>
 
 				<div class="nav-top-adjust">
-					<a href="{{url('')}}" >
-					{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", ['class' => 'img-responsive','style' => 'max-width:150px']) !!}
-				 </a>
+					<a href="{{url('')}}" class="">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width:150px')) !!}</a>
+
 				</div>
 		</div>
 
 		<div class="collapse navbar-collapse col-md-offset-1 col-sm-offset-1" id="navbar-collapse-1">
 			<ul class="navbar" style="margin-bottom:-8px">
-
-
 
 							@if(isset($searchBar))
 							<li class="col-md-8 col-sm-7 nav-top-adjust">
