@@ -103,7 +103,7 @@
 						@if (Request::url() === url('auth/login'))
 							class="active"
 						@endif
-						>{!! link_to('auth/login', trans('LOGIN')) !!}</li>
+						style="padding-top:15px">{!! link_to('auth/login', trans('LOGIN')) !!}</li>
 				@else
 
 
@@ -121,7 +121,14 @@
 						  	@include('frontend.navigation._user-dashboard-sidebar')
 						</ul>
 					</li>
-
+				<script>
+				$("#top-menu li a").mouseenter(function() {
+						$(this).children("img").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});height:35px;width:35px;display:inline;");
+				});
+				$("#top-menu li a").mouseleave(function() {
+						$(this).children("img").attr("style","height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});");
+				});
+				</script>
 				@endif
 
 			</ul>
@@ -142,12 +149,7 @@ $(".searchbar-group").mouseenter(function() {
 		$(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
 		$(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
 });
-$("#top-menu li a").mouseenter(function() {
-		$(this).children("img").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});height:35px;width:35px;display:inline;");
-});
-$("#top-menu li a").mouseleave(function() {
-		$(this).children("img").attr("style","height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});");
-});
+
 $("#top-menu").mouseleave(function() {
 		$(".nav-searchbar").attr("style","background-color:#546f7a;");
     $("input[type=text]").siblings(".nav-search-icon-style").attr("style","background-color: #546f7a;color: #fff;");

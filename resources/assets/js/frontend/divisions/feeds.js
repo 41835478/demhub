@@ -14,15 +14,15 @@ $(".feedsbox").mouseenter(function() {
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(document.body){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 });
 
-$(".dropdown-toggle").mouseenter(function(){
+$(".share-dropdown-toggle").mouseenter(function(){
   $(this).attr("data-toggle","dropdown");
 });
 
-$(".dropdown-toggle").mouseleave(function(){
+$(".share-dropdown-toggle").mouseleave(function(){
 
   $(this).addClass("t0ggle");
   $(this).attr("data-toggle","");
-  
+
   $(".copy-button").zclip({
 	        path:"../js/ZeroClipboard.swf",
 	        copy:function(){return $("#copy-button-link").text();},
