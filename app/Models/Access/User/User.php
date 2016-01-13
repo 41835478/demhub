@@ -59,7 +59,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
       $this->hasAttachedFile('avatar', [
           'styles' => [
               'medium' => '300x300',
-              'thumb' => '100x100'
+              'thumb' => '35x35'
           ],
 					'default_url' => '/images/avatars/:style/missing.png'
       ]);

@@ -113,7 +113,8 @@ class Search
   * @return JSON
   */
   public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []]) {
-      $filter = ['missing' => [ 'field' => 'deleted_at' ]];
+      // $filter = ['missing' => [ 'field' => 'deleted_at' ]];
+      $filter = ['term' => ['deleted' => 0]];
 
       $params = [
         'index' => 'info',

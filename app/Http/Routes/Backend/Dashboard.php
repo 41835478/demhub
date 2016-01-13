@@ -6,3 +6,5 @@ get('sources', 'DashboardController@sources')->name('backend.sources');
 get('articles', 'DashboardController@articles')->name('backend.articles');
 get('reports', 'DashboardController@reports')->name('backend.reports');
 get('signup', 'DashboardController@signup')->name('backend.signup');
+get('scripts', 'DashboardController@scripts')->name('backend.scripts');
+get('runScript', 'DashboardController@runScript')->name('backend.runScript');

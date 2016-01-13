@@ -11,7 +11,7 @@
     <div class="row center-block mt10" style="margin-left:-75px">
 
         <a type="button" class="btn btn-style-alt" href="{{ URL::to('public_journal') }}" style="margin-left:10px">
-          <span class="fa fa-briefcase"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS
+          <span class="glyphicon glyphicon-folder-close"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS
         </a>
           <div class="col-sm-offset-5" style="display:inline">
             <a type="button" class="btn btn-style-alt" href="{{ $publication->document->url() }}">FULL SCREEN</a>

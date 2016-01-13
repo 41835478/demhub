@@ -22,7 +22,7 @@ div#dashboard {
   height: 100%;
   background: rgba(250, 250, 250, 1.0);
   color: rgba(40, 40, 40, 1.0) ;
-  z-index: 100;
+  z-index: 1000;
   font-size: 1.0em ;
   right: -350px;
   border: 1px solid #717173;
@@ -43,6 +43,7 @@ div#dashboard a {
 div#dashboard a:hover {
   text-decoration: none;
 }
+
 nav#guest-menu {
   background: none;
   text-decoration: none;
@@ -54,32 +55,22 @@ nav#guest-menu {
   margin-bottom: 1%;
 }
 nav#guest-menu div.container div.navbar-f a {
+=======
+
+nav#top-menu div.container div.navbar-header a {
+>>>>>>> e92abb52fdde83f09a3309468b2e5c565d28033f
   font-weight: 700;
 }
-nav#guest-menu div.container div.navbar-header a:hover {
-  color: #337ab7;
+nav#top-menu div.container div.navbar-header a:hover {
+  color: #ed6b00;
 }
-nav#guest-menu div.container div.navbar-header img {
+nav#top-menu div.container div.navbar-header img {
   margin-top: -25px;
 }
-nav#guest-menu div.container div#navbar {
+nav#top-menu div.container div#navbar {
   margin-left: 1%;
 }
-nav#guest-menu li a {
-  color: #fff;
-}
 
-nav#guest-menu li a:hover {
-  color: #337ab7;
-  text-decoration: none;
-  text-shadow: none;
-}
-nav#guest-menu li.active a {
-  background: #337ab7;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: none;
-}
 
 #welcome_home {
 }
@@ -438,7 +429,7 @@ div#user-email p {
 }
 
 .user_dashboard_menu li.active a {
-  background: #337ab7;
+  background: #ed6b00;
   color: #fff;
 }
 .user_dashboard_menu i {
@@ -459,7 +450,7 @@ div#user-email p {
 //   font-weight: bolder;
 // }
 // #guest-function div.container div.navbar-header a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 // }
 // nav#user_dashboard_menu div.container div.navbar-header img {
 //   margin-top: -24px;
@@ -471,14 +462,14 @@ div#user-email p {
 //   color: #fff;
 // }
 // #user_dashboard_menu div.container div#navbar a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 //   background: #000;
 //   text-decoration: none;
 //   text-shadow: none;
 // }
 
 // #user_dashboard_menu li ul li a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 //   background: #000;
 // }
 // nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li {
@@ -491,7 +482,7 @@ div#user-email p {
 //   color: #000;
 // }
 // nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 // }
 
 .dots {

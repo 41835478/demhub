@@ -24,6 +24,7 @@
 			  </thead>
 
 			  <tbody>
+
 			    @foreach ($threads as $thread)
 
 

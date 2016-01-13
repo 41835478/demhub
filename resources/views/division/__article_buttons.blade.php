@@ -6,7 +6,7 @@
 
   <div class="btn-group dropup">
     @if(Auth::user())
-      <button type="button" class="btn btn-greytone btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+      <button type="button" class="btn btn-greytone btn-sm share-dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
        style="margin-left:5px;">
         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
       </button>

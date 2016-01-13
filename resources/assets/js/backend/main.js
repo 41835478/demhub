@@ -438,13 +438,6 @@ function _init() {
         var overlay = $('<div class="overlay"><div class="fa fa-refresh fa-spin"></div></div>');
 
         return this.each(function () {
-            //if a source is specified
-            if (settings.source === "") {
-                if (console) {
-                    console.log("Please specify a source first - boxRefresh()");
-                }
-                return;
-            }
             //the box
             var box = $(this);
             //the button

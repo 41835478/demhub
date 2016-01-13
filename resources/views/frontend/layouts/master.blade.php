@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_token" content="{{ csrf_token() }}" />
     <title>@yield('title', app_name())</title>
-    <meta name="description" content="@yield('meta_description', 'Default Description')">
+    <meta name="description" content="@yield('meta_description', 'The Disaster & Emergency Management Network')">
     <meta name="author" content="@yield('author', 'DEMHUB Developers')">
-
+    <meta property="og:image" content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
     <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -27,9 +27,9 @@
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
     ?>
 
-    @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+    <!-- @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
-    @endif
+    @endif -->
 
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
@@ -59,7 +59,13 @@
 
         @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
-        <div class="@yield('container-class')" style="overflow-x:hidden">
+        <div
+        @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+        class="@yield('container-class') container-fluid"
+        @else
+        class="@yield('container-class')"
+        @endif
+        style="overflow-x:hidden;padding-top:25px">
 
           @yield('body-style')
           @yield('content')
