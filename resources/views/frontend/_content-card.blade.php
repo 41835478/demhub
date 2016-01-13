@@ -128,7 +128,7 @@
             }
           ?>
         </p>
-        <div style="bottom:50px; position:absolute;z-index:0.5;width:100%">
+        <div style="bottom:50px; position:absolute;width:100%">
           <?php
           $keywords = array_filter(preg_split("/\|/", $item['keywords']));
           ?>
@@ -144,6 +144,7 @@
                 @else
                 {{ $keyword }}
                 @endif
+                <div style="-ms-transform: scale(0.5,0.5);-webkit-transform: scale(0.5,0.5);transform: scale(0.5,0.5);"><span id="triangle-right" ></span></div>
               </a>
               @endif
             @endforeach

@@ -3345,6 +3345,15 @@ button.btn-greytone:active {
   color: #35464d;
 }
 
+#triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-left: 100px solid red;
+  border-bottom: 50px solid transparent;
+  display: inline;
+}
+
 div#message {
   margin-top: 10%;
 }
