@@ -1,9 +1,16 @@
 {
+<<<<<<< HEAD
   "css/backend.css": "css/backend-42340109fb.css",
   "css/coming-soon.css": "css/coming-soon-6991739896.css",
   "css/core.css": "css/core-295019078f.css",
   "css/dashboardtest.css": "css/dashboardtest-6b344266c4.css",
+=======
+  "css/backend.css": "css/backend-c84969cea0.css",
+  "css/coming-soon.css": "css/coming-soon-b7d0c379bd.css",
+  "css/core.css": "css/core-44b9479422.css",
+  "css/dashboardtest.css": "css/dashboardtest-a60cf27c8d.css",
+>>>>>>> 6020d22d6b09ecef90de774f1f430c432919756e
   "css/frontend.css": "css/frontend-9f7cc879cd.css",
-  "js/backend.js": "js/backend-f8f141b53c.js",
-  "js/frontend.js": "js/frontend-1e91a61bb1.js"
+  "js/backend.js": "js/backend-01a5952d91.js",
+  "js/frontend.js": "js/frontend-0e5cb0ad38.js"
 }

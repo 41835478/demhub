@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a69554685aabd9ab664e0132ffa31c5",
+    "hash": "ad70b09c0fb92c966660beac576d69db",
     "content-hash": "e8cd989e2589f4d54e021a29eaf1dc48",
     "packages": [
         {
@@ -2782,16 +2782,16 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "1.1.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "cead3a6ca04f2a0dc14347ef321df89352628a9f"
+                "reference": "0eec0bd10ba2e7a5e336ccec6ffae0fe9da22108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/cead3a6ca04f2a0dc14347ef321df89352628a9f",
-                "reference": "cead3a6ca04f2a0dc14347ef321df89352628a9f",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/0eec0bd10ba2e7a5e336ccec6ffae0fe9da22108",
+                "reference": "0eec0bd10ba2e7a5e336ccec6ffae0fe9da22108",
                 "shasum": ""
             },
             "require": {
@@ -2821,7 +2821,7 @@
                 }
             ],
             "description": "Easily add new or override built-in providers in Laravel Socialite.",
-            "time": "2016-01-13 18:50:06"
+            "time": "2016-01-08 18:53:54"
         },
         {
             "name": "stripe/stripe-php",
