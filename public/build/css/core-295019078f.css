@@ -567,7 +567,6 @@ li.pub-descrip {
 #top-menu li a:hover,
 #top-menu li a:focus {
   color: #ed6b00;
-  text-decoration: none;
 }
 
 #top-menu li.active a {
