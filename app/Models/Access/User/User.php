@@ -74,7 +74,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
    */
 	public function publications()
   {
-      return $this->hasMany('App\Models\Publication');
+      return $this->hasMany('App\Models\Publication', 'owner_id')
+									->where('deleted', 0)
+									->orderBy('id', 'DESC');
   }
 
 	/**

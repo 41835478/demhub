@@ -20,7 +20,6 @@ use App\Http\Requests\Frontend\PublicationRequest;
  */
 class PublicationController extends Controller
 {
-
     /**
      * Create a new publication controller instance
      *
@@ -40,12 +39,12 @@ class PublicationController extends Controller
      */
     public function index()
     {
-      $publications = Publication::where('deleted','!=',1)->where('owner_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
-      $caret = 000;
+        $publications = Auth::user()->publications;
+        $caret = 000;
 
-      return view(
-        'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
-      );
+        return view(
+            'frontend.user.dashboard.my_publication.index', compact(['publications','caret'])
+        );
     }
 
     public function caret_publication_action($caret)
@@ -74,9 +73,7 @@ class PublicationController extends Controller
      */
     public function create()
     {
-      $user =Auth::user();
-        return view('frontend.user.dashboard.my_publication.new', compact(['user'])
-      );
+        return view('frontend.user.dashboard.my_publication.new');
     }
 
     /**
@@ -224,8 +221,6 @@ class PublicationController extends Controller
         'conference' => $request->conference
       ];
       Publication::updateOrCreate(['id'=>$id], $inputs);
-
-      // $publication->fill($inputs)->save();
 
       return redirect('my_publications')
       ->withFlashSuccess("Successfully created publication!");

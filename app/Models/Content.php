@@ -55,8 +55,25 @@ class Content extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
-	  public function medias()
+	public function medias()
     {
-        return $this->hasMany('App\Models\ContentMedia', 'content_id');
+        return $this->hasMany('App\Models\ContentMedia', 'content_id')
+                    ->where('deleted', 0)
+                    ->orderBy('view_order', 'ASC');
+    }
+
+    public function mainMedia()
+    {
+        return $this->medias()->first();
+    }
+
+    public function mainMediaName()
+    {
+        return $this->mainMedia() ? $this->mainMedia()->resource_file_name : false;
+    }
+
+    public function mainMediaUrl()
+    {
+        return $this->mainMedia() ? $this->mainMedia()->url() : false;
     }
 }

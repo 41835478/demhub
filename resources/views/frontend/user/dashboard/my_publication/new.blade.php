@@ -1,27 +1,24 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-{{-- @include('frontend.user.dashboard.style')
-@include('frontend.navigation._user-dashboard-sidebar') --}}
-<section id="content_wrapper" class="col-md-10 col-md-offset-1" style="padding-top: 60px;background-color:#fff">
+  <section id="content_wrapper" class="col-md-10 col-md-offset-1" style="padding-top: 60px;background-color:#fff">
 
-  <!-- Begin: Content -->
-  <div id="content" class="animated fadeIn" style="">
-    <div class="row center-block mt10" style="">
+    <!-- Begin: Content -->
+    <div id="content" class="animated fadeIn">
+      <div class="row center-block mt10">
+        
+        <div class="col-sm-10 col-sm-offset-2">
+          <h1>NEW PUBLICATION</h1>
 
-      <div class="col-sm-10 col-sm-offset-2">
-        <h1>NEW PUBLICATION</h1>
+          <!-- if there are creation errors, they will show here -->
+          {!! HTML::ul($errors->all()) !!}
 
-        <!-- if there are creation errors, they will show here -->
-        {!! HTML::ul($errors->all()) !!}
-
-        {!! Form::open(['route' => 'store_publication', 'files' => true, 'class' => 'form-horizontal',
-        'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form']) !!}
-          @include('frontend.user.dashboard.my_publication._form')
-        {!! Form::close() !!}
+          {!! Form::open(['route' => 'store_publication', 'files' => true, 'class' => 'form-horizontal',
+          'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form']) !!}
+            @include('frontend.user.dashboard.my_publication._form')
+          {!! Form::close() !!}
+        </div>
       </div>
-
-    </div>
-</section>
-
+    </div> <!-- End: Content -->
+  </section>
 @endsection

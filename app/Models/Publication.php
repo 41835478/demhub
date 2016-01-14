@@ -49,6 +49,11 @@ class Publication extends Content implements StaplerableInterface
   //     parent::__construct($attributes);
   // }
 
+	public function title()
+	{
+		return $this->name;
+	}
+
 	public function volume()
 	{
 		return json_decode($this->data, true)[self::VOLUME];

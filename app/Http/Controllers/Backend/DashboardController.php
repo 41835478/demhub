@@ -464,6 +464,8 @@ class DashboardController extends Controller {
     });
 
 		// TODO - Parse divisions function
+		// convertResourceMeta($divs_str, $keywords_str)
+		//
 		$infoDivs = $infoResource['divisions'];
 
 		InfoResource::chunk(100, function($infoResources) {
@@ -583,5 +585,35 @@ class DashboardController extends Controller {
 		$scripts = [];
 		return view('backend.scripts', compact('scripts'));
 	}
+
+	public static function convertResourceMeta($divs_str, $keywords_str)
+  {
+      $divs = explode(',', $divs_str);
+      $keywords = explode(',', $keywords_str);
+      $new_divs = array();
+      $new_keywords = array();
+      $conversion = array('EM'=>'1',''=>'2',''=>'3',''=>'4',''=>'5',''=>'6');
+
+      foreach($divs as $div){
+          $found = false;
+          foreach($conversion as $label=>$con){
+              if(trim($div) == $label){
+                  if(!in_array($con, $new_divs))
+                      $new_divs[] = $con;
+                  $found = true;
+              }
+          }
+          foreach($keywords as $key){
+              if(!in_array(trim($key), $new_keywords))
+                  $new_keywords[] = trim($key);
+          }
+          if(!$found && !in_array(trim($div), $new_keywords)){
+              $new_keywords[] = trim($div);
+          }
+      }
+
+      return array('divisions'=>Helpers::convertDBArrayToString($new_divs),
+                   'keywords'=>Helpers::convertDBArrayToString($new_keywords));
+  }
 
 }
