@@ -61,10 +61,10 @@
 
               <?php $publicationsDivisions = $publication->divisions(); ?>
               <div class ="col-md-1">
-                <div class ="pub-division" style="-15px;">
-                  @foreach ($publicationsDivisions as $publicationsDivision)
+                <div class ="pub-division">
+                  @foreach ($publicationsDivisions as $slug => $divName)
                     <a href="">
-                      <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}" title = "{{ $publicationsDivision }}">
+                      <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $slug }}" title = "{{ $divName }}">
                     </a>
                   @endforeach
                 </div>

@@ -73,7 +73,10 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        return view('frontend.user.dashboard.my_publication.new');
+        $divisions = Division::all();
+        $publication = new Publication;
+
+        return view('frontend.user.dashboard.my_publication.new', compact(['divisions','publication']));
     }
 
     /**
@@ -159,31 +162,33 @@ class PublicationController extends Controller
      */
      public function view($id)
      {
-       $publication = Publication::findOrFail($id);
+        $publication = Publication::findOrFail($id);
 
-       // TODO - check 'status' to see if increment happened successfully
-       // $status should be true
-       $status = $publication->incrementViewCount();
+        // TODO - check 'status' to see if increment happened successfully
+        // $status should be true
+        $status = $publication->incrementViewCount();
 
-       return view(
-         'frontend.user.dashboard.my_publication.view', compact(['publication'])
-       );
+        return view(
+            'frontend.user.dashboard.my_publication.view', compact(['publication'])
+        );
      }
 
     public function edit($id)
     {
-      $publication = Publication::findOrFail($id);
-      $pubUploaderId = $publication->uploader->id;
-      // FIXME Move authorization if statement to request section
-      if ($pubUploaderId==Auth::user()->id){
-        return view(
-            'frontend.user.dashboard.my_publication.edit', compact(['publication'])
-        );
-      } else {
-        return view(
-            'frontend.user.dashboard.my_publication.view', compact(['publication'])
-        );
-      };
+        $divisions = Division::all();
+        $publication = Publication::findOrFail($id);
+        $pubUploaderId = $publication->uploader->id;
+
+        // FIXME Move authorization if statement to request section
+        if ($pubUploaderId == Auth::user()->id){
+            return view(
+                'frontend.user.dashboard.my_publication.edit', compact(['publication', 'divisions'])
+            );
+        } else {
+            return view(
+                'frontend.user.dashboard.my_publication.view', compact(['publication', 'divisions'])
+            );
+        };
     }
 
     /**
@@ -205,22 +210,32 @@ class PublicationController extends Controller
       $divisions = $divisions.'|';
 
       $inputs = [
-        'title' => $request->title,
+        'name' => $request->name,
         'description' => $request->description,
-        'publication_author' => $request->author,
-        'document' => $request->document,
-        'publication_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
-        'privacy' => $request->privacy,
         'divisions' => $divisions,
         'keywords' => $request->keywords,
-        'volume' => $request->volume,
-        'issues' => $request->issue,
-        'pages' => $request->pages,
-        'publisher' => $request->publisher,
-        'institution' => $request->institution,
-        'conference' => $request->conference
+        'visibility' => $request->visibility,
+        'owner_id' => Auth::user()->id,
+        'deleted' => 0,
+        'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
       ];
-      Publication::updateOrCreate(['id'=>$id], $inputs);
+
+      $publication = Publication::updateOrCreate(['id'=>$id], $inputs);
+
+      $data = json_encode([
+          $request->volume,
+          $request->issues,
+          $request->pages,
+          $request->publisher,
+          $request->institution,
+          $request->conference,
+          $request->publication_author,
+          $publication->favorites(),
+          $publication->views()
+      ]);
+
+      $publication->data = $data;
+      $publication->save();
 
       return redirect('my_publications')
       ->withFlashSuccess("Successfully created publication!");

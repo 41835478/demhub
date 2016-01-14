@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Nanigans\SingleTableInheritance\SingleTableInheritanceTrait;
+use App\Models\Division;
 use DateTime;
 
 class Content extends Model
@@ -38,9 +39,23 @@ class Content extends Model
 	 */
 	protected $dates = ['publish_date', 'created_at', 'updated_at'];
 
+    /**
+     * Divisions associated with content
+     *
+     * @return \ArrayObject
+     */
     public function divisions()
     {
-		$divisions = array_filter(preg_split("/\|/", $this->divisions));
+        $divisions = [];
+        if (isset($this->divisions)) {
+            foreach (array_filter(preg_split("/\|/", $this->divisions)) as $divID) {
+                $div = Division::findOrFail($divID);
+                $divisions[$div->slug] = $div->name;
+            }
+        } else {
+            $divisions = NULL;
+        }
+
         return $divisions;
     }
 
