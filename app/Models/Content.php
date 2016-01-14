@@ -74,6 +74,6 @@ class Content extends Model
 
     public function mainMediaUrl()
     {
-        return $this->mainMedia() ? $this->mainMedia()->url() : false;
+        return $this->mainMedia() ? $this->mainMedia()->resource->url() : false;
     }
 }
