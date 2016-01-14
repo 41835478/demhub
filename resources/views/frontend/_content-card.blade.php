@@ -142,13 +142,13 @@
               <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
-              <div class="arrows" style="display:inline-block;"><i class="" ></i></div>
+
 
               @elseif ($key >1)
               <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
-              <div class="arrows" style="display:inline-block;"><i class="" ></i></div>
+              
 
 
               @endif
