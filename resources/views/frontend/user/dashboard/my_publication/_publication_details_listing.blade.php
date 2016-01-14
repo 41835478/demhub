@@ -11,7 +11,7 @@
     </tr>
     <tr>
       <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">DATE</td>
-      <td>{{ date_format(new DateTime($publication->publication_date ), 'j F Y') }}</td>
+      <td>{{ date_format(new DateTime($publication->publish_date ), 'j F Y') }}</td>
     </tr>
 
     <tr>
@@ -49,23 +49,27 @@
         @endif
       </td>
     </tr>
+
     @if(! empty($publication->keywords))
-    <tr>
-      <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase">keywords</td>
-      <td style="text-transform:capitalize">{{ $publication->keywords }}</td>
-    </tr>
+      <tr>
+        <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase">keywords</td>
+        <td style="text-transform:capitalize">{{ $publication->keywords }}</td>
+      </tr>
     @endif
+
     @if(! empty($publication->publisher))
-    <tr>
-      <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PUBLISHER</td>
-      <td style="text-transform:capitalize">{{ $publication->publisher}}</td>
-    </tr>
+      <tr>
+        <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px">PUBLISHER</td>
+        <td style="text-transform:capitalize">{{ $publication->publisher}}</td>
+      </tr>
     @endif
+
     @if(! empty($publication->pages))
-    <tr>
-      <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase">pages</td>
-      <td style="text-transform:capitalize">{{ $publication->pages }}</td>
-    </tr>
+      <tr>
+        <td class="col-xs-3 col-sm-2" style="background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase">pages</td>
+        <td style="text-transform:capitalize">{{ $publication->pages }}</td>
+      </tr>
     @endif
+    
   </tbody>
 </table>

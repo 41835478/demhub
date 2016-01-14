@@ -2,14 +2,14 @@
 <div id="main_publication_form">
 
   <div class="form-group">
-    {!! Form::label('title', "TITLE", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('title', "TITLE", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class = "col-xs col-sm-6">
       {!! Form::input('text', 'name', null, ['class' => 'form-control']) !!}
     </div>
   </div>
 
   <div class="form-group">
-    {!! Form::label('document', "DOCUMENT", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('document', "DOCUMENT", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6" style='{{isset($publication) && $publication->mainMedia() ? "" : "padding-top:8px"}}'>
       @if (isset($publication) && $publication->mainMedia())
         <input type="text" class="form-control" value="{{$publication->mainMediaName()}}" disabled/>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('description', "DESCRIPTION", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('description', "DESCRIPTION", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6">
       {!! Form::input('text', 'description', null,
       ['class' => 'form-control ', 'maxlength'=>'255', 'placeholder' => '50 words or less', 'id' => 'description']) !!}
@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
+    {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6">
       <?php $name = isset($publication) ? $publication->author() : Auth::user()->full_name() ?>
       {!! Form::input('text', 'publication_author',"$name", ['class' => 'form-control ', 'maxlength'=>'255']) !!}
@@ -38,7 +38,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('publication_date', "DATE", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('publication_date', "DATE", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6 input-group date" id='datetimepicker1' style="padding-left:10px;padding-right:10px">
       <span class="input-group-addon">
           <span class="glyphicon glyphicon-calendar"></span>
@@ -53,7 +53,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('privacy', "PRIVACY", ['class' => 'col-xs-3 col-sm-2 control-label','style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('privacy', "PRIVACY", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6">
       <label class="radio-inline">
         {!! Form::radio('privacy', '1',true) !!}
@@ -71,7 +71,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('null', "DIVISION", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('null', "DIVISION", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6" style='padding-top:8px'>
       @if (! empty($publication->divisions))
 
@@ -133,7 +133,7 @@
     </div>
   </div>
   <div class="form-group">
-    {!! Form::label('keywords', "tags", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
+    {!! Form::label('keywords', "tags", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class=" col-sm-6">
       {!! Form::input('keywords', 'keywords', null, ['class' => 'form-control', 'placeholder' => 'tsunami, tornado, ebola']) !!}
     </div>
@@ -152,7 +152,7 @@
 <div id="more_options">
 
   <div class="form-group">
-    {!! Form::label('volume', "VOLUME", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('volume', "VOLUME", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class=" col-sm-6">
       {!! Form::input('volume', 'volume', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
     </div>
@@ -161,14 +161,14 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('issue', "ISSUE", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('issue', "ISSUE", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class=" col-sm-6">
         {!! Form::input('issue', 'issues', null, ['class' => 'form-control']) !!}
     </div>
   </div>
 
   <div class="form-group">
-    {!! Form::label('pages', "PAGES", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px']) !!}
+    {!! Form::label('pages', "PAGES", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class=" col-sm-6">
         {!! Form::input('pages', 'pages', null, ['class' => 'form-control', "pattern" => "^[_0-9]{1,}$"]) !!}
     </div>
@@ -176,19 +176,19 @@
   </div>
 
   <div class="form-group">
-        {!! Form::label('publisher', "publisher", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
+        {!! Form::label('publisher', "publisher", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
         <div class=" col-sm-6">
             {!! Form::input('publisher', 'publisher', null, ['class' => 'form-control']) !!}
         </div>
   </div>
   <div class="form-group">
-        {!! Form::label('institution', "institution", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
+        {!! Form::label('institution', "institution", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
         <div class=" col-sm-6">
             {!! Form::input('institution', 'institution', null, ['class' => 'form-control']) !!}
         </div>
   </div>
   <div class="form-group">
-        {!! Form::label('conference', "conference", ['class' => 'col-xs-3 col-sm-2 control-label', 'style' => 'background-color:#ccc;text-align:center;padding-bottom:8px;text-transform:uppercase']) !!}
+        {!! Form::label('conference', "conference", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label',]) !!}
         <div class=" col-sm-6">
             {!! Form::input('conference', 'conference', null, ['class' => 'form-control']) !!}
         </div>
@@ -203,6 +203,15 @@
 </div>
 
 <br>
+
+<style media="screen">
+  .my-publication-label {
+    background-color: #ccc;
+    text-align: center;
+    padding-bottom: 8px;
+    text-transform: uppercase
+  }
+</style>
 
 {{-- TODO: Move this to the js folder --}}
 <script type="text/javascript">
