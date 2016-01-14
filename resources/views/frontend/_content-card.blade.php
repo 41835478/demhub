@@ -128,7 +128,8 @@
             }
           ?>
         </p>
-        <div style="bottom:50px; position:absolute;width:100%">
+        <div style="bottom:50px; position:absolute;width:100%;">
+
           <?php
           $keywords = array_filter(preg_split("/\|/", $item['keywords']));
           ?>
@@ -136,16 +137,20 @@
             @include('division.__keyword-dropup-foreach')
           @elseif(count($keywords) <5)
             @foreach($keywords as $key=>$keyword)
-              @if ($keyword)
+              @if ($key ==1)
 
-              <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
-                @if($keyword == "virus")
-                viral
-                @else
+              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
-                @endif
-                <div style="-ms-transform: scale(0.5,0.5);-webkit-transform: scale(0.5,0.5);transform: scale(0.5,0.5);"><span id="triangle-right" ></span></div>
               </a>
+              <div class="arrows" style="display:inline-block;"><i class="" ></i></div>
+
+              @elseif ($key >1)
+              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
+                {{ $keyword }}
+              </a>
+              <div class="arrows" style="display:inline-block;"><i class="" ></i></div>
+
+
               @endif
             @endforeach
 
