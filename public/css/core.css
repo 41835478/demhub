@@ -3346,13 +3346,37 @@ button.btn-greytone:active {
   color: #35464d;
 }
 
-#triangle-right {
-  width: 0;
-  height: 0;
-  border-top: 50px solid transparent;
-  border-left: 100px solid red;
-  border-bottom: 50px solid transparent;
-  display: inline;
+.triangle-right {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.triangle-right::after {
+  background: #fff;
+  border-bottom: 10px solid transparent;
+  border-left: 8px solid #cccccc;
+  border-top: 10px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.arrows {
+  padding-bottom: 2px;
+  -webkit-transform: scale(0.15, 0.15);
+  transform: scale(0.15, 0.15);
+  position: relative;
+  z-index: -10;
 }
 
 div#message {
