@@ -111,7 +111,7 @@ class PublicationController extends Controller
         'data' => $data,
         'divisions' => $divisions,
         'keywords' => $request->keywords,
-        'visibility' => $request->privacy,
+        'visibility' => $request->visibility,
         'owner_id' => Auth::user()->id,
         'deleted' => 0,
         'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
@@ -144,7 +144,7 @@ class PublicationController extends Controller
     public function preview($id)
     {
       $caret = 000;
-      $publications = Publication::where('deleted', 0)->where('user_id','=',Auth::user()->id)->orderBy('id','DESC')->get();
+      $publications = Auth::user()->publications;
       $publication = Publication::findOrFail($id);
       return view(
         'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])

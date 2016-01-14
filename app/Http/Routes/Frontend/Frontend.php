@@ -41,7 +41,6 @@ get('resources', 'InfoResourceController@index');
  * Public Publication Route
  */
 get('public_journal', 'PublicationController@public_publication')->name('publications');
-// get('_update_article', 'PublicationController@public_publication')->name('_update_article');
 
 /**
  * These frontend controllers require the user to be logged in

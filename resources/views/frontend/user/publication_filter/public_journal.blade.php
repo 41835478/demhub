@@ -23,14 +23,14 @@
 
                 <ul>
                   <li>
-                    <div class= "col-md-6" style="margin-left:-15px;">{{ date_format(new DateTime($publication->publish_date), 'j F Y') }}</div>
-                    <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->user_id) }}">
+                    <div class= "col-md-6" style="margin-left:-15px;">{{ $publication->humanReadablePublishDate() }}</div>
+                    <div class= "col-md-6 pub-author"><a href="{{ URL::to('profile/' . $publication->owner_id) }}">
                       @if($publication->uploader)
                         {{$publication->uploader->full_name()}}
                       @endif
                     </div>
                   </li>
-                  <li class= "pub-title"><a href="{{ URL::to('publication/' . $publication->id . '/view') }}"><h3>{{$publication->title}}</a></h3></li>
+                  <li class= "pub-title"><a href="{{ URL::to('publication/' . $publication->id . '/view') }}"><h3>{{$publication->title()}}</a></h3></li>
                   <li class="pub-descrip">  <a role="button" data-toggle="collapse" href=".linkpub-{{$publication->id}}" aria-expanded="false" aria-controls="collapseExample">
                     <i class="icon expand_more" style="margin-top:20px;"></i>More</a>
                   </li>
@@ -59,32 +59,27 @@
 
               </div>
 
+              <?php $publicationsDivisions = $publication->divisions(); ?>
               <div class ="col-md-1">
                 <div class ="pub-division" style="-15px;">
-                  <?php
-                    if ($publication->divisions !=null) {
-                      $publicationsDivisions = array_filter(preg_split("/\|/", $publication->divisions));
-                    }
-                  ?>
-
-                  @if (! empty($publicationsDivisions))
-                    @foreach ($publicationsDivisions as $publicationsDivision)
-                      <a href="" >
-                        <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}" title = "{{ $publicationsDivision }}">
-                      </a>
-                    @endforeach
-                  @endif
+                  @foreach ($publicationsDivisions as $publicationsDivision)
+                    <a href="">
+                      <img src="/images/backgrounds/patterns/alpha_layer.png" class="img-circle img-responsive pub-division-icon division_{{ $publicationsDivision }}" title = "{{ $publicationsDivision }}">
+                    </a>
+                  @endforeach
                 </div>
               </div>
 
               <div class="col-md-3">
                 <ul style="margin-top:-15px">
                   <li>
-                    @if($publication->medias()->count() > 0 && $publication->medias()->first()->resource)
-                      <a href="{{ $publication->medias()->first()->resource->url() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
+
+                    @if (isset($publication) && $publication->mainMedia())
+                      <a href="{{ $publication->mainMediaUrl() }}" download data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                         <h4 class="icon file_download"></h4>
                       </a>
                     @endif
+
                     <a><h4 class="icon assignment" data-toggle="tooltip" data-placement="top" title="PREVIEW"></h4></a>
                     {{-- <a><h4 class="icon report2" data-toggle="tooltip" data-placement="top" title="REPORT"></h4></a> --}}
                   </li>
@@ -92,8 +87,8 @@
                   <li>
                     <ul class="icon-container">
                       <li><i class="icon remove_red_eye" data-toggle="tooltip" data-placement="top" title="VIEWS"></i>{{ $publication->views() }}</li>
-                      <li><i class="icon add_circle_outline" data-toggle="tooltip" data-placement="top" title="BOOKMARKS"></i>34</li>
-                      <li><i class="icon chat" data-toggle="tooltip" data-placement="top" title="COMMENTS"></i>21</li>
+                      <li><i class="icon add_circle_outline" data-toggle="tooltip" data-placement="top" title="BOOKMARKS"></i>xx</li>
+                      <li><i class="icon chat" data-toggle="tooltip" data-placement="top" title="COMMENTS"></i>xx</li>
                     </ul>
                   </li>
                 </ul>

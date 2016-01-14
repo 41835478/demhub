@@ -32,7 +32,7 @@
     {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6">
       <?php $name = isset($publication) ? $publication->author() : Auth::user()->full_name() ?>
-      {!! Form::input('text', 'publication_author',"$name", ['class' => 'form-control ', 'maxlength'=>'255']) !!}
+      {!! Form::input('text', 'publication_author', $name, ['class' => 'form-control ', 'maxlength'=>'255']) !!}
     </div>
     <div class="help-block with-errors"></div>
   </div>
@@ -41,10 +41,10 @@
     {!! Form::label('publication_date', "DATE", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6 input-group date" id='datetimepicker1' style="padding-left:10px;padding-right:10px">
       <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
+        <span class="glyphicon glyphicon-calendar"></span>
       </span>
       @if (!empty($publication->publish_date))
-        <input type="text" name="publication_date" id="publication_date" class="form-control" value="{{date_format(new DateTime($publication->publish_date ), 'd/m/Y')}}" style="" required/>
+        <input type="text" name="publication_date" id="publication_date" class="form-control" value="{{date_format(new DateTime($publication->publish_date), 'd/m/Y')}}" style="" required/>
       @else
         {!! Form::input('publication_date', 'publication_date', null, ['class' => 'form-control','required', 'id' => 'publication_date']) !!}
       @endif
@@ -53,19 +53,19 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('privacy', "PRIVACY", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
+    {!! Form::label('visibility', "PRIVACY", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6">
       <label class="radio-inline">
-        {!! Form::radio('privacy', '1',true) !!}
+        {!! Form::radio('visibility', '1', true) !!}
         Public
       </label>
       <label class="radio-inline">
-        {!! Form::radio('privacy', '0',false) !!}
-        Visible to me
+        {!! Form::radio('visibility', '0', false) !!}
+        Visible only to me
       </label>
       <label class="radio-inline">
-        {!! Form::radio('privacy', '2',false) !!}
-        Visible to contacts
+        {!! Form::radio('visibility', '2', false) !!}
+        Visible only to contacts
       </label>
     </div>
   </div>

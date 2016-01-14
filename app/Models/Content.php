@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Nanigans\SingleTableInheritance\SingleTableInheritanceTrait;
+use DateTime;
 
 class Content extends Model
 {
@@ -35,19 +36,23 @@ class Content extends Model
 	 *
 	 * @var array
 	 */
-	protected $dates = ['publish_date'];
+	protected $dates = ['publish_date', 'created_at', 'updated_at'];
 
     public function divisions()
     {
-		// $keywords = str_replace('|virus|', '|viral|', $this->keywords);
-		// return array_filter(preg_split("/\|/", $keywords));
-        return true;
+		$divisions = array_filter(preg_split("/\|/", $this->divisions));
+        return $divisions;
     }
 
     public function keywords()
     {
 		$keywords = str_replace('|virus|', '|viral|', $this->keywords);
 		return array_filter(preg_split("/\|/", $keywords));
+    }
+
+    public function humanReadablePublishDate()
+    {
+		return date_format(new DateTime($this->publish_date), 'j F Y');
     }
 
     /**
@@ -69,11 +74,11 @@ class Content extends Model
 
     public function mainMediaName()
     {
-        return $this->mainMedia() ? $this->mainMedia()->resource_file_name : false;
+        return $this->mainMedia() ? $this->mainMedia()->resource_file_name : NULL;
     }
 
     public function mainMediaUrl()
     {
-        return $this->mainMedia() ? $this->mainMedia()->resource->url() : false;
+        return $this->mainMedia() ? $this->mainMedia()->resource->url() : NULL;
     }
 }

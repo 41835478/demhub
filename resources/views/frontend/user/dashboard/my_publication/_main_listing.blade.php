@@ -67,11 +67,7 @@
                   </td>
 
                   <td>
-                    <?php
-                      if ($publication->divisions != NULL)
-                        $publicationsDivisions = array_filter(preg_split("/\|/", $publication->divisions));
-                    ?>
-
+                    <?php $publicationsDivisions = $publication->divisions(); ?>
                     @if (! empty($publicationsDivisions))
                       @foreach ($publicationsDivisions as $publicationsDivision)
                         <a href="" >
