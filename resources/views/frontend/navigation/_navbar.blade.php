@@ -20,19 +20,38 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse-1">
 				<ul class="navbar" style="margin-bottom:-10px">
 
+					<style>
+						.nav-search-text,
+						.nav-searchbar,
+						.nav-search-icon-style{
+							-webkit-transition: all 0.4s ease;
+							-moz-transition: all 0.4s ease;
+							-o-transition: all 0.4s ease;
+							transition: all 0.4s ease;
+						}
+						.nav-search-text.active,
+						.nav-searchbar.active,
+						.nav-search-icon-style.active{
+							background-color: #fff !important;
+							color: #ed6b00 !important;
+						}
+					</style>
+
 					@if (Auth::user())
 					<li class="col-xs-8 nav-top-adjust" style="">
 
 						{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 						<div class="form-group" style="padding-left:15%;">
 							<div class="input-group searchbar-group" style="width: 100%">
-								<select class="input-group-addon nav-search-text" name="scope" style="float: left;width: 25%;">
+								<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 8px;">
 									<option value="all">All</option>
-									<option value="article">Articles</option>
+									<option value="articles">Articles</option>
 									<option value="users">Users</option>
+									<option value="publications">Publications</option>
+									<option value="resources">Resources</option>
 								</select>
-								<input name="query_term" class="form-control nav-searchbar" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 65%;">
-								<button type="submit" class="input-group-addon nav-search-icon-style" style="width: 10%;padding: 8.5px">
+								<input name="query_term" class="form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
+								<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 8.5px">
 									<i class="fa fa-search"></i>
 								</button>
 							</div>
@@ -130,22 +149,22 @@
 	</div>
 </nav>
 <script>
-	$("input[type=text]").focus(function() {
-		$(".nav-searchbar").attr("style","color: #ed6b00;background-color:#fff;");
-		$(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
-		$(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+	$(".nav-searchbar").focus(function() {
+		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
+		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
+		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
 	});
 
 	$(".searchbar-group").mouseenter(function() {
-		$(".nav-searchbar").attr("style","color: #ed6b00;background-color:#fff;");
-		$(".nav-search-icon-style").attr("style","background-color: #fff;color: #ed6b00;");
-		$(".nav-search-text").attr("style","background-color: #ededed;color: #ed6b00;");
+		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
+		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
+		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
 	});
 
 	$("#top-menu").mouseleave(function() {
-		$(".nav-searchbar").attr("style","background-color:#546f7a;");
-		$("input[type=text]").siblings(".nav-search-icon-style").attr("style","background-color: #546f7a;color: #fff;");
-		$("input[type=text]").siblings(".nav-search-text").attr("style","background-color:#455a63;color:#fff;");
+		$(".nav-searchbar").removeClass("active");//.attr("style","background-color:#546f7a;");
+		$(".nav-search-icon-style").removeClass("active");//.attr("style","background-color: #546f7a;color: #fff;");
+		$(".nav-search-text").removeClass("active");//.attr("style","background-color:#455a63;color:#fff;");
 	});
 
 </script>
