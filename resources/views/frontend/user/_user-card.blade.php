@@ -39,20 +39,17 @@
                     <p style="color:#999"> {{$user->division}} </p>
               @else
 
-                @if (! empty($user->division))
-                <?php
-                  $divisions = array_filter(preg_split("/\|/", $user->division));
-                ?>
+                <?php $divisions = $user->divisions();
+                 ?>
+                @if (! empty($divisions !== NULL))
+                  @foreach($divisions as $divSlug => $divName)
 
-                @foreach($divisions as $index => $division)
-                  <img style="width:18px;height:18px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-square img-responsive division_{{ $division }}">
-                  <span class="division-text_{{$division}}">Health & Epidemics</span><br>
-                @endforeach
-
-                  @endif
-
-
+                    <img style="width:18px;height:18px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-square img-responsive division_{{ $divSlug }}">
+                    <span class="division-text_{{$divSlug}}">{{$divName}}</span><br>
+                  @endforeach
                 @endif
+
+              @endif
 
           </div>
         </div>
