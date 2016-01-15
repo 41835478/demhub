@@ -53,7 +53,7 @@
 
         <div>
           <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>
-          <p>followers</p>
+          <p style="color:#999">followers</p>
         </div>
         </div>
       </div>

@@ -175,6 +175,7 @@ class EloquentUserRepository implements UserContract {
 		$user->last_name = $input['last_name'];
 		// TODO - Add $user->canChangeUserName()
 		// $user->user_name = $input['user_name'];
+		$user->bio = $input['bio'];
 		$user->job_title = $input['job_title'];
 		$user->organization_name = $input['organization_name'];
 		$user->specialization = $input['specialization'];

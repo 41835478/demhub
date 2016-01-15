@@ -30,6 +30,7 @@
           case 2:
               $visibility = "network only";
         }
+
       ?>
       <td class="col-xs-3 col-sm-2 publication-detail-label">Visibility</td>
       <td style="text-transform:capitalize">{{ $visibility }}</td>
@@ -47,6 +48,7 @@
         </td>
       </tr>
     @endif
+
 
     @if(!empty($publication->keywords()))
       <tr>
