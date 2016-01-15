@@ -68,20 +68,6 @@ class PublicationController extends Controller
             ->withFlashSuccess("Publication(s) deleted");
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $divisions = Division::all();
-        $publication = new Publication;
-
-        return view('frontend.user.dashboard.my_publication.new', compact(['divisions','publication']));
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -101,22 +87,6 @@ class PublicationController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function preview($id)
-    {
-      $caret = 000;
-      $publications = Auth::user()->publications();
-      $publication = Publication::findOrFail($id);
-      return view(
-        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])
-      );
-    }
-
     public function edit($id)
     {
         $divisions = Division::all();
@@ -133,6 +103,19 @@ class PublicationController extends Controller
                 'frontend.user.dashboard.my_publication.view', compact(['publication', 'divisions'])
             );
         };
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $divisions = Division::all();
+        $publication = new Publication;
+
+        return view('frontend.user.dashboard.my_publication.new', compact(['divisions','publication']));
     }
 
     /**

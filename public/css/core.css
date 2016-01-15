@@ -525,6 +525,44 @@ li.pub-descrip {
   display: inline;
 }
 
+.publication-detail-label {
+  background-color: #ccc;
+  text-align: center;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.my-publication-label {
+  background-color: #ccc;
+  text-align: center;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.health-font-color {
+  color: #0D8E56;
+}
+
+.science-font-color {
+  color: #1D73A3;
+}
+
+.response-font-color {
+  color: #DB9421;
+}
+
+.security-font-color {
+  color: #848889;
+}
+
+.continuity-font-color {
+  color: #933131;
+}
+
+.humanitarian-font-color {
+  color: #754293;
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .pub-dropdown {
     width: 100%;

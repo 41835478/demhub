@@ -71,12 +71,3 @@
 
   </tbody>
 </table>
-
-<style media="screen">
-  .publication-detail-label {
-    background-color: #ccc;
-    text-align: center;
-    padding-bottom: 8px;
-    text-transform: uppercase;
-  }
-</style>
