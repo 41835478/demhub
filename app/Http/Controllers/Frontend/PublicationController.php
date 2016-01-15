@@ -20,6 +20,9 @@ use App\Http\Requests\Frontend\PublicationRequest;
  */
 class PublicationController extends Controller
 {
+    const FAVORITES_DEFAULT = 0;
+	const VIEWS_DEFAULT = 1;
+
     /**
      * Create a new publication controller instance
      *
@@ -80,62 +83,22 @@ class PublicationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for editing the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function view($id)
     {
-      $divisions = "";
-      for ($i = 1;$i < 7; $i++){
-        $field = 'division_'.$i;
-        if (!empty($request->$field)) {
-            $divisions = $divisions.'|'.$request->$field;
-        }
-      }
-      $divisions = $divisions.'|';
+        $publication = Publication::findOrFail($id);
 
-      $data = json_encode([
-          $request->volume,
-          $request->issues,
-          $request->pages,
-          $request->publisher,
-          $request->institution,
-          $request->conference,
-          $request->publication_author,
-          0, //favorites
-          1 //view
-      ]);
+        // TODO - check 'status' to see if increment happened successfully
+        // $status should be true
+        $status = $publication->incrementViewCount();
 
-      $inputs = [
-        'name' => $request->title,
-        'description' => $request->description,
-        'data' => $data,
-        'divisions' => $divisions,
-        'keywords' => $request->keywords,
-        'visibility' => $request->visibility,
-        'owner_id' => Auth::user()->id,
-        'deleted' => 0,
-        'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
-      ];
-
-      $publication = new Publication($inputs);
-      $publication->save();
-
-      $contentMediaData = [
-          'description' => NULL,
-          'view_order' => 0,
-          'deleted' => false,
-          'resource' => $request->document,
-          'content_id' => $publication->id
-      ];
-
-      $contentMedia = new ContentMedia($contentMediaData);
-      $contentMedia->save();
-
-      return redirect('my_publications')
-            ->withFlashSuccess("Publication created successfully!");
+        return view(
+            'frontend.user.dashboard.my_publication.view', compact(['publication'])
+        );
     }
 
     /**
@@ -147,31 +110,12 @@ class PublicationController extends Controller
     public function preview($id)
     {
       $caret = 000;
-      $publications = Auth::user()->publications;
+      $publications = Auth::user()->publications();
       $publication = Publication::findOrFail($id);
       return view(
         'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])
       );
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-     public function view($id)
-     {
-        $publication = Publication::findOrFail($id);
-
-        // TODO - check 'status' to see if increment happened successfully
-        // $status should be true
-        $status = $publication->incrementViewCount();
-
-        return view(
-            'frontend.user.dashboard.my_publication.view', compact(['publication'])
-        );
-     }
 
     public function edit($id)
     {
@@ -189,6 +133,66 @@ class PublicationController extends Controller
                 'frontend.user.dashboard.my_publication.view', compact(['publication', 'divisions'])
             );
         };
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+      $divisions = "";
+      for ($i = 1;$i < 7; $i++){
+        $field = 'division_'.$i;
+        if (!empty($request->$field))
+            $divisions = $divisions.'|'.$request->$field;
+      }
+      $divisions = $divisions.'|';
+
+      $data = json_encode([
+          $request->volume,
+          $request->issues,
+          $request->pages,
+          $request->publisher,
+          $request->institution,
+          $request->conference,
+          $request->publication_author,
+          FAVORITES_DEFAULT,
+          VIEWS_DEFAULT
+      ]);
+
+      $inputs = [
+        'name' => $request->name,
+        'description' => $request->description,
+        'data' => $data,
+        'divisions' => $divisions,
+        'keywords' => $request->keywords,
+        'visibility' => $request->visibility,
+        'owner_id' => Auth::user()->id,
+        'deleted' => 0,
+        'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
+      ];
+
+      $publication = new Publication($inputs);
+      $publication->save();
+
+      if ($request->document) {
+          $contentMediaData = [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => $request->document,
+              'content_id' => $publication->id
+          ];
+
+          $contentMedia = new ContentMedia($contentMediaData);
+          $contentMedia->save();
+      }
+
+      return redirect('my_publications')
+            ->withFlashSuccess("Publication created successfully!");
     }
 
     /**
@@ -236,6 +240,19 @@ class PublicationController extends Controller
 
       $publication->data = $data;
       $publication->save();
+
+      if ($request->document) {
+          $contentMediaData = [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => $request->document,
+              'content_id' => $publication->id
+          ];
+
+          $contentMedia = new ContentMedia($contentMediaData);
+          $contentMedia->save();
+      }
 
       return redirect('my_publications')
       ->withFlashSuccess("Successfully created publication!");

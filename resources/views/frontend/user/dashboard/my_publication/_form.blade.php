@@ -2,7 +2,7 @@
 <div id="main_publication_form">
 
   <div class="form-group">
-    {!! Form::label('title', "Title", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
+    {!! Form::label('name', "Title", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class = "col-xs col-sm-6">
       {!! Form::input('text', 'name', null, ['class' => 'form-control']) !!}
     </div>
@@ -60,12 +60,12 @@
         Public
       </label>
       <label class="radio-inline">
-        {!! Form::radio('visibility', '0', false) !!}
-        Visible only to me
+        {!! Form::radio('visibility', '2', false) !!}
+        Visible to contacts
       </label>
       <label class="radio-inline">
-        {!! Form::radio('visibility', '2', false) !!}
-        Visible only to contacts
+        {!! Form::radio('visibility', '0', false) !!}
+        Visible only to me
       </label>
     </div>
   </div>
