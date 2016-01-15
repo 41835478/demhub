@@ -78,7 +78,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 									->where('deleted', 0)
 									->orderBy('id', 'DESC');
   }
-
+	
 	/**
 	 * @return mixed
 	 */
