@@ -24,6 +24,7 @@
 						.nav-search-text,
 						.nav-searchbar,
 						.nav-search-icon-style{
+							border: none;
 							-webkit-transition: all 0.4s ease;
 							-moz-transition: all 0.4s ease;
 							-o-transition: all 0.4s ease;
@@ -31,7 +32,11 @@
 						}
 						.nav-search-text.active,
 						.nav-searchbar.active,
-						.nav-search-icon-style.active{
+						.nav-search-icon-style.active,
+						.nav-search-text:focus,
+						.nav-searchbar:focus,
+						.nav-search-icon-style:focus{
+							box-shadow: none;
 							background-color: #fff !important;
 							color: #ed6b00 !important;
 						}
@@ -43,7 +48,7 @@
 						{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 						<div class="form-group" style="padding-left:15%;">
 							<div class="input-group searchbar-group" style="width: 100%">
-								<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 8px;">
+								<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 9px;">
 									<option value="all">All</option>
 									<option value="articles">Articles</option>
 									<option value="users">Users</option>
@@ -51,7 +56,7 @@
 									<option value="resources">Resources</option>
 								</select>
 								<input name="query_term" class="form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
-								<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 8.5px">
+								<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
 									<i class="fa fa-search"></i>
 								</button>
 							</div>
@@ -149,22 +154,40 @@
 	</div>
 </nav>
 <script>
-	$(".nav-searchbar").focus(function() {
-		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
-		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
-		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
-	});
+//	$(".nav-searchbar").focus(function() {
+//		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
+//		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
+//		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
+//	});
 
 	$(".searchbar-group").mouseenter(function() {
-		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
-		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
-		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
+		search_focus(true);
+	})
+	.mouseleave(function() {
+		search_focus(false);
 	});
 
-	$("#top-menu").mouseleave(function() {
-		$(".nav-searchbar").removeClass("active");//.attr("style","background-color:#546f7a;");
-		$(".nav-search-icon-style").removeClass("active");//.attr("style","background-color: #546f7a;color: #fff;");
-		$(".nav-search-text").removeClass("active");//.attr("style","background-color:#455a63;color:#fff;");
+	$(".nav-searchbar, .nav-search-text, .nav-search-icon-style").blur(function(){
+		search_focus(false);
 	});
+
+	function search_focus(give){
+		if(give){
+			$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
+			$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
+			$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
+		} else {
+			if($(".nav-searchbar").val().trim() == ""
+				&& !$(".nav-searchbar").is(":focus")
+				&& !$(".nav-search-icon-style").is(":focus")
+				&& !$(".nav-search-text").is(":focus"))
+			{
+				$(".nav-searchbar").removeClass("active");//.attr("style","background-color:#546f7a;");
+				$(".nav-search-icon-style").removeClass("active");//.attr("style","background-color: #546f7a;color: #fff;");
+				$(".nav-search-text").removeClass("active");//.attr("style","background-color:#455a63;color:#fff;");
+			}
+
+		}
+	}
 
 </script>
