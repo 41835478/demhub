@@ -128,6 +128,7 @@
             </div>
           </div>
 
+
           <div class="form-group">
             {!! Form::label('job_title', 'Job Title', ['class' => 'col-lg-3 control-label','style' => 'font-size:88%']) !!}
             <div class="col-lg-8">

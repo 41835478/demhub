@@ -19,7 +19,7 @@
         <div class="color-label division_{{$currentDivision->slug}}"></div>
       @endforelse
 
-      <div class="inner-feedsbox">
+      <div class="inner-peoplebox">
         <div class="article-background" style=
         <?php
         $neededSearchValue=$item["id"];
@@ -120,10 +120,7 @@
               $str = substr($description, 0, 150) . '...';
               echo strip_tags($str);
             }
-            elseif (strlen($description) > 140){
-              $str = substr($description, 0, 140) . '...';
-              echo strip_tags($str);
-            } else{
+             else{
               echo strip_tags($description);
             }
           ?>
@@ -148,7 +145,7 @@
               <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
-              
+
 
 
               @endif

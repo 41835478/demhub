@@ -1,3 +1,27 @@
+.division-text_health {
+  color: #0D8E56;
+}
+
+.division-text_science {
+  color: #1D73A3;
+}
+
+.division-text_response {
+  color: #DB9421;
+}
+
+.division-text_security {
+  color: #848889;
+}
+
+.division-text_continuity {
+  color: #933131;
+}
+
+.division-text_humanitarian {
+  color: #754293;
+}
+
 .division_health {
   background-color: #0D8E56;
 }
@@ -3319,11 +3343,16 @@ button.btn-greytone:active {
   height: 370px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
-  padding: 15px 0px 5px 0px;
+  padding: 0px 5px 5px 0px;
   border: 1px solid #ddd;
   float: left;
   position: relative;
   text-transform: capitalize;
+}
+
+.inner-peoplebox {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .peoplebox-teaser {
