@@ -29,7 +29,7 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('author', "author", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
+    {!! Form::label('author', "Author", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6">
       <?php $name = isset($publication) ? $publication->author() : Auth::user()->full_name() ?>
       {!! Form::input('text', 'publication_author', $name, ['class' => 'form-control ', 'maxlength'=>'255']) !!}
@@ -38,12 +38,12 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('publication_date', "DATE", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
+    {!! Form::label('publication_date', "Date", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6 input-group date" id='datetimepicker1' style="padding-left:10px;padding-right:10px">
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
-      @if (!empty($publication->publish_date))
+      @if (isset($publication->publish_date))
         <input type="text" name="publication_date" id="publication_date" class="form-control" value="{{date_format(new DateTime($publication->publication_date), 'd/m/Y')}}" required/>
       @else
         {!! Form::input('publication_date', 'publication_date', null, ['class' => 'form-control','required', 'id' => 'publication_date']) !!}
@@ -71,12 +71,11 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('null', "DIVISION", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
+    {!! Form::label('null', "Division", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class="col-sm-6" style='padding-top:8px'>
 
       @foreach($divisions as $div)
-        <?php $publicationDivisions = $publication->divisions() ?>
-        @if(!empty($publicationDivisions) && array_key_exists($div->slug, $publicationDivisions))
+        @if($publication->divisions() !== NULL && array_key_exists($div->slug, $publication->divisions()))
           {!! Form::checkbox("division_{$div->id}", $div->id, true, ['class' => '']) !!}
         @else
           {!! Form::checkbox("division_{$div->id}", $div->id, false, ['class' => '']) !!}
@@ -87,7 +86,7 @@
     </div>
   </div>
   <div class="form-group">
-    {!! Form::label('keywords', "tags", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
+    {!! Form::label('keywords', "Tags", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
     <div class=" col-sm-6">
       {!! Form::input('keywords', 'keywords', null, ['class' => 'form-control', 'placeholder' => 'tsunami, tornado, ebola']) !!}
     </div>
