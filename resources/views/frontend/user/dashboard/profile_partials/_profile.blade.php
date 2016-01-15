@@ -4,7 +4,7 @@
   <div id="content" class="animated fadeIn" style="">
     <div class="row center-block mt10" style="text-transform:uppercase">
 
-      {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
+      {!! Form::model($user, ['route' => 'update_profile', 'files' => true, 'class' => 'form-horizontal', 'method' => 'PATCH','data-toggle'=>'validator', 'data-delay'=>'1100']) !!}
 
         <div class="col-md-4">
 
@@ -31,24 +31,26 @@
         <div id="infoSectionMiddle" class="col-md-4" style="">
 
           <div class="form-group">
-            {!! Form::label('first_name', 'First Name', ['class' => 'col-lg-3 control-label','style' => 'font-size:88%']) !!}
-            <div class="col-lg-8">
-              {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
-            </div>
-          </div>
+            {!! Form::label('name', 'Name', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
 
-          <div class="form-group">
-            {!! Form::label('last_name', 'Last Name', ['class' => 'col-lg-3 control-label','style' => 'font-size:88%']) !!}
-            <div class="col-lg-8">
-              {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
-            </div>
+              {{-- <span class="input-group-addon"><i class="fa fa-user"></i></span> --}}
+              <div class="col-lg-8" style="padding-bottom:15px">
+                {!! Form::input('first_name','first_name', $user->first_name, ['class' => 'form-control', 'placeholder' => 'First Name','required','id' => 'first_name']) !!}
+              </div>
+
+              <div class="col-lg-8 col-lg-offset-3" style="">
+                {!! Form::input('last_name', 'last_name', $user->last_name, ['class' => 'form-control', 'placeholder' => 'Last Name','required','id' => 'last_name','style' => 'border-radius:4px']) !!}
+              </div>
+
+            <div class="help-block with-errors"></div>
           </div>
 
           <div class="form-group">
             {!! Form::label('bio', 'Bio', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
             <div class="col-lg-8">
-              {!! Form::textarea('bio', $user->bio, ['class' => 'form-control']) !!}
+              {!! Form::textarea('bio', $user->bio, ['class' => 'form-control','rows'=>"13","maxlength" => '800']) !!}
             </div>
+
           </div>
 
 
