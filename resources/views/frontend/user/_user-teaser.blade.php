@@ -33,7 +33,7 @@
             {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
               {!! Form::token() !!}
               <button type="submit" class="btn btn-greytone btn-sm" style="margin-left:5px;">
-                <i class="glyphicon glyphicon-ok"></i> UNFOLLOW
+                <i class="glyphicon glyphicon-ok"></i><span style="font-size:85%"> UNFOLLOW</span>
               </button>
               {{-- <a type="button" class="btn btn-style-alt btn-sm" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</span>

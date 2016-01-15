@@ -11,7 +11,7 @@
 //
 .peoplebox {
   min-width: 100%;
-  height:370px;
+  height:375px;
   display:inline-block;
   margin:10px 0px 5px 0px;
   padding:0px 5px 5px 0px;
@@ -19,7 +19,6 @@
   solid #ddd;
   float:left;
   position:relative;
-  text-transform: capitalize;
 }
 .inner-peoplebox {
   padding-left: 10px;
@@ -38,11 +37,16 @@
   position:relative;
   text-transform: capitalize;
 }
+.border-only {
+  background-color: transparent !important;
+}
 .main-orange {
    color: #ed6b00;
+   text-transform: capitalize;
 }
 .main-blue-color {
    color:#35464d;
+   text-transform: capitalize;
 }
 .triangle-right {
 	// border-top: 50px solid transparent;

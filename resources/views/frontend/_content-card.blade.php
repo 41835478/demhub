@@ -146,8 +146,6 @@
                 {{ $keyword }}
               </a>
 
-
-
               @endif
             @endforeach
 

@@ -14,7 +14,7 @@
     <a type="button" class="label label-default triangle-right dropdown-toggle"
     data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
     style="font-size:82%;margin-right:2px">
-    and {{count($keywords)}} other keywords
+    and {{count($keywords)-1}} other keywords
       <span class="caret"></span>
     </a>
 
