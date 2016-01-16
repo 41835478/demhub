@@ -20,6 +20,9 @@ use App\Http\Requests\Frontend\PublicationRequest;
  */
 class PublicationController extends Controller
 {
+    const FAVORITES_DEFAULT = 0;
+	const VIEWS_DEFAULT = 1;
+
     /**
      * Create a new publication controller instance
      *
@@ -65,6 +68,42 @@ class PublicationController extends Controller
             ->withFlashSuccess("Publication(s) deleted");
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function view($id)
+    {
+        $publication = Publication::findOrFail($id);
+
+        // TODO - check 'status' to see if increment happened successfully
+        // $status should be true
+        $status = $publication->incrementViewCount();
+
+        return view(
+            'frontend.user.dashboard.my_publication.view', compact(['publication'])
+        );
+    }
+
+    public function edit($id)
+    {
+        $divisions = Division::all();
+        $publication = Publication::findOrFail($id);
+        $pubUploaderId = $publication->uploader->id;
+
+        // FIXME Move authorization if statement to request section
+        if ($pubUploaderId == Auth::user()->id){
+            return view(
+                'frontend.user.dashboard.my_publication.edit', compact(['publication', 'divisions'])
+            );
+        } else {
+            return view(
+                'frontend.user.dashboard.my_publication.view', compact(['publication', 'divisions'])
+            );
+        };
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -90,9 +129,8 @@ class PublicationController extends Controller
       $divisions = "";
       for ($i = 1;$i < 7; $i++){
         $field = 'division_'.$i;
-        if (!empty($request->$field)) {
+        if (!empty($request->$field))
             $divisions = $divisions.'|'.$request->$field;
-        }
       }
       $divisions = $divisions.'|';
 
@@ -104,12 +142,12 @@ class PublicationController extends Controller
           $request->institution,
           $request->conference,
           $request->publication_author,
-          0, //favorites
-          1 //view
+          FAVORITES_DEFAULT,
+          VIEWS_DEFAULT
       ]);
 
       $inputs = [
-        'name' => $request->title,
+        'name' => $request->name,
         'description' => $request->description,
         'data' => $data,
         'divisions' => $divisions,
@@ -123,72 +161,21 @@ class PublicationController extends Controller
       $publication = new Publication($inputs);
       $publication->save();
 
-      $contentMediaData = [
-          'description' => NULL,
-          'view_order' => 0,
-          'deleted' => false,
-          'resource' => $request->document,
-          'content_id' => $publication->id
-      ];
+      if ($request->document) {
+          $contentMediaData = [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => $request->document,
+              'content_id' => $publication->id
+          ];
 
-      $contentMedia = new ContentMedia($contentMediaData);
-      $contentMedia->save();
+          $contentMedia = new ContentMedia($contentMediaData);
+          $contentMedia->save();
+      }
 
       return redirect('my_publications')
             ->withFlashSuccess("Publication created successfully!");
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function preview($id)
-    {
-      $caret = 000;
-      $publications = Auth::user()->publications;
-      $publication = Publication::findOrFail($id);
-      return view(
-        'frontend.user.dashboard.my_publication.preview', compact(['publication','publications', 'caret'])
-      );
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-     public function view($id)
-     {
-        $publication = Publication::findOrFail($id);
-
-        // TODO - check 'status' to see if increment happened successfully
-        // $status should be true
-        $status = $publication->incrementViewCount();
-
-        return view(
-            'frontend.user.dashboard.my_publication.view', compact(['publication'])
-        );
-     }
-
-    public function edit($id)
-    {
-        $divisions = Division::all();
-        $publication = Publication::findOrFail($id);
-        $pubUploaderId = $publication->uploader->id;
-
-        // FIXME Move authorization if statement to request section
-        if ($pubUploaderId == Auth::user()->id){
-            return view(
-                'frontend.user.dashboard.my_publication.edit', compact(['publication', 'divisions'])
-            );
-        } else {
-            return view(
-                'frontend.user.dashboard.my_publication.view', compact(['publication', 'divisions'])
-            );
-        };
     }
 
     /**
@@ -236,6 +223,19 @@ class PublicationController extends Controller
 
       $publication->data = $data;
       $publication->save();
+
+      if ($request->document) {
+          $contentMediaData = [
+              'description' => NULL,
+              'view_order' => 0,
+              'deleted' => false,
+              'resource' => $request->document,
+              'content_id' => $publication->id
+          ];
+
+          $contentMedia = new ContentMedia($contentMediaData);
+          $contentMedia->save();
+      }
 
       return redirect('my_publications')
       ->withFlashSuccess("Successfully created publication!");

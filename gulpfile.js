@@ -11,7 +11,7 @@ elixir(function(mix) {
         .copy('resources/assets/js/frontend/dashboardtest/utility.js', 'public/js/dashboardtest')
         .copy('resources/assets/js/frontend/dashboardtest/demo.js', 'public/js/dashboardtest')
         .copy('resources/assets/js/frontend/dashboardtest/main.js', 'public/js/dashboardtest')
-
+        
         .sass([ // Process front-end stylesheets
             'frontend/main.scss'
         ], 'resources/assets/css/frontend/main.css')
@@ -30,14 +30,15 @@ elixir(function(mix) {
             'frontend/plugins/jquery.maphilight.js',
             'frontend/plugins/moment.js',
             'frontend/plugins/bootstrap-datetimepicker.js',
-            'frontend/coming-soon/jquery.countdown.js', // coming-soon js
+            'frontend/publications/index.js',
             'frontend/Page-animate/page-specific-animation.js', //some animations for multiple pages
-            'frontend/coming-soon/placeholders.min.js', // coming-soon js
-            'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
-            'frontend/plugins/validator.js', // coming-soon js
-            'frontend/coming-soon/main.config.js', // coming-soon js
-            'frontend/coming-soon/shader.js', // coming-soon js
-            'frontend/coming-soon/demo.js', // coming-soon js
+            // 'frontend/coming-soon/jquery.countdown.js', // coming-soon js
+            // 'frontend/coming-soon/placeholders.min.js', // coming-soon js
+            // 'frontend/coming-soon/flat-surface-shader.js', // coming-soon js
+            // 'frontend/plugins/validator.js', // coming-soon js
+            // 'frontend/coming-soon/main.config.js', // coming-soon js
+            // 'frontend/coming-soon/shader.js', // coming-soon js
+            // 'frontend/coming-soon/demo.js', // coming-soon js
             'frontend/divisions/feeds.js'
         ], 'public/js/frontend.js')
 

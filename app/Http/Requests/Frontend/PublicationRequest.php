@@ -26,7 +26,7 @@ class PublicationRequest extends Request {
 	public function rules()
 	{
 		return [
-      'title' => 'required',
+      'name' => 'required',
       'publication_date' => 'required',
 			'volume' => 'integer',
       'pages' => 'integer'
