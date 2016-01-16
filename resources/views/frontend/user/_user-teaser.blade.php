@@ -27,7 +27,7 @@
 
             @if(!empty($user->division) && strpos($user->division, "|") === false)
                   <p style="color:#999"> {{$user->division}} </p>
-            @else
+            @elseif(!empty($user->division))
 
               <?php $divisions = $user->divisions();   ?>
 
@@ -41,6 +41,7 @@
                 @endforeach
 
               @endif
+              @else
 
             @endif
 
