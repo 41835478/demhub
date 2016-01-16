@@ -6,7 +6,7 @@
       <div class="inner-feedsbox">
         <div class="col-sm-2">
           <div class="" style="margin: 0 auto; width:150px;">
-            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:147px;max-width:147px;margin-top:-15px']) !!}
+            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:135x;max-width:135px;margin-top:-15px']) !!}
           </div>
         </div>
         <div class="col-sm-7 col-sm-offset-1" style="text-align:left;">

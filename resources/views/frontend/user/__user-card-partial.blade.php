@@ -29,7 +29,7 @@
           <p style="color:#999">followers</p>
         </div>
         <div class="col-xs-4">
-          <h3 style="margin-bottom:0px">{{count($user->publications())}}</h3>
+          <h3 style="margin-bottom:0px">{{count($user->publications())-1}}</h3>
           <p style="color:#999">publications</p>
         </div>
         <div class="col-xs-4" style="padding-top:20px;padding-left:5px;">
