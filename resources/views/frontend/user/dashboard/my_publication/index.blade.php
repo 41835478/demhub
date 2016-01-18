@@ -38,7 +38,18 @@
             {!! Form::open(['route' => ['caret_publication_action', $caret], 'files' => true, 'class' => 'form-horizontal',
             'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form', 'id' => 'caretForm']) !!}
               @if(!empty($publications))
+              <script type="text/javascript">
+                var demos = {};
 
+                $(document).on("click", "a[data-bb]", function(e) {
+                    e.preventDefault();
+                    var type = $(this).data("bb");
+
+                    if (typeof demos[type] === 'function') {
+                        demos[type]();
+                    }
+                });
+              </script>
                 @foreach ($publications as $publication)
 
                   <tr>
@@ -63,7 +74,7 @@
                         </a>
                       @endif
 
-                      <a class="" href="{{ URL::to('publication/' . $publication->id) }}" style="padding-left:5px"
+                      <a class="" data-bb="publication{{$publication->id}}" href="#" style="padding-left:5px"
                         data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
                         <h3 class="icon assignment" style="margin:-2px"></h3>
                       </a>
@@ -83,6 +94,38 @@
                     <td>{{ $publication->views() }}</td>
 
                   </tr>
+
+                  <script type="text/javascript">
+                    demos.publication{{$publication->id}} = function() {
+                      bootbox.dialog({
+                        message: "I am a custom dialog",
+                        title: "{{$publication->name}}",
+                        buttons: {
+                          success: {
+                            label: "Success!",
+                            className: "btn-success",
+                            callback: function() {
+                              Example.show("great success");
+                            }
+                          },
+                          danger: {
+                            label: "Danger!",
+                            className: "btn-danger",
+                            callback: function() {
+                              Example.show("uh oh, look out!");
+                            }
+                          },
+                          main: {
+                            label: "Click ME!",
+                            className: "btn-primary",
+                            callback: function() {
+                              Example.show("Primary button");
+                            }
+                          }
+                        }
+                      });
+                    }
+                  </script>
 
                 @endforeach
 
@@ -104,4 +147,10 @@
       </div>
     </div>
   </section>
+
+
+@endsection
+
+@section('before-scripts-end')
+  {!! HTML::script("js/bootbox/bootbox.min.js") !!}
 @endsection
