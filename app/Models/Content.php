@@ -7,7 +7,9 @@ use DateTime;
 
 class Content extends Model
 {
-    use SingleTableInheritanceTrait;
+    // NOTE - when running the port over script in DashboardController
+    // Comment the following table out
+    // use SingleTableInheritanceTrait;
 
     /**
      * The table associated with the model.

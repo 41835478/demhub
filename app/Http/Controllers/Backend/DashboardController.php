@@ -18,6 +18,7 @@ use Riari\Forum\Models\Thread;
 use Illuminate\Http\Request;
 use Weblee\Mandrill\Mail;
 use League\Csv\Reader;
+use DB;
 use File;
 use	Carbon\Carbon;
 
@@ -413,74 +414,75 @@ class DashboardController extends Controller {
 	 */
 	public function runScript(Request $request)
 	{
-		Article::chunk(100, function($articles) {
-      foreach ($articles as $article) {
+		DB::table('articles')->chunk(100, function($articles) {
+      foreach ($articles as $index => $article) {
         $data = json_encode([
-					$article['language'],
-					$article['type']
+					$article->language,
+					$article->type
 				]);
-				$publish_date = $article['publish_date'] ?
-					Carbon::parse($article['publish_date']) : NULL;
+				$publish_date = $article->publish_date ?
+					Carbon::parse($article->publish_date) : NULL;
 
 				$content = Content::firstOrCreate([
 					'subclass' => 'article',
-					'name' => $article['title'],
-					'description' => $article['excerpt'],
+					'name' => $article->title,
+					'description' => $article->excerpt,
 					'data' => $data,
-					'divisions' => $article['divisions'],
-					'keywords' => $article['keywords'],
+					'divisions' => $article->divisions,
+					'keywords' => $article->keywords,
 					'slug' => NULL,
-					'url' => $article['source_url'],
-					'country' => $article['country'],
-					'state' => $article['state'],
-					'city' => $article['city'],
-					'lat' => $article['lat'],
-					'lng' => $article['lng'],
+					'url' => $article->source_url,
+					'country' => $article->country,
+					'state' => $article->state,
+					'city' => $article->city,
+					'lat' => $article->lat,
+					'lng' => $article->lng,
 					'pinned_by' => NULL,
 					'pinned_at' => NULL,
 					'visibility' => 1,
-					'status_flag' => $article['review'],
-					'owner_id' => $article['source_id'],
-					'deleted' => $article['deleted'],
+					'status_flag' => $article->review,
+					'owner_id' => $article->source_id,
+					'deleted' => $article->deleted,
 					'publish_date' => $publish_date
 				]);
 
-				$media = ArticleMedia::where('article_id', $article['id'])->first();
+				$media = DB::table('article_medias')->where('article_id', $article->id)->first();
 
 				if ($media) {
-					$media = $media->toArray();
 					$newMedia = ContentMedia::firstOrCreate([
 						'content_id' => $content['id'],
-						'resource_file_name' => $media['filename'],
+						'resource_file_name' => $media->filename,
 						'resource_file_size' => NULL,
-						'resource_content_type' => $media['filetype'],
-						'resource_updated_at' => $media['updated_at'],
-						'description' => $media['description'],
-						'view_order' => $media['view_order'],
-						'deleted' => $media['deleted']
+						'resource_content_type' => $media->filetype,
+						'resource_updated_at' => $media->updated_at,
+						'description' => $media->description,
+						'view_order' => $media->view_order,
+						'deleted' => $media->deleted
 					]);
 				}
       }
     });
 
-		InfoResource::chunk(100, function($infoResources) {
+		DB::table('info_resources')->chunk(100, function($infoResources) {
       foreach ($infoResources as $infoResource) {
-				// TODO - Parse divisions function
-				// convertResourceMeta($divs_str, $keywords_str)
-				//
-				$infoDivs = $infoResource['divisions'];
 
-        $content = Content::firstOrCreate([
+				// TODO - Parse divisions function
+
+				$divisions = [];
+				$keywords = [];
+				$meta = $this->convertResourceMeta($infoResource->divisions, $infoResource->keywords);
+
+				$content = Content::firstOrCreate([
 					'subclass' => 'infoResource',
-					'name' => $infoResource['name'],
+					'name' => $infoResource->name,
 					'description' => NULL,
 					'data' => NULL,
-					'divisions' => $infoDivs,
-					'keywords' => $infoResource['keywords'],
+					'divisions' => $meta['divisions'],
+					'keywords' => $meta['keywords'],
 					'slug' => NULL,
-					'url' => $infoResource['url'],
-					'country' => $infoResource['country'],
-					'state' => $infoResource['region'],
+					'url' => $infoResource->url,
+					'country' => $infoResource->country,
+					'state' => $infoResource->region,
 					'city' => NULL,
 					'lat' => NULL,
 					'lng' => NULL,
@@ -490,12 +492,12 @@ class DashboardController extends Controller {
 					'status_flag' => NULL,
 					'owner_id' => NULL,
 					'deleted' => false,
-					'publish_date' => $infoResource['publish_date']
+					'publish_date' => NULL
 				]);
       }
     });
 
-		// Thread::chunk(100, function($threads) {
+		// DB::table('forum_threads')->chunk(100, function($threads) {
     //   foreach ($threads as $thread) {
 		// 		$pinned_date = $thread['pinned'] ? Carbon::now() : NULL;
 		// 		$division = Division::where('id', '=', $thread['parent_category'])->first();
@@ -528,31 +530,32 @@ class DashboardController extends Controller {
     //   }
     // });
 
-		Publication::chunk(100, function($publications) {
+		DB::table('publications')->chunk(100, function($publications) {
       foreach ($publications as $publication) {
-        $data = json_encode([
-					$publication['volume'],
-					$publication['issues'],
-					$publication['pages'],
-					$publication['publisher'],
-					$publication['institution'],
-					$publication['conference'],
-					$publication['pubilcation_author'],
-					$publication['favorites'],
-					$publication['views']
+				$data = json_encode([
+					$publication->volume,
+					$publication->issues,
+					$publication->pages,
+					$publication->publisher,
+					$publication->institution,
+					$publication->conference,
+					$publication->publication_author,
+					$publication->favorites,
+					$publication->views
 				]);
-				$publish_date = $publication['publication_date'] ?
-					Carbon::parse($publication['publication_date']) : NULL;
 
-				$visibility = $publication['privacy'] ?: '1';
+				$publish_date = $publication->publication_date ?
+					Carbon::parse($publication->publication_date) : NULL;
+
+				$visibility = $publication->privacy ?: '1';
 
 				$content = Content::firstOrCreate([
 					'subclass' => 'publication',
-					'name' => $publication['title'],
-					'description' => $publication['description'],
+					'name' => $publication->title,
+					'description' => $publication->description,
 					'data' => $data,
-					'divisions' => $publication['divisions'],
-					'keywords' => $publication['keywords'],
+					'divisions' => $publication->divisions,
+					'keywords' => $publication->keywords,
 					'slug' => NULL,
 					'url' => NULL,
 					'country' => NULL,
@@ -564,18 +567,18 @@ class DashboardController extends Controller {
 					'pinned_at' => NULL,
 					'visibility' => $visibility,
 					'status_flag' => NULL,
-					'owner_id' => $publication['user_id'],
-					'deleted' => $publication['deleted'],
+					'owner_id' => $publication->user_id,
+					'deleted' => $publication->deleted,
 					'publish_date' => $publish_date
 				]);
 
-				if ($publication['document_file_name']) {
+				if ($publication->document_file_name) {
 					$newMedia = ContentMedia::firstOrCreate([
 						'content_id' => $content['id'],
-						'resource_file_name' => $publication['document_file_name'],
-						'resource_file_size' => $publication['document_file_size'],
-						'resource_content_type' => $publication['document_content_type'],
-						'resource_updated_at' => $publication['document_updated_at'],
+						'resource_file_name' => $publication->document_file_name,
+						'resource_file_size' => $publication->document_file_size,
+						'resource_content_type' => $publication->document_content_type,
+						'resource_updated_at' => $publication->document_updated_at,
 						'description' => NULL,
 						'view_order' => 0,
 						'deleted' => false
@@ -588,13 +591,20 @@ class DashboardController extends Controller {
 		return view('backend.scripts', compact('scripts'));
 	}
 
-	public static function convertResourceMeta($divs_str, $keywords_str)
-  {
+	private function convertResourceMeta($divs_str, $keywords_str)
+  {		
       $divs = explode(',', $divs_str);
       $keywords = explode(',', $keywords_str);
-      $new_divs = array();
-      $new_keywords = array();
-      $conversion = array('EM'=>'1',''=>'2',''=>'3',''=>'4',''=>'5',''=>'6');
+      $new_divs = [];
+      $new_keywords = [];
+      $conversion = [
+				'heath'=>'1','health'=>'1',
+				'science research Academia'=>'2','Academia'=>'2','Research'=>'2','Science'=>'2','Science Research'=>'2',
+				'EM'=>'3','practitioner'=>'3','Response'=>'3',
+				'Civil'=>'4','Cyber Security'=>'4','civil protection'=>'4','cyber terrorism'=>'4',
+				'business continuity'=>'5','business'=>'5','continuity'=>'5',
+				'ngo'=>'6','humanitarian'=>'6',
+			];
 
       foreach($divs as $div){
           $found = false;
