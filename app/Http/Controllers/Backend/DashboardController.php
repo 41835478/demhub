@@ -463,13 +463,13 @@ class DashboardController extends Controller {
       }
     });
 
-		// TODO - Parse divisions function
-		// convertResourceMeta($divs_str, $keywords_str)
-		//
-		$infoDivs = $infoResource['divisions'];
-
 		InfoResource::chunk(100, function($infoResources) {
       foreach ($infoResources as $infoResource) {
+				// TODO - Parse divisions function
+				// convertResourceMeta($divs_str, $keywords_str)
+				//
+				$infoDivs = $infoResource['divisions'];
+
         $content = Content::firstOrCreate([
 					'subclass' => 'infoResource',
 					'name' => $infoResource['name'],
@@ -495,38 +495,38 @@ class DashboardController extends Controller {
       }
     });
 
-		Thread::chunk(100, function($threads) {
-      foreach ($threads as $thread) {
-				$pinned_date = $thread['pinned'] ? Carbon::now() : NULL;
-				$division = Division::where('id', '=', $thread['parent_category'])->first();
-				$deleted = $thread['deleted_at'] ? true : false;
-
-				$content = Content::firstOrCreate([
-					'subclass' => 'thread',
-					'name' => $thread['title'],
-					'description' => NULL,
-					'data' => json_encode([
-						$thread['view_count']
-					]),
-					'divisions' => '|'.$division->id.'|',
-					'keywords' => NULL,
-					'slug' => NULL,
-					'url' => NULL,
-					'country' => NULL,
-					'state' => NULL,
-					'city' => NULL,
-					'lat' => NULL,
-					'lng' => NULL,
-					'pinned_by' => NULL,
-					'pinned_at' => $pinned_date,
-					'visibility' => 1,
-					'status_flag' => $thread['locked'],
-					'owner_id' => $thread['author_id'],
-					'deleted' => $deleted,
-					'publish_date' => NULL
-				]);
-      }
-    });
+		// Thread::chunk(100, function($threads) {
+    //   foreach ($threads as $thread) {
+		// 		$pinned_date = $thread['pinned'] ? Carbon::now() : NULL;
+		// 		$division = Division::where('id', '=', $thread['parent_category'])->first();
+		// 		$deleted = $thread['deleted_at'] ? true : false;
+		//
+		// 		$content = Content::firstOrCreate([
+		// 			'subclass' => 'thread',
+		// 			'name' => $thread['title'],
+		// 			'description' => NULL,
+		// 			'data' => json_encode([
+		// 				$thread['view_count']
+		// 			]),
+		// 			'divisions' => '|'.$division->id.'|',
+		// 			'keywords' => NULL,
+		// 			'slug' => NULL,
+		// 			'url' => NULL,
+		// 			'country' => NULL,
+		// 			'state' => NULL,
+		// 			'city' => NULL,
+		// 			'lat' => NULL,
+		// 			'lng' => NULL,
+		// 			'pinned_by' => NULL,
+		// 			'pinned_at' => $pinned_date,
+		// 			'visibility' => 1,
+		// 			'status_flag' => $thread['locked'],
+		// 			'owner_id' => $thread['author_id'],
+		// 			'deleted' => $deleted,
+		// 			'publish_date' => NULL
+		// 		]);
+    //   }
+    // });
 
 		Publication::chunk(100, function($publications) {
       foreach ($publications as $publication) {
@@ -544,6 +544,8 @@ class DashboardController extends Controller {
 				$publish_date = $publication['publication_date'] ?
 					Carbon::parse($publication['publication_date']) : NULL;
 
+				$visibility = $publication['privacy'] ?: '1';
+
 				$content = Content::firstOrCreate([
 					'subclass' => 'publication',
 					'name' => $publication['title'],
@@ -560,7 +562,7 @@ class DashboardController extends Controller {
 					'lng' => NULL,
 					'pinned_by' => NULL,
 					'pinned_at' => NULL,
-					'visibility' => $publication['privacy'],
+					'visibility' => $visibility,
 					'status_flag' => NULL,
 					'owner_id' => $publication['user_id'],
 					'deleted' => $publication['deleted'],
