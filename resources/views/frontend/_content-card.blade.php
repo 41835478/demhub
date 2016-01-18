@@ -42,7 +42,7 @@
             margin-top:8px;
             margin-left:-10px;
             margin-right:-10px;
-            height:250px;
+            height:230px;
             background-position-y: 30%;
                               "';
         }
@@ -52,7 +52,7 @@
         ?>>
       <div style=
       @if (isset($neededObject[0]))
-      "background-color:rgba(200, 200, 200, 0.5);height:250px;"
+      "background-color:rgba(200, 200, 200, 0.5);height:230px;"
       @else
       ""
       @endif
@@ -116,8 +116,8 @@
           <?php
           $description = $item['excerpt'];
 
-            if (isset($neededObject[0]) && strlen($description) > 150){
-              $str = substr($description, 0, 150) . '...';
+            if (isset($neededObject[0]) && strlen($description) > 127){
+              $str = substr($description, 0, 127) . '...';
               echo strip_tags($str);
             }
              else{
@@ -145,8 +145,6 @@
               <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
-
-
 
               @endif
             @endforeach

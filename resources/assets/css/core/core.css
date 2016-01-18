@@ -3378,14 +3378,13 @@ button.btn-greytone:active {
 
 .peoplebox {
   min-width: 100%;
-  height: 370px;
+  height: 375px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 0px 5px 5px 0px;
   border: 1px solid #ddd;
   float: left;
   position: relative;
-  text-transform: capitalize;
 }
 
 .inner-peoplebox {
@@ -3405,12 +3404,18 @@ button.btn-greytone:active {
   text-transform: capitalize;
 }
 
+.border-only {
+  background-color: transparent !important;
+}
+
 .main-orange {
   color: #ed6b00;
+  text-transform: capitalize;
 }
 
 .main-blue-color {
   color: #35464d;
+  text-transform: capitalize;
 }
 
 .triangle-right {
