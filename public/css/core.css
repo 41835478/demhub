@@ -3404,10 +3404,6 @@ button.btn-greytone:active {
   text-transform: capitalize;
 }
 
-.border-only {
-  background-color: transparent !important;
-}
-
 .main-orange {
   color: #ed6b00;
   text-transform: capitalize;

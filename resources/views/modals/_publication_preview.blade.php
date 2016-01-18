@@ -1,4 +1,4 @@
-<div class="modal fade" id="publicationModal">
+<div class="modal fade" tabindex="-1" id="publicationModal{{ $publication->id }}">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="text-align:center">
