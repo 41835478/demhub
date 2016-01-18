@@ -11,7 +11,7 @@
   @elseif($i==2)
   {{-- Creates a keyword dropup menu  AND adds second keyword to the dropup--}}
   <div class="dropup" style="display:inline">
-    <a type="button" class="btn btn-default dropdown-toggle"
+    <a type="button" class="dropdown-toggle"
     data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
     style="font-size:82%;margin-right:2px;padding-right:20px;padding-left:20px">
     and {{count($divisions)-1}} other divisions
