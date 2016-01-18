@@ -42,7 +42,7 @@
         <td>
           @foreach ($publication->divisions() as $divSlug => $divName)
             <a href="{{url('/division/'.$divSlug)}}" >
-              <img class="img-circle img-responsive division_{{ $divSlug }}" style="width:18px;height:18px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png">
+              <img title="{{ $divName }}" class="img-circle img-responsive division_{{ $divSlug }}" style="width:18px;height:18px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png">
             </a>
           @endforeach
         </td>

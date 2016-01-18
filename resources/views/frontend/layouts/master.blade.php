@@ -53,8 +53,8 @@
     @else
       <div class="wrapper">
         @if (Auth::user())
-            @include('frontend.includes._feedback_sidebar')
-            	@include('modals._feedback_thankyou')
+          @include('frontend.includes._feedback_sidebar')
+          @include('modals._feedback_thankyou')
         @endif
 
         @include('frontend.navigation._navigation')

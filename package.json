@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "laravel-elixir": "^3.0.0",
-    "bootstrap-sass": "^3.0.0",
-    "bootbox": "^4.4.0"
+    "bootstrap-sass": "^3.0.0"
   }
 }
