@@ -1,27 +1,3 @@
-.division-text_health {
-  color: #0D8E56;
-}
-
-.division-text_science {
-  color: #1D73A3;
-}
-
-.division-text_response {
-  color: #DB9421;
-}
-
-.division-text_security {
-  color: #848889;
-}
-
-.division-text_continuity {
-  color: #933131;
-}
-
-.division-text_humanitarian {
-  color: #754293;
-}
-
 .division_health {
   background-color: #0D8E56;
 }
@@ -84,14 +60,6 @@
   display: block;
   float: left;
   margin-top: -15px;
-}
-
-.color-label-vertical {
-  width: 20px;
-  display: block;
-  float: left;
-  margin-top: 0px;
-  margin-left: -15px;
 }
 
 body {
@@ -627,44 +595,6 @@ li.pub-descrip {
   display: inline;
 }
 
-.publication-detail-label {
-  background-color: #ccc;
-  text-align: center;
-  padding-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.my-publication-label {
-  background-color: #ccc;
-  text-align: center;
-  padding-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.health-font-color {
-  color: #0D8E56;
-}
-
-.science-font-color {
-  color: #1D73A3;
-}
-
-.response-font-color {
-  color: #DB9421;
-}
-
-.security-font-color {
-  color: #848889;
-}
-
-.continuity-font-color {
-  color: #933131;
-}
-
-.humanitarian-font-color {
-  color: #754293;
-}
-
 @media (min-width: 992px) and (max-width: 1199px) {
   .pub-dropdown {
     width: 100%;
@@ -707,7 +637,6 @@ li.pub-descrip {
 #top-menu li a:hover,
 #top-menu li a:focus {
   color: #ed6b00;
-  text-decoration: none;
 }
 
 #top-menu li.active a {
@@ -1068,7 +997,7 @@ div#welcome-division {
 }
 
 .feedsbox {
-  height: 510px;
+  height: 300px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
@@ -3456,18 +3385,14 @@ button.btn-greytone:active {
 
 .peoplebox {
   min-width: 100%;
-  height: 375px;
+  height: 370px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
-  padding: 0px 5px 5px 0px;
+  padding: 15px 0px 5px 0px;
   border: 1px solid #ddd;
   float: left;
   position: relative;
-}
-
-.inner-peoplebox {
-  padding-left: 10px;
-  padding-right: 10px;
+  text-transform: capitalize;
 }
 
 .peoplebox-teaser {
@@ -3482,64 +3407,12 @@ button.btn-greytone:active {
   text-transform: capitalize;
 }
 
-.feedsbox-teaser {
-  min-width: 100%;
-  height: 180px;
-  display: inline-block;
-  margin: 10px 0px 5px 0px;
-  padding: 0px 0px 5px 0px;
-  border: 1px solid #ddd;
-  float: left;
-  position: relative;
-  text-transform: capitalize;
-}
-
-.inner-feedsbox-teaser {
-  padding-left: 5px !important;
-  padding-right: 10px;
-}
-
 .main-orange {
   color: #ed6b00;
-  text-transform: capitalize;
 }
 
 .main-blue-color {
   color: #35464d;
-  text-transform: capitalize;
-}
-
-.triangle-right {
-  background: #eee;
-  border-radius: 3px 0 0 3px;
-  color: #999;
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding-right: 10px !important;
-  position: relative;
-  margin: 0 10px 10px 0;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
-}
-
-.triangle-right::after {
-  background: #fff;
-  border-bottom: 11px solid transparent;
-  border-left: 8px solid #777777;
-  border-top: 11px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.arrows {
-  padding-bottom: 2px;
-  -webkit-transform: scale(0.15, 0.15);
-  transform: scale(0.15, 0.15);
-  position: relative;
-  z-index: -10;
 }
 
 div#message {
@@ -3828,6 +3701,10 @@ div#welcome_sign-up form span {
 #news {
   background-size: 8.5%;
   background-repeat: no-repeat;
+}
+
+.label-default {
+  background-color: #cccccc !important;
 }
 
 .label-default li a {

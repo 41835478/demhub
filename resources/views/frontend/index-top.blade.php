@@ -16,7 +16,7 @@
 					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'img-responsive demhub-logo-landing', 'width' => '340')) !!}
 
 					<div class ="landing-slogan col-md-10">
-						THE DISASTER & EMERGENCY MANAGEMENT NETWORK
+						THE DISASTE & EMERGENCY MANAGEMENT NETWORK
 					</div>
 					<br>
 
