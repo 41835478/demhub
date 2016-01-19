@@ -466,12 +466,7 @@ class DashboardController extends Controller {
 		DB::table('info_resources')->chunk(100, function($infoResources) {
       foreach ($infoResources as $infoResource) {
 
-				// TODO - Parse divisions function
-
-				$divisions = [];
-				$keywords = [];
 				$meta = $this->convertResourceMeta($infoResource->divisions, $infoResource->keywords);
-
 				$content = Content::firstOrCreate([
 					'subclass' => 'infoResource',
 					'name' => $infoResource->name,
@@ -497,38 +492,38 @@ class DashboardController extends Controller {
       }
     });
 
-		// DB::table('forum_threads')->chunk(100, function($threads) {
-    //   foreach ($threads as $thread) {
-		// 		$pinned_date = $thread['pinned'] ? Carbon::now() : NULL;
-		// 		$division = Division::where('id', '=', $thread['parent_category'])->first();
-		// 		$deleted = $thread['deleted_at'] ? true : false;
-		//
-		// 		$content = Content::firstOrCreate([
-		// 			'subclass' => 'thread',
-		// 			'name' => $thread['title'],
-		// 			'description' => NULL,
-		// 			'data' => json_encode([
-		// 				$thread['view_count']
-		// 			]),
-		// 			'divisions' => '|'.$division->id.'|',
-		// 			'keywords' => NULL,
-		// 			'slug' => NULL,
-		// 			'url' => NULL,
-		// 			'country' => NULL,
-		// 			'state' => NULL,
-		// 			'city' => NULL,
-		// 			'lat' => NULL,
-		// 			'lng' => NULL,
-		// 			'pinned_by' => NULL,
-		// 			'pinned_at' => $pinned_date,
-		// 			'visibility' => 1,
-		// 			'status_flag' => $thread['locked'],
-		// 			'owner_id' => $thread['author_id'],
-		// 			'deleted' => $deleted,
-		// 			'publish_date' => NULL
-		// 		]);
-    //   }
-    // });
+		DB::table('forum_threads')->chunk(100, function($threads) {
+      foreach ($threads as $thread) {
+				$pinned_date = $thread->pinned ? Carbon::now() : NULL;
+				$division = Division::where('id', '=', $thread->parent_category)->first();
+				$deleted = $thread->deleted_at ? true : false;
+
+				$content = Content::firstOrCreate([
+					'subclass' => 'thread',
+					'name' => $thread->title,
+					'description' => NULL,
+					'data' => json_encode([
+						$thread->view_count
+					]),
+					'divisions' => '|'.$division->id.'|',
+					'keywords' => NULL,
+					'slug' => NULL,
+					'url' => NULL,
+					'country' => NULL,
+					'state' => NULL,
+					'city' => NULL,
+					'lat' => NULL,
+					'lng' => NULL,
+					'pinned_by' => NULL,
+					'pinned_at' => $pinned_date,
+					'visibility' => 1,
+					'status_flag' => $thread->locked,
+					'owner_id' => $thread->author_id,
+					'deleted' => $deleted,
+					'publish_date' => NULL
+				]);
+      }
+    });
 
 		DB::table('publications')->chunk(100, function($publications) {
       foreach ($publications as $publication) {
@@ -547,15 +542,23 @@ class DashboardController extends Controller {
 				$publish_date = $publication->publication_date ?
 					Carbon::parse($publication->publication_date) : NULL;
 
-				$visibility = $publication->privacy ?: '1';
+				if (isset($publication->privacy)) {
+					$visibility = !($publication->privacy ?: 0);
+				} else {
+					$visibility = 1;
+				}
+
+				// NOTE - str_replace("|", ",", $publication->divisions) is used
+				// in order to have convertResourceMeta work properly
+				$meta = $this->convertResourceMeta(str_replace("|", ",", $publication->divisions), $publication->keywords);
 
 				$content = Content::firstOrCreate([
 					'subclass' => 'publication',
 					'name' => $publication->title,
 					'description' => $publication->description,
 					'data' => $data,
-					'divisions' => $publication->divisions,
-					'keywords' => $publication->keywords,
+					'divisions' => $meta['divisions'],
+					'keywords' => $meta['keywords'],
 					'slug' => NULL,
 					'url' => NULL,
 					'country' => NULL,
@@ -592,16 +595,17 @@ class DashboardController extends Controller {
 	}
 
 	private function convertResourceMeta($divs_str, $keywords_str)
-  {		
-      $divs = explode(',', $divs_str);
-      $keywords = explode(',', $keywords_str);
+  {
+			$divs = explode(',', strtolower($divs_str));
+      $keywords = explode(',', strtolower($keywords_str));
       $new_divs = [];
       $new_keywords = [];
+			$meta = [];
       $conversion = [
 				'heath'=>'1','health'=>'1',
-				'science research Academia'=>'2','Academia'=>'2','Research'=>'2','Science'=>'2','Science Research'=>'2',
-				'EM'=>'3','practitioner'=>'3','Response'=>'3',
-				'Civil'=>'4','Cyber Security'=>'4','civil protection'=>'4','cyber terrorism'=>'4',
+				'science research academia'=>'2','academia'=>'2','research'=>'2','science'=>'2','science research'=>'2',
+				'em'=>'3','practitioner'=>'3','response'=>'3','e.m practitioner'=>'3','e.m'=>'3',
+				'civil'=>'4','cyber security'=>'4','cyber'=>'4','security'=>'4','civil protection'=>'4','cyber terrorism'=>'4',
 				'business continuity'=>'5','business'=>'5','continuity'=>'5',
 				'ngo'=>'6','humanitarian'=>'6',
 			];
@@ -624,8 +628,19 @@ class DashboardController extends Controller {
           }
       }
 
-      return array('divisions'=>Helpers::convertDBArrayToString($new_divs),
-                   'keywords'=>Helpers::convertDBArrayToString($new_keywords));
+			$meta['divisions'] = Helpers::convertDBArrayToString($new_divs);
+			$meta['keywords'] = Helpers::convertDBArrayToString($new_keywords);
+
+			if ($meta['keywords'] === "||") {
+				$meta['keywords'] = NULL;
+			} else {
+				$pattern = '/(\|){2,}/';
+				while (preg_match($pattern, $meta['keywords'])) {
+						$meta['keywords'] = preg_replace($pattern, "|", $meta['keywords']);
+				}
+			}
+
+      return $meta;
   }
 
 }

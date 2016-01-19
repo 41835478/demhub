@@ -27,7 +27,7 @@ class KeywordsTableSeeder extends Seeder
           'divisions' => $row[4],
           'deleted' => $row[5],
           'created_at' => Carbon::now(),
-				  'updated_at' => Carbon::now()
+          'updated_at' => Carbon::now()
         ]);
       });
     }
