@@ -26,7 +26,7 @@ class IndexArticlesToElasticsearch extends Command
             'index' => 'news'
         ];
 
-        // Es::indices()->delete($indexParams);
+        Es::indices()->delete($indexParams);
         if (!Es::indices()->exists($indexParams)) {
             Es::indices()->create($indexParams);
         }

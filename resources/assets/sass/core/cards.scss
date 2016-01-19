@@ -37,7 +37,23 @@
   position:relative;
   text-transform: capitalize;
 }
+.feedsbox-teaser {
+  min-width: 100%;
+  height:180px;
+  display:inline-block;
+  margin:10px 0px 5px 0px;
+  padding:0px 0px 5px 0px;
+  border:1px
+  solid #ddd;
+  float:left;
+  position:relative;
+  text-transform: capitalize;
+}
+.inner-feedsbox-teaser {
+  padding-left: 5px !important;
+  padding-right:10px;
 
+}
 .main-orange {
    color: #ed6b00;
    text-transform: capitalize;
@@ -78,9 +94,9 @@
 
 .triangle-right::after {
   background: #fff;
-  border-bottom: 10px solid transparent;
+  border-bottom: 11px solid transparent;
   border-left: 8px solid #cccccc;
-  border-top: 10px solid transparent;
+  border-top: 11px solid transparent;
   content: '';
   position: absolute;
   right: 0;
