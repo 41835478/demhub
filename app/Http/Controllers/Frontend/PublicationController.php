@@ -265,7 +265,7 @@ class PublicationController extends Controller
                                     ->get();
         $secondMenu = true;
         $keywords = [];
-
+        dd($publications);
         return view('frontend.user.publication_filter.public_journal', compact([
           'publications', 'secondMenu','keywords'
         ]));
