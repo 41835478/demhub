@@ -53,14 +53,14 @@
     @else
       <div class="wrapper">
         @if (Auth::user())
-            @include('frontend.includes._feedback_sidebar')
-            	@include('modals._feedback_thankyou')
+          @include('frontend.includes._feedback_sidebar')
+          @include('modals._feedback_thankyou')
         @endif
 
         @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
         <div
-        @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+        @if(Request::url() == url('dashboard') || Request::url() == url('') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
         class="@yield('container-class') container-fluid"
         @else
         class="@yield('container-class')"

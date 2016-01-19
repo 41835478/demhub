@@ -13,7 +13,7 @@ class DivisionTableSeeder extends Seeder
     {
       DB::table('divisions')->insert([
         ['name' => 'Health & Epidemics', 'slug' => 'health', 'bg_color' => '0D8E56', 'welcome_message' => 'HEALTH<font style="visibility:hidden">*</font>&<font style="visibility:hidden">*</font>EPIDEMICS'],
-        ['name' => 'Science & ENvironment', 'slug' => 'science', 'bg_color' => '1D73A3', 'welcome_message' => 'SCIENCE<font style="visibility:hidden">*</font>&<font style="visibility:hidden">*</font>ENVIRONMENT'],
+        ['name' => 'Science & Environment', 'slug' => 'science', 'bg_color' => '1D73A3', 'welcome_message' => 'SCIENCE<font style="visibility:hidden">*</font>&<font style="visibility:hidden">*</font>ENVIRONMENT'],
         ['name' => 'EM Practitioner & Response', 'slug' => 'response', 'bg_color' => 'DB9421', 'welcome_message' => 'EM<font style="visibility:hidden">*</font>PRACITIONER<font style="visibility:hidden">*</font>&<font style="visibility:hidden">*</font>RESPONSE'],
         ['name' => 'Civil & Cyber Security', 'slug' => 'security', 'bg_color' => '848889', 'welcome_message' => 'CIVIL<font style="visibility:hidden">*</font>&<font style="visibility:hidden">*</font>CYBER<font style="visibility:hidden">*</font>SECURITY'],
         ['name' => 'Business Continuity', 'slug' => 'continuity', 'bg_color' => '933131', 'welcome_message' => 'BUSINESS<font style="visibility:hidden">*</font>CONTINUITY'],

@@ -10,6 +10,6 @@
 
 <div class="container-fluid">
   <div class="row">
-    @include('division.__feedsbox')
+    @include('frontend._content-card')
   </div>
 </div>

@@ -1,8 +1,8 @@
-<div class="modal fade" id="publicationModal">
+<div class="modal fade" tabindex="-1" id="publicationModal{{ $publication->id }}">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="text-align:center">
-        <h3 style="display:inline">{{ $publication->title }}</h3>
+        <h3 style="display:inline">{{ $publication->title() }}</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body" style="text-align:center">

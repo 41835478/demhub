@@ -15,28 +15,43 @@ $security_color: #848889;
 $continuity_color: #933131;
 $humanitarian_color: #754293;
 
-.division_health {
-	  background-color:$health_color;
+.division-text_health {
+	  color:$health_color;
 	}
-// .division_icon_health:before {
-//   content: "\f09b";
-// 	font-family: FontAwesome;
-// }
-.division_science {
-	  background-color:$science_color;
+.division-text_science {
+	  color:$science_color;
 	}
-.division_response {
-	  background-color:$response_color;
+.division-text_response {
+	  color:$response_color;
 	}
-.division_security {
-	  background-color:$security_color;
+.division-text_security {
+	  color:$security_color;
 		}
-.division_continuity {
-	  background-color:$continuity_color;
+.division-text_continuity {
+	  color:$continuity_color;
 	}
-.division_humanitarian {
-	  background-color:$humanitarian_color;
+.division-text_humanitarian {
+	  color:$humanitarian_color;
 	}
+  .division_health {
+  	  background-color:$health_color;
+  	}
+  .division_science {
+  	  background-color:$science_color;
+  	}
+  .division_response {
+  	  background-color:$response_color;
+  	}
+  .division_security {
+  	  background-color:$security_color;
+  		}
+  .division_continuity {
+  	  background-color:$continuity_color;
+  	}
+  .division_humanitarian {
+  	  background-color:$humanitarian_color;
+  	}
+
 .division_all {
     background-color:#35464d;
   	}
@@ -70,7 +85,14 @@ $humanitarian_color: #754293;
     margin-top:-15px;
 
 }
+.color-label-vertical {
+    width:20px;
+    display:block;
+    float:left;
+    margin-top:0px;
+    margin-left:-15px
 
+}
 
 
 //actual stylesheet

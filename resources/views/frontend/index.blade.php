@@ -1,12 +1,12 @@
 @extends('frontend.layouts.landing')
 
-@section('body-style')
+{{-- @section('body-style')
 	<style>
 		body {
 			padding-top: 0px !important;
 		}
 	</style>
-@endsection
+@endsection --}}
 
 @section('content')
 	<div class="row">
@@ -198,7 +198,6 @@
 								</div>
 							</a>
 						@endforeach
-
 				</div>
 
 

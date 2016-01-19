@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use DB;
+use App\Models\Division;
 
 /**
  * Class User
@@ -74,7 +75,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
    */
 	public function publications()
   {
-      return $this->hasMany('App\Models\Publication');
+      return $this->hasMany('App\Models\Publication', 'owner_id')
+									->where('deleted', 0)
+									->orderBy('id', 'DESC');
   }
 
 	/**
@@ -86,6 +89,26 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function full_name() {
 		return $this->first_name." ".$this->last_name;
+	}
+
+	public function divisions()
+	{
+		if(strpos($this->division, "|") !== false){
+			$divisions = [];
+			if (isset($this->division)) {
+					foreach (array_filter(preg_split("/\|/", $this->division)) as $divSlug) {
+							// TODO - change data to deal with ids instead of slugs
+							$div = Division::where('slug', $divSlug)->firstOrFail();
+							$divisions[$div->slug] = $div->name;
+					}
+			} else {
+					$divisions = NULL;
+			}
+
+			return $divisions;
+		} else {
+			return $this->division;
+		}
 	}
 
 	public function followers() {
