@@ -23,7 +23,7 @@ class Content extends Model
     protected static $singleTableSubclasses = [
         Article::class,
         InfoResource::class,
-        // Thread::class,
+        \Riari\Forum\Models\Thread::class,
         Publication::class
     ];
 
