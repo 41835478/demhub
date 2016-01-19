@@ -3526,7 +3526,7 @@ button.btn-greytone:active {
 .triangle-right::after {
   background: #fff;
   border-bottom: 11px solid transparent;
-  border-left: 8px solid #cccccc;
+  border-left: 8px solid #777777;
   border-top: 11px solid transparent;
   content: '';
   position: absolute;
@@ -3828,10 +3828,6 @@ div#welcome_sign-up form span {
 #news {
   background-size: 8.5%;
   background-repeat: no-repeat;
-}
-
-.label-default {
-  background-color: #cccccc !important;
 }
 
 .label-default li a {

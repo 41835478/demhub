@@ -113,44 +113,6 @@ body {
   color: white;
 }
 
-#landing-nav {
-  position: absolute;
-  width: 100vw;
-  height: 50px;
-  z-index: 100;
-  top: -25px;
-  left: 0;
-}
-
-.landing-nav-logo {
-  margin-top: 10px;
-  margin-left: 40px;
-  width: 170px;
-  display: inline-block;
-  float: left;
-}
-
-.landing-about {
-  float: left;
-  margin-top: 15px;
-  margin-left: 20px;
-  list-style: none;
-}
-
-.landing-about a {
-  color: white;
-}
-
-.landing-login {
-  float: right;
-  margin-top: 15px;
-  list-style: none;
-}
-
-.landing-login a {
-  color: white;
-}
-
 #welcome_home {
   font-weight: bolder;
   font-family: 'Open Sans', sans-serif;
@@ -159,7 +121,7 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  margin-top: -25px;
+  margin-top: 0px;
 }
 
 .card-selector {
@@ -172,10 +134,11 @@ body {
 }
 
 .ajax-selector {
-  margin-top: 49vh;
+  margin-top: 50vh;
   padding-top: 16px;
   padding-left: 30px;
   padding-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.4);
   width: 480px;
 }
 
@@ -197,10 +160,12 @@ option {
 }
 
 .card-ajax {
+  height: 80vh;
+  width: 30vw;
   background-color: rgba(255, 255, 255, 0.2);
   z-index: 10;
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 60%;
   padding: 20px;
   overflow-y: hidden;
@@ -212,68 +177,46 @@ option {
   margin-right: 60px;
 }
 
-.table-details1 {
-  border: 3px solid red;
-}
-
-.table-details2 {
-  border: 3px solid blue;
-  min-height: 30%;
-}
-
-.table-details1,
-.table-details2 {
+.table-details {
   width: 100%;
-  max-height: 45%;
-  display: block;
 }
 
-.table-details1 div,
-.table-details2 div {
+.table-details div {
   width: 100%;
   display: block;
-  height: auto;
   margin-bottom: 15px;
   padding-top: 15px;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-.table-details1 ul,
-.table-details2 ul {
+.table-details ul {
   display: inline-block;
   overflow: hidden;
 }
 
-.table-details1 ul:first-child,
-.table-details2 ul:first-child {
+.table-details ul:first-child {
   width: 15%;
 }
 
-.table-details1 ul:nth-child(2),
-.table-details2 ul:nth-child(2) {
+.table-details ul:nth-child(2) {
   width: 60%;
 }
 
-.table-details1 ul:nth-child(2) li:first-child,
-.table-details2 ul:nth-child(2) li:first-child {
+.table-details ul:nth-child(2) li:first-child {
   font-size: 1.2em;
   color: #ED6C1F;
 }
 
-.table-details1 ul:nth-child(2) li:nth-child(3),
-.table-details1 ul:nth-child(2) li:nth-child(4),
-.table-details2 ul:nth-child(2) li:nth-child(3),
-.table-details2 ul:nth-child(2) li:nth-child(4) {
+.table-details ul:nth-child(2) li:nth-child(3),
+.table-details ul:nth-child(2) li:nth-child(4) {
   opacity: 0.7;
 }
 
-.table-details1 ul:nth-child(3),
-.table-details2 ul:nth-child(3) {
+.table-details ul:nth-child(3) {
   width: 20%;
 }
 
-.table-details1 ul:nth-child(3) button,
-.table-details2 ul:nth-child(3) button {
+.table-details ul:nth-child(3) button {
   -webkit-appearance: none;
   background-color: #638395;
   color: #A7B8C2;
@@ -283,19 +226,17 @@ option {
   padding: 10px auto 10px auto;
 }
 
-.table-details1 ul:nth-child(3) li,
-.table-details2 ul:nth-child(3) li {
+.table-details ul:nth-child(3) li {
   margin-left: -40px;
 }
 
-.table-details1 li,
-.table-details2 li {
+.table-details li {
   list-style: none;
   font-size: 0.7em;
 }
 
 .landing-button1 {
-  margin-top: 25px !important;
+  margin-top: 50px;
 }
 
 .lading-content-1 {
@@ -329,36 +270,29 @@ option {
 .carousel,
 .carousel-inner,
 .carousel-inner .item {
+  height: 100vh !important;
+  width: 100vw !important;
   position: absolute;
   display: block;
   background-color: black;
-  height: 100vh;
 }
 
 .carousel img,
 .carousel-inner img,
 .carousel-inner .item img {
-  height: auto;
-  width: auto;
-  overflow: hidden;
   display: block;
+  width: 100%;
+  height: auto;
   opacity: 0.6;
 }
 
-.carousel .carousel-caption,
-.carousel-inner .carousel-caption,
-.carousel-inner .item .carousel-caption {
+.carousel-caption {
+  top: 600px;
+  margin-top: 41vh;
   text-align: left !important;
   text-transform: uppercase;
   max-width: 400px;
-  line-height: 150% !important;
-  top: 300px !important;
-}
-
-.carousel .carousel-caption h3,
-.carousel-inner .carousel-caption h3,
-.carousel-inner .item .carousel-caption h3 {
-  line-height: 150%;
+  line-height: 1.8em;
 }
 
 .carousel-fade .carousel-inner .item {
@@ -418,6 +352,14 @@ option {
   width: 30%;
 }
 
+.carousel-caption {
+  top: 20px;
+  width: 400px;
+  height: auto;
+  float: right;
+  line-height: 1.9em;
+}
+
 @media (min-width: 1199px) {
   .landing-slogan {
     font-size: 12px;
@@ -426,11 +368,6 @@ option {
   .splash-row {
     padding-left: 40px;
     padding-right: 40px;
-  }
-
-  .card-ajax {
-    height: 80vh;
-    width: 30vw;
   }
 }
 
@@ -448,11 +385,6 @@ option {
     padding-left: 40px;
     padding-right: 40px;
   }
-
-  .card-ajax {
-    height: 80vh;
-    width: 30vw;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
@@ -463,27 +395,21 @@ option {
     margin: auto 20px auto 20px;
   }
 
-  .carousel-example-generic {
-    display: block;
-  }
-
   .splash-row {
     padding-left: 40px;
     padding-right: 40px;
   }
 
   .card-ajax {
-    width: 100vw;
-    display: block;
-    top: 100vh;
-    height: 90vh;
-    left: 10px;
-    margin-top: -40px;
-    background: #35474F;
+    display: none;
   }
 
-  #welcome_about {
-    margin-top: 90vh;
+  .ajax-selector {
+    display: none;
+  }
+
+  .carousel-caption {
+    margin-top: 60vh;
   }
 }
 
@@ -515,6 +441,10 @@ option {
     height: auto;
     min-width: 200px;
     display: inline;
+  }
+
+  .carousel-caption {
+    margin-top: 60vh;
   }
 }
 
@@ -1499,7 +1429,7 @@ a.btn-style-alt:active {
 }
 
 .btn-style-w {
-  background-color: rgba(53, 71, 79, 0.5) !important;
+  background-color: rgba(237, 108, 31, 0.5) !important;
   border-color: #fff !important;
   color: #fff !important;
   margin: 5px 5px 5px 5px;
@@ -3532,6 +3462,7 @@ button.btn-greytone:active {
   position: absolute;
   right: 0;
   top: 0;
+  top-bottom: -1px;
 }
 
 .arrows {
