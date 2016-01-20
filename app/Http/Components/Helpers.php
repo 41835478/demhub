@@ -8,6 +8,8 @@
 
 namespace App\Http\Components;
 
+use App\Models\Division;
+use App\Models\Access\User\User;
 
 class Helpers {
 
@@ -185,5 +187,30 @@ class Helpers {
 	public static function verify(&$var, $default = null)
 	{
 		return isset($var) ? $var : $default;
+	}
+
+	public static function divHash($divString) {
+    $divisions = [];
+    if (isset($divString)) {
+        foreach (array_filter(preg_split("/\|/", $divString)) as $divID) {
+            $div = Division::findOrFail($divID);
+            $divisions[$div->slug] = $div->name;
+        }
+    } else {
+        $divisions = NULL;
+    }
+
+    return $divisions;
+  }
+	public static  function uploader($value)
+  {
+		$user=User::where('id',$value['owner_id'])->first();
+      return $user;
+  }
+	public static function author($value)
+	{
+		$user=User::where('id',$value['owner_id'])->first();
+		return $user;
+		// return json_decode($value->data, true)[self::AUTHOR];
 	}
 }

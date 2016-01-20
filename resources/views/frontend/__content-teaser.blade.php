@@ -3,6 +3,7 @@
 @foreach($items as $item)
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
     <?php
+
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
         sort($articleDivs);
@@ -17,7 +18,7 @@
       @forelse($articleDivs as $div)
         <a style="height:{{$height}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"></a>
       @empty
-        <a style="height:100%;" href="{{url('division', $currentDivision->slug)}}" class="color-label-vertical division_{{$currentDivision->slug}}"></a>
+        <a style="height:100%;" href="{{url('divisions')}}" class="color-label-vertical division_all"></a>
       @endforelse
       </div>
 
@@ -118,19 +119,12 @@
             @include('division.__keyword-dropup-foreach')
           @elseif(count($keywords) <5)
             @foreach($keywords as $key=>$keyword)
-              @if ($key ==1)
 
-              <a class="label label-default triangle-right" style="font-size:82%;padding-bottom:4px;" href="?query_term={{$keyword}}">
+              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
 
 
-              @elseif ($key >1)
-              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:4px;" href="?query_term={{$keyword}}">
-                {{ $keyword }}
-              </a>
-
-              @endif
             @endforeach
 
           @endif
@@ -139,15 +133,12 @@
           @include('division.__article_buttons')
 
           <div style="float:right;padding-right:8px;position:absolute;right:0px;top:0px;">
-            @if (! empty($item->uploader()))
-            <a href="profile/{{''.$item->uploader->user_name}}">
-              <span>{{$item->uploader->full_name()}}</span>
-              <img class="img-circle" style="height:35px;width:35px;" src="{{$item->uploader->avatar->url('thumb')}}">
-            </a>
-            @elseif (! empty($item->author()))
-            <a href="{{'profile/'.$item->author->user_name}}">
-              <span>{{$item->author->full_name()}}<span>
-              <img class="img-circle" style="height:35px;width:35px;" src="{{$item->uploader->avatar->url('thumb')}}">
+            <?php  $uploader=$author=Helpers::uploader($item); ?>
+
+            @if (! empty($author))
+            <a href="{{'profile/'.$author->user_name}}">
+              <span>{{$author->full_name()}}<span>
+              <img class="img-circle" style="height:35px;width:35px;" src="{{$author->avatar->url('thumb')}}">
             </a>
             @endif
           </div>
