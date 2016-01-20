@@ -8,15 +8,18 @@
       {
           "type": "vcs",
           "url": "https://github.com/aldorl/laravel-forum"
-      }
+      },
+			{
+		    "type": "vcs",
+		    "url": "https://github.com/twbs/bootstrap-sass"
+		  }
   ],
 	"require": {
 		"laravel/framework": "5.1.*",
     "illuminate/html" : "5.*",
     "laravel/socialite" : "^2.0",
     "stripe/stripe-php": "1.*",
-    "twbs/bootstrap": "3.*",
-    "twbs/bootstrap-sass": "3.*",
+		"twbs/bootstrap-sass": "3.0.*@dev",
     "fortawesome/font-awesome": "4.*",
     "hieu-le/active": "~2.0",
 		"doctrine/dbal": "~2.5",

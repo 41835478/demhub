@@ -97,8 +97,7 @@
 
           <p style="padding-top:10px">
             <?php
-            $description = $item['description'];
-
+              $description = $item['description'];
               if (isset($neededObject[0]) && strlen($description) > 127){
                 $str = substr($description, 0, 127) . '...';
                 echo strip_tags($str);
@@ -112,27 +111,16 @@
           <div style="bottom:50px; position:absolute;width:100%;">
 
             <?php
-            $keywords = array_filter(preg_split("/\|/", $item['keywords']));
+              $keywords = array_filter(preg_split("/\|/", $item['keywords']));
             ?>
             @if(count($keywords) > 4)
               @include('division.__keyword-dropup-foreach')
             @elseif(count($keywords) <5)
-              @foreach($keywords as $key=>$keyword)
-                @if ($key ==1)
-
+              @foreach($keywords as $key => $keyword)
                 <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
                   {{ $keyword }}
                 </a>
-
-
-                @elseif ($key >1)
-                <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
-                  {{ $keyword }}
-                </a>
-
-                @endif
               @endforeach
-
             @endif
           </div>
 
