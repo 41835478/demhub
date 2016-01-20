@@ -35,7 +35,7 @@ class ForumController extends BaseController
 	public function getViewAllThreads()
 	{
 			$threads = Thread::orderBy('updated_at', 'desc')->simplePaginate(10);
-			
+
 			$categories = Category::all();
 
 			$allDivisions = Division::all();
