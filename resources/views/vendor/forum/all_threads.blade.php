@@ -13,8 +13,7 @@
 
 			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-xs-offset-8">NEW DISCUSSION</a>
 		</div>
-	</div>
-	<div class="row">
+		<div class="col-md-9 col-md-offset-2">
 			<table class="table table-index table-hover">
 			  <thead>
 			    <tr>
@@ -33,8 +32,8 @@
 					 ?>
 
 						<tr>
-
-							<td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread['name']}}</b></a></td>
+							{{-- <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread['name']}}</b></a></td> --}}
+							<td><a href="" class="text-link-style"><b>{{$thread['name']}}</b></a></td>
   			      <td>
 								@foreach ($divisions as $divSlug => $divName)
 			            <a href="{{url('/division/'.$divSlug)}}">
@@ -45,14 +44,15 @@
 							<?php  $uploader=$author=Helpers::uploader($thread); ?>
 
   			    	<td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$author->first_name}} {{$author->last_name}}</td>
-							<td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td>
+							<td><p style="padding-top:4px"><span class="label label-default" ></span></p></td>
+							{{-- <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td> --}}
   			    </tr>
 			    @endforeach
 			  </tbody>
 			</table>
 
 		</div>
-
+	</div>
 	 {{-- {!! $threads->render() !!}  --}}
 </div>
 
