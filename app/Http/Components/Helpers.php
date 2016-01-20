@@ -188,6 +188,7 @@ class Helpers {
 	{
 		return isset($var) ? $var : $default;
 	}
+<<<<<<< HEAD
 
 	public static function divHash($divString) {
     $divisions = [];
@@ -213,4 +214,6 @@ class Helpers {
 		return $user;
 		// return json_decode($value->data, true)[self::AUTHOR];
 	}
+=======
+>>>>>>> ccb2de6c7c7ca8cac900236aacbc99b872442c79
 }

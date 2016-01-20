@@ -39,6 +39,7 @@ class ForumController extends BaseController
 			$results = Search::queryDiscussions();
 			$results_hits = $results['hits'];
 			$threads = Search::formatElasticSearchToArray($results_hits);
+
 			$categories = Category::all();
 
 			$allDivisions = Division::all();
