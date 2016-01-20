@@ -19,7 +19,7 @@
     "illuminate/html" : "5.*",
     "laravel/socialite" : "^2.0",
     "stripe/stripe-php": "1.*",
-		"twbs/bootstrap-sass": "3.0.*@dev",
+		"twbs/bootstrap-sass": "3.*@dev",
     "fortawesome/font-awesome": "4.*",
     "hieu-le/active": "~2.0",
 		"doctrine/dbal": "~2.5",
