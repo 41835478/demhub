@@ -1075,6 +1075,9 @@ div#welcome-division {
   border: 1px solid #ddd;
   float: left;
   position: relative;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .inner-feedsbox {
@@ -3463,6 +3466,9 @@ button.btn-greytone:active {
   border: 1px solid #ddd;
   float: left;
   position: relative;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .inner-peoplebox {
