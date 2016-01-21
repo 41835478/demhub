@@ -10,6 +10,8 @@ namespace App\Http\Components;
 
 use App\Models\Division;
 use App\Models\Access\User\User;
+use Illuminate\Support\Str;
+use Riari\Forum\Models\Post;
 
 class Helpers {
 
@@ -203,16 +205,44 @@ class Helpers {
 
     return $divisions;
   }
-	public static  function uploader($value)
+	public static  function uploader($item)
   {
-		$user=User::where('id',$value['owner_id'])->first();
+		$user=User::where('id',$item['owner_id'])->first();
       return $user;
   }
-	public static function author($value)
+	public static function author($item)
 	{
-		$user=User::where('id',$value['owner_id'])->first();
+		$user=User::where('id',$item['owner_id'])->first();
 		return $user;
 		// return json_decode($value->data, true)[self::AUTHOR];
+	}
+
+	public static function posts($item)
+	{
+			// dd($item);
+			$x = json_decode($item['data']);
+			$posts = Post::where('parent_thread',$item['id'])->get();
+
+			return $posts;
+			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
+	}
+
+	public static function route($item)
+	{
+
+			// $components = array(
+			// 		// 'categoryID'    => $this->thread->category->id,
+			// 		// 'categoryAlias' => Str::slug($this->thread->category->title, '-'),
+			// 		'threadID'      => $item['id'],
+			// 		// 'threadAlias'   => Str::slug($this->thread->title, '-'),
+			// 		// 'postID'        =>
+			// );
+			// // NOTE - the following lines are added to asimilate with the Single Table Inheritance
+			// $components['categoryID'] = '9';
+			// $components['categoryAlias'] = 'global';
+			// $components['threadAlias'] = Str::slug($item['name'], '-');
+
+			return "9-global/".$item['id']."-".Str::slug($item['name'], '-');
 	}
 
 }
