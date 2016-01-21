@@ -9,7 +9,7 @@ class Content extends Model
 {
     // NOTE - when running the port over script in DashboardController
     // Comment the following trait out
-    // use SingleTableInheritanceTrait;
+    use SingleTableInheritanceTrait;
 
     /**
      * The table associated with the model.
