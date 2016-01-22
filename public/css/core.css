@@ -91,7 +91,6 @@
   display: block;
   float: left;
   margin-top: 0px;
-  margin-left: -15px;
 }
 
 body {
@@ -3480,6 +3479,10 @@ button.btn-greytone:active {
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   /* Firefox 3.5 - 3.6 */
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.box ul li {
+  display: inline;
 }
 
 .inner-peoplebox {

@@ -1,7 +1,8 @@
 <div class = "">
 
 @foreach($items as $item)
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
+
+  <div {{ strpos(Request::url(), "profile")!==false ? 'class="col-xs-12 col-sm-6 col-md-4 col-lg-feed"' : ''}}>
     <?php
 
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
@@ -14,7 +15,7 @@
     ?>
 
     <div class = "feedsbox-teaser">
-      <div class="col-xs-1" style="height: 179px;padding-top:1px">
+      <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:69px">
       @forelse($articleDivs as $div)
         <a style="height:{{$height}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"></a>
       @empty
@@ -148,7 +149,7 @@
       </div>
 
       </div>
-    </div> <!-- the div that closes the box -->
+    </div>
 
 
 @endforeach

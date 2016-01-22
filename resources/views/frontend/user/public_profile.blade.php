@@ -14,6 +14,7 @@
       <div class="col-sm-offset-2 col-sm-10" style="">
       @include('frontend.user._user-teaser')
       </div>
+    </div>
 
     </div>
       <div class="row">
@@ -60,15 +61,30 @@
 
               <h4 style="text-align:center">Activity Feed</h4>
               <div>
-                <a href="#publications" onclick="showPublications()">Publications</a>
-                <a href="#discussions" onclick="showDiscussions()">Discussions</a>
-                <a href="#publication" onclick="showNetwork()">Network</a>
+                <ul>
+                  <li {{strpos(Request::url(), "#publications")!==false ? 'class="active"' : ''}}><a id="publications" href="#publications" onclick="togglePublications()">Publications</a></li>
+                  <li><a id="discussions" href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
+                  <li><a id="publications" href="#publication" onclick="toggleNetwork()">Network</a></li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
+        <script>
+          $( document ).ready(function() {
+            $("#publicationsList").hide();
+            $("#networkList").hide();
+          });
+          function togglePublications(){
+            $("#publicationsList").toggle();
+          }
+          function toggleNetwork(){
+            $("#networkList").toggle();
+            $("#toggleNetwork").prop('active');
+          }
+        </script>
         <div class="row">
-          <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1">
+          <div class="col-xs-12 col-sm-7 col-md-7 col-sm-offset-2">
               <div id="publicationsList">
                 <?php $items=$user->publications ?>
                 @foreach($items as $item)
@@ -77,7 +93,7 @@
               </div>
 
 
-              <div id="networkList" style="display:none">
+              <div id="networkList">
                 <?php $users=$user->following ?>
                 @foreach($users as $user)
                   @include('frontend.user.__user-teaser')
