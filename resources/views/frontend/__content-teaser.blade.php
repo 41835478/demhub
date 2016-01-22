@@ -1,7 +1,9 @@
-<div class = "feed_width">
+<div class = "">
+
 @foreach($items as $item)
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
     <?php
+
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
         sort($articleDivs);
@@ -12,19 +14,20 @@
     ?>
 
     <div class = "feedsbox-teaser">
-      <div class="col-sm-1" style="height: 179px;">
+      <div class="col-xs-1" style="height: 179px;padding-top:1px">
       @forelse($articleDivs as $div)
         <a style="height:{{$height}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"></a>
       @empty
-        <a style="height:100%;" href="{{url('division', $currentDivision->slug)}}" class="color-label-vertical division_{{$currentDivision->slug}}"></a>
+        <a style="height:100%;" href="{{url('divisions')}}" class="color-label-vertical division_all"></a>
       @endforelse
       </div>
 
-      <div class="col-sm-11 inner-feedsbox-teaser">
+      <div class="col-xs-10 inner-feedsbox-teaser">
 
         <div class="article-background col-xs-3" style=
         <?php
         $neededSearchValue=$item["id"];
+        if(isset($articleMediaArray)){
         $neededObject = array_filter(
           $articleMediaArray,
           function ($e) use (&$neededSearchValue){
@@ -34,6 +37,7 @@
             }
           }
         );
+      }
 
         if (isset($neededObject[0])){
           echo '"background-image:url('.$neededObject[0]->filename.');
@@ -52,27 +56,21 @@
           echo '""';
         }
         ?>>
-      <div style=
-      @if (isset($neededObject[0]))
-      "background-color:rgba(200, 200, 200, 0.5);height:165px;"
-      @else
-      ""
-      @endif
-      >
-    </div>
-  </div>
+          <div {{ isset($neededObject[0]) ? 'style="background-color:rgba(200, 200, 200, 0.5);height:165px;"' : '' }}></div>
+        </div>
 
-        <h3 class=
-        @if (isset($neededObject[0]))
-        "article-title-box article-link"
-        @else
-        ""
-        @endif
-        style="padding-top:0px;margin-bottom:0px"
-        >
+        <h3 {{ isset($neededObject[0]) ? 'class="article-title-box article-link"' : '' }}
+        style="padding-top:0px;margin-bottom:0px">
           <a
             @if(Auth::check())
-              target="_blank" href="{{ $item['url'] }}"
+              target="_blank"
+              @if(Request::url() == url('userhome') || strpos(Request::url(), "division")!==false)
+                href="{{ $item['url'] }}"
+              @elseif(Request::url() == url('public_journal'))
+                href="publication/{{ $item['id'] }}/view"
+              @elseif(strpos(Request::url(), "forum")!==false)
+                href="forum/9-global/{{ $item['id'] }}-{{ $item['slug'] }}"
+              @endif
             @else
               href="" data-toggle="modal" data-target="#DEMHUBModal"
             @endif
@@ -88,31 +86,31 @@
           </a>
         </h3>
 
-        <span class=
-        @if (isset($neededObject[0]))
-          "article-title-box"
-        @endif
-        "" style="font-size:82%;color:#777777;">
+        <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : '' }}
+          style="font-size:82%;color:#777777;">
           {{ date_format(new DateTime($item['publish_date']), 'j F Y | g:i a') }}
         </span>
 
-        <span
-          @if (isset($neededObject[0]))
-            class= "article-title-box"
-          @endif
-            style="font-size:82%;color:#000;padding-left:5%">
+        <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
+          style="font-size:82%;color:#000;padding-left:5%">
           <?php
             $parse=parse_url($item['url']);
-            $host=$parse['host'];
-            $host=substr($host,4);
+            if (Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ){
+              $host=$parse['host'];
+              $host=substr($host,4);
 
-            if (substr_count($host,".") <= 1){
-              echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+              if (substr_count($host,".") <= 1){
+                echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+              }
+            }
+            else{
+              echo '<a target="_blank" href="http://www.'.$item['url'].'">'.$item['url'].'</a>';
             }
           ?>
         </span>
 
-        <div style="top:115px; position:absolute; width:100%;">
+        <div {{ Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ?
+          'style="top:115px; position:absolute; width:100%;"' : 'style="position:absolute; width:100%;"' }} >
 
           <?php
           $keywords = array_filter(preg_split("/\|/", $item['keywords']));
@@ -121,25 +119,30 @@
             @include('division.__keyword-dropup-foreach')
           @elseif(count($keywords) <5)
             @foreach($keywords as $key=>$keyword)
-              @if ($key ==1)
 
-              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
+              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
 
 
-              @elseif ($key >1)
-              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;" href="?query_term={{$keyword}}">
-                {{ $keyword }}
-              </a>
-
-              @endif
             @endforeach
 
           @endif
         </div>
         <div style="width:100%; height:42px; top:140px; position:absolute;">
           @include('division.__article_buttons')
+
+          <div style="float:right;padding-right:8px;position:absolute;right:0px;top:0px;">
+            <?php  $uploader=$author=Helpers::uploader($item); ?>
+
+            @if (! empty($author))
+            <a href="{{'profile/'.$author->user_name}}">
+              <span>{{$author->full_name()}}<span>
+              <img class="img-circle" style="height:35px;width:35px;" src="{{$author->avatar->url('thumb')}}">
+            </a>
+            @endif
+          </div>
+
         </div>
 
       </div>

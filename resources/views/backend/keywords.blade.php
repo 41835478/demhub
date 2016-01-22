@@ -25,7 +25,7 @@
 				<div class="col-xs-5">
 					@foreach($divisions as $div)
 						<div class="col-xs-2">
-							{{ \App\Http\Components\Helpers::truncate($div->slug, 8) }}
+							{{Helpers::truncate($div->slug, 8) }}
 						</div>
 					@endforeach
 				</div>
@@ -67,7 +67,7 @@
 							@foreach($divisions as $div)
 								<div class="col-xs-2" style="background-color: #{{ $div->bg_color }}">
 									<input type="checkbox" name="div[]" value="{{ $div->id }}"
-									@foreach(\App\Http\Components\Helpers::convertDBStringToArray($item->divisions) as $item_div)
+									@foreach(Helpers::convertDBStringToArray($item->divisions) as $item_div)
 										@if($div->id == $item_div)
 											checked
 										@endif

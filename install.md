@@ -1,6 +1,6 @@
 ### Installation (OSX):
 
-#### Dev basics 
+#### Dev basics
 - Install [XCode](https://developer.apple.com/xcode/download/)
 - Install [Homebrew](http://brew.sh/)
 > `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`

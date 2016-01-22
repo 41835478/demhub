@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "177111d585f37e1934903dcd0fd45f64",
-    "content-hash": "e8cd989e2589f4d54e021a29eaf1dc48",
+    "hash": "d9f74a998100e4ed88c74d7ca5fd27f8",
+    "content-hash": "3f42b31f48025f73fc09f36f5e0a645f",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -940,12 +940,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "dbc8d1b9b67daaab357bcc41dbf549c3684cf5f1"
+                "reference": "fddd2c240452e6c8990c4ef75e0265b455aa7968"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/fddd2c240452e6c8990c4ef75e0265b455aa7968",
-                "reference": "dbc8d1b9b67daaab357bcc41dbf549c3684cf5f1",
+                "reference": "fddd2c240452e6c8990c4ef75e0265b455aa7968",
                 "shasum": ""
             },
             "require-dev": {
@@ -980,7 +980,7 @@
                 "font",
                 "icon"
             ],
-            "time": "2015-11-23 14:42:32"
+            "time": "2015-11-30 17:28:02"
         },
         {
             "name": "guzzle/guzzle",
@@ -2611,12 +2611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aldorl/laravel-forum.git",
-                "reference": "7bd008b7c26acf4914ee817c9d5a144ecc8d9c0c"
+                "reference": "dec9148486733f499b6fdb7e9ef9fae29a956f30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/7bd008b7c26acf4914ee817c9d5a144ecc8d9c0c",
-                "reference": "7bd008b7c26acf4914ee817c9d5a144ecc8d9c0c",
+                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/dec9148486733f499b6fdb7e9ef9fae29a956f30",
+                "reference": "dec9148486733f499b6fdb7e9ef9fae29a956f30",
                 "shasum": ""
             },
             "require": {
@@ -2649,7 +2649,7 @@
             "support": {
                 "source": "https://github.com/aldorl/laravel-forum/tree/2.0"
             },
-            "time": "2016-01-06 19:20:56"
+            "time": "2016-01-20 19:50:02"
         },
         {
             "name": "shift31/laravel-elasticsearch",
@@ -2782,16 +2782,16 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "32eaad36c390c25a7b6759235ac2e80757fef711"
+                "reference": "e7d4f0e35afb6d8beb42b4bc83b0a07d7a1536c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/32eaad36c390c25a7b6759235ac2e80757fef711",
-                "reference": "32eaad36c390c25a7b6759235ac2e80757fef711",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/e7d4f0e35afb6d8beb42b4bc83b0a07d7a1536c1",
+                "reference": "e7d4f0e35afb6d8beb42b4bc83b0a07d7a1536c1",
                 "shasum": ""
             },
             "require": {
@@ -2821,7 +2821,7 @@
                 }
             ],
             "description": "Easily add new or override built-in providers in Laravel Socialite.",
-            "time": "2016-01-14 04:04:40"
+            "time": "2016-01-18 20:15:43"
         },
         {
             "name": "stripe/stripe-php",
@@ -3747,68 +3747,17 @@
             "time": "2016-01-07 11:12:32"
         },
         {
-            "name": "twbs/bootstrap",
-            "version": "v3.3.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/81df608a40bf0629a1dc08e584849bb1e43e0b7a",
-                "reference": "81df608a40bf0629a1dc08e584849bb1e43e0b7a",
-                "shasum": ""
-            },
-            "replace": {
-                "twitter/bootstrap": "self.version"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "http://getbootstrap.com",
-            "keywords": [
-                "JS",
-                "css",
-                "framework",
-                "front-end",
-                "less",
-                "mobile-first",
-                "responsive",
-                "web"
-            ],
-            "time": "2015-11-24 19:37:05"
-        },
-        {
             "name": "twbs/bootstrap-sass",
-            "version": "v3.3.6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap-sass.git",
-                "reference": "446b41a5af0f20f139a6d33ded2a62101c3bd5a1"
+                "reference": "31acbea483821acb726f1b4880d1452aee90367e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/446b41a5af0f20f139a6d33ded2a62101c3bd5a1",
-                "reference": "446b41a5af0f20f139a6d33ded2a62101c3bd5a1",
+                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/31acbea483821acb726f1b4880d1452aee90367e",
+                "reference": "31acbea483821acb726f1b4880d1452aee90367e",
                 "shasum": ""
             },
             "type": "library",
@@ -3817,14 +3766,10 @@
                     "dev-master": "3.3.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Mark Otto"
-                },
                 {
                     "name": "Thomas McDonald"
                 },
@@ -3838,6 +3783,9 @@
                     "name": "Gleb Mazovetskiy"
                 },
                 {
+                    "name": "Mark Otto"
+                },
+                {
                     "name": "Jacob Thornton"
                 }
             ],
@@ -3848,7 +3796,11 @@
                 "css",
                 "sass"
             ],
-            "time": "2015-11-24 23:06:35"
+            "support": {
+                "issues": "https://github.com/twbs/bootstrap-sass/issues",
+                "source": "https://github.com/twbs/bootstrap-sass/tree/master"
+            },
+            "time": "2016-01-18 04:34:33"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4142,27 +4094,27 @@
         },
         {
             "name": "behat/mink-browserkit-driver",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minkphp/MinkBrowserKitDriver.git",
-                "reference": "da47df1593dac132f04d24e7277ef40d33d9f201"
+                "reference": "2650f5420e713e3807c7f09a07370a4f48367bf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minkphp/MinkBrowserKitDriver/zipball/da47df1593dac132f04d24e7277ef40d33d9f201",
-                "reference": "da47df1593dac132f04d24e7277ef40d33d9f201",
+                "url": "https://api.github.com/repos/minkphp/MinkBrowserKitDriver/zipball/2650f5420e713e3807c7f09a07370a4f48367bf9",
+                "reference": "2650f5420e713e3807c7f09a07370a4f48367bf9",
                 "shasum": ""
             },
             "require": {
                 "behat/mink": "~1.7@dev",
                 "php": ">=5.3.6",
-                "symfony/browser-kit": "~2.3",
-                "symfony/dom-crawler": "~2.3"
+                "symfony/browser-kit": "~2.3|~3.0",
+                "symfony/dom-crawler": "~2.3|~3.0"
             },
             "require-dev": {
                 "silex/silex": "~1.2",
-                "symfony/phpunit-bridge": "~2.7"
+                "symfony/phpunit-bridge": "~2.7|~3.0"
             },
             "type": "mink-driver",
             "extra": {
@@ -4194,7 +4146,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2015-09-21 20:56:13"
+            "time": "2016-01-19 16:59:07"
         },
         {
             "name": "behat/mink-extension",
@@ -4759,7 +4711,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "Padraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
@@ -5376,16 +5328,16 @@
         },
         {
             "name": "potsky/laravel-localization-helpers",
-            "version": "v1.3.2",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/potsky/laravel-localization-helpers.git",
-                "reference": "58fdb66f47fb8fdd2ba1050f19f19d42a34ea78d"
+                "reference": "4d7a749824a4e74aaf6cfb1165f91affaed680bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/58fdb66f47fb8fdd2ba1050f19f19d42a34ea78d",
-                "reference": "58fdb66f47fb8fdd2ba1050f19f19d42a34ea78d",
+                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/4d7a749824a4e74aaf6cfb1165f91affaed680bf",
+                "reference": "4d7a749824a4e74aaf6cfb1165f91affaed680bf",
                 "shasum": ""
             },
             "require": {
@@ -5413,7 +5365,7 @@
                 }
             ],
             "description": "An artisan command package for easy translation management",
-            "time": "2015-12-25 12:35:08"
+            "time": "2016-01-19 16:36:04"
         },
         {
             "name": "sebastian/comparator",
@@ -6109,6 +6061,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "twbs/bootstrap-sass": 20,
         "simplepie/simplepie": 20,
         "weblee/mandrill": 20,
         "riari/laravel-forum": 20

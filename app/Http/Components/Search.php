@@ -113,9 +113,19 @@ class Search
   * @return JSON
   */
   public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []]) {
-      // $filter = ['missing' => [ 'field' => 'deleted_at' ]];
-      $filter = ['term' => ['deleted' => 0]];
+      $filter = [
+        'and' => [
+            ['term' => ['deleted' => 0]],
+            ['term' => ['visibility' => 1]],
+        ]
+      ];
 
+      $sort = [
+          'id' => [
+              'order' => 'desc',
+              'missing' => PHP_INT_MAX -1, // fixes json_decode() error
+          ]
+      ];
       $params = [
         'index' => 'info',
         'type' => 'publications',
@@ -127,9 +137,11 @@ class Search
                     'filter' => $filter,
                     'query' => $query
                 ]
-            ]
-        ]
-      ];
+            ],
+            'sort' => $sort
+          ]
+        ];
+
       $results = Es::search($params);
       return $results['hits'];
   }
@@ -164,15 +176,15 @@ class Search
       }
 
       $sort = [
-          'publish_date' => [
+          'updated_at' => [
               'order' => 'desc',
               'missing' => PHP_INT_MAX -1, // fixes json_decode() error
           ]
       ];
 
     $params = [
-        'index' => 'news',
-        'type' => 'articles',
+        'index' => 'discussions',
+        'type' => 'threads',
         'size' => $size,
         'from' => $size * $page,
         'body' => [

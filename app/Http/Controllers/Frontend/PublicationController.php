@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Division;
 use App\Models\ContentMedia;
 use App\Http\Requests\Frontend\PublicationRequest;
+use App\Http\Components\Search;
 
 /**
  * Class PublicationController
@@ -259,15 +260,18 @@ class PublicationController extends Controller
      */
     public function public_publication()
     {
-        $publications = Publication::where('deleted', 0)
-                                    ->where('visibility',1)
-                                    ->orderBy('id','DESC')
-                                    ->get();
+        // $publications = Publication::where('deleted', 0)
+        //                             ->where('visibility',1)
+        //                             ->orderBy('id','DESC')
+        //                             ->get();
+        $results = Search::queryPublications();
+        $results_hits = $results['hits'];
+        $publications = Search::formatElasticSearchToArray($results_hits);
         $secondMenu = true;
         $keywords = [];
-        dd($publications);
+        $allDivisions = Division::all();
         return view('frontend.user.publication_filter.public_journal', compact([
-          'publications', 'secondMenu','keywords'
+          'publications', 'secondMenu','keywords','allDivisions'
         ]));
     }
 }

@@ -16,7 +16,7 @@ id,"type",article_type,"title","url",division_id,"last_checked_item",deleted,"cr
 15,"RSS",NULL,NULL,"http://ptwc.weather.gov/feeds/ptwc_rss_pacific.xml",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
 16,"RSS",NULL,NULL,"http://ptwc.weather.gov/feeds/ptwc_rss_hawaii.xml",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
 17,"RSS",NULL,NULL,"http://ptwc.weather.gov/feeds/ptwc_rss_caribe.xml",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
-18,"RSS",9,"","http://www.gdacs.org/rss.aspx",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
+18,"RSS",9,NULL,"http://www.gdacs.org/rss.aspx",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
 19,"RSS",NULL,NULL,"http://createfeed.fivefilters.org/mergefeeds.php?url=ec.europa.eu%2Fecho%2Fecho-rss%2Fpress-releases_en%0Aec.europa.eu%2Fecho%2Fecho-rss%2Fnews_en",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
 20,"RSS",NULL,NULL,"http://createfeed.fivefilters.org/mergefeeds.php?url=www.disasternews.net%2Fnews%2Frss.php",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
 21,"RSS",NULL,NULL,"http://createfeed.fivefilters.org/extract.php?url=www.thebci.org%2Findex.php%2Fabout%2Fnews-room%23%2Flatest_news&in_id_or_class=newsroom-list-header&url_contains=hidden-small",0,"2010-01-28 22:43:58",0,"2015-11-20 22:43:58","2015-11-20 22:43:58"
