@@ -1,5 +1,5 @@
-<div class = "feed_width">
-  @foreach($items as $item)
+{{-- <div class = "feed_width"> --}}
+
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
       <?php
@@ -133,5 +133,5 @@
 
     </div> <!-- the div that closes the box -->
 
-  @endforeach
-</div>
+
+{{-- </div> --}}

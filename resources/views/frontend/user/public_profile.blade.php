@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-1 col-md-1 col-sm-offset-2">
           <div class="box">
-            <div class="" style="text-align:center">
+            <div class="">
               <h4>Stats</h4>
               <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>
               <p style="color:#999">followers</p>
@@ -35,7 +35,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="box" style="display:block-inline;width:100%">
-              <h4 style="text-align:center">Summary</h4>
+              <h4>Summary</h4>
               @if ($user->bio)
 
                 <p style="color:#999">
@@ -59,12 +59,12 @@
         <div class="col-xs-12 col-sm-7 col-md-7 col-sm-offset-2">
           <div class="box" style="width:100%">
 
-              <h4 style="text-align:center">Activity Feed</h4>
+              <h4>Activity Feed</h4>
               <div>
                 <ul>
-                  <li {{strpos(Request::url(), "#publications")!==false ? 'class="active"' : ''}}><a id="publications" href="#publications" onclick="togglePublications()">Publications</a></li>
-                  <li><a id="discussions" href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
-                  <li><a id="publications" href="#publication" onclick="toggleNetwork()">Network</a></li>
+                  <li id="publicationsLi" class="under-border"><a href="#publications" onclick="togglePublications()">Publications</a></li>
+                  <li id="discussionsLi" class="under-border"><a href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
+                  <li id="networkLi" class="under-border"><a href="#network" onclick="toggleNetwork()">Network</a></li>
                 </ul>
               </div>
             </div>
@@ -77,10 +77,18 @@
           });
           function togglePublications(){
             $("#publicationsList").toggle();
+            $("#publicationsLi").attr('class','active-border');
+
+            $("#networkLi").attr('class','under-border');
+            $("#networkList").hide();
           }
           function toggleNetwork(){
             $("#networkList").toggle();
-            $("#toggleNetwork").prop('active');
+            $("#networkLi").attr('class','active-border');
+            $("#publicationsLi").attr('class','under-border');
+            $("#publicationsList").hide();
+
+
           }
         </script>
         <div class="row">

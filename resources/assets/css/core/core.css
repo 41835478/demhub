@@ -112,6 +112,10 @@ body {
   color: white;
 }
 
+.align-top {
+  top: -60px !important;
+}
+
 #landing-nav {
   position: absolute;
   width: 100vw;
@@ -3483,6 +3487,28 @@ button.btn-greytone:active {
 
 .box ul li {
   display: inline;
+}
+
+ul li.under-border {
+  display: inline;
+  border-bottom: 1px solid #ccc;
+  margin-right: -3px;
+}
+
+.box li a {
+  padding: 10px 10px 0px 10px;
+  color: #000;
+}
+
+li.active-border {
+  display: inline;
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+
+.box li:hover a,
+.box li:focus a {
+  color: #337ab7;
 }
 
 .inner-peoplebox {

@@ -91,6 +91,7 @@
   display: block;
   float: left;
   margin-top: 0px;
+  margin-left: -15px;
 }
 
 body {
@@ -1078,9 +1079,6 @@ div#welcome-division {
   border: 1px solid #ddd;
   float: left;
   position: relative;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .inner-feedsbox {
@@ -3469,46 +3467,6 @@ button.btn-greytone:active {
   border: 1px solid #ddd;
   float: left;
   position: relative;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
-}
-
-.box {
-  margin: 10px 0px 5px 0px;
-  padding: 15px 20px 5px 20px;
-  border: 1px solid #ddd;
-  float: left;
-  position: relative;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
-}
-
-.box ul li {
-  display: inline;
-}
-
-ul li.under-border {
-  display: inline;
-  border-bottom: 1px solid #ccc;
-  margin-right: -3px;
-}
-
-.box li a {
-  padding: 10px 10px 0px 10px;
-  color: #000;
-}
-
-li.active-border {
-  display: inline;
-  border: 1px solid #ccc;
-  border-bottom: none;
-}
-
-.box li:hover a,
-.box li:focus a {
-  color: #337ab7;
 }
 
 .inner-peoplebox {
@@ -3526,9 +3484,6 @@ li.active-border {
   float: left;
   position: relative;
   text-transform: capitalize;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .feedsbox-teaser {
@@ -3541,9 +3496,6 @@ li.active-border {
   float: left;
   position: relative;
   text-transform: capitalize;
-  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .inner-feedsbox-teaser {
@@ -3578,7 +3530,7 @@ li.active-border {
 .triangle-right::after {
   background: #fff;
   border-bottom: 11px solid transparent;
-  border-left: 8px solid #777777;
+  border-left: 8px solid #cccccc;
   border-top: 11px solid transparent;
   content: '';
   position: absolute;
@@ -3880,6 +3832,10 @@ div#welcome_sign-up form span {
 #news {
   background-size: 8.5%;
   background-repeat: no-repeat;
+}
+
+.label-default {
+  background-color: #cccccc !important;
 }
 
 .label-default li a {

@@ -6976,27 +6976,19 @@ var feedwhole = Math.round(feedNumber);
 // adding unique divisions to divisionsArray
 $.ajaxSetup({ cache: false });
 
-$.getJSON( "ajax/result1.json", function( index ) {
+$.when(
+
+).then(function(){
+
+});
+
+$.getJSON( "ajax/result1-F.json", function( index ) {
   var jasondata = [];
+
   $.each(index, function( i, val ) {
     $container1.append( "<div><ul>" + val.profileImage + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
   });
 
-  $( ".table-details1" ).children( ".button" ).click(function() {
-    window.location.href = '#DEMHUBModal';
-    return false;
-});
-
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: jasondata.join( "" )
-  }).appendTo( "body" );
-
-  console.log(containerH);
-});
-
-//get json data for the connections
-$.getJSON( "ajax/result1.json", function( index ) {
   var jasondata = [];
   $.each(index, function( i, val ) {
 
@@ -7009,9 +7001,9 @@ $.getJSON( "ajax/result1.json", function( index ) {
 $.getJSON("ajax/result1-news.json", function(index){
 var jasondata = [];
 });
+
 //sorting the division
 divisionsArray.sort();
-
 
 // append the divisions to select
 $.each(divisionsArray, function (i) {
@@ -7036,6 +7028,7 @@ updateTable = function (collaction) {
     }
   }
 });
+
 
 function carouselRes() {
   var caroLength = $('.carousel-inner').height();

@@ -1,6 +1,6 @@
 <div class = "">
 
-@foreach($items as $item)
+
 
   <div {{ strpos(Request::url(), "profile")!==false ? 'class="col-xs-12 col-sm-6 col-md-4 col-lg-feed"' : ''}}>
     <?php
@@ -152,5 +152,5 @@
     </div>
 
 
-@endforeach
+
 </div>
