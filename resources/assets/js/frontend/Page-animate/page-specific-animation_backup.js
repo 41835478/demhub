@@ -35,13 +35,15 @@ $.when(
 
 });
 
-$.getJSON( "ajax/result1-F.json", function( index ) {
+$.getJSON( "ajax/result1-people.json", function( index ) {
   var jasondata = [];
-
   $.each(index, function( i, val ) {
     $container1.append( "<div><ul>" + val.profileImage + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
   });
+});
 
+//get json data for the connections
+$.getJSON( "ajax/result1-people.json", function( index ) {
   var jasondata = [];
   $.each(index, function( i, val ) {
 
@@ -57,6 +59,7 @@ var jasondata = [];
 
 //sorting the division
 divisionsArray.sort();
+
 
 // append the divisions to select
 $.each(divisionsArray, function (i) {
@@ -81,7 +84,6 @@ updateTable = function (collaction) {
     }
   }
 });
-
 
 function carouselRes() {
   var caroLength = $('.carousel-inner').height();

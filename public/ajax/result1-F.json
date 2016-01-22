@@ -1,4 +1,4 @@
-{"people":[{
+[{
 "name": "John Constable",
 "occupation": "CEO",
 "location": "Toronto, Canada",
@@ -77,10 +77,8 @@
   "division": "NGO Humanitarian",
   "profileImage":"",
   "followers":124
-}]}
-
+},
 {
-"newsfeed":[{
 "Title": "Evaluations of disaster education programs for children",
 "date": "Dec 10, 2015",
 "tags": ["disaster","tornado","risk management"],
@@ -160,4 +158,4 @@
 "Image":"",
 "share":123
 }
-]}
+]

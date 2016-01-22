@@ -113,6 +113,10 @@ body {
   color: white;
 }
 
+.align-top {
+  top: -60px !important;
+}
+
 #landing-nav {
   position: absolute;
   width: 100vw;
