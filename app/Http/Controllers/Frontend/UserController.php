@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Frontend;
 
+use App\Models\Content;
 use App\Models\Division;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -63,6 +64,14 @@ class UserController extends Controller {
 			'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
     ]));
 
+	}
+
+	public function getActivities() {
+		$contents = Content::orderBy('updated_at', 'desc')->paginate(30);
+		$allDivisions = $navDivisions = Division::all();
+		$html = view('frontend.user._activity_feed_item', compact(['contents', 'allDivisions']))->render();
+
+		return response()->json(['success' => 'cool','message'=> 'Contents rendered', 'html' => $html]);
 	}
 
 	private function getArticleMedia($results_hits) {

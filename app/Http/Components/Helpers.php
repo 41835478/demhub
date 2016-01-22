@@ -245,4 +245,10 @@ class Helpers {
 			return "9-global/".$item['id']."-".Str::slug($item['name'], '-');
 	}
 
+	public static function return_json_results($result)
+	{
+		header('Content-Type: application/json');
+		echo @json_encode($result);
+	}
+
 }
