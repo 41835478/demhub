@@ -15,6 +15,7 @@ use App\Models\ContentMedia;
 use App\Models\InfoResource;
 use App\Models\Publication;
 use Riari\Forum\Models\Thread;
+use Riari\Forum\Models\Post;
 use Illuminate\Http\Request;
 use Weblee\Mandrill\Mail;
 use League\Csv\Reader;
@@ -522,6 +523,12 @@ class DashboardController extends Controller {
 					'deleted' => $deleted,
 					'publish_date' => NULL
 				]);
+
+				$post = Post::where('parent_thread', $thread->id)->first();
+				if ($post) {
+					$post->parent_thread = $content->id;
+					$post->save();
+				}
       }
     });
 
