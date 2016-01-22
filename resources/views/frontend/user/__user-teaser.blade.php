@@ -1,13 +1,13 @@
 <div class = "col-xs-12 col-sm-8 col-md-8">
   <div class="peoplebox-teaser">
 
-    <div class="col-xs-10 inner-feedsbox">
-      <div class="col-xs-2">
-        <div class="" style="margin: 0 auto; width:150px;">
-          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:135x;max-width:135px;margin-top:-15px']) !!}
+    <div class="col-xs-10 col-xs-offset-1 inner-feedsbox">
+      <div class="col-xs-1">
+        <div class="" style="">
+          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:135x;max-width:135px;margin-top:-8px;margin-left:-25px']) !!}
         </div>
       </div>
-      <div class="col-xs-7 col-xs-offset-1" style="text-align:left;">
+      <div class="col-xs-5 col-xs-offset-3" style="text-align:left;">
       <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
         <h3 style="margin-top:5px">  {{$user->full_name()}}  </h3>
       </a>

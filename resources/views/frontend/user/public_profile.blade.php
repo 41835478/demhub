@@ -18,7 +18,7 @@
 
     </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-1 col-md-1 col-sm-offset-2">
+        <div class="col-xs-3 col-sm-2 col-sm-offset-2">
           <div class="box">
             <div class="">
               <h4>Stats</h4>
@@ -33,8 +33,8 @@
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="box" style="display:block-inline;width:100%">
+        <div class="col-xs-9 col-sm-5" style="">
+            <div class="box" style="display:block-inline;width:100%;">
               <h4>Summary</h4>
               @if ($user->bio)
 
