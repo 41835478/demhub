@@ -26,7 +26,7 @@
       @endif
         <a href="{{url('connections')}}">
           <span class="fa fa-users"></span>
-          <span class="sidebar-title" id="connections_title">CONNECTIONS</span>
+          <span class="sidebar-title" id="connections_title">MY NETWORK</span>
           </a>
       </li>
       <li>

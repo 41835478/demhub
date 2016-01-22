@@ -1,4 +1,4 @@
-<div class = "feed_width">
+<div class = "">
 
 @foreach($items as $item)
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
@@ -22,7 +22,7 @@
       @endforelse
       </div>
 
-      <div class="col-xs-11 inner-feedsbox-teaser">
+      <div class="col-xs-10 inner-feedsbox-teaser">
 
         <div class="article-background col-xs-3" style=
         <?php

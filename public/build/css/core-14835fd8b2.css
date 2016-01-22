@@ -3471,6 +3471,17 @@ button.btn-greytone:active {
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
+.box {
+  margin: 10px 0px 5px 0px;
+  padding: 15px 20px 5px 20px;
+  border: 1px solid #ddd;
+  float: left;
+  position: relative;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
 .inner-peoplebox {
   padding-left: 10px;
   padding-right: 10px;
@@ -3486,6 +3497,9 @@ button.btn-greytone:active {
   float: left;
   position: relative;
   text-transform: capitalize;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .feedsbox-teaser {
@@ -3498,6 +3512,9 @@ button.btn-greytone:active {
   float: left;
   position: relative;
   text-transform: capitalize;
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .inner-feedsbox-teaser {
