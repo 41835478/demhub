@@ -53,7 +53,7 @@
 							{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 							<div class="form-group" style="padding-left:15%;">
 								<div class="input-group searchbar-group" style="width: 100%">
-									<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 7.5px;-webkit-appearance: menulist;">
+									<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 7.5px;">
 										<option value="all">All</option>
 										<option value="articles">Articles</option>
 										<option value="users">Users</option>
@@ -165,10 +165,32 @@
 
 	</div>
 </nav>
-@if (Request::url() === url('forum/all_threads'))
-<div class="row ">
+@if (Request::url() === url('search'))
+<div class="row visible-sm">
 	<div class="col-xs-12">
-
+		{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+		<div class="form-group" style="">
+			<div class="input-group searchbar-group" style="width: 100%">
+				<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 7.5px;">
+					<option value="all">All</option>
+					<option value="articles">Articles</option>
+					<option value="users">Users</option>
+					<option value="publications">Publications</option>
+					<option value="resources">Resources</option>
+				</select>
+				<input name="query_term" class="form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
+				<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</div>
+		{!! Form::close() !!}
+	</div>
+</div>
+@elseif (Request::url() === url('forum/all_threads'))
+<div class="row visible-sm">
+	<div class="col-xs-12">
+		<h1>Hey</h1>
 	</div>
 </div>
 @endif
@@ -182,10 +204,9 @@
 	$(document).ready(function(){
 		$(".searchbar-group").mouseenter(function() {
 			search_focus(true);
-		})
-			.mouseleave(function() {
-				search_focus(false);
-			});
+		}).mouseleave(function() {
+			search_focus(false);
+		});
 
 		$(".nav-searchbar, .nav-search-text, .nav-search-icon-style").blur(function(){
 			search_focus(false);
@@ -198,8 +219,8 @@
 		}
 	});
 
-	function search_focus(give){
-		if(give){
+	function search_focus(give_focus){
+		if(give_focus){
 			$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
 			$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
 			$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
