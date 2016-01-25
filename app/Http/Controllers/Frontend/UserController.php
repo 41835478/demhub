@@ -71,7 +71,18 @@ class UserController extends Controller {
 		$allDivisions = $navDivisions = Division::all();
 		$html = view('frontend.user._activity_feed_item', compact(['contents', 'allDivisions']))->render();
 
-		return response()->json(['success' => 'cool','message'=> 'Contents rendered', 'html' => $html]);
+		return $html;
+	}
+	public function activityFeed() {
+		$contents = Content::orderBy('updated_at', 'desc')->paginate(30);
+		$allDivisions = $navDivisions = Division::all();
+		return view('frontend.user.activity_feed', compact(['contents', 'allDivisions']))->render();
+
+		//return response()->view(['html' => $html]);
+		// return view('frontend.user.userhome', compact([
+    //   'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'query_term', 'articleMediaArray',
+		// 	'total_count', 'options_page', 'options_count', 'item_count', 'last_page'
+    // ]));
 	}
 
 	private function getArticleMedia($results_hits) {

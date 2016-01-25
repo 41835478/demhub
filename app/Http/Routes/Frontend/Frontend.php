@@ -47,9 +47,10 @@ get('public_journal', 'PublicationController@public_publication')->name('publica
  */
 $router->group(['middleware' => 'auth'], function ()
 {
-	get('userhome', 'UserController@index')->name('userhome');
+	//get('userhome', 'UserController@index')->name('userhome');
+	get('userhome', 'UserController@activityFeed')->name('userhome');
 	get('get_activities', 'UserController@getActivities')->name('get_activities');
-
+	// get('activity_feed', 'UserController@activityFeed')->name('activity_feed');
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 	get('dashboard', 'DashboardController@index')->name('dashboard'); // used instead of edit_profile
 
