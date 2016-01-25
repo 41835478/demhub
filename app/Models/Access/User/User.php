@@ -13,6 +13,9 @@ use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Codesleeve\Stapler\ORM\EloquentTrait;
 use DB;
 use App\Models\Division;
+use Riari\Forum\Models\Thread;
+use Riari\Forum\Models\Post;
+use App\Models\Content;
 
 /**
  * Class User
@@ -132,6 +135,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 					    ->whereFollowerId($this->id)
 					    ->whereFollowedId($followed_user_id)
 					    ->count() > 0;
+	}
+	public function discussions()
+	{
+			// dd($item);
+			$threadIds = Post::where('author_id',$this->id)->lists('parent_thread');
+
+			// $threadIds=$posts->parent_thread;
+			//var_dump($threadIds);
+			//$x=(array) $threadIds;
+			$threads = DB::table('contents')->whereIn('id', $threadIds)->get();
+
+			$collection = collect($threads);
+			return $collection;
+
+			//var_dump($threads);
+			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
 	}
 
 }

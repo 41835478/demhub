@@ -25,8 +25,8 @@
               <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>
               <p style="color:#999">followers</p>
 
-              {{-- <h3 style="margin-bottom:0px">{{count($user->discussions())}}</h3>
-              <p style="color:#999">discussions</p> --}}
+              <h3 style="margin-bottom:0px">{{count($user->discussions())}}</h3>
+              <p style="color:#999">discussions</p>
               <h3 style="margin-bottom:0px">{{count($user->publications())}}</h3>
               <p style="color:#999">publications</p>
             </div>
@@ -74,6 +74,7 @@
           $( document ).ready(function() {
             $("#publicationsList").hide();
             $("#networkList").hide();
+            $("#discussionsList").hide();
           });
           function togglePublications(){
             $("#publicationsList").toggle();
@@ -81,13 +82,25 @@
 
             $("#networkLi").attr('class','under-border');
             $("#networkList").hide();
+            $("#discussionsLi").attr('class','under-border');
+            $("#discussionsList").hide()
+          }
+          function toggleDiscussions(){
+            $("#discussionsList").toggle();
+            $("#discussionsLi").attr('class','active-border');
+
+            $("#networkLi").attr('class','under-border');
+            $("#networkList").hide();
+            $("#publicationsLi").attr('class','under-border');
+            $("#publicationsList").hide();
           }
           function toggleNetwork(){
             $("#networkList").toggle();
             $("#networkLi").attr('class','active-border');
             $("#publicationsLi").attr('class','under-border');
             $("#publicationsList").hide();
-
+            $("#discussionsLi").attr('class','under-border');
+            $("#discussionsList").hide()
 
           }
         </script>
@@ -100,7 +113,14 @@
                 @endforeach
               </div>
 
+              <div id="discussionsList">
+                <?php $items=json_decode($user->discussions(), true);
 
+                 ?>
+                @foreach($items as $item)
+                  @include('frontend.__content-teaser')
+                @endforeach
+              </div>
               <div id="networkList">
                 <?php $users=$user->following ?>
                 @foreach($users as $user)
