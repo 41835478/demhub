@@ -43,7 +43,7 @@
 						activity_feed.append(value.html);
 					});
 				} else {
-
+					
 				}
 			}
 		});

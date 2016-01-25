@@ -22,9 +22,32 @@ class FrontendController extends Controller {
 		} else  {
 			$divisions = Division::all();
 
+			// TODO - Get 10 data points (most recent) directly from Article and User models
+			// $news = ;
+			// [{
+			// "Title": "Evaluations of disaster education programs for children",
+			// "date": "Dec 10, 2015",
+			// "tags": ["disaster","tornado","risk management"],
+			// "division": "Health & Epidemics",
+			// "Image":"",
+			// "share":123
+			// },{}...]
+			// $people = ;
+			// [{
+			// "name": "John Constable",
+			// "occupation": "CEO",
+			// "location": "Toronto, Canada",
+			// "division": "Health & Epidemics",
+			// "profileImage":"",
+			// "followers":123
+			// },{}...]
+
+			// $content_json = Helpers::return_json_results($content_json);
+			$content_json = NULL;
+
 			return view('frontend.index', [
-	      	  'divisions' => $divisions
-	   	   	]);
+				'divisions' => $divisions, 'content_json' => $content_json
+			]);
 		}
 
 	}
