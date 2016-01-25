@@ -1,7 +1,7 @@
 {{-- <div class = "feed_width"> --}}
 
 
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-feed">
       <?php
         $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
         if ($articleDivs) {
@@ -19,14 +19,15 @@
             href="{{url('division', $allDivisions[$div-1]->slug)}}"
           ></a>
         @empty
-          <div class="color-label division_{{$currentDivision->slug}}"></div>
+          <div class="color-label division_all"></div>
         @endforelse
 
         <div class="inner-peoplebox">
           <div class="article-background" style=
             <?php
               $neededSearchValue=$item["id"];
-              $neededObject = array_filter(
+              if (isset($articleMediaArray)){
+                $neededObject = array_filter(
                 $articleMediaArray,
                 function ($e) use (&$neededSearchValue){
                   if ($e->article_id == $neededSearchValue){
@@ -35,6 +36,8 @@
                   }
                 }
               );
+              };
+
 
               if (isset($neededObject[0])){
                 echo '"background-image:url('.$neededObject[0]->filename.');
@@ -86,11 +89,16 @@
             style="font-size:82%;color:#000;padding-left:5%">
             <?php
               $parse=parse_url($item['url']);
-              $host=$parse['host'];
-              $host=substr($host,4);
+              if (Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ){
+                $host=$parse['host'];
+                $host=substr($host,4);
 
-              if (substr_count($host,".") <= 1){
-                echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                if (substr_count($host,".") <= 1){
+                  echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                }
+              }
+              else{
+                echo '<a target="_blank" href="http://www.'.$item['url'].'">'.$item['url'].'</a>';
               }
             ?>
           </span>

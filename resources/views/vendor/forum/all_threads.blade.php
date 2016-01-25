@@ -55,7 +55,7 @@
 
 		</div>
 	</div>
-	 {{-- {!! $threads->render() !!}  --}}
+	 
 </div>
 
 @overwrite
