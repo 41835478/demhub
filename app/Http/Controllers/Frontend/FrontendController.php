@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 use App\Models\Division;
+use App\Models\Article;
+use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
@@ -22,28 +24,77 @@ class FrontendController extends Controller {
 		} else  {
 			$divisions = Division::all();
 
-			// TODO - Get 10 data points (most recent) directly from Article and User models
-			// $news = ;
-			// [{
-			// "Title": "Evaluations of disaster education programs for children",
-			// "date": "Dec 10, 2015",
-			// "tags": ["disaster","tornado","risk management"],
-			// "division": "Health & Epidemics",
-			// "Image":"",
-			// "share":123
-			// },{}...]
-			// $people = ;
-			// [{
-			// "name": "John Constable",
-			// "occupation": "CEO",
-			// "location": "Toronto, Canada",
-			// "division": "Health & Epidemics",
-			// "profileImage":"",
-			// "followers":123
-			// },{}...]
+			$news = NULL;
+			foreach ($divisions as $index => $div) {
+				$temp_news = Article::where('divisions', 'LIKE', '%|'.$div->id.'|%')
+											->orderBy('publish_date','desc')
+											->limit(10)
+											->get();
+				$news = $news ? $news->merge($temp_news) : $temp_news;
+			}
+
+			$newsArray = [];
+			foreach ($news as $index => $newsItem) {
+
+				$image = NULL;
+				if ($newsItem->mainMedia()) {
+					$image = $newsItem->mainMediaUrl();
+				}
+				$divValues = [];
+				foreach($newsItem->divisions() as $value) {
+					$divValues[] = $value;
+				}
+
+				array_push($newsArray, json_encode([
+					'title' => $newsItem->name,
+					'date' => $newsItem->humanReadablePublishDate(),
+					'tags' => implode(",", $newsItem->keywords()),
+					'division' => $divValues,
+					'image' => $image,
+					'share' => NULL
+				]));
+			}
+
+			$users = NULL;
+			foreach ($divisions as $index => $div) {
+				$temp_users = User::where('division', 'LIKE', '%|'.$div->id.'|%')
+											->orderBy('updated_at','desc')
+											->limit(10)->get();
+				$users = $users ? $users->merge($temp_users) : $temp_users;
+			}
+
+			$usersArray = [];
+			foreach ($users as $index => $userItem) {
+				$image = NULL;
+				if ($userItem->avatar) {
+					$image = $userItem->avatar->url('medium');
+				}
+				$divValues = [];
+				foreach($userItem->divisions() as $value) {
+					$divValues[] = $value;
+				}
+
+				array_push( $usersArray,
+					json_encode([
+						'name' => $userItem->full_name(),
+						'occupation' => $userItem->job_title,
+						'location' => $userItem->location,
+						'division' => $divValues,
+						'profileImage' => $image,
+						'followers' => count($userItem->followers)
+					])
+				);
+			}
 
 			// $content_json = Helpers::return_json_results($content_json);
-			$content_json = NULL;
+			$content_json = response()->json([
+				'success' => 'cool',
+				'message'=> 'Contents rendered',
+				'content' => [
+					'news' => $newsArray,
+					'users' => $usersArray
+				]
+			]);
 
 			return view('frontend.index', [
 				'divisions' => $divisions, 'content_json' => $content_json
