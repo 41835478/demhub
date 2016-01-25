@@ -12,6 +12,7 @@ use App\Models\Division;
 use App\Models\Access\User\User;
 use Illuminate\Support\Str;
 use Riari\Forum\Models\Post;
+use Riari\Forum\Models\Thread;
 
 class Helpers {
 
@@ -220,12 +221,20 @@ class Helpers {
 	public static function posts($item)
 	{
 			// dd($item);
-			$x = json_decode($item['data']);
 			$posts = Post::where('parent_thread',$item['id'])->get();
 
 			return $posts;
 			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
 	}
+
+	// public static function discussions($item)
+	// {
+	// 		// dd($item);
+	// 		$posts = Post::where('author_id',$item['id'])->get();
+	// 		$threads = Thread::where('id',$posts->parent_thread)->get();
+	// 		return $threads;
+	// 		// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
+	// }
 
 	public static function route($item)
 	{
