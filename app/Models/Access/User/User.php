@@ -99,9 +99,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		if(strpos($this->division, "|") !== false){
 			$divisions = [];
 			if (isset($this->division)) {
-					foreach (array_filter(preg_split("/\|/", $this->division)) as $divSlug) {
+					foreach (array_filter(preg_split("/\|/", $this->division)) as $divId) {
 							// TODO - change data to deal with ids instead of slugs
-							$div = Division::where('slug', $divSlug)->firstOrFail();
+							$div = Division::where('id', $divId)->firstOrFail();
 							$divisions[$div->slug] = $div->name;
 					}
 			} else {

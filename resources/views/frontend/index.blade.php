@@ -80,6 +80,9 @@
 			<div class="content-landing"></div>
 		</div>
 
+		{{-- NOTE - The following line explains how to get the json content data --}}
+		{{-- $content_json->getData()->content --}}
+		
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
