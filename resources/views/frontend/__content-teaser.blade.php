@@ -4,7 +4,9 @@
 
   <div {{ strpos(Request::url(), "profile")!==false ? 'class="col-xs-12 col-sm-6 col-md-4 col-lg-feed"' : ''}}>
     <?php
-
+    if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
+    elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
+    
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
         sort($articleDivs);
@@ -96,7 +98,7 @@
           style="font-size:82%;color:#000;padding-left:5%">
           <?php
             // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
-            if (isset($item['url'])){
+            if (isset($item['url']) && $item['subclass']=="article"){
               $parse=parse_url($item['url']);
               $host=$parse['host'];
               $host=substr($host,4);
