@@ -31,7 +31,7 @@
 			setTimeout(function(){timeout=0;},360);
 		}
 		if ( scrollBottom<-3 && timeOut!==1) {
-            alert( $(this).text() + ' was scrolled to the top' );
+            // alert( $(this).text() + ' was scrolled to the top' );
 						timeOut = 1;
 						topCheck=true;
 						setTimeout(function(){timeout=0; topCheck=false;},360);

@@ -3,6 +3,9 @@
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-feed">
       <?php
+
+      if($item['subclass']=='publication'){ $item['url']='http://wwww.'.$_SERVER['HTTP_HOST'].'/publication/'.$item['id'].'/view';};
+
         $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
         if ($articleDivs) {
           sort($articleDivs);
