@@ -88,8 +88,9 @@
           <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
             style="font-size:82%;color:#000;padding-left:5%">
             <?php
-              $parse=parse_url($item['url']);
-              if (Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ){
+              // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
+              if (isset($item['url'])){
+                $parse=parse_url($item['url']);
                 $host=$parse['host'];
                 $host=substr($host,4);
 
@@ -97,9 +98,10 @@
                   echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
                 }
               }
-              else{
-                echo '<a target="_blank" href="http://www.'.$item['url'].'">'.$item['url'].'</a>';
-              }
+              // else{
+              //
+              //   echo '<a target="_blank" href="http://www.'.$item['url'].'">'.gethostname().'</a>';
+              // }
             ?>
           </span>
 
@@ -125,7 +127,7 @@
               @include('division.__keyword-dropup-foreach')
             @elseif(count($keywords) <5)
               @foreach($keywords as $key => $keyword)
-                <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px" href="?query_term={{$keyword}}">
+                <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px" href="?query_term={{$keyword}}">
                   {{ $keyword }}
                 </a>
               @endforeach

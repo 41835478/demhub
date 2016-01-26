@@ -106,7 +106,7 @@
             @foreach($keywords as $key=>$keyword)
               @if ($keyword)
 
-              <a class="label label-default" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
+              <a class="label label-card" style="font-size:82%;margin-right:2px" href="?query_term={{$keyword}}">
                 @if($keyword == "virus")
                 viral
                 @else

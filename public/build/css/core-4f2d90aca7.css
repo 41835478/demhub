@@ -3561,6 +3561,10 @@ li.active-border {
   text-transform: capitalize;
 }
 
+.label-card {
+  background-color: #777777 !important;
+}
+
 .triangle-right {
   background: #eee;
   border-radius: 3px 0 0 3px;
