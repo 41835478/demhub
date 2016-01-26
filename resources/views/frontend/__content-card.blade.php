@@ -1,7 +1,7 @@
 {{-- <div class = "feed_width"> --}}
 
 
-    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-feed">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-feed">
       <?php
         $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
         if ($articleDivs) {

@@ -4,29 +4,6 @@
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   </button>
 
-  <div class="btn-group dropup">
-    @if(Auth::user())
-      <button type="button" class="btn btn-greytone btn-sm share-dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-       style="margin-left:5px;">
-        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item['name']}}"
-        data-url="{{$item['url']}}">TWEET</a> </li>
-        <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item['name']}}%0D%0A{{$item['url']}}"
-        target="_top" class="article_email">EMAIL</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a class="copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Link</span>
-        <span class="copy-button-link" style="display:none">{{$item['url']}}</span></a></li>
-      </ul>
-    @else
-      <a type="button" class="btn btn-default btn-sm" href="" data-toggle="modal" data-target="#DEMHUBModal"
-       style="margin-left:5px;">
-        <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
-      </a>
-    @endif
-  </div>
-
   <div class="btn-group">
   <button type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
     <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
@@ -49,4 +26,27 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </ul>
+   </div>
+
+   <div class="btn-group dropup">
+     @if(Auth::user())
+       <button type="button" class="btn btn-greytone btn-sm share-dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        style="margin-left:5px;">
+         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+       </button>
+       <ul class="dropdown-menu">
+         <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item['name']}}"
+         data-url="{{$item['url']}}">TWEET</a> </li>
+         <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item['name']}}%0D%0A{{$item['url']}}"
+         target="_top" class="article_email">EMAIL</a></li>
+         <li role="separator" class="divider"></li>
+         <li><a class="copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Link</span>
+         <span class="copy-button-link" style="display:none">{{$item['url']}}</span></a></li>
+       </ul>
+     @else
+       <a type="button" class="btn btn-default btn-sm" href="" data-toggle="modal" data-target="#DEMHUBModal"
+        style="margin-left:5px;">
+         <div class="glyphicon glyphicon-share-alt" aria-hidden="true"></div>
+       </a>
+     @endif
    </div>
