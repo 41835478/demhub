@@ -3,7 +3,7 @@
   @if($index==1)
   {{-- First keyword is shown outside of dropup menu --}}
   {{-- Same structure as facebook post like count system --}}
-  <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px;" href="/?query_term={{$keyword}}">
+  <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:4px;" href="/?query_term={{$keyword}}">
     {{ $keyword }}
   </a>
 
@@ -13,7 +13,7 @@
   <div class="dropup" style="display:inline;">
     <a type="button" class="label label-card triangle-right dropdown-toggle"
     data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu2" aria-expanded="false"
-    style="font-size:82%;margin-right:2px;padding-bottom:5px;">
+    style="font-size:82%;margin-right:2px;padding-bottom:4px;">
     and {{count($keywords)-1}} other keywords
       <span class="caret"></span>
     </a>

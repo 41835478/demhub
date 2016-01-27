@@ -1,3 +1,4 @@
+
 var twitterElement;
 var newScript;
 var copyLink;
@@ -44,4 +45,7 @@ $(".feedsbox").mouseleave(function() {
   $(copyLink).attr('id', '');
   copyLink=$(this).find(".copy-button-link");
   $(copyLink).attr('id', '');
+});
+$(window).load(function() {
+  $('[data-toggle="tooltip"]').tooltip();
 });

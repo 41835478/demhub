@@ -18,12 +18,12 @@
       <div class = "feedsbox">
 
         @forelse($articleDivs as $div)
-          <a class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
+          <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
             style="width:{{$width}}%; margin-left:{{$marginLeft}}%;"
-            href="{{url('division', $allDivisions[$div-1]->slug)}}"
-          ></a>
+            data-toggle="tooltip" data-placement="top" title="{{$allDivisions[$div-1]->slug}}"
+          ></div>
         @empty
-          <div class="color-label division_all"></div>
+          <div class="color-label division_all" data-toggle="tooltip" data-placement="top" title="All Divisions"></div>
         @endforelse
 
         <div class="inner-peoplebox">
@@ -131,7 +131,7 @@
               @include('division.__keyword-dropup-foreach')
             @elseif(count($keywords) <5)
               @foreach($keywords as $key => $keyword)
-                <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px" href="?query_term={{$keyword}}">
+                <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
                   {{ $keyword }}
                 </a>
               @endforeach

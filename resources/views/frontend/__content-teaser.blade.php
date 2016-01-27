@@ -6,7 +6,7 @@
     <?php
     if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
     elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
-    
+
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
         sort($articleDivs);
@@ -19,9 +19,13 @@
     <div class = "feedsbox-teaser">
       <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:69px">
       @forelse($articleDivs as $div)
-        <a style="height:{{$height}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"></a>
+        <a style="height:{{$height}}%;" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"
+          data-toggle="tooltip" data-placement="top" title="{{$allDivisions[$div-1]->slug}}">
+        </a>
       @empty
-        <a style="height:100%;" href="{{url('divisions')}}" class="color-label-vertical division_all"></a>
+        <a style="height:100%;" class="color-label-vertical division_all"
+        data-toggle="tooltip" data-placement="top" title="All Divisions">
+        </a>
       @endforelse
       </div>
 
@@ -125,7 +129,7 @@
           @elseif(count($keywords) <5)
             @foreach($keywords as $key=>$keyword)
 
-              <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px;" href="?query_term={{$keyword}}">
+              <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:4px;" href="?query_term={{$keyword}}">
                 {{ $keyword }}
               </a>
 

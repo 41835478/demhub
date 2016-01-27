@@ -68,8 +68,9 @@ $(function(){
     });
 });
 $(function(){
-
+  
 });
+
 /*! Backstretch - v2.0.4 - 2013-06-19
 * http://srobbin.com/jquery-plugins/backstretch/
 * Copyright (c) 2013 Scott Robbin; Licensed MIT */
@@ -7053,6 +7054,7 @@ $(document).ready(function(){
     carouselRes();
 });
 
+
 var twitterElement;
 var newScript;
 var copyLink;
@@ -7099,6 +7101,9 @@ $(".feedsbox").mouseleave(function() {
   $(copyLink).attr('id', '');
   copyLink=$(this).find(".copy-button-link");
   $(copyLink).attr('id', '');
+});
+$(window).load(function() {
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 //# sourceMappingURL=frontend.js.map
