@@ -102,6 +102,10 @@ li.active-border {
    color:#35464d;
    text-transform: capitalize;
 }
+.label-hashtag {
+  color: #546E7A;
+  font-weight: bold;
+}
 .label-card{
   background-color: #777777 !important;
 }
@@ -145,9 +149,7 @@ li.active-border {
 //   right: 0;
 //   top: 0;
 // }
-.label-hashtag {
-  color: #546E7A;
-}
+
 .arrows {
   padding-bottom:2px;
   -ms-transform: scale(0.15,0.15);

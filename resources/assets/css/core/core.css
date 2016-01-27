@@ -3559,12 +3559,13 @@ li.active-border {
   text-transform: capitalize;
 }
 
-.label-card {
-  background-color: #777777 !important;
-}
-
 .label-hashtag {
   color: #546E7A;
+  font-weight: bold;
+}
+
+.label-card {
+  background-color: #777777 !important;
 }
 
 .arrows {

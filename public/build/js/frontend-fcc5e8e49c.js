@@ -7044,7 +7044,7 @@ function carouselRes() {
     $('.carousel-inner').children('img').css('min-height','auto');
     $('.carousel-inner').children('img').css('min-width','100vw');
   }
-  console.log (difference);
+  //console.log (difference);
 };
 
 $(document).ready(function(){
