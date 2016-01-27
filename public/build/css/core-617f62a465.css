@@ -1113,7 +1113,6 @@ div#welcome-division {
 @media (min-width: 1200px) and (max-width: 1399px) {
   .feedsbox {
     min-width: 320px;
-    max-width: 30%;
     display: inline-block;
   }
 }
