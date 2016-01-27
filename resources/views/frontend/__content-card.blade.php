@@ -20,10 +20,10 @@
         @forelse($articleDivs as $div)
           <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
             style="width:{{$width}}%; margin-left:{{$marginLeft}}%;"
-            data-toggle="tooltip" data-placement="top" title="{{$allDivisions[$div-1]->slug}}"
+            data-toggle="headsup" data-placement="top" title="{{$allDivisions[$div-1]->slug}}"
           ></div>
         @empty
-          <div class="color-label division_all" data-toggle="tooltip" data-placement="top" title="All Divisions"></div>
+          <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
         @endforelse
 
         <div class="inner-peoplebox">
@@ -93,7 +93,8 @@
             style="font-size:82%;color:#000;padding-left:5%">
             <?php
               // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
-              if (isset($item['url']) && $item['subclass']=="article"){
+              if ($item['subclass']=='article'){
+
                 $parse=parse_url($item['url']);
                 $host=$parse['host'];
                 $host=substr($host,4);
@@ -101,6 +102,9 @@
                 if (substr_count($host,".") <= 1){
                   echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
                 }
+                // else {
+                //   echo '<a target="_blank" href="http://'.$host.'">'.$host.'</a>';
+                // }
               }
               // else{
               //
@@ -131,8 +135,8 @@
               @include('division.__keyword-dropup-foreach')
             @elseif(count($keywords) <5)
               @foreach($keywords as $key => $keyword)
-                <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
-                  {{ $keyword }}
+                <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
+                  #{{ $keyword }}
                 </a>
               @endforeach
             @endif

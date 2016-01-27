@@ -3563,29 +3563,8 @@ li.active-border {
   background-color: #777777 !important;
 }
 
-.triangle-right {
-  background: #eee;
-  border-radius: 3px 0 0 3px;
-  color: #999;
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding-right: 10px !important;
-  position: relative;
-  margin: 0 10px 10px 0;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
-}
-
-.triangle-right::after {
-  background: #fff;
-  border-bottom: 11px solid transparent;
-  border-left: 8px solid #777777;
-  border-top: 11px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
+.label-hashtag {
+  color: #546E7A;
 }
 
 .arrows {

@@ -105,23 +105,23 @@ li.active-border {
 .label-card{
   background-color: #777777 !important;
 }
-.triangle-right {
-	// border-top: 50px solid transparent;
-	// border-left: 100px solid #cccccc;
-	// border-bottom: 50px solid transparent;
-  background: #eee;
-  border-radius: 3px 0 0 3px;
-  color: #999;
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  // padding: 0 20px 0 23px;
-  padding-right: 10px !important;
-  position: relative;
-  margin: 0 10px 10px 0;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
-}
+// .triangle-right {
+// 	// border-top: 50px solid transparent;
+// 	// border-left: 100px solid #cccccc;
+// 	// border-bottom: 50px solid transparent;
+//   background: #eee;
+//   border-radius: 3px 0 0 3px;
+//   color: #999;
+//   display: inline-block;
+//   height: 26px;
+//   line-height: 26px;
+//   // padding: 0 20px 0 23px;
+//   padding-right: 10px !important;
+//   position: relative;
+//   margin: 0 10px 10px 0;
+//   text-decoration: none;
+//   -webkit-transition: color 0.2s;
+// }
 
 // .triangle-right::before {
 //   background: #fff;
@@ -135,15 +135,18 @@ li.active-border {
 //   top: 10px;
 // }
 
-.triangle-right::after {
-  background: #fff;
-  border-bottom: 11px solid transparent;
-  border-left: 8px solid #777777;
-  border-top: 11px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
+// .triangle-right::after {
+//   background: #fff;
+//   border-bottom: 11px solid transparent;
+//   border-left: 8px solid #777777;
+//   border-top: 11px solid transparent;
+//   content: '';
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+// }
+.label-hashtag {
+  color: #546E7A;
 }
 .arrows {
   padding-bottom:2px;

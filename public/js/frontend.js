@@ -68,7 +68,7 @@ $(function(){
     });
 });
 $(function(){
-  
+
 });
 
 /*! Backstretch - v2.0.4 - 2013-06-19
@@ -7058,6 +7058,9 @@ $(document).ready(function(){
 var twitterElement;
 var newScript;
 var copyLink;
+$(window).load(function() {
+  $('[data-toggle="headsup"]').tooltip();
+});
 $(".feedsbox").mouseenter(function() {
   twitterElement=$(this).find(".article_twitter");
   $(twitterElement).addClass("twitter-share-button");
@@ -7101,9 +7104,6 @@ $(".feedsbox").mouseleave(function() {
   $(copyLink).attr('id', '');
   copyLink=$(this).find(".copy-button-link");
   $(copyLink).attr('id', '');
-});
-$(window).load(function() {
-  $('[data-toggle="tooltip"]').tooltip();
 });
 
 //# sourceMappingURL=frontend.js.map

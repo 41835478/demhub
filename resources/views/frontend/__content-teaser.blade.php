@@ -129,8 +129,8 @@
           @elseif(count($keywords) <5)
             @foreach($keywords as $key=>$keyword)
 
-              <a class="label label-card triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:4px;" href="?query_term={{$keyword}}">
-                {{ $keyword }}
+              <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px;" href="?query_term={{$keyword}}">
+                #{{ $keyword }}
               </a>
 
 
