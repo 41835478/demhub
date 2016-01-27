@@ -24,7 +24,7 @@ class FrontendController extends Controller {
 		} else  {
 			$divisions = Division::all();
 
-			$news = NULL;
+			$news = array();
 			foreach ($divisions as $index => $div) {
 				$temp_news = Article::where('divisions', 'LIKE', '%|'.$div->id.'|%')
 											->orderBy('publish_date','desc')
@@ -55,7 +55,7 @@ class FrontendController extends Controller {
 				]));
 			}
 
-			$users = NULL;
+			$users = array();
 			foreach ($divisions as $index => $div) {
 				$temp_users = User::where('division', 'LIKE', '%|'.$div->id.'|%')
 											->orderBy('updated_at','desc')
