@@ -45,7 +45,7 @@
   			      </td>
 							<?php  $uploader=$author=Helpers::uploader($thread); ?>
 
-  			    	<td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$author->first_name}} {{$author->last_name}}</td>
+  			    	<td><img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$author->first_name}} {{$author->last_name}}</td>
 							<td><p style="padding-top:4px"><span class="label label-default" >{{count(Helpers::posts($thread))}}</span></p></td>
 							{{-- <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td> --}}
   			    </tr>
@@ -55,7 +55,7 @@
 
 		</div>
 	</div>
-	 
+
 </div>
 
 @overwrite

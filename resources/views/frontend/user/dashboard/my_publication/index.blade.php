@@ -57,13 +57,13 @@
                       </a>
 
                       @if (isset($publication) && $publication->mainMedia())
-                        <a class="" href="{{ $publication->mainMediaUrl() }}" download style="padding-left:5px"
+                        <a class="" href="{{ $publication->mainMediaUrl() }}" style="padding-left:5px"
                           data-toggle="tooltip" data-placement="top" title="DOWNLOAD">
                           <h3 class="icon file_download" style="margin:-2px;"></h3>
                         </a>
                       @endif
 
-                      <a class="" href="#" style="padding-left:5px"
+                      <a class="" href="" style="padding-left:5px"
                         data-toggle="modal" data-target="#publicationModal{{ $publication->id }}" data-toggle="tooltip" data-placement="top" title="SHOW DETAILS">
                         <h3 class="icon assignment" style="margin:-2px"></h3>
                       </a>
