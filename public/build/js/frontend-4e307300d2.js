@@ -7024,10 +7024,12 @@ $(document).ready(function(){
 var twitterElement;
 var newScript;
 var copyLink;
-
+$(window).load(function() {
+	$('[data-toggle="headsup"]').tooltip();
+});
 $(".feedsbox").mouseenter(function() {
-  twitterElement=$(this).find(".article_twitter");
-  $(twitterElement).addClass("twitter-share-button");
+  // twitterElement=$(this).find(".article_twitter");
+  // $(twitterElement).addClass("twitter-share-button");
   copyLink=$(this).find(".copy-button");
   $(copyLink).attr('id', 'copy-button');
   copyLink=$(this).find(".copy-button-text");
@@ -7035,6 +7037,7 @@ $(".feedsbox").mouseenter(function() {
   copyLink=$(this).find(".copy-button-link");
   $(copyLink).attr('id', 'copy-button-link');
 
+  // !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(document.body){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 });
 
 $(".share-dropdown-toggle").mouseenter(function(){

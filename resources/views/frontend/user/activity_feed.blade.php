@@ -10,9 +10,6 @@
 </div>
 
 <script>
-$(window).load(function() {
-	$('[data-toggle="headsup"]').tooltip();
-});
 
 function twitterActivate (item) {
 	var twitterElement;

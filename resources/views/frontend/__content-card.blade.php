@@ -15,7 +15,7 @@
         }
       ?>
 
-      <div class = "feedsbox">
+      <div class = "feedsbox" style="{{isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'}}">
 
         @forelse($articleDivs as $div)
           <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
