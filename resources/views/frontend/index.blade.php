@@ -68,6 +68,7 @@
 			</div>
 		</div>
 		<div class="card-ajax">
+
 			<!-- the table for the jquery ajax reading !!!!! -->
 			<p>
 			<table class="table-details1">
@@ -77,12 +78,12 @@
 					<p class="w-c">	DEMHUB Newsfeeds</p>
 			</table>
 			</p>
+			@include('frontend.user._dropdown')
 			<div class="content-landing"></div>
 		</div>
 
 		{{-- NOTE - The following line explains how to get the json content data --}}
 		{{-- $content_json->getData()->content --}}
-		
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
@@ -130,8 +131,12 @@
 				<h3 class="glyphicon glyphicon-chevron-down" style="text-align:center;padding-top:4%"></h3>
 			</a>
 		</div>
+		
+		<!-- svg map files goes here -->
+	 @include('frontend.user._svg')
 
-		<div class="">
+		</div>
+
 			<div id="welcome_about" class="row">
 
 				<div class="col-md-12">
@@ -176,7 +181,7 @@
 				</div>
 
 			</div>
-		</div>
+
 
 		<div id="welcome_secondary_text" class="row">
 			<div class="row">
