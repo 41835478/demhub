@@ -1,8 +1,12 @@
 {{-- <div class = "feed_width"> --}}
 
 
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-feed">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-feed">
       <?php
+
+      if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
+      elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
+
         $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
         if ($articleDivs) {
           sort($articleDivs);
@@ -14,19 +18,20 @@
       <div class = "feedsbox">
 
         @forelse($articleDivs as $div)
-          <a class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
+          <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
             style="width:{{$width}}%; margin-left:{{$marginLeft}}%;"
-            href="{{url('division', $allDivisions[$div-1]->slug)}}"
-          ></a>
+            data-toggle="headsup" data-placement="top" title="{{$allDivisions[$div-1]->slug}}"
+          ></div>
         @empty
-          <div class="color-label division_{{$currentDivision->slug}}"></div>
+          <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
         @endforelse
 
         <div class="inner-peoplebox">
           <div class="article-background" style=
             <?php
               $neededSearchValue=$item["id"];
-              $neededObject = array_filter(
+              if (isset($articleMediaArray)){
+                $neededObject = array_filter(
                 $articleMediaArray,
                 function ($e) use (&$neededSearchValue){
                   if ($e->article_id == $neededSearchValue){
@@ -35,6 +40,8 @@
                   }
                 }
               );
+              };
+
 
               if (isset($neededObject[0])){
                 echo '"background-image:url('.$neededObject[0]->filename.');
@@ -85,13 +92,24 @@
           <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
             style="font-size:82%;color:#000;padding-left:5%">
             <?php
-              $parse=parse_url($item['url']);
-              $host=$parse['host'];
-              $host=substr($host,4);
+              // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
+              if ($item['subclass']=='article'){
 
-              if (substr_count($host,".") <= 1){
-                echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                $parse=parse_url($item['url']);
+                $host=$parse['host'];
+                $host=substr($host,4);
+
+                if (substr_count($host,".") <= 1){
+                  echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                }
+                // else {
+                //   echo '<a target="_blank" href="http://'.$host.'">'.$host.'</a>';
+                // }
               }
+              // else{
+              //
+              //   echo '<a target="_blank" href="http://www.'.$item['url'].'">'.gethostname().'</a>';
+              // }
             ?>
           </span>
 
@@ -117,8 +135,8 @@
               @include('division.__keyword-dropup-foreach')
             @elseif(count($keywords) <5)
               @foreach($keywords as $key => $keyword)
-                <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px" href="?query_term={{$keyword}}">
-                  {{ $keyword }}
+                <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
+                  #{{ $keyword }}
                 </a>
               @endforeach
             @endif

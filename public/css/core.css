@@ -80,8 +80,7 @@
 
 .color-label {
   width: 100%;
-  height: 5%;
-  display: block;
+  height: 16px;
   float: left;
   margin-top: -15px;
 }
@@ -1405,7 +1404,6 @@ div#welcome-division {
 @media (min-width: 1200px) and (max-width: 1399px) {
   .feedsbox {
     min-width: 320px;
-    max-width: 30%;
     display: inline-block;
   }
 }
@@ -1822,9 +1820,9 @@ input[type="radio"] {
 }
 
 button.btn-greytone {
-  background: #fff;
-  border-color: #ccc;
+  background: #ccc;
   color: #333;
+  border-radius: 0.5px;
 }
 
 button.btn-greytone:hover,
@@ -3853,29 +3851,13 @@ li.active-border {
   text-transform: capitalize;
 }
 
-.triangle-right {
-  background: #eee;
-  border-radius: 3px 0 0 3px;
-  color: #999;
-  display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding-right: 10px !important;
-  position: relative;
-  margin: 0 10px 10px 0;
-  text-decoration: none;
-  -webkit-transition: color 0.2s;
+.label-hashtag {
+  color: #546E7A;
+  font-weight: bold;
 }
 
-.triangle-right::after {
-  background: #fff;
-  border-bottom: 11px solid transparent;
-  border-left: 8px solid #777777;
-  border-top: 11px solid transparent;
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
+.label-card {
+  background-color: #777777 !important;
 }
 
 .arrows {

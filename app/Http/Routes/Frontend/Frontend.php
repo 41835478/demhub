@@ -47,13 +47,17 @@ get('public_journal', 'PublicationController@public_publication')->name('publica
  */
 $router->group(['middleware' => 'auth'], function ()
 {
-	get('userhome', 				'UserController@index')->name('userhome');
-	get('get_activities', 	'UserController@getActivities')->name('get_activities');
 
-	get('discussion', 			'ForumController@showDiscussionIndex')->name('discussion');
-	get('dashboard', 				'DashboardController@index')->name('dashboard'); // used instead of edit_profile
+	//get('userhome', 'UserController@index')->name('userhome');
+	get('userhome', 'UserController@activityFeed')->name('userhome');
+	// get('get_activities/{slug}', 'UserController@getActivities')->where('slug', '[0-9_\-]+')->name('get_activities');
+	get('get_activities', 'UserController@getActivities')->name('get_activities');
+	// get('activity_feed', 'UserController@activityFeed')->name('activity_feed');
+	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
+	get('dashboard', 'DashboardController@index')->name('dashboard'); // used instead of edit_profile
 
-	get('connections', 			'DashboardController@showConnections')->name('connections');
+	get('connections',	'DashboardController@showConnections'	)->name('connections');
+	get('bookmarks',		'DashboardController@showBookmarks'		)->name('bookmarks');
 	// get('profile/edit', 		'ProfileController@edit')->name('edit_profile');
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
 
@@ -61,22 +65,22 @@ $router->group(['middleware' => 'auth'], function ()
 	 * Publication Routes
 	 */
 
-	get(	'my_publications', 					'PublicationController@index')->name('my_publications');
+	get(	'my_publications', 					'PublicationController@index'										)->name('my_publications');
 	post(	'my_publications/{caret}', 	'PublicationController@caret_publication_action')->name('caret_publication_action');
 
 	get(	'my_publication/new', 			'PublicationController@create')->name('new_publication');
-	post(	'my_publication/store', 		'PublicationController@store')->name('store_publication');
-	get(	'my_publication/{id}/edit', 'PublicationController@edit')->name('edit_publication');
+	post(	'my_publication/store', 		'PublicationController@store'	)->name('store_publication');
+	get(	'my_publication/{id}/edit', 'PublicationController@edit'	)->name('edit_publication');
 	patch('my_publication/{id}', 			'PublicationController@update')->name('update_publication');
 
-	get(	'publication/{id}/view', 		'PublicationController@view')->name('view_publication');
-	get(	'publication/{id}', 				'PublicationController@preview')->name('preview_publication');
+	get(	'publication/{id}/view', 		'PublicationController@view'		)->name('view_publication');
+	get(	'publication/{id}', 				'PublicationController@preview'	)->name('preview_publication');
 
 	/**
 	 * Public Profiles
 	 */
-	get('profile/{user_name}', 'ProfileController@view_public_profile')->name('view_public_profile');
-	get('profiles', 'ProfileController@listing_of_profiles')->name('profiles');
+	get('profile/{user_name}', 	'ProfileController@view_public_profile')->name('view_public_profile');
+	get('profiles', 						'ProfileController@listing_of_profiles')->name('profiles');
 
 	/**
 	 * Search
@@ -86,6 +90,10 @@ $router->group(['middleware' => 'auth'], function ()
 	// Follow/unfollow
 	post('follow/{id}', 	'ProfileController@followUser')->name('follow_user');
 	post('unfollow/{id}', 'ProfileController@unfollowUser')->name('unfollow_user');
+
+	// Bookmark
+	post('bookmark_publication/{id}', 	'PublicationController@bookmarkPublication')->name('bookmark_publication');
+	post('unbookmark_publication/{id}', 'PublicationController@unbookmarkPublication')->name('unbookmark_publication');
 });
 
 /**
