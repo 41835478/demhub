@@ -22,8 +22,6 @@ use App\Http\Controllers\Controller;
  */
 class SchedulerController extends Controller
 {
-
-
 	/**
 	 * Function designed to be called by the crontab
 	 * Will review and save new articles from 'RSS' type sources in the scrape_sources table

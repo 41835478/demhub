@@ -43,8 +43,9 @@ div#dashboard a {
 div#dashboard a:hover {
   text-decoration: none;
 }
+
 nav#guest-menu {
-  background: rgba(0,0,0,0.7);
+  background: none;
   text-decoration: none;
   text-transform: uppercase;
   text-shadow: none;
@@ -53,50 +54,25 @@ nav#guest-menu {
   box-shadow: none!important;
   margin-bottom: 1%;
 }
-nav#guest-menu div.container div.navbar-header a {
+nav#guest-menu div.container div.navbar-f a {
   font-weight: 700;
 }
-nav#guest-menu div.container div.navbar-header a:hover {
-  color: #337ab7;
+nav#top-menu div.container div.navbar-header a:hover {
+  color: #ed6b00;
 }
-nav#guest-menu div.container div.navbar-header img {
+nav#top-menu div.container div.navbar-header img {
   margin-top: -25px;
 }
-nav#guest-menu div.container div#navbar {
+nav#top-menu div.container div#navbar {
   margin-left: 1%;
 }
-nav#guest-menu li a {
-  color: #fff;
-}
 
-nav#guest-menu li a:hover {
-  color: #337ab7;
-  text-decoration: none;
-  text-shadow: none;
-}
-nav#guest-menu li.active a {
-  background: #337ab7;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: none;
-}
 
 #welcome_home {
-  // font-weight: bolder;
-  // font-family: 'Open Sans', sans-serif;
-  //
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  // background-position: center center;
-  // overflow-x: hidden;
-  // margin-top: 0px;
-  padding: 15%;
 }
 div#welcome_about {
   padding: 6% 1% 10%;
-  background:rgba(20, 23, 32, 1.0);
+  background:#35474f;
   // background: -webkit-linear-gradient(90deg, #16222A 10%, #3A6073 90%);
   // /* Chrome 10+, Saf5.1+ */
   // background: -moz-linear-gradient(90deg, #16222A 10%, #3A6073 90%);
@@ -302,9 +278,9 @@ div#welcome_sign-up form span {
   background-size: 8.5%;
   background-repeat: no-repeat;
 }
-.label-default {
-  background-color: #cccccc !important;
-}
+// .label-default {
+//
+// }
 .label-default li a {
   color:#fff !important;
 }
@@ -449,7 +425,7 @@ div#user-email p {
 }
 
 .user_dashboard_menu li.active a {
-  background: #337ab7;
+  background: #ed6b00;
   color: #fff;
 }
 .user_dashboard_menu i {
@@ -470,7 +446,7 @@ div#user-email p {
 //   font-weight: bolder;
 // }
 // #guest-function div.container div.navbar-header a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 // }
 // nav#user_dashboard_menu div.container div.navbar-header img {
 //   margin-top: -24px;
@@ -482,14 +458,14 @@ div#user-email p {
 //   color: #fff;
 // }
 // #user_dashboard_menu div.container div#navbar a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 //   background: #000;
 //   text-decoration: none;
 //   text-shadow: none;
 // }
 
 // #user_dashboard_menu li ul li a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 //   background: #000;
 // }
 // nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li {
@@ -502,7 +478,7 @@ div#user-email p {
 //   color: #000;
 // }
 // nav#user_dashboard_menu div.container div#navbar ul.dropdown-menu li a:hover {
-//   color: #337ab7;
+//   color: #ed6b00;
 // }
 
 .dots {

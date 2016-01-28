@@ -27,9 +27,9 @@
       $display_coming_soon = preg_match($pattern, Request::url()) == FALSE && $today < $launch_date;
     ?>
 
-    @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+    <!-- @if(Request::url() == url('dashboard') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
       {!! HTML::style(elixir('css/dashboardtest.css')) !!}
-    @endif
+    @endif -->
 
     <!-- Fonts -->
     <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
@@ -53,13 +53,19 @@
     @else
       <div class="wrapper">
         @if (Auth::user())
-            @include('frontend.includes._feedback_sidebar')
-            	@include('modals._feedback_thankyou')
+          @include('frontend.includes._feedback_sidebar')
+          @include('modals._feedback_thankyou')
         @endif
 
         @include('frontend.navigation._navigation')
         @include('includes.partials.messages')
-        <div class="@yield('container-class')" style="overflow-x:hidden">
+        <div
+        @if(Request::url() == url('dashboard') || Request::url() == url('') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
+        class="@yield('container-class') container-fluid"
+        @else
+        class="@yield('container-class')"
+        @endif
+        style="overflow-x:hidden;padding-top:25px">
 
           @yield('body-style')
           @yield('content')

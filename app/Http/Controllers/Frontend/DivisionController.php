@@ -62,7 +62,7 @@ class DivisionController extends Controller
 
       $articleMediaArray = $this->getArticleMedia($results_hits);
       $newsFeeds = Search::formatElasticSearchToArray($results_hits);
-
+      
       $item_count = count($newsFeeds);
       $last_page = $size*(1+$page) >= $total_count;
       $options_page = $page + 1;

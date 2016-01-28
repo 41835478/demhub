@@ -22,11 +22,11 @@ hr.style4 {
 }
 
 .publication-update {
- @extend .pub-space;
-display: block;
-height:300px;
-width:100%;
-background-color: #fff;
+  @extend .pub-space;
+  display: block;
+  height:300px;
+  width:100%;
+  background-color: #fff;
 }
 
 .publication-each{
@@ -47,6 +47,7 @@ background-color: #fff;
   font-weight: bold;
   text-align: right;
 }
+
 li.pub-title{
   color:#337AB7;
   font-weight: 300;
@@ -85,8 +86,8 @@ li.pub-descrip{
 }
 
 .pub-dropdown{
-width: 130%;
-margin:7% 5% auto 5%;
+  width: 130%;
+  margin:7% 5% auto 5%;
 }
 
 .pub-division{
@@ -102,6 +103,39 @@ margin:7% 5% auto 5%;
   float:left;
   margin:4px;
   display:inline;
+}
+
+.publication-detail-label {
+  background-color: #ccc;
+  text-align: center;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.my-publication-label {
+  background-color: #ccc;
+  text-align: center;
+  padding-bottom: 8px;
+  text-transform: uppercase
+}
+// TODO - Turn hex color values to sass variables
+.health-font-color {
+  color:#0D8E56;
+}
+.science-font-color {
+  color:#1D73A3;
+}
+.response-font-color {
+  color:#DB9421;
+}
+.security-font-color {
+  color:#848889;
+}
+.continuity-font-color {
+  color:#933131;
+}
+.humanitarian-font-color {
+  color:#754293;
 }
 
 //responsive

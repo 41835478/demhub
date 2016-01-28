@@ -17,15 +17,19 @@ class UserRoleSeeder extends Seeder {
 		else //For PostgreSQL or anything else
 			DB::statement("TRUNCATE TABLE ".config('access.assigned_roles_table')." CASCADE");
 
-		//Attach admin role to admin user
+		//Attach admin role to admin users
 		$user_model = config('auth.model');
 		$user_model = new $user_model;
 		$user_model::first()->attachRole(1);
 
+		$user_model = config('auth.model');
+		$user_model = new $user_model;
+		$user_model::find(2)->attachRole(1);
+
 		//Attach user role to general user
 		$user_model = config('auth.model');
 		$user_model = new $user_model;
-		$user_model::find(2)->attachRole(2);
+		$user_model::find(3)->attachRole(2);
 
 		if(env('DB_DRIVER') == 'mysql')
 			DB::statement('SET FOREIGN_KEY_CHECKS=1;');

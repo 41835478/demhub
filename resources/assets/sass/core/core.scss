@@ -22,7 +22,7 @@
 //  Global Dependencies // include files in gulpfile.js
 //  =========================================================
 //
-// @import "bootstrap"; // already included in gulpfile.js
+// @import "bootstrap"; // already included in frontend/main.scss
 // @import "font-awesome"; // already included in gulpfile.js
 //
 //  =========================================================
@@ -36,7 +36,8 @@
 //  =========================================================
 //
 @import "landing-page";
-@import "public_publication";
+@import "publications";
+@import "landing_svg";
 //
 //  =========================================================
 //  Areas
@@ -62,6 +63,8 @@
  @import "fullscreen";
  @import "icon";
  @import "map";
+
+ @import "cards";
 //
 //  =========================================================
 //  Utils

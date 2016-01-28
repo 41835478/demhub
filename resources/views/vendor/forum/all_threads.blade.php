@@ -12,6 +12,8 @@
 		<div class="col-md-8 col-md-offset-2">
 
 			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-xs-offset-8">NEW DISCUSSION</a>
+		</div>
+		<div class="col-md-9 col-md-offset-2">
 			<table class="table table-index table-hover">
 			  <thead>
 			    <tr>
@@ -24,27 +26,36 @@
 			  </thead>
 
 			  <tbody>
-					
 			    @foreach ($threads as $thread)
+					<?php
+					$divisions=Helpers::divHash($thread['divisions']);
+					 ?>
 
+						<tr>
 
-			    <tr>
-			      <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread->title}}</b></a></td>
-			      <td>
-			      <a href="">
-							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$thread->category->id}}" style="height:22px">
-						</a>
-			      </td>
-			    <td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$thread->author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$thread->author->first_name}} {{$thread->author->last_name}}</td>
-			    <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td>
-			    </tr>
+							{{-- <td><a href="{{$thread->route}}" class="text-link-style"><b>{{$thread['name']}}</b></a></td> --}}
 
+							<td><a href="{{Helpers::route($thread)}}" class="text-link-style"><b>{{$thread['name']}}</b></a></td>
+  			      <td>
+								@foreach ($divisions as $divSlug => $divName)
+			            <a href="{{url('/division/'.$divSlug)}}">
+		  							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$divSlug}}" style="height:22px">
+		  						</a>
+			          @endforeach
+  			      </td>
+							<?php  $uploader=$author=Helpers::uploader($thread); ?>
+
+  			    	<td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$author->first_name}} {{$author->last_name}}</td>
+							<td><p style="padding-top:4px"><span class="label label-default" >{{count(Helpers::posts($thread))}}</span></p></td>
+							{{-- <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td> --}}
+  			    </tr>
 			    @endforeach
 			  </tbody>
 			</table>
+
 		</div>
 	</div>
-	 {{-- {!! $threads->render() !!}  --}}
+	 
 </div>
 
 @overwrite

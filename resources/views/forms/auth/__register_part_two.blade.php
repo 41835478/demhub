@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <div class="input-group">
-      <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
+      <span class="input-group-addon"><i class="glyphicon glyphicon-folder-close"></i></span>
       {!! Form::input('job_title', 'job_title', Request::url() == url('auth/autoregister') ? Input::get('job_title') : old('job_title'), ['class' => 'form-control', 'placeholder' => 'Job Title','required','id' => 'job_title']) !!}
     </div>
     <div class="help-block with-errors"></div>

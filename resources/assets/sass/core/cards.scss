@@ -1,0 +1,160 @@
+//
+//  =========================================================
+//  DEMHUB
+//  Sass Stylesheet
+//  =========================================================
+//
+//
+//  =========================================================
+//  Cards
+//  =========================================================
+//
+.peoplebox {
+  min-width: 100%;
+  height:375px;
+  display:inline-block;
+  margin:10px 0px 5px 0px;
+  padding:0px 5px 5px 0px;
+  border:1px
+  solid #ddd;
+  float:left;
+  position:relative;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 3px 5px rgba(0, 0, 0, 0.3);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.box {
+  margin:10px 15px 5px 15px;
+  padding:15px 20px 5px 20px;
+  border:1px
+  solid #ddd;
+  float:left;
+  position:relative;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 3px 5px rgba(0, 0, 0, 0.3);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.box ul li {
+  display:inline;
+}
+ul li.under-border {
+  display:inline;
+  border-bottom: 1px solid #ccc;
+  margin-right: -3px;
+}
+.box li a {
+  padding:10px 10px 0px 10px;
+  color:#000;
+}
+li.active-border {
+  display:inline;
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+.box li:hover a, .box li:focus a {
+  color:#337ab7;
+}
+.inner-peoplebox {
+  padding-left: 10px;
+  padding-right:10px;
+
+}
+.peoplebox-teaser {
+  min-width: 100%;
+  height:150px;
+  display:inline-block;
+  margin:10px 0px 5px 0px;
+  padding:15px 0px 5px 0px;
+  border:1px
+  solid #ddd;
+  float:left;
+  position:relative;
+  text-transform: capitalize;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 3px 5px rgba(0, 0, 0, 0.3);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.feedsbox-teaser {
+  min-width: 100%;
+  height:180px;
+  display:inline-block;
+  margin:10px 0px 5px 0px;
+  padding:0px 0px 5px 0px;
+  border:1px
+  solid #ddd;
+  float:left;
+  position:relative;
+  text-transform: capitalize;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0px 3px 5px rgba(0, 0, 0, 0.3);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.inner-feedsbox-teaser {
+  padding-left: 5px !important;
+  padding-right:10px;
+
+}
+.main-orange {
+   color: #ed6b00;
+   text-transform: capitalize;
+}
+.main-blue-color {
+   color:#35464d;
+   text-transform: capitalize;
+}
+.label-hashtag {
+  color: #546E7A;
+  font-weight: bold;
+}
+.label-card{
+  background-color: #777777 !important;
+}
+// .triangle-right {
+// 	// border-top: 50px solid transparent;
+// 	// border-left: 100px solid #cccccc;
+// 	// border-bottom: 50px solid transparent;
+//   background: #eee;
+//   border-radius: 3px 0 0 3px;
+//   color: #999;
+//   display: inline-block;
+//   height: 26px;
+//   line-height: 26px;
+//   // padding: 0 20px 0 23px;
+//   padding-right: 10px !important;
+//   position: relative;
+//   margin: 0 10px 10px 0;
+//   text-decoration: none;
+//   -webkit-transition: color 0.2s;
+// }
+
+// .triangle-right::before {
+//   background: #fff;
+//   border-radius: 10px;
+//   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+//   content: '';
+//   height: 6px;
+//   left: 10px;
+//   position: absolute;
+//   width: 6px;
+//   top: 10px;
+// }
+
+// .triangle-right::after {
+//   background: #fff;
+//   border-bottom: 11px solid transparent;
+//   border-left: 8px solid #777777;
+//   border-top: 11px solid transparent;
+//   content: '';
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+// }
+
+.arrows {
+  padding-bottom:2px;
+  -ms-transform: scale(0.15,0.15);
+  -webkit-transform: scale(0.15,0.15);
+  transform: scale(0.15,0.15);
+  position:relative;
+  z-index:-10;
+}

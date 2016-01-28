@@ -3,7 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
-
+use App\Models\Division;
 use App\Models\Access\User\User;
 use Auth;
 
@@ -23,6 +23,7 @@ class ProfileController extends Controller {
 
 	public function view_public_profile($user_name) {
 		$secondMenu = true;
+		$allDivisions = Division::all();
 		if(is_numeric($user_name)){
 			$user = User::where('id', '=', $user_name)->firstOrFail();
 		}
@@ -30,7 +31,7 @@ class ProfileController extends Controller {
 			$user = User::where('user_name', '=', $user_name)->firstOrFail();
 		}
 
-			return view('frontend.user.public_profile', compact(['user', 'secondMenu'])
+			return view('frontend.user.public_profile', compact(['user', 'secondMenu', 'allDivisions'])
 		);
 	}
 

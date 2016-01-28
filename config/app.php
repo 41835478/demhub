@@ -223,12 +223,15 @@ return [
 
 		/* Third Party */
 		'Active'    => 'HieuLe\Active\Facades\Active',
-		'Form'		=> 'Illuminate\Html\FormFacade',
+		'Form'			=> 'Illuminate\Html\FormFacade',
 		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
-		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+		'HTML'			=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-		'Image' => 'Intervention\Image\Facades\Image',
-		'MandrillMail'  => 'Weblee\Mandrill\MandrillFacade'
+		'Image' 		=> 'Intervention\Image\Facades\Image',
+		'MandrillMail'  => 'Weblee\Mandrill\MandrillFacade',
+
+		/* Custom */
+		'Helpers'    => 'App\Http\Components\Helpers',
 
 	],
 ];

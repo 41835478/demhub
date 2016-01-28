@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers\Frontend;
 
 use App\Models\Division;
+use App\Models\Article;
+use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
@@ -23,11 +25,87 @@ class FrontendController extends Controller {
 			$divisions = Division::all();
 
 			return view('frontend.index', [
-	      	  'divisions' => $divisions
-	   	   	]);
+				'divisions' => $divisions
+			]);
 		}
 
 	}
+
+	public function getLandingData() {
+		$divisions = Division::all();
+		$news = array();
+		foreach ($divisions as $index => $div) {
+			$temp_news = Article::where('divisions', 'LIKE', '%|'.$div->id.'|%')
+										->orderBy('publish_date','desc')
+										->limit(10)
+										->get();
+			$news = $news ? $news->merge($temp_news) : $temp_news;
+		}
+
+		$newsArray = [];
+		foreach ($news as $index => $newsItem) {
+
+			$image = NULL;
+			if ($newsItem->mainMedia()) {
+				$image = $newsItem->mainMediaUrl();
+			}
+			$divValues = [];
+			foreach($newsItem->divisions() as $value) {
+				$divValues[] = $value;
+			}
+
+			array_push($newsArray, json_encode([
+				'title' => $newsItem->name,
+				'date' => $newsItem->humanReadablePublishDate(),
+				'tags' => implode(",", $newsItem->keywords()),
+				'division' => $divValues,
+				'image' => $image,
+				'share' => NULL
+			]));
+		}
+
+		$users = array();
+		foreach ($divisions as $index => $div) {
+			$temp_users = User::where('division', 'LIKE', '%|'.$div->id.'|%')
+										->orderBy('updated_at','desc')
+										->limit(10)->get();
+			$users = $users ? $users->merge($temp_users) : $temp_users;
+		}
+
+		$usersArray = [];
+		foreach ($users as $index => $userItem) {
+			$image = NULL;
+			if ($userItem->avatar) {
+				$image = $userItem->avatar->url('medium');
+			}
+			$divValues = [];
+			foreach($userItem->divisions() as $value) {
+				$divValues[] = $value;
+			}
+
+			array_push( $usersArray,
+				json_encode([
+					'name' => $userItem->full_name(),
+					'occupation' => $userItem->job_title,
+					'location' => $userItem->location,
+					'division' => $divValues,
+					'profileImage' => $image,
+					'followers' => count($userItem->followers)
+				])
+			);
+		}
+
+		// $content_json = Helpers::return_json_results($content_json);
+		return response()->json([
+			'success' => 'cool',
+			'message'=> 'Contents rendered',
+			'content' => [
+				'news' => $newsArray,
+				'users' => $usersArray
+			]
+		]);
+	}
+
 	public function postFeedback(Request $request)
 	{
 		// $question1 = $request->input('question1');
@@ -36,18 +114,17 @@ class FrontendController extends Controller {
 		// $inputs=array($question1, $question2, $question3);
 		$inputs = $request->all();
 		Mail::send('emails.feedback-email', ['inputs' => $inputs], function($message) {
-					$message->to('demhubcontact@gmail.com','feedback bot')->subject('DEMHUB Feedback');
-				});
+				$message->to('demhubcontact@gmail.com','feedback bot')->subject('DEMHUB Feedback');
+		});
+
 		if (Auth::user()) {
 			return redirect()->route('userhome');
 		} else  {
 			$divisions = Division::all();
-
 			return view('frontend.index', [
-	      	  'divisions' => $divisions
-	   	   	]);
+					'divisions' => $divisions
+	   	]);
 		}
-
 	}
 
 	/**

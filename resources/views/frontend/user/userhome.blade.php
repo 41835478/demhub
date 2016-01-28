@@ -9,7 +9,7 @@
 	@if(Request::url() == url('divisions/results'))
 		@include('division._search_feed')
 	@else
-		@include('division._feeds')
+		{{-- @include('division._feeds') --}}
 		@if($total_count > 0)
 			@include('division._pagination')
 		@else

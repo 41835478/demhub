@@ -8,6 +8,11 @@
 
 namespace App\Http\Components;
 
+use App\Models\Division;
+use App\Models\Access\User\User;
+use Illuminate\Support\Str;
+use Riari\Forum\Models\Post;
+use Riari\Forum\Models\Thread;
 
 class Helpers {
 
@@ -186,4 +191,94 @@ class Helpers {
 	{
 		return isset($var) ? $var : $default;
 	}
+
+
+	public static function divHash($divString) {
+    $divisions = [];
+    if (isset($divString)) {
+        foreach (array_filter(preg_split("/\|/", $divString)) as $divID) {
+            $div = Division::findOrFail($divID);
+            $divisions[$div->slug] = $div->name;
+        }
+    } else {
+        $divisions = NULL;
+    }
+
+    return $divisions;
+  }
+	public static  function uploader($item)
+  {
+		$user=User::where('id',$item['owner_id'])->first();
+      return $user;
+  }
+	public static function author($item)
+	{
+		$user=User::where('id',$item['owner_id'])->first();
+		return $user;
+		// return json_decode($value->data, true)[self::AUTHOR];
+	}
+
+	public static function posts($item)
+	{
+			// dd($item);
+			$posts = Post::where('parent_thread',$item['id'])->get();
+
+			return $posts;
+			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
+	}
+	// public function discussions($item)
+	// {
+	// 		discussions[];
+	// 		if($item['url']){
+	//
+	// 		};
+	//
+	// 		// dd($item);
+	// 		$threadIds = Post::where('author_id',$this->id)->lists('parent_thread');
+	//
+	// 		// $threadIds=$posts->parent_thread;
+	// 		//var_dump($threadIds);
+	// 		//$x=(array) $threadIds;
+	// 		$threads = DB::table('contents')->whereIn('id', $threadIds)->get();
+	//
+	// 		$collection = collect($threads);
+	// 		return $collection;
+	//
+	// 		//var_dump($threads);
+	// 		// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
+	// }
+
+	// public static function discussions($item)
+	// {
+	// 		// dd($item);
+	// 		$posts = Post::where('author_id',$item['id'])->get();
+	// 		$threads = Thread::where('id',$posts->parent_thread)->get();
+	// 		return $threads;
+	// 		// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
+	// }
+
+	public static function route($item)
+	{
+
+			// $components = array(
+			// 		// 'categoryID'    => $this->thread->category->id,
+			// 		// 'categoryAlias' => Str::slug($this->thread->category->title, '-'),
+			// 		'threadID'      => $item['id'],
+			// 		// 'threadAlias'   => Str::slug($this->thread->title, '-'),
+			// 		// 'postID'        =>
+			// );
+			// // NOTE - the following lines are added to asimilate with the Single Table Inheritance
+			// $components['categoryID'] = '9';
+			// $components['categoryAlias'] = 'global';
+			// $components['threadAlias'] = Str::slug($item['name'], '-');
+
+			return "9-global/".$item['id']."-".Str::slug($item['name'], '-');
+	}
+
+	public static function return_json_results($result)
+	{
+		header('Content-Type: application/json');
+		echo @json_encode($result);
+	}
+
 }

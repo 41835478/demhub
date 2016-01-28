@@ -26,8 +26,11 @@ class IndexDiscussionsToElasticsearch extends Command
             'index' => 'discussions'
         ];
 
-        // Es::indices()->delete($indexParams);
         if (!Es::indices()->exists($indexParams)) {
+            Es::indices()->create($indexParams);
+        }
+        else {
+            Es::indices()->delete($indexParams);
             Es::indices()->create($indexParams);
         }
 

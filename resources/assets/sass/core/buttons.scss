@@ -1,6 +1,7 @@
 .btn-group-lg > .btn, .btn-lg {
 	border-radius:3px!important;
 }
+
 .btn-style{
 	background:#FFF;
 	border-color:#ccc;
@@ -46,49 +47,43 @@ a.btn-style:active{
 	color:#FFF;
 	border-color:#000;
 }
-
-a.btn-style-alt{
-	background:#337ab7;
-	color:#FFF;
-
-}
-
-a.btn-style-alt:hover, a.btn-style-alt:focus{
-	background:#FFF;
-	color:#337ab7;
-	border-color:#ccc;
-}
-
-a.btn-style-alt:active{
-	background:#FFF;
-	color:#000;
-	border-color:#ccc;
-}
-
+.btn-style-alt,
+button.btn-style-alt,
 input.btn-style-alt,
-button.btn-style-alt{
-	background:#337ab7;
-	color:#FFF;
+a.btn-style-alt {
+	background:#526b77;
+	border-color: #526b77;
+	color:#fff;
+	border-radius: 0.5px;
 
 }
 
-input.btn-style-alt:hover, input.btn-style-alt:focus,
-button.btn-style-alt:hover, a.btn-style-alt:focus{
-	background:#FFF;
-	color:#337ab7;
-	border-color:#ccc;
+.btn-style-alt:hover,
+.btn-style-alt:focus,
+button.btn-style-alt:hover,
+button.btn-style-alt:focus,
+input.btn-style-alt:hover,
+input.btn-style-alt:focus,
+a.btn-style-alt:hover,
+a.btn-style-alt:focus {
+	background:#628296;
+	border-color:#628296;
+	color:#a9b9c2;
 }
 
+.btn-style-alt:active,
 input.btn-style-alt:active,
-button.btn-style-alt:active{
-	background:#FFF;
-	color:#000;
-	border-color:#ccc;
+button.btn-style-alt:active,
+a.btn-style-alt:active {
+	background:#fff;
+	color:#526b77;
+	border-color:#526b77;
 }
+
 
 
 .btn-style-w{
-	background-color: rgba(51, 122, 188, 0.3)!important;
+	background-color: rgba(53,71,79, 0.5)!important;
 	border-color:#fff !important;
 	color:#fff !important;
 	margin:5px 5px 5px 5px;
@@ -115,9 +110,9 @@ input[type="radio"] {
 }
 
 button.btn-greytone{
-	background:#fff;
-	border-color: #ccc;
+	background:#ccc;
 	color:#333;
+	border-radius: 0.5px;
 }
 
 button.btn-greytone:hover, button.btn-greytone:focus{

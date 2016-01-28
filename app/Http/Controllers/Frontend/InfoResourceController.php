@@ -26,14 +26,14 @@ class InfoResourceController extends Controller
     }
 	public function showResourceFilter(){
 		$regions= Region::all();
-		$InfoResource= InfoResource::all();
+		$infoResource= InfoResource::all();
 		$categories = Division::all();
 
 		return view('frontend.user.resource_filter.resource_filter', [
 
 					'allDivisions' =>  $categories,
 					'resourceRelation'  => $regions,
-					'resourceEntry' =>  $InfoResource]);
+					'resourceEntry' =>  $infoResource]);
 
 	}
 }

@@ -6,11 +6,11 @@
       @include ('frontend.navigation._carousel-menu-user')
     @endif
   @endif
-  @include ('frontend.navigation._second-menu-user')
+  {{-- @include ('frontend.navigation._second-menu-user') --}}
 @endif
-@if( isset($navDivisions) && !isset($userMenu))
+{{-- @if( isset($navDivisions) && !isset($userMenu))
   @include('frontend.navigation._nav_divisions')
-@endif
+@endif --}}
 @if(Auth::guest() && ! empty($allDivisions))
   @include('frontend.navigation._second-menu-user-registration-required')
 @endif

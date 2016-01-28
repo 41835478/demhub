@@ -1,0 +1,163 @@
+{"people":[{
+"name": "John Constable",
+"occupation": "CEO",
+"location": "Toronto, Canada",
+"division": "Health & Epidemics",
+"profileImage":"",
+"followers":123
+},
+{
+"name": "Edward Monet",
+"occupation": "Lead Developer",
+"location": "Toronto, Canada",
+"division": "Health & Epidemics",
+"profileImage":"",
+"followers":9923
+},
+{
+"name": "Steve Constable",
+"occupation": "Finance",
+"location": "Toronto, Canada",
+"division": "Health & Epidemics",
+"profileImage":"",
+"followers":123
+},
+{
+  "name": "Edgar Degas",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "Science & Environment",
+  "profileImage":"",
+  "followers":123
+},
+{
+  "name": "Emily Carr",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "Science & Environment",
+  "profileImage":"",
+  "followers":523
+},
+{
+  "name": "Van Goh",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "EM Practitioner",
+  "profileImage":"",
+  "followers":1333
+},
+{
+  "name": "Raphael",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "Civil & Cyber Security",
+  "profileImage":"",
+  "followers":23
+},
+{
+  "name": "Constable",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "Civil & Cyber Security",
+  "profileImage":"",
+  "followers":23
+},
+{
+  "name": "John",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "Business Continuity",
+  "profileImage":"",
+  "followers":123
+},
+{
+  "name": "Aldo Ruiz",
+  "occupation": "CEO",
+  "location": "Toronto, Canada",
+  "division": "NGO Humanitarian",
+  "profileImage":"",
+  "followers":124
+}]}
+
+{
+"newsfeed":[{
+"Title": "Evaluations of disaster education programs for children",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Health & Epidemics",
+"Image":"",
+"share":123
+},
+{
+"Title": "UNISDR Annual Report 2014",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Civil & Cyber Security",
+"Image":"",
+"share":123
+},
+{
+"Title": "Mapping disaster risk: INFORM releases 2016 results",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Business Continuity",
+"Image":"",
+"share":123
+},
+{
+"Title": "John Constable",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Business Continuity",
+"Image":"",
+"share":123
+},
+{
+"Title": "John Constable",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Health & Epidemics",
+"Image":"",
+"share":123
+},
+{
+"Title": "International Day for the Elimination of Violence against Women",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "NGO Humanitarian",
+"Image":"",
+"share":123
+},
+{
+"Title": "New paper on disaster risk research and assessment",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "NGO Humanitarian",
+"Image":"",
+"share":123
+},
+{
+"Title": "Pan-Asia Risk Reduction (PARR) Fellowship Program",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Science & Environment",
+"Image":"",
+"share":123
+},
+{
+"Title": "John Constable",
+"date": "Dec 10, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Science & Environment",
+"Image":"",
+"share":123
+},
+{
+"Title": "European Commission to increase humanitarian ",
+"date": "Dec 12, 2015",
+"tags": ["disaster","tornado","risk management"],
+"division": "Health & Epidemics",
+"Image":"",
+"share":123
+}
+]}
