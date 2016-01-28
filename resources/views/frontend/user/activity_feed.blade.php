@@ -10,6 +10,17 @@
 </div>
 
 <script>
+$(window).load(function() {
+	$('[data-toggle="headsup"]').tooltip();
+});
+
+function twitterActivate (item) {
+	var twitterElement;
+  twitterElement=$(item).find($(".article_twitter"));
+	$(twitterElement).addClass("twitter-share-button");
+	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(document.body){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+};
 	$(document).ready(function(){
 		get_activities();
 	});
@@ -26,7 +37,6 @@
 		var scrollBottom = $(window).scrollTop() + a;
 
 		if ((c+scrollTop)>(a+b) && timeOut!==1) {
-			console.log("hi");
 			timeOut = 1;
 			get_activities();
 		}

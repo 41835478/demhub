@@ -28,7 +28,7 @@
   </ul>
    </div>
 
-   <div class="btn-group dropup">
+   <div class="btn-group dropup" onmouseenter="twitterActivate(this)">
      @if(Auth::user())
        <button type="button" class="btn btn-greytone btn-sm share-dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
         style="margin-left:5px;">
@@ -36,12 +36,12 @@
        </button>
        <ul class="dropdown-menu">
          <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item['name']}}"
-         data-url="{{$item['url']}}">TWEET</a> </li>
+          data-url="<?php if($item['subclass']!=='article'){ echo url('').'/';}; echo $item['url']; ?>">TWEET</a> </li>
          <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item['name']}}%0D%0A{{$item['url']}}"
          target="_top" class="article_email">EMAIL</a></li>
          <li role="separator" class="divider"></li>
          <li><a><span>
-           <?php if($item['subclass']!=='article'){ echo substr(url(''),7);}; echo '/'.$item['url']; ?>
+           <?php if($item['subclass']!=='article'){ echo substr(url(''),7).'/';}; echo $item['url']; ?>
          </span></a></li>
          {{-- <li><a class="copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Link</span>
          <span class="copy-button-link" style="display:none">{{$item['url']}}</span></a></li> --}}
