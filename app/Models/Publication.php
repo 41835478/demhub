@@ -20,6 +20,18 @@ class Publication extends Content implements StaplerableInterface
 	const FAVORITES = 7;
 	const VIEWS = 8;
 
+	// Follower and followed types
+	// Including connections, bookmarks, tracking, etc.
+	const ARTICLE       = 'A';
+	const DIVISION      = 'D';
+	const KEYWORD       = 'K';
+	const LOCATION      = 'L';
+	// const ORGANIZATION  = 'O'; // NOTE - Not yet in use
+	const PUBLICATION   = 'P';
+	const SCRAPE_SOURCE = 'S';
+	const THREAD        = 'T';
+	const USER          = 'U';
+
   /**
 	 * The database table used by the model.
 	 *
@@ -115,5 +127,13 @@ class Publication extends Content implements StaplerableInterface
 	public function uploader()
   {
       return $this->belongsTo('App\Models\Access\User\User', 'owner_id');
+  }
+
+	public function bookmarker()
+  {
+      return $this->belongsToMany('App\Models\Access\User\User','follow_relationships','followed_id','follower_id')
+									->whereFollowerType(self::USER)
+									->whereFollowedType(self::THREAD)
+									->withTimestamps();
   }
 }

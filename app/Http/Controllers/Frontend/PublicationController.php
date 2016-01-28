@@ -11,6 +11,7 @@ use DB;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Division;
+use App\Models\Access\User\User;
 use App\Models\ContentMedia;
 use App\Http\Requests\Frontend\PublicationRequest;
 use App\Http\Components\Search;
@@ -23,6 +24,18 @@ class PublicationController extends Controller
 {
     const FAVORITES_DEFAULT = 0;
 	const VIEWS_DEFAULT = 1;
+
+    // Follower and followed types
+	// Including connections, bookmarks, tracking, etc.
+	const ARTICLE       = 'A';
+	const DIVISION      = 'D';
+	const KEYWORD       = 'K';
+	const LOCATION      = 'L';
+	// const ORGANIZATION  = 'O'; // NOTE - Not yet in use
+	const PUBLICATION   = 'P';
+	const SCRAPE_SOURCE = 'S';
+	const THREAD        = 'T';
+	const USER          = 'U';
 
     /**
      * Create a new publication controller instance
@@ -274,4 +287,33 @@ class PublicationController extends Controller
           'publications', 'secondMenu','keywords','allDivisions'
         ]));
     }
+
+    // TODO - create alternate function equivalent for
+    // ->references('id')->on( {{ followed_type }} )->onDelete('cascade');
+    public function bookmarkPublication($pubId) {
+		// if (!Auth::user()->is_following($id)) {
+		    // dd(Auth::user()->publicationBookmarks());
+			Auth::user()->publicationBookmarks()->attach($pubId, [
+                'follower_type' => self::USER, 'followed_type' => self::PUBLICATION
+            ]);
+		// }
+
+        // $secondMenu = true;
+		$users = User::where('id', '!=', Auth::id())
+									->where('user_name', '!=', 'demhub')
+									->orderBy('id','DESC')->get();
+        // $users = User::all();
+		$publications = Publication::all();
+
+		return view('frontend.user.dashboard.bookmarks', compact([
+					'users', 'publications'
+		]));
+	}
+
+	// public function unbookmarkPublication($id) {
+	// 	if (Auth::user()->is_following($id)) {
+	// 		Auth::user()->following()->detach($id);
+	// 	}
+	// 	return $this->listing_of_profiles();
+	// }
 }
