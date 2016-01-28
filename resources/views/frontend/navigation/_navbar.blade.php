@@ -14,9 +14,9 @@
 				<div class="navbar-branding">
 					<span id="toggle_sidemenu_l" class="fa fa-bars" style="top: 0; position: absolute; left: -10px;"></span>
 				</div>
-				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white-beta.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;position: absolute;top: 7px;left: 45px;')) !!}</a>
+				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;position: absolute;top: 7px;left: 45px;')) !!}</a>
 			@else
-				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white-beta.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;')) !!}</a>
+				<a href="{{url('')}}">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'width:175px;padding-left:30px;padding-top:10px;')) !!}</a>
 			@endif
 
 		</div>

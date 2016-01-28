@@ -4,6 +4,12 @@
 	"keywords": ["framework", "laravel", "boilerplate"],
 	"license": "MIT",
 	"type": "project",
+	"repositories": [
+      {
+          "type": "vcs",
+          "url": "https://github.com/aldorl/laravel-forum"
+      }
+  ],
 	"require": {
 		"laravel/framework": "5.1.*",
     "illuminate/html" : "5.*",
@@ -18,7 +24,6 @@
 		"arcanedev/log-viewer": "~3.4.0",
 		"creativeorange/gravatar": "~1.0",
 		"simplepie/simplepie": "dev-master",
-		"riari/laravel-forum": "~3.0",
 		"intervention/image": "^2.3",
 		"codesleeve/stapler": "1.0.*",
     "codesleeve/laravel-stapler": "1.0.*",
@@ -26,7 +31,7 @@
 		"weblee/mandrill": "dev-master",
 		"socialiteproviders/linkedin": "^1.1",
 		"shift31/laravel-elasticsearch": "~1.0",
-		"riari/laravel-forum-frontend": "~1.0"
+		"riari/laravel-forum": "2.0.*@dev"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

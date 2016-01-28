@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_token" content="{{ csrf_token() }}" />
     <title>@yield('title', app_name())</title>
-    <meta name="description" content="@yield('meta_description', 'Default Description')">
+    <meta name="description" content="@yield('meta_description', 'The Disaster & Emergency Management Network')">
     <meta name="author" content="@yield('author', 'DEMHUB Developers')">
-
+    <meta property="og:image" content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
     <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 

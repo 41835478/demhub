@@ -145,22 +145,32 @@ class PublicationController extends Controller
      */
      public function view($id)
      {
-       $publications = Auth::user()->publications;
+
        $publication = Publication::findOrFail($id);
        Publication::where('id', $id)
                    ->update(['views' => ($publication->views+1)]);
 
        return view(
-         'frontend.user.dashboard.my_publication.view', compact(['publication','publications'])
+         'frontend.user.dashboard.my_publication.view', compact(['publication'])
        );
      }
 
     public function edit($id)
     {
       $publication = Publication::findOrFail($id);
+      $pubUploaderId = $publication->uploader->id;
+      // FIXME Move authorization if statement to request section 
+      if ($pubUploaderId==Auth::user()->id){
+
       return view(
         'frontend.user.dashboard.my_publication.edit', compact(['publication'])
       );
+      }
+      else {
+        return view(
+          'frontend.user.dashboard.my_publication.view', compact(['publication'])
+        );
+      };
     }
 
     /**

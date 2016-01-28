@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel {
 	protected $commands = [
 		'App\Console\Commands\Inspire',
 		'App\Console\Commands\IndexArticlesToElasticsearch',
-		// 'App\Console\Commands\IndexDiscussionsToElasticsearch',
+		'App\Console\Commands\IndexDiscussionsToElasticsearch',
 		'App\Console\Commands\IndexInfoResourcesToElasticsearch',
 		'App\Console\Commands\IndexPublicationsToElasticsearch',
 		'App\Console\Commands\IndexUsersToElasticsearch'

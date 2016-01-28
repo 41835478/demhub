@@ -389,6 +389,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-App.Console.Commands.IndexArticlesToElasticsearch.html">App\Console\Commands\IndexArticlesToElasticsearch</a></li>
+				<li><a href="class-App.Console.Commands.IndexDiscussionsToElasticsearch.html">App\Console\Commands\IndexDiscussionsToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexInfoResourcesToElasticsearch.html">App\Console\Commands\IndexInfoResourcesToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexPublicationsToElasticsearch.html">App\Console\Commands\IndexPublicationsToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexUsersToElasticsearch.html">App\Console\Commands\IndexUsersToElasticsearch</a></li>
@@ -460,6 +461,7 @@
 				<li><a href="class-App.Http.Requests.Frontend.Access.LoginRequest.html">App\Http\Requests\Frontend\Access\LoginRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.Access.RegisterRequest.html">App\Http\Requests\Frontend\Access\RegisterRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.Access.ResetPasswordEmailRequest.html">App\Http\Requests\Frontend\Access\ResetPasswordEmailRequest</a></li>
+				<li><a href="class-App.Http.Requests.Frontend.PublicationRequest.html">App\Http\Requests\Frontend\PublicationRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.User.UpdateProfileRequest.html">App\Http\Requests\Frontend\User\UpdateProfileRequest</a></li>
 				<li><a href="class-App.Http.Requests.Request.html">App\Http\Requests\Request</a></li>
 				<li><a href="class-App.Jobs.ExampleJob.html">App\Jobs\ExampleJob</a></li>
@@ -476,6 +478,8 @@
 				<li><a href="class-App.Models.ArticleDetail.html">App\Models\ArticleDetail</a></li>
 				<li><a href="class-App.Models.ArticleMedia.html">App\Models\ArticleMedia</a></li>
 				<li><a href="class-App.Models.ArticleReport.html">App\Models\ArticleReport</a></li>
+				<li><a href="class-App.Models.Content.html">App\Models\Content</a></li>
+				<li><a href="class-App.Models.ContentMedia.html">App\Models\ContentMedia</a></li>
 				<li><a href="class-App.Models.Division.html">App\Models\Division</a></li>
 				<li><a href="class-App.Models.InfoResource.html">App\Models\InfoResource</a></li>
 				<li><a href="class-App.Models.Keyword.html">App\Models\Keyword</a></li>
@@ -586,7 +590,7 @@
 </span></span><span id="21" class="l"><a href="#21">21 </a><span class="php-comment">     */</span>
 </span><span id="22" class="l"><a href="#22">22 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> index(Request <span class="php-var">$request</span>)
 </span><span id="23" class="l"><a href="#23">23 </a>    {
-</span><span id="24" class="l"><a href="#24">24 </a>        <span class="php-var">$options_query</span> = <span class="php-var">$request</span>-&gt;input(<span class="php-quote">'query_term'</span>, <span class="php-quote">''</span>); <span class="php-comment">// (optional) search query</span>
+</span><span id="24" class="l"><a href="#24">24 </a>        <span class="php-var">$queryTerm</span> = <span class="php-var">$options_query</span> = <span class="php-var">$request</span>-&gt;input(<span class="php-quote">'query_term'</span>, <span class="php-quote">''</span>);    <span class="php-comment">// (optional) search query</span>
 </span><span id="25" class="l"><a href="#25">25 </a>        <span class="php-var">$size</span> = <span class="php-var">$request</span>-&gt;input(<span class="php-quote">'count'</span>, <span class="php-num">30</span>);
 </span><span id="26" class="l"><a href="#26">26 </a>        <span class="php-var">$page</span> = <span class="php-var">$request</span>-&gt;input(<span class="php-quote">'page'</span>, <span class="php-num">1</span>);
 </span><span id="27" class="l"><a href="#27">27 </a>        <span class="php-var">$page</span>--;
@@ -635,23 +639,30 @@
 </span><span id="70" class="l"><a href="#70">70 </a>            <span class="php-var">$resourceResults</span> = Search::queryResources(<span class="php-var">$page</span>, <span class="php-var">$size</span>);
 </span><span id="71" class="l"><a href="#71">71 </a>        }
 </span><span id="72" class="l"><a href="#72">72 </a>
-</span><span id="73" class="l"><a href="#73">73 </a>        dd(<span class="php-keyword2">get_declared_classes</span>());
-</span><span id="74" class="l"><a href="#74">74 </a>
-</span><span id="75" class="l"><a href="#75">75 </a>        <span class="php-var">$articleResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$articleResults</span>[<span class="php-quote">'hits'</span>]);
-</span><span id="76" class="l"><a href="#76">76 </a>        <span class="php-var">$userResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$userResults</span>[<span class="php-quote">'hits'</span>]);
-</span><span id="77" class="l"><a href="#77">77 </a>        <span class="php-var">$publicationResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$publicationResults</span>[<span class="php-quote">'hits'</span>]);
-</span><span id="78" class="l"><a href="#78">78 </a>        <span class="php-comment">// $discussionResults = Search::formatElasticSearchToArray($discussionResults['hits']);</span>
-</span><span id="79" class="l"><a href="#79">79 </a>        <span class="php-var">$resourceResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$resourceResults</span>[<span class="php-quote">'hits'</span>]);
-</span><span id="80" class="l"><a href="#80">80 </a>
-</span><span id="81" class="l"><a href="#81">81 </a>        <span class="php-var">$discussionResults</span> = [];
-</span><span id="82" class="l"><a href="#82">82 </a>        <span class="php-var">$searchBar</span> = <span class="php-keyword1">true</span>;
-</span><span id="83" class="l"><a href="#83">83 </a>
-</span><span id="84" class="l"><a href="#84">84 </a>        <span class="php-keyword1">return</span> view(<span class="php-quote">'frontend.search.index'</span>, <span class="php-keyword2">compact</span>([
-</span><span id="85" class="l"><a href="#85">85 </a>          <span class="php-quote">'articleResults'</span>, <span class="php-quote">'userResults'</span>, <span class="php-quote">'publicationResults'</span>, <span class="php-quote">'discussionResults'</span>, <span class="php-quote">'resourceResults'</span>, <span class="php-quote">'searchBar'</span>
-</span><span id="86" class="l"><a href="#86">86 </a>        ]));
-</span><span id="87" class="l"><a href="#87">87 </a>    }
-</span><span id="88" class="l"><a href="#88">88 </a>}
-</span><span id="89" class="l"><a href="#89">89 </a></span></code></pre>
+</span><span id="73" class="l"><a href="#73">73 </a>        <span class="php-var">$articleTotalCount</span> = <span class="php-var">$articleResults</span>[<span class="php-quote">'total'</span>];
+</span><span id="74" class="l"><a href="#74">74 </a>        <span class="php-var">$userTotalCount</span> = <span class="php-var">$userResults</span>[<span class="php-quote">'total'</span>];
+</span><span id="75" class="l"><a href="#75">75 </a>        <span class="php-var">$publicationTotalCount</span> = <span class="php-var">$publicationResults</span>[<span class="php-quote">'total'</span>];
+</span><span id="76" class="l"><a href="#76">76 </a>        <span class="php-comment">// $discussionTotalCount = $discussionResults['total'];</span>
+</span><span id="77" class="l"><a href="#77">77 </a>        <span class="php-var">$resourceTotalCount</span> = <span class="php-var">$resourceResults</span>[<span class="php-quote">'total'</span>];
+</span><span id="78" class="l"><a href="#78">78 </a>
+</span><span id="79" class="l"><a href="#79">79 </a>        <span class="php-var">$articleResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$articleResults</span>[<span class="php-quote">'hits'</span>]);
+</span><span id="80" class="l"><a href="#80">80 </a>        <span class="php-var">$userResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$userResults</span>[<span class="php-quote">'hits'</span>]);
+</span><span id="81" class="l"><a href="#81">81 </a>        <span class="php-var">$publicationResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$publicationResults</span>[<span class="php-quote">'hits'</span>]);
+</span><span id="82" class="l"><a href="#82">82 </a>        <span class="php-comment">// $discussionResults = Search::formatElasticSearchToArray($discussionResults['hits']);</span>
+</span><span id="83" class="l"><a href="#83">83 </a>        <span class="php-var">$resourceResults</span> = Search::formatElasticSearchToArray(<span class="php-var">$resourceResults</span>[<span class="php-quote">'hits'</span>]);
+</span><span id="84" class="l"><a href="#84">84 </a>
+</span><span id="85" class="l"><a href="#85">85 </a>        <span class="php-var">$discussionTotalCount</span> = <span class="php-num">0</span>;
+</span><span id="86" class="l"><a href="#86">86 </a>        <span class="php-var">$discussionResults</span> = [];
+</span><span id="87" class="l"><a href="#87">87 </a>        <span class="php-var">$searchBar</span> = <span class="php-keyword1">true</span>;
+</span><span id="88" class="l"><a href="#88">88 </a>
+</span><span id="89" class="l"><a href="#89">89 </a>        <span class="php-keyword1">return</span> view(<span class="php-quote">'frontend.search.index'</span>, <span class="php-keyword2">compact</span>([
+</span><span id="90" class="l"><a href="#90">90 </a>          <span class="php-quote">'articleResults'</span>, <span class="php-quote">'userResults'</span>, <span class="php-quote">'publicationResults'</span>, <span class="php-quote">'discussionResults'</span>,<span class="php-quote">'resourceResults'</span>,
+</span><span id="91" class="l"><a href="#91">91 </a>          <span class="php-quote">'articleTotalCount'</span>,<span class="php-quote">'userTotalCount'</span>,<span class="php-quote">'publicationTotalCount'</span>,<span class="php-quote">'discussionTotalCount'</span>,<span class="php-quote">'resourceTotalCount'</span>,
+</span><span id="92" class="l"><a href="#92">92 </a>          <span class="php-quote">'searchBar'</span>, <span class="php-quote">'queryTerm'</span>
+</span><span id="93" class="l"><a href="#93">93 </a>        ]));
+</span><span id="94" class="l"><a href="#94">94 </a>    }
+</span><span id="95" class="l"><a href="#95">95 </a>}
+</span><span id="96" class="l"><a href="#96">96 </a></span></code></pre>
 	</div>
 
 	<div id="footer">
@@ -659,6 +670,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?533e23ef2f02bd4b20548834a028566b6eb403e0"></script>
-<script src="elementlist.js?38cec8af318b94ec89199ff824bcbbb92d656c7f"></script>
+<script src="elementlist.js?5c1b08799d72fe23af777fafc0d48e6037adc06d"></script>
 </body>
 </html>

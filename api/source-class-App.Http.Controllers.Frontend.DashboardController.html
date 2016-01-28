@@ -389,6 +389,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-App.Console.Commands.IndexArticlesToElasticsearch.html">App\Console\Commands\IndexArticlesToElasticsearch</a></li>
+				<li><a href="class-App.Console.Commands.IndexDiscussionsToElasticsearch.html">App\Console\Commands\IndexDiscussionsToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexInfoResourcesToElasticsearch.html">App\Console\Commands\IndexInfoResourcesToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexPublicationsToElasticsearch.html">App\Console\Commands\IndexPublicationsToElasticsearch</a></li>
 				<li><a href="class-App.Console.Commands.IndexUsersToElasticsearch.html">App\Console\Commands\IndexUsersToElasticsearch</a></li>
@@ -460,6 +461,7 @@
 				<li><a href="class-App.Http.Requests.Frontend.Access.LoginRequest.html">App\Http\Requests\Frontend\Access\LoginRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.Access.RegisterRequest.html">App\Http\Requests\Frontend\Access\RegisterRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.Access.ResetPasswordEmailRequest.html">App\Http\Requests\Frontend\Access\ResetPasswordEmailRequest</a></li>
+				<li><a href="class-App.Http.Requests.Frontend.PublicationRequest.html">App\Http\Requests\Frontend\PublicationRequest</a></li>
 				<li><a href="class-App.Http.Requests.Frontend.User.UpdateProfileRequest.html">App\Http\Requests\Frontend\User\UpdateProfileRequest</a></li>
 				<li><a href="class-App.Http.Requests.Request.html">App\Http\Requests\Request</a></li>
 				<li><a href="class-App.Jobs.ExampleJob.html">App\Jobs\ExampleJob</a></li>
@@ -476,6 +478,8 @@
 				<li><a href="class-App.Models.ArticleDetail.html">App\Models\ArticleDetail</a></li>
 				<li><a href="class-App.Models.ArticleMedia.html">App\Models\ArticleMedia</a></li>
 				<li><a href="class-App.Models.ArticleReport.html">App\Models\ArticleReport</a></li>
+				<li><a href="class-App.Models.Content.html">App\Models\Content</a></li>
+				<li><a href="class-App.Models.ContentMedia.html">App\Models\ContentMedia</a></li>
 				<li><a href="class-App.Models.Division.html">App\Models\Division</a></li>
 				<li><a href="class-App.Models.InfoResource.html">App\Models\InfoResource</a></li>
 				<li><a href="class-App.Models.Keyword.html">App\Models\Keyword</a></li>
@@ -593,11 +597,11 @@
 </span><span id="28" class="l"><a href="#28">28 </a>    }
 </span><span id="29" class="l"><a href="#29">29 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> showConnections()
 </span><span id="30" class="l"><a href="#30">30 </a>    {
-</span><span id="31" class="l"><a href="#31">31 </a>        <span class="php-var">$allDivisions</span> = Division::all();
+</span><span id="31" class="l"><a href="#31">31 </a>
 </span><span id="32" class="l"><a href="#32">32 </a>        <span class="php-var">$users</span> = User::all();
 </span><span id="33" class="l"><a href="#33">33 </a>
 </span><span id="34" class="l"><a href="#34">34 </a>        <span class="php-keyword1">return</span> view(<span class="php-quote">'frontend.user.dashboard.connections'</span>, <span class="php-keyword2">compact</span>([
-</span><span id="35" class="l"><a href="#35">35 </a>                    <span class="php-quote">'allDivisions'</span>, <span class="php-quote">'users'</span>
+</span><span id="35" class="l"><a href="#35">35 </a>                    <span class="php-quote">'users'</span>
 </span><span id="36" class="l"><a href="#36">36 </a>        ]));
 </span><span id="37" class="l"><a href="#37">37 </a>    }
 </span><span id="38" class="l"><a href="#38">38 </a>}
@@ -609,6 +613,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?533e23ef2f02bd4b20548834a028566b6eb403e0"></script>
-<script src="elementlist.js?38cec8af318b94ec89199ff824bcbbb92d656c7f"></script>
+<script src="elementlist.js?5c1b08799d72fe23af777fafc0d48e6037adc06d"></script>
 </body>
 </html>
