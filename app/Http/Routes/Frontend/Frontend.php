@@ -9,6 +9,7 @@ get('about', 	'FrontendController@about');
 get('policy', 'FrontendController@policy');
 get('terms', 	'FrontendController@terms');
 
+get('getLandingData', 'FrontendController@getLandingData')->name('getLandingData');
 get('signUpSuccess', 'FrontendController@signUpSuccess')->name('signUpSuccess');
 
 get(	'forum/all_threads', 			'ForumController@getViewAllThreads')->name('all_threads');
