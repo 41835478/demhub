@@ -65,7 +65,7 @@ class UserController extends Controller {
     ]));
 
 	}
-
+	
 	public function getActivities() {
 		$contents = Content::orderBy('updated_at', 'desc')->paginate(30);
 		$allDivisions = $navDivisions = Division::all();

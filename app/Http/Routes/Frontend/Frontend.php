@@ -18,6 +18,8 @@ post(	'forum/9-/thread/create', 'ForumController@postModCreateThread');
 
 get(	'feedback', 'FrontendController@getFeedback');
 post(	'feedback', 'FrontendController@postFeedback')->name('post_feedback');
+
+
 // get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
 
 /**
@@ -51,6 +53,8 @@ $router->group(['middleware' => 'auth'], function ()
 
 	//get('userhome', 'UserController@index')->name('userhome');
 	get('userhome', 'UserController@activityFeed')->name('userhome');
+
+	post(	'invite', 'FrontendController@inviteOthers')->name('invite_others');
 	// get('get_activities/{slug}', 'UserController@getActivities')->where('slug', '[0-9_\-]+')->name('get_activities');
 	get('get_activities', 'UserController@getActivities')->name('get_activities');
 	// get('activity_feed', 'UserController@activityFeed')->name('activity_feed');

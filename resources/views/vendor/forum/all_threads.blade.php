@@ -9,11 +9,11 @@
 	<!-- <h2>{{ trans('forum::base.index') }}</h2> -->
 
 	<div class="row container-fluid" style="padding-top:15px">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-6 col-md-offset-3">
 
-			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-xs-offset-8">NEW DISCUSSION</a>
+			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-sm-offset-9">NEW DISCUSSION</a>
 		</div>
-		<div class="col-md-9 col-md-offset-2">
+		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<table class="table table-index table-hover">
 			  <thead>
 			    <tr>

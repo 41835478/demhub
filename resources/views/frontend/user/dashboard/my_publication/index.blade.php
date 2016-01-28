@@ -1,17 +1,17 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  <section id="content_wrapper" class="col-md-10 col-md-offset-1" style="margin-top: 60px;">
+  <section id="content_wrapper" class="" style="margin-top: 60px;">
 
     <!-- Begin: Content -->
-    <div id="content" class="animated fadeIn" style="">
-      <div class="row center-block mt10" style="">
+    <div id="content" class="animated fadeIn row center-block mt10 " style="">
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" style="">
         <a type="button" class="btn btn-style-alt" href="{{ route('publications') }}" style="margin-left:1px">
           <span class="glyphicon glyphicon-folder-close"></span>
           <span style="visibility:hidden">*</span> ALL PUBLICATIONS
         </a>
 
-        <div class="col-sm-offset-7" style="display:inline">
+        <div class="col-md-offset-7 col-sm-offset-6" style="display:inline">
           <a type="button" class="btn btn-style-alt" href="{{ URL::to('my_publication/new') }}">NEW</a>
         </div>
 

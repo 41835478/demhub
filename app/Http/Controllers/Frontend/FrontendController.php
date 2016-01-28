@@ -30,6 +30,11 @@ class FrontendController extends Controller {
 		}
 
 	}
+	public function inviteOthers(Request $request) {
+		$inputs = $request->all();
+		dd($inputs);
+		return response("Hi");
+	}
 
 	public function getLandingData() {
 		$divisions = Division::all();

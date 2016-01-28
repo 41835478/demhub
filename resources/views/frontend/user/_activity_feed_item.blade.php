@@ -15,7 +15,10 @@
 
 	@if(isset($contents))
 		@foreach($contents as $index => $item)
+			@if($item['subclass']=='infoResource')
+			@else
 			@include('frontend.__content-card')
+			@endif
 		@endforeach
 	@endif
 

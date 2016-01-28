@@ -6,6 +6,7 @@ use App\Models\Publication;
 use App\Models\Access\User\User;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use Illuminate\Http\Request;
 use Image;
 
 /**
@@ -22,6 +23,7 @@ class DashboardController extends Controller {
 		return view('frontend.user.dashboard.index')
 			->withUser(auth()->user());
 	}
+
 
 	public function test()
 	{
