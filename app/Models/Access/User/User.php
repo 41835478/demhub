@@ -114,6 +114,38 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		}
 	}
 
+	public function threadBookmarks() {
+		return $this->belongsToMany('Riari\Forum\Models\Thread','follow_relationships','follower_id','followed_id')
+								->whereFollowerType(self::USER)
+								->whereFollowedType(self::THREAD)
+								->withTimestamps();
+	}
+
+	public function has_bookmarked_thread($bookmarked_thread) {
+		if (is_numeric($bookmarked_thread)) {
+			$followed_thread_id = $bookmarked_thread;
+		} else {
+			$followed_thread_id = $bookmarked_thread->id;
+		}
+
+		return DB::table('follow_relationships')
+					    ->whereFollowerId($this->id)
+					    ->whereFollowedId($followed_thread_id)
+							->whereFollowerType(self::USER)
+							->whereFollowedType(self::THREAD)
+					    ->count() > 0;
+	}
+
+	// TODO - Add a hasMany relation to this function
+	public function discussions()
+	{
+			$threadIds = Post::where('author_id',$this->id)->lists('parent_thread');
+			$threads = DB::table('contents')->whereIn('id', $threadIds)->get();
+
+			$collection = collect($threads);
+			return $collection;
+	}
+
 	/**
    * One-to-Many relations with Publication.
    *
@@ -133,7 +165,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 								->withTimestamps();
 	}
 
-	public function has_bookmarked($bookmarked_publication) {
+	public function has_bookmarked_publication($bookmarked_publication) {
 		if (is_numeric($bookmarked_publication)) {
 			$followed_publication_id = $bookmarked_publication;
 		} else {
@@ -175,23 +207,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 							->whereFollowerType(self::USER)
 							->whereFollowedType(self::USER)
 					    ->count() > 0;
-	}
-
-	public function discussions()
-	{
-			// dd($item);
-			$threadIds = Post::where('author_id',$this->id)->lists('parent_thread');
-
-			// $threadIds=$posts->parent_thread;
-			//var_dump($threadIds);
-			//$x=(array) $threadIds;
-			$threads = DB::table('contents')->whereIn('id', $threadIds)->get();
-
-			$collection = collect($threads);
-			return $collection;
-
-			//var_dump($threads);
-			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
 	}
 
 }

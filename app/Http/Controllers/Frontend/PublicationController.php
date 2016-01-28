@@ -291,18 +291,16 @@ class PublicationController extends Controller
     // TODO - create alternate function equivalent for
     // ->references('id')->on( {{ followed_type }} )->onDelete('cascade');
     public function bookmarkPublication($pubId) {
-		// if (!Auth::user()->is_following($id)) {
-		    // dd(Auth::user()->publicationBookmarks());
+		if (!Auth::user()->has_bookmarked_publication($pubId)) {
 			Auth::user()->publicationBookmarks()->attach($pubId, [
                 'follower_type' => self::USER, 'followed_type' => self::PUBLICATION
             ]);
-		// }
+		}
 
-        // $secondMenu = true;
 		$users = User::where('id', '!=', Auth::id())
 									->where('user_name', '!=', 'demhub')
 									->orderBy('id','DESC')->get();
-        // $users = User::all();
+
 		$publications = Publication::all();
 
 		return view('frontend.user.dashboard.bookmarks', compact([
@@ -310,10 +308,21 @@ class PublicationController extends Controller
 		]));
 	}
 
-	// public function unbookmarkPublication($id) {
-	// 	if (Auth::user()->is_following($id)) {
-	// 		Auth::user()->following()->detach($id);
-	// 	}
-	// 	return $this->listing_of_profiles();
-	// }
+	public function unbookmarkPublication($pubId) {
+		if (Auth::user()->has_bookmarked_publication($pubId)) {
+			Auth::user()->following()->detach($pubId, [
+                'follower_type' => self::USER, 'followed_type' => self::PUBLICATION
+            ]);
+		}
+
+        $users = User::where('id', '!=', Auth::id())
+									->where('user_name', '!=', 'demhub')
+									->orderBy('id','DESC')->get();
+
+		$publications = Publication::all();
+
+		return view('frontend.user.dashboard.bookmarks', compact([
+					'users', 'publications'
+		]));
+	}
 }
