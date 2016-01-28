@@ -21,7 +21,7 @@
             </a>
           </h3>
 
-          <span class="label label-default" style="font-size:82%">
+          <span class="label label-card" style="font-size:82%">
             {{$item->get_date('j F Y | g:i a')}}
           </span>
 

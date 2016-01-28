@@ -2,13 +2,15 @@
 	{{-- style="padding-left:30px;" --}}
 	<div class="container-fluid">
 
-		<div class="navbar-header col-xs-12">
+		<div class="navbar-header row">
+			<?php /*
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
 				<span class="sr-only">{{ trans('labels.toggle_navigation') }}</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
+ 			*/ ?>
 
 			<div class="col-xs-2 nav-top-adjust">
 				<a href="{{url('')}}" class="">{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width:150px')) !!}</a>
@@ -16,7 +18,7 @@
 			</div>
 
 			<div class="col-xs-10" style="padding: 0;">
-				<div class="collapse navbar-collapse" id="navbar-collapse-1">
+				<div class="" id="navbar-collapse-1">
 					<ul class="navbar" style="margin-bottom:-10px">
 
 						<style>
@@ -48,12 +50,14 @@
 						</style>
 
 						@if (Auth::user())
-						<li class="col-xs-8 nav-top-adjust" style="">
+						<li class="col-xs-8 nav-top-adjust hidden-xs" style="">
 
-							{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+							{!! Form::open(['url' => url('search'), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 							<div class="form-group" style="padding-left:15%;">
 								<div class="input-group searchbar-group" style="width: 100%">
-									<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 7.5px;">
+									<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;"></i>
+									<select class="input-group-addon nav-search-text animate" name="scope"
+											style="float: left;width: 20%;padding: 9px;">
 										<option value="all">All</option>
 										<option value="articles">Articles</option>
 										<option value="users">Users</option>
@@ -80,8 +84,8 @@
 						</div>
 
 						@endif
-						<div class="col-xs-4">
-							<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="display:inline;margin-top:-10px">
+						<div class="col-xs-12 col-sm-4">
+							<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="padding: 12px 0 0 0;text-align: right">
 
 								@if (Auth::guest())
 
@@ -89,14 +93,14 @@
 								@if (Request::url() === url('auth/register'))
 								active
 								@endif"
-									style="padding-top: 15px"><a href="{{url('auth/register')}}">{!! trans('JOIN NOW') !!}</a>
+									style="display:inline-block; padding-top: 15px"><a href="{{url('auth/register')}}">{!! trans('JOIN NOW') !!}</a>
 								</li>
 
 								<li class="
 								@if (Request::url() === url('auth/login'))
 								active
 								@endif"
-									style="padding-top:15px">
+									style="display:inline-block; padding-top:15px">
 									{!! link_to('auth/login', trans('LOGIN')) !!}
 								</li>
 
@@ -108,7 +112,7 @@
 								active
 							@endif">
 									<a href="{{url('public_journal')}}" class="" style="">
-										<h3 class="glyphicon glyphicon-folder-close" style="margin: 0 auto;padding-left:13px;margin-top:-17px;"></h3>
+										<h3 class="glyphicon glyphicon-folder-close" style="margin: -17px auto 0 auto;padding-left:1%;"></h3>
 										<p style="font-size:55%">{!! trans('PUBLICATIONS') !!}<p>
 									</a>
 								</li> --}}
@@ -116,7 +120,7 @@
 								<li class="text-center
 							@if (Request::url() === url('resource_filter'))
 								active
-							@endif">
+							@endif" style="display:inline-block;padding: 0 1% ">
 									<a href="{{url('resource_filter')}}">
 										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.5em;"></i>
 										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
@@ -126,7 +130,7 @@
 								<li class="text-center
 							@if (strpos(Request::url(), 'forum') == true)
 							active
-							@endif" style="padding-left: 15px;">
+							@endif" style="display:inline-block; padding: 0 1%;">
 									<a href="{{url('forum/all_threads')}}">
 										<i class="fa fa-comments fa-fw" style="margin: 0 auto 2px auto;font-size: 2.5em"></i>
 										<p style="font-size:55%;margin-top:-2px">{!! trans('DISCUSSIONS') !!}<p>
@@ -134,7 +138,7 @@
 
 								</li>
 
-								<li class="dropdown" style="padding: 0 0 0 15px;">
+								<li class="dropdown" style="display:inline-block; padding: 0 1%;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;">
 										<img class="img-circle" style="height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});">
 										<i class="fa fa-caret-down"></i>
@@ -164,36 +168,38 @@
 
 
 	</div>
-</nav>
-@if (Request::url() === url('search'))
-<div class="row visible-sm">
-	<div class="col-xs-12">
-		{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-		<div class="form-group" style="">
-			<div class="input-group searchbar-group" style="width: 100%">
-				<select class="input-group-addon nav-search-text animate" name="scope" style="float: left;width: 20%;padding: 7.5px;">
-					<option value="all">All</option>
-					<option value="articles">Articles</option>
-					<option value="users">Users</option>
-					<option value="publications">Publications</option>
-					<option value="resources">Resources</option>
-				</select>
-				<input name="query_term" class="form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
-				<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
-					<i class="fa fa-search"></i>
-				</button>
+
+	<div class="container-fluid row visible-xs">
+		<div class="col-xs-10 col-xs-offset-1">
+			{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+			<div class="form-group" style="">
+				<div class="input-group searchbar-group" style="width: 100%">
+					<select class="input-group-addon nav-search-text animate" name="scope"
+							style="float: left;width: 20%;padding: 9px;">
+						<option value="all">All</option>
+						<option value="articles">Articles</option>
+						<option value="users">Users</option>
+						<option value="publications">Publications</option>
+						<option value="resources">Resources</option>
+					</select>
+					<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;"></i>
+					<input name="query_term" class="form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
+					<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
 			</div>
+			{!! Form::close() !!}
 		</div>
-		{!! Form::close() !!}
 	</div>
-</div>
-@elseif (Request::url() === url('forum/all_threads'))
+	<?php /*@elseif (Request::url() === url('forum/all_threads'))
 <div class="row visible-sm">
 	<div class="col-xs-12">
 		<h1>Hey</h1>
 	</div>
 </div>
-@endif
+@endif */ ?>
+</nav>
 <script>
 //	$(".nav-searchbar").focus(function() {
 //		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");

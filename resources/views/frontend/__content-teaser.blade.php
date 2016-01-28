@@ -4,6 +4,8 @@
 
   <div {{ strpos(Request::url(), "profile")!==false ? 'class="col-xs-12 col-sm-6 col-md-4 col-lg-feed"' : ''}}>
     <?php
+    if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
+    elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
 
       $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
       if ($articleDivs) {
@@ -17,9 +19,13 @@
     <div class = "feedsbox-teaser">
       <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:69px">
       @forelse($articleDivs as $div)
-        <a style="height:{{$height}}%;" href="{{url('division', $allDivisions[$div-1]->slug)}}" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"></a>
+        <a style="height:{{$height}}%;" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"
+          data-toggle="tooltip" data-placement="top" title="{{$allDivisions[$div-1]->slug}}">
+        </a>
       @empty
-        <a style="height:100%;" href="{{url('divisions')}}" class="color-label-vertical division_all"></a>
+        <a style="height:100%;" class="color-label-vertical division_all"
+        data-toggle="tooltip" data-placement="top" title="All Divisions">
+        </a>
       @endforelse
       </div>
 
@@ -95,8 +101,9 @@
         <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
           style="font-size:82%;color:#000;padding-left:5%">
           <?php
-            $parse=parse_url($item['url']);
-            if (Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ){
+            // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
+            if (isset($item['url']) && $item['subclass']=="article"){
+              $parse=parse_url($item['url']);
               $host=$parse['host'];
               $host=substr($host,4);
 
@@ -104,9 +111,10 @@
                 echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
               }
             }
-            else{
-              echo '<a target="_blank" href="http://www.'.$item['url'].'">'.$item['url'].'</a>';
-            }
+            // else{
+            //
+            //   echo '<a target="_blank" href="http://www.'.$item['url'].'">'.gethostname().'</a>';
+            // }
           ?>
         </span>
 
@@ -121,8 +129,8 @@
           @elseif(count($keywords) <5)
             @foreach($keywords as $key=>$keyword)
 
-              <a class="label label-default triangle-right" style="font-size:82%;margin-right:2px;padding-bottom:5px;" href="?query_term={{$keyword}}">
-                {{ $keyword }}
+              <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px; " href="?query_term={{$keyword}}">
+                #{{ $keyword }}
               </a>
 
 

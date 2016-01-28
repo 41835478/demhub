@@ -1,6 +1,10 @@
+
 var twitterElement;
 var newScript;
 var copyLink;
+$(window).load(function() {
+  $('[data-toggle="headsup"]').tooltip();
+});
 $(".feedsbox").mouseenter(function() {
   twitterElement=$(this).find(".article_twitter");
   $(twitterElement).addClass("twitter-share-button");

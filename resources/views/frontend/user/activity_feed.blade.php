@@ -4,7 +4,7 @@
 <div class="container-fluid row">
 	<h1>Activity feed</h1>
 
-	<div id="activity-feed" class="col-xs-12 col-sm-offset-3 col-sm-8" data-page="0" data-url="{{url('get_activities')}}" style="border:none">
+	<div id="activity-feed" class="col-xs-12 col-sm-offset-2 col-sm-8" data-page="0" data-url="{{url('get_activities')}}" style="border:none">
 		<?php // populated by jquery, takes partial render of _activity_feed_item view ?>
 	</div>
 </div>
@@ -16,9 +16,9 @@
 	var timeOut = 0;
 	var topCheck=false;
 	$(window).on("scroll", function(){		// this might be anything else depends on what container has the scroll bar
-		if (jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight - 300) { //just a guess as starting point, has to be tested
-			get_activities();
-		}
+		// if (jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight - 300) { //just a guess as starting point, has to be tested
+		// 	get_activities();
+		// }
 		var a = $("#activity-feed").offset().top;
 		var b = $("#activity-feed").height();
 		var c = $(window).height();
@@ -26,15 +26,16 @@
 		var scrollBottom = $(window).scrollTop() + a;
 
 		if ((c+scrollTop)>(a+b) && timeOut!==1) {
-			get_activities();
+			console.log("hi");
 			timeOut = 1;
-			setTimeout(function(){timeout=0;},360);
+			get_activities();
 		}
-		if ( scrollBottom<-3 && timeOut!==1) {
-            alert( $(this).text() + ' was scrolled to the top' );
+
+		if ( scrollBottom<-1 && timeOut!==1) {
+            //alert( $(this).text() + ' was scrolled to the top' );
 						timeOut = 1;
 						topCheck=true;
-						setTimeout(function(){timeout=0; topCheck=false;},360);
+						get_activities();
         }
 	});
 
@@ -54,7 +55,6 @@
 			type: "get",
 			url: activity_feed.attr("data-url")+"?page="+new_page,
 			async: true,
-			cache: true,
 			beforeSend: function(){
 				$(".loading").show();
 			},
@@ -69,7 +69,9 @@
 				else {
 					activity_feed.append(response);
 				};
+				setTimeout(function(){timeOut=0; topCheck=false;},550);
 				activity_feed.attr("data-page", new_page);
+
 				// if (response.status == 'ok') {
 				// 	activity_feed.attr("data-page", new_page);
 				// 	$.each(response.data, function(index, value){

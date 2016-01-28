@@ -226,6 +226,27 @@ class Helpers {
 			return $posts;
 			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
 	}
+	// public function discussions($item)
+	// {
+	// 		discussions[];
+	// 		if($item['url']){
+	//
+	// 		};
+	//
+	// 		// dd($item);
+	// 		$threadIds = Post::where('author_id',$this->id)->lists('parent_thread');
+	//
+	// 		// $threadIds=$posts->parent_thread;
+	// 		//var_dump($threadIds);
+	// 		//$x=(array) $threadIds;
+	// 		$threads = DB::table('contents')->whereIn('id', $threadIds)->get();
+	//
+	// 		$collection = collect($threads);
+	// 		return $collection;
+	//
+	// 		//var_dump($threads);
+	// 		// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
+	// }
 
 	// public static function discussions($item)
 	// {

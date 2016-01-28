@@ -70,6 +70,7 @@ $(function(){
 $(function(){
 
 });
+
 /*! Backstretch - v2.0.4 - 2013-06-19
 * http://srobbin.com/jquery-plugins/backstretch/
 * Copyright (c) 2013 Scott Robbin; Licensed MIT */
@@ -7043,7 +7044,7 @@ function carouselRes() {
     $('.carousel-inner').children('img').css('min-height','auto');
     $('.carousel-inner').children('img').css('min-width','100vw');
   }
-  console.log (difference);
+  //console.log (difference);
 };
 
 $(document).ready(function(){
@@ -7053,9 +7054,13 @@ $(document).ready(function(){
     carouselRes();
 });
 
+
 var twitterElement;
 var newScript;
 var copyLink;
+$(window).load(function() {
+  $('[data-toggle="headsup"]').tooltip();
+});
 $(".feedsbox").mouseenter(function() {
   twitterElement=$(this).find(".article_twitter");
   $(twitterElement).addClass("twitter-share-button");
