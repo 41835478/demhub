@@ -1,8 +1,6 @@
 <nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top">
-	{{-- style="padding-left:30px;" --}}
-	<div class="container-fluid">
 
-		<div class="navbar-header row">
+		<div class="navbar-header col-xs-12 row">
 			<?php /*
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
 				<span class="sr-only">{{ trans('labels.toggle_navigation') }}</span>
@@ -120,7 +118,7 @@
 								<li class="text-center
 							@if (Request::url() === url('resource_filter'))
 								active
-							@endif" style="display:inline-block;padding: 0 1% ">
+							@endif" style="display:inline-block;">
 									<a href="{{url('resource_filter')}}">
 										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.5em;"></i>
 										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
@@ -130,7 +128,7 @@
 								<li class="text-center
 							@if (strpos(Request::url(), 'forum') == true)
 							active
-							@endif" style="display:inline-block; padding: 0 1%;">
+							@endif" style="display:inline-block;">
 									<a href="{{url('forum/all_threads')}}">
 										<i class="fa fa-comments fa-fw" style="margin: 0 auto 2px auto;font-size: 2.5em"></i>
 										<p style="font-size:55%;margin-top:-2px">{!! trans('DISCUSSIONS') !!}<p>
@@ -138,7 +136,7 @@
 
 								</li>
 
-								<li class="dropdown" style="display:inline-block; padding: 0 1%;">
+								<li class="dropdown" style="display:inline-block;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;">
 										<img class="img-circle" style="height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});">
 										<i class="fa fa-caret-down"></i>
@@ -167,7 +165,6 @@
 		</div>
 
 
-	</div>
 
 	<div class="container-fluid row visible-xs">
 		<div class="col-xs-10 col-xs-offset-1">
