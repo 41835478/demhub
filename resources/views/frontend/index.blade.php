@@ -1,12 +1,12 @@
 @extends('frontend.layouts.landing')
 
-{{-- @section('body-style')
+@section('body-style')
 	<style>
 		body {
 			padding-top: 0px !important;
 		}
 	</style>
-@endsection --}}
+@endsection
 
 @section('content')
 	<div class="row align-top">
@@ -131,7 +131,7 @@
 				<h3 class="glyphicon glyphicon-chevron-down" style="text-align:center;padding-top:4%"></h3>
 			</a>
 		</div>
-		
+
 		<!-- svg map files goes here -->
 	 @include('frontend.user._svg')
 
