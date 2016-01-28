@@ -36,10 +36,8 @@ $('.st3').click(function(){
                   $(this).css('fill',color);
                   $('.maphead1').addClass("maphead");
                   })
-      //  .mouseout(function() {
-      //            $(this).css('fill','black');
-// });
 });
+
 
 $(function() {
       $('a').mouseenter(function() {
@@ -62,7 +60,6 @@ function carouselRes() {
     $('.carousel-inner').children('img').css('min-height','auto');
     $('.carousel-inner').children('img').css('min-width','100vw');
   }
-  //console.log (difference);
 };
 
 $(document).ready(function(){

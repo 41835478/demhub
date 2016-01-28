@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-	<div class="row align-top">
+	<div class="row">
 	<div class="col-xs-12">
 		<!-- landing page nav bar, hard-coded no controllers -->
 		<div id="landing-nav">

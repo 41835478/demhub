@@ -23,6 +23,10 @@
       val = jQuery.parseJSON(val);
       $container1.append( "<div><ul>" + val.profileImage + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
     });
+    $.each(index.content.news, function( i, val ) {
+      val = jQuery.parseJSON(val);
+      $container2.append( "<div><ul><li>"+ val.title + "</li><li>" + val.date +"</li><li>"  + val.image + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.tags + "</li><li>followers</li><ul></div>");
+    });
 
     var jasondata = [];
     $.each(index.content.users, function( i, val ) {
