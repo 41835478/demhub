@@ -15,6 +15,19 @@ div#dashboard-icon {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+#invite-icon {
+  position: fixed;
+  bottom: 15%;
+  padding-left: 7px;
+  padding-right: 7px;
+  z-index: 100;
+  cursor: pointer;
+  background: #955756;
+  color: white;
+  right:0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 div#dashboard {
   position: fixed;
   overflow-y:scroll;

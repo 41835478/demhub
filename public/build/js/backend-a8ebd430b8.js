@@ -67,6 +67,7 @@ $(function(){
         });
     });
 });
+
 /*! AdminLTE app.js
  * ================
  * Main JS application file for AdminLTE v2. This file

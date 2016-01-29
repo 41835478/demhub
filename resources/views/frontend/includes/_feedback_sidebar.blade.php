@@ -23,6 +23,10 @@
 			}
 		});
 
+		$('#invite-icon > i').click(function(){
+			$("#inviteModal").toggle();
+		});
+
 		$("i").hover(
 			function(){
 				$(this).tooltip('show');
@@ -42,12 +46,21 @@
 	}
 </script>
 
-
-<div id="dashboard-icon">
-	<i class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="left" title="FEEDBACK" style="font-size:250%"></i>
+<div id="invite-icon">
+	<i class="fa fa-envelope-o" data-toggle="tooltip" data-placement="left" title="invite others" style="font-size:250%"></i>
+	{{-- <button id="showInviteModel" data-toggle="modal" data-target="#inviteModal" style="display:none">invite others</button> --}}
 </div>
+<div id="dashboard-icon">
+	<i class="fa fa-pencil-square-o" data-toggle="tooltip" data-placement="left" title="feedback" style="font-size:250%"></i>
+</div>
+
+
 
 <div id="dashboard">
 	@include('forms.user.feedback')
 	<br>
 </div>
+
+@section('modal')
+  @include('modals._invite_others', compact('user'))
+@endsection
