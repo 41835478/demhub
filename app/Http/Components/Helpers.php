@@ -16,6 +16,16 @@ use Riari\Forum\Models\Thread;
 
 class Helpers {
 
+	const VOLUME = 0;
+	const ISSUES = 1;
+	const PAGES = 2;
+	const PUBLISHER = 3;
+	const INSTITUTION = 4;
+	const CONFERENCE = 5;
+	const AUTHOR = 6;
+	const FAVORITES = 7;
+	const VIEWS = 8;
+
 	/**
 	 * Standard function to convert an int/string array to format optimized for search needed to be stored in db
 	 *
@@ -192,7 +202,6 @@ class Helpers {
 		return isset($var) ? $var : $default;
 	}
 
-
 	public static function divHash($divString) {
     $divisions = [];
     if (isset($divString)) {
@@ -206,26 +215,25 @@ class Helpers {
 
     return $divisions;
   }
-	public static  function uploader($item)
+
+	public static function uploader($item)
   {
-		$user=User::where('id',$item['owner_id'])->first();
-      return $user;
+		$user = User::where('id', $item['owner_id'])->first();
+		return $user;
   }
+
 	public static function author($item)
 	{
-		$user=User::where('id',$item['owner_id'])->first();
-		return $user;
-		// return json_decode($value->data, true)[self::AUTHOR];
+		return json_decode($item['data'], true)[self::AUTHOR];
 	}
 
 	public static function posts($item)
 	{
-			// dd($item);
 			$posts = Post::where('parent_thread',$item['id'])->get();
-
 			return $posts;
 			// return $this->hasMany('\Riari\Forum\Models\Post', 'parent_thread');
 	}
+
 	// public function discussions($item)
 	// {
 	// 		discussions[];
@@ -259,7 +267,6 @@ class Helpers {
 
 	public static function route($item)
 	{
-
 			// $components = array(
 			// 		// 'categoryID'    => $this->thread->category->id,
 			// 		// 'categoryAlias' => Str::slug($this->thread->category->title, '-'),

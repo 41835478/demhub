@@ -9,11 +9,11 @@
 	<!-- <h2>{{ trans('forum::base.index') }}</h2> -->
 
 	<div class="row container-fluid" style="padding-top:15px">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-6 col-md-offset-3">
 
-			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-xs-offset-8">NEW DISCUSSION</a>
+			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-sm-offset-9">NEW DISCUSSION</a>
 		</div>
-		<div class="col-md-9 col-md-offset-2">
+		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<table class="table table-index table-hover">
 			  <thead>
 			    <tr>
@@ -45,7 +45,7 @@
   			      </td>
 							<?php  $uploader=$author=Helpers::uploader($thread); ?>
 
-  			    	<td><img class="img-responsive img-rounded" style="width:25px;display:inline;" src="{{$author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$author->first_name}} {{$author->last_name}}</td>
+  			    	<td><img class="img-responsive img-circle" style="width:25px;display:inline;" src="{{$author->avatar->url('thumb')}}"><span style="visibility:hidden">*</span> {{$author->first_name}} {{$author->last_name}}</td>
 							<td><p style="padding-top:4px"><span class="label label-default" >{{count(Helpers::posts($thread))}}</span></p></td>
 							{{-- <td><p style="padding-top:4px"><span class="label label-default" >{{(count($thread->posts))}}</span></p></td> --}}
   			    </tr>
@@ -55,7 +55,7 @@
 
 		</div>
 	</div>
-	 
+
 </div>
 
 @overwrite

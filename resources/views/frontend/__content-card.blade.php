@@ -20,8 +20,8 @@
         @forelse($articleDivs as $div)
           <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
             style="width:{{$width}}%; margin-left:{{$marginLeft}}%;"
-            data-toggle="headsup" data-placement="top" title="{{$allDivisions[$div-1]->slug}}"
-          ></div>
+            data-toggle="headsup" data-placement="top" title="{{$allDivisions[$div-1]->slug}}">
+          </div>
         @empty
           <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
         @endforelse

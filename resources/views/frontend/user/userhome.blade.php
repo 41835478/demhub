@@ -1,4 +1,3 @@
-
 @extends('frontend.layouts.master')
 
 @section('body-class')userhome-body @endsection

@@ -9,8 +9,8 @@
   @forelse($articleResults as $article)
     <tr>
       <td>
-        <a target="_blank" href="{{ $article['source_url'] }}">
-          {{ $article['title'] }}
+        <a target="_blank" href="{{ $article['url'] }}">
+          {{ $article['name'] }}
         </a>
         <p class="text-muted">
           {{ $article['publish_date'] }}
