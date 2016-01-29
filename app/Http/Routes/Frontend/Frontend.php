@@ -53,7 +53,9 @@ $router->group(['middleware' => 'auth'], function ()
 {
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 
-	post(	'invite', 'FrontendController@inviteOthers')->name('invite_others');
+	post(	'invite', 'FrontendController@inviteSignup')->name('invite_others');
+
+	get('get_activities', 'UserController@getActivities')->name('get_activities');
 
 	get('userhome', 			'UserController@index'				)->name('userhome');
 	get('get_activities', 'UserController@getActivities')->name('get_activities');

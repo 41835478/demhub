@@ -216,6 +216,15 @@ option {
 }
 
 .table-details1 {
+  border: 3px solid red;
+}
+
+.table-details2 {
+  border: 3px solid blue;
+  min-height: 30%;
+}
+
+.table-details1 {
   width: 100%;
   max-height: 45%;
   display: block;
@@ -300,34 +309,18 @@ option {
   width: 70%;
 }
 
-.table-details2 ul:first-child li:first-child {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.table-details2 ul:first-child li:nth-child(2),
-.table-details2 ul:first-child li:nth-child(3),
-.table-details2 ul:first-child li:nth-child(4) {
-  opacity: 0.7;
-}
-
 .table-details2 ul:nth-child(2) {
-  width: 20%;
+  width: 30%;
 }
 
 .table-details2 ul:nth-child(2) li:first-child {
-  background-color: red;
+  font-size: 1.2em;
+  color: #ED6C1F;
 }
 
-.table-details2 ul:nth-child(2) li:first-child button {
-  float: left;
-  -webkit-appearance: none;
-  background-color: #638395;
-  color: #A7B8C2;
-  border: none;
-  border-radius: 0px;
-  width: 100%;
-  padding: 10px auto 10px auto;
+.table-details2 ul:nth-child(2) li:nth-child(3),
+.table-details2 ul:nth-child(2) li:nth-child(4) {
+  opacity: 0.7;
 }
 
 .table-details2 li {
@@ -470,9 +463,7 @@ option {
   }
 
   .card-ajax {
-    height: auto;
-    min-height: 80vh;
-    max-height: 85vh;
+    height: 80vh;
     width: 30vw;
   }
 }
@@ -520,8 +511,7 @@ option {
     width: 100vw;
     display: block;
     top: 100vh;
-    height: auto;
-    max-height: 85vh;
+    height: 90vh;
     left: 10px;
     margin-top: -40px;
     background: #35474F;
@@ -736,7 +726,7 @@ li.pub-descrip {
 
 #welcome_svg {
   width: 100%;
-  background-color: #35474F;
+  background-color: #f6f6f6;
 }
 
 .svg-landing {
@@ -832,7 +822,7 @@ svg * {
 /* Blocs */
 
 .bloc-head {
-  color: #ED6C1F;
+  color: #888;
   padding: 30px;
 }
 
@@ -856,26 +846,13 @@ svg * {
 }
 
 .connection {
-  color: #35474F;
+  color: #f7f7f7;
   z-index: -1;
 }
 
 .st3 {
-  fill: #fff;
-  stroke-width: 0;
-}
-
-.nodeline {
-  color: #ddd;
-  opacity: 0;
-  stroke-width: 1;
-  transition-duration: 0.4s;
-  transition-duration: 0.4s;
-}
-
-.svg-modal {
-  background: none !important;
-  margin-top: 300px;
+  fill: #888;
+  stroke: #888;
 }
 
 /* Custom */
