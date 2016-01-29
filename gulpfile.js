@@ -11,6 +11,7 @@ elixir(function(mix) {
         .copy('resources/assets/js/frontend/dashboardtest/utility.js', 'public/js/dashboardtest')
         .copy('resources/assets/js/frontend/dashboardtest/demo.js', 'public/js/dashboardtest')
         .copy('resources/assets/js/frontend/dashboardtest/main.js', 'public/js/dashboardtest')
+        .copy('resources/assets/js/frontend/userhome/feed.js', 'public/js/frontend/userhome')
 
         .sass([ // Process front-end stylesheets
             'frontend/main.scss'

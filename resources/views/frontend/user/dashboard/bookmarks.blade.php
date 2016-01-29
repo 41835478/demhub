@@ -1,8 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  {{-- @include('frontend.user.dashboard.style')
-  @include('frontend.navigation._user-dashboard-sidebar') --}}
   <section id="content_wrapper" class="col-md-10 col-md-offset-1" style="margin-top: 60px;">
 
     <!-- Begin: Content -->
@@ -60,5 +58,4 @@
 
   </section>
 
-  {{-- @include('frontend.user.__user-card-partial') --}}
 @endsection('content')

@@ -19,16 +19,20 @@ class UserController extends Controller {
 	 * User Homepage
 	 */
 	public function index(Request $request){
-        $allDivisions = $navDivisions = Division::all();
-		return view('frontend.user.activity_feed', compact(['allDivisions']))->render();
+		$allDivisions = $navDivisions = Division::all();
+		return view('frontend.user.userhome', compact([
+			'allDivisions'
+		]))->render();
 	}
-	
+
 	public function getActivities() {
 		$contents = Content::where('subclass', '!=', 'infoResource')
 											->orderBy('updated_at', 'desc')
 											->paginate(30);
 		$allDivisions = $navDivisions = Division::all();
-		$html = view('frontend.user._activity_feed_item', compact(['contents', 'allDivisions']))->render();
+		$html = view('frontend.user._activity_feed', compact([
+			'contents', 'allDivisions'
+		]))->render();
 
 		return $html;
 	}
