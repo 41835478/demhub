@@ -62,7 +62,7 @@ class DivisionController extends Controller
 
       $articleMediaArray = $this->getArticleMedia($results_hits);
       $newsFeeds = Search::formatElasticSearchToArray($results_hits);
-      
+
       $item_count = count($newsFeeds);
       $last_page = $size*(1+$page) >= $total_count;
       $options_page = $page + 1;
@@ -144,8 +144,8 @@ class DivisionController extends Controller
     private function getDivisionThreads($divID) {
         $threads = [];
         $tempThreads = [];
-        $threads[0] = Thread::where('parent_category', $divID)->orderBy('created_at', 'desc')->first();
-        $tempThreads = Thread::where('parent_category', $divID)->orderBy('updated_at', 'desc')->get();
+        $threads[0] = Thread::where('divisions', 'LIKE', '%|'.$divID.'|%')->orderBy('created_at', 'desc')->first();
+        $tempThreads = Thread::where('divisions', 'LIKE', '%|'.$divID.'|%')->orderBy('updated_at', 'desc')->get();
         if ($tempThreads[0] = $threads[0]){
           $threads[1]=$tempThreads[1];
         }

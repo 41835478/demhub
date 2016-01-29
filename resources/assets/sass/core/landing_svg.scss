@@ -1,6 +1,6 @@
 #welcome_svg{
   width:100%;
-  background-color: #f6f6f6;
+  background-color: #35474F;
 
 }
 .svg-landing{
@@ -78,13 +78,26 @@ svg * {
   position: absolute;
 }
 /* Blocs */
-.bloc-head     { color: #888; padding: 30px; }
+.bloc-head     { color: #ED6C1F; padding: 30px; }
 .bloc-demo     { color: #FF495F; fill:#FF495F; stroke:#FF495F; z-index: 999;}
 .bloc-timing   { color: #F7A800; }
 .bloc-scenario { color: #4fe084; }
 .bloc-doc      { color: #69B0CA; }
-.connection {color:#f7f7f7; z-index: -1;}
-.st3{fill:#888;stroke:#888;}
+.connection {color:#35474F; z-index: -1;}
+.st3{fill:#fff; stroke-width:0;}
+
+.nodeline {
+  color: #ddd;
+  opacity: 0;
+  stroke-width:1;
+  transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.svg-modal{
+  background:none !important;
+  margin-top: 300px;
+}
+
 /* Custom */
 #hi-there {
 	width: 100%;
