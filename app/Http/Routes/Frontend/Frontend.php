@@ -9,15 +9,15 @@ get('about', 	'FrontendController@about');
 get('policy', 'FrontendController@policy');
 get('terms', 	'FrontendController@terms');
 
-get('getLandingData', 'FrontendController@getLandingData')->name('getLandingData');
-get('signUpSuccess', 'FrontendController@signUpSuccess')->name('signUpSuccess');
+get('getLandingData', 'FrontendController@getLandingData'	)->name('getLandingData');
+get('signUpSuccess', 	'FrontendController@signUpSuccess'	)->name('signUpSuccess');
 
-get(	'forum/all_threads', 			'ForumController@getViewAllThreads')->name('all_threads');
-get(	'forum/9-/thread/create', 'ForumController@getModCreateThread');
-post(	'forum/9-/thread/create', 'ForumController@postModCreateThread');
+get(	'forum/all_threads', 			'ForumController@getViewAllThreads'		)->name('all_threads');
+get(	'forum/9-/thread/create', 'ForumController@getModCreateThread'	);
+post(	'forum/9-/thread/create', 'ForumController@postModCreateThread'	);
 
-get(	'feedback', 'FrontendController@getFeedback');
-post(	'feedback', 'FrontendController@postFeedback')->name('post_feedback');
+get(	'feedback', 'FrontendController@getFeedback'	);
+post(	'feedback', 'FrontendController@postFeedback'	)->name('post_feedback');
 
 
 // get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
@@ -51,25 +51,22 @@ get('public_journal', 'PublicationController@public_publication')->name('publica
 $router->group(['middleware' => 'auth'], function ()
 {
 
-	//get('userhome', 'UserController@index')->name('userhome');
-	get('userhome', 'UserController@activityFeed')->name('userhome');
+	get('userhome', 'UserController@index')->name('userhome');
 
 	post(	'invite', 'FrontendController@inviteOthers')->name('invite_others');
-	// get('get_activities/{slug}', 'UserController@getActivities')->where('slug', '[0-9_\-]+')->name('get_activities');
 	get('get_activities', 'UserController@getActivities')->name('get_activities');
-	// get('activity_feed', 'UserController@activityFeed')->name('activity_feed');
+
 	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 	get('dashboard', 'DashboardController@index')->name('dashboard'); // used instead of edit_profile
 
 	get('connections',	'DashboardController@showConnections'	)->name('connections');
 	get('bookmarks',		'DashboardController@showBookmarks'		)->name('bookmarks');
-	// get('profile/edit', 		'ProfileController@edit')->name('edit_profile');
+
 	patch('profile/update', 'ProfileController@update')->name('update_profile');
 
 	/**
 	 * Publication Routes
 	 */
-
 	get(	'my_publications', 					'PublicationController@index'										)->name('my_publications');
 	post(	'my_publications/{caret}', 	'PublicationController@caret_publication_action')->name('caret_publication_action');
 

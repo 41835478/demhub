@@ -4,9 +4,8 @@
 <div class="container-fluid row">
 	<h1>Activity feed</h1>
 
-	<div id="activity-feed" class="col-xs-12 col-sm-offset-2 col-sm-8" data-page="0" data-url="{{url('get_activities')}}" style="border:none">
-		<?php // populated by jquery, takes partial render of _activity_feed_item view ?>
-	</div>
+	{{-- NOTE - populated by jquery, takes partial render of _activity_feed_item view --}}
+	<div id="activity-feed" class="col-xs-12 col-sm-offset-2 col-sm-8" data-page="0" data-url="{{url('get_activities')}}" style="border:none"></div>
 </div>
 
 <script>
