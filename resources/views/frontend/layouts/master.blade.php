@@ -11,7 +11,8 @@
     <meta property="og:image" content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
     <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+    <script src="build/js/jquery-1.11.3.min.js"></script>
+    <script src="build/js/bootstrap.min.js"></script>
     @yield('meta')
     @yield('before-styles-end')
     {!! HTML::style(elixir('css/core.css')) !!}

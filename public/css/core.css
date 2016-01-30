@@ -3954,7 +3954,20 @@ div#dashboard-icon {
   border-bottom-left-radius: 10px;
 }
 
-div#dashboard {
+#dashboard {
+  position: fixed;
+  overflow-y: scroll;
+  width: 350px;
+  height: 100%;
+  background: #fafafa;
+  color: #282828;
+  z-index: 1000;
+  font-size: 1.0em;
+  right: -350px;
+  border: 1px solid #717173;
+}
+
+#invite-sidebar {
   position: fixed;
   overflow-y: scroll;
   width: 350px;
