@@ -1,7 +1,7 @@
 {{-- <div class = "feed_width"> --}}
 
 
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-feed">
+    <div class="col-xs-12 col-lg-feed">
       <?php
 
       if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
@@ -15,7 +15,7 @@
         }
       ?>
 
-      <div class = "feedsbox" style="{{isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'}}">
+      <div class = "feedsbox" style="{{--isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'--}}">
 
         @forelse($articleDivs as $div)
           <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
@@ -126,7 +126,7 @@
             ?>
           </p>
 
-          <div style="bottom:50px; position:absolute;width:100%;">
+          <div style="">
 
             <?php
               $keywords = array_filter(preg_split("/\|/", $item['keywords']));
@@ -142,7 +142,7 @@
             @endif
           </div>
 
-          <div style="width:100%; height:42px; bottom:0px; position:absolute;">
+          <div style="">
             @include('division.__article_buttons')
           </div>
         </div> <!-- the div that closes the .inner-peoplebox -->

@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\ArticleController;
 use App\Models\ArticleDetail;
 use App\Models\ArticleMedia;
 use App\Models\Article;
+use App\Models\Content;
 use App\Models\Keyword;
 use App\Models\NewsFeed;
 use App\Models\ScrapeSource;
@@ -268,14 +269,16 @@ class Scraper
 		}
 
 		if($item == null){
-			$model = new Article();
-			// do not overwrite these
-			$model->language	= Helpers::verify($params['language']);
-			$model->review 		= Helpers::verify($params['review'], 0);
+			$model = new Content();
+			// no overwriting these
+			$data['language'] 	= Helpers::verify($params['language']);
 			$model->deleted 	= 0;
 		} else {
 			$model = $item;
+			$data = $item->data;
 		}
+
+		//$model->subclass 	= ($type==null||$type==0) ? ArticleController::typeOther : $type;
 
 		$model->type 		= ($type==null||$type==0) ? ArticleController::typeOther : $type;
 		$model->divisions 	= Helpers::convertDBArrayToString($keys_divs['divisions']);
