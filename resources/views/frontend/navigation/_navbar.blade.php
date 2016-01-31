@@ -1,6 +1,10 @@
-<nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top">
+{{-- added to account for larger nav height on mobile
+	TODO: move all other adjustments for top meu here, i.e. paddings on content divs and body  --}}
+<div class="visible-xs" style="height: 50px;"></div>
 
-		<div class="navbar-header col-xs-12 row">
+<nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="min-height: 65px;">
+
+		<div class="navbar-header col-xs-12 row" style="padding: 0;  margin: 0;">
 			<?php /*
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
 				<span class="sr-only">{{ trans('labels.toggle_navigation') }}</span>
@@ -11,8 +15,8 @@
  			*/ ?>
 
 			<div class="col-xs-2 nav-top-adjust">
-				<a href="{{url('')}}" class="">
-					{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width: 140px;min-width: 100px;width: 100%;')) !!}
+				<a href="{{url('/')}}" class="">
+					{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width: 140px;min-width: 120px;width: 100%;')) !!}
 				</a>
 
 			</div>
@@ -47,11 +51,18 @@
 								-o-transition: all 0.3s ease;
 								transition: all 0.3s ease;
 							}
+							#top-menu .nav-dropdown-image{
+								height:30px;
+								width:30px;
+								display:inline-block;
+								vertical-align: middle;
+								background-size: cover;
+							}
 						</style>
 
 						<div class="col-xs-8 hidden-xs">
 							@if (Auth::user())
-							<li class="nav-top-adjust" style="">
+							<li class="" style="padding-top: 15px;">
 
 								{!! Form::open(['url' => url('search'), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 								<div class="form-group" style="padding-left:15%;">
@@ -82,7 +93,7 @@
 						</div>
 
 						<div class="col-xs-12 col-sm-4">
-							<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="padding: 12px 0 0 0;text-align: right">
+							<ul class="navbar-nav navbar-right navbar-style nav-top-adjust" style="padding: 12px 0 0 0;text-align: right; margin: 0 -15px;">
 
 								@if (Auth::guest())
 
@@ -126,7 +137,7 @@
 								active
 							@endif" style="display:inline-block;">
 									<a href="{{url('resource_filter')}}">
-										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.5em;"></i>
+										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.0em;"></i>
 										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
 									</a>
 								</li>
@@ -136,7 +147,7 @@
 							active
 							@endif" style="display:inline-block;">
 									<a href="{{url('forum/all_threads')}}">
-										<i class="fa fa-comments fa-fw" style="margin: 0 auto 2px auto;font-size: 2.5em"></i>
+										<i class="fa fa-comments fa-fw" style="margin: -2px auto 2px auto;font-size: 2.2em"></i>
 										<p style="font-size:55%;margin-top:-2px">{!! trans('DISCUSSIONS') !!}<p>
 									</a>
 
@@ -144,7 +155,7 @@
 
 								<li class="dropdown" style="display:inline-block;">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="text-transform: uppercase;">
-										<img class="img-circle" style="height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});">
+										<div class="img-circle nav-dropdown-image" style="background-image:url({{Auth::user()->avatar->url('thumb')}});"></div>
 										<i class="fa fa-caret-down"></i>
 										<p style="font-size:55%;text-align:center;">{{ Auth::user()->first_name}}</p>
 									</a>
@@ -155,10 +166,10 @@
 								</li>
 								<script>
 									$("#top-menu li a").mouseenter(function() {
-										$(this).children("img").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});height:35px;width:35px;display:inline;");
+										$(this).children(".img-circle").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});background-size:cover;");
 									});
 									$("#top-menu li a").mouseleave(function() {
-										$(this).children("img").attr("style","height:35px;width:35px;display:inline;background:url({{Auth::user()->avatar->url('thumb')}});");
+										$(this).children(".img-circle").attr("style","background-image:url({{Auth::user()->avatar->url('thumb')}});");
 									});
 								</script>
 								@endif
