@@ -1,5 +1,6 @@
-{{-- added to account for larger nav height on mobile
+{{-- added to account for a fixed navigaion height on mobile
 	TODO: move all other adjustments for top meu here, i.e. paddings on content divs and body  --}}
+<div class="container-fluid" style="height: 75px"></div>
 <div class="visible-xs" style="height: 50px;"></div>
 
 <nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="min-height: 65px;">
@@ -18,7 +19,6 @@
 				<a href="{{url('/')}}" class="">
 					{!! HTML::image("/images/logo/logo-min-white.png", "DEMHUB logo", array('class' => 'img-responsive','style' => 'max-width: 140px;min-width: 120px;width: 100%;')) !!}
 				</a>
-
 			</div>
 
 			<div class="col-xs-10" style="padding: 0;">
