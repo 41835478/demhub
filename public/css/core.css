@@ -366,6 +366,11 @@ option {
   left: 0px;
 }
 
+.care-bg {
+  background-size: cover;
+  object-fit: cover;
+}
+
 .carousel,
 .carousel-inner,
 .carousel-inner .item {

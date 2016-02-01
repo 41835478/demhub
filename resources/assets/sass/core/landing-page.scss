@@ -252,16 +252,14 @@ margin-top:25px !important;
   top:0px;
   left:0px;
 }
-// .care-bg {
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-//   width:auto;
-//   height:auto;
-//   min-width: 100%;
-//   min-height: 100%;
-// }
+.care-bg {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  object-fit: cover;
+
+}
 .carousel, .carousel-inner, .carousel-inner .item{
     position: absolute;
     display: block;

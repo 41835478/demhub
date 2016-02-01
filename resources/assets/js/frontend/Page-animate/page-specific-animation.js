@@ -24,17 +24,28 @@ $(function responsiveImg() {
   var Imgwidth = $('.care-bg > img').width();
   var Imgheight = $('.care-bg > img').height();
 
-
-if (Imgheight < winheight){
-    $('.care-bg > img').css('height','100vh');
-    $('.care-bg > img').css('width','auto');
-    $('.care-bg > img').css('min-height','100%');
+if (Imgwidth <= winwidth && Imgheight >= winheight){
+    $('.care-bg > img').css('width','100vw');
+    $('.care-bg > img').css('height','auto');
   }
-// else if (Imgwidth < winwidth){
-//     $('.care-bg > img').css('width','100vw');
-//     $('.care-bg > img').css('height','auto');
-//   }
 
+else if (Imgheight <= winheight && Imgwidth >= winwidth){
+      $('.care-bg > img').css('width','auto');
+      $('.care-bg > img').css('height','100vh');
+  }
+
+  else if (Imgheight < winheight && Imgwidth < winwidth){
+    H = winheight - Imgheight;
+    W = winwidth - Imgwidth;
+    if (H > W){
+      $('.care-bg > img').css('width','auto');
+      $('.care-bg > img').css('height','100vh');
+    }
+    else {
+      $('.care-bg > img').css('width','100vw');
+      $('.care-bg > img').css('height','auto');
+    }
+    }
   console.log(winwidth,winheight,Imgwidth,Imgheight);
 });
 

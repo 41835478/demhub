@@ -20,7 +20,7 @@
 
     $.each(index.content.users, function( i, val ) {
       val = jQuery.parseJSON(val);
-      $container1.append( "<div><ul>" + "<img src='val.profileImage'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
+      $container1.append( "<div><ul>" + "<img src='val.profileImage'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li><button data-toggle='modal' data-target='#DEMHUBModal'> FOLLOW </button></li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
     });
     $.each(index.content.news, function( i, val ) {
       val = jQuery.parseJSON(val);
@@ -48,7 +48,12 @@
   divisionsArray.sort();
 
   $.each(divisionsArray, function (i) {
+    if (i <= 5){
       $divisionDropDown.append('<option value="' + divisionsArray[i] + '">' + divisionsArray[i] + '</option>');
+      }
+      else {
+
+      }
   });
 
   $divisionDropDown.change(function () {
