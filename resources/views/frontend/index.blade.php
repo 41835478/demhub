@@ -94,7 +94,7 @@
 
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
-		    <div class="item active">
+		    <div class="item active care-bg">
 		      <img src="/images/backgrounds/landing-hero.jpg" alt="...">
 					<div class="col-sm-12 col-md-6 col-lg-6"></div>
 		      <div class="carousel-caption ">
@@ -102,13 +102,13 @@
 		      </div>
 				</div>
 
-		    <div class="item">
+		    <div class="item care-bg">
 		      <img src="/images/backgrounds/welcome.jpg" alt="...">
 		      <div class="carousel-caption">
 		          <h3> Discover and get discovered within professional circles.</h3>
 		      </div>
 		    </div>
-				<div class="item">
+				<div class="item care-bg">
 					<img src="/images/backgrounds/divisions/humanitarian.jpg" alt="...">
 					<div class="carousel-caption">
 						<h3>Exchange your thoughts with millions of industry professionals.</h3>
