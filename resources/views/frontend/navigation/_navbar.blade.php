@@ -133,10 +133,10 @@
 								</li> --}}
 
 								<li class="text-center
-							@if (Request::url() === url('resource_filter'))
+							@if (Request::url() === url('info_resources'))
 								active
 							@endif" style="display:inline-block;">
-									<a href="{{url('resource_filter')}}">
+									<a href="{{url('info_resources')}}">
 										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.0em;"></i>
 										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
 									</a>

@@ -4,7 +4,6 @@
  * Frontend Controllers
  */
 get('/', 			'FrontendController@index')->name('home');
-get('macros', 'FrontendController@macros');
 get('about', 	'FrontendController@about');
 get('policy', 'FrontendController@policy');
 get('terms', 	'FrontendController@terms');
@@ -12,25 +11,22 @@ get('terms', 	'FrontendController@terms');
 get('getLandingData', 'FrontendController@getLandingData'	)->name('getLandingData');
 get('signUpSuccess', 	'FrontendController@signUpSuccess'	)->name('signUpSuccess');
 
+get(	'feedback', 'FrontendController@getFeedback'	);
+post(	'feedback', 'FrontendController@postFeedback'	)->name('post_feedback');
+
 // TODO - Check which of these routes need to go thorugh the Middleware
 get(	'forum/all_threads', 			'ForumController@getViewAllThreads'		)->name('all_threads');
 get(	'forum/9-/thread/create', 'ForumController@getModCreateThread'	);
 post(	'forum/9-/thread/create', 'ForumController@postModCreateThread'	);
-
-get(	'feedback', 'FrontendController@getFeedback'	);
-post(	'feedback', 'FrontendController@postFeedback'	)->name('post_feedback');
-
-
-// get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
 
 /**
  * Division Routes
  * Namespaces indicate folder structure
  * TODO - Implement folder structure
  */
-get(	'divisions', 					'DivisionController@index');
-get(	'division/{slug}', 		'DivisionController@show')->where('slug', '[A-Za-z0-9_\-]+');
-get(	'divisions/results', 	'DivisionController@index');
+get(	'divisions', 					'DivisionController@index'	);
+get(	'division/{slug}', 		'DivisionController@show'		)->where('slug', '[A-Za-z0-9_\-]+');
+get(	'divisions/results', 	'DivisionController@index'	);
 post(	'divisions/results', 	'DivisionController@results');
 
 /**
@@ -38,8 +34,7 @@ post(	'divisions/results', 	'DivisionController@results');
  * Namespaces indicate folder structure
  * TODO - Implement folder structure
 */
-get('resource_filter', 	'InfoResourceController@showResourceFilter')->name('resource_filter');
-get('resources', 				'InfoResourceController@index');
+get('resources', 'InfoResourceController@index')->name('info_resources');
 
 /**
  * Public Publication Route
@@ -51,11 +46,9 @@ get('public_journal', 'PublicationController@public_publication')->name('publica
  */
 $router->group(['middleware' => 'auth'], function ()
 {
-	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
-
 	post(	'invite', 'FrontendController@inviteSignup')->name('invite_others');
 
-	get('get_activities', 'UserController@getActivities')->name('get_activities');
+	get('discussion', 'ForumController@showDiscussionIndex')->name('discussion');
 
 	get('userhome', 			'UserController@index'				)->name('userhome');
 	get('get_activities', 'UserController@getActivities')->name('get_activities');
@@ -84,6 +77,10 @@ $router->group(['middleware' => 'auth'], function ()
 	get(	'publication/{id}/view', 		'PublicationController@view'		)->name('view_publication');
 	get(	'publication/{id}', 				'PublicationController@preview'	)->name('preview_publication');
 
+	// Bookmark
+	post('bookmark_publication/{id}', 	'PublicationController@bookmarkPublication'		)->name('bookmark_publication');
+	post('unbookmark_publication/{id}', 'PublicationController@unbookmarkPublication'	)->name('unbookmark_publication');
+
 	/**
 	 * Public Profiles
 	 */
@@ -94,10 +91,6 @@ $router->group(['middleware' => 'auth'], function ()
 	// Follow/unfollow
 	post('follow/{id}', 	'ProfileController@followUser')->name('follow_user');
 	post('unfollow/{id}', 'ProfileController@unfollowUser')->name('unfollow_user');
-
-	// Bookmark
-	post('bookmark_publication/{id}', 	'PublicationController@bookmarkPublication'		)->name('bookmark_publication');
-	post('unbookmark_publication/{id}', 'PublicationController@unbookmarkPublication'	)->name('unbookmark_publication');
 });
 
 /**

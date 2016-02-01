@@ -121,7 +121,6 @@
           <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
             style="font-size:82%;color:#000;padding-left:5%">
             <?php
-              // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
               if ($item['subclass']=='article'){
 
                 $parse=parse_url($item['url']);
@@ -131,14 +130,7 @@
                 if (substr_count($host,".") <= 1){
                   echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
                 }
-                // else {
-                //   echo '<a target="_blank" href="http://'.$host.'">'.$host.'</a>';
-                // }
               }
-              // else{
-              //
-              //   echo '<a target="_blank" href="http://www.'.$item['url'].'">'.gethostname().'</a>';
-              // }
             ?>
           </span>
 

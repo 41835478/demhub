@@ -32,12 +32,12 @@
         @endif
         <a href="{{url('profiles')}}" id="network_title" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
 
-        @if(Request::url() === url('resource_filter'))
+        @if(Request::url() === url('info_resource'))
           <li class="active">
         @else
           <li>
         @endif
-        <a href="{{url('resource_filter')}}"> RESOURCES</a></li>
+        <a href="{{url('info_resources')}}"> RESOURCES</a></li>
 
         {{-- <li><a href="javascript:comingSoon('map_title')" id="map_title" style="padding-left:15px;padding-right:15px;"> MAP</a></li> --}}
 

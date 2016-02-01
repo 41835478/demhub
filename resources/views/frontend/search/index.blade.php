@@ -65,7 +65,7 @@
           @include('frontend.search._results', [
             'model' => 'resource',
             'title' => 'Resources',
-            'url' => "/resource_filter",
+            'url' => "/resources",
             'total' => $resourceTotalCount
           ])
         </div>
