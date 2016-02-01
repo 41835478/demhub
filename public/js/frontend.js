@@ -6967,12 +6967,24 @@ function caretSet (action){
 //
 
 $(function responsiveImg() {
-  var Conwidth = $('.care-bg').width();
-  var Conheight = $('.care-bg').height();
+
   var winwidth = $(window).width();
   var winheight = $(window).height();
-  var Imgwidth = $('.care-bg > imgs').width();
-  console.log(Conwidth, Conheight,winwidth,winheight, Imgwidth);
+  var Imgwidth = $('.care-bg > img').width();
+  var Imgheight = $('.care-bg > img').height();
+
+
+if (Imgheight < winheight){
+    $('.care-bg > img').css('height','100vh');
+    $('.care-bg > img').css('width','auto');
+    $('.care-bg > img').css('min-height','100%');
+  }
+// else if (Imgwidth < winwidth){
+//     $('.care-bg > img').css('width','100vw');
+//     $('.care-bg > img').css('height','auto');
+//   }
+
+  console.log(winwidth,winheight,Imgwidth,Imgheight);
 });
 
 // function bigImg(x) {

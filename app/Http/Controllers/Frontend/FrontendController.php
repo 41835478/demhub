@@ -28,7 +28,7 @@ class FrontendController extends Controller {
 		} else  {
 			$divisions = Division::all();
 
-			return view('frontend.index', [
+			return view('frontend.landing.index', [
 				'divisions' => $divisions
 			]);
 		}
@@ -227,7 +227,7 @@ class FrontendController extends Controller {
 			return redirect()->route('userhome');
 		} else  {
 			$divisions = Division::all();
-			return view('frontend.index', [
+			return view('frontend.landing.index', [
 					'divisions' => $divisions
 	   	]);
 		}
