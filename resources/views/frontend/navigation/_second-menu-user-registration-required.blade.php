@@ -33,7 +33,7 @@
         @endif
         <a href="" data-toggle="modal" data-target="#DEMHUBModal" style="padding-left:15px;padding-right:15px;"> NETWORK</a></li>
 
-        @if(Request::url() === url('resource_filter'))
+        @if(Request::url() === url('info_resources'))
           <li class="active">
         @else
           <li>

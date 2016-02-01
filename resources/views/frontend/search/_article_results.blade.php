@@ -16,9 +16,6 @@
           {{ $article['publish_date'] }}
         </p>
       </td>
-      {{-- <td class="text-muted text-right">
-        {{ $article['excerpt'] }}
-      </td> --}}
     </tr>
   @empty
     <br>No users to show<br>

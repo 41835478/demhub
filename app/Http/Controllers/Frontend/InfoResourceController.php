@@ -18,22 +18,14 @@ class InfoResourceController extends Controller
     */
     public function index()
     {
-      $resources = InfoResource::all();
+        $regions        = Region::all();
+        $infoResource   = InfoResource::all();
+        $categories     = Division::all();
 
-      return view('resource.index', [
-        'resources' => $resources
-      ]);
+        return view('frontend.user.resource_filter.resource_filter', [
+            'allDivisions'      => $categories,
+            'resourceRelation'  => $regions,
+            'resourceEntry'     => $infoResource
+        ]);
     }
-	public function showResourceFilter(){
-		$regions= Region::all();
-		$infoResource= InfoResource::all();
-		$categories = Division::all();
-
-		return view('frontend.user.resource_filter.resource_filter', [
-
-					'allDivisions' =>  $categories,
-					'resourceRelation'  => $regions,
-					'resourceEntry' =>  $infoResource]);
-
-	}
 }

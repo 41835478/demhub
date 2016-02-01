@@ -6,7 +6,11 @@ use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
-use Mail;
+use Weblee\Mandrill\Mail;
+use League\Csv\Reader;
+use DB;
+use File;
+use	Carbon\Carbon;
 
 /**
  * Class FrontendController
@@ -28,12 +32,109 @@ class FrontendController extends Controller {
 				'divisions' => $divisions
 			]);
 		}
-
 	}
-	public function inviteOthers(Request $request) {
+
+	public function inviteSignup(Request $request)
+	{
 		$inputs = $request->all();
-		dd($inputs);
-		return response("Hi");
+		$user = Auth::user();
+		$count=0;
+
+		foreach ($inputs as $key => $input) {
+			if ($key == '_token') {
+			} else {
+				$people[$count]->attributes['email']=$input;
+			}
+			$count++;
+		}
+
+		foreach($people as $person) {
+			$data = [
+				"first_name" => $user->full_name()."'s",
+				"last_name" => "Friend",
+				"email" => $person->attributes['email']
+			];
+			$this->sendInviteEmail($data);
+		}
+
+		return redirect('connections')
+					->withFlashSuccess("Successfully sent invitiations!");
+	}
+
+	public function sendInviteEmail($data)
+	{
+		// TODO - Implement proper email path
+		$email_path =  public_path().'/images/emails/las-vegas-dem-conference/';
+		try {
+				$template_name = 'invite-others';
+				$template_content = array( // required for some reason
+						array(
+								'name' => 'example name',
+								'content' => 'example content'
+						)
+				);
+				$message = array(
+						'to' => array(
+								array(
+										'email' => $data['email'],
+										'name' => $data['first_name'] . ' ' . $data['last_name'],
+										'type' => 'to'
+								)
+						),
+						'headers' => array('Reply-To' => 'info@demhub.net'),
+						'important' => false,
+						'track_opens' => null,
+						'track_clicks' => null,
+						'auto_text' => null,
+						'auto_html' => null,
+						'inline_css' => null,
+						'url_strip_qs' => null,
+						'preserve_recipients' => null,
+						'view_content_link' => null,
+						'tracking_domain' => null,
+						'signing_domain' => null,
+						'return_path_domain' => null,
+						'merge' => true,
+						'merge_language' => 'mailchimp',
+						'merge_vars' => array(
+								array(
+										'rcpt' => $data['email'],
+										'vars' => array(
+												array(
+														'name' => 'autoregister_link',
+														'content' => url(
+															'auth/autoregister?email=' . $data['email']
+														)
+												)
+										)
+								)
+						),
+						'images' => array(
+								array(
+										'type' => 'image/png',
+										'name' => 'banner',
+										'content' => File::get($email_path.'banner.txt')
+								),
+								array(
+										'type' => 'image/png',
+										'name' => 'secondary',
+										'content' => File::get($email_path.'secondary.txt')
+								),
+								array(
+										'type' => 'image/png',
+										'name' => 'twitter',
+										'content' => File::get($email_path.'twitter.txt')
+								)
+						)
+				);
+				$async = false;
+				$result = \MandrillMail::messages()->sendTemplate($template_name, $template_content, $message, $async);
+		} catch(Mandrill_Error $e) {
+				// Mandrill errors are thrown as exceptions
+				dd ('A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage());
+				// i.e. A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+				throw $e;
+		}
 	}
 
 	public function getLandingData() {

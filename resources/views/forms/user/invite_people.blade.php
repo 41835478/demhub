@@ -1,15 +1,9 @@
-<div class="modal fade" id="inviteModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header" style="text-align:center">
-        <h3 style="display:inline">Invite Others</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body" style="text-align:center">
+
+      <div class="modal-body" style="text-align:center;padding-top:30px" id="inviteForm">
         {!! Form::open(['route' => 'invite_others', 'class' => 'omb_loginForm', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100', 'enctype'=>"multipart/form-data"]) !!}
         <div class="row" id="modal-body-row">
 
-
+          <h3>Invite Others To DEMHUB</h3>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -19,7 +13,7 @@
           </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="padding-bottom:10px">
           <a class="btn btn-style-alt" onclick="addInviteForm()">Add Another</a>
         </div>
         <div class="row">
@@ -27,9 +21,7 @@
           {!! Form::close() !!}
         </div>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+
 
 <script>
 var formCounter=1;

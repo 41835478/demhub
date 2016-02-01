@@ -6,16 +6,14 @@
 
 	@include('division._restricted_access_modal')
 
-
-	@if(Request::url() == url('divisions/results'))
-		@include('division._search_feed')
+	@include('division._feeds')
+	@if($total_count > 0)
+		@include('division._pagination')
 	@else
-		{{-- @include('division._discussion') --}}
-		@include('division._feeds')
-		@if($total_count > 0)
-			@include('division._pagination')
-		@else
-			@include('division._contribute_article')
-		@endif
+		<p>
+		  No results to show
+		</p>
+
+		{{-- TODO: Add form for adding article --}}
 	@endif
 @stop

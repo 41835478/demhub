@@ -14,7 +14,7 @@
 					<p>SVG world maps are really helpful for demoing this thing.  (Try the insanely huge <a href="http://commons.wikimedia.org/wiki/Image_talk:BlankMap-World6.svg">SVG world map available on Wikipedia</a>.)</p> -->
 					<img class="map" src="./images/maps/demo_world_current.png" style="max-width:100%;width:800px;height:400px" usemap="#world">
 					<map name="world" style="text-transform: capitalize;">
-						@include('frontend.user.resource_filter._north_america')
+						@include('frontend.user.resource_filter.countries._north_america')
 					</map>
 				</div>
 

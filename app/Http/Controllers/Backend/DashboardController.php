@@ -278,6 +278,7 @@ class DashboardController extends Controller {
 
 	}
 
+
 	/**
 	 * @param null
 	 * @return \Illuminate\View\View
@@ -413,7 +414,7 @@ class DashboardController extends Controller {
 	 * @param Request $request
 	 * @return \Illuminate\View\View
 	 */
-	
+
 	public function runScript(Request $request)
 	{
 		DB::table('articles')->chunk(100, function($articles) {

@@ -1,6 +1,7 @@
-<div class="row">
+<div class="row" id="feedbackForm" style="padding-left:35px">
   <p>&nbsp;</p>
-<div style="padding-left:45px" class="col-xs-11">
+<h3>Tell Us What You Think of DEMHUB</h3>
+<div class="col-xs-11">
 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{route('post_feedback')}}" data-toggle='validator' data-delay='1100'>
   <!--App details-->
   <div class="form-group">
