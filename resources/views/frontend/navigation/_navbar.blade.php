@@ -65,7 +65,7 @@
 							<li class="" style="padding-top: 15px;">
 
 								{!! Form::open(['url' => url('search'), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-								<div class="form-group" style="padding-left:15%;">
+								<div class="form-group" style="padding-left:10%;">
 									<div class="input-group searchbar-group" style="width: 100%">
 										<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;"></i>
 										<select class="input-group-addon nav-search-text animate" name="scope"
@@ -133,10 +133,10 @@
 								</li> --}}
 
 								<li class="text-center
-							@if (Request::url() === url('info_resources'))
+							@if (Request::url() === route('info_resources'))
 								active
 							@endif" style="display:inline-block;">
-									<a href="{{url('info_resources')}}">
+									<a href="{{route('info_resources')}}">
 										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.0em;"></i>
 										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
 									</a>

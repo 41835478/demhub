@@ -2,6 +2,7 @@
   "private": true,
   "devDependencies": {
     "gulp": "^3.8.8",
+    "gulp-sass": "^2.1.1",
     "gulp-svg-sprite": "^1.2.15",
     "zombie": "^4.2.1"
   },

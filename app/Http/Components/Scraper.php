@@ -269,9 +269,10 @@ class Scraper
 		}
 
 		if($item == null){
-			$model = new Content();
+			$model = new Article();
 			// no overwriting these
 			$data['language'] 	= Helpers::verify($params['language']);
+			$model->language 	= Helpers::verify($params['language']);
 			$model->deleted 	= 0;
 		} else {
 			$model = $item;

@@ -22,7 +22,7 @@ class InfoResourceController extends Controller
         $infoResource   = InfoResource::all();
         $categories     = Division::all();
 
-        return view('frontend.user.resource_filter.resource_filter', [
+        return view('frontend.user.resource_filter.index', [
             'allDivisions'      => $categories,
             'resourceRelation'  => $regions,
             'resourceEntry'     => $infoResource
