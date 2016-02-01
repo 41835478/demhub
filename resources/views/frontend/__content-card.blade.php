@@ -117,13 +117,13 @@
 		  $keywords = array_filter(preg_split("/\|/", $item['keywords']));
 		  ?>
 		  @if(count($keywords) > 4)
-		  @include('division.__keyword-dropup-foreach')
-		  @elseif(count($keywords) <5)
-		  @foreach($keywords as $key => $keyword)
-		  <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
-			  #{{ $keyword }}
-		  </a>
-		  @endforeach
+  		  @include('division.__keyword-dropup-foreach')
+  		@elseif(count($keywords) <5)
+  		  @foreach($keywords as $key => $keyword)
+    		  <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="/search?query_term={{$keyword}}">
+    			  #{{ $keyword }}
+    		  </a>
+  		  @endforeach
 		  @endif
 	  </div>
 

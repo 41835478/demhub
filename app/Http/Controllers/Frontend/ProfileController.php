@@ -24,15 +24,16 @@ class ProfileController extends Controller {
 	public function view_public_profile($user_name) {
 		$secondMenu = true;
 		$allDivisions = Division::all();
+
 		if(is_numeric($user_name)){
-			$user = User::where('id', '=', $user_name)->firstOrFail();
-		}
-		else{
-			$user = User::where('user_name', '=', $user_name)->firstOrFail();
+			$user = User::where('id', $user_name)->firstOrFail();
+		} else{
+			$user = User::where('user_name', $user_name)->firstOrFail();
 		}
 
-			return view('frontend.user.public_profile', compact(['user', 'secondMenu', 'allDivisions'])
-		);
+		return view('frontend.user.public_profile', compact([
+			'user', 'secondMenu', 'allDivisions'
+		]));
 	}
 
 	public function listing_of_profiles() {
