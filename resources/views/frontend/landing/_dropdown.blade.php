@@ -20,7 +20,7 @@
 
     $.each(index.content.users, function( i, val ) {
       val = jQuery.parseJSON(val);
-      $container1.append( "<div><ul>" + "<img src='val.profileImage'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
+      $container1.append( "<div><ul>" + "<img src='" + val.profileImage + "'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
     });
     $.each(index.content.news, function( i, val ) {
       val = jQuery.parseJSON(val);
