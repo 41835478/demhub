@@ -1,7 +1,5 @@
 <?php namespace App\Http\Components;
 
-// use App\Models\Division;
-// use App\Models\ArticleMedia;
 use Illuminate\Http\Request;
 use Config;
 use Es;
@@ -156,17 +154,18 @@ class Search
   */
   public static function queryDiscussions($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
       $filter = [
-        'and' => [
-            ['bool' => [
-              'should' => [
-                // the language fields should either be the current locale
-                ['term' => [ 'language' => Config::get('app.locale') ]],
-                // or it should be NULL, which by default is expected to be english
-                ['missing' => [ 'field' => 'language' ]]
-              ]
-            ]],
-            ['term' => ['deleted' => 0]],
-        ]
+        // 'and' => [
+        //     ['bool' => [
+        //       'should' => [
+        //         // the language fields should either be the current locale
+        //         ['term' => [ 'language' => Config::get('app.locale') ]],
+        //         // or it should be NULL, which by default is expected to be english
+        //         ['missing' => [ 'field' => 'language' ]]
+        //       ]
+        //     ]],
+        //     ['term' => ['deleted' => 0]],
+        // ]
+        ['term' => ['deleted' => 0]]
       ];
       if ($divID != NULL) {
           // Add the division id as one of the "AND" filters

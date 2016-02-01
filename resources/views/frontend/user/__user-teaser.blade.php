@@ -27,19 +27,16 @@
                 <p style="color:#999"> {{$user->division}} </p>
           @elseif(!empty($user->division))
 
-            <?php $divisions = $user->divisions();   ?>
+            <?php $divisions = $user->divisions(); ?>
 
             @if(count($divisions) > 2)
               @include('frontend.user.__user-division-color-dropup-foreach')
             @elseif(count($divisions) <3)
               @foreach($divisions as $divSlug => $divName)
-
                 <img style="width:12px;height:12px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-square img-responsive division_{{ $divSlug }}">
                 <span class="division-text_{{$divSlug}}">{{$divName}}</span>
               @endforeach
-
             @endif
-            @else
 
           @endif
 

@@ -29,10 +29,10 @@ class IndexPublicationsToElasticsearch extends Command
         if (!Es::indices()->exists($indexParams)) {
             Es::indices()->create($indexParams);
         }
-        else {
-            Es::indices()->delete($indexParams);
-            Es::indices()->create($indexParams);
-        }
+        // else {
+        //     Es::indices()->delete($indexParams);
+        //     Es::indices()->create($indexParams);
+        // }
 
         $mappingProperties = [
             'index' => 'info',
