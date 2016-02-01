@@ -35,19 +35,22 @@
             'model' => 'user',
             'title' => 'Members',
             'url' => "/profiles",
+            // NOTE - Business decision NOT to show total users
             'total' => NULL
           ])
         </div>
       @endif
 
-      {{-- <div class="col-sm-6">
-        @include('frontend.search._results', [
-          'model' => 'discussion',
-          'title' => 'Discussions',
-          'url' => "/forum/all_threads",
-          'total' => $discussionTotalCount
-        ])
-      </div> --}}
+      @if($discussionTotalCount > 0)
+        <div class="col-sm-6">
+          @include('frontend.search._results', [
+            'model' => 'discussion',
+            'title' => 'Discussions',
+            'url' => "/forum/all_threads",
+            'total' => $discussionTotalCount
+          ])
+        </div>
+      @endif
 
       @if($publicationTotalCount > 0)
         <div class="col-sm-6">
