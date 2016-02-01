@@ -17,7 +17,7 @@
     ?>
 
     <div class = "feedsbox-teaser">
-      <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:69px">
+      <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:30px">
       @forelse($articleDivs as $div)
         <a style="height:{{$height}}%;" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"
           data-toggle="tooltip" data-placement="top" title="{{$allDivisions[$div-1]->slug}}">
