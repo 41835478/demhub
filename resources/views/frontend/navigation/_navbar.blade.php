@@ -133,10 +133,10 @@
 								</li> --}}
 
 								<li class="text-center
-							@if (Request::url() === url('info_resources'))
+							@if (Request::url() === route('info_resources'))
 								active
 							@endif" style="display:inline-block;">
-									<a href="{{url('info_resources')}}">
+									<a href="{{route('info_resources')}}">
 										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.0em;"></i>
 										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
 									</a>
