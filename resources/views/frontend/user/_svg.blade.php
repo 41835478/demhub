@@ -1,6 +1,6 @@
 <div id="welcome_svg" class="row">
 <div class="bloc bloc-head">
-  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" id="mapsvg"
      viewBox="0 0 1000 500" enable-background="new 0 0 404.7 354" id="hi-there">
      {{-- onclick="hi.reset().play(); --}}
      <g id="Layer_8">
@@ -72,98 +72,98 @@
      	</g>
      </g>
      <g id="Layer_3_1_">
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="3" points="165.3,174.3 165.3,205 134.2,174.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async  points="130.5,168.1 165.3,138.2 115.3,148.1 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="176.3,168.7 212.6,172.3 178.2,147.5 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="189,199 165.3,205 198.4,231.5 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="165.3,138.2 140.3,106.5 115.3,148.1 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="255.3,130.2 228.7,154.3 221.4,90.5 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="184.5,61 140.3,82.8 115.3,58.7 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="140.3,106.5 194.5,109 194.5,80.9 140.3,106.5 228.7,154.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="3" points="94,70.7 105.3,86.7 63.2,99 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="202,62.5 221.4,90.5 255.3,68 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="281.6,51.3 300.6,58.7 291.1,80.9 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="3" points="226.2,229.5 205.8,264 232.4,266.5 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="248.5,268.6 289.1,257.5 332.6,286.4 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="236.3,315.5 301,342 241,348 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="281.6,289 236.3,315.5 215,293.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="272,383.3 243,386 264,423 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="443.3,133.3 412.3,151.1 409.3,130.2 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="440.7,107.6 475,144.1 443.3,133.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="416.8,157.7 457.8,154 437.3,205 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="433.3,211.3 380,220 406.7,252.7 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="443.3,243.5 475,190.8 465.3,289 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="538.2,272 475,289 538.2,310.4 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="519.7,172.3 553.8,219.9 579.3,211.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="604.7,185 600.4,133.3 564.6,172.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="546,230 475,190.8 515,174 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="494.4,140.7 535.3,141 523.3,162.2 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="498.9,80.9 510.5,117.9 494.4,140.7 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="478.6,56 488,66.1 449.5,88.3 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="510.5,76.5 579.3,105.5 576,62.5 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="597.3,51.3 604.7,94.1 650,44 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="674.3,190.8 640.2,144.1 640.2,236.5 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="711,202 703.3,141 750,185 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="730.7,56 744,94.1 784.5,58.7 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="703.3,141 764,133.3 762,105.5 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="720,211.3 694.2,214.1 720,232 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="755,241.5 728,260.5 745.3,277.4 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="798.6,297.5 790,361.1 754.5,361.1 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="820,297.5 812,373.5 840,342 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="800,270.5 817,289 835,279.8 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="694.2,246 718.1,266.8 718.1,281.4 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="546,310.4 549.5,338 568.7,302.2 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="215,293.3 232.4,266.5 248.5,268.6 	"/>
+     	<polygon class="linesSVG"  data-delay="3" points="165.3,174.3 165.3,205 134.2,174.3 	"/>
+     	<polygon class="linesSVG"   points="130.5,168.1 165.3,138.2 115.3,148.1 	"/>
+     	<polygon class="linesSVG"  points="176.3,168.7 212.6,172.3 178.2,147.5 	"/>
+     	<polygon class="linesSVG"  points="189,199 165.3,205 198.4,231.5 	"/>
+     	<polyline class="linesSVG"  points="165.3,138.2 140.3,106.5 115.3,148.1 	"/>
+     	<polygon class="linesSVG"  points="255.3,130.2 228.7,154.3 221.4,90.5 	"/>
+     	<polygon class="linesSVG"  points="184.5,61 140.3,82.8 115.3,58.7 	"/>
+     	<polyline class="linesSVG"  points="140.3,106.5 194.5,109 194.5,80.9 140.3,106.5 228.7,154.3 	"/>
+     	<polygon class="linesSVG"  data-delay="3" points="94,70.7 105.3,86.7 63.2,99 	"/>
+     	<polygon class="linesSVG"  points="202,62.5 221.4,90.5 255.3,68 	"/>
+     	<polygon class="linesSVG"  points="281.6,51.3 300.6,58.7 291.1,80.9 	"/>
+     	<polygon class="linesSVG"  data-delay="3" points="226.2,229.5 205.8,264 232.4,266.5 	"/>
+     	<polygon class="linesSVG"  points="248.5,268.6 289.1,257.5 332.6,286.4 	"/>
+     	<polygon class="linesSVG"  points="236.3,315.5 301,342 241,348 	"/>
+     	<polygon class="linesSVG"  points="281.6,289 236.3,315.5 215,293.3 	"/>
+     	<polygon class="linesSVG"  points="272,383.3 243,386 264,423 	"/>
+     	<polygon class="linesSVG"  points="443.3,133.3 412.3,151.1 409.3,130.2 	"/>
+     	<polygon class="linesSVG"  points="440.7,107.6 475,144.1 443.3,133.3 	"/>
+     	<polygon class="linesSVG"  points="416.8,157.7 457.8,154 437.3,205 	"/>
+     	<polygon class="linesSVG"  points="433.3,211.3 380,220 406.7,252.7 	"/>
+     	<polygon class="linesSVG"  points="443.3,243.5 475,190.8 465.3,289 	"/>
+     	<polygon class="linesSVG"  points="538.2,272 475,289 538.2,310.4 	"/>
+     	<polygon class="linesSVG"  points="519.7,172.3 553.8,219.9 579.3,211.3 	"/>
+     	<polygon class="linesSVG"  points="604.7,185 600.4,133.3 564.6,172.3 	"/>
+     	<polygon class="linesSVG"  points="546,230 475,190.8 515,174 	"/>
+     	<polygon class="linesSVG"  points="494.4,140.7 535.3,141 523.3,162.2 	"/>
+     	<polygon class="linesSVG"  points="498.9,80.9 510.5,117.9 494.4,140.7 	"/>
+     	<polygon class="linesSVG"  points="478.6,56 488,66.1 449.5,88.3 	"/>
+     	<polygon class="linesSVG"  points="510.5,76.5 579.3,105.5 576,62.5 	"/>
+     	<polygon class="linesSVG"  points="597.3,51.3 604.7,94.1 650,44 	"/>
+     	<polygon class="linesSVG"  points="674.3,190.8 640.2,144.1 640.2,236.5 	"/>
+     	<polygon class="linesSVG"  points="711,202 703.3,141 750,185 	"/>
+     	<polygon class="linesSVG"  points="730.7,56 744,94.1 784.5,58.7 	"/>
+     	<polygon class="linesSVG"  points="703.3,141 764,133.3 762,105.5 	"/>
+     	<polygon class="linesSVG"  points="720,211.3 694.2,214.1 720,232 	"/>
+     	<polygon class="linesSVG"  points="755,241.5 728,260.5 745.3,277.4 	"/>
+     	<polygon class="linesSVG"  points="798.6,297.5 790,361.1 754.5,361.1 	"/>
+     	<polygon class="linesSVG"  points="820,297.5 812,373.5 840,342 	"/>
+     	<polygon class="linesSVG"  points="800,270.5 817,289 835,279.8 	"/>
+     	<polygon class="linesSVG"  points="694.2,246 718.1,266.8 718.1,281.4 	"/>
+     	<polygon class="linesSVG"  points="546,310.4 549.5,338 568.7,302.2 	"/>
+     	<polyline class="linesSVG"  points="215,293.3 232.4,266.5 248.5,268.6 	"/>
      	<line class="linesSVG" x1="604.7" y1="185" x2="640.2" y2="144.1"/>
      </g>
      <g id="Layer_4_1_">
-     	<polygon class="linesSVG"  data-duration="13" data-async points="296,105.5 258,121.1 255.3,94.1 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async data-delay="5" points="228.7,58.7 241,44 205.8,56 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="323,32 331.3,80.9 409.3,32 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="703.3,141 677,51.3 730.7,56 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="744,94.1 762,105.5 713,110.8 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="579.3,105.5 535.3,141 510.5,76.5 510.5,117.9 535.3,141 564.6,172.3 523.3,162.2 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="517.5,171.5 564.6,172.3 579.3,211.3 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="703.3,141 654.5,102.4 640.2,144.1 711,202 674.3,190.8 694.2,214.1 711,202 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async  points="546,230 498.9,257.5 475,190.8 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async data-delay="5" points="380,220 400.5,177.5 433.3,211.3 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async  points="538.2,310.4 494.4,367.3 475,289 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="754.5,361.1 734.2,328.9 798.6,297.5 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="640.2,236.5 604.7,185 640.2,96.2 600.4,133.3 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="281.6,289 248.5,268.6 215,293.3 205.8,264 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async data-delay="5" points="301,342 320,302.2 236.3,315.5 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="272,383.3 241,348 243,386 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="178.2,147.5 165.3,138.2 176.3,168.7 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="105.3,86.7 115.3,58.7 94,70.7 	"/>
+     	<polygon class="linesSVG"  points="296,105.5 258,121.1 255.3,94.1 	"/>
+     	<polygon class="linesSVG"  points="228.7,58.7 241,44 205.8,56 	"/>
+     	<polygon class="linesSVG"  points="323,32 331.3,80.9 409.3,32 	"/>
+     	<polygon class="linesSVG"  points="703.3,141 677,51.3 730.7,56 	"/>
+     	<polygon class="linesSVG"  points="744,94.1 762,105.5 713,110.8 	"/>
+     	<polyline class="linesSVG"  points="579.3,105.5 535.3,141 510.5,76.5 510.5,117.9 535.3,141 564.6,172.3 523.3,162.2 	"/>
+     	<polyline class="linesSVG"  points="517.5,171.5 564.6,172.3 579.3,211.3 	"/>
+     	<polyline class="linesSVG"  points="703.3,141 654.5,102.4 640.2,144.1 711,202 674.3,190.8 694.2,214.1 711,202 	"/>
+     	<polyline class="linesSVG"   points="546,230 498.9,257.5 475,190.8 	"/>
+     	<polyline class="linesSVG"  points="380,220 400.5,177.5 433.3,211.3 	"/>
+     	<polyline class="linesSVG"   points="538.2,310.4 494.4,367.3 475,289 	"/>
+     	<polyline class="linesSVG"  points="754.5,361.1 734.2,328.9 798.6,297.5 	"/>
+     	<polyline class="linesSVG"  points="640.2,236.5 604.7,185 640.2,96.2 600.4,133.3 	"/>
+     	<polyline class="linesSVG"  points="281.6,289 248.5,268.6 215,293.3 205.8,264 	"/>
+     	<polyline class="linesSVG"  points="301,342 320,302.2 236.3,315.5 	"/>
+     	<polyline class="linesSVG"  points="272,383.3 241,348 243,386 	"/>
+     	<polyline class="linesSVG"  points="178.2,147.5 165.3,138.2 176.3,168.7 	"/>
+     	<polyline class="linesSVG"  points="105.3,86.7 115.3,58.7 94,70.7 	"/>
      </g>
      <g id="Layer_5_1_">
-     	<polyline class="linesSVG"  data-duration="13" data-async data-delay="5" points="248.5,268.6 226.2,229.5 289.1,257.5 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="281.6,289 320,302.2 332.6,286.4 	"/>
+     	<polyline class="linesSVG"  points="248.5,268.6 226.2,229.5 289.1,257.5 	"/>
+     	<polyline class="linesSVG"  points="281.6,289 320,302.2 332.6,286.4 	"/>
      	<line class="linesSVG" x1="301" y1="342" x2="272" y2="383.3"/>
      	<line class="linesSVG" x1="176.3" y1="168.7" x2="165.3" y2="174.3"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="212.6,172.3 228.7,154.3 165.3,138.2 165.3,174.3 130.5,168.1 134.2,174.3 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="194.5,80.9 202,62.5 140.3,82.8 140.3,106.5 	"/>
+     	<polyline class="linesSVG"  points="212.6,172.3 228.7,154.3 165.3,138.2 165.3,174.3 130.5,168.1 134.2,174.3 	"/>
+     	<polyline class="linesSVG"  points="194.5,80.9 202,62.5 140.3,82.8 140.3,106.5 	"/>
      	<line class="linesSVG" x1="105.3" y1="86.7" x2="140.3" y2="82.8"/>
      	<line class="linesSVG" x1="184.5" y1="61" x2="202" y2="62.5"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="255.3,130.2 258,121.1 221.4,90.5 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="228.7,154.3 194.5,109 221.4,90.5 255.3,94.1 272,75.5 296,105.5 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="416.8,157.7 400.5,177.5 437.3,205 475,190.8 457.8,154 515,174 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="406.7,252.7 443.3,243.5 433.3,211.3 437.3,205 	"/>
+     	<polyline class="linesSVG"  points="255.3,130.2 258,121.1 221.4,90.5 	"/>
+     	<polyline class="linesSVG"  points="228.7,154.3 194.5,109 221.4,90.5 255.3,94.1 272,75.5 296,105.5 	"/>
+     	<polyline class="linesSVG"  points="416.8,157.7 400.5,177.5 437.3,205 475,190.8 457.8,154 515,174 	"/>
+     	<polyline class="linesSVG"  points="406.7,252.7 443.3,243.5 433.3,211.3 437.3,205 	"/>
      	<line class="linesSVG" x1="475" y1="354" x2="494.4" y2="367.3"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async  points="538.2,272 568.7,232 546,230 538.2,272 498.9,257.5 475,289 465.3,289 475,354 475,289 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async data-delay="5" points="475,144.1 498.9,80.9 440.7,107.6 409.3,130.2 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="535.3,141 600.4,133.3 579.3,105.5 604.7,94.1 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="677,51.3 654.5,102.4 650,44 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="604.7,185 654.5,102.4 640.2,96.2 604.7,94.1 600.4,133.3 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async  points="820,297.5 798.6,297.5 812,373.5 790,361.1 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="734.2,328.9 734,367.5 754.5,361.1 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="604.7,94.1 576,62.5 597.3,51.3 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="805,96.2 817,66.1 784.5,58.7 805,96.2 744,94.1 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async points="449.5,88.3 440.7,107.6 488,66.1 510.5,76.5 498.9,80.9 	"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async  points="750,185 741.5,148.1 703.3,141 640.2,144.1 	"/>
+     	<polyline class="linesSVG"   points="538.2,272 568.7,232 546,230 538.2,272 498.9,257.5 475,289 465.3,289 475,354 475,289 	"/>
+     	<polyline class="linesSVG"  points="475,144.1 498.9,80.9 440.7,107.6 409.3,130.2 	"/>
+     	<polyline class="linesSVG"  points="535.3,141 600.4,133.3 579.3,105.5 604.7,94.1 	"/>
+     	<polygon class="linesSVG"  points="677,51.3 654.5,102.4 650,44 	"/>
+     	<polyline class="linesSVG"  points="604.7,185 654.5,102.4 640.2,96.2 604.7,94.1 600.4,133.3 	"/>
+     	<polyline class="linesSVG"   points="820,297.5 798.6,297.5 812,373.5 790,361.1 	"/>
+     	<polyline class="linesSVG"  points="734.2,328.9 734,367.5 754.5,361.1 	"/>
+     	<polyline class="linesSVG"  points="604.7,94.1 576,62.5 597.3,51.3 	"/>
+     	<polyline class="linesSVG"  points="805,96.2 817,66.1 784.5,58.7 805,96.2 744,94.1 	"/>
+     	<polyline class="linesSVG"  points="449.5,88.3 440.7,107.6 488,66.1 510.5,76.5 498.9,80.9 	"/>
+     	<polyline class="linesSVG"   points="750,185 741.5,148.1 703.3,141 640.2,144.1 	"/>
      	<line class="linesSVG" x1="741.5" y1="148.1" x2="764" y2="133.3"/>
-     	<polyline class="linesSVG"  data-duration="13" data-async data-delay="5" points="255.3,68 251,51.3 232.4,65.6 	"/>
-     	<polygon class="linesSVG"  data-duration="13" data-async points="323,32 283,47.2 257.6,38 	"/>
+     	<polyline class="linesSVG"  points="255.3,68 251,51.3 232.4,65.6 	"/>
+     	<polygon class="linesSVG"  points="323,32 283,47.2 257.6,38 	"/>
      </g>
 
      <g id="connectLine">
@@ -179,33 +179,43 @@
      </g>
 
     <g class="circlelayer">
-      <circle id="XMLID_1" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="221.4" cy="90" r="11.2"/>
-  		<circle id="XMLID_2" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="248.5" cy="266.5" r="8.2"/>
-  		<circle id="XMLID_3" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="488.2" cy="367.3" r="6.2"/>
-  		<circle id="XMLID_4" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="215.2" cy="174.3" r="8.2"/>
-  		<circle id="XMLID_5" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="63.2" cy="100.3" r="11.2"/>
-  		<circle id="XMLID_6" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="594.2" cy="154.3" r="3.2"/>
-  		<circle id="XMLID_7" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="640.2" cy="230.3" r="6.2"/>
-  		<circle id="XMLID_8" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="734.2" cy="367.3" r="9.2"/>
-  	<circle id="XMLID_9" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="519.7" cy="171.5" r="6.2"/>
-  	<circle id="XMLID_10" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="702.4" cy="140.5" r="4.2"/>
-  	<circle id="XMLID_11" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="654.2" cy="102.3" r="3.2"/>
-  	<circle id="XMLID_12" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="437.5" cy="204.6" r="6.2"/>
-  	<circle id="XMLID_13" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="165.5" cy="139.5" r="4.2"/>
-  	<circle id="XMLID_14" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="282.5" cy="289.1" r="6.2"/>
-  	<circle id="XMLID_15" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="795.7" cy="315.6" r="9.2"/>
-    <circle id="XMLID_16" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" class="st5" cx="509.8" cy="77.6" r="10.2"/>
-  	<circle id="XMLID_17" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" class="st5" cx="441.5" cy="109.2" r="6.2"/>
-  	<circle id="XMLID_18" data-duration="10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" class="st5" cx="511" cy="117.1" r="5.2"/>
+      <circle id="XMLID_1" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="221.4" cy="90" r="11.2"/>
+  		<circle id="XMLID_2" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="248.5" cy="266.5" r="8.2"/>
+  		<circle id="XMLID_3" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="488.2" cy="367.3" r="6.2"/>
+  		<circle id="XMLID_4" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="215.2" cy="174.3" r="8.2"/>
+  		<circle id="XMLID_5" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="63.2" cy="100.3" r="11.2"/>
+  		<circle id="XMLID_6" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="594.2" cy="154.3" r="3.2"/>
+  		<circle id="XMLID_7" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="640.2" cy="230.3" r="6.2"/>
+  		<circle id="XMLID_8" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="734.2" cy="367.3" r="9.2"/>
+  	<circle id="XMLID_9" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="519.7" cy="171.5" r="6.2"/>
+  	<circle id="XMLID_10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="702.4" cy="140.5" r="4.2"/>
+  	<circle id="XMLID_11" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="654.2" cy="102.3" r="3.2"/>
+  	<circle id="XMLID_12" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="437.5" cy="204.6" r="6.2"/>
+  	<circle id="XMLID_13" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="165.5" cy="139.5" r="4.2"/>
+  	<circle id="XMLID_14" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="282.5" cy="289.1" r="6.2"/>
+  	<circle id="XMLID_15" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="795.7" cy="315.6" r="9.2"/>
+    <circle id="XMLID_16" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" class="st5" cx="509.8" cy="77.6" r="10.2"/>
+  	<circle id="XMLID_17" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" class="st5" cx="441.5" cy="109.2" r="6.2"/>
+  	<circle id="XMLID_18" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" class="st5" cx="511" cy="117.1" r="5.2"/>
 
     </g>
   </svg>
 </div>
+</div>
 
   <div class="modal fade bs-example-modal-sm svg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      ...
+    <div class="modal-content table-details1 table-modal">
+    <ul><img src='#'></img></ul>
+    <ul>
+      <li>Aldo Ruiz</li>
+      <li>Toronto</li>
+      <li>Programmer</li>
+      <li>Science & Research</li></ul>
+      <ul><li> <button> FOLLOW </button> </li>
+      <li>33</li>
+      <li>shares</li>
+      <ul>
     </div>
   </div>
 </div>
@@ -224,7 +234,7 @@ var timing,
   timingProps = {
     type: 'delayed',
     duration: 150,
-    start: 'autostart',
+    start: 'inViewport',
     pathTimingFunction: Vivus.LINEAR,
     animTimingFunction: Vivus.LINEAR
   };
@@ -242,14 +252,9 @@ function timingTest (buttonEl, property, type) {
   timing = new Vivus('timing-example', timingProps);
 }
 
-var hi = new Vivus('hi-there', {type: 'scenario-sync', duration: 20, start: 'autostart', dashGap: 20, forceRender: false},
-  function () {
-    if (window.console) {
-      console.log('Animation finished. [log triggered from callback]');
-    }
-  }),
+var hi = new Vivus('mapsvg', {type: 'async', duration: 50, start: 'inViewport', dashGap: 20, forceRender: false}),
   obt1 = new Vivus('obturateur1', {type: 'delayed', duration: 150}),
-  obt2 = new Vivus('obturateur2', {type: 'async', duration: 150}),
+  obt2 = new Vivus('welcome_svg', {type: 'async', duration: 330}),
   obt3 = new Vivus('obturateur3', {type: 'oneByOne', duration: 150}),
   pola = new Vivus('polaroid', {type: 'scenario-sync', duration: 20, forceRender: false});
 </script>

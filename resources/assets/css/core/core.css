@@ -875,7 +875,18 @@ svg * {
 
 .svg-modal {
   background: none !important;
-  margin-top: 300px;
+  min-width: 200px;
+  position: relative;
+}
+
+.table-modal {
+  padding-top: 20px;
+  border-radius: 0 !important;
+  width: 30vw;
+  min-width: 400px;
+  margin-top: 100%;
+  max-width: 550px;
+  position: absolute;
 }
 
 /* Custom */

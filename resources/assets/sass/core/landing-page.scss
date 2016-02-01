@@ -252,11 +252,36 @@ margin-top:25px !important;
   top:0px;
   left:0px;
 }
+// .care-bg {
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+//   width:auto;
+//   height:auto;
+//   min-width: 100%;
+//   min-height: 100%;
+// }
 .carousel, .carousel-inner, .carousel-inner .item{
     position: absolute;
     display: block;
     background-color: black;
     height:100vh;
+
+    // .bg-1{
+    //   background: url(../../images/backgrounds/landing-hero.jpg) no-repeat center center fixed;
+    //   @extend care-bg;
+    // }
+    //
+    // .bg-2{
+    //   background: url(../../images/backgrounds/welcome.jpg) no-repeat center center fixed;
+    //   @extend care-bg;
+    // }
+    //
+    // .bg-3{
+    //   background: url(../../images/backgrounds/fullscreen.jpg) no-repeat center center fixed;
+    //   @extend care-bg;
+    // }
     img {
       height:auto;
       width:auto;
