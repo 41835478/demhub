@@ -6966,7 +6966,7 @@ function caretSet (action){
 // });
 //
 
-$(function responsiveImg() {
+function responsiveImg() {
 
   var winwidth = $(window).width();
   var winheight = $(window).height();
@@ -6985,7 +6985,7 @@ if (Imgheight < winheight){
 //   }
 
   console.log(winwidth,winheight,Imgwidth,Imgheight);
-});
+}
 
 // function bigImg(x) {
 //     x.style.height = "64px";
@@ -7009,9 +7009,9 @@ $('.st3').mouseover(function(){
                   $('.maphead1').addClass("maphead");
                   $('.nodeline').css('opacity','0.5');
                 });
-$('.st3').mouseout(function(){
-  $('.nodeline').css('opacity','0');
-})
+  $('.st3').mouseout(function(){
+    $('.nodeline').css('opacity','0');
+  });
 });
 
 var nodeLeft = null;
@@ -7025,10 +7025,10 @@ if ($('#XMLID_36_').offset()) {
 $('.svg-modal'). css ('margin-top',nodeTop);
 $(function() {
       $('a').mouseenter(function() {
-                  $('circle', this).attr('fill', '#000');
-            }).mouseleave(function() {
-                  $('circle', this).attr('fill', '#000');
-            });
+            $('circle', this).attr('fill', '#000');
+      }).mouseleave(function() {
+            $('circle', this).attr('fill', '#000');
+      });
 });
 
 $(document).ready(function(){
