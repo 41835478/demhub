@@ -235,7 +235,7 @@
 			search_focus(true);
 		});
 
-		if(!$(".nav-searchbar").val().trim() == ""){
+		if($(".nav-searchbar").val() && $(".nav-searchbar").val().trim() != ""){
 			search_focus(true);
 		}
 	});

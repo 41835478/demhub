@@ -7014,8 +7014,13 @@ $('.st3').mouseout(function(){
 })
 });
 
-var nodeLeft = $('#XMLID_36_').offset().left;
-var nodeTop = $('#XMLID_36_').offset().top;
+var nodeLeft = null;
+var nodeTop = null;
+
+if ($('#XMLID_36_').offset()) {
+  nodeLeft = $('#XMLID_36_').offset().left;
+  nodeTop = $('#XMLID_36_').offset().top;
+}
 
 $('.svg-modal'). css ('margin-top',nodeTop);
 $(function() {
