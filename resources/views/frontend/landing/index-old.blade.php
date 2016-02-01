@@ -78,7 +78,7 @@
 					<p class="w-c">	DEMHUB Newsfeeds</p>
 			</table>
 			</p>
-			@include('frontend.user._dropdown')
+			@include('frontend.landing._dropdown')
 			<div class="content-landing"></div>
 		</div>
 
@@ -133,7 +133,7 @@
 		</div>
 
 		<!-- svg map files goes here -->
-	 @include('frontend.user._svg')
+	 @include('frontend.landing._svg')
 
 		</div>
 
