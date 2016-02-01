@@ -113,19 +113,70 @@
 
       <div style="bottom:50px; position:absolute;width:100%;">
 
-        <?php
-          $keywords = array_filter(preg_split("/\|/", $item['keywords']));
-        ?>
-        @if(count($keywords) > 4)
-          @include('division.__keyword-dropup-foreach')
-        @elseif(count($keywords) <5)
-          @foreach($keywords as $key => $keyword)
-            <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
-              #{{ $keyword }}
-            </a>
-          @endforeach
-        @endif
-      </div>
+          <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : '' }}
+            style="font-size:82%;color:#777777;">
+            {{ date_format(new DateTime($item['publish_date']), 'j F Y | g:i a') }}
+          </span>
+
+          <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
+            style="font-size:82%;color:#000;padding-left:5%">
+            <?php
+              // $_SERVER['REQUEST_URI'] = '/userhome' || strpos($_SERVER['REQUEST_URI'], "division")!==false
+              if ($item['subclass']=='article'){
+
+                $parse=parse_url($item['url']);
+                $host=$parse['host'];
+                $host=substr($host,4);
+
+                if (substr_count($host,".") <= 1){
+                  echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                }
+                // else {
+                //   echo '<a target="_blank" href="http://'.$host.'">'.$host.'</a>';
+                // }
+              }
+              // else{
+              //
+              //   echo '<a target="_blank" href="http://www.'.$item['url'].'">'.gethostname().'</a>';
+              // }
+            ?>
+          </span>
+
+          <p style="padding-top:10px">
+            <?php
+              $description = $item['description'];
+              if (isset($neededObject[0]) && strlen($description) > 127){
+                $str = substr($description, 0, 127) . '...';
+                echo strip_tags($str);
+              }
+               else{
+                echo strip_tags($description);
+              }
+            ?>
+          </p>
+
+          <div style="">
+
+            <?php
+              $keywords = array_filter(preg_split("/\|/", $item['keywords']));
+            ?>
+            @if(count($keywords) > 4)
+              @include('division.__keyword-dropup-foreach')
+            @elseif(count($keywords) <5)
+              @foreach($keywords as $key => $keyword)
+                <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="?query_term={{$keyword}}">
+                  #{{ $keyword }}
+                </a>
+              @endforeach
+            @endif
+          </div>
+
+          <div style="">
+            @include('division.__article_buttons')
+          </div>
+        </div> <!-- the div that closes the .inner-peoplebox -->
+
+      </div> <!-- the div that closes the .feedsbox -->
 
       <div style="width:100%; height:42px; bottom:0px; position:absolute;">
         @include('division.__article_buttons')

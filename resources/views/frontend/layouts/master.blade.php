@@ -68,7 +68,7 @@
         @else
         class="@yield('container-class')"
         @endif
-        style="overflow-x:hidden;padding-top:25px">
+        style="overflow-x:hidden;">
 
           @yield('body-style')
           @yield('content')
