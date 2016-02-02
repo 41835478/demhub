@@ -66,7 +66,7 @@ if (!is_array($item) && get_class($item) == 'content') {
     }
   }
   // Elastic search result
-  elseif(! empty($item) && is_array($item)) {
+  elseif(! empty($item) || is_array($item)) {
       $divisions = array();
       foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
           $div = Division::findOrFail($divID);
@@ -74,6 +74,7 @@ if (!is_array($item) && get_class($item) == 'content') {
       }
       $item['divisions'] = $divisions;
       $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
+
   }
 ?>
 
@@ -81,13 +82,13 @@ if (!is_array($item) && get_class($item) == 'content') {
   @if(isset($type) && $type == 'teaser')
     @include('frontend.card.__content-teaser')
   @else
-    @include('frontend.card.__content-card')
+    @include('frontend.card.__content-summary')
   @endif
 @else
 
   @if(isset($type) && $type == 'teaser')
     @include('frontend.card.__user-teaser')
   @else
-    @include('frontend.card.__user-card-partial')
+    @include('frontend.card.__user-summary')
   @endif
 @endif

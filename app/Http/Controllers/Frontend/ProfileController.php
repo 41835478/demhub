@@ -38,11 +38,12 @@ class ProfileController extends Controller {
 
 	public function listing_of_profiles() {
 		$secondMenu = true;
+		$type = 'teaser';
 		$users = User::where('id', '!=', Auth::id())
 									->where('user_name', '!=', 'demhub')
 									->orderBy('id','DESC')->get();
 		return view('frontend.user.profiles',
-			compact(['users','secondMenu'])
+			compact(['users','secondMenu','type'])
 		);
 	}
 

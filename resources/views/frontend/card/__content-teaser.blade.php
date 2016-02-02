@@ -7,25 +7,30 @@
     if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
     elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
 
-      $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
-      if ($articleDivs) {
-        sort($articleDivs);
-        $height = 100/count($articleDivs);
-        $marginTop = 0;
-      }
+      // $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
+      // if ($articleDivs) {
+      //   sort($articleDivs);
+      //   $height = 100/count($articleDivs);
+      //   $marginTop = 0;
+      // }
+      $height = 100;
+      if(count($item['divisions']) > 0) {
+        $height = 100 / count($item['divisions']);
+      };
 
     ?>
 
     <div class = "feedsbox-teaser">
       <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:30px">
-      @forelse($articleDivs as $div)
-        <a style="height:{{$height}}%;" class="color-label-vertical division_{{$allDivisions[$div-1]->slug}}"
-          data-toggle="tooltip" data-placement="top" title="{{$allDivisions[$div-1]->slug}}">
-        </a>
+      @forelse($item['divisions'] as $slug => $div)
+        <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
+          data-toggle="tooltip" data-placement="top" title="{{$div}}">
+        </div>
+
       @empty
-        <a style="height:100%;" class="color-label-vertical division_all"
+        <div style="height:100%;" class="color-label-vertical division_all"
         data-toggle="tooltip" data-placement="top" title="All Divisions">
-        </a>
+      </div>
       @endforelse
       </div>
 
@@ -121,22 +126,16 @@
         <div {{ Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ?
           'style="top:115px; position:absolute; width:100%;"' : 'style="position:absolute; width:100%;"' }} >
 
-          <?php
-          $keywords = array_filter(preg_split("/\|/", $item['keywords']));
-          ?>
-          @if(count($keywords) > 4)
-            @include('division.__keyword-dropup-foreach')
-          @elseif(count($keywords) <5)
-            @foreach($keywords as $key=>$keyword)
-
-              <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px; " href="/search?query_term={{$keyword}}">
-                #{{ $keyword }}
-              </a>
-
-
-            @endforeach
-
-          @endif
+          
+          @if(count($item['keywords']) > 4)
+      		    @include('division.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
+      		  @elseif(count($item['keywords']) <5)
+      		    @foreach($item['keywords'] as $key => $keyword)
+        		  <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="{{ url('search', ['query_term'=>$keyword]) }}">
+        			  #{{ $keyword }}
+        		  </a>
+      		    @endforeach
+    		  @endif
         </div>
         <div style="width:100%; height:42px; top:140px; position:absolute;">
           @include('division.__article_buttons')

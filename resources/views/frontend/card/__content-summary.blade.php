@@ -8,11 +8,11 @@
 //    $width = 100/count($articleDivs);
 //    $marginLeft = 0;
 //  }
-$width = 100;
-if(count($item['divisions']) > 0)
+  $width = 100;
+  if(count($item['divisions']) > 0) {
     $width = 100 / count($item['divisions']);
+  };
 
-$test = array("health"=>'health and shit');
 ?>
 
   <div class = "feedsbox" style="{{--isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'--}}">

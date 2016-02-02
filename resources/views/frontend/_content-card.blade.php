@@ -18,5 +18,5 @@
 
 @endif
 @foreach($items as $item)
-  @include('frontend.__content-card')
+  @include('frontend.__content-summary')
 @endforeach
