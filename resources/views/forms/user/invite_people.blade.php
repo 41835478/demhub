@@ -1,5 +1,5 @@
 
-      <div class="modal-body" style="text-align:center;padding-top:30px" id="inviteForm">
+      <div class="modal-body" style="text-align:center;padding-top:60px" id="inviteForm">
         {!! Form::open(['route' => 'invite_others', 'class' => 'omb_loginForm', 'role' => 'form','data-toggle'=>'validator', 'data-delay'=>'1100', 'enctype'=>"multipart/form-data"]) !!}
         <div class="row" id="modal-body-row">
 
