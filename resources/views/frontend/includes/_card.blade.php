@@ -64,13 +64,14 @@
   }
 ?>
 
-@if((!is_array($item) && get_class($item) == 'content') || (is_array($item) && $item['subclass']))
+@if((!is_array($item) && get_class($item) == 'content') || (is_array($item) && isset($item['subclass'])))
   @if($type == 'teaser')
     @include('frontend.__content-teaser')
   @else
     @include('frontend.__content-card')
   @endif
 @else
+  <?php $user = \App\Models\Access\User\User::find($item['id']); ?>
   @if($type == 'teaser')
     @include('frontend.user.__user-teaser')
   @else

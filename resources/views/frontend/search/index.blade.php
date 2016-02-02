@@ -4,10 +4,10 @@
 
 <div class="container-fluid row">
     <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        @include('frontend.search.__result-snippet', ['results'=>$userResults, 'scope'=>'users', 'label'=>'Users']);
-        @include('frontend.search.__result-snippet', ['results'=>$publicationResults, 'scope'=>'publications', 'label'=>'Publications']);
-        @include('frontend.search.__result-snippet', ['results'=>$resourceResults, 'scope'=>'resources', 'label'=>'Resources']);
-        @include('frontend.search.__result-snippet', ['results'=>$articleResults, 'scope'=>'articles', 'label'=>'Articles']);
+        @include('frontend.search._result_snippet', ['results'=>$userResults, 'scope'=>'users', 'label'=>'Users', 'totalCount'=>$userTotalCount]);
+        @include('frontend.search._result_snippet', ['results'=>$publicationResults, 'scope'=>'publications', 'label'=>'Publications', 'totalCount'=>$publicationTotalCount]);
+        @include('frontend.search._result_snippet', ['results'=>$resourceResults, 'scope'=>'resources', 'label'=>'Resources', 'totalCount'=>$resourceTotalCount]);
+        @include('frontend.search._result_snippet', ['results'=>$articleResults, 'scope'=>'articles', 'label'=>'Articles', 'totalCount'=>$articleTotalCount]);
     </div>
 
 </div>
