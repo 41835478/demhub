@@ -1,8 +1,10 @@
-
+{!! $url = url('search', ['scope'=>$scope]); !!}
     <div class="row">
         <h5 class="pull-right">{{$totalCount}} {{$label}} found for "{{$queryTerm}}"</h5>
         <h3 class="pull-left text-bold">
-            <a href="">{{$label}} <small>View All</small></a>
+            <a href="{{$url}}">
+                {{$label}} <small>View All</small>
+            </a>
         </h3>
     </div>
     <div class="row">
@@ -13,5 +15,5 @@
         @endfor
     </div>
     <div class="row">
-        <a href="" class="btn btn-danger pull-right">View All</a>
+        <a href="{{$url}}" class="btn btn-danger pull-right">View All</a>
     </div>

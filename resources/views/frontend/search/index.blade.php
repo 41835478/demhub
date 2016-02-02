@@ -2,11 +2,14 @@
 
 @section('content')
 
-<div class="container-fluid">
-    @include('frontend.search.__result-snippet', ['results'=>$userResults, 'type'=>'user', 'label'=>'Users']);
-    @include('frontend.search.__result-snippet', ['results'=>$publicationResults, 'scope'=>'publication', 'label'=>'Publications']);
-    @include('frontend.search.__result-snippet', ['results'=>$resourceResults, 'scope'=>'resource', 'label'=>'Resources']);
-    @include('frontend.search.__result-snippet', ['results'=>$articleResults, 'scope'=>'article', 'label'=>'Articles']);
+<div class="container-fluid row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+        @include('frontend.search.__result-snippet', ['results'=>$userResults, 'scope'=>'users', 'label'=>'Users']);
+        @include('frontend.search.__result-snippet', ['results'=>$publicationResults, 'scope'=>'publications', 'label'=>'Publications']);
+        @include('frontend.search.__result-snippet', ['results'=>$resourceResults, 'scope'=>'resources', 'label'=>'Resources']);
+        @include('frontend.search.__result-snippet', ['results'=>$articleResults, 'scope'=>'articles', 'label'=>'Articles']);
+    </div>
+
 </div>
 
 {{--
