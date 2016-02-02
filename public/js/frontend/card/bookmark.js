@@ -1,6 +1,7 @@
 $(document).ready(function(e){
+    console.log("Getting started");
     $(".bookmark").submit(function(){
-        e.preventDefault();
+        // e.preventDefault();
         console.log("Test successful");
     //     $.ajax({
     //         type: 'post',
