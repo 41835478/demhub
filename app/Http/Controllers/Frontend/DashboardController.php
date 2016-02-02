@@ -8,6 +8,7 @@ use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Illuminate\Http\Request;
 use Image;
+use Auth;
 
 /**
  * Class DashboardController
@@ -33,7 +34,10 @@ class DashboardController extends Controller {
 
 	public function showConnections()
 	{
-		$users = User::all();
+
+		$users = User::where('id', '!=', Auth::id())
+									->where('user_name', '!=', 'demhub')
+									->orderBy('id','DESC')->get();
 
 		return view('frontend.user.dashboard.connections', compact([
 					'users'

@@ -26,6 +26,7 @@
         </div>
       </div>
     </section>
-
-  @include('frontend.user.__user-card-partial')
+  @foreach($users as $index => $item)
+    @include('frontend.card._card')
+  @endforeach
 @endsection('content')

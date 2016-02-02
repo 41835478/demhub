@@ -20,6 +20,7 @@ class UserController extends Controller {
 	 */
 	public function index(Request $request){
 		$allDivisions = $navDivisions = Division::all();
+
 		return view('frontend.user.userhome', compact([
 			'allDivisions'
 		]))->render();
@@ -30,8 +31,9 @@ class UserController extends Controller {
 											->orderBy('updated_at', 'desc')
 											->paginate(30);
 		$allDivisions = $navDivisions = Division::all();
+		$type= 'teaser';
 		$html = view('frontend.user._activity_feed', compact([
-			'contents', 'allDivisions'
+			'contents', 'allDivisions','type'
 		]))->render();
 
 		return $html;
