@@ -1,6 +1,18 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
+<div class="container-fluid row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+        @include('frontend.search.__result-snippet', ['results'=>$userResults, 'scope'=>'users', 'label'=>'Users']);
+        @include('frontend.search.__result-snippet', ['results'=>$publicationResults, 'scope'=>'publications', 'label'=>'Publications']);
+        @include('frontend.search.__result-snippet', ['results'=>$resourceResults, 'scope'=>'resources', 'label'=>'Resources']);
+        @include('frontend.search.__result-snippet', ['results'=>$articleResults, 'scope'=>'articles', 'label'=>'Articles']);
+    </div>
+
+</div>
+
+{{--
   @if(true)
 
     <div class="container">
@@ -35,22 +47,19 @@
             'model' => 'user',
             'title' => 'Members',
             'url' => "/profiles",
-            // NOTE - Business decision NOT to show total users
             'total' => NULL
           ])
         </div>
       @endif
 
-      @if($discussionTotalCount > 0)
-        <div class="col-sm-6">
-          @include('frontend.search._results', [
-            'model' => 'discussion',
-            'title' => 'Discussions',
-            'url' => "/forum/all_threads",
-            'total' => $discussionTotalCount
-          ])
-        </div>
-      @endif
+      {{-- <div class="col-sm-6">
+        @include('frontend.search._results', [
+          'model' => 'discussion',
+          'title' => 'Discussions',
+          'url' => "/forum/all_threads",
+          'total' => $discussionTotalCount
+        ])
+      </div>
 
       @if($publicationTotalCount > 0)
         <div class="col-sm-6">
@@ -76,5 +85,5 @@
 
     </div>
   @endif
-
+--}}
 @stop
