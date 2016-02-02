@@ -15,8 +15,6 @@ if(count($item['divisions']) > 0)
 $test = array("health"=>'health and shit');
 ?>
 
-<div class="col-xs-12 col-lg-feed">
-
   <div class = "feedsbox" style="{{--isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'--}}">
 
     @forelse($item['divisions'] as $slug => $div)
@@ -135,5 +133,3 @@ $test = array("health"=>'health and shit');
     </div> <!-- the div that closes the .inner-peoplebox -->
 
   </div> <!-- the div that closes the .feedsbox -->
-
-</div> <!-- the div that closes the box -->
