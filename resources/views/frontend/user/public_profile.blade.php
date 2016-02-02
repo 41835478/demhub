@@ -78,23 +78,25 @@
       <div class="col-xs-12 col-sm-7 col-md-7 col-sm-offset-2">
 
         <div id="publicationsList">
-          <?php $items=$user->publications ?>
+          <?php $items=$user->publications;
+          
+           ?>
           @foreach($items as $item)
-            @include('frontend.__content-teaser')
+            @include('frontend.card._card')
           @endforeach
         </div>
 
         <div id="discussionsList">
           <?php $items = json_decode($user->discussions(), true); ?>
           @foreach($items as $item)
-            @include('frontend.__content-teaser')
+            @include('frontend.card._card')
           @endforeach
         </div>
 
         <div id="networkList">
           <?php $users=$user->following ?>
           @foreach($users as $user)
-            @include('frontend.user.__user-teaser')
+            @include('frontend.card._card')
           @endforeach
         </div>
 

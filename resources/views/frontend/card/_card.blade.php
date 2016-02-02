@@ -66,7 +66,7 @@ if (!is_array($item) && get_class($item) == 'content') {
     }
   }
   // Elastic search result
-  elseif(! empty($item)) {
+  elseif(! empty($item) && is_array($item)) {
       $divisions = array();
       foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
           $div = Division::findOrFail($divID);

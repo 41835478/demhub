@@ -24,7 +24,7 @@ class ProfileController extends Controller {
 	public function view_public_profile($user_name) {
 		$secondMenu = true;
 		$allDivisions = Division::all();
-
+		$type = 'teaser';
 		if(is_numeric($user_name)){
 			$user = User::where('id', $user_name)->firstOrFail();
 		} else{
@@ -32,7 +32,7 @@ class ProfileController extends Controller {
 		}
 
 		return view('frontend.user.public_profile', compact([
-			'user', 'secondMenu', 'allDivisions'
+			'user', 'secondMenu', 'allDivisions', 'type'
 		]));
 	}
 

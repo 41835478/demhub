@@ -1,7 +1,7 @@
 @if(isset($users))
   @foreach($users as $user)
-    @include('frontend.user.__user-teaser')
+    @include('frontend.card._card')
   @endforeach
   @else
-    @include('frontend.user.__user-teaser')
+    @include('frontend.card._card')
 @endif
