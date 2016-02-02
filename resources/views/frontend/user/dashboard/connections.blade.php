@@ -9,7 +9,8 @@
 
       <div class="row center-block mt10" style="">
         <?php $counter=0; ?>
-          @foreach($users as $key => $user)
+
+          {{-- @foreach($users as $key => $user)
             @if(Auth::user()->is_following($user))
               <?php $counter++; ?>
             @elseif($key = sizeof($users) && $counter = 0)
@@ -21,12 +22,14 @@
                 </a>
               </div>
             @endif
-          @endforeach
+          @endforeach --}}
           <!-- </div> -->
+
+        @foreach($users as $index => $user)
+          @include('frontend.card._card')
+        @endforeach
         </div>
       </div>
     </section>
-  @foreach($users as $index => $item)
-    @include('frontend.card._card')
-  @endforeach
-@endsection('content')
+
+@endsection

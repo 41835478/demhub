@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Models\Division;
 use App\Models\Publication;
+use App\Models\follow_relationships;
 use App\Models\Access\User\User;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
@@ -35,10 +36,9 @@ class DashboardController extends Controller {
 	public function showConnections()
 	{
 
-		$users = User::where('id', '!=', Auth::id())
-									->where('user_name', '!=', 'demhub')
-									->orderBy('id','DESC')->get();
-
+		$user=auth()->user();
+		$users=$user->following;
+		
 		return view('frontend.user.dashboard.connections', compact([
 					'users'
 		]));

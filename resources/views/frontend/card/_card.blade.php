@@ -1,7 +1,7 @@
 <?php // NOTE - Logic to handle items by type, class, subclass and view
 use App\Http\Components\Helpers;
 use App\Models\Division;
-
+if(! isset($item)) { $item=null; };
 if (!is_array($item) && get_class($item) == 'content') {
     $array = [
       'id'            => $item->id,
@@ -66,7 +66,7 @@ if (!is_array($item) && get_class($item) == 'content') {
     }
   }
   // Elastic search result
-  else {
+  elseif(! empty($item)) {
       $divisions = array();
       foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
           $div = Division::findOrFail($divID);
