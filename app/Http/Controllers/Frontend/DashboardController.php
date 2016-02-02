@@ -1,7 +1,8 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php
+
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Division;
 use App\Models\Publication;
 use App\Models\Access\User\User;
 use App\Repositories\Frontend\User\UserContract;
@@ -11,8 +12,7 @@ use Image;
 use Auth;
 
 /**
- * Class DashboardController
- * @package App\Http\Controllers\Frontend
+ * Class DashboardController.
  */
 class DashboardController extends Controller {
 
@@ -24,7 +24,6 @@ class DashboardController extends Controller {
 		return view('frontend.user.dashboard.index')
 			->withUser(auth()->user());
 	}
-
 
 	public function test()
 	{
