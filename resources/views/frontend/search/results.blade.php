@@ -16,7 +16,7 @@
 
             @foreach($items as $item)
                 <div class="col-xs-12 col-sm-6">
-                    @include('frontend.includes._card', ['item'=>$item, 'type'=>'summary']);
+                    @include('frontend.includes._card', ['item'=>$item, 'type'=>'summary'])
                 </div>
             @foreach
         </div>
