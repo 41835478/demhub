@@ -1,5 +1,8 @@
 <?php // NOTE - Logic to handle items by type, class, subclass and view
-  if (!is_array($item) && get_class($item) == 'content') {
+use App\Http\Components\Helpers;
+use App\Models\Division;
+
+if (!is_array($item) && get_class($item) == 'content') {
     $array = [
       'id'            => $item->id,
       'subclass'      => $item->subclass,
@@ -61,6 +64,16 @@
         // nothing
         break;
     }
+  }
+  // Elastic search result
+  else {
+      $divisions = array();
+      foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
+          $div = Division::findOrFail($divID);
+          $divisions[$div->slug] = $div->name;
+      }
+      $item['divisions'] = $divisions;
+      $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
   }
 ?>
 
