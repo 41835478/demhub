@@ -12,14 +12,12 @@
                     <p style="display:inline;">{{ $pub->name }}</p>
                     @if(Auth::user()->has_bookmarked_publication($pub))
                         {!! Form::model($pub, ['route' => ['unbookmark_publication', $pub->id], 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
-                            {!! Form::token() !!}
                             <button type="submit" class="btn btn-greytone btn-sm">
                                 <i class="glyphicon glyphicon-ok"></i> UNBOOKMARK
                             </button>
                         {!! Form::close() !!}
                     @else
                         {!! Form::model($pub, ['route' => ['bookmark_publication', $pub->id], 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
-                            {!! Form::token() !!}
                             <button type="submit" class="btn btn-style-alt btn-sm">
                                 <i class="glyphicon glyphicon-plus"></i> BOOKMARK
                             </button>

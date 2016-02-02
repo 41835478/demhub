@@ -289,7 +289,7 @@ class PublicationController extends Controller
 
     // TODO - create alternate function equivalent for
     // ->references('id')->on( {{ followed_type }} )->onDelete('cascade');
-    public function bookmarkPublication($pubId, Request $request)
+    public function bookmarkPublication($pubId)
     {
         if (!Auth::user()->has_bookmarked_publication($pubId)) {
             Auth::user()->publicationBookmarks()->attach($pubId, [
@@ -297,24 +297,12 @@ class PublicationController extends Controller
             ]);
         }
 
-        $users = User::where('id', '!=', Auth::id())
-                                    ->where('user_name', '!=', 'demhub')
-                                    ->orderBy('id', 'DESC')->get();
-
-        $publications = Publication::all();
-
-        if ($request->ajax()) {
-            // $content_json = Helpers::return_json_results($content_json);
-    		return response()->json([
-    			'success' => 'cool',
-    			'message'=> 'Contents rendered',
-    			'content' => 'blah'
-    		]);
-        } else {
-            return view('frontend.user.dashboard.bookmarks', compact([
-                        'users', 'publications',
-            ]));
-        }
+        // $content_json = Helpers::return_json_results($content_json);
+        return response()->json([
+            'success' => 'cool',
+            'message'=> 'Contents rendered',
+            'content' => 'blah'
+        ]);
     }
 
     public function unbookmarkPublication($pubId)
@@ -325,14 +313,11 @@ class PublicationController extends Controller
             ]);
         }
 
-        $users = User::where('id', '!=', Auth::id())
-                                    ->where('user_name', '!=', 'demhub')
-                                    ->orderBy('id', 'DESC')->get();
-
-        $publications = Publication::all();
-
-        return view('frontend.user.dashboard.bookmarks', compact([
-                    'users', 'publications',
-        ]));
+        // $content_json = Helpers::return_json_results($content_json);
+        return response()->json([
+            'success' => 'cool',
+            'message'=> 'Contents rendered',
+            'content' => 'blah'
+        ]);
     }
 }

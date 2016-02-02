@@ -24,9 +24,9 @@ post('forum/9-/thread/create',  'ForumController@postModCreateThread');
  * Namespaces indicate folder structure
  * TODO - Implement folder structure
  */
-get('divisions',            'DivisionController@index');
-get('division/{slug}',      'DivisionController@show')->where('slug', '[A-Za-z0-9_\-]+');
-get('divisions/results',    'DivisionController@index');
+get( 'divisions',           'DivisionController@index');
+get( 'division/{slug}',     'DivisionController@show')->where('slug', '[A-Za-z0-9_\-]+');
+get( 'divisions/results',   'DivisionController@index');
 post('divisions/results',   'DivisionController@results');
 
 /*
@@ -55,6 +55,8 @@ $router->group(['middleware' => 'auth'], function () {
     // NOTE - DashboardController@index used instead of @edit_profile
     get('dashboard',    'DashboardController@index'             )->name('dashboard');
     get('connections',  'DashboardController@showConnections'   )->name('connections');
+
+    // NOTE - Temporary page to test bookmarks
     get('bookmarks',    'DashboardController@showBookmarks'     )->name('bookmarks');
 
     /*
