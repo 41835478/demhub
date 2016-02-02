@@ -283,8 +283,9 @@ class PublicationController extends Controller
         $secondMenu = true;
         $keywords = [];
         $allDivisions = Division::all();
+        $type='teaser';
         return view('frontend.user.publication_filter.public_journal', compact([
-          'publications', 'secondMenu','keywords','allDivisions'
+          'publications', 'secondMenu','keywords','allDivisions','type'
         ]));
     }
 
