@@ -18,8 +18,8 @@
     </div>
   </div>
 
-
-    @include('frontend._content-teaser')
-
+	@foreach($publications as $index => $item)
+    @include('frontend.card._card')
+  @endforeach
 </div>
 @stop

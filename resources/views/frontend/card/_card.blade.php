@@ -77,15 +77,15 @@ if (!is_array($item) && get_class($item) == 'content') {
   }
 ?>
 
-@if((!is_array($item) && get_class($item) == 'content') || (is_array($item) && isset($item['subclass'])))
-  @if($type == 'teaser')
-    @include('frontend.__content-teaser')
+@if((!is_array($item) && get_class($item) == 'content') || (isset($item['subclass'])))
+  @if(isset($type) && $type == 'teaser')
+    @include('frontend.card.__content-teaser')
   @else
-    @include('frontend.__content-card')
+    @include('frontend.card.__content-card')
   @endif
 @else
   <?php $user = \App\Models\Access\User\User::find($item['id']); ?>
-  @if($type == 'teaser')
+  @if(isset($type) && $type == 'teaser')
     @include('frontend.user.__user-teaser')
   @else
     @include('frontend.user.__user-card-partial')

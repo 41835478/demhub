@@ -72,6 +72,16 @@ $(function(){
 
 });
 
+function twitterActivate (item) {
+  var twitterElement;
+  twitterElement=$(item).find($(".article_twitter"));
+  $(twitterElement).addClass("twitter-share-button");
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(document.body){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}
+  }(document, 'script', 'twitter-wjs');
+};
+
 /*! Backstretch - v2.0.4 - 2013-06-19
 * http://srobbin.com/jquery-plugins/backstretch/
 * Copyright (c) 2013 Scott Robbin; Licensed MIT */

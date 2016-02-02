@@ -281,9 +281,9 @@ class PublicationController extends Controller
         $secondMenu = true;
         $keywords = [];
         $allDivisions = Division::all();
-
+        $type='teaser';
         return view('frontend.user.publication_filter.public_journal', compact([
-          'publications', 'secondMenu', 'keywords', 'allDivisions',
+          'publications', 'secondMenu','keywords','allDivisions','type'
         ]));
     }
 
@@ -302,7 +302,7 @@ class PublicationController extends Controller
                                     ->orderBy('id', 'DESC')->get();
 
         $publications = Publication::all();
-        
+
         if ($request->ajax()) {
             // $content_json = Helpers::return_json_results($content_json);
     		return response()->json([
