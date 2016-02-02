@@ -37,7 +37,7 @@ class DashboardController extends Controller {
 
 		$user=auth()->user();
 		$users=$user->following;
-		
+	
 		return view('frontend.user.dashboard.connections', compact([
 					'users'
 		]));

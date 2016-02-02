@@ -84,10 +84,10 @@ if (!is_array($item) && get_class($item) == 'content') {
     @include('frontend.card.__content-card')
   @endif
 @else
-  <?php $user = \App\Models\Access\User\User::find($item['id']); ?>
+
   @if(isset($type) && $type == 'teaser')
-    @include('frontend.user.__user-teaser')
+    @include('frontend.card.__user-teaser')
   @else
-    @include('frontend.user.__user-card-partial')
+    @include('frontend.card.__user-card-partial')
   @endif
 @endif
