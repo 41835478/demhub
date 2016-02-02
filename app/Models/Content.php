@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Http\Components\Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Nanigans\SingleTableInheritance\SingleTableInheritanceTrait;
 use App\Models\Division;
@@ -50,12 +51,12 @@ class Content extends Model
     {
         $divisions = [];
         if (isset($this->divisions)) {
-            foreach (array_filter(preg_split("/\|/", $this->divisions)) as $divID) {
+            foreach (Helpers::convertDBStringToArray($this->divisions) as $divID) {
                 $div = Division::findOrFail($divID);
                 $divisions[$div->slug] = $div->name;
             }
         } else {
-            $divisions = NULL;
+            $divisions = array();
         }
 
         return $divisions;
@@ -64,7 +65,7 @@ class Content extends Model
     public function keywords()
     {
 		$keywords = str_replace('|virus|', '|viral|', $this->keywords);
-		return array_filter(preg_split("/\|/", $keywords));
+		return Helpers::convertDBStringToArray($keywords);
     }
 
     public function humanReadablePublishDate()

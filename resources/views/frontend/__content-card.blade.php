@@ -2,22 +2,27 @@
   if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
   elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
 
-  $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
-  if ($articleDivs) {
-    sort($articleDivs);
-    $width = 100/count($articleDivs);
-    $marginLeft = 0;
-  }
+//  $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
+//  if ($articleDivs) {
+//    sort($articleDivs);
+//    $width = 100/count($articleDivs);
+//    $marginLeft = 0;
+//  }
+$width = 100;
+if(count($item['divisions']) > 0)
+    $width = 100 / count($item['divisions']);
+
+$test = array("health"=>'health and shit');
 ?>
 
 <div class="col-xs-12 col-lg-feed">
 
   <div class = "feedsbox" style="{{--isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'--}}">
 
-    @forelse($articleDivs as $div)
-      <div class="color-label division_{{$allDivisions[$div-1]->slug}} col-xs-6"
-        style="width:{{$width}}%; margin-left:{{$marginLeft}}%;"
-        data-toggle="headsup" data-placement="top" title="{{$allDivisions[$div-1]->slug}}">
+    @forelse($item['divisions'] as $slug => $div)
+      <div class="color-label division_{{$slug}} col-xs-6"
+        style="width:{{$width}}%; margin:0;"
+        data-toggle="headsup" data-placement="top" title="{{$div}}">
       </div>
     @empty
       <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
@@ -113,17 +118,14 @@
 
 	  <div style="">
 
-		  <?php
-		  $keywords = array_filter(preg_split("/\|/", $item['keywords']));
-		  ?>
-		  @if(count($keywords) > 4)
-  		  @include('division.__keyword-dropup-foreach')
-  		@elseif(count($keywords) <5)
-  		  @foreach($keywords as $key => $keyword)
-    		  <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="/search?query_term={{$keyword}}">
+		  @if(count($item['keywords']) > 4)
+  		    @include('division.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
+  		  @elseif(count($item['keywords']) <5)
+  		    @foreach($item['keywords'] as $key => $keyword)
+    		  <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="{{ url('search', ['query_term'=>$keyword]) }}">
     			  #{{ $keyword }}
     		  </a>
-  		  @endforeach
+  		    @endforeach
 		  @endif
 	  </div>
 
