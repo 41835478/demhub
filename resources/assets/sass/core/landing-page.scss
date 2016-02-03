@@ -128,15 +128,20 @@ option {
     ul {
       display: inline-block;
       overflow: hidden;
+      height: 100%;
     }
     //image ul
     ul:first-child{
-      width:15%;
-
+      width:20%;
+      float:left;
+      img {
+        width: 100%;
+        height:auto;
+      }
     }
     //information ul
     ul:nth-child(2){
-      width:60%;
+      width:50%;
       li:first-child{
         font-size:1.2em;
         color:#ED6C1F;
@@ -147,7 +152,7 @@ option {
     }
     //followers ul
     ul:nth-child(3){
-      width:20%;
+      height:100%;
       button {
         -webkit-appearance: none;
         background-color: #638395;
@@ -155,7 +160,7 @@ option {
         border: none;
         border-radius: 0px;
         width:100%;
-        padding:10px auto 10px auto;
+        padding-right:20px;
       }
       li{
         margin-left:-40px;
@@ -186,6 +191,7 @@ option {
     ul {
       display: inline-block;
       overflow: hidden;
+      height:100%;
     }
     //image ul
     ul:first-child{
@@ -194,7 +200,7 @@ option {
         font-size: 1.2em;
         font-weight: bold;
       }
-      li:nth-child(2), li:nth-child(3), li:nth-child(4){
+       li:nth-child(3), li:nth-child(4){
         opacity:0.7;
       }
 

@@ -1,4 +1,4 @@
-<div id="welcome_svg" class="row">
+
 <div class="bloc bloc-head">
   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" id="mapsvg"
      viewBox="0 0 1000 500" enable-background="new 0 0 404.7 354" id="hi-there">
@@ -201,7 +201,7 @@
     </g>
   </svg>
 </div>
-</div>
+
 
   <div class="modal fade bs-example-modal-sm svg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">

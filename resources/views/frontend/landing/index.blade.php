@@ -131,16 +131,17 @@
 				<h3 class="glyphicon glyphicon-chevron-down" style="text-align:center;padding-top:4%"></h3>
 			</a>
 		</div>
-
+		<div id="welcome_svg" class="row">
+		  	<h2 style="padding-right:5px">Connecting Professionals Worldwide</h2>
 		<!-- svg map files goes here -->
 	 @include('frontend.landing._svg')
-
+</div>
 		</div>
 
 			<div id="welcome_about" class="row">
 
 				<div class="col-md-12">
-					<h1 style="padding-right:5px">What is DEMHUB?</h1>
+					<h2 style="padding-right:5px">What is DEMHUB?</h2>
 					<p>DEMHUB is a networking platform built to facilitate the exchange of information, experience and resources for the Global Disaster and Emergency Management Industry.</p>
 				</div>
 

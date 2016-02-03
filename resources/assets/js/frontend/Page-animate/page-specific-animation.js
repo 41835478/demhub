@@ -46,20 +46,8 @@ else if (Imgheight <= winheight && Imgwidth >= winwidth){
       $('.care-bg > img').css('height','auto');
     }
     }
-  console.log(winwidth,winheight,Imgwidth,Imgheight);
+  // console.log(winwidth,winheight,Imgwidth,Imgheight);
 }
-
-// function bigImg(x) {
-//     x.style.height = "64px";
-//     x.style.width = "64px";
-//     $('.svg-landing').css('background-color','red');
-//     $('#XMLID_36_').addClass("hoverNode ");
-// }
-//
-// function normalImg(x) {
-//     x.style.height = "32px";
-//     x.style.width = "32px";
-// }
 
 //node js. change color and opacity.
 $(function() {
