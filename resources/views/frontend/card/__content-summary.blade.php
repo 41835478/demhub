@@ -1,6 +1,8 @@
 <?php
-    if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
-    elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
+use App\Http\Components\Helpers;
+
+if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
+  elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);}
 
     //  $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
     //  if ($articleDivs) {
@@ -11,10 +13,10 @@
     $width = 100;
     if(count($item['divisions']) > 0) {
         $width = 100 / count($item['divisions']);
-    };
+    }
 ?>
 
-<div class = "feedsbox" style="{{--isset($articleMediaArray) ? 'height:510px;' : 'height:340px;'--}}">
+<div class = "feedsbox" style="">
 
     @forelse($item['divisions'] as $slug => $div)
         <div class="color-label division_{{$slug}} col-xs-6"
@@ -25,23 +27,23 @@
         <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
     @endforelse
 
-    <div class="inner-peoplebox" style="padding-bottom: 50px;">
-        <div class="article-background" style=
-            <?php
-                $neededSearchValue=$item["id"];
-                if (isset($articleMediaArray)){
-                    $neededObject = array_filter(
-                        $articleMediaArray,
-                        function ($e) use (&$neededSearchValue){
-                            if ($e->article_id == $neededSearchValue){
-                                return $e;
-                            }
-                        }
-                    );
-                }
+    <div class="inner-peoplebox" style="padding-bottom: 100px;">
+      <div class="article-background" style=
+      <?php
+      $neededSearchValue=$item["id"];
+      if (isset($articleMediaArray)){
+          $neededObject = array_filter(
+              $articleMediaArray,
+              function ($e) use (&$neededSearchValue){
+                  if ($e->article_id == $neededSearchValue){
+                      return $e;
+                  }
+              }
+          );
+      }
 
-                if (isset($neededObject[0])){
-                    echo '"background-image:url('.$neededObject[0]->filename.');
+      if (isset($neededObject[0])){
+          echo '"background-image:url('.$neededObject[0]->filename.');
                     -webkit-background-size: cover;
                     -moz-background-size: cover;
                     -o-background-size: cover;
@@ -51,10 +53,10 @@
                     margin-right:-10px;
                     height:230px;
                     background-position-y: 30%;"';
-                } else {
-                    echo '""';
-                }
-            ?>
+      } else {
+          echo '""';
+      }
+      ?>
         >
 
             <div {{ isset($neededObject[0]) ? 'style="background-color:rgba(200, 200, 200, 0.5);height:230px;"' : '' }}></div>
@@ -112,21 +114,38 @@
             ?>
         </p>
 
-        <div>
-            @if(count($item['keywords']) > 4)
-                @include('division.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
-            @elseif(count($item['keywords']) <5)
-                @foreach($item['keywords'] as $key => $keyword)
-                    <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="{{ url('search', ['query_term'=>$keyword]) }}">
-                        #{{ $keyword }}
-                    </a>
-                @endforeach
-            @endif
-        </div>
+	  <div style="">
 
-        <div style="width:100%; height:42px; bottom:0px; position:absolute;">
-            @include('division.__article_buttons')
-        </div>
+		  @if(count($item['keywords']) > 4)
+  		    @include('division.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
+  		  @elseif(count($item['keywords']) <5)
+  		    @foreach($item['keywords'] as $key => $keyword)
+    		  <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="{{ url('search', ['query_term'=>$keyword]) }}">
+    			  #{{ $keyword }}
+    		  </a>
+  		    @endforeach
+		  @endif
+	  </div>
+
     </div> <!-- the div that closes the .inner-peoplebox -->
 
-</div> <!-- the div that closes the .feedsbox -->
+    <div style="width:100%; bottom:0px; position:absolute;">
+        <div class="col-xs-12">
+            @include('division.__article_buttons')
+        </div>
+
+        <div class="col-xs-12" style="padding: 15px; background-color: #f5f5f5; margin: 10px 0 0 0;">
+            <?php  $author=Helpers::uploader($item); ?>
+
+            @if (! empty($author))
+            <a href="{{'profile/'.$author->user_name}}" style="color: black;">
+                <img class="img-circle pull-left" style="height:35px;width:35px;margin-right: 10px;" src="{{$author->avatar->url('thumb')}}">
+                <div class="pull-left">
+                    <h5 class="text-uppercase">{{$author->full_name()}}<h5>
+                    <h6>{{$author->job_title}}</h6>
+                </div>
+            </a>
+            @endif
+        </div>
+    </div>
+  </div> <!-- the div that closes the .feedsbox -->

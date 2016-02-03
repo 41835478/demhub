@@ -6,6 +6,8 @@ $(document).ready(function(e){
         var bookmark_target = this;
         var span_target     = "#" + bookmark_target.id + " .bookmark-tag";
         var loader_target   = "#" + bookmark_target.id + " .loader";
+        // unbookmark : boolean to determine whether an item
+        // is being bookmarked or unbookmarked
         var unbookmark      = /unbookmark/i.test(bookmark_target.action) ? true : false;
         var button_target;
 
@@ -13,7 +15,6 @@ $(document).ready(function(e){
             type: 'post',
             url: bookmark_target.action,
             async: true,
-
             beforeSend: function() {
                 $(span_target).hide();
                 $(loader_target).show();
@@ -22,16 +23,16 @@ $(document).ready(function(e){
                 $(loader_target).fadeOut(200);
                 if (unbookmark) {
                     bookmark_target.action = bookmark_target.action.replace(/unbookmark/g, "bookmark");
+                    button_target = $(span_target).parent().removeClass('btn-greytone').addClass('btn-style-alt');
                     $(span_target).replaceWith(
                         "<span class='bookmark-tag'><i class='glyphicon glyphicon-plus'></i> BOOKMARK</span>"
                     );
-                    button_target = $(span_target).parent().removeClass('btn-greytone').addClass('btn-style-alt');
                 } else {
                     bookmark_target.action = bookmark_target.action.replace(/bookmark/g, "unbookmark");
+                    button_target = $(span_target).parent().addClass('btn-greytone').removeClass('btn-style-alt');
                     $(span_target).replaceWith(
                         "<span class='bookmark-tag'><i class='glyphicon glyphicon-ok'></i> UNBOOKMARK</span>"
                     );
-                    button_target = $(span_target).parent().addClass('btn-greytone').removeClass('btn-style-alt');
                 }
             },
             success: function(data) {
