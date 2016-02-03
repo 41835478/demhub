@@ -32,7 +32,7 @@ class SearchController extends Controller
         $discussionResults  = array();
         $resourceResults    = array();
 
-        $divisions = Division::all();
+        $divisions = $allDivisions = Division::all();
         $div_id = null;
         foreach($divisions as $div){
             if($div->slug == $division)
@@ -96,7 +96,6 @@ class SearchController extends Controller
             $resourceResults    = Search::queryResources($page, $size);
         }
 
-        $divisions = $allDivisions = Division::all();
         $searchBar = true;
 
         if ($scope == 'all' || trim($options_query) == '') {

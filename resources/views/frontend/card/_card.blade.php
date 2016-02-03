@@ -73,22 +73,22 @@ if (!is_array($item) && get_class($item) == 'content') {
   }
   // Elastic search result
   elseif(! empty($item) && is_array($item)) {
-     $divisions = array();
+     $divs = array();
      foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
          $div = Division::findOrFail($divID);
-         $divisions[$div->slug] = $div->name;
+         $divs[$div->slug] = $div->name;
      }
-     $item['divisions'] = $divisions;
+     $item['divisions'] = $divs;
      $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
 
  }
  elseif(isset($item['subclass']) || is_array($item)) {
-    $divisions = array();
+    $divs = array();
     foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
         $div = Division::findOrFail($divID);
-        $divisions[$div->slug] = $div->name;
+        $divs[$div->slug] = $div->name;
     }
-    $item['divisions'] = $divisions;
+    $item['divisions'] = $divs;
     $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
 
 }
