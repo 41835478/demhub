@@ -118,7 +118,7 @@ class SearchController extends Controller
                 'searchBar', 'query_term', 'scope', 'allDivisions',
             ]));
         } else {
-            $items     = Search::queryArticles($db_page, $size);
+            //$items     = Search::queryArticles($db_page, $size);
             $totalCount = isset($items['total']) ? $items['total'] : 0;
             $items      = Search::formatElasticSearchToArray($items['hits']);
 
