@@ -72,20 +72,7 @@ if (!is_array($item) && get_class($item) == 'content') {
       //do nothing
   }
   // Elastic search result
-  elseif(! empty($item) || ($item['subclass']=='infoResource')) {
-      $divisions = array();
-      dd($item['divisions']);
-      $divSlugs=str_replace(' ', '', $item['divisions']);
-      $divSlugs=strtolower($divSlugs);
-      $divSlugs=array_filter(preg_split("/\,/", $divSlugs));
-      foreach ($divSlugs as $divSlug) {
-          $div = Division::where('slug','=',$divSlug)->first();
-          $divisions[$div->slug] = $div->name;
-      }
-      $item['divisions'] = $divisions;
-      $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
-
-  }
+  
   elseif(! empty($item) || is_array($item)) {
      $divisions = array();
      foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {

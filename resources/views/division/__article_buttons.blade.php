@@ -1,4 +1,4 @@
-@if($item && get_class($item) == "App\Models\Publication" && $item->subclass == "publication")
+@if(! is_array($item) && get_class($item) == "App\Models\Publication")
     <?php $pub = $item ?>
     @if(Auth::user()->has_bookmarked_publication($pub))
         {!! Form::model($pub, ['route' => ['unbookmark_publication', $pub->id],
