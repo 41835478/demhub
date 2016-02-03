@@ -67,14 +67,14 @@
 								{!! Form::open(['url' => url('search'), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
 								<div class="form-group" style="padding-left:10%;">
 									<div class="input-group searchbar-group" style="width: 100%">
-										<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;pointer-event:none;"></i>
+										<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;pointer-events:none;"></i>
 										<select class="input-group-addon nav-search-text animate" name="scope"
 												style="float: left;width: 20%;padding: 9px;">
-											<option value="all">All</option>
-											<option value="articles">Articles</option>
-											<option value="users">Users</option>
-											<option value="publications">Publications</option>
-											<option value="resources">Resources</option>
+											<option value="all" @if(isset($scope) && $scope=='all') selected @endif>All</option>
+											<option value="articles" @if(isset($scope) && $scope=='articles') selected @endif>Articles</option>
+											<option value="users" @if(isset($scope) && $scope=='users') selected @endif>Users</option>
+											<option value="publications" @if(isset($scope) && $scope=='publications') selected @endif>Publications</option>
+											<option value="resources" @if(isset($scope) && $scope=='resources') selected @endif>Resources</option>
 										</select>
 										<input name="query_term" class="text-left form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
 										<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
@@ -186,17 +186,18 @@
 	<div class="container-fluid row visible-xs">
 		<li class="col-xs-10 col-xs-offset-1" style="margin-top: -20px">
 			{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-			<div class="form-group" style="">
+
+            <div class="form-group" style="">
 				<div class="input-group searchbar-group" style="width: 100%">
 					<select class="input-group-addon nav-search-text animate" name="scope"
 							style="float: left;width: 20%;padding: 9px;">
-						<option value="all">All</option>
-						<option value="articles">Articles</option>
-						<option value="users">Users</option>
-						<option value="publications">Publications</option>
-						<option value="resources">Resources</option>
+						<option value="all" @if(isset($scope) && $scope=='all') selected @endif >All</option>
+						<option value="articles" @if(isset($scope) && $scope=='articles') selected @endif>Articles</option>
+						<option value="users" @if(isset($scope) && $scope=='users') selected @endif>Users</option>
+						<option value="publications" @if(isset($scope) && $scope=='publications') selected @endif>Publications</option>
+						<option value="resources" @if(isset($scope) && $scope=='resources') selected @endif>Resources</option>
 					</select>
-					<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;pointer-event: none;"></i>
+					<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;pointer-events: none;"></i>
 					<input name="query_term" class="text-left form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
 					<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
 						<i class="fa fa-search"></i>

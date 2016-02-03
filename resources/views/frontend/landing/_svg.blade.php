@@ -179,14 +179,14 @@
      </g>
 
     <g class="circlelayer">
-      <circle id="XMLID_1" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="221.4" cy="90" r="11.2"/>
-  		<circle id="XMLID_2" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="248.5" cy="266.5" r="8.2"/>
-  		<circle id="XMLID_3" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="488.2" cy="367.3" r="6.2"/>
-  		<circle id="XMLID_4" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="215.2" cy="174.3" r="8.2"/>
-  		<circle id="XMLID_5" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="63.2" cy="100.3" r="11.2"/>
-  		<circle id="XMLID_6" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="594.2" cy="154.3" r="3.2"/>
-  		<circle id="XMLID_7" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="640.2" cy="230.3" r="6.2"/>
-  		<circle id="XMLID_8" data-toggle="modal" data-target=".bs-example-modal-sm" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="734.2" cy="367.3" r="9.2"/>
+      <circle id="XMLID_1" data-toggle="modal" data-target=".bs-example-modal-sm" data-target=".bs-example-modal-sm" class="st3" cx="221.4" cy="90" r="11.2"/>
+  		<circle id="XMLID_2" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="248.5" cy="266.5" r="8.2"/>
+  		<circle id="XMLID_3" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="488.2" cy="367.3" r="6.2"/>
+  		<circle id="XMLID_4" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="215.2" cy="174.3" r="8.2"/>
+  		<circle id="XMLID_5" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="63.2" cy="100.3" r="11.2"/>
+  		<circle id="XMLID_6" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="594.2" cy="154.3" r="3.2"/>
+  		<circle id="XMLID_7" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="640.2" cy="230.3" r="6.2"/>
+  		<circle id="XMLID_8" data-toggle="modal" data-target=".bs-example-modal-sm"  data-target=".bs-example-modal-sm" class="st3" cx="734.2" cy="367.3" r="9.2"/>
   	<circle id="XMLID_9" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="519.7" cy="171.5" r="6.2"/>
   	<circle id="XMLID_10" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="702.4" cy="140.5" r="4.2"/>
   	<circle id="XMLID_11" data-toggle="modal" data-target=".bs-example-modal-sm" class="st3" cx="654.2" cy="102.3" r="3.2"/>
@@ -202,20 +202,20 @@
   </svg>
 </div>
 
-
   <div class="modal fade bs-example-modal-sm svg-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content table-details1 table-modal">
-    <ul><img src='#'></img></ul>
-    <ul>
-      <li>Aldo Ruiz</li>
-      <li>Toronto</li>
-      <li>Programmer</li>
-      <li>Science & Research</li></ul>
-      <ul><li> <button> FOLLOW </button> </li>
-      <li>33</li>
-      <li>shares</li>
       <ul>
+        <img id="map-img" src='images/avatars/thumb/missing.png'></img></ul>
+      <ul>
+        <li id="map-user">Your Profile</li>
+        <li id="map-place"></li>
+        <li id="map-profession"></li>
+        <li id="map-division"></li></ul>
+        <ul><li> <button> FOLLOW </button> </li>
+        <li id="shares"></li>
+        <li>shares</li>
+        <ul>
     </div>
   </div>
 </div>

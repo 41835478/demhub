@@ -16,6 +16,7 @@
         <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
     @endforelse
 
+
     <div class="inner-peoplebox" style="text-align:center;">
       <div class="row" style="padding-top:20px;">
         {{-- <div class="col-xs-4" style="padding-top:20px;"> --}}
@@ -23,6 +24,7 @@
 
           {{-- $user->avatar->url('medium'); --}}
         {{-- </div> --}}
+
 
         <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
           <h3>  {{$user->full_name()}}  </h3>
@@ -87,7 +89,7 @@
         @endif
       </div>
 
-    
+
 
     </div> <!-- the div that closes the inner-feedsbox -->
 

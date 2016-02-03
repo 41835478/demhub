@@ -32,7 +32,7 @@
 				@if (Request::url() === url('auth/login'))
 					class="active"
 				@endif
-				style="padding-top:15px;float:right;list-style:none; margin-right:10vw;">{!! link_to('auth/login', trans('LOGIN')) !!}</li>
+				style="padding-top:15px;float:right;list-style:none; margin-right:10vw;color:#fff !important;">{!! link_to('auth/login', trans('LOGIN')) !!}</li>
 		</div>
 
 		<!-- landing page major content -->
@@ -50,7 +50,7 @@
 						<div class="DrpDwn">
 					 		<select id="DropDown_division"><option>Division</option></select>
 						</div>
-						</td>
+					</td>
 						<td>
 						 <a type="button" class="btn btn-style-alt btn-md btn-style-w pull-right landing-button1" href="/auth/register">JOIN NOW</a>
 						</td>
@@ -68,7 +68,6 @@
 			</div>
 		</div>
 		<div class="card-ajax">
-
 			<!-- the table for the jquery ajax reading !!!!! -->
 			<p>
 			<table class="table-details1">

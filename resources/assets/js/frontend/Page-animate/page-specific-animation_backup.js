@@ -103,7 +103,6 @@ function carouselRes() {
 
 $(document).ready(function(){
     $("#DropDown_division").click(function(){
-
     });
     carouselRes();
 });
