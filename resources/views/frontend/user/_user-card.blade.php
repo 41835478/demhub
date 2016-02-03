@@ -1,3 +1,3 @@
 @foreach($users as $user)
-  @include('frontend.user.__user-card-partial')
+  @include('frontend.user.__user-summary-partial')
 @endforeach

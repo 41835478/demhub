@@ -1,6 +1,6 @@
 <div class = "col-xs-12 col-sm-8 col-md-8">
   <div class="peoplebox-teaser">
-
+    
     <div class="col-xs-10 col-xs-offset-1 inner-feedsbox">
       <div class="col-xs-1">
         <div class="" style="">

@@ -44,7 +44,7 @@
 //     filter: alpha(opacity=100); /* For IE8 and earlier */
 // }
 #top-menu li a:hover, #top-menu li a:focus, {
-   color: #ed6b00;
+   color: $accent_color;
   text-decoration: none;
 }
 #top-menu li.active a {

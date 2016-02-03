@@ -15,6 +15,8 @@ $security_color: #848889;
 $continuity_color: #933131;
 $humanitarian_color: #754293;
 
+$accent_color: #ed6b00;
+
 .division-text_health {
 	  color:$health_color;
 	}
@@ -51,30 +53,8 @@ $humanitarian_color: #754293;
   .division_humanitarian {
   	  background-color:$humanitarian_color;
   	}
-
 .division_all {
     background-color:#35464d;
-  	}
-.division_1 {
-	  background-color:$health_color;
-	}
-.division_2 {
-	  background-color:$science_color;
-	}
-.division_3 {
-	  background-color:$response_color;
-	}
-.division_4{
-	  background-color:$security_color;
-		}
-.division_5 {
-	  background-color:$continuity_color;
-	}
-.division_6 {
-	  background-color:$humanitarian_color;
-	}
-.division_7 {
-  	  background-color:#35464d;
   	}
 
 .color-label {

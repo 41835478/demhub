@@ -1,6 +1,18 @@
 @extends('frontend.layouts.master')
 
 @section('content')
+
+<div class="container-fluid row">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+        @include('frontend.search._result_snippet', ['results'=>$userResults, 'scope'=>'users', 'label'=>'Users', 'totalCount'=>$userTotalCount])
+        @include('frontend.search._result_snippet', ['results'=>$publicationResults, 'scope'=>'publications', 'label'=>'Publications', 'totalCount'=>$publicationTotalCount])
+        @include('frontend.search._result_snippet', ['results'=>$resourceResults, 'scope'=>'resources', 'label'=>'Resources', 'totalCount'=>$resourceTotalCount])
+        @include('frontend.search._result_snippet', ['results'=>$articleResults, 'scope'=>'articles', 'label'=>'Articles', 'totalCount'=>$articleTotalCount])
+    </div>
+
+</div>
+
+{{--
   @if(true)
 
     <div class="container">
@@ -35,22 +47,19 @@
             'model' => 'user',
             'title' => 'Members',
             'url' => "/profiles",
-            // NOTE - Business decision NOT to show total users
             'total' => NULL
           ])
         </div>
       @endif
 
-      @if($discussionTotalCount > 0)
-        <div class="col-sm-6">
-          @include('frontend.search._results', [
-            'model' => 'discussion',
-            'title' => 'Discussions',
-            'url' => "/forum/all_threads",
-            'total' => $discussionTotalCount
-          ])
-        </div>
-      @endif
+      {{-- <div class="col-sm-6">
+        @include('frontend.search._results', [
+          'model' => 'discussion',
+          'title' => 'Discussions',
+          'url' => "/forum/all_threads",
+          'total' => $discussionTotalCount
+        ])
+      </div>
 
       @if($publicationTotalCount > 0)
         <div class="col-sm-6">
@@ -76,5 +85,5 @@
 
     </div>
   @endif
-
+--}}
 @stop
