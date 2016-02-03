@@ -11,7 +11,7 @@
 
       <div class="row center-block mt10">
 
-        @foreach($users as $index => $user)
+        @foreach($users as $index => $item)
           @include('frontend.card._card')
         @endforeach
 

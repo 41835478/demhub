@@ -72,7 +72,6 @@ if (!is_array($item) && get_class($item) == 'content') {
       //do nothing
   }
   // Elastic search result
-  
   elseif(! empty($item) || is_array($item)) {
      $divisions = array();
      foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
@@ -93,8 +92,8 @@ if (!is_array($item) && get_class($item) == 'content') {
     @endif
 @else
     @if(isset($type) && $type == 'teaser')
-        @include('frontend.card.__user-teaser')
+        @include('frontend.card.__user-teaser', ['user'=>$item])
     @else
-        @include('frontend.card.__user-summary')
+        @include('frontend.card.__user-summary', ['user'=>$item])
     @endif
 @endif
