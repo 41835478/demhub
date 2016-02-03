@@ -21,11 +21,13 @@ $(document).ready(function(e){
             complete: function(jqHXR, status) {
                 $(loader_target).fadeOut(200);
                 if (unbookmark) {
+                    bookmark_target.action = bookmark_target.action.replace(/unbookmark/g, "bookmark");
                     $(span_target).replaceWith(
                         "<span class='bookmark-tag'><i class='glyphicon glyphicon-plus'></i> BOOKMARK</span>"
-                    )
+                    );
                     button_target = $(span_target).parent().removeClass('btn-greytone').addClass('btn-style-alt');
                 } else {
+                    bookmark_target.action = bookmark_target.action.replace(/bookmark/g, "unbookmark");
                     $(span_target).replaceWith(
                         "<span class='bookmark-tag'><i class='glyphicon glyphicon-ok'></i> UNBOOKMARK</span>"
                     );
