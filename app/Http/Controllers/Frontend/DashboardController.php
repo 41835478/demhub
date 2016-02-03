@@ -37,19 +37,9 @@ class DashboardController extends Controller {
 
 		$user=auth()->user();
 		$users=$user->following;
-	
+
 		return view('frontend.user.dashboard.connections', compact([
 					'users'
-		]));
-	}
-
-	public function showBookmarks()
-	{
-		$users = User::all();
-		$publications = Publication::all();
-
-		return view('frontend.user.dashboard.bookmarks', compact([
-					'users', 'publications'
 		]));
 	}
 }
