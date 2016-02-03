@@ -4,7 +4,7 @@
         if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
         elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);};
 
-        // $articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
+        //$articleDivs = array_filter(preg_split("/\|/", $item['divisions']));
         // if ($articleDivs) {
         //   sort($articleDivs);
         //   $height = 100/count($articleDivs);

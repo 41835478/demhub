@@ -8,6 +8,7 @@
     if(count($item['divisions']) > 0) {
         $width = 100 / count($item['divisions']);
     }
+
 ?>
 
 <div class="feedsbox">

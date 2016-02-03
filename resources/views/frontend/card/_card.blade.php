@@ -82,6 +82,16 @@ if (!is_array($item) && get_class($item) == 'content') {
      $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
 
  }
+ elseif(isset($item['subclass']) || is_array($item)) {
+    $divisions = array();
+    foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
+        $div = Division::findOrFail($divID);
+        $divisions[$div->slug] = $div->name;
+    }
+    $item['divisions'] = $divisions;
+    $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
+
+}
 ?>
 
 @if((!is_array($item) && get_class($item) == 'content') || (isset($item['subclass'])))
