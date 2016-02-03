@@ -1,10 +1,10 @@
-<?php $url = url('search', ['scope'=>$scope]); ?>
+<?php $url = url('search').'?scope='.$scope.'&query_term='.$query_term; ?>
 <div class="container-fluid card-subtle">
 
     <div class="row">
         <div class="col-xs-12">
             <h6 class="pull-right" style="margin: 30px 0 0 0;color:#aaa">
-                {{$totalCount}} {{$label}} found for "{{$queryTerm}}"
+                {{$totalCount}} {{$label}} found for "{{$query_term}}"
             </h6>
             <a href="{{$url}}">
                 <h3 class="pull-left text-bold" style="color: #000">
@@ -13,7 +13,8 @@
             </a>
         </div>
     </div>
-    
+
+    @if($totalCount > 0)
     <div class="row">
         @for($i=0; $i<2; $i++)
             @if(isset($results[$i]))
@@ -34,5 +35,5 @@
             <a href="{{$url}}" class="btn btn-danger pull-right">View All</a>
         </div>
     </div>
-
+    @endif
 </div>

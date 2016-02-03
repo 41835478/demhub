@@ -9,7 +9,6 @@ elixir(function(mix) {
         .copy('vendor/twbs/bootstrap-sass/assets/javascripts/bootstrap.min.js',  'public/js/vendor')
         .copy('resources/assets/js/frontend/plugins/ZeroClipboard.swf',         'public/js')
         .copy('resources/assets/js/frontend/userhome/feed.js',                  'public/js/frontend/userhome')
-        .copy('resources/assets/js/frontend/card/bookmark.js',                  'public/js/frontend/card')
 
         .sass([ // Process front-end stylesheets
             'frontend/main.scss'
@@ -31,7 +30,8 @@ elixir(function(mix) {
             'frontend/plugins/bootstrap-datetimepicker.js',
             'frontend/publications/index.js',
             'frontend/Page-animate/page-specific-animation.js', //some animations for multiple pages
-            'frontend/divisions/feeds.js'
+            'frontend/divisions/feeds.js',
+            'frontend/card/bookmark.js'
         ], 'public/js/frontend.js')
 
         .sass([ // Process back-end stylesheets

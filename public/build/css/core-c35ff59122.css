@@ -206,7 +206,6 @@ option {
   display: inline-block;
   overflow: hidden;
   height: 100%;
-  vertical-align: middle;
 }
 
 .table-details1 ul:first-child {
@@ -217,8 +216,6 @@ option {
 .table-details1 ul:first-child img {
   width: 100%;
   height: auto;
-  top: auto;
-  left: auto;
 }
 
 .table-details1 ul:nth-child(2) {
@@ -295,12 +292,13 @@ option {
 
 .table-details2 ul:nth-child(2) {
   width: 20%;
-  min-width: 40px;
-  text-align: left;
-  -webkit-padding-start: 0 !important;
 }
 
-.table-details2 ul:nth-child(2) button {
+.table-details2 ul:nth-child(2) li:first-child {
+  background-color: red;
+}
+
+.table-details2 ul:nth-child(2) li:first-child button {
   float: left;
   -webkit-appearance: none;
   background-color: #638395;
@@ -514,18 +512,8 @@ option {
     display: block;
   }
 
-  .card-ajax ul {
-    overflow: hidden;
-  }
-
-  .card-ajax img {
-    max-width: 70px;
-    max-height: 70px;
-  }
-
-  #welcome_svg {
+  #welcome_about {
     margin-top: 90vh;
-    display: block;
   }
 }
 
@@ -886,6 +874,8 @@ svg * {
   border-radius: 0 !important;
   width: 30vw;
   min-width: 400px;
+  margin-top: 100%;
+  max-width: 550px;
   position: absolute;
 }
 
@@ -963,10 +953,6 @@ svg * {
 
   #hi-there {
     margin-top: 500px;
-  }
-
-  #welcome_svg {
-    margin-top: 90vh;
   }
 }
 
@@ -1133,7 +1119,7 @@ svg * {
 }
 
 .nav-top-adjust {
-  padding-top: 16px;
+  padding-top: 20px;
 }
 
 .navbar-nav > li > a {
@@ -3876,7 +3862,7 @@ li.active-border {
 .peoplebox-teaser {
   background-color: #fff;
   min-width: 100%;
-  height: 140px;
+  height: 150px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;

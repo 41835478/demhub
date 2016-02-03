@@ -1,13 +1,10 @@
 <div class = "col-xs-12 col-sm-6 col-md-4">
   <div class="peoplebox">
 
-
     <div class="inner-feedsbox" style="text-align:center;">
       <div class="row">
         <div class="col-xs-4" style="padding-top:20px;">
-          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:95px;max-width:80px']) !!}
-          {!! HTML::image('http://www.demhub.net/system/App/Models/Access/User/User/avatars/000/000/012/medium/chimp transparent backgroung.jpg', '$user->avatar_file_name', ['class' => "img-circle", 'style' => 'max-height:25px;visibility:hidden']) !!}
-          {{-- $user->avatar->url('medium'); --}}
+          {!! HTML::image($user->avatar->url('medium'), $user->avatar_file_name, ['class' => "img-circle img-responsive", 'style' => 'max-height:95px;max-width:80px']) !!}
         </div>
 
         <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">

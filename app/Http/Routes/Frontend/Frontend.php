@@ -56,9 +56,6 @@ $router->group(['middleware' => 'auth'], function () {
     get('dashboard',    'DashboardController@index'             )->name('dashboard');
     get('connections',  'DashboardController@showConnections'   )->name('connections');
 
-    // NOTE - Temporary page to test bookmarks
-    get('bookmarks',    'DashboardController@showBookmarks'     )->name('bookmarks');
-
     /*
      * Search
      */

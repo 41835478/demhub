@@ -290,7 +290,7 @@ class FrontendController extends Controller {
 	 */
 	public function policy()
 	{
-		return view('frontend.policy');
+		return view('frontend.landing.policy');
 	}
 
 	/**
@@ -298,11 +298,11 @@ class FrontendController extends Controller {
 	 */
 	public function terms()
 	{
-		return view('frontend.terms');
+		return view('frontend.landing.terms');
 	}
 
 	public function signUpSuccess()
 	{
-		return view('frontend.signUpSuccess');
+		return view('frontend.landing.signUpSuccess');
 	}
 }

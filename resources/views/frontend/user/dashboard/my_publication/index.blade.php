@@ -34,7 +34,7 @@
               </tr>
           </thead>
 
-          <tbody>
+          <tbody style="background-color:#fff;">
             {!! Form::open(['route' => ['caret_publication_action', $caret], 'files' => true, 'class' => 'form-horizontal',
             'method' => 'POST', 'data-toggle'=>'validator', 'data-delay'=>'1100', 'role' => 'form', 'id' => 'caretForm']) !!}
               @if(!empty($publications))

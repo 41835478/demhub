@@ -1133,7 +1133,7 @@ svg * {
 }
 
 .nav-top-adjust {
-  padding-top: 20px;
+  padding-top: 16px;
 }
 
 .navbar-nav > li > a {
@@ -3817,6 +3817,7 @@ button.btn-greytone:active {
 }
 
 .peoplebox {
+  background-color: #fff;
   min-width: 100%;
   height: 375px;
   display: inline-block;
@@ -3873,8 +3874,9 @@ li.active-border {
 }
 
 .peoplebox-teaser {
+  background-color: #fff;
   min-width: 100%;
-  height: 150px;
+  height: 140px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;

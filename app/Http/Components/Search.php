@@ -84,8 +84,14 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryUsers($page = 0, $size = 30, $query = ["match_all" => []]) {
-    $params = [
+  public static function queryUsers($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
+      $filter = array();
+      if ($divID != NULL) {
+          // Add the division id as one of the "AND" filters
+          $filter['and'] = ['term' => ['divisions' => $divID]];
+      }
+
+      $params = [
         'index' => 'access',
         'type' => 'users',
         'size' => $size,
@@ -93,6 +99,7 @@ class Search
         'body' => [
             'query' => [
                 'filtered' => [
+                    'filter' => $filter,
                     'query' => $query
                 ]
             ]
@@ -110,13 +117,20 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []]) {
+  public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
       $filter = [
         'and' => [
             ['term' => ['deleted' => 0]],
             ['term' => ['visibility' => 1]],
         ]
       ];
+
+      if ($divID != NULL) {
+          // Add the division id as one of the "AND" filters
+          array_push($filter['and'],
+              ['term' => ['divisions' => $divID]]
+          );
+      }
 
       $sort = [
           'id' => [
@@ -208,8 +222,12 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryResources($page = 0, $size = 30, $query = ["match_all" => []]) {
-    $params = [
+  public static function queryResources($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
+    $filter = [];
+      if ($divID != NULL) {
+          $filter['and'] = ['term' => ['divisions' => $divID]];
+      }
+      $params = [
         'index' => 'info',
         'type' => 'resources',
         'size' => $size,
@@ -217,6 +235,7 @@ class Search
         'body' => [
             'query' => [
                 'filtered' => [
+                    'filter' => $filter,
                     'query' => $query
                 ]
             ]
