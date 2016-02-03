@@ -3803,6 +3803,7 @@ button.btn-greytone:active {
 }
 
 .peoplebox {
+  background-color: #fff;
   min-width: 100%;
   height: 375px;
   display: inline-block;
@@ -3859,6 +3860,7 @@ li.active-border {
 }
 
 .peoplebox-teaser {
+  background-color: #fff;
   min-width: 100%;
   height: 150px;
   display: inline-block;
