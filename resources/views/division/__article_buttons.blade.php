@@ -2,7 +2,7 @@
     <?php $pub = $item ?>
     @if(Auth::user()->has_bookmarked_publication($pub))
         {!! Form::model($pub, ['route' => ['unbookmark_publication', $pub->id],
-            'id' => "form-{$pub->id}", 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
+            'id' => "form-{$pub->id}", 'class' => 'js-bookmark', 'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']) !!}
             {{-- <button type="submit" class="btn btn-greytone btn-sm" style="height: 30px; width: 120px">
                 <span class="bookmark-tag">
                     <i class="glyphicon glyphicon-ok"></i> UNBOOKMARK
@@ -10,13 +10,13 @@
                 <div class="loader" style="display:none">Loading...</div>
             </button> --}}
             <button type="submit" class="btn btn-greytone btn-sm" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite">
-                <span class="js-bookmark-tag glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <span class="js-bookmark-tag glyphicon glyphicon-ok" aria-hidden="true"></span>
                 <div class="js-loader loader" style="display:none">Loading...</div>
             </button>
         {!! Form::close() !!}
     @else
         {!! Form::model($pub, ['route' => ['bookmark_publication', $pub->id],
-            'id' => "form-{$pub->id}", 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
+            'id' => "form-{$pub->id}", 'class' => 'js-bookmark', 'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']) !!}
             {{-- <button type="submit" class="btn btn-style-alt btn-sm" style="height: 30px; width: 120px">
                 <span class="bookmark-tag">
                     <i class="glyphicon glyphicon-plus"></i> BOOKMARK

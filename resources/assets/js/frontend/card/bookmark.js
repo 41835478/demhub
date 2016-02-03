@@ -1,4 +1,4 @@
-$(document).on('submit', 'form.bookmark', function(e){
+$(document).on('submit', 'form.js-bookmark', function(e){
     e.preventDefault();
     var bookmark_target = this;
     var span_target     = "#" + bookmark_target.id + " .js-bookmark-tag";
@@ -17,18 +17,18 @@ $(document).on('submit', 'form.bookmark', function(e){
             $(loader_target).show();
         },
         complete: function(jqHXR, status) {
-            $(loader_target).fadeOut(200);
+            $(loader_target).hide(200);
             if (unbookmark) {
                 bookmark_target.action = bookmark_target.action.replace(/unbookmark/g, "bookmark");
                 button_target = $(span_target).parent().removeClass('btn-greytone').addClass('btn-style-alt');
                 $(span_target).replaceWith(
-                    "<span class='js-bookmark-tag'><i class='glyphicon glyphicon-plus'></i> BOOKMARK</span>"
+                    "<span class='js-bookmark-tag glyphicon glyphicon-plus' aria-hidden='true'></span>"
                 );
             } else {
                 bookmark_target.action = bookmark_target.action.replace(/bookmark/g, "unbookmark");
                 button_target = $(span_target).parent().addClass('btn-greytone').removeClass('btn-style-alt');
                 $(span_target).replaceWith(
-                    "<span class='js-bookmark-tag'><i class='glyphicon glyphicon-ok'></i> UNBOOKMARK</span>"
+                    "<span class='js-bookmark-tag glyphicon glyphicon-ok' aria-hidden='true'></span>"
                 );
             }
         },
