@@ -1,29 +1,29 @@
-@if(! is_array($item) && get_class($item) == "App\Models\Publication")
-    <?php $pub = $item ?>
+@if((!is_array($item) && get_class($item) == "App\Models\Publication") || is_array($item) && isset($item['subclass']) && $item['subclass'] == 'publication')
+    {{-- TODO - Change form to remove model binding and deal with bookmarks as arrays --}}
+    <?php
+        $pub = $item;
+        if (is_array($item)) {
+            $pub = \App\Models\Publication::find($pub['id']);
+        }
+    ?>
     @if(Auth::user()->has_bookmarked_publication($pub))
-        {!! Form::model($pub, ['route' => ['unbookmark_publication', $pub->id],
-            'id' => "form-{$pub->id}", 'class' => 'js-bookmark', 'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']) !!}
-            {{-- <button type="submit" class="btn btn-greytone btn-sm" style="height: 30px; width: 120px">
-                <span class="bookmark-tag">
-                    <i class="glyphicon glyphicon-ok"></i> UNBOOKMARK
-                </span>
-                <div class="loader" style="display:none">Loading...</div>
-            </button> --}}
-            <button type="submit" class="btn btn-greytone btn-sm" style="width:34px; height:30px;" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite">
+        {!! Form::model(
+            $pub, ['route' => ['unbookmark_publication', $pub->id],
+            'id' => "form-{$pub->id}", 'class' => 'js-bookmark',
+            'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']
+        ) !!}
+            <button type="submit" class="btn btn-greytone btn-sm" style="width:34px; height:30px;">
                 <span class="js-bookmark-tag glyphicon glyphicon-ok" aria-hidden="true"></span>
                 <div class="js-loader loader" style="display:none;">Loading...</div>
             </button>
         {!! Form::close() !!}
     @else
-        {!! Form::model($pub, ['route' => ['bookmark_publication', $pub->id],
-            'id' => "form-{$pub->id}", 'class' => 'js-bookmark', 'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']) !!}
-            {{-- <button type="submit" class="btn btn-style-alt btn-sm" style="height: 30px; width: 120px">
-                <span class="bookmark-tag">
-                    <i class="glyphicon glyphicon-plus"></i> BOOKMARK
-                </span>
-                <div class="loader" style="display:none">Loading...</div>
-            </button> --}}
-            <button type="submit" class="btn btn-style-alt btn-sm" style="width:34px; height:30px;" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully removed from your favourite">
+        {!! Form::model(
+            $pub, ['route' => ['bookmark_publication', $pub->id],
+            'id' => "form-{$pub->id}", 'class' => 'js-bookmark',
+            'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']
+        ) !!}
+            <button type="submit" class="btn btn-style-alt btn-sm" style="width:34px; height:30px;">
                 <span class="js-bookmark-tag glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <div class="js-loader loader" style="display:none;">Loading...</div>
             </button>

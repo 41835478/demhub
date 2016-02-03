@@ -64,6 +64,8 @@
             <div class="form-group">
                 {!! Form::label(null, "DIVISION", ['class' => 'col-lg-3 control-label']) !!}
 
+                {{-- TODO - refactor this whole thing --}}
+
                 @if(!empty($user->division) && strpos($user->division, "|") === false)
                     <div class="col-lg-8">
                       {!! Form::text('division', $user->division, ['class' => 'form-control']) !!}
