@@ -7007,7 +7007,64 @@ else if (Imgheight <= winheight && Imgwidth >= winwidth){
     }
   // console.log(winwidth,winheight,Imgwidth,Imgheight);
 }
+//find the position of the node;
+$(function(){
+  $('.st3').click(function(){
+    var nodePosition = $(this).offset();
+    var nodeTop = nodePosition.top;
+    var nodeLeft = nodePosition.left;
+    var leftOffset = $(window).width()/2;
+    var modaloffset = $('.table-modal').width()/2;
+    var topwidth = $('#welcome_home').height();
 
+    var modalPosition = $('.table-modal');
+    modalPosition.css({
+      top:300,
+      top:nodeTop - topwidth,
+      left:nodeLeft - leftOffset + modaloffset
+    });
+    var svgID = $(this).attr('id');
+    console.log(svgID);
+    if(svgID === "XMLID_8"){
+      $('#map-img').attr("src").replace('images/landing-avatars/torrin.jpg');
+      $('#map-user').replaceWith('<li>Torrin Hona</li>');
+      $('#map-place').replaceWith('<li>new Zealand</li>');
+      $('#map-profession').replaceWith('<li>volunteer community Ambassador Disabilities strategy</li>');
+      $('#map-division').replaceWith('<li>EM Practitioner & Response</li>');
+    }
+    else if(svgID === "XMLID_1"){
+      $('#map-user').replaceWith('<li>Aldo Ruiz</li>');
+      $('#map-place').replaceWith('<li>Canada</li>');
+      $('#map-profession').replaceWith('<li>Programmer</li>');
+      $('#map-division').replaceWith('<li>Science & Environment</li>');
+    }
+    else if(svgID === "XMLID_15"){
+      $('#map-user').replaceWith('<li>Diana Wong</li>');
+      $('#map-place').replaceWith('<li>Australia</li>');
+      $('#map-profession').replaceWith('<li>Disaster Health Evaluation Consultant</li>');
+      $('#map-division').replaceWith('<li>Health & Epidemics</li>');
+    }
+    else if(svgID === "XMLID_13"){
+      $('#map-user').replaceWith('<li>Matt Feryan</li>');
+      $('#map-place').replaceWith('<li>USA</li>');
+      $('#map-profession').replaceWith('<li>Sr. Emergency Management Specialist</li>');
+      $('#map-division').replaceWith('<li>Em Practitioner & Response</li>');
+    }
+    else if(svgID === "XMLID_5"){
+      $('#map-user').replaceWith('<li>Deb Borsos</li>');
+      $('#map-place').replaceWith('<li>Canada</li>');
+      $('#map-profession').replaceWith('<li>ESS Director, rural Recovery work</li>');
+      $('#map-division').replaceWith('<li>Science & Environment</li>');
+    }
+    else{
+        $('#map-img').attr("src").replace('images/avatars/thumb/missing.png');
+        $('#map-user').replaceWith('<li>Your Profile</li>');
+        $('#map-place').replaceWith('<li></li>');
+        $('#map-profession').replaceWith('<li></li>');
+        $('#map-division').replaceWith('<li></li>');
+    }
+  });
+});
 //node js. change color and opacity.
 $(function() {
 $('.st3').mouseover(function(){
@@ -7023,27 +7080,8 @@ $('.st3').mouseover(function(){
   });
 });
 
-var nodeLeft = null;
-var nodeTop = null;
-
-if ($('#XMLID_36_').offset()) {
-  nodeLeft = $('#XMLID_36_').offset().left;
-  nodeTop = $('#XMLID_36_').offset().top;
-}
-
-$('.svg-modal'). css ('margin-top',nodeTop);
-$(function() {
-      $('a').mouseenter(function() {
-            $('circle', this).attr('fill', '#000');
-      }).mouseleave(function() {
-            $('circle', this).attr('fill', '#000');
-      });
-});
 
 $(document).ready(function(){
-    // $("#DropDown_division").click(function(){
-    //
-    // });
     responsiveImg();
 });
 

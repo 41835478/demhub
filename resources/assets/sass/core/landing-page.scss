@@ -129,6 +129,7 @@ option {
       display: inline-block;
       overflow: hidden;
       height: 100%;
+      vertical-align: middle;
     }
     //image ul
     ul:first-child{
@@ -137,6 +138,8 @@ option {
       img {
         width: 100%;
         height:auto;
+        top:auto;
+        left:auto;
       }
     }
     //information ul
@@ -208,8 +211,9 @@ option {
     //information ul
     ul:nth-child(2){
       width:20%;
-      li:first-child{
-                  background-color: red;
+      min-width: 40px;
+      text-align: left;
+      -webkit-padding-start:0 !important;
         button {
           float:left;
           -webkit-appearance: none;
@@ -221,10 +225,7 @@ option {
           padding:10px auto 10px auto;
         }
       }
-      li:nth-child(2), li:nth-child(3) {
 
-      }
-    }
   li {
     list-style: none;
     font-size: 0.7em;
@@ -425,9 +426,17 @@ margin-top:25px !important;
     margin-top:-40px;
     background:#35474F;
     display: block;
+    ul{
+      overflow: hidden;
+    }
+    img {
+      max-width: 70px;
+      max-height: 70px;
+    }
   }
-  #welcome_about{
+  #welcome_svg{
     margin-top:90vh;
+    display: block;
   }
   .ajax-selector{
 

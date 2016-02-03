@@ -107,8 +107,6 @@ svg * {
   border-radius: 0 !important;
   width:30vw;
   min-width: 400px;
-  margin-top:100%;
-  max-width: 550px;
   position: absolute;
 }
 /* Custom */
@@ -166,6 +164,9 @@ svg * {
   }
   #hi-there{
     margin-top:500px;
+  }
+  #welcome_svg{
+    margin-top:90vh;
   }
 }
 

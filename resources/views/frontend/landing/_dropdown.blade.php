@@ -40,7 +40,7 @@ function limitWords(textToLimit, wordLimit)
 
     $.each(index.content.users, function( i, val ) {
       val = jQuery.parseJSON(val);
-      $container1.append( "<div><ul>" + "<img src='" + val.profileImage + "'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
+      $container1.append( "<div><ul>" + "<img src='" + val.profileImage + "'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li><button> FOLLOW </button></li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
     });
     $.each(index.content.news, function( i, val ) {
       val = jQuery.parseJSON(val);
@@ -117,12 +117,7 @@ function limitWords(textToLimit, wordLimit)
           $container2.append( "<div><ul><li>"+ limit + "</li><li>" + news.date +"</li><li>"  + tag + "</li><li>" + news.division + "</li></ul>" + "<ul><li> <button> SHARE </button> </li><ul></div>");
     });
   };
-  // updateTableNews = function (val) {
-  //         // original was i < collaction.length
-  //         $container2.empty().hide(0).delay(200).fadeIn(700);
-  //         val = jQuery.parseJSON(val);
-  //         container2.append(val);
-  //     };
+
   //     updateTableNews = function (collaction) {
   //       $container1.empty().hide(0).delay(200).fadeIn(700);
   //         for (var i = 0; i < 2; i++) {
