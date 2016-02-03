@@ -87,12 +87,15 @@
             <?php
                 if ($item['subclass']=='article'){
                     $parse=parse_url($item['url']);
-                    $host=$parse['host'];
-                    $host=substr($host,4);
+                    if(isset($parse['host'])){
+                        $host=$parse['host'];
+                        $host=substr($host,4);
 
-                    if (substr_count($host,".") <= 1){
-                        echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                        if (substr_count($host,".") <= 1){
+                            echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                        }
                     }
+
                 }
             ?>
         </span>
