@@ -3,7 +3,7 @@
 
     if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
     elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);}
-    
+
     $width = 100;
     if(count($item['divisions']) > 0) {
         $width = 100 / count($item['divisions']);
