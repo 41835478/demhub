@@ -96,7 +96,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function divisions()
 	{
-		if(strpos($this->division, "|") !== false){
+		if(!is_array($this->division) && strpos($this->division, "|") !== false){
 			$divisions = [];
 			if (isset($this->division)) {
 					foreach (array_filter(preg_split("/\|/", $this->division)) as $divId) {
