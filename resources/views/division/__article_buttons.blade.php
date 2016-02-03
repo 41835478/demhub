@@ -9,9 +9,9 @@
                 </span>
                 <div class="loader" style="display:none">Loading...</div>
             </button> --}}
-            <button type="submit" class="btn btn-greytone btn-sm" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite">
+            <button type="submit" class="btn btn-greytone btn-sm" style="width:34px; height:30px;" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully added to your favourite">
                 <span class="js-bookmark-tag glyphicon glyphicon-ok" aria-hidden="true"></span>
-                <div class="js-loader loader" style="display:none">Loading...</div>
+                <div class="js-loader loader" style="display:none;">Loading...</div>
             </button>
         {!! Form::close() !!}
     @else
@@ -23,9 +23,9 @@
                 </span>
                 <div class="loader" style="display:none">Loading...</div>
             </button> --}}
-            <button type="submit" class="btn btn-style-alt btn-sm" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully removed from your favourite">
+            <button type="submit" class="btn btn-style-alt btn-sm" style="width:34px; height:30px;" aria-label="Left Align" data-toggle="popover" data-content="Feed successfully removed from your favourite">
                 <span class="js-bookmark-tag glyphicon glyphicon-plus" aria-hidden="true"></span>
-                <div class="js-loader loader" style="display:none">Loading...</div>
+                <div class="js-loader loader" style="display:none;">Loading...</div>
             </button>
         {!! Form::close() !!}
     @endif
