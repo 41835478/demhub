@@ -1,10 +1,12 @@
-.alert {
-  margin: 50px 0 0 0 !important;
+#alert-container{
+  position: fixed;
+  top: 50px;
+  z-index: 9999;
+  width: 600px;
+  left: 50%;
+  margin-left: -300px;
 }
 
-.userhome-body .alert {
-  margin: -48px 0 0 0 !important;
-}
 .userhome-body .wrapper {
   min-height: 31%;
 }

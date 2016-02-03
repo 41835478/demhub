@@ -38,8 +38,11 @@
         @include('modals._feedback_thankyou')
       @endif
 
-      @include('frontend.navigation._navigation')
+      @include('frontend.navigation._navbar')
+      {{--@include('frontend.navigation._navigation')--}}
+
       @include('includes.partials.messages')
+
       <div style="overflow-x:hidden;"
         @if(Request::url() == url('dashboard') || Request::url() == url('') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
           class="@yield('container-class') container-fluid"

@@ -21,7 +21,7 @@
     ?>
 
     <div class = "feedsbox-teaser">
-      <div class="col-xs-1" style="height: 180px;margin-left:-15px;max-width:30px">
+      <div class="col-xs-1" style="height: 145px;margin-left:-15px;max-width:30px">
       @forelse($item['divisions'] as $slug => $div)
         <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
           data-toggle="tooltip" data-placement="top" title="{{$div}}">
@@ -137,23 +137,23 @@
       		    @endforeach
     		  @endif
         </div>
-        <div style="width:100%; height:42px; top:140px; position:absolute;">
-          @include('division.__article_buttons')
-
-          <div style="float:right;padding-right:8px;position:absolute;right:0px;top:0px;">
-            <?php  $uploader=$author=Helpers::uploader($item); ?>
-
-            @if (! empty($author))
-            <a href="{{'profile/'.$author->user_name}}">
-              <span>{{$author->full_name()}}<span>
-              <img class="img-circle" style="height:35px;width:35px;" src="{{$author->avatar->url('thumb')}}">
-            </a>
-            @endif
-          </div>
-
-        </div>
 
       </div>
+        <div style="width:100%; position:absolute; bottom: 0; padding: 10px 15px">
+            @include('division.__article_buttons')
+
+            <div style="float:right;padding-right:8px;position:absolute;right:0px;top:8px;">
+                <?php  $uploader=$author=Helpers::uploader($item); ?>
+
+                @if (! empty($author))
+                <a href="{{'profile/'.$author->user_name}}">
+                      <span>{{$author->full_name()}}<span>
+                      <img class="img-circle" style="height:35px;width:35px;" src="{{$author->avatar->url('thumb')}}">
+                </a>
+                @endif
+            </div>
+
+        </div>
 
       </div>
     </div>
