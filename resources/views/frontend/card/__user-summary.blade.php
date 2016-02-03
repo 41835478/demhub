@@ -1,13 +1,22 @@
 <div class = "col-xs-12 col-sm-6 col-md-4">
   <div class="peoplebox">
     <?php
-      $width = 100;
-      if(count($item->division) > 0) {
-          $width = 100 / count($item->division);
-      }
+    $width = 100;
+    if(count($item->division) > 0) {
+        $width = 100 / count($item->division);
+    }
     ?>
 
-    @if($item->divisions() == NULL)
+    @if($item->divisions() == NULL && strpos(Request::url(), "search")==false)
+      @forelse($user->division as $slug => $div)
+        <div class="color-label division_{{$slug}} col-xs-6"
+            style="width:{{$width}}%; margin:0;"
+            data-toggle="headsup" data-placement="top" title="{{$div}}">
+        </div>
+      @empty
+      <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
+      @endforelse
+    @elseif($item->divisions() == NULL)
       <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
     @else
       @foreach($item->divisions() as $slug => $div)
