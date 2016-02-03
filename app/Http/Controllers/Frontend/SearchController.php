@@ -24,7 +24,7 @@ class SearchController extends Controller
         $page       = $request->input('page', 1);
         $scope      = $request->input('scope', 'all');
         $division   = $request->input('division', 'all');
-        $db_page = $page - 1;
+        $db_page    = $page - 1;
 
         $articleResults     = array();
         $userResults        = array();
@@ -43,31 +43,31 @@ class SearchController extends Controller
             $articleQuery = [
                 'multi_match' => [
                     'query' => $query_term,
-                    'fields' => ['title', 'excerpt', 'keywords', 'source_url'],
+                    'fields' => ['name', 'description', 'keywords', 'url'],
                 ],
             ];
             $userQuery = [
                 'multi_match' => [
                     'query' => $query_term,
-                    'fields' => ['first_name', 'last_name', 'email', 'organization_name', 'division', 'specializaiton', 'location'],
+                    'fields' => ['first_name', 'last_name', 'email', 'organization_name', 'specializaiton', 'location'],
                 ],
             ];
             $publicationQuery = [
                 'multi_match' => [
                     'query' => $query_term,
-                    'fields' => ['title', 'description', 'publisher', 'institution', 'conference'],
+                    'fields' => ['name', 'description', 'data', 'keywords'],
                 ],
             ];
             $discussionQuery = [
                 'multi_match' => [
                     'query' => $query_term,
-                    'fields' => ['title'],
+                    'fields' => ['name', 'keywords'],
                 ],
             ];
             $resourceQuery = [
                 'multi_match' => [
                     'query' => $query_term,
-                    'fields' => ['name', 'url', 'country', 'region', 'divisions', 'keywords'],
+                    'fields' => ['name', 'keywords', 'url', 'country', 'state', 'divisions', ''],
                 ],
             ];
 
