@@ -2,6 +2,8 @@
 use App\Http\Components\Helpers;
 use App\Models\Division;
 if(! isset($item)) { $item=null; };
+
+// Content model
 if (!is_array($item) && get_class($item) == 'content') {
     $array = [
       'id'            => $item->id,
@@ -65,30 +67,47 @@ if (!is_array($item) && get_class($item) == 'content') {
         break;
     }
   }
+  // User model
+  elseif (!is_array($item) && get_class($item) == 'user') {
+      //do nothing
+  }
   // Elastic search result
-  elseif(! empty($item) || is_array($item)) {
+  elseif(! empty($item) || ($item['subclass']=='infoResource')) {
       $divisions = array();
-      foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
-          $div = Division::findOrFail($divID);
+      dd($item['divisions']);
+      $divSlugs=str_replace(' ', '', $item['divisions']);
+      $divSlugs=strtolower($divSlugs);
+      $divSlugs=array_filter(preg_split("/\,/", $divSlugs));
+      foreach ($divSlugs as $divSlug) {
+          $div = Division::where('slug','=',$divSlug)->first();
           $divisions[$div->slug] = $div->name;
       }
       $item['divisions'] = $divisions;
       $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
 
   }
+  elseif(! empty($item) || is_array($item)) {
+     $divisions = array();
+     foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
+         $div = Division::findOrFail($divID);
+         $divisions[$div->slug] = $div->name;
+     }
+     $item['divisions'] = $divisions;
+     $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
+
+ }
 ?>
 
 @if((!is_array($item) && get_class($item) == 'content') || (isset($item['subclass'])))
-  @if(isset($type) && $type == 'teaser')
-    @include('frontend.card.__content-teaser')
-  @else
-    @include('frontend.card.__content-summary')
-  @endif
+    @if(isset($type) && $type == 'teaser')
+        @include('frontend.card.__content-teaser')
+    @else
+        @include('frontend.card.__content-summary')
+    @endif
 @else
-
-  @if(isset($type) && $type == 'teaser')
-    @include('frontend.card.__user-teaser')
-  @else
-    @include('frontend.card.__user-summary')
-  @endif
+    @if(isset($type) && $type == 'teaser')
+        @include('frontend.card.__user-teaser', ['user'=>$item])
+    @else
+        @include('frontend.card.__user-summary', ['user'=>$item])
+    @endif
 @endif
