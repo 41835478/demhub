@@ -7118,6 +7118,8 @@ $(document).on('submit', 'form.js-bookmark', function(e){
             $(loader_target).show();
         },
         complete: function(jqHXR, status) {
+            // TODO - Add feedback for user to confirm that action was completed
+            // something similar to a 
             $(loader_target).hide();
             if (unbookmark) {
                 bookmark_target.action = bookmark_target.action.replace(/unbookmark/g, "bookmark");

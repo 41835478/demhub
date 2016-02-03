@@ -1,10 +1,25 @@
 <div class = "col-xs-12 col-sm-8 col-md-8">
   <div class="peoplebox-teaser">
-
-    <div class="col-xs-10 col-xs-offset-1 inner-feedsbox">
+    <?php
+    $height = 100;
+    if(count($item->division) > 0) {
+        $height = 100 / count($item->division);
+    }; ?>
+    <div class="col-xs-1" style="height: 140px;margin-left:-15px;max-width:30px;margin-top:-15px">
+        @forelse($item->division as $slug => $div)
+            <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
+            data-toggle="tooltip" data-placement="top" title="{{$div}}">
+            </div>
+        @empty
+            <div style="height:100%;" class="color-label-vertical division_all"
+            data-toggle="tooltip" data-placement="top" title="All Divisions">
+            </div>
+        @endforelse
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 inner-peoplebox">
       <div class="col-xs-1">
         <div class="" style="">
-          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:135x;max-width:135px;margin-top:-8px;margin-left:-25px']) !!}
+          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:110px;max-width:110px;margin-top:-8px;margin-left:-25px']) !!}
         </div>
       </div>
       <div class="col-xs-5 col-xs-offset-3" style="text-align:left;">
@@ -21,26 +36,7 @@
         {{$user->location}}
       </p>
 
-      <div class="form-group">
 
-          @if(!empty($user->division) && strpos($user->division, "|") === false)
-                <p style="color:#999"> {{$user->division}} </p>
-          @elseif(!empty($user->division))
-
-            <?php $divisions = $user->divisions(); ?>
-
-            @if(count($divisions) > 2)
-              @include('frontend.user.__user-division-color-dropup-foreach')
-            @elseif(count($divisions) <3)
-              @foreach($divisions as $divSlug => $divName)
-                <img style="width:12px;height:12px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-square img-responsive division_{{ $divSlug }}">
-                <span class="division-text_{{$divSlug}}">{{$divName}}</span>
-              @endforeach
-            @endif
-
-          @endif
-
-      </div>
       </div>
       <div class="col-xs-2" style="text-align:center;padding-left:32px">
       <div style="margin: 0 auto; width:100%; height:40px; position:absolute;">

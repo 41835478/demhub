@@ -1,22 +1,36 @@
 <div class = "col-xs-12 col-sm-6 col-md-4">
   <div class="peoplebox">
+    <?php
+    $width = 100;
+    if(count($item->division) > 0) {
+        $width = 100 / count($item->division);
+    }
+    ?>
 
-
-    <div class="inner-feedsbox" style="text-align:center;">
-      <div class="row">
-        <div class="col-xs-4" style="padding-top:20px;">
-          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:95px;max-width:80px']) !!}
-          {!! HTML::image('http://www.demhub.net/system/App/Models/Access/User/User/avatars/000/000/012/medium/chimp transparent backgroung.jpg', '$user->avatar_file_name', ['class' => "img-circle", 'style' => 'max-height:25px;visibility:hidden']) !!}
-          {{-- $user->avatar->url('medium'); --}}
+    @forelse($item->division as $slug => $div)
+        <div class="color-label division_{{$slug}} col-xs-6"
+            style="width:{{$width}}%; margin:0;"
+            data-toggle="headsup" data-placement="top" title="{{$div}}">
         </div>
+    @empty
+        <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
+    @endforelse
+
+    <div class="inner-peoplebox" style="text-align:center;">
+      <div class="row" style="padding-top:20px;">
+        {{-- <div class="col-xs-4" style="padding-top:20px;"> --}}
+          {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:95px;max-width:80px;margin: 0 auto']) !!}
+
+          {{-- $user->avatar->url('medium'); --}}
+        {{-- </div> --}}
 
         <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
           <h3>  {{$user->full_name()}}  </h3>
         </a>
 
-        <p class="main-orange" style="margin-bottom:0px;display:inline-block;text-align:right">{{$user->job_title}}</p>
+        <p class="main-orange" style="margin-bottom:0px;display:inline-block">{{$user->job_title}}</p>
         @if ($user->organization_name)
-          <p class="main-orange" style="display:inline-block;text-align:right"><span style="text-transform:lowercase">at</span> {{$user->organization_name}}</p>
+          <p class="main-orange" style="display:inline-block;"><span style="text-transform:lowercase">at</span> {{$user->organization_name}}</p>
         @endif
 
         <p class="col-sm-offset-3" style="color:#999">
@@ -32,7 +46,7 @@
           <h3 style="margin-bottom:0px">{{count($user->publications())-1}}</h3>
           <p style="color:#999">publications</p>
         </div>
-        <div class="col-xs-4" style="padding-top:20px;padding-left:5px;">
+        <div class="col-xs-4" style="padding-top:20px;padding-left:0px;">
           @if(Auth::user()->is_following($user))
             {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
               {!! Form::token() !!}
@@ -73,37 +87,7 @@
         @endif
       </div>
 
-      <div class="row">
-
-      </div>
-
-
-
-
-      <div style="margin: 0 auto;width:100%; bottom:0px; position:absolute;">
-        <div class="form-group">
-
-            @if(!empty($user->division) && strpos($user->division, "|") === false)
-                  <p style="color:#999"> {{$user->division}} </p>
-            @elseif(!empty($user->division))
-
-              <?php $divisions = $user->divisions(); ?>
-
-              @if(count($divisions) > 2)
-                @include('frontend.user.__user-division-color-dropup-foreach')
-              @elseif(count($divisions) <3)
-                @foreach($divisions as $divSlug => $divName)
-
-                  <img style="width:12px;height:12px;margin-top:-3px;display:inline" src="/images/backgrounds/patterns/alpha_layer.png" class="img-square img-responsive division_{{ $divSlug }}">
-                  <span class="division-text_{{$divSlug}}">{{$divName}}</span>
-                @endforeach
-
-              @endif
-              @else
-            @endif
-
-        </div>
-      </div>
+    
 
     </div> <!-- the div that closes the inner-feedsbox -->
 
