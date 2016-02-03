@@ -64,22 +64,22 @@ class SearchController extends Controller
                 ],
             ];
 
-            if ($scope == 'all') {
-                $articleResults     = Search::queryArticles($page, $size, $articleQuery);
-                $userResults        = Search::queryUsers($page, $size, $userQuery);
-                $publicationResults = Search::queryPublications($page, $size, $publicationQuery);
-                $discussionResults  = Search::queryDiscussions($page, $size, $discussionQuery);
-                $resourceResults    = Search::queryResources($page, $size, $resourceQuery);
-            } elseif ($scope == 'users') {
-                $items = Search::queryArticles($page, $size, $articleQuery);
+            if ($scope == 'users') {
+                $items = Search::queryUsers($page, $size, $userQuery);
             } elseif ($scope == 'articles') {
-                $items = Search::queryArticles($page, $size, $userQuery);
+                $items = Search::queryArticles($page, $size, $articleQuery);
             } elseif ($scope == 'publications') {
                 $items = Search::queryPublications($page, $size, $publicationQuery);
             } elseif ($scope == 'discussions') {
                 $items = Search::queryDiscussions($page, $size, $discussionQuery);
             } elseif ($scope == 'resources') {
                 $items = Search::queryResources($page, $size, $resourceQuery);
+            }else {
+                $articleResults     = Search::queryArticles($page, $size, $articleQuery);
+                $userResults        = Search::queryUsers($page, $size, $userQuery);
+                $publicationResults = Search::queryPublications($page, $size, $publicationQuery);
+                $discussionResults  = Search::queryDiscussions($page, $size, $discussionQuery);
+                $resourceResults    = Search::queryResources($page, $size, $resourceQuery);
             }
         } else {
             $articleResults     = Search::queryArticles($page, $size);
@@ -111,12 +111,13 @@ class SearchController extends Controller
                 'searchBar', 'queryTerm', 'scope', 'allDivisions',
             ]));
         } else {
+            $items     = Search::queryArticles($page, $size);
             $totalCount = isset($items['total']) ? $items['total'] : 0;
             $items      = Search::formatElasticSearchToArray($items['hits']);
 
             return view('frontend.search.results', compact([
                 'items', 'totalCount',
-                'searchBar', 'queryTerm', 'scope', 'division', 'divisions',
+                'searchBar', 'queryTerm', 'scope', 'division', 'divisions', 'page'
             ]));
         }
     }

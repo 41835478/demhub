@@ -7118,7 +7118,7 @@ $(document).on('submit', 'form.js-bookmark', function(e){
             $(loader_target).show();
         },
         complete: function(jqHXR, status) {
-            $(loader_target).fadeOut(200);
+            $(loader_target).hide();
             if (unbookmark) {
                 bookmark_target.action = bookmark_target.action.replace(/unbookmark/g, "bookmark");
                 button_target = $(span_target).parent().removeClass('btn-greytone').addClass('btn-style-alt');

@@ -1119,7 +1119,7 @@ svg * {
 }
 
 .nav-top-adjust {
-  padding-top: 20px;
+  padding-top: 16px;
 }
 
 .navbar-nav > li > a {
@@ -3808,7 +3808,7 @@ button.btn-greytone:active {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 0px 5px 5px 0px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative;
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -3819,7 +3819,7 @@ button.btn-greytone:active {
 .box {
   margin: 10px 15px 5px 15px;
   padding: 15px 20px 5px 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative;
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
@@ -3864,7 +3864,7 @@ li.active-border {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd;
   float: left;
   position: relative;
   text-transform: capitalize;
