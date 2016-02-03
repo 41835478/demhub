@@ -11,15 +11,23 @@
 
                     <p style="display:inline;">{{ $pub->name }}</p>
                     @if(Auth::user()->has_bookmarked_publication($pub))
-                        {!! Form::model($pub, ['route' => ['unbookmark_publication', $pub->id], 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
-                            <button type="submit" class="btn btn-greytone btn-sm">
-                                <i class="glyphicon glyphicon-ok"></i> UNBOOKMARK
+                        {!! Form::model($pub, ['route' => ['unbookmark_publication', $pub->id],
+                            'id' => "form-{$pub->id}", 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
+                            <button type="submit" class="btn btn-greytone btn-sm" style="height: 30px; width: 120px">
+                                <span class="bookmark-tag">
+                                    <i class="glyphicon glyphicon-ok"></i> UNBOOKMARK
+                                </span>
+                                <div class="loader" style="display:none">Loading...</div>
                             </button>
                         {!! Form::close() !!}
                     @else
-                        {!! Form::model($pub, ['route' => ['bookmark_publication', $pub->id], 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
-                            <button type="submit" class="btn btn-style-alt btn-sm">
-                                <i class="glyphicon glyphicon-plus"></i> BOOKMARK
+                        {!! Form::model($pub, ['route' => ['bookmark_publication', $pub->id],
+                            'id' => "form-{$pub->id}", 'class' => 'bookmark', 'role' => 'form', 'method' => 'POST']) !!}
+                            <button type="submit" class="btn btn-style-alt btn-sm" style="height: 30px; width: 120px">
+                                <span class="bookmark-tag">
+                                    <i class="glyphicon glyphicon-plus"></i> BOOKMARK
+                                </span>
+                                <div class="loader" style="display:none">Loading...</div>
                             </button>
                         {!! Form::close() !!}
                     @endif
