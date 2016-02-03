@@ -1,4 +1,4 @@
-<?php $url = url('search', ['scope'=>$scope]); ?>
+<?php $url = url('search').'?scope='.$scope.'&query_term='.$queryTerm; ?>
 <div class="container-fluid card-subtle">
 
     <div class="row">
@@ -13,7 +13,8 @@
             </a>
         </div>
     </div>
-    
+
+    @if($totalCount > 0)
     <div class="row">
         @for($i=0; $i<2; $i++)
             @if(isset($results[$i]))
@@ -34,5 +35,5 @@
             <a href="{{$url}}" class="btn btn-danger pull-right">View All</a>
         </div>
     </div>
-
+    @endif
 </div>

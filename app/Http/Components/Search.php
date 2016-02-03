@@ -84,7 +84,7 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryUsers($page = 0, $size = 30, $query = ["match_all" => []]) {
+  public static function queryUsers($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
     $params = [
         'index' => 'access',
         'type' => 'users',
@@ -110,7 +110,7 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []]) {
+  public static function queryPublications($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
       $filter = [
         'and' => [
             ['term' => ['deleted' => 0]],
@@ -208,7 +208,7 @@ class Search
   * @param  integer $page
   * @return JSON
   */
-  public static function queryResources($page = 0, $size = 30, $query = ["match_all" => []]) {
+  public static function queryResources($page = 0, $size = 30, $query = ["match_all" => []], $divID = NULL) {
     $params = [
         'index' => 'info',
         'type' => 'resources',

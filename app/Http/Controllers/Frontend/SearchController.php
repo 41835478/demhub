@@ -32,6 +32,13 @@ class SearchController extends Controller
         $discussionResults  = array();
         $resourceResults    = array();
 
+        $divisions = Division::all();
+        $div_id = null;
+        foreach($divisions as $div){
+            if($div->slug == $division)
+                $div_id = $div->id;
+        }
+
         if (trim($options_query) != '') {
             $articleQuery = [
                 'multi_match' => [
@@ -65,15 +72,15 @@ class SearchController extends Controller
             ];
 
             if ($scope == 'users') {
-                $items = Search::queryUsers($page, $size, $userQuery);
+                $items = Search::queryUsers($page, $size, $userQuery, $div_id);
             } elseif ($scope == 'articles') {
-                $items = Search::queryArticles($page, $size, $articleQuery);
+                $items = Search::queryArticles($page, $size, $articleQuery, $div_id);
             } elseif ($scope == 'publications') {
-                $items = Search::queryPublications($page, $size, $publicationQuery);
+                $items = Search::queryPublications($page, $size, $publicationQuery, $div_id);
             } elseif ($scope == 'discussions') {
-                $items = Search::queryDiscussions($page, $size, $discussionQuery);
+                $items = Search::queryDiscussions($page, $size, $discussionQuery, $div_id);
             } elseif ($scope == 'resources') {
-                $items = Search::queryResources($page, $size, $resourceQuery);
+                $items = Search::queryResources($page, $size, $resourceQuery, $div_id);
             }else {
                 $articleResults     = Search::queryArticles($page, $size, $articleQuery);
                 $userResults        = Search::queryUsers($page, $size, $userQuery);

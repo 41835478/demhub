@@ -31,7 +31,7 @@
         <div class="row">
             @foreach($divisions as $div)
                 <div class="col-xs-4 col-sm-2">
-                    <a href="{{ url('search', ['scope'=>$scope, 'query_term'=>$queryTerm, 'division'=>$div->slug, 'page'=>$page]) }}">
+                    <a href="{{ url('search').'?scope='.$scope.'&query_term='.$queryTerm.'&division='.$div->slug }}">
                         <h5 class="search-division division_{{$div->slug}} @if($div->slug==$division) active @endif">
                             {{$div->slug}}
                         </h5>
