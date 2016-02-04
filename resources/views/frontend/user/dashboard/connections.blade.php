@@ -4,7 +4,7 @@
   <section class="row">
 
     <!-- Begin: Content -->
-    <div class="col-sm-offset-2">
+    <div class="col-sm-offset-1 col-md-offset-3">
       <a type="button" class="btn btn-style-alt" href="{{ route('profiles') }}"><span class="fa fa-users"></span> DEMHUB NETWORK</a>
 
       <div class="row" style="">

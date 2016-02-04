@@ -1,4 +1,4 @@
-<div class = "col-xs-12 col-sm-8 col-md-8">
+
   <div class="peoplebox-teaser">
     <?php
     $height = 100;
@@ -73,4 +73,3 @@
     </div> <!-- the div that closes the inner-feedsbox -->
 
   </div> <!-- the div that closes the peoplebox -->
-</div>
