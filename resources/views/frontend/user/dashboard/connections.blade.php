@@ -10,9 +10,11 @@
       <div class="row" style="">
 
         @foreach($users as $index => $item)
+          <div class="col-xs-12 col-sm-6 col-md-4">
           @include('frontend.card._card')
+          </div>
         @endforeach
-      </div>
+
     </div>
   </section>
 

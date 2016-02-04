@@ -18,7 +18,7 @@
     <div class="row">
         @for($i=0; $i<2; $i++)
             @if(isset($results[$i]))
-                <div class="col-xs-12 col-sm-5">
+                <div class="col-xs-12 col-sm-6">
                     @include('frontend.card._card', ['item'=>$results[$i], 'type'=>'summary'])
                 </div>
             @endif

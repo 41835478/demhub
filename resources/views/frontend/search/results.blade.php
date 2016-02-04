@@ -24,10 +24,7 @@
                 box_height = $(this).height();
         });
         $('.feedsbox').css('height', box_height);
-        $('.peoplebox').each(function(index){
-            if($(this).height() > box_height)
-                box_height = $(this).height();
-        });
+        
 
     });
 </script>

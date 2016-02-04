@@ -1,4 +1,4 @@
-<div class = "col-xs-12 col-sm-6 col-md-4">
+
   <div class="peoplebox">
     <?php
       $width = 100;
@@ -103,4 +103,3 @@
     </div> <!-- the div that closes the inner-feedsbox -->
 
   </div> <!-- the div that closes the peoplebox -->
-</div>
