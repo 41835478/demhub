@@ -134,7 +134,7 @@
             @include('division.__article_buttons')
 
             <div style="float:right;padding-right:8px;position:absolute;right:0px;top:8px;">
-                <?php $uploader = $author = Helpers::uploader($item); ?>
+                <?php  ($item['subclass']=='article') ? : $author=Helpers::uploader($item); ?>
 
                 @if (!empty($author))
                     <a href="{{'profile/'.$author->user_name}}">
