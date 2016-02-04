@@ -114,6 +114,7 @@ class ForumController extends BaseController
 					return Redirect::to($this->collections['category']->newThreadRoute)->withInput();
 			}
 	}
+	
 	// public function showDiscussionIndex(){
 //
 // 		return view('vendor.forum.index', [

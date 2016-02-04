@@ -187,7 +187,7 @@ $("select#region").change(function(){
 if (($("select#region").val()) !== null){
   var filterVar = $("select#region").val();
   var region = filterVar.toLowerCase();
-  region = region.replace(/ -/g,"_");
+  region = region.replace(/-/g,"_");
 
   // var list =document.getElementsByClassName(country);
 
