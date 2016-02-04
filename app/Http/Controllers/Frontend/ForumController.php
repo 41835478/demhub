@@ -82,7 +82,7 @@ class ForumController extends BaseController
 	public function postModCreateThread()
 	{
 			$user = Utils::getCurrentUser();
-
+            
 
 			$thread_valid = Validation::check('thread');
 			$post_valid = Validation::check('post');
@@ -114,7 +114,7 @@ class ForumController extends BaseController
 					return Redirect::to($this->collections['category']->newThreadRoute)->withInput();
 			}
 	}
-	
+
 	// public function showDiscussionIndex(){
 //
 // 		return view('vendor.forum.index', [
