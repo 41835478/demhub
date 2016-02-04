@@ -2,19 +2,21 @@
   <div class="peoplebox-teaser">
     <?php
     $height = 100;
-    if(count($item->division) > 0) {
-        $height = 100 / count($item->division);
+    if(count($user->division) > 0) {
+        $height = 100 / count($user->division);
     }; ?>
     <div class="col-xs-1" style="height: 140px;margin-left:-15px;max-width:30px;margin-top:-15px">
-        @forelse($item->division as $slug => $div)
+        @if($user->divisions() == NULL)
+          <div style="height:100%;" class="color-label-vertical division_all"
+          data-toggle="tooltip" data-placement="top" title="All Divisions">
+          </div>
+        @else
+          @foreach($user->divisions() as $slug => $div)
             <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
             data-toggle="tooltip" data-placement="top" title="{{$div}}">
             </div>
-        @empty
-            <div style="height:100%;" class="color-label-vertical division_all"
-            data-toggle="tooltip" data-placement="top" title="All Divisions">
-            </div>
-        @endforelse
+          @endforeach
+        @endif
     </div>
     <div class="col-xs-10 col-xs-offset-1 inner-peoplebox">
       <div class="col-xs-1">
