@@ -1955,6 +1955,7 @@ button.btn-greytone:active {
   color: white;
   padding: 15px 0 0 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -3880,7 +3881,7 @@ button.btn-greytone:active {
   height: 375px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
-  padding: 0px 5px 5px 0px;
+  padding: 0px 5px -5px 0px;
   border: 1px solid #ddd;
   float: left;
   position: relative;

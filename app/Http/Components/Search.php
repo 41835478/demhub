@@ -88,7 +88,7 @@ class Search
       $filter = array();
       if ($divID != NULL) {
           // Add the division id as one of the "AND" filters
-          $filter['and'] = ['term' => ['divisions' => $divID]];
+          $filter['term'] = ['division' => $divID];
       }
 
       $params = [

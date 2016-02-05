@@ -206,22 +206,16 @@ option {
   display: inline-block;
   overflow: hidden;
   height: 100%;
-  vertical-align: middle;
 }
 
 .table-details1 ul:first-child {
   width: 20%;
-  height: 100%;
   float: left;
-  overflow-y: hidden;
 }
 
 .table-details1 ul:first-child img {
   width: 100%;
-  max-height: 90%;
-  height: 90%;
-  top: auto;
-  left: auto;
+  height: auto;
 }
 
 .table-details1 ul:nth-child(2) {
@@ -298,12 +292,13 @@ option {
 
 .table-details2 ul:nth-child(2) {
   width: 20%;
-  min-width: 40px;
-  text-align: left;
-  -webkit-padding-start: 0 !important;
 }
 
-.table-details2 ul:nth-child(2) button {
+.table-details2 ul:nth-child(2) li:first-child {
+  background-color: red;
+}
+
+.table-details2 ul:nth-child(2) li:first-child button {
   float: left;
   -webkit-appearance: none;
   background-color: #638395;
@@ -517,18 +512,8 @@ option {
     display: block;
   }
 
-  .card-ajax ul {
-    overflow: hidden;
-  }
-
-  .card-ajax img {
-    max-width: 70px;
-    max-height: 70px;
-  }
-
-  #welcome_svg {
+  #welcome_about {
     margin-top: 90vh;
-    display: block;
   }
 }
 
@@ -884,67 +869,14 @@ svg * {
   position: relative;
 }
 
-.circlelayer {
-  position: relative;
-}
-
-.landingmodal {
-  display: none;
-  /* Hidden by default */
-  position: absolute;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  width: 500px;
-  min-width: 450px;
-  height: auto;
-  overflow: hidden;
-  /* Enable scroll if needed */
-}
-
 .table-modal {
-  border-radius: 0 !important;
   padding-top: 20px;
-  padding-bottom: 20px;
+  border-radius: 0 !important;
+  width: 30vw;
   min-width: 400px;
+  margin-top: 100%;
+  max-width: 550px;
   position: absolute;
-  padding-bottom: 20px;
-  height: auto;
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  -webkit-animation-name: animatetop;
-  animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-duration: 0.4s;
-}
-
-.table-modal img {
-  max-height: 80%;
-  display: inline-block;
-}
-
-@-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-
-  to {
-    top: 0;
-    opacity: 1;
-  }
 }
 
 /* Custom */
@@ -1021,10 +953,6 @@ svg * {
 
   #hi-there {
     margin-top: 500px;
-  }
-
-  #welcome_svg {
-    margin-top: 90vh;
   }
 }
 
@@ -3880,7 +3808,7 @@ button.btn-greytone:active {
   height: 375px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
-  padding: 0px 5px 5px 0px;
+  padding: 0px 5px -5px 0px;
   border: 1px solid #ddd;
   float: left;
   position: relative;

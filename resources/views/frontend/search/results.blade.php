@@ -24,6 +24,8 @@
                 box_height = $(this).height();
         });
         $('.feedsbox').css('height', box_height);
+        
+
     });
 </script>
 <div class="container-fluid row">

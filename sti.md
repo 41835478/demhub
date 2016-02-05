@@ -7,8 +7,9 @@
 ```
 $php artisan es:articles-index
 $php artisan es:discussions-index
-$php artisan es:publication-index
 $php artisan es:resources-index
+$php artisan es:publication-index
+$php artisan es:users-index
 ```
 
 ### Single Table Inheritance (Development):

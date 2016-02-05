@@ -19,7 +19,7 @@ class UserController extends Controller {
 	 * User Homepage
 	 */
 	public function index(Request $request){
-		$allDivisions = $navDivisions = Division::all();
+		$allDivisions = Division::all();
 
 		return view('frontend.user.userhome', compact([
 			'allDivisions'

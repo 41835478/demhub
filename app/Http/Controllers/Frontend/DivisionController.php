@@ -122,7 +122,6 @@ class DivisionController extends Controller
 
     }
 
-
     private function getArticleMedia($results_hits) {
         // Gather media for each article retreived
         $articleMediaArray = [];

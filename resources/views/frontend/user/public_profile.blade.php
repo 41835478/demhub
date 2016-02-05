@@ -3,23 +3,28 @@
 
 @section('content')
 
-  <section id="content_wrapper" class="" style="margin-top: 60px;">
+
 
     <!-- Begin: Content -->
-    <div id="content" class="animated fadeIn" style="">
-      <a type="button" class="btn btn-style-alt col-xs-offset-1" href="{{ route('profiles') }}">
+    <div class="row" style="">
+    <div class="col-sm-offset-1" style="">
+      <div class="row">
+      <div class="col-sm-offset-3">
+      <a type="button" class="btn btn-style-alt" href="{{ route('profiles') }}">
         <span class="fa fa-users"></span> DEMHUB NETWORK
       </a>
       <a type="button" class="btn btn-style-alt" href="{{ route('connections') }}">
         <span class="fa fa-users"></span> MY NETWORK
       </a>
-
+    </div>
+  </div>
       <div class="row" style="padding-top:15px">
         <div class="col-sm-offset-2 col-sm-10">
-          @include('frontend.user._user-teaser')
+          <?php $item=$user; ?>
+          @include('frontend.card._card')
         </div>
       </div>
-    </div> <!-- End: Content -->
+
 
     <div class="row">
 
@@ -79,7 +84,7 @@
 
         <div id="publicationsList">
           <?php $items=$user->publications;
-          
+
            ?>
           @foreach($items as $item)
             @include('frontend.card._card')
@@ -103,7 +108,8 @@
       </div>
     </div>
 
-  </section>
+</div>
+</div>
 
 <script>
   $( document ).ready(function() {

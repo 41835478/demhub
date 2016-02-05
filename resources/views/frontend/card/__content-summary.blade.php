@@ -132,7 +132,7 @@
         </div>
 
         <div class="col-xs-12" style="padding: 15px; background-color: #f5f5f5; margin: 10px 0 0 0;">
-            <?php  $author=Helpers::uploader($item); ?>
+            <?php  ($item['subclass']=='article') ? : $author=Helpers::uploader($item); ?>
 
             @if (! empty($author))
                 <a href="{{'profile/'.$author->user_name}}" style="color: black;">

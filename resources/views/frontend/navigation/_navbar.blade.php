@@ -1,9 +1,9 @@
 {{-- added to account for a fixed navigaion height on mobile
 	TODO: move all other adjustments for top meu here, i.e. paddings on content divs and body  --}}
-<div class="container-fluid" style="height: 75px"></div>
+<div class="container-fluid" style="height: 70px"></div>
 <div class="visible-xs" style="height: 50px;"></div>
 
-<nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="min-height: 65px;">
+<nav id="top-menu" class="navbar navbar-default navbar-inverse navbar-fixed-top" style="min-height: 70px;">
 
 		<div class="navbar-header col-xs-12 row" style="padding: 0;  margin: 0;">
 			<?php /*
@@ -76,7 +76,7 @@
 											<option value="publications" @if(isset($scope) && $scope=='publications') selected @endif>Publications</option>
 											<option value="resources" @if(isset($scope) && $scope=='resources') selected @endif>Resources</option>
 										</select>
-										<input name="query_term" class="text-left form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
+										<input name="query_term" class="text-left form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHUB" style="width: 70%;">
 										<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
 											<i class="fa fa-search"></i>
 										</button>
@@ -185,25 +185,24 @@
 	@if (Auth::user())
 	<div class="container-fluid row visible-xs">
 		<li class="col-xs-10 col-xs-offset-1" style="margin-top: -20px">
-			{!! Form::open(['url' => Request::path(), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
-
-            <div class="form-group" style="">
-				<div class="input-group searchbar-group" style="width: 100%">
-					<select class="input-group-addon nav-search-text animate" name="scope"
-							style="float: left;width: 20%;padding: 9px;">
-						<option value="all" @if(isset($scope) && $scope=='all') selected @endif >All</option>
-						<option value="articles" @if(isset($scope) && $scope=='articles') selected @endif>Articles</option>
-						<option value="users" @if(isset($scope) && $scope=='users') selected @endif>Users</option>
-						<option value="publications" @if(isset($scope) && $scope=='publications') selected @endif>Publications</option>
-						<option value="resources" @if(isset($scope) && $scope=='resources') selected @endif>Resources</option>
-					</select>
-					<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;pointer-events: none;"></i>
-					<input name="query_term" class="text-left form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHub" style="width: 70%;">
-					<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
-						<i class="fa fa-search"></i>
-					</button>
+			{!! Form::open(['url' => url('search'), 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'GET']) !!}
+	            <div class="form-group" style="">
+					<div class="input-group searchbar-group" style="width: 100%">
+						<select class="input-group-addon nav-search-text animate" name="scope"
+								style="float: left;width: 20%;padding: 9px;">
+							<option value="all" @if(isset($scope) && $scope=='all') selected @endif >All</option>
+							<option value="articles" @if(isset($scope) && $scope=='articles') selected @endif>Articles</option>
+							<option value="users" @if(isset($scope) && $scope=='users') selected @endif>Users</option>
+							<option value="publications" @if(isset($scope) && $scope=='publications') selected @endif>Publications</option>
+							<option value="resources" @if(isset($scope) && $scope=='resources') selected @endif>Resources</option>
+						</select>
+						<i class="fa fa-angle-down" style="position: absolute;left: 15%;top: 10px;color: #aaa;pointer-events: none;"></i>
+						<input name="query_term" class="text-left form-control nav-searchbar animate" value="{{ (isset($query_term)) ? $query_term : '' }}" placeholder="Search DEMHUB" style="width: 70%;">
+						<button type="submit" class="input-group-addon nav-search-icon-style animate" style="width: 10%;padding: 9.5px">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
 				</div>
-			</div>
 			{!! Form::close() !!}
 		</li>
 	</div>

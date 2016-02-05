@@ -1,3 +1,7 @@
+<?php
+use App\Http\Components\Helpers;
+use App\Models\Division;
+?>
 @extends('frontend.layouts.master')
 
 @section('content')
@@ -159,10 +163,11 @@
 						<tr class="collapse in {{preg_replace('/\ /','_',$entry ->country)}} {{preg_replace('/\ /','_',$entry ->state)}}">
 						<td class="division_tags" style="display:none" value="">
 							<?php
-			          $divisions = array_filter(preg_split("/\,/", $entry->divisions));
-								foreach ($divisions as $division){
-									echo $division." ";
-								}
+							foreach (Helpers::convertDBStringToArray($entry->divisions) as $divID) {
+									$div = Division::findOrFail($divID);
+									echo $div->slug." ";
+							}
+
 
 			        ?>
 							</td>

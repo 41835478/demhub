@@ -53,7 +53,7 @@ class ProfileController extends Controller {
 	 * @return mixed
 	 */
 	public function update(UserContract $user, UpdateProfileRequest $request) {
-		$user->updateProfile($request->all());
+        $user->updateProfile($request->all());
 		return redirect()->route('dashboard')->withFlashSuccess(trans("strings.profile_successfully_updated"));
 	}
 

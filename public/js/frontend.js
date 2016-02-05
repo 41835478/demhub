@@ -303,13 +303,10 @@ $("select#division").change(function(){
 
 			$("td.division_tags").each(function() {
 			  item = this.innerHTML;
-				if(item.indexOf(filterVar) ==-1) {
+				if(item.indexOf(filterVar) ==-1 && $(this).parent().hasClass('in')) {
 					$(this).parent().addClass("out");
         	$(this).parent().removeClass("in");
-				} else {
-          $(this).parent().addClass("in");
-        	$(this).parent().removeClass("out");
-        }
+				} 
 			});
 
 					$(".mapContainer").hide();
@@ -351,7 +348,7 @@ $("select#region").change(function(){
 if (($("select#region").val()) !== null){
   var filterVar = $("select#region").val();
   var region = filterVar.toLowerCase();
-  region = region.replace(/ -/g,"_");
+  region = region.replace(/-/g,"_");
 
   // var list =document.getElementsByClassName(country);
 
