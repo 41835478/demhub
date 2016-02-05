@@ -3,13 +3,13 @@
 @section('content')
 <style>
     .search-division{
-        opacity: 0.2;
-        border-radius: 5px;
+        opacity: 0.6;
+        border-radius: 0px;
         text-align: center;
-        padding: 10px 0;
+        padding: 13px 0;
         color: #ffffff;
         text-transform: uppercase;
-        font-weight: bold;
+
     }
     .search-division.active,
     .search-division:hover{
@@ -24,13 +24,13 @@
                 box_height = $(this).height();
         });
         $('.feedsbox').css('height', box_height);
-        
+
 
     });
 </script>
 <div class="container-fluid row">
     <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        <div class="row" style="margin: 10px -15px 20px -15px;">
+        <div class="row" style="margin: 10px -75px 20px -75px;">
             @foreach($divisions as $div)
                 <div class="col-xs-4 col-sm-2">
                     <a href="{{ url('search').'?scope='.$scope.'&query_term='.$query_term.'&division='.$div->slug }}">
