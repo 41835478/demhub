@@ -9,9 +9,12 @@
 @endif
 
 <div class="container-fluid">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
   <div class="row">
     @foreach($newsFeeds as $item)
-      @include('frontend.card._card')
+      <div class="">
+        @include('frontend.card._card')
+      </div>
     @endforeach
   </div>
 </div>
