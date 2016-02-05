@@ -209,7 +209,7 @@
           <li id="map-division"></li>
        </ul>
        <ul><a href="/auth/register"><li> <button> FOLLOW </button> </li></a>
-          <li>shares</li>
+          <li></li>
           <ul>
       </div>
     </div>
