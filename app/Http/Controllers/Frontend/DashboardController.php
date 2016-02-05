@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Publication;
 use App\Models\follow_relationships;
 use App\Models\Access\User\User;
+use App\Models\Division;
 use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use Illuminate\Http\Request;
@@ -22,8 +23,10 @@ class DashboardController extends Controller {
 	 */
 	public function index()
 	{
-		return view('frontend.user.dashboard.index')
-			->withUser(auth()->user());
+		$divisions = Division::all();
+		return view('frontend.user.dashboard.index', compact([
+			'divisions'
+		]))->withUser(auth()->user());
 	}
 
 	public function test()
@@ -39,7 +42,7 @@ class DashboardController extends Controller {
 		$users=$user->following;
 
 		return view('frontend.user.dashboard.connections', compact([
-					'users'
+			'users'
 		]));
 	}
 }

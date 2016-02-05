@@ -171,32 +171,33 @@ class EloquentUserRepository implements UserContract {
 	 */
 	public function updateProfile($input) {
 		$user = access()->user();
-		$user->first_name = $input['first_name'];
-		$user->last_name = $input['last_name'];
+		$user->first_name 			= $input['first_name'];
+		$user->last_name 			= $input['last_name'];
 		// TODO - Add $user->canChangeUserName()
-		// $user->user_name = $input['user_name'];
-		$user->bio = $input['bio'];
-		$user->job_title = $input['job_title'];
-		$user->organization_name = $input['organization_name'];
-		$user->specialization = $input['specialization'];
-		$user->phone_number = $input['phone_number'];
-		$user->location = $input['location'];
-		if (! empty($input['division'])){
-		$user->division = $input['division'];
-		}
-		else {
+		// $user->user_name 			= $input['user_name'];
+		$user->bio 					= $input['bio'];
+		$user->job_title 			= $input['job_title'];
+		$user->organization_name 	= $input['organization_name'];
+		$user->specialization 		= $input['specialization'];
+		$user->phone_number 		= $input['phone_number'];
+		$user->location 			= $input['location'];
 
-			$divisions="";
-      for ($i = 1;$i < 7; $i++){
-        $field='division_'.$i;
-        if (! empty($input[$field])){
-        $divisions = $divisions.'|'.$input[$field];
-      }
-      }
-			if (! empty($divisions)){
-      $divisions = $divisions.'|';
-			}
-			$user->division = $divisions;
+		if (! empty($input['division'])){
+			$user->division = $input['division'];
+		} else {
+            $divisions="";
+            for ($i = 1;$i < 7; $i++){
+                $field='division_'.$i;
+                if (! empty($input[$field])){
+                    $divisions = $divisions.'|'.$input[$field];
+                }
+            }
+
+            if (!empty($divisions)) {
+            	$divisions = $divisions.'|';
+            }
+
+            $user->division = $divisions;
 		}
 
 		if ($user->canChangeEmail()) {

@@ -1,4 +1,3 @@
-
   <div class="peoplebox">
     <?php
       $width = 100;
@@ -14,7 +13,7 @@
             data-toggle="headsup" data-placement="top" title="{{$div}}">
         </div>
       @empty
-      <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
+        <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
       @endforelse
     @elseif($user->divisions() == NULL)
       <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
