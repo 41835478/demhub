@@ -102,12 +102,44 @@ svg * {
   min-width: 200px;
   position: relative;
 }
+.circlelayer{
+  position: relative;
+}
+.landingmodal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    width:500px;
+    min-width: 450px;
+    height:auto;
+    overflow: hidden; /* Enable scroll if needed */
+}
+
 .table-modal{
-  padding-top:20px;
   border-radius: 0 !important;
-  width:30vw;
+  padding-top:20px;
+  padding-bottom: 20px;
   min-width: 400px;
   position: absolute;
+  padding-bottom: 20px;
+  height: auto;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  img{
+    max-height: 80%;
+    display:inline-block;
+  }
+}
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
 /* Custom */
 #hi-there {

@@ -40,13 +40,13 @@ function limitWords(textToLimit, wordLimit)
 
     $.each(index.content.users, function( i, val ) {
       val = jQuery.parseJSON(val);
-      $container1.append( "<div><ul>" + "<img src='" + val.profileImage + "'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li><button> FOLLOW </button></li>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
+      $container1.append( "<div><ul>" + "<img src='" + val.profileImage + "'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li><a href =\"auth/register\"><button> FOLLOW </button></li></a>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
     });
     $.each(index.content.news, function( i, val ) {
       val = jQuery.parseJSON(val);
       var limit = limitWords(val.title, 6);
       var tag = limitWords(val.title, 5);
-      $container2.append( "<div><ul><li>"+ limit + "</li><li>" + val.date +"</li><li>"  + tag + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <button> SHARE </button> </li><ul></div>");
+      $container2.append( "<div><ul><li>"+ limit + "</li><li>" + val.date +"</li><li>"  + tag + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <a href ='"+  +"'><button> SHARE </button> </li><ul></div>");
     });
 
     var boxL = $('.table-details2').height();

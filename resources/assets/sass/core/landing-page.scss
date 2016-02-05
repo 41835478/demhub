@@ -134,10 +134,14 @@ option {
     //image ul
     ul:first-child{
       width:20%;
+      height:100%;
       float:left;
+      overflow-y: hidden;
       img {
         width: 100%;
-        height:auto;
+        max-height: 90%;
+        height:90%;
+
         top:auto;
         left:auto;
       }
