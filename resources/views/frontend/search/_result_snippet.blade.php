@@ -26,7 +26,7 @@
         @endfor
         <div class="col-sm-1 hidden-xs" style="position: absolute;right: 0;background: rgb(255, 255, 255);height: 65vh;box-shadow: -3px 0px 10px rgba(0,0,0,0.2);">
             <a href="{{$url}}">
-                <i class="fa fa-4x fa-angle-right" style="line-height: 58vh;color: #bbb;"></i>
+                <i class="fa fa-4x fa-angle-right" style="line-height: 50vh;color: #bbb;"></i>
             </a>
         </div>
     </div>
