@@ -46,7 +46,11 @@ class LinkedInProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenFields($code)
     {
+        if($state=="400 Bad Request"){
+            echo "hello world";
+        } else {
         return parent::getTokenFields($code) + ['grant_type' => 'authorization_code'];
+    };
     }
 
     /**
