@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d9f74a998100e4ed88c74d7ca5fd27f8",
+    "hash": "08249551ca5a50969f82684a466806de",
     "content-hash": "3f42b31f48025f73fc09f36f5e0a645f",
     "packages": [
         {
@@ -2354,16 +2354,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.6",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "e6f80ab77885151908d0ec743689ca700886e8b0"
+                "reference": "b0e69d10852716b2ccbdff69c75c477637220790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/e6f80ab77885151908d0ec743689ca700886e8b0",
-                "reference": "e6f80ab77885151908d0ec743689ca700886e8b0",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b0e69d10852716b2ccbdff69c75c477637220790",
+                "reference": "b0e69d10852716b2ccbdff69c75c477637220790",
                 "shasum": ""
             },
             "require": {
@@ -2398,7 +2398,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-01-29 16:19:52"
+            "time": "2016-02-06 03:52:05"
         },
         {
             "name": "pimple/pimple",
@@ -2611,12 +2611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aldorl/laravel-forum.git",
-                "reference": "c8204f2e95d77ad4d2bdfdae06a6bca5f5003c95"
+                "reference": "c50f0d14d54b9a5fa537858889b4f9ebbedb0aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/c8204f2e95d77ad4d2bdfdae06a6bca5f5003c95",
-                "reference": "c8204f2e95d77ad4d2bdfdae06a6bca5f5003c95",
+                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/c50f0d14d54b9a5fa537858889b4f9ebbedb0aa8",
+                "reference": "c50f0d14d54b9a5fa537858889b4f9ebbedb0aa8",
                 "shasum": ""
             },
             "require": {
@@ -2649,7 +2649,7 @@
             "support": {
                 "source": "https://github.com/aldorl/laravel-forum/tree/2.0"
             },
-            "time": "2016-02-04 20:59:34"
+            "time": "2016-02-08 17:36:37"
         },
         {
             "name": "shift31/laravel-elasticsearch",
@@ -3752,12 +3752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap-sass.git",
-                "reference": "31acbea483821acb726f1b4880d1452aee90367e"
+                "reference": "f17b502b4d04bd72871042e87ff676398b5e2405"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/31acbea483821acb726f1b4880d1452aee90367e",
-                "reference": "31acbea483821acb726f1b4880d1452aee90367e",
+                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/f17b502b4d04bd72871042e87ff676398b5e2405",
+                "reference": "f17b502b4d04bd72871042e87ff676398b5e2405",
                 "shasum": ""
             },
             "type": "library",
@@ -3800,7 +3800,7 @@
                 "issues": "https://github.com/twbs/bootstrap-sass/issues",
                 "source": "https://github.com/twbs/bootstrap-sass/tree/master"
             },
-            "time": "2016-01-18 04:34:33"
+            "time": "2016-02-06 16:13:07"
         },
         {
             "name": "vlucas/phpdotenv",
