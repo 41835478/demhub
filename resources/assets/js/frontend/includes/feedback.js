@@ -1,3 +1,5 @@
+// TODO - Fix this so that it plays nicely with includes/invites.js
+
 $(document).ready(function() {
     $("#feedbackForm").hide();
     $('div#dashboard-icon > i').click(function() {
@@ -20,15 +22,6 @@ $(document).ready(function() {
             });
         }
     });
-
-    $("i").hover(
-        function() {
-            $(this).tooltip('show');
-        },
-        function() {
-            $(this).tooltip('hide');
-        }
-    );
 
 });
 

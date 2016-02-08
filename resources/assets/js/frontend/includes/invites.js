@@ -21,6 +21,7 @@ $(document).ready(function() {
         }
     });
 
+    // TODO - Move this somewhere else
     $("i").hover(
         function() {
             $(this).tooltip('show');
