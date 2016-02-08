@@ -6,6 +6,9 @@
   var containerH = $(".table-details1").height();
   var feedNumber = containerH / 95 ;
   var feedwhole = Math.round(feedNumber);
+  var $boxbottom = $('.card-ajax');
+  $boxbottom = $boxbottom.position().top + $boxbottom.outerHeight(true);
+  console.log($boxbottom);
 
 // te function to limit the words of the title and tags //
 function limitWords(textToLimit, wordLimit)
@@ -40,22 +43,24 @@ function limitWords(textToLimit, wordLimit)
 
     $.each(index.content.users, function( i, val ) {
       val = jQuery.parseJSON(val);
-      $container1.append( "<div><ul>" + "<img src='" + val.profileImage + "'></img>" + "</ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li><a href =\"auth/register\"><button> FOLLOW </button></li></a>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
+      $container1.append( "<div><ul style='background-image:url("+ val.profileImage + "); background-repeat:no-repeat; background-size: auto 100%;'></ul><ul><li>"+ val.name + "</li><li>" + val.occupation +"</li><li>"  + val.location + "</li><li>" + val.division + "</li></ul>" + "<ul><li><a href =\"auth/register\"><button> FOLLOW </button></li></a>" + "<li>" + val.followers + "</li><li>followers</li><ul></div>");
     });
     $.each(index.content.news, function( i, val ) {
       val = jQuery.parseJSON(val);
       var limit = limitWords(val.title, 6);
       var tag = limitWords(val.title, 5);
-      $container2.append( "<div><ul><li>"+ limit + "</li><li>" + val.date +"</li><li>"  + tag + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <a href ='"+  +"'><button> SHARE </button> </li><ul></div>");
+      var $newsbottom = $($container2);
+      $newsbottomL = $newsbottom.position().top + $newsbottom.outerHeight(true) + 100;
+      if($newsbottomL < $boxbottom){
+                $container2.append( "<div><ul><li>"+ limit + "</li><li>" + val.date +"</li><li>"  + tag + "</li><li>" + val.division + "</li></ul>" + "<ul><li> <a href =\"auth/register\"><button> SHARE </button> </li><ul></div>");
+      }
+      else{
+
+      }
     });
 
-    var boxL = $('.table-details2').height();
-    var tableL = $('.table-details1').height();
-    var totalL = $('.card-ajax').height();
-    var cardL = boxL + tableL;
-    if (cardL > totalL){
-      $('ul li:last').css('opacity','0');
-    };
+
+
 
     $.each(index.content.news, function( i, val ) {
       val = jQuery.parseJSON(val);
@@ -102,7 +107,7 @@ function limitWords(textToLimit, wordLimit)
     $container1.empty().hide(0).delay(200).fadeIn(700);
     usersArray.forEach(function(entry){
       var user = JSON && JSON.parse(entry) || $.parseJSON(entry);
-      $container1.append( "<div><ul>" + "<img src='" + user.profileImage + "'></img>" + "</ul><ul><li>"+ user.name + "</li><li>" + user.occupation +"</li><li>"  + user.location + "</li><li>" + user.division + "</li></ul>" + "<ul><li> <button> FOLLOW </button> </li>" + "<li>" + user.followers + "</li><li>followers</li><ul></div>");
+      $container1.append( "<div><ul style='background-image:url("+ user.profileImage + "); background-repeat:no-repeat; background-size: auto 100%;'></ul><ul><li>"+ user.name + "</li><li>" + user.occupation +"</li><li>"  + user.location + "</li><li>" + user.division + "</li></ul>" + "<ul><a href =\"auth/register\"><li> <button> FOLLOW </button> </li></a>" + "<li>" + user.followers + "</li><li>followers</li><ul></div>");
     });
   };
 
@@ -114,7 +119,13 @@ function limitWords(textToLimit, wordLimit)
       var news = JSON && JSON.parse(entry) || $.parseJSON(entry);
       var limit = limitWords(news.title, 6);
       var tag = limitWords(news.title, 5);
-          $container2.append( "<div><ul><li>"+ limit + "</li><li>" + news.date +"</li><li>"  + tag + "</li><li>" + news.division + "</li></ul>" + "<ul><li> <button> SHARE </button> </li><ul></div>");
+      var $newsbottom = $($container2);
+      $newsbottomL = $newsbottom.position().top + $newsbottom.outerHeight(true) + 300;
+      if($newsbottomL < $boxbottom){
+          $container2.append( "<div><ul><li>"+ limit + "</li><li>" + news.date +"</li><li>"  + tag + "</li><li>" + news.division + "</li></ul>" + "<ul><a href =\"auth/register\"><li> <button> SHARE </button> </li></a><ul></div>");
+      }
+      else{}
+          console.log(news.title, $newsbottomL);
     });
   };
 
