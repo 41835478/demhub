@@ -9,7 +9,6 @@
         padding: 13px 0;
         color: #ffffff;
         text-transform: uppercase;
-
     }
     .search-division.active,
     .search-division:hover{
