@@ -7027,8 +7027,8 @@ $(function(){
     console.log(nodeTop, nodeLeft);
     var modalPosition = $('.landingmodal');
     modalPosition.css({
-      top:nodeTop - 46,
-      left:nodeLeft 
+      top:nodeTop - 70,
+      left:nodeLeft - 60
     });
     var svgID = $(this).attr('id');
 
@@ -7040,7 +7040,6 @@ $(function(){
       $('#map-place').html('<li>new Zealand</li>');
       $('#map-profession').html('<li>volunteer community Ambassador Disabilities strategy</li>');
       $('#map-division').html('<li>EM Practitioner & Response</li>');
-      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_1"){
       $(mapImg).attr('src','images/landing-avatars/aldo.png');
@@ -7048,40 +7047,40 @@ $(function(){
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>Programmer</li>');
       $('#map-division').html('<li>Science & Environment</li>');
-      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_15"){
       $('#map-user').html('<li>Diana Wong</li>');
       $('#map-place').html('<li>Australia</li>');
       $('#map-profession').html('<li>Disaster Health Evaluation Consultant</li>');
       $('#map-division').html('<li>Health & Epidemics</li>');
-      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_13"){
       $('#map-user').html('<li>Matt Feryan</li>');
       $('#map-place').html('<li>USA</li>');
       $('#map-profession').html('<li>Sr. Emergency Management Specialist</li>');
       $('#map-division').html('<li>Em Practitioner & Response</li>');
-      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_5"){
       $('#map-user').html('<li>Deb Borsos</li>');
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>ESS Director, rural Recovery work</li>');
       $('#map-division').html('<li>Science & Environment</li>');
-      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else{
-        $(mapImg).attr('src','images/landing-avatars/missing.png');
-        $('#map-user').html('<li>This location awaits your input </li>');
+        $(mapImg).attr('src','images/avatars/thumb/missing.png');
+        $('#map-user').html('<li>Your Profile</li>');
         $('#map-place').html('<li></li>');
-        $('#map-profession').html('<li>Connect to Disaster Management professionals worldwide</li>');
+        $('#map-profession').html('<li></li>');
         $('#map-division').html('<li></li>');
-        $('#map-follow').html('<li><button>JOIN NOW </button></li>');
     }
   });
 });
 
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 //node js. change color and opacity.
 $(function() {
 $('.st3').mouseover(function(){
@@ -7097,15 +7096,10 @@ $('.st3').mouseover(function(){
   });
 });
 
+
 $(document).ready(function(){
     responsiveImg();
 });
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 
 
 var twitterElement;
@@ -7204,8 +7198,6 @@ $(document).on('submit', 'form.js-bookmark', function(e){
     });
 });
 
-// TODO - Fix this so that it plays nicely with includes/invites.js
-
 $(document).ready(function() {
     $("#feedbackForm").hide();
     $('div#dashboard-icon > i').click(function() {
@@ -7228,6 +7220,37 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#invite-icon').click(function() {
+        $("#feedbackForm").hide();
+        $("#inviteForm").show();
+        if ($('#dashboard').css('right') == '-350px') {
+            $('#dashboard').animate({
+                right: '0px'
+            }, function() {
+                $('#invite-icon > i').removeClass();
+                $('#invite-icon > i').addClass('fa fa-angle-double-right');
+                $('#invite-icon').css('right', '350px');
+            });
+        } else if ($('#dashboard').css('right') == '0px') {
+            $('#dashboard').animate({
+                right: '-350px'
+            }, function() {
+                $('#invite-icon > i').removeClass();
+                $('#invite-icon > i').addClass('fa fa-envelope-o');
+                $('#invite-icon').css('right', '0');
+            });
+        }
+    });
+
+    $("i").hover(
+        function() {
+            $(this).tooltip('show');
+        },
+        function() {
+            $(this).tooltip('hide');
+        }
+    );
 
 });
 
@@ -7283,7 +7306,6 @@ $(document).ready(function() {
         }
     });
 
-    // TODO - Move this somewhere else
     $("i").hover(
         function() {
             $(this).tooltip('show');
@@ -7309,6 +7331,14 @@ function sidebar(action) {
         } else {
             dashboard.addClass("open");
         }
+    }
+}
+
+function feedbackFormUpdate() {
+    if ($("input:checked").length < 3) {
+        $('#modalErrorButton').click();
+    } else {
+        $('#modalSuccessButton').click();
     }
 }
 
