@@ -52,9 +52,10 @@
 
         @include('frontend.includes._footer')
 
-        @if (Auth::user())
+        {{-- NOTE : Temp commented out in order to use Hotjar's poll --}}
+        {{-- @if (Auth::user())
             @include('modals._feedback_thankyou')
-        @endif
+        @endif --}}
         @yield('modal')
 
         @include('includes.scripts._google_analytics')
