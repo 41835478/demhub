@@ -99,6 +99,11 @@ option {
    padding:20px;
    overflow-y: hidden;
 }
+.divisionColor0{
+    color:red !important;
+    background-color: red;
+}
+
 .DrpDwn{
   color:white;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -123,6 +128,7 @@ option {
       margin-bottom: 15px;
       padding-top:15px;
       background-color: rgba(255,255,255,0.6);
+      min-height: 110px;
     }
 
     ul {
@@ -133,15 +139,16 @@ option {
     }
     //image ul
     ul:first-child{
-      width:20%;
-      height:100%;
-      float:left;
-      overflow-y: hidden;
+        width: 20%;
+      min-width: 80px;
+      margin-left: 20px;
+      min-height: 80px;
+      float: left;
+      overflow: hidden;
       img {
         width: 100%;
-        max-height: 90%;
-        height:90%;
-
+        max-height: 100%;
+        height:100%;
         top:auto;
         left:auto;
       }

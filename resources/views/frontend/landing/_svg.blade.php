@@ -198,17 +198,17 @@
   	<circle id="XMLID_17"  class="st3" class="st5" cx="441.5" cy="109.2" r="6.2"/>
   	<circle id="XMLID_18"  class="st3" class="st5" cx="511" cy="117.1" r="5.2"/>
     <div id="mymodal" class="landingmodal">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
       <div class="modal-content table-details1 table-modal">
         <ul>
           <img id="map-img" src='images/avatars/thumb/missing.png'></img></ul>
         <ul>
-          <li id="map-user">Your Profile</li>
+          <li id="map-user"></li>
           <li id="map-place"></li>
           <li id="map-profession"></li>
           <li id="map-division"></li>
        </ul>
-       <ul><a href="/auth/register"><li> <button> FOLLOW </button> </li></a>
+       <ul ><a href="/auth/register"><li id="map-follow"> <button> FOLLOW </button></li></a>
           <li></li>
           <ul>
       </div>
