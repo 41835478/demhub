@@ -1862,7 +1862,7 @@ a.btn-style-alt {
   background: #526b77;
   border-color: #526b77;
   color: #fff;
-  border-radius: 0.5px;
+  border-radius: 1px !important;
 }
 
 .btn-style-alt:hover,
@@ -2324,11 +2324,9 @@ button.btn-greytone:active {
 
 #alert-container {
   position: fixed;
-  top: 50px;
+  top: 70px;
   z-index: 9999;
-  width: 600px;
-  left: 50%;
-  margin-left: -300px;
+  width: 100vw;
 }
 
 .userhome-body .wrapper {

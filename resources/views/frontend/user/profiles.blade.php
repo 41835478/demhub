@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  <section class="row">
+  <section class="row" style="padding-top:0.75%">
     <!-- Begin: Content -->
     <div class="col-sm-offset-1 col-md-offset-3" style="">
 
