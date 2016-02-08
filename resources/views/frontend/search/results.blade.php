@@ -28,20 +28,21 @@
     });
 </script>
 <div class="container-fluid row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+        @foreach($divisions as $div)
+            <div class="col-xs-4 col-sm-2">
+                <a href="{{ url('search').'?scope='.$scope.'&query_term='.$query_term.'&division='.$div->slug }}">
+                    <h5 class="search-division division_{{$div->slug}} @if($div->slug==$division) active @endif">
+                        {{$div->name}}
+                    </h5>
+                </a>
+            </div>
+        @endforeach
+    </div>
     <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        <div class="row" style="margin: 10px -75px 20px -75px;">
-            @foreach($divisions as $div)
-                <div class="col-xs-4 col-sm-2">
-                    <a href="{{ url('search').'?scope='.$scope.'&query_term='.$query_term.'&division='.$div->slug }}">
-                        <h5 class="search-division division_{{$div->slug}} @if($div->slug==$division) active @endif">
-                            {{$div->slug}}
-                        </h5>
-                    </a>
-                </div>
-            @endforeach
-        </div>
         <div class="container-fluid row">
-            <h5 class="pull-left">Showing
+            <h5 class="pull-left">
+                Showing
                 {{($page-1)*$size}} - {{ ($page*$size)>$totalCount ? $totalCount : ($page*$size) }}
                 of {{$totalCount}} results
             </h5>
