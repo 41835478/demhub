@@ -111,11 +111,11 @@ class SearchController extends Controller
             $discussionTotalCount   = isset($discussionResults['total'])    ? $discussionResults['total']   : 0;
             $resourceTotalCount     = isset($resourceResults['total'])      ? $resourceResults['total']     : 0;
 
-            $articleResults     = Search::formatElasticSearchToArray($articleResults['hits']);
-            $userResults        = Search::formatElasticSearchToArray($userResults['hits']);
-            $publicationResults = Search::formatElasticSearchToArray($publicationResults['hits']);
-            $discussionResults  = Search::formatElasticSearchToArray($discussionResults['hits']);
-            $resourceResults    = Search::formatElasticSearchToArray($resourceResults['hits']);
+            $articleResults     = Search::formatElasticSearchToArray(isset($articleResults['hits'])?$articleResults['hits']:array());
+            $userResults        = Search::formatElasticSearchToArray(isset($userResults['hits'])?$userResults['hits']:array());
+            $publicationResults = Search::formatElasticSearchToArray(isset($publicationResults['hits'])?$publicationResults['hits']:array());
+            $discussionResults  = Search::formatElasticSearchToArray(isset($discussionResults['hits'])?$discussionResults['hits']:array());
+            $resourceResults    = Search::formatElasticSearchToArray(isset($resourceResults['hits'])?$resourceResults['hits']:array());
 
             return view('frontend.search.index', compact([
                 'articleResults', 'userResults', 'publicationResults', 'discussionResults', 'resourceResults',

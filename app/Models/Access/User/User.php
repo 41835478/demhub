@@ -1,5 +1,6 @@
 <?php namespace App\Models\Access\User;
 
+use App\Http\Components\Helpers;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Access\User\Traits\UserAccess;
@@ -102,7 +103,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			} else {
 				$divisions = [];
 				if (isset($this->division)) {
-					foreach (explode("|", $this->division) as $divId) {
+					foreach (Helpers::convertDBStringToArray($this->division) as $divId) {
 						// TODO - change data to deal with ids instead of slugs
 						$div = Division::where('id', $divId)->firstOrFail();
 						$divisions[$div->slug] = $div->name;

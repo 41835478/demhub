@@ -123,6 +123,7 @@ svg * {
   position: absolute;
   padding-bottom: 20px;
   height: auto;
+  padding-right: 70px;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
@@ -182,6 +183,15 @@ svg * {
 	font-size: 0.875rem;
 	text-align: center;
 	margin: 0 0 20px;
+}
+
+#map-follow {
+  font-size: 1.3em;
+  padding-left: 45px;
+  text-align: center;
+}
+#map-place {
+  color:#35474F !important;
 }
 
 /* Media queries */

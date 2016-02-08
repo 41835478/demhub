@@ -68,11 +68,11 @@ $(function(){
     var topwidth = $('#welcome_home').height();
     $('.modal').removeClass('modal-backdrop');
 
-    console.log(nodeTop, nodeLeft);
+    // console.log(nodeTop, nodeLeft);
     var modalPosition = $('.landingmodal');
     modalPosition.css({
-      top:nodeTop - 70,
-      left:nodeLeft - 60
+      top:nodeTop - 46,
+      left:nodeLeft - 370
     });
     var svgID = $(this).attr('id');
 
@@ -84,6 +84,7 @@ $(function(){
       $('#map-place').html('<li>new Zealand</li>');
       $('#map-profession').html('<li>volunteer community Ambassador Disabilities strategy</li>');
       $('#map-division').html('<li>EM Practitioner & Response</li>');
+      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_1"){
       $(mapImg).attr('src','images/landing-avatars/aldo.png');
@@ -91,40 +92,40 @@ $(function(){
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>Programmer</li>');
       $('#map-division').html('<li>Science & Environment</li>');
+      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_15"){
       $('#map-user').html('<li>Diana Wong</li>');
       $('#map-place').html('<li>Australia</li>');
       $('#map-profession').html('<li>Disaster Health Evaluation Consultant</li>');
       $('#map-division').html('<li>Health & Epidemics</li>');
+      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_13"){
       $('#map-user').html('<li>Matt Feryan</li>');
       $('#map-place').html('<li>USA</li>');
       $('#map-profession').html('<li>Sr. Emergency Management Specialist</li>');
       $('#map-division').html('<li>Em Practitioner & Response</li>');
+      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_5"){
       $('#map-user').html('<li>Deb Borsos</li>');
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>ESS Director, rural Recovery work</li>');
       $('#map-division').html('<li>Science & Environment</li>');
+      $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else{
-        $(mapImg).attr('src','images/avatars/thumb/missing.png');
-        $('#map-user').html('<li>Your Profile</li>');
+        $(mapImg).attr('src','images/landing-avatars/missing.png');
+        $('#map-user').html('<li>This location awaits your input </li>');
         $('#map-place').html('<li></li>');
-        $('#map-profession').html('<li></li>');
+        $('#map-profession').html('<li>Connect to Disaster Management professionals worldwide</li>');
         $('#map-division').html('<li></li>');
+        $('#map-follow').html('<li><button>JOIN NOW </button></li>');
     }
   });
 });
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 //node js. change color and opacity.
 $(function() {
 $('.st3').mouseover(function(){
@@ -140,7 +141,12 @@ $('.st3').mouseover(function(){
   });
 });
 
-
 $(document).ready(function(){
     responsiveImg();
 });
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
