@@ -38,7 +38,15 @@
                 }
 
                 if (isset($neededObject[0])){
-                  echo '"background-image:url('.$neededObject[0]->filename.');
+                    $link = $neededObject[0]->filename;
+                    $diff = strlen($link)-14;
+                    $substr = substr($link,$diff);
+                    $check =strpos($substr,'x');
+                    if($check){
+                        $check =strpos($substr,'-');
+                        $link = substr($link,0,-(14-$check)).'.jpg';
+                    };
+                  echo '"background-image:url('.$link.');
                             -webkit-background-size: cover;
                             -moz-background-size: cover;
                             -o-background-size: cover;
