@@ -186,11 +186,13 @@ class FrontendController extends Controller {
 
 		$usersArray = [];
 		foreach ($users as $index => $userItem) {
+
 			$image = NULL;
 			if ($userItem->avatar) {
 				$image = $userItem->avatar->url('medium');
 			}
 			$divValues = [];
+			
 			foreach($userItem->divisions() as $value) {
 				$divValues[] = $value;
 			}

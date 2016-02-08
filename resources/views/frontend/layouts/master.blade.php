@@ -38,7 +38,7 @@
                 {{-- @include('frontend.includes._feedback_sidebar') --}}
                 @include('frontend.includes._send_invitations')
             @endif
-
+            
             @include('frontend.navigation._navbar')
             @include('includes.partials.messages')
 
