@@ -42,7 +42,10 @@
             @endforeach
         </div>
         <div class="container-fluid row">
-            <h5 class="pull-left">Showing {{($page-1)*$size}} - {{$page*$size}} of {{$totalCount}} results</h5>
+            <h5 class="pull-left">Showing
+                {{($page-1)*$size}} - {{ ($page*$size)>$totalCount ? $totalCount : ($page*$size) }}
+                of {{$totalCount}} results
+            </h5>
         </div>
 
         <div class="row">
