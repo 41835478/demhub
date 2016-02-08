@@ -8,6 +8,9 @@ get('about',    'FrontendController@about');
 get('policy',   'FrontendController@policy');
 get('terms',    'FrontendController@terms');
 
+// NOTE : temp testing page
+get('test', 'FrontendController@test');
+
 get('getLandingData',   'FrontendController@getLandingData')->name('getLandingData');
 get('signUpSuccess',    'FrontendController@signUpSuccess')->name('signUpSuccess');
 

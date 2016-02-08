@@ -34,6 +34,12 @@ class FrontendController extends Controller {
 		}
 	}
 
+	// NOTE : temp function
+    public function test()
+	{
+		return view('frontend.test.index');
+	}
+
 	public function inviteSignup(Request $request)
 	{
 		$inputs = $request->all();

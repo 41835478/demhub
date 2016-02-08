@@ -1,6 +1,6 @@
 @extends('frontend.layouts.fullscreen')
 
-@section('body-class')js-fullheight-body @endsection
+{{-- @section('body-class')js-fullheight-body @endsection
 @section('container-class')fullheight-div @endsection
 
 @section('body-style')
@@ -25,4 +25,4 @@
 	});
 
 	</script>
-@endsection
+@endsection --}}
