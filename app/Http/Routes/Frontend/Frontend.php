@@ -16,8 +16,6 @@ post('feedback',    'FrontendController@postFeedback')->name('post_feedback');
 
 // TODO - Check which of these routes need to go thorugh the Middleware
 get( 'forum/all_threads',       'ForumController@getViewAllThreads')->name('all_threads');
-get( 'forum/9-/thread/create',  'ForumController@getModCreateThread');
-post('forum/9-/thread/create',  'ForumController@postModCreateThread');
 
 /*
  * Division Routes

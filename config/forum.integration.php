@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 return [
@@ -34,7 +34,7 @@ return [
 	| Non object, or null response is considered as not logged in
 	|
 	*/
-	
+
 	'current_user' => function() {
 		//Here you can use confide facade,
 		//or just the default facade, or whatever else
@@ -87,6 +87,6 @@ return [
 	|
 	*/
 
-	'controller' => '\App\Http\Controllers\Frontend\ForumController'
+	'controller' => '\Riari\Forum\Controllers\ForumController'
 
 ];
