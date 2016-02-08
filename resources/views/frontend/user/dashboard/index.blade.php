@@ -58,7 +58,7 @@
                         <div class="form-group">
                             {!! Form::label('bio', 'Bio', ['class' => 'col-lg-3 control-label','style' => 'font-size:85%']) !!}
                             <div class="col-lg-8">
-                                {!! Form::textarea('bio', $user->bio, ['class' => 'form-control','rows'=>"13","maxlength" => '800']) !!}
+                                {!! Form::textarea('bio', $user->bio, ['class' => 'form-control','rows'=>"13","maxlength" => '800','style' => 'resize: none']) !!}
                             </div>
                         </div>
 

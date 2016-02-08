@@ -30,9 +30,9 @@
 			</li>
 			<li
 				@if (Request::url() === url('auth/login'))
-					class="active"
+					class="active landing-about"
 				@endif
-				style="padding-top:15px;float:right;list-style:none; margin-right:10vw;color:#fff !important;">{!! link_to('auth/login', trans('LOGIN')) !!}</li>
+				class="landing-about" style="float:right; margin-right:10vw;">{!! link_to('auth/login', trans('LOGIN')) !!}</li>
 		</div>
 
 		<!-- landing page major content -->

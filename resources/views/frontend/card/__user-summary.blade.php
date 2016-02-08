@@ -77,7 +77,7 @@
 
         <div class="row">
             @if ($user->bio)
-                <p style="color:#999">
+                <p style="color:#999;padding-left:20px;padding-right:20px">
                     <?php
                         $description = $user->bio;
                         if (strlen($description) > 205){
