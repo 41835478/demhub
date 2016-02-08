@@ -504,7 +504,7 @@ class DashboardController extends Controller {
 				$content = Content::firstOrCreate([
 					'subclass' => 'thread',
 					'name' => $thread->title,
-					'description' => NULL,
+					'description' => POST::where('parent_thread',$thread->id)->get('content'),
 					'data' => json_encode([
 						$thread->view_count
 					]),
