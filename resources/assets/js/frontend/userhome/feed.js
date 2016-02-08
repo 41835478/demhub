@@ -21,7 +21,7 @@ $(window).on("scroll", function(){		// this might be anything else depends on wh
     get_activities();
   }
 
-  if ( crollBottom<-1 && timeOut!==1) {
+  if ( scrollBottom<-1 && timeOut!==1) {
     //alert( $(this).text() + ' was scrolled to the top' );
     timeOut = 1;
     topCheck=true;

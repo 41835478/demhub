@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-xs-12">
             <h6 class="pull-right" style="margin: 30px 0 0 0;color:#aaa">
-                {{$totalCount}} {{$label}} found for "{{$query_term}}"
+              <?php echo ($query_term=='') ? 'Many ': $totalCount.' '; ?>
+              {{$label}} found for "{{$query_term}}"
             </h6>
             <a href="{{$url}}">
                 <h3 class="pull-left text-bold" style="color: #000">
