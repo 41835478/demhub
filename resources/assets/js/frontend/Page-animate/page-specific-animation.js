@@ -68,11 +68,11 @@ $(function(){
     var topwidth = $('#welcome_home').height();
     $('.modal').removeClass('modal-backdrop');
 
-    // console.log(nodeTop, nodeLeft);
+    console.log(nodeTop, nodeLeft);
     var modalPosition = $('.landingmodal');
     modalPosition.css({
       top:nodeTop - 46,
-      left:nodeLeft - 370
+      left:nodeLeft 
     });
     var svgID = $(this).attr('id');
 

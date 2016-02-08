@@ -109,9 +109,10 @@ svg * {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
-    width:500px;
+    width:1000px;
     min-width: 450px;
-    height:auto;
+    height:800px;
+    margin-left:-150px;
     overflow: hidden; /* Enable scroll if needed */
 }
 

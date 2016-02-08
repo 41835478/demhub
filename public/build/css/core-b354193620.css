@@ -181,6 +181,11 @@ option {
   overflow-y: hidden;
 }
 
+.divisionColor0 {
+  color: red !important;
+  background-color: red;
+}
+
 .DrpDwn {
   color: white;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -200,6 +205,7 @@ option {
   margin-bottom: 15px;
   padding-top: 15px;
   background-color: rgba(255, 255, 255, 0.6);
+  min-height: 110px;
 }
 
 .table-details1 ul {
@@ -211,15 +217,17 @@ option {
 
 .table-details1 ul:first-child {
   width: 20%;
-  height: 100%;
+  min-width: 80px;
+  margin-left: 20px;
+  min-height: 80px;
   float: left;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .table-details1 ul:first-child img {
   width: 100%;
-  max-height: 90%;
-  height: 90%;
+  max-height: 100%;
+  height: 100%;
   top: auto;
   left: auto;
 }
@@ -895,9 +903,10 @@ svg * {
   /* Stay in place */
   z-index: 1;
   /* Sit on top */
-  width: 500px;
+  width: 1000px;
   min-width: 450px;
-  height: auto;
+  height: 800px;
+  margin-left: -150px;
   overflow: hidden;
   /* Enable scroll if needed */
 }
@@ -910,6 +919,7 @@ svg * {
   position: absolute;
   padding-bottom: 20px;
   height: auto;
+  padding-right: 70px;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   -webkit-animation-name: animatetop;
@@ -999,6 +1009,16 @@ svg * {
   font-size: 0.875rem;
   text-align: center;
   margin: 0 0 20px;
+}
+
+#map-follow {
+  font-size: 1.3em;
+  padding-left: 45px;
+  text-align: center;
+}
+
+#map-place {
+  color: #35474F !important;
 }
 
 /* Media queries */
@@ -2323,7 +2343,6 @@ button.btn-greytone:active {
 }
 
 #alert-container {
-  position: fixed;
   top: 70px;
   z-index: 9999;
   width: 100vw;
