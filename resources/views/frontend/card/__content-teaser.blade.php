@@ -59,7 +59,8 @@
                           margin-left:-10px;
                           margin-right:-10px;
                           height:165px;
-                          background-position-y: 30%;"';
+                          background-position-y: 50%;
+                          background-position-x: 50%;"';
                     } else {
                         echo '""';
                     }

@@ -2,6 +2,7 @@
 
 use Riari\Forum\Models\Thread;
 use Es;
+use Riari\Forum\Models\Post;
 
 class ElasticsearchDiscussionObserver
 {

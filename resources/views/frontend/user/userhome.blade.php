@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.autoload')
 
 @section('body-class')userhome-body @endsection
 

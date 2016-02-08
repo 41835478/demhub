@@ -1,73 +1,69 @@
 <!doctype html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="_token" content="{{ csrf_token() }}" />
-    <title>@yield('title', app_name())</title>
-    <meta name="description" content="@yield('meta_description', 'The Disaster & Emergency Management Network')">
-    <meta name="author" content="@yield('author', 'DEMHUB Developers')">
-    <meta property="og:image" content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
-    <meta name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <head>
+        <meta    charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"          content="IE=edge">
+        <meta       name="viewport"                 content="width=device-width, initial-scale=1">
+        <meta       name="_token"                   content="{{ csrf_token() }}" />
+        <meta       name="description"              content="@yield('meta_description', 'The Disaster & Emergency Management Network')">
+        <meta       name="author"                   content="@yield('author', 'DEMHUB Developers')">
+        <meta       name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
+        <meta   property="og:image"                 content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
+        @yield('meta')
 
-    @yield('meta')
-    @yield('before-styles-end')
-    {!! HTML::style(elixir('css/core.css')) !!}
-    {!! HTML::style(elixir('css/frontend.css')) !!}
-    @yield('after-styles-end')
+        <title>@yield('title', app_name())</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <!-- Fonts -->
-    <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
+        @yield('before-styles-end')
+        {!! HTML::style(elixir('css/core.css')) !!}
+        {!! HTML::style(elixir('css/frontend.css')) !!}
+        @yield('after-styles-end')
 
-    <!-- Icons-->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+        <!-- Fonts -->
+        <link href="//fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 
-  </head>
+        <!-- Icons-->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root public directory -->
+    </head>
 
-  <body class="@yield('body-class')">
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <body class="@yield('body-class')">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-    <div class="wrapper">
-      @if (Auth::user())
-        @include('frontend.includes._feedback_sidebar')
-        @include('modals._feedback_thankyou')
-      @endif
+        <div class="wrapper">
+            @if (Auth::user())
+                {{-- NOTE : Temp commented out in order to use Hotjar's poll --}}
+                {{-- @include('frontend.includes._feedback_sidebar') --}}
+                @include('frontend.includes._send_invitations')
+            @endif
 
-      @include('frontend.navigation._navbar')
-      {{--@include('frontend.navigation._navigation')--}}
+            @include('frontend.navigation._navbar')
+            @include('includes.partials.messages')
 
-      @include('includes.partials.messages')
+            <div class="@yield('container-class')" style="overflow-x:hidden;">
+                @yield('body-style')
+                @yield('content')
+            </div><!-- ./container-fluid -->
 
-      <div style="overflow-x:hidden;"
-        @if(Request::url() == url('dashboard') || Request::url() == url('') || strpos(Request::url(), "publication")!==false || Request::url()==url('connections'))
-          class="@yield('container-class') container-fluid"
-        @else
-          class="@yield('container-class')"
-        @endif
-      >
-        @yield('body-style')
-        @yield('content')
-        <div class="push"></div>
-      </div><!-- ./container-fluid -->
-    </div><!-- ./wrapper -->
-    @include('frontend.includes._footer')
+            <div class="push"></div>
+        </div><!-- ./wrapper -->
 
-    @yield('modal')
+        @include('frontend.includes._footer')
 
-    @include('includes.scripts._google_analytics')
-    @include('includes.scripts._hotjar_analytics')
+        {{-- NOTE : Temp commented out in order to use Hotjar's poll --}}
+        {{-- @if (Auth::user())
+            @include('modals._feedback_thankyou')
+        @endif --}}
+        @yield('modal')
 
-    <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
-    {!! HTML::script('js/vendor/bootstrap.min.js') !!}
+        @include('includes.scripts._google_analytics')
+        @include('includes.scripts._hotjar_analytics')
 
-    @yield('before-scripts-end')
-    {!! HTML::script(elixir('js/frontend.js')) !!}
-    @yield('after-scripts-end')
-
-  </body>
+        @yield('before-scripts-end')
+        {!! HTML::script('js/vendor/bootstrap.min.js') !!}
+        {!! HTML::script(elixir('js/frontend.js')) !!}
+        @yield('after-scripts-end')
+    </body>
 </html>

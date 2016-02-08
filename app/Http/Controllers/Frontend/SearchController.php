@@ -39,7 +39,8 @@ class SearchController extends Controller
                 $div_id = $div->id;
         }
 
-        if (trim($query_term) != '') {
+        //if (trim($query_term) != '') {
+        if(true){
             $articleQuery = [
                 'multi_match' => [
                     'query' => $query_term,
@@ -70,6 +71,11 @@ class SearchController extends Controller
                     'fields' => ['name', 'keywords', 'url', 'country', 'state', 'divisions', ''],
                 ],
             ];
+
+            if(trim($query_term) == ''){
+                $userQuery = $articleQuery = $publicationQuery
+                    = $discussionQuery = $resourceQuery = ["match_all" => []];
+            }
 
             if ($scope == 'users') {
                 $items = Search::queryUsers($db_page, $size, $userQuery, $div_id);
@@ -105,11 +111,11 @@ class SearchController extends Controller
             $discussionTotalCount   = isset($discussionResults['total'])    ? $discussionResults['total']   : 0;
             $resourceTotalCount     = isset($resourceResults['total'])      ? $resourceResults['total']     : 0;
 
-            $articleResults     = Search::formatElasticSearchToArray($articleResults['hits']);
-            $userResults        = Search::formatElasticSearchToArray($userResults['hits']);
-            $publicationResults = Search::formatElasticSearchToArray($publicationResults['hits']);
-            $discussionResults  = Search::formatElasticSearchToArray($discussionResults['hits']);
-            $resourceResults    = Search::formatElasticSearchToArray($resourceResults['hits']);
+            $articleResults     = Search::formatElasticSearchToArray(isset($articleResults['hits'])?$articleResults['hits']:array());
+            $userResults        = Search::formatElasticSearchToArray(isset($userResults['hits'])?$userResults['hits']:array());
+            $publicationResults = Search::formatElasticSearchToArray(isset($publicationResults['hits'])?$publicationResults['hits']:array());
+            $discussionResults  = Search::formatElasticSearchToArray(isset($discussionResults['hits'])?$discussionResults['hits']:array());
+            $resourceResults    = Search::formatElasticSearchToArray(isset($resourceResults['hits'])?$resourceResults['hits']:array());
 
             return view('frontend.search.index', compact([
                 'articleResults', 'userResults', 'publicationResults', 'discussionResults', 'resourceResults',
@@ -117,7 +123,6 @@ class SearchController extends Controller
                 'searchBar', 'query_term', 'scope', 'allDivisions',
             ]));
         } else {
-            //$items     = Search::queryArticles($db_page, $size);
             $totalCount = isset($items['total']) ? $items['total'] : 0;
             $items      = Search::formatElasticSearchToArray($items['hits']);
 

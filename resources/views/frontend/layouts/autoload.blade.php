@@ -10,7 +10,7 @@
         <meta       name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
         <meta   property="og:image"                 content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
         @yield('meta')
-        
+
         <title>@yield('title', app_name())</title>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -32,19 +32,24 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="wrapper">
-            @include('includes.partials.messages')
+        @if (Auth::user())
+            {{-- NOTE : Temp commented out in order to use Hotjar's poll --}}
+            {{-- @include('frontend.includes._feedback_sidebar') --}}
+            @include('frontend.includes._send_invitations')
+        @endif
 
-            <div class="@yield('container-class')" style="overflow-x:hidden;padding-top:25px">
-                @yield('body-style')
-                @yield('content')
-            </div><!-- ./container-fluid -->
+        @include('frontend.navigation._navbar')
+        @include('includes.partials.messages')
 
-            <div class="push"></div>
-        </div><!-- ./wrapper -->
+        <div class="@yield('container-class')" style="overflow-x:hidden;">
+            @yield('body-style')
+            @yield('content')
+        </div><!-- ./container-fluid -->
 
-        @include('frontend.includes._footer')
-
+        {{-- NOTE : Temp commented out in order to use Hotjar's poll --}}
+        {{-- @if (Auth::user())
+            @include('modals._feedback_thankyou')
+        @endif --}}
         @yield('modal')
 
         @include('includes.scripts._google_analytics')

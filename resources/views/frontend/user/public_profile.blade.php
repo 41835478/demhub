@@ -6,8 +6,8 @@
 
 
     <!-- Begin: Content -->
-    <div class="row" style="">
-    <div class="col-sm-offset-1" style="">
+    <div class="row" style="padding-top:15px">
+
       <div class="row">
       <div class="col-sm-offset-3">
       <a type="button" class="btn btn-style-alt" href="{{ route('profiles') }}">
@@ -18,12 +18,14 @@
       </a>
     </div>
   </div>
-      <div class="row" style="padding-top:15px">
-        <div class="col-sm-offset-2 col-sm-10">
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-7">
+            <div style="margin-left:13px;margin-right:-15px">
           <?php $item=$user; ?>
           @include('frontend.card._card')
+            </div>
         </div>
-      </div>
+    </div>
 
 
     <div class="row">
@@ -108,7 +110,7 @@
       </div>
     </div>
 
-</div>
+
 </div>
 
 <script>
