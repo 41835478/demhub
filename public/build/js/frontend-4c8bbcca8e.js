@@ -7024,11 +7024,11 @@ $(function(){
     var topwidth = $('#welcome_home').height();
     $('.modal').removeClass('modal-backdrop');
 
-    // console.log(nodeTop, nodeLeft);
+    console.log(nodeTop, nodeLeft);
     var modalPosition = $('.landingmodal');
     modalPosition.css({
       top:nodeTop - 46,
-      left:nodeLeft - 370
+      left:nodeLeft 
     });
     var svgID = $(this).attr('id');
 
@@ -7203,119 +7203,5 @@ $(document).on('submit', 'form.js-bookmark', function(e){
         }
     });
 });
-
-$(document).ready(function() {
-    $("#feedbackForm").hide();
-    $('div#dashboard-icon > i').click(function() {
-        $("#feedbackForm").show();
-        if ($('div#dashboard').css('right') == '-350px') {
-            $('div#dashboard').animate({
-                right: '0px'
-            }, function() {
-                $('div#dashboard-icon > i').removeClass();
-                $('div#dashboard-icon > i').addClass('fa fa-angle-double-right');
-                $('div#dashboard-icon').css('right', '350px');
-            });
-        } else if ($('div#dashboard').css('right') == '0px') {
-            $('div#dashboard').animate({
-                right: '-350px'
-            }, function() {
-                $('div#dashboard-icon > i').removeClass();
-                $('div#dashboard-icon > i').addClass('fa fa-pencil-square-o');
-                $('div#dashboard-icon').css('right', '0');
-            });
-        }
-    });
-
-    $("i").hover(
-        function() {
-            $(this).tooltip('show');
-        },
-        function() {
-            $(this).tooltip('hide');
-        }
-    );
-
-});
-
-function sidebar(action) {
-    var dashboard = $("#dashboard");
-    if (action == "invite") {
-        $("#feedbackForm").hide();
-        $("#inviteForm").show();
-        dashboard.addClass("open");
-    } else if (action == "feedback") {
-        $("#feedbackForm").show();
-        $("#inviteForm").hide();
-        dashboard.addClass("open");
-    } else if (action == "close") {
-        dashboard.removeClass("open");
-    } else if (action == "toggle") {
-        if (dashboard.hasClass("open")) {
-            dashboard.removeClass("open");
-        } else {
-            dashboard.addClass("open");
-        }
-    }
-}
-
-function feedbackFormUpdate() {
-    if ($("input:checked").length < 3) {
-        $('#modalErrorButton').click();
-    } else {
-        $('#modalSuccessButton').click();
-    }
-}
-
-$(document).ready(function() {
-    $("#inviteForm").hide();
-    $('#invite-icon').click(function() {
-        $("#inviteForm").show();
-        if ($('#dashboard').css('right') == '-350px') {
-            $('#dashboard').animate({
-                right: '0px'
-            }, function() {
-                $('#invite-icon > i').removeClass();
-                $('#invite-icon > i').addClass('fa fa-angle-double-right');
-                $('#invite-icon').css('right', '350px');
-            });
-        } else if ($('#dashboard').css('right') == '0px') {
-            $('#dashboard').animate({
-                right: '-350px'
-            }, function() {
-                $('#invite-icon > i').removeClass();
-                $('#invite-icon > i').addClass('fa fa-envelope-o');
-                $('#invite-icon').css('right', '0');
-            });
-        }
-    });
-
-    $("i").hover(
-        function() {
-            $(this).tooltip('show');
-        },
-        function() {
-            $(this).tooltip('hide');
-        }
-    );
-
-});
-
-function sidebar(action) {
-    var dashboard = $("#dashboard");
-    if (action == "invite") {
-        $("#feedbackForm").hide();
-        $("#inviteForm").show();
-        dashboard.addClass("open");
-    } else if (action == "close") {
-        dashboard.removeClass("open");
-    } else if (action == "toggle") {
-        if (dashboard.hasClass("open")) {
-            dashboard.removeClass("open");
-        } else {
-            dashboard.addClass("open");
-        }
-    }
-}
 
 //# sourceMappingURL=frontend.js.map
