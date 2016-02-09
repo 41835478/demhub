@@ -15,8 +15,7 @@ get('signUpSuccess',    'FrontendController@signUpSuccess')->name('signUpSuccess
 get( 'feedback',    'FrontendController@getFeedback');
 post('feedback',    'FrontendController@postFeedback')->name('post_feedback');
 
-// TODO - Check which of these routes need to go thorugh the Middleware
-get( 'forum/all_threads',       'ForumController@getViewAllThreads')->name('all_threads');
+
 
 /*
  * Division Routes

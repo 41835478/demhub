@@ -41,14 +41,17 @@ class IndexDiscussionsToElasticsearch extends Command
                 'threads' => [
                     '_source' => [
                         'enabled' => true
+                    ],
+                    'properties' => [
+                        // 'publish_date' => [
+                        //     'type' => 'date',
+                        //     'format' => 'yyyy-MM-dd HH:mm:ss'
+                        // ],
+                        'updated_at' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ]
                     ]
-                    // ,
-                    // 'properties' => [
-                    //     'publish_date' => [
-                    //         'type' => 'date',
-                    //         'format' => 'yyyy-MM-dd HH:mm:ss'
-                    //     ]
-                    // ]
                 ]
             ]
         ];

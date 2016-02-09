@@ -2611,12 +2611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aldorl/laravel-forum.git",
-                "reference": "901d91fc105ff98f5408438729cb86f3cb13bd9a"
+                "reference": "3d82c09451834f9c386875690df423884c8ba2b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/901d91fc105ff98f5408438729cb86f3cb13bd9a",
-                "reference": "901d91fc105ff98f5408438729cb86f3cb13bd9a",
+                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/3d82c09451834f9c386875690df423884c8ba2b3",
+                "reference": "3d82c09451834f9c386875690df423884c8ba2b3",
                 "shasum": ""
             },
             "require": {
@@ -2649,7 +2649,7 @@
             "support": {
                 "source": "https://github.com/aldorl/laravel-forum/tree/2.0"
             },
-            "time": "2016-02-09 20:58:50"
+            "time": "2016-02-09 22:53:28"
         },
         {
             "name": "shift31/laravel-elasticsearch",
@@ -4711,7 +4711,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
