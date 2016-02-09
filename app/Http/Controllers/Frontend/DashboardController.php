@@ -29,17 +29,10 @@ class DashboardController extends Controller {
 		]))->withUser(auth()->user());
 	}
 
-	public function test()
-	{
-		return view('frontend.user.dashboard.test')
-			->withUser(auth()->user());
-	}
-
 	public function showConnections()
 	{
-
-		$user=auth()->user();
-		$users=$user->following;
+		$user 	= auth()->user();
+		$users 	= $user->following;
 
 		return view('frontend.user.dashboard.connections', compact([
 			'users'

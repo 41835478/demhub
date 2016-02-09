@@ -54,21 +54,7 @@
                 <p style="color:#999">publications</p>
             </div>
             <div class="col-xs-4" style="padding-top:20px;padding-left:0px;">
-                @if(Auth::user()->is_following($user))
-                    {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
-                        {!! Form::token() !!}
-                        <button type="submit" class="btn btn-greytone btn-sm" style="">
-                            <i class="glyphicon glyphicon-ok"></i><span style="font-size:85%"> UNFOLLOW</span>
-                        </button>
-                    {!! Form::close() !!}
-                @else
-                    {!! Form::model($user, ['route' => ['follow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
-                        {!! Form::token() !!}
-                        <button type="submit" class="btn btn-style-alt btn-sm" style="">
-                            <i class="glyphicon glyphicon-plus"></i> FOLLOW
-                        </button>
-                    {!! Form::close() !!}
-                @endif
+                @include('frontend.card.__follow_button')
                 {{-- <a type="button" class="btn btn-style-alt btn-sm" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</span>
                 </a> --}}

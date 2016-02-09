@@ -132,7 +132,7 @@
         </div> <!-- End: inner-feedsbox-teaser -->
 
         <div style="width:100%; position:absolute; bottom: 0; padding: 10px 15px">
-            @include('division.__article_buttons')
+            @include('frontend.card.__article_buttons')
 
             <div style="float:right;padding-right:8px;position:absolute;right:0px;top:8px;">
                 <?php  ($item['subclass']=='article') ? : $author=Helpers::uploader($item); ?>
