@@ -102,6 +102,10 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	 * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse
 	 */
 	public function loginThirdParty($request, $provider) {
+
+        if (strpos($_SERVER['REQUEST_URI'],'error=access_denied&error_description=')!==false){
+            return redirect('auth/register')->withFlashInfo("You've cancelled the join via Linkedin .  Feel free to try again, or join via email.");
+        };
 		if (! $request) return $this->getAuthorizationFirst($provider);
 
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
