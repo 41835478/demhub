@@ -93,14 +93,14 @@ class ForumPostsTableSeeder extends Seeder
             [
               'parent_thread' => $thread_ids[10],
               'author_id' => 1,
-              'content' => 'Is your business factoring climate change as a risk? Making your business climate ready - a guide for BC professionals http://www.continuityforum.org/content/news/177616/ making-your-business-climate-ready-guide-business-continuity-professionals',
+              'content' => 'Is your business factoring climate change as a risk? Making your business climate ready - a guide for BC professionals http://www.continuityforum.org/content/news/177616/making-your-business-climate-ready-guide-business-continuity-professionals',
     		  'created_at' => Carbon::now(),
     		  'updated_at' => Carbon::now()
             ],
             [
               'parent_thread' => $thread_ids[11],
               'author_id' => 1,
-              'content' => 'Here is a report on reshaping humanitarian efforts http://reliefweb.int/report/world/cracking-code-enhancing-emergency-response- resilience-complex-crises',
+              'content' => 'Here is a report on reshaping humanitarian efforts http://reliefweb.int/report/world/cracking-code-enhancing-emergency-response-resilience-complex-crises',
     		  'created_at' => Carbon::now(),
     		  'updated_at' => Carbon::now()
             ],
@@ -114,7 +114,7 @@ class ForumPostsTableSeeder extends Seeder
             [
               'parent_thread' => $thread_ids[13],
               'author_id' => 1,
-              'content' => 'Disaster Relief 2.0: The Future of Information Sharing in Humanitarian Emergencies. UN releases new report that analyzes the humanitarian, emerging volunteer, and technical communities in the aftermath of earthquake in Haiti. http://www.unfoundation.org/news- and-media/publications-and-speeches/disaster-relief-2-report.html?referrer=https:// www.google.ca/?referrer=http://www.unfoundation.org/news-and-media/publications- and-speeches/disaster-relief-2-report.html',
+              'content' => 'Disaster Relief 2.0: The Future of Information Sharing in Humanitarian Emergencies. UN releases new report that analyzes the humanitarian, emerging volunteer, and technical communities in the aftermath of earthquake in Haiti. http://www.unfoundation.org/news-and-media/publications-and-speeches/disaster-relief-2-report.html',
     		  'created_at' => Carbon::now(),
     		  'updated_at' => Carbon::now()
             ],
