@@ -297,6 +297,7 @@ class PublicationController extends Controller
             ]);
         }
 
+        // TODO - Do this properly
         // $content_json = Helpers::return_json_results($content_json);
         return response()->json([
             'success' => 'cool',
@@ -313,6 +314,7 @@ class PublicationController extends Controller
             ]);
         }
 
+        // TODO - Do this properly
         // $content_json = Helpers::return_json_results($content_json);
         return response()->json([
             'success' => 'cool',

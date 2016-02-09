@@ -85,8 +85,8 @@ $router->group(['middleware' => 'auth'], function () {
     get(  'profiles',               'ProfileController@listing_of_profiles')->name('profiles');
 
     // Follow/unfollow
-    post('follow/{id}',     'ProfileController@followUser')->name('follow_user');
-    post('unfollow/{id}',   'ProfileController@unfollowUser')->name('unfollow_user');
+    post('follow/{id}',             'ProfileController@followUser')->name('follow_user');
+    post('unfollow/{id}',           'ProfileController@unfollowUser')->name('unfollow_user');
 });
 
 /*
