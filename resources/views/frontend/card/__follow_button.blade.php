@@ -5,7 +5,7 @@
         'style' => '', 'role' => 'form', 'method' => 'POST']
     ) !!}
         {!! Form::token() !!}
-        <button type="submit" class="btn btn-greytone btn-sm"  style="width:95px; height:30px;">
+        <button type="submit" class="btn btn-greytone btn-sm"  style="width:95px; height:42px;">
             <span class="js-follow-tag glyphicon glyphicon-ok" style="font-size:85%" aria-hidden="true"> UNFOLLOW</span>
             <div class="js-loader loader" style="display:none;">Loading...</div>
         </button>
@@ -17,7 +17,7 @@
         'style' => '', 'role' => 'form', 'method' => 'POST']
     ) !!}
         {!! Form::token() !!}
-        <button type="submit" class="btn btn-style-alt btn-sm"  style="width:95px; height:30px;">
+        <button type="submit" class="btn btn-style-alt btn-sm"  style="width:95px; height:42px;">
             <span class="js-follow-tag glyphicon glyphicon-plus" aria-hidden="true"> FOLLOW</span>
             <div class="js-loader loader" style="display:none;">Loading...</div>
         </button>
