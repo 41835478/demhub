@@ -3,6 +3,7 @@
 /**
  * Frontend Controllers.
  */
+
 get('/',        'FrontendController@index')->name('home');
 get('about',    'FrontendController@about');
 get('policy',   'FrontendController@policy');

@@ -1,8 +1,8 @@
 <div class="peoplebox">
     <?php
         $width = 100;
-        if(count($user->division) > 0) {
-            $width = 100 / count($user->division);
+        if(count($user->divisions()) > 0) {
+            $width = 100 / count($user->divisions());
         }
         // dd($user->divisions() == NULL);
     ?>
