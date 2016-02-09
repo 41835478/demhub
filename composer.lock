@@ -2611,12 +2611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aldorl/laravel-forum.git",
-                "reference": "c50f0d14d54b9a5fa537858889b4f9ebbedb0aa8"
+                "reference": "901d91fc105ff98f5408438729cb86f3cb13bd9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/c50f0d14d54b9a5fa537858889b4f9ebbedb0aa8",
-                "reference": "c50f0d14d54b9a5fa537858889b4f9ebbedb0aa8",
+                "url": "https://api.github.com/repos/aldorl/laravel-forum/zipball/901d91fc105ff98f5408438729cb86f3cb13bd9a",
+                "reference": "901d91fc105ff98f5408438729cb86f3cb13bd9a",
                 "shasum": ""
             },
             "require": {
@@ -2649,7 +2649,7 @@
             "support": {
                 "source": "https://github.com/aldorl/laravel-forum/tree/2.0"
             },
-            "time": "2016-02-08 17:36:37"
+            "time": "2016-02-09 20:58:50"
         },
         {
             "name": "shift31/laravel-elasticsearch",
