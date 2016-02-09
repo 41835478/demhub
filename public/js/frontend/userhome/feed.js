@@ -4,17 +4,16 @@ $(document).ready(function() {
 
 var timeOut = 0;
 var topCheck = false;
-$(window).on("scroll", function() { // this might be anything else depends on what container has the scroll bar
-    // if (jQuery(this).scrollTop() + jQuery(this).innerHeight() >= jQuery(this)[0].scrollHeight - 300) { //just a guess as starting point, has to be tested
-    // 	get_activities();
-    // }
-    var a = $("#activity-feed").offset().top;
-    var b = $("#activity-feed").height();
-    var c = $(window).height();
+$(window).on("scroll", function() {
+    var feedOffset = $("#activity-feed").offset().top;
+    var feedHeight = $("#activity-feed").height();
+    var winHeight = $(window).height();
     var scrollTop = $(window).scrollTop();
-    var scrollBottom = $(window).scrollTop() + a;
+    var scrollBottom = $(window).scrollTop() + feedOffset;
 
-    if ((c + scrollTop) > (a + b) && timeOut !== 1) {
+    // TODO - Add small empty space at the bottom for loader
+    // and accommodate for this
+    if ((winHeight + scrollTop) >= (feedOffset + feedHeight) && timeOut !== 1) {
         timeOut = 1;
         get_activities();
     }
