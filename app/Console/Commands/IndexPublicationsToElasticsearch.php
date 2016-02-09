@@ -46,6 +46,14 @@ class IndexPublicationsToElasticsearch extends Command
                         'publication_date' => [
                             'type' => 'date',
                             'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ],
+                        'created_at' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ],
+                        'updated_at' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
                         ]
                     ]
                 ]

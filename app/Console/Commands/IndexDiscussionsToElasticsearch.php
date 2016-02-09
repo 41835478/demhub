@@ -43,10 +43,10 @@ class IndexDiscussionsToElasticsearch extends Command
                         'enabled' => true
                     ],
                     'properties' => [
-                        // 'publish_date' => [
-                        //     'type' => 'date',
-                        //     'format' => 'yyyy-MM-dd HH:mm:ss'
-                        // ],
+                        'created_at' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ],
                         'updated_at' => [
                             'type' => 'date',
                             'format' => 'yyyy-MM-dd HH:mm:ss'
