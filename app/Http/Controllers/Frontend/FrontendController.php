@@ -256,15 +256,20 @@ class FrontendController extends Controller {
 				"position" => "Founder, CEO",
 				"description" => "Jennifer has spent over 5 years in the Disaster and Emergency Management field as both an academic and an entrepreneur. She founded Hybrid Intuition Media in 2013 which develops digital media materials within an emergency management context. Jen has also been President of the global student membership for the International Association of Emergency Managers, the world's largest association of its kind."
 			],
-			"AndrewC" => [
+            "PoyaR" => [
+				"name" => "Poya Rahmati",
+				"position" => "Chief Technology Officer",
+				"description" => ""
+			],
+            "AndrewC" => [
 				"name" => "Andrew Cram",
 				"position" => "Director Of Finance",
 				"description" => "An adventurous, entrepreneurially-minded Financial professional who has worked for Coca-Cola as a Senior Financial Analyst, Thomson Reuters and State Street. Through his work experience, education at The University of Western Ontario in Finance & Accounting, and continuing Chartered Financial Analyst (CFA) studies, Andrew has exceptional knowledge in valuations, financial modeling & analysis, contract negotiation, corporate finance, and project management."
 			],
-            "PoyaR" => [
-				"name" => "Poya Rahmati",
-				"position" => "Chief Technology Officer",
-				"description" => "Results-driven, user-focused software developer with 4+ years of cumulative industry experience in automation, scripting and web applications. Deep understanding of MVC architecture and translating business needs into technical requirements. Articulate and strategic lateral thinker with an entrepreneurial spirit."
+            "SeanK" => [
+				"name" => "Sean Kondra",
+				"position" => "Director Operations & Development",
+				"description" => ""
 			],
 			"AldoR" => [
 				"name" => "Aldo Rui­z Luna",
@@ -288,7 +293,7 @@ class FrontendController extends Controller {
 			],
 			"HilaryJ" => [
 				"name" => "Hilary Julien",
-				"position" => "Media Manager",
+				"position" => "Social Media",
 				"description" => NULL
 			]
 		];
