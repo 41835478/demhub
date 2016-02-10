@@ -43,7 +43,7 @@ class IndexInfoResourcesToElasticsearch extends Command
                         'enabled' => true
                     ],
                     'properties' => [
-                        'publication_date' => [
+                        'publish_date' => [
                             'type' => 'date',
                             'format' => 'yyyy-MM-dd HH:mm:ss'
                         ],
