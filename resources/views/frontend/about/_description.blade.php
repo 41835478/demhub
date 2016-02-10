@@ -1,6 +1,6 @@
 <!-- DESCRIPTION
 ================================= -->
-<section id="about-description" class="section" style="min-height: 500px; background-color: #536b77; color: white; font-size: 20px; padding: 100px 0;">
+<section id="about-description" class="section" style="min-height: 200px; background-color: #536b77; color: white; font-size: 20px; padding: 40px 0;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
@@ -14,7 +14,9 @@
 					</p>
 					<p>
 						We are committed to everything we do as it impacts more than just our team, it impacts our communities. So we make sure we're reliable, collaborative, and inclusive, providing the best platform for networking and knowledge sharing.
+
 					</p>
+                    <a href="mailto:info@demhub.net?Subject=DEMHUB%20Inquiry" target="_top" style="color:#38a7de">info@demhub.net</a>
 				</div>
 
 			</div>
