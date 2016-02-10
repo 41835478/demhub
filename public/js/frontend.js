@@ -233,11 +233,11 @@ $("select#country").change(function(){
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
-      $("#backButton").attr("onclick","window.location.reload()");
-      document.getElementById("backButton").style.display="";
-			document.getElementById("divisionFormGroup").style.display="";
-			// document.getElementById("keywordFormGroup").style.display="";
-			document.getElementById("countryFormGroup").style.display="none";
+      $("#backButton").hide();
+      $("#resetButton").show();
+	     document.getElementById("divisionFormGroup").style.display="";
+	     // document.getElementById("keywordFormGroup").style.display="";
+		 document.getElementById("countryFormGroup").style.display="none";
     }
 
 });
@@ -273,9 +273,9 @@ function firstFilterF(country){
 			document.getElementById("australia_map").style.marginTop="-15px";
 		}
 
-    $("#backButton").attr("onclick","window.location.reload()");
 
-    document.getElementById("backButton").style.display="";
+    $("#backButton").hide();
+    $("#resetButton").show();
     $("#"+country+"_map").show();
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
@@ -306,15 +306,16 @@ $("select#division").change(function(){
 				if(item.indexOf(filterVar) ==-1 && $(this).parent().hasClass('in')) {
 					$(this).parent().addClass("out");
         	$(this).parent().removeClass("in");
-				} 
+				}
 			});
 
 					$(".mapContainer").hide();
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-
-			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
+            $("#backButton").hide();
+            $("#resetButton").show();
+			
 		}
 	});
 
@@ -338,7 +339,8 @@ $("select#keyword").change(function(){
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-
+            $("#backButton").show();
+            $("#resetButton").hide();
 			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
 		}
 	});
@@ -360,7 +362,8 @@ if (($("select#region").val()) !== null){
       $(".mapContainer").hide();
       // document.getElementById(country+"_map").style.display="";
       document.getElementById("mapListing").style.display="";
-
+      $("#backButton").show();
+      $("#resetButton").hide();
       $("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
   }

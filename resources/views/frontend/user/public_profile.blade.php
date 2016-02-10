@@ -119,6 +119,13 @@
     $("#networkList").hide();
     $("#discussionsList").hide();
 
+    if ( $('#discussionsList').children().length > 0 ) {
+        $("#discussionsList").toggle();
+    } else if ($('#networkList').children().length > 0) {
+        $("#networkList").toggle();
+    } else if ($('#publicationsList').children().length > 0) {
+        $("#publicationsList").toggle();
+    }
   });
   function togglePublications(){
 
@@ -141,7 +148,7 @@
     $("#publicationsList").hide();
   }
   function toggleNetwork(){
-    
+
     $("#networkList").toggle();
     $("#networkLi").attr('class','active-border');
     $("#publicationsLi").attr('class','under-border');
