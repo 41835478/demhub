@@ -1,7 +1,7 @@
 
 <div class="bloc bloc-head">
   <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" id="mapsvg"
-     viewBox="0 0 1000 500" enable-background="new 0 0 404.7 354" id="hi-there">
+     viewBox="-30 0 960 500" enable-background="new 0 0 404.7 354" id="hi-there">
      {{-- onclick="hi.reset().play(); --}}
      <g id="Layer_8">
      	<g>

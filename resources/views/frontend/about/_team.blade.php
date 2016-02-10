@@ -23,7 +23,7 @@
 					'description'	=> $content["description"]
 				])
 			@endforeach
-		<div>
+		</div>
 
 	</div>
 </section>

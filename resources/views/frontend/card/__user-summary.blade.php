@@ -19,7 +19,7 @@
 <div class="peoplebox">
     {{-- NOTE : this view assumes that $user is an instance of the User Model, not an array --}}
     @if($user->divisions() == NULL)
-        <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions"></div>
+        <div class="color-label division_all" data-toggle="headsup" data-placement="top" title="All Divisions" style="z-index:1"></div>
     @else
         @foreach($user->divisions() as $slug => $div)
             <div class="color-label division_{{$slug}} col-xs-6"
