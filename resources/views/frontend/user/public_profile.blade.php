@@ -6,7 +6,7 @@
 
 
     <!-- Begin: Content -->
-    <div class="row" style="padding-top:15px">
+    <div class="row" style="padding-top:15px;">
 
       <div class="row">
       <div class="col-sm-offset-3">
@@ -19,8 +19,8 @@
     </div>
   </div>
     <div class="row">
-        <div class="col-sm-offset-2 col-sm-7">
-            <div style="margin-left:13px;margin-right:-15px">
+        <div class="col-sm-offset-2 col-sm-8">
+            <div style="margin-left:13px;margin-right:-14px;">
           <?php $item=$user; ?>
           @include('frontend.card._card')
             </div>
@@ -31,7 +31,7 @@
     <div class="row">
 
       <div class="col-xs-3 col-sm-2 col-sm-offset-2">
-        <div class="box">
+        <div class="box" style="background-color:#fff">
           <div class="">
             <h4>Stats</h4>
             <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>
@@ -44,8 +44,8 @@
         </div>
       </div>
 
-      <div class="col-xs-9 col-sm-5">
-        <div class="box" style="display:block-inline;width:100%;">
+      <div class="col-xs-9 col-sm-6">
+        <div class="box" style="display:block-inline;width:100%;background-color:#fff">
           <h4>Summary</h4>
           @if ($user->bio)
             <p style="color:#999">
@@ -67,8 +67,8 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-7 col-md-7 col-sm-offset-2">
-        <div class="box" style="width:100%">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="box" style="width:100%;background-color:#fff" >
           <h4>Activity Feed</h4>
           <div>
             <ul>
@@ -82,31 +82,31 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-7 col-md-7 col-sm-offset-2">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <div id="boxList" style="width:100%;margin:10px 15px 5px 15px;padding:15px 20px 5px 20px;" >
+            <div id="publicationsList">
+              <?php $items=$user->publications;
 
-        <div id="publicationsList">
-          <?php $items=$user->publications;
+               ?>
+              @foreach($items as $item)
+                @include('frontend.card._card')
+              @endforeach
+            </div>
 
-           ?>
-          @foreach($items as $item)
-            @include('frontend.card._card')
-          @endforeach
+            <div id="discussionsList">
+              <?php $items = json_decode($user->discussions(), true); ?>
+              @foreach($items as $item)
+                @include('frontend.card._card')
+              @endforeach
+            </div>
+
+            <div id="networkList">
+              <?php $users=$user->following ?>
+              @foreach($users as $user)
+                @include('frontend.card._card')
+              @endforeach
+            </div>
         </div>
-
-        <div id="discussionsList">
-          <?php $items = json_decode($user->discussions(), true); ?>
-          @foreach($items as $item)
-            @include('frontend.card._card')
-          @endforeach
-        </div>
-
-        <div id="networkList">
-          <?php $users=$user->following ?>
-          @foreach($users as $user)
-            @include('frontend.card._card')
-          @endforeach
-        </div>
-
       </div>
     </div>
 
@@ -118,8 +118,10 @@
     $("#publicationsList").hide();
     $("#networkList").hide();
     $("#discussionsList").hide();
+
   });
   function togglePublications(){
+
     $("#publicationsList").toggle();
     $("#publicationsLi").attr('class','active-border');
 
@@ -129,6 +131,7 @@
     $("#discussionsList").hide()
   }
   function toggleDiscussions(){
+
     $("#discussionsList").toggle();
     $("#discussionsLi").attr('class','active-border');
 
@@ -138,6 +141,7 @@
     $("#publicationsList").hide();
   }
   function toggleNetwork(){
+    
     $("#networkList").toggle();
     $("#networkLi").attr('class','active-border');
     $("#publicationsLi").attr('class','under-border');
