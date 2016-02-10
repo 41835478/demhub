@@ -44,7 +44,8 @@ elixir(function(mix) {
             'frontend/card/bookmark.js',
             'frontend/card/follow.js',
             'frontend/includes/feedback.js',
-            'frontend/includes/invites.js'
+            'frontend/includes/invites.js',
+            'frontend/navigation/navbar.js'
         ],  'public/js/frontend.js')
 
 

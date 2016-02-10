@@ -1401,6 +1401,40 @@ svg * {
   height: 20px !important;
 }
 
+.nav-search-text,
+.nav-searchbar,
+.nav-search-icon-style {
+  border: none;
+}
+
+.nav-search-text.active,
+.nav-search-icon-style.active,
+.nav-search-text:focus,
+.nav-search-icon-style:focus {
+  box-shadow: none;
+  background-color: #eee !important;
+  color: #ed6b00 !important;
+}
+
+.nav-searchbar.active,
+.nav-searchbar:focus {
+  box-shadow: none;
+  background-color: #fff !important;
+  color: #ed6b00 !important;
+}
+
+.animate {
+  transition: all 0.3s ease;
+}
+
+#top-menu .nav-dropdown-image {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  background-size: cover;
+}
+
 footer,
 .push {
   height: 100px;

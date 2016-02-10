@@ -114,10 +114,6 @@ $(function () {
 		"../images/about/ryersonslc.jpg"
 	]);
 
-    $("#js-landing-carousel-2").backstretch([
-		"../images/backgrounds/welcome.jpg"
-	]);
-
 	/* ---------------------------------------------------------
 	 * Background (Backstretch) - Divisions
 	 */
@@ -237,11 +233,11 @@ $("select#country").change(function(){
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
-      $("#backButton").hide();
-      $("#resetButton").show();
-	     document.getElementById("divisionFormGroup").style.display="";
-	     // document.getElementById("keywordFormGroup").style.display="";
-		 document.getElementById("countryFormGroup").style.display="none";
+      $("#backButton").attr("onclick","window.location.reload()");
+      document.getElementById("backButton").style.display="";
+			document.getElementById("divisionFormGroup").style.display="";
+			// document.getElementById("keywordFormGroup").style.display="";
+			document.getElementById("countryFormGroup").style.display="none";
     }
 
 });
@@ -277,9 +273,9 @@ function firstFilterF(country){
 			document.getElementById("australia_map").style.marginTop="-15px";
 		}
 
+    $("#backButton").attr("onclick","window.location.reload()");
 
-    $("#backButton").hide();
-    $("#resetButton").show();
+    document.getElementById("backButton").style.display="";
     $("#"+country+"_map").show();
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
@@ -310,16 +306,15 @@ $("select#division").change(function(){
 				if(item.indexOf(filterVar) ==-1 && $(this).parent().hasClass('in')) {
 					$(this).parent().addClass("out");
         	$(this).parent().removeClass("in");
-				}
+				} 
 			});
 
 					$(".mapContainer").hide();
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-            $("#backButton").hide();
-            $("#resetButton").show();
-			
+
+			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
 		}
 	});
 
@@ -343,8 +338,7 @@ $("select#keyword").change(function(){
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-            $("#backButton").show();
-            $("#resetButton").hide();
+
 			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
 		}
 	});
@@ -366,8 +360,7 @@ if (($("select#region").val()) !== null){
       $(".mapContainer").hide();
       // document.getElementById(country+"_map").style.display="";
       document.getElementById("mapListing").style.display="";
-      $("#backButton").show();
-      $("#resetButton").hide();
+
       $("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
   }
@@ -6979,32 +6972,38 @@ function caretSet (action){
 //     }
 // });
 //
-$(function() {
 
-    var theWindow        = $(window),
-        $bg              = $("#caroimage"),
-        aspectRatio      = $bg.width() / $bg.height();
+function responsiveImg() {
 
-    function resizeBg() {
+  var winwidth = $(window).width();
+  var winheight = $(window).height();
+  var Imgwidth = $('.care-bg > img').width();
+  var Imgheight = $('.care-bg > img').height();
 
-        if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
-            $bg
-                .removeClass()
-                .addClass('bgheight');
-        } else {
-            $bg
-                .removeClass()
-                .addClass('bgwidth');
-        }
+if (Imgwidth <= winwidth && Imgheight >= winheight){
+    $('.care-bg > img').css('width','100vw');
+    $('.care-bg > img').css('height','auto');
+  }
 
+else if (Imgheight <= winheight && Imgwidth >= winwidth){
+      $('.care-bg > img').css('width','auto');
+      $('.care-bg > img').css('height','100vh');
+  }
+
+  else if (Imgheight < winheight && Imgwidth < winwidth){
+    H = winheight - Imgheight;
+    W = winwidth - Imgwidth;
+    if (H > W){
+      $('.care-bg > img').css('width','auto');
+      $('.care-bg > img').css('height','100vh');
     }
-
-    theWindow.resize(function() {
-        resizeBg();
-    }).trigger("resize");
-
-});
-
+    else {
+      $('.care-bg > img').css('width','100vw');
+      $('.care-bg > img').css('height','auto');
+    }
+    }
+  // console.log(winwidth,winheight,Imgwidth,Imgheight);
+}
 // Get the modal
 var modal = document.getElementById('mymodal');
 
@@ -7029,7 +7028,7 @@ $(function(){
     var modalPosition = $('.landingmodal');
     modalPosition.css({
       top:nodeTop - 46,
-      left:nodeLeft
+      left:nodeLeft 
     });
     var svgID = $(this).attr('id');
 
@@ -7099,7 +7098,7 @@ $('.st3').mouseover(function(){
 });
 
 $(document).ready(function(){
-
+    responsiveImg();
 });
 
 window.onclick = function(event) {
