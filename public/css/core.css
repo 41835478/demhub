@@ -104,6 +104,11 @@ body {
   float: left;
 }
 
+.demhub-logo-landing {
+  max-height: 32vh;
+  max-width: 40vw;
+}
+
 .landing-about {
   float: left;
   margin-top: 15px;
@@ -178,7 +183,21 @@ option {
   top: 40px;
   left: 60%;
   padding: 20px;
-  overflow-y: hidden;
+  overflow-y: scroll;
+}
+
+.card-ajax::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
+
+.row::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
 }
 
 .divisionColor0 {
@@ -217,7 +236,6 @@ option {
 
 .table-details1 ul:first-child {
   width: 20%;
-  min-width: 80px;
   margin-left: 20px;
   min-height: 80px;
   float: left;
@@ -292,6 +310,7 @@ option {
 
 .table-details2 ul:first-child {
   width: 70%;
+  padding-right: 15px;
 }
 
 .table-details2 ul:first-child li:first-child {
@@ -359,9 +378,24 @@ option {
   left: 0px;
 }
 
-.care-bg {
-  background-size: cover;
-  object-fit: cover;
+#caroimage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: none;
+}
+
+.bgwidth {
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 100% !important;
+  height: auto;
+}
+
+.bgheight {
+  height: 100% !important;
+  max-width: 200% !important;
+  min-height: 100% !important;
 }
 
 .carousel,
@@ -373,16 +407,6 @@ option {
   height: 100vh;
 }
 
-.carousel img,
-.carousel-inner img,
-.carousel-inner .item img {
-  height: auto;
-  width: auto;
-  overflow: hidden;
-  display: block;
-  opacity: 0.6;
-}
-
 .carousel .carousel-caption,
 .carousel-inner .carousel-caption,
 .carousel-inner .item .carousel-caption {
@@ -390,7 +414,7 @@ option {
   text-transform: uppercase;
   max-width: 400px;
   line-height: 150% !important;
-  top: 300px !important;
+  top: 50% !important;
 }
 
 .carousel .carousel-caption h3,
@@ -474,7 +498,7 @@ option {
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1299px) {
   .feedback-h2 {
     font-size: 27px !important;
     padding-bottom: 25px !important;
@@ -493,6 +517,32 @@ option {
     height: 80vh;
     width: 30vw;
     display: block;
+  }
+
+  .table-details1 {
+    height: auto;
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  .table-details1 ul:first-child {
+    width: 30%;
+  }
+
+  .table-details1 ul:nth-child(2) {
+    width: 60%;
+    padding-left: 20px;
+  }
+
+  .table-details1 ul:nth-child(3) {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  .table-details1 ul:nth-child(3) button {
+    width: 50%;
   }
 }
 
@@ -538,6 +588,10 @@ option {
     margin-top: 90vh;
     display: block;
   }
+
+  .feedback-h2 {
+    font-size: 0.8em;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -562,12 +616,23 @@ option {
     display: none;
   }
 
+  .landing-nav-logo {
+    display: block;
+    width: 100vw;
+  }
+
   .demhub-logo-landing {
     display: block;
     max-width: 100%;
     height: auto;
     min-width: 200px;
     display: inline;
+  }
+
+  .feedback-h2 {
+    max-width: 90%;
+    font-size: 1.7em !important;
+    padding: auto 40px auto 40px;
   }
 }
 
@@ -917,9 +982,7 @@ svg * {
   padding-bottom: 20px;
   min-width: 400px;
   position: absolute;
-  padding-bottom: 20px;
   height: auto;
-  padding-right: 70px;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   -webkit-animation-name: animatetop;

@@ -114,6 +114,10 @@ $(function () {
 		"../images/about/ryersonslc.jpg"
 	]);
 
+    $("#js-landing-carousel-2").backstretch([
+		"../images/backgrounds/welcome.jpg"
+	]);
+
 	/* ---------------------------------------------------------
 	 * Background (Backstretch) - Divisions
 	 */
@@ -6975,38 +6979,32 @@ function caretSet (action){
 //     }
 // });
 //
+$(function() {
 
-function responsiveImg() {
+    var theWindow        = $(window),
+        $bg              = $("#caroimage"),
+        aspectRatio      = $bg.width() / $bg.height();
 
-  var winwidth = $(window).width();
-  var winheight = $(window).height();
-  var Imgwidth = $('.care-bg > img').width();
-  var Imgheight = $('.care-bg > img').height();
+    function resizeBg() {
 
-if (Imgwidth <= winwidth && Imgheight >= winheight){
-    $('.care-bg > img').css('width','100vw');
-    $('.care-bg > img').css('height','auto');
-  }
+        if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+            $bg
+                .removeClass()
+                .addClass('bgheight');
+        } else {
+            $bg
+                .removeClass()
+                .addClass('bgwidth');
+        }
 
-else if (Imgheight <= winheight && Imgwidth >= winwidth){
-      $('.care-bg > img').css('width','auto');
-      $('.care-bg > img').css('height','100vh');
-  }
-
-  else if (Imgheight < winheight && Imgwidth < winwidth){
-    H = winheight - Imgheight;
-    W = winwidth - Imgwidth;
-    if (H > W){
-      $('.care-bg > img').css('width','auto');
-      $('.care-bg > img').css('height','100vh');
     }
-    else {
-      $('.care-bg > img').css('width','100vw');
-      $('.care-bg > img').css('height','auto');
-    }
-    }
-  // console.log(winwidth,winheight,Imgwidth,Imgheight);
-}
+
+    theWindow.resize(function() {
+        resizeBg();
+    }).trigger("resize");
+
+});
+
 // Get the modal
 var modal = document.getElementById('mymodal');
 
@@ -7031,7 +7029,7 @@ $(function(){
     var modalPosition = $('.landingmodal');
     modalPosition.css({
       top:nodeTop - 46,
-      left:nodeLeft 
+      left:nodeLeft
     });
     var svgID = $(this).attr('id');
 
@@ -7101,7 +7099,7 @@ $('.st3').mouseover(function(){
 });
 
 $(document).ready(function(){
-    responsiveImg();
+
 });
 
 window.onclick = function(event) {
