@@ -114,6 +114,10 @@ $(function () {
 		"../images/about/ryersonslc.jpg"
 	]);
 
+    $("#js-landing-carousel-2").backstretch([
+		"../images/backgrounds/welcome.jpg"
+	]);
+
 	/* ---------------------------------------------------------
 	 * Background (Backstretch) - Divisions
 	 */

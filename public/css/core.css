@@ -588,6 +588,10 @@ option {
     margin-top: 90vh;
     display: block;
   }
+
+  .feedback-h2 {
+    font-size: 0.8em;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -612,12 +616,23 @@ option {
     display: none;
   }
 
+  .landing-nav-logo {
+    display: block;
+    width: 100vw;
+  }
+
   .demhub-logo-landing {
     display: block;
     max-width: 100%;
     height: auto;
     min-width: 200px;
     display: inline;
+  }
+
+  .feedback-h2 {
+    max-width: 90%;
+    font-size: 1.7em !important;
+    padding: auto 40px auto 40px;
   }
 }
 
