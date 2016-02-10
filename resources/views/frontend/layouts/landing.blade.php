@@ -10,7 +10,7 @@
         <meta       name="google-site-verification" content="vVSYl3mhbDJShVxNX9St2jNw1h6sKkHaz1IgTEKC5xs" />
         <meta   property="og:image"                 content='http://www.demhub.net/images/backgrounds/landing-hero.jpg'>
         @yield('meta')
-        
+
         <title>@yield('title', app_name())</title>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -35,7 +35,7 @@
         <div class="wrapper">
             @include('includes.partials.messages')
 
-            <div class="@yield('container-class')" style="overflow-x:hidden;padding-top:25px">
+            <div class="@yield('container-class')" style="overflow-x:hidden;padding-top:25px;overflow-y:hidden">
                 @yield('body-style')
                 @yield('content')
             </div><!-- ./container-fluid -->

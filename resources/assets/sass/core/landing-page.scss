@@ -97,8 +97,19 @@ option {
    top:40px;
    left: 60%;
    padding:20px;
-   overflow-y: hidden;
+   overflow-y: scroll;
 }
+
+.card-ajax::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.row::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
 .divisionColor0{
     color:red !important;
     background-color: red;
@@ -139,8 +150,7 @@ option {
     }
     //image ul
     ul:first-child{
-        width: 20%;
-      min-width: 80px;
+      width: 20%;
       margin-left: 20px;
       min-height: 80px;
       float: left;
@@ -210,6 +220,7 @@ option {
     //image ul
     ul:first-child{
       width:70%;
+      padding-right: 15px;
       li:first-child{
         font-size: 1.2em;
         font-weight: bold;
@@ -270,47 +281,32 @@ margin-top:25px !important;
   top:0px;
   left:0px;
 }
-.care-bg {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  object-fit: cover;
-
+#caroimage {
+  position: fixed; top: 0; left: 0;
+  max-width: none;
 }
+.bgwidth { width: 100% !important;
+            max-width:100%;
+            min-width: 100% !important;
+            height:auto;
+        }
+.bgheight { height: 100% !important;
+            max-width:200% !important;
+            min-height: 100% !important;
+            }
+
 .carousel, .carousel-inner, .carousel-inner .item{
     position: absolute;
     display: block;
     background-color: black;
     height:100vh;
 
-    // .bg-1{
-    //   background: url(../../images/backgrounds/landing-hero.jpg) no-repeat center center fixed;
-    //   @extend care-bg;
-    // }
-    //
-    // .bg-2{
-    //   background: url(../../images/backgrounds/welcome.jpg) no-repeat center center fixed;
-    //   @extend care-bg;
-    // }
-    //
-    // .bg-3{
-    //   background: url(../../images/backgrounds/fullscreen.jpg) no-repeat center center fixed;
-    //   @extend care-bg;
-    // }
-    img {
-      height:auto;
-      width:auto;
-      overflow: hidden;
-        display: block;
-        opacity: 0.6;
-    }
     .carousel-caption {
       text-align: left !important;
       text-transform: uppercase;
       max-width:400px;
       line-height: 150% !important;
-      top:300px !important;
+      top:50% !important;
       h3 {
         line-height: 150%;
       }
@@ -392,7 +388,7 @@ margin-top:25px !important;
     width:30vw;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1299px) {
   .feedback-h2 {
     font-size: 27px !important;
     padding-bottom: 25px !important;
@@ -409,6 +405,28 @@ margin-top:25px !important;
     height:80vh;
     width:30vw;
     display: block;
+  }
+  .table-details1{
+      height: auto;
+      display: block;
+      margin-bottom: 50px;
+
+      ul:first-child{
+          width:30%;
+      }
+      ul:nth-child(2){
+          width:60%;
+          padding-left: 20px;
+      }
+      ul:nth-child(3){
+          width:100%;
+          text-align: center;
+          margin-bottom: 0px;
+          padding-bottom: 0px;
+          button{
+              width:50%;
+          }
+      }
   }
 }
 

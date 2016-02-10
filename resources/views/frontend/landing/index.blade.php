@@ -39,7 +39,7 @@
 		<div id="welcome_home">
 			<div class="card-selector col-sm-offset-1">
 				<div class="col-sm-12 col-md-10 col-lg-10 col-sm-offset-1 lading-content-1">
-					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'demhub-logo-landing', 'width' => '190')) !!}
+					{!! HTML::image("/images/logo/demhub_logo-05.svg", "DEMHUB logo", array('class' => 'demhub-logo-landing')) !!}
 				</div>
 				{{-- <h5>THE DISASTER & EMERGENCY MANAGEMENT NETWORK</h5> --}}
 				<div class="ajax-selector">
@@ -93,22 +93,21 @@
 
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
-		    <div class="item active care-bg">
-		      <img src="/images/backgrounds/landing-hero.jpg" alt="...">
-					<div class="col-sm-12 col-md-6 col-lg-6"></div>
+		    <div class="item active">
+		      <img id="caroimage" src="/images/backgrounds/landing-hero.jpg" alt="...">
 		      <div class="carousel-caption ">
 		      	<h3> THE DISASTER & EMERGENCY MANAGEMENT NETWORK</h3>
 		      </div>
 				</div>
 
-		    <div class="item care-bg">
-		      <img src="/images/backgrounds/welcome.jpg" alt="...">
+		    <div class="item">
+		      <img id="caroimage" src="/images/backgrounds/welcome.jpg" alt="...">
 		      <div class="carousel-caption">
 		          <h3> Discover and get discovered within professional circles.</h3>
 		      </div>
 		    </div>
-				<div class="item care-bg">
-					<img src="/images/backgrounds/divisions/humanitarian.jpg" alt="...">
+				<div class="item">
+					<img id="caroimage" src="/images/backgrounds/originals/humanitarian.jpg" alt="...">
 					<div class="carousel-caption">
 						<h3>Exchange your thoughts with millions of industry professionals.</h3>
 					</div>
