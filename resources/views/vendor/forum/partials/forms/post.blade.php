@@ -18,7 +18,7 @@
 @endif
 
 <div class="form-group">
-    {!! Form::textarea('content', $post_content, ['class' => 'form-control','data-minlength'=>'6']) !!}
+    {!! Form::textarea('content', $post_content, ['class' => 'form-control','data-minlength'=>'6','style' => 'resize: vertical;']) !!}
     <div class="help-block with-errors"></div>
 </div>
 
