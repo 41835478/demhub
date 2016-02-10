@@ -211,6 +211,7 @@ class Search
         ]
     ];
     $results = Es::search($params);
+
     return $results['hits'];
   }
 

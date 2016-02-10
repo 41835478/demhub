@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="row">
-    <div class="col-md-8 col-md-offset-2" style="padding-top:15px">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="padding-top:15px">
       <a href="{{ url('forum/all_threads') }}" class="btn btn-default btn-style-alt">ALL THREADS</a>
     <h2>
         @if ($thread->locked)

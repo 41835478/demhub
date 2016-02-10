@@ -41,27 +41,7 @@
         </div>
         <div class="col-xs-2" style="text-align:center;padding-left:32px">
             <div style="margin: 0 auto; width:100%; height:40px; position:absolute;">
-                @if(Auth::user()->is_following($user))
-                    {!! Form::model($user, ['route' => ['unfollow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
-                    {!! Form::token() !!}
-                    <button type="submit" class="btn btn-greytone btn-sm" style="">
-                        <i class="glyphicon glyphicon-ok"></i><span style="font-size:85%"> UNFOLLOW</span>
-                    </button>
-                    {{-- <a type="button" class="btn btn-style-alt btn-sm" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
-                      <span class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</span>
-                    </a> --}}
-                    {!! Form::close() !!}
-                @else
-                    {!! Form::model($user, ['route' => ['follow_user', $user->id], 'style' => '', 'role' => 'form', 'method' => 'POST']) !!}
-                    {!! Form::token() !!}
-                    <button type="submit" class="btn btn-style-alt btn-sm" style="">
-                        <i class="glyphicon glyphicon-plus"></i> FOLLOW
-                    </button>
-                    {{-- <a type="button" class="btn btn-style-alt btn-sm" href="mailto:{{$user->email}}?Subject=DEMHUB%20Connection" target="_top">
-                      <span class="glyphicon glyphicon-envelope" aria-hidden="true"> Email</span>
-                    </a> --}}
-                    {!! Form::close() !!}
-                @endif
+                @include('frontend.card.__follow_button')
 
                 <div style="padding-left:5%">
                     <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>

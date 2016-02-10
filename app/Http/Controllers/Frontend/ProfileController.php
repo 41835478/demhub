@@ -61,13 +61,27 @@ class ProfileController extends Controller {
 		if (!Auth::user()->is_following($id)) {
 			Auth::user()->following()->attach($id);
 		}
-		return $this->listing_of_profiles();
+
+		// TODO - Do this properly
+        // $content_json = Helpers::return_json_results($content_json);
+        return response()->json([
+            'success' => 'cool',
+            'message'=> 'Contents rendered',
+            'content' => 'blah'
+        ]);
 	}
 
 	public function unfollowUser($id) {
 		if (Auth::user()->is_following($id)) {
 			Auth::user()->following()->detach($id);
 		}
-		return $this->listing_of_profiles();
+
+		// TODO - Do this properly
+        // $content_json = Helpers::return_json_results($content_json);
+        return response()->json([
+            'success' => 'cool',
+            'message'=> 'Contents rendered',
+            'content' => 'blah'
+        ]);
 	}
 }

@@ -3,6 +3,7 @@
 /**
  * Frontend Controllers.
  */
+
 get('/',        'FrontendController@index')->name('home');
 get('about',    'FrontendController@about');
 get('policy',   'FrontendController@policy');
@@ -14,8 +15,7 @@ get('signUpSuccess',    'FrontendController@signUpSuccess')->name('signUpSuccess
 get( 'feedback',    'FrontendController@getFeedback');
 post('feedback',    'FrontendController@postFeedback')->name('post_feedback');
 
-// TODO - Check which of these routes need to go thorugh the Middleware
-get( 'forum/all_threads',       'ForumController@getViewAllThreads')->name('all_threads');
+
 
 /*
  * Division Routes
@@ -85,8 +85,8 @@ $router->group(['middleware' => 'auth'], function () {
     get(  'profiles',               'ProfileController@listing_of_profiles')->name('profiles');
 
     // Follow/unfollow
-    post('follow/{id}',     'ProfileController@followUser')->name('follow_user');
-    post('unfollow/{id}',   'ProfileController@unfollowUser')->name('unfollow_user');
+    post('follow/{id}',             'ProfileController@followUser')->name('follow_user');
+    post('unfollow/{id}',           'ProfileController@unfollowUser')->name('unfollow_user');
 });
 
 /*

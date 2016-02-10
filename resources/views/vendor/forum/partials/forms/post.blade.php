@@ -18,13 +18,13 @@
 @endif
 
 <div class="form-group">
-    {!! Form::textarea('content', $post_content, ['class' => 'form-control','data-minlength'=>'6']) !!}
+    {!! Form::textarea('content', $post_content, ['class' => 'form-control','data-minlength'=>'6','style' => 'resize: vertical;']) !!}
     <div class="help-block with-errors"></div>
 </div>
 
-<button type="submit" id="submit" class="btn btn-style-alt">{{ $submit_label }}</button>
+<button type="submit" id="submit" class="btn btn-style-alt" style="text-transform:uppercase">{{ $submit_label }}</button>
 @if ( $cancel_url )
-<a href="{{ $cancel_url }}" class="btn btn-default btn-style-alt">{{ trans('forum::base.cancel') }}</a>
+<a href="{{ $cancel_url }}" class="btn btn-default btn-style-alt" style="text-transform:uppercase">{{ trans('forum::base.cancel') }}</a>
 @endif
 
 {!! Form::close() !!}

@@ -87,6 +87,6 @@ return [
 	|
 	*/
 
-	'controller' => '\App\Http\Controllers\Frontend\ForumController'
+	'controller' => 'Riari\Forum\Controllers\ForumController'
 
 ];

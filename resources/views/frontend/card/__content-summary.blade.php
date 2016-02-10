@@ -136,7 +136,7 @@
 
     <div style="width:100%; bottom:0px; position:absolute;">
         <div class="col-xs-12">
-            @include('division.__article_buttons')
+            @include('frontend.card.__article_buttons')
         </div>
 
         <div class="col-xs-12" style="padding: 15px; background-color: #f5f5f5; margin: 10px 0 0 0;">
