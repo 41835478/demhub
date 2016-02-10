@@ -70,7 +70,7 @@ $(function(){
     });
     var svgID = $(this).attr('id');
 
-    // console.log(svgID);
+    console.log(svgID);
     var mapImg = $('#map-img');
     if(svgID === "XMLID_8"){
       $(mapImg).attr('src','images/landing-avatars/torrin.jpg');
@@ -81,7 +81,7 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_1"){
-      $(mapImg).attr('src','images/landing-avatars/aldo.png');
+      $(mapImg).attr('src','images/landing-avatars/aldo.jpg');
       $('#map-user').html('<li>Aldo Ruiz</li>');
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>Programmer</li>');
@@ -89,6 +89,7 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_15"){
+      $(mapImg).attr('src','images/landing-avatars/missing.png');
       $('#map-user').html('<li>Diana Wong</li>');
       $('#map-place').html('<li>Australia</li>');
       $('#map-profession').html('<li>Disaster Health Evaluation Consultant</li>');
@@ -96,6 +97,7 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_13"){
+      $(mapImg).attr('src','images/landing-avatars/missing.png');
       $('#map-user').html('<li>Matt Feryan</li>');
       $('#map-place').html('<li>USA</li>');
       $('#map-profession').html('<li>Sr. Emergency Management Specialist</li>');
@@ -103,14 +105,15 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_5"){
+      $(mapImg).attr('src','images/landing-avatars/missing.png');
       $('#map-user').html('<li>Deb Borsos</li>');
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>ESS Director, rural Recovery work</li>');
       $('#map-division').html('<li>Science & Environment</li>');
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
-    else{
-        $(mapImg).attr('src','images/landing-avatars/missing.png');
+    else {
+        $(mapImg).attr('src','images/landing-avatars/unknown.png');
         $('#map-user').html('<li>This location awaits your input </li>');
         $('#map-place').html('<li></li>');
         $('#map-profession').html('<li>Connect to Disaster Management professionals worldwide</li>');
@@ -135,12 +138,8 @@ $('.st3').mouseover(function(){
   });
 });
 
-$(document).ready(function(){
-
-});
-
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
