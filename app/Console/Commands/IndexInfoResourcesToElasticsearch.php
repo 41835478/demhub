@@ -38,7 +38,7 @@ class IndexInfoResourcesToElasticsearch extends Command
             'index' => 'info',
             'type' => 'resources',
             'body' => [
-                'publications' => [
+                'resources' => [
                     '_source' => [
                         'enabled' => true
                     ],
