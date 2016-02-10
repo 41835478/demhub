@@ -34,6 +34,33 @@ class IndexInfoResourcesToElasticsearch extends Command
             Es::indices()->create($indexParams);
         }
 
+        $mappingProperties = [
+            'index' => 'info',
+            'type' => 'resources',
+            'body' => [
+                'publications' => [
+                    '_source' => [
+                        'enabled' => true
+                    ],
+                    'properties' => [
+                        'publication_date' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ],
+                        'created_at' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ],
+                        'updated_at' => [
+                            'type' => 'date',
+                            'format' => 'yyyy-MM-dd HH:mm:ss'
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        Es::indices()->putMapping($mappingProperties);
+
         InfoResource::chunk(100, function($resources) {
             foreach ($resources as $resource) {
                 $params = [
