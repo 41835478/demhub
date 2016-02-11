@@ -1,11 +1,11 @@
-<?php
+{{-- <?php
     dd($keywords);
     $dropup = false;
     if (count($keywords) > 3) {
         $dropup = true;
         die();
     }
-?>
+?> --}}
 {{-- Note :  --}}
 {{-- First keyword is shown outside of dropup menu --}}
 {{-- Same structure as facebook post 'like' count system --}}
