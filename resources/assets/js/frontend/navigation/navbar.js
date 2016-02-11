@@ -1,15 +1,4 @@
-$("#top-menu li a").mouseenter(function() {
-    $(this).children(".img-circle").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});background-size:cover;");
-});
-$("#top-menu li a").mouseleave(function() {
-    $(this).children(".img-circle").attr("style","background-image:url({{Auth::user()->avatar->url('thumb')}});");
-});
 
-//	$(".nav-searchbar").focus(function() {
-//		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
-//		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
-//		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
-//	});
 
 $(document).ready(function(){
 	$(".searchbar-group").mouseenter(function() {
@@ -24,25 +13,39 @@ $(document).ready(function(){
 		search_focus(true);
 	});
 
-	if($(".nav-searchbar").val() && $(".nav-searchbar").val().trim() !== ""){
+	if(search_has_text()){
 		search_focus(true);
 	}
 });
 
 function search_focus(give_focus){
 	if(give_focus){
-		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
-		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");
-		$(".nav-search-text").addClass("active");//.attr("style","background-color: #ededed;color: #ed6b00;");
+		$(".nav-searchbar").addClass("active");
+		$(".nav-search-icon-style").addClass("active");
+		$(".nav-search-text").addClass("active");
 	} else {
-		if(	$(".nav-searchbar").val().trim() === "" &&
+		if(	!search_has_text() &&
 			!$(".nav-searchbar").is(":focus") &&
 			!$(".nav-search-icon-style").is(":focus") &&
 			!$(".nav-search-text").is(":focus"))
 		{
-			$(".nav-searchbar").removeClass("active");//.attr("style","background-color:#546f7a;");
-			$(".nav-search-icon-style").removeClass("active");//.attr("style","background-color: #546f7a;color: #fff;");
-			$(".nav-search-text").removeClass("active");//.attr("style","background-color:#455a63;color:#fff;");
+			$(".nav-searchbar").removeClass("active");
+			$(".nav-search-icon-style").removeClass("active");
+			$(".nav-search-text").removeClass("active");
 		}
 	}
+}
+
+function search_has_text()
+{
+	var text = '';
+	$(".nav-searchbar").each(function(index){
+		if($(this).val().trim() !== '')
+			text = $(this).val().trim();
+	});
+
+	if(text == '')
+		return false;
+	else
+		return text;
 }
