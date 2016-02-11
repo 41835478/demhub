@@ -418,8 +418,8 @@ class DashboardController extends Controller {
 	public function runScript(Request $request)
 	{
 		DB::table('articles')->chunk(100, function($articles) {
-      foreach ($articles as $index => $article) {
-        $data = json_encode([
+            foreach ($articles as $index => $article) {
+                $data = json_encode([
 					$article->language,
 					$article->type
 				]);
@@ -463,11 +463,11 @@ class DashboardController extends Controller {
 						'deleted' => $media->deleted
 					]);
 				}
-      }
-    });
+      		}
+    	});
 
 		DB::table('info_resources')->chunk(100, function($infoResources) {
-      foreach ($infoResources as $infoResource) {
+      		foreach ($infoResources as $infoResource) {
 
 				$meta = $this->convertResourceMeta($infoResource->divisions, $infoResource->keywords);
 				$content = Content::firstOrCreate([
@@ -492,11 +492,11 @@ class DashboardController extends Controller {
 					'deleted' => false,
 					'publish_date' => NULL
 				]);
-      }
-    });
+      		}
+    	});
 
 		DB::table('forum_threads')->chunk(100, function($threads) {
-      foreach ($threads as $thread) {
+      		foreach ($threads as $thread) {
 				$pinned_date = $thread->pinned ? Carbon::now() : NULL;
 				$division = Division::where('id', '=', $thread->parent_category)->first();
 				$deleted = $thread->deleted_at ? true : false;
@@ -531,11 +531,11 @@ class DashboardController extends Controller {
 					$post->parent_thread = $content->id;
 					$post->save();
 				}
-      }
-    });
+      		}
+    	});
 
 		DB::table('publications')->chunk(100, function($publications) {
-      foreach ($publications as $publication) {
+      		foreach ($publications as $publication) {
 				$data = json_encode([
 					$publication->volume,
 					$publication->issues,
@@ -596,15 +596,15 @@ class DashboardController extends Controller {
 						'deleted' => false
 					]);
 				}
-      }
-    });
+      		}
+    	});
 
 		$scripts = [];
 		return view('backend.scripts', compact('scripts'));
 	}
 
 	private function convertResourceMeta($divs_str, $keywords_str)
-  {
+  	{
 			$divs = explode(',', strtolower($divs_str));
       $keywords = explode(',', strtolower($keywords_str));
       $new_divs = [];
