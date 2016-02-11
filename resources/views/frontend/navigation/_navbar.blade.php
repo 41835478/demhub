@@ -101,3 +101,17 @@
 	@endif
 
 </nav>
+
+@section('before-scripts-end')
+	@if(Auth::user())
+		{{-- NOTE : Leave this script here, since Auth::user() is required --}}
+		<script type="text/javascript">
+			$("#top-menu li a").mouseenter(function() {
+				$(this).children(".img-circle").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});background-size:cover;");
+			});
+			$("#top-menu li a").mouseleave(function() {
+				$(this).children(".img-circle").attr("style","background-image:url({{Auth::user()->avatar->url('thumb')}});");
+			});
+		</script>
+	@endif
+@endsection

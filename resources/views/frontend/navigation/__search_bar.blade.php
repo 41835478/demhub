@@ -19,3 +19,15 @@
         </div>
     </div>
 {!! Form::close() !!}
+
+<script>
+    <?php /* should be here since php code is be injected in this piece of js */ ?>
+    $(document).ready(function () {
+        $("#top-menu li a").mouseenter(function() {
+            $(this).children(".img-circle").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});background-size:cover;");
+        });
+        $("#top-menu li a").mouseleave(function() {
+            $(this).children(".img-circle").attr("style","background-image:url({{Auth::user()->avatar->url('thumb')}});");
+        });
+    })
+</script>
