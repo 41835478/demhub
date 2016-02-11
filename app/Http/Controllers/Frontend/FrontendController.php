@@ -294,7 +294,7 @@ class FrontendController extends Controller {
 			]
 		];
         $advisorsMedium = [
-            "WillO" => [
+            "willO" => [
 				"name" => "Will Ollerhead",
 				"position" => "Strategic Business Development",
 				"description" => NULL
@@ -304,7 +304,7 @@ class FrontendController extends Controller {
 				"position" => "Strategic Business Development",
 				"description" => NULL
 			],
-            "RichardS" => [
+            "richardS" => [
 				"name" => "Richard Serino",
 				"position" => "EM Preparedness & Technology",
 				"description" => NULL
