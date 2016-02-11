@@ -14,7 +14,7 @@
 				])
 			@endforeach
 		</div>
-        <div class="row">
+        <div class="row" style="padding-top:20px">
             <h3 style="text-transform:uppercase">Advisors</h3>
 			@foreach($advisorsMedium as $member => $content)
 				@include('frontend.about.__advisor_medium', [
