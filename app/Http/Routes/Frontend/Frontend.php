@@ -53,6 +53,7 @@ $router->group(['middleware' => 'auth'], function () {
     // NOTE - DashboardController@index used instead of @edit_profile
     get('dashboard',    'DashboardController@index'             )->name('dashboard');
     get('connections',  'DashboardController@showConnections'   )->name('connections');
+    get('bookmarks',  'DashboardController@showBookmarks'   )->name('bookmarks');
 
     /*
      * Search

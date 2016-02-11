@@ -38,4 +38,13 @@ class DashboardController extends Controller {
 			'users'
 		]));
 	}
+    public function showBookmarks()
+	{
+		$user 	= auth()->user();
+		$bookmarks 	= $user->bookmarks;
+
+		return view('frontend.user.dashboard.connections', compact([
+			'bookmark'
+		]));
+	}
 }

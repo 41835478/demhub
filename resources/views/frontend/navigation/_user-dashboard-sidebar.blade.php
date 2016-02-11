@@ -34,6 +34,14 @@
     </a>
 </li>
 
+{{(Request::url() == url('connections')) ? '<li class="active">': '<li>'}}
+
+    <a href="{{url('bookmarks')}}" style="">
+        <span class="js-bookmark-tag glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span class="sidebar-title" id="bookmarks_title">BOOKMARKS</span>
+    </a>
+</li>
+
 <li>
     <a href="javascript:comingSoonP('privacy_settings_title')" style="">
         <span class="fa fa-globe"></span>
@@ -41,12 +49,6 @@
     </a>
 </li>
 
-<li>
-    <a href="javascript:comingSoonP('collection_title')" style="">
-        <span class="fa fa-file" style=""></span>
-        <span class="sidebar-title" id="collection_title">COLLECTION</span>
-    </a>
-</li>
 
 @permission('view-backend')
     <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
