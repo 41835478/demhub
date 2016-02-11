@@ -120,18 +120,7 @@
             ?>
         </p>
 
-        <div>
-            @if(count($item['keywords']) > 4)
-                @include('division.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
-            @elseif(count($item['keywords']) <5)
-                @foreach($item['keywords'] as $key => $keyword)
-                    <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="{{ url('search', ['query_term'=>$keyword]) }}">
-                        #{{ $keyword }}
-                    </a>
-                @endforeach
-            @endif
-        </div>
-
+        @include('frontend.card.__keyword-dropup-foreach', ['keywords' => $item['keywords']])
     </div> <!-- the div that closes the .inner-peoplebox -->
 
     <div style="width:100%; bottom:0px; position:absolute;">

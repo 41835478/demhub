@@ -118,15 +118,7 @@
 
             <div {{ Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ?
             'style="top:115px; position:absolute; width:100%;"' : 'style="position:absolute; width:100%;"' }} >
-                @if(count($item['keywords']) > 4)
-                    @include('division.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
-                @elseif(count($item['keywords']) <5)
-                    @foreach($item['keywords'] as $key => $keyword)
-                        <a class="label-hashtag" style="font-size:82%;margin-right:2px;padding-bottom:4px" href="{{ url('search', ['query_term'=>$keyword]) }}">
-                            #{{ $keyword }}
-                        </a>
-                    @endforeach
-                @endif
+                @include('frontend.card.__keyword-dropup-foreach', ['keywords'=>$item['keywords']])
             </div>
 
         </div> <!-- End: inner-feedsbox-teaser -->
