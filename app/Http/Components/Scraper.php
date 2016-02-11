@@ -14,10 +14,12 @@ use App\Models\ArticleDetail;
 use App\Models\ArticleMedia;
 use App\Models\Article;
 use App\Models\Content;
+use App\Models\ContentMedia;
 use App\Models\Keyword;
 use App\Models\NewsFeed;
 use App\Models\ScrapeSource;
 use App\Models\ScrapeLog;
+use Carbon\Carbon;
 
 class Scraper
 {
@@ -197,7 +199,7 @@ class Scraper
 		$return['message'] = '';
 		// item exists in db
 		// TODO need a more full proof way to check existing articles
-		if( ($existingart = Article::where('title', Helpers::truncate(Helpers::verify($params['title'])))->first()) ){
+		if( ($existingart = Article::where('name', Helpers::truncate(Helpers::verify($params['title'])))->first()) ){
 			$return['message'] .= '<b>- Item seem to already exists as article_id = '.$existingart->id.'</b>';
 			$return['status'] = 'exist';
 
@@ -260,7 +262,7 @@ class Scraper
 		// Checks if coords given, if not checks for location string.
 		// if either available tries to determine location details for saving in DB
 		$location_info = null;
-		if(Helpers::verify($params['lat']) && Helpers::verify($params['lng'])){
+		if(Helpers::verify($params['lat']) && Helpers::verify($params['lng'])) {
 			$location_info = Helpers::getLocationInfo($params['lat'], $params['lng']);
 		} elseif (Helpers::verify($params['location'])){
 			$coords = Helpers::getCoords($params['location']);
@@ -268,25 +270,31 @@ class Scraper
 				$location_info = Helpers::getLocationInfo($coords['lat'], $coords['lng']);
 		}
 
-		if($item == null){
+		if($item == null) {
 			$model = new Article();
 			// no overwriting these
-			$data['language'] 	= Helpers::verify($params['language']);
-			$model->language 	= Helpers::verify($params['language']);
+			// $data['language'] 	= Helpers::verify($params['language']);
+			// $model->language 	= Helpers::verify($params['language']);
 			$model->deleted 	= 0;
+			$model->visibility	= 1;
+			$model->status_flag	= 0;
+			$model->data 		= json_encode([
+									Helpers::verify($params['language']),
+									($type==null||$type==0) ? ArticleController::typeOther : $type
+								]);
 		} else {
 			$model = $item;
-			$data = $item->data;
+			// $data = $item->data;
 		}
 
 		//$model->subclass 	= ($type==null||$type==0) ? ArticleController::typeOther : $type;
 
-		$model->type 		= ($type==null||$type==0) ? ArticleController::typeOther : $type;
+		// $model->type 		= ($type==null||$type==0) ? ArticleController::typeOther : $type;
 		$model->divisions 	= Helpers::convertDBArrayToString($keys_divs['divisions']);
-		$model->source_id 	= $source!=null ? $source->id : null;
-		$model->source_url 	= Helpers::truncate(Helpers::verify($params['url']));
-		$model->title 		= Helpers::truncate(Helpers::verify($params['title'], ''));
-		$model->excerpt 	= $excerpt;
+		$model->owner_id 	= $source!=null ? $source->id : null;
+		$model->url 		= Helpers::truncate(Helpers::verify($params['url']));
+		$model->name 		= Helpers::truncate(Helpers::verify($params['title'], ''));
+		$model->description = $excerpt;
 		$model->keywords 	= Helpers::convertDBArrayToString($keys_divs['keywords']);
 		$model->city 		= $location_info!=null ? $location_info['city'] : null;
 		$model->state 		= $location_info!=null ? $location_info['state'] : null;
@@ -310,23 +318,25 @@ class Scraper
 					$mdetail->article_id = $model->id;
 				}
 
-				$mdetail->url = $model->source_url;
+				$mdetail->url = $model->url;
 				$mdetail->text = $text;
 				$mdetail->save();
 			}
 
 
-			// Handle media (images) rlated to the article
+			// Handle media (images) related to the article
 			if(isset($params['media'])){
 				foreach($params['media'] as $i=>$media){
 					if(isset($media['url'])){
-						$media_exists= ArticleMedia::where('filename', $media['url'])->first();
+						$media_exists= ContentMedia::where('resource_file_name', $media['url'])->first();
 						if(!$media_exists){
-							$media_model = new ArticleMedia();
-							$media_model->article_id = $model->id;
+							$media_model = new ContentMedia();
+							$media_model->content_id = $model->id;
 							$media_model->view_order = $i;
-							$media_model->filename = $media['url'];
-							$media_model->filetype = 'url';
+							$media_model->resource_file_name = $media['url'];
+							$media_model->resource_content_type = 'url';
+							$media_model->resource_updated_at = Carbon::now();
+							$media_model->deleted = 0;
 							$media_model->save();
 						}
 					}
