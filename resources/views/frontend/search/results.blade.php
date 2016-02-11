@@ -16,16 +16,7 @@
     }
 </style>
 <script>
-    $(document).ready(function(){
-        var box_height = 0;
-        $('.feedsbox').each(function(index){
-            if($(this).height() > box_height)
-                box_height = $(this).height();
-        });
-        $('.feedsbox').css('height', box_height);
-
-
-    });
+    
 </script>
 <div class="container-fluid row">
     <div class="col-xs-12 col-sm-offset-1 col-sm-10">

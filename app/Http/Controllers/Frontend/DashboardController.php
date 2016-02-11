@@ -41,10 +41,11 @@ class DashboardController extends Controller {
     public function showBookmarks()
 	{
 		$user 	= auth()->user();
-		$bookmarks 	= $user->bookmarks;
+		$items 	= $user->bookmarks();
+        
 
-		return view('frontend.user.dashboard.connections', compact([
-			'bookmark'
+		return view('frontend.user.dashboard.bookmarks', compact([
+			'items', 'user', 'type'
 		]));
 	}
 }

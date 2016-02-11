@@ -121,10 +121,25 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
     public function bookmarks() {
-		return $this->belongsToMany('Riari\Forum\Models\Content','follow_relationships','follower_id','followed_id')
-								->whereFollowerType(self::USER)
-								->whereFollowedType([self::THREAD, self::PUBLICATION, self::ARTICLE])
-								->withTimestamps();
+		// return $this->belongsToMany('App\Models\Content','follow_relationships','follower_id','followed_id')
+		// 						->whereFollowerType(self::USER)
+		// 						->whereFollowedType([self::THREAD, self::PUBLICATION, self::ARTICLE])
+		// 						->withTimestamps();
+        $follows = DB::table('follow_relationships')
+                        ->whereIn('followed_type', [self::THREAD,self::PUBLICATION,self::ARTICLE])
+                        ->whereFollowerId($this->id)
+                        ->whereFollowerType(self::USER)
+                        ->get();
+
+        $contentIds=[];
+        foreach($follows as $key => $follow){
+            $contentIds[$key]=$follow->followed_id;
+        };
+
+        $items = Content::whereIn('id',$contentIds)
+                        ->get();
+
+        return $items;
 	}
 
 	public function threadBookmarks() {

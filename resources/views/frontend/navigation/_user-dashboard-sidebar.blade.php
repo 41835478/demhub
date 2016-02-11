@@ -34,7 +34,7 @@
     </a>
 </li>
 
-{{(Request::url() == url('connections')) ? '<li class="active">': '<li>'}}
+<li class="{{(Request::url() == url('connections')) ? 'active': ''}}">
 
     <a href="{{url('bookmarks')}}" style="">
         <span class="js-bookmark-tag glyphicon glyphicon-plus" aria-hidden="true"></span>
