@@ -39,8 +39,9 @@ class SearchController extends Controller
                 $div_id = $div->id;
         }
 
-        //if (trim($query_term) != '') {
-        if(true){
+        if (trim($query_term) != '' || (trim($query_term) == '' && $scope != 'all')) {
+            // TODO - Refactor this controller to include all fields in search
+            // and minimize definition of $contentQuery variables
             $articleQuery = [
                 'multi_match' => [
                     'query' => $query_term,
@@ -104,7 +105,7 @@ class SearchController extends Controller
 
         $searchBar = true;
 
-        if ($scope == 'all' || trim($query_term) == '') {
+        if ($scope == 'all') {
             $articleTotalCount      = isset($articleResults['total'])       ? $articleResults['total']      : 0;
             $userTotalCount         = isset($userResults['total'])          ? $userResults['total']         : 0;
             $publicationTotalCount  = isset($publicationResults['total'])   ? $publicationResults['total']  : 0;
