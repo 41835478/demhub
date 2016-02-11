@@ -25,7 +25,7 @@ class DivisionController extends Controller
     public function index(Request $request)
     {
         $currentDivision = Division::find(1);
-        $currentDivision->slug = 'all';
+        $currentDivision->slug = $scope = 'all';
         $currentDivision->name = 'All Divisions';
 
         $allDivisions = $navDivisions = Division::all();
@@ -56,14 +56,15 @@ class DivisionController extends Controller
 
         return view('division.index', compact([
             'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'articleMediaArray', 'userMenu', 'threads',
-            'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page',
+            'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page', 'scope'
         ]));
     }
 
     public function show($divisionSlug, Request $request)
     {
         // TODO - Remove 'is_numeric($divisionSlug)' if not necessary
-      $currentDivision = Division::where(is_numeric($divisionSlug) ? 'id' : 'slug', $divisionSlug)->firstOrFail();
+        $currentDivision = Division::where(is_numeric($divisionSlug) ? 'id' : 'slug', $divisionSlug)->firstOrFail();
+        $scope = $currentDivision->id;
 
         $allDivisions = $navDivisions = Division::all();
         $userMenu = false;
@@ -103,7 +104,7 @@ class DivisionController extends Controller
 
         return view('division.index', compact([
             'allDivisions', 'navDivisions', 'currentDivision', 'newsFeeds', 'userMenu', 'articleMediaArray',
-            'threads', 'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page',
+            'threads', 'query_term', 'total_count', 'options_page', 'options_count', 'item_count', 'last_page', 'scope'
         ]));
     }
 

@@ -47,8 +47,9 @@ $router->group(['middleware' => 'auth'], function () {
 
     get('discussion', 'ForumController@showDiscussionIndex' )->name('discussion');
 
-    get('userhome',         'UserController@index'          )->name('userhome');
-    get('get_activities',   'UserController@getActivities'  )->name('get_activities');
+    get('userhome',             'UserController@index'          )->name('userhome');
+    get('get_activities',       'UserController@getActivities'  )->name('get_activities');
+    get('get_articles/{scope}', 'UserController@getArticles'    )->name('get_articles');
 
     // NOTE - DashboardController@index used instead of @edit_profile
     get('dashboard',    'DashboardController@index'             )->name('dashboard');
