@@ -309,12 +309,12 @@ class FrontendController extends Controller {
 				"position" => "EM Preparedness & Technology",
 				"description" => NULL
 			],
-            "janeR" => [
+            "JaneR" => [
 				"name" => "Jane Rovins",
 				"position" => "EM Science and Research",
 				"description" => NULL
 			],
-            "margV" => [
+            "MargV" => [
 				"name" => "Marg Verbeek",
 				"position" => "EM Industry and Consultation",
 				"description" => NULL

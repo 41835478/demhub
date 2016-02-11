@@ -120,6 +120,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		}
 	}
 
+    public function bookmarks() {
+		return $this->belongsToMany('Riari\Forum\Models\Content','follow_relationships','follower_id','followed_id')
+								->whereFollowerType(self::USER)
+								->whereFollowedType([self::THREAD, self::PUBLICATION, self::ARTICLE])
+								->withTimestamps();
+	}
+
 	public function threadBookmarks() {
 		return $this->belongsToMany('Riari\Forum\Models\Thread','follow_relationships','follower_id','followed_id')
 								->whereFollowerType(self::USER)
@@ -167,7 +174,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function publicationBookmarks() {
 		return $this->belongsToMany('App\Models\Publication','follow_relationships','follower_id','followed_id')
 								->whereFollowerType(self::USER)
-								->whereFollowedType(self::THREAD)
+								->whereFollowedType(self::PUBLICATION)
 								->withTimestamps();
 	}
 

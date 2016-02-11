@@ -44,7 +44,7 @@
             <div class="row" style="padding:20px 0">
                 <h3 style="text-transform:uppercase">Team</h3>
                 @foreach($membersMedium as $member => $content)
-                    @include('frontend.about._member_medium', [
+                    @include('frontend.about._teammate', [
                         'imgName' 		=> $member,
                         'name'			=> $content["name"],
                         'position'		=> $content["position"],
@@ -56,7 +56,7 @@
             <div class="row">
                 <h3 style="text-transform:uppercase">Advisors</h3>
                 @foreach($advisorsMedium as $member => $content)
-                    @include('frontend.about._advisor_medium', [
+                    @include('frontend.about._advisor', [
                         'imgName' 		=> $member,
                         'name'			=> $content["name"],
                         'position'		=> $content["position"],
