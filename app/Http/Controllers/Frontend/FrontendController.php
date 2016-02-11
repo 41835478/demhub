@@ -266,11 +266,7 @@ class FrontendController extends Controller {
 				"position" => "Director Of Finance",
 				"description" => "An adventurous, entrepreneurially-minded Financial professional who has worked for Coca-Cola as a Senior Financial Analyst, Thomson Reuters and State Street. Through his work experience, education at The University of Western Ontario in Finance & Accounting, and continuing Chartered Financial Analyst (CFA) studies, Andrew has exceptional knowledge in valuations, financial modeling & analysis, contract negotiation, corporate finance, and project management."
 			],
-            "SeanK" => [
-				"name" => "Sean Kondra",
-				"position" => "Director Operations & Development",
-				"description" => ""
-			],
+
 			"AldoR" => [
 				"name" => "Aldo Rui­z Luna",
 				"position" => "Lead Developer",
@@ -283,12 +279,12 @@ class FrontendController extends Controller {
 			],
 			"JiaoX" => [
 				"name" => "Jiao Xue",
-				"position" => "UI/UX Designer",
+				"position" => "UI & UX Designer",
 				"description" => NULL
 			],
 			"PriscillaW" => [
 				"name" => "Priscilla Wong",
-				"position" => "UI/UX Designer",
+				"position" => "UI & UX Designer",
 				"description" => NULL
 			],
 			"HilaryJ" => [
@@ -297,10 +293,38 @@ class FrontendController extends Controller {
 				"description" => NULL
 			]
 		];
+        $advisorsMedium = [
+            "willO" => [
+				"name" => "Will Ollerhead",
+				"position" => "Strategic Business Development",
+				"description" => NULL
+			],
+            "SeanK" => [
+				"name" => "Sean Kondra",
+				"position" => "Strategic Business Development",
+				"description" => NULL
+			],
+            "richardS" => [
+				"name" => "Richard Serino",
+				"position" => "EM Preparedness & Technology",
+				"description" => NULL
+			],
+            "janeR" => [
+				"name" => "Jane Rovins",
+				"position" => "EM Science and Research",
+				"description" => NULL
+			],
+            "margV" => [
+				"name" => "Marg Verbeek",
+				"position" => "EM Industry and Consultation",
+				"description" => NULL
+			],
+        ];
 
 		return view('frontend.about.index', [
 			'membersLarge' => $membersLarge,
 			'membersMedium' => $membersMedium,
+            'advisorsMedium' => $advisorsMedium
 		]);
 	}
 
