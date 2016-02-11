@@ -1424,7 +1424,7 @@ svg * {
 }
 
 .animate {
-  transition: all 0.3s ease;
+  transition: all 0.3s ease !important;
 }
 
 #top-menu .nav-dropdown-image {
