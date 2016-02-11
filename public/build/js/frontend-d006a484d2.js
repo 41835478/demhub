@@ -7357,13 +7357,6 @@ function sidebar(action) {
     }
 }
 
-$("#top-menu li a").mouseenter(function() {
-    $(this).children(".img-circle").attr("style","background:linear-gradient(rgba(237, 107, 0, 0.5), rgba(237, 107, 0, 0.5)),url({{Auth::user()->avatar->url('thumb')}});background-size:cover;");
-});
-$("#top-menu li a").mouseleave(function() {
-    $(this).children(".img-circle").attr("style","background-image:url({{Auth::user()->avatar->url('thumb')}});");
-});
-
 //	$(".nav-searchbar").focus(function() {
 //		$(".nav-searchbar").addClass("active");//.attr("style","color: #ed6b00;background-color:#fff;");
 //		$(".nav-search-icon-style").addClass("active");//.attr("style","background-color: #fff;color: #ed6b00;");

@@ -32,7 +32,7 @@ class UserController extends Controller {
 											->orderBy('updated_at', 'desc')
 											->paginate(30);
 		$allDivisions = $navDivisions = Division::all();
-		$type= 'teaser';
+		$type = 'teaser';
 		$html = view('frontend.user._activity_feed', compact([
 			'contents', 'allDivisions','type'
 		]))->render();
