@@ -76,8 +76,9 @@ $router->group(['middleware' => 'auth'], function () {
     get(  'publication/{id}',           'PublicationController@preview' )->name('preview_publication');
 
     // Bookmark
-    post('bookmark_publication/{id}',   'PublicationController@bookmarkPublication')->name('bookmark_publication');
-    post('unbookmark_publication/{id}', 'PublicationController@unbookmarkPublication')->name('unbookmark_publication');
+    get('bookmark_content/{id}/{type}',    'ContentController@bookmarkContent'     )->name('bookmark_content');
+    post('bookmark_content/{id}/{type}',    'ContentController@bookmarkContent'     )->name('bookmark_content');
+    post('unbookmark_content/{id}/{type}',  'ContentController@unbookmarkContent'   )->name('unbookmark_content');
 
     /*
      * Public Profiles

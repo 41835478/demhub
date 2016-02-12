@@ -1,15 +1,18 @@
-@if((!is_array($item) && get_class($item) == "App\Models\Publication") || is_array($item) && isset($item['subclass']) && $item['subclass'] == 'publication')
+@if(!is_array($item) || (is_array($item) && isset($item['subclass'])))
     {{-- TODO - Change form to remove model binding and deal with bookmarks as arrays --}}
     <?php
-        $pub = $item;
+        $subclass = NULL;
         if (is_array($item)) {
-            $pub = \App\Models\Publication::find($pub['id']);
+            $subclass = $item['subclass'];
+            $item = \App\Models\Content::find($item['id']);
+        } else {
+            $subclass = $item->subclass;
         }
     ?>
-    @if(Auth::user()->has_bookmarked_publication($pub))
+    @if(Auth::user()->has_bookmarked_content($item, $subclass))
         {!! Form::model(
-            $pub, ['route' => ['unbookmark_publication', $pub->id],
-            'id' => "form-{$pub->id}", 'class' => 'js-bookmark',
+            $item, ['route' => ['unbookmark_content', $item->id, $subclass],
+            'id' => "form-{$item->id}", 'class' => 'js-bookmark',
             'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']
         ) !!}
             <button type="submit" class="btn btn-greytone btn-sm" style="width:34px; height:30px;">
@@ -19,8 +22,8 @@
         {!! Form::close() !!}
     @else
         {!! Form::model(
-            $pub, ['route' => ['bookmark_publication', $pub->id],
-            'id' => "form-{$pub->id}", 'class' => 'js-bookmark',
+            $item, ['route' => ['bookmark_content', $item->id, $subclass],
+            'id' => "form-{$item->id}", 'class' => 'js-bookmark',
             'style' => 'display: inline;', 'role' => 'form', 'method' => 'POST']
         ) !!}
             <button type="submit" class="btn btn-style-alt btn-sm" style="width:34px; height:30px;">

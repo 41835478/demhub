@@ -22,12 +22,13 @@ class Publication extends Content implements StaplerableInterface
 
 	// Follower and followed types
 	// Including connections, bookmarks, tracking, etc.
-	const ARTICLE       = 'A';
+    const ARTICLE       = 'A';
 	const DIVISION      = 'D';
 	const KEYWORD       = 'K';
 	const LOCATION      = 'L';
 	// const ORGANIZATION  = 'O'; // NOTE - Not yet in use
 	const PUBLICATION   = 'P';
+	const RESOURCE 		= 'R';
 	const SCRAPE_SOURCE = 'S';
 	const THREAD        = 'T';
 	const USER          = 'U';

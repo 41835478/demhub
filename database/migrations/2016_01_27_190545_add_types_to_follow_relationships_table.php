@@ -8,14 +8,15 @@ class AddTypesToFollowRelationshipsTable extends Migration
     // Follower and followed types
     // Including connections, bookmarks, tracking, etc.
     const ARTICLE       = 'A';
-    const DIVISION      = 'D';
-    const KEYWORD       = 'K';
-    const LOCATION      = 'L';
-    // const ORGANIZATION  = 'O'; // NOTE - Not yet in use
-    const PUBLICATION   = 'P';
-    const SCRAPE_SOURCE = 'S';
-    const THREAD        = 'T';
-    const USER          = 'U';
+	const DIVISION      = 'D';
+	const KEYWORD       = 'K';
+	const LOCATION      = 'L';
+	// const ORGANIZATION  = 'O'; // NOTE - Not yet in use
+	const PUBLICATION   = 'P';
+	const RESOURCE 		= 'R';
+	const SCRAPE_SOURCE = 'S';
+	const THREAD        = 'T';
+	const USER          = 'U';
 
     /**
      * Run the migrations.

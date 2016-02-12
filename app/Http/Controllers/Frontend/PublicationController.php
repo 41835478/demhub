@@ -208,15 +208,15 @@ class PublicationController extends Controller
         $divisions = $divisions.'|';
 
         $inputs = [
-        'name' => $request->name,
-        'description' => $request->description,
-        'divisions' => $divisions,
-        'keywords' => $request->keywords,
-        'visibility' => $request->visibility,
-        'owner_id' => Auth::user()->id,
-        'deleted' => 0,
-        'publish_date' => Carbon::createFromFormat('d/m/Y', $request->publication_date),
-      ];
+            'name'          => $request->name,
+            'description'   => $request->description,
+            'divisions'     => $divisions,
+            'keywords'      => $request->keywords,
+            'visibility'    => $request->visibility,
+            'owner_id'      => Auth::user()->id,
+            'deleted'       => 0,
+            'publish_date'  => Carbon::createFromFormat('d/m/Y', $request->publication_date),
+        ];
 
         $publication = Publication::updateOrCreate(['id' => $id], $inputs);
 
@@ -285,41 +285,5 @@ class PublicationController extends Controller
         return view('frontend.user.publication_filter.public_journal', compact([
           'publications', 'secondMenu','keywords','allDivisions','type'
         ]));
-    }
-
-    // TODO - create alternate function equivalent for
-    // ->references('id')->on( {{ followed_type }} )->onDelete('cascade');
-    public function bookmarkPublication($pubId)
-    {
-        if (!Auth::user()->has_bookmarked_publication($pubId)) {
-            Auth::user()->publicationBookmarks()->attach($pubId, [
-                'follower_type' => self::USER, 'followed_type' => self::PUBLICATION,
-            ]);
-        }
-
-        // TODO - Do this properly
-        // $content_json = Helpers::return_json_results($content_json);
-        return response()->json([
-            'success' => 'cool',
-            'message'=> 'Contents rendered',
-            'content' => 'blah'
-        ]);
-    }
-
-    public function unbookmarkPublication($pubId)
-    {
-        if (Auth::user()->has_bookmarked_publication($pubId)) {
-            Auth::user()->following()->detach($pubId, [
-                'follower_type' => self::USER, 'followed_type' => self::PUBLICATION,
-            ]);
-        }
-
-        // TODO - Do this properly
-        // $content_json = Helpers::return_json_results($content_json);
-        return response()->json([
-            'success' => 'cool',
-            'message'=> 'Contents rendered',
-            'content' => 'blah'
-        ]);
     }
 }
