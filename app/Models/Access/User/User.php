@@ -40,6 +40,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	const LOCATION      = 'L';
 	// const ORGANIZATION  = 'O'; // NOTE - Not yet in use
 	const PUBLICATION   = 'P';
+	const RESOURCE 		= 'R';
 	const SCRAPE_SOURCE = 'S';
 	const THREAD        = 'T';
 	const USER          = 'U';
@@ -148,19 +149,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 								->withTimestamps();
 	}
 
-	public function has_bookmarked_thread($bookmarked_thread) {
-		if (is_numeric($bookmarked_thread)) {
-			$followed_thread_id = $bookmarked_thread;
-		} else {
-			$followed_thread_id = $bookmarked_thread->id;
-		}
-
-		return DB::table('follow_relationships')
-					    ->whereFollowerId($this->id)
-					    ->whereFollowedId($followed_thread_id)
-							->whereFollowerType(self::USER)
-							->whereFollowedType(self::THREAD)
-					    ->count() > 0;
+	public function publicationBookmarks() {
+		return $this->belongsToMany('App\Models\Publication','follow_relationships','follower_id','followed_id')
+								->whereFollowerType(self::USER)
+								->whereFollowedType(self::PUBLICATION)
+								->withTimestamps();
 	}
 
 	// TODO - Add a hasMany relation to this function
@@ -174,36 +167,58 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	/**
-   * One-to-Many relations with Publication.
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\hasMany
-   */
+   	 * One-to-Many relations with Publication.
+   	 *
+   	 * @return \Illuminate\Database\Eloquent\Relations\hasMany
+   	 */
 	public function publications()
-  {
+    {
       return $this->hasMany('App\Models\Publication', 'owner_id')
 									->where('deleted', 0)
 									->orderBy('id', 'DESC');
-  }
+    }
 
-	public function publicationBookmarks() {
-		return $this->belongsToMany('App\Models\Publication','follow_relationships','follower_id','followed_id')
+	public function contentBookmarks() {
+		return $this->belongsToMany('App\Models\Content','follow_relationships','follower_id','followed_id')
 								->whereFollowerType(self::USER)
-								->whereFollowedType(self::PUBLICATION)
+								->whereIn('followed_type', [self::ARTICLE, self::PUBLICATION, self::RESOURCE, self::THREAD])
 								->withTimestamps();
 	}
 
-	public function has_bookmarked_publication($bookmarked_publication) {
-		if (is_numeric($bookmarked_publication)) {
-			$followed_publication_id = $bookmarked_publication;
+	public function has_bookmarked_content($bookmarked_content, $content_type) {
+		if (is_numeric($bookmarked_content)) {
+			$followed_content_id = $bookmarked_content;
 		} else {
-			$followed_publication_id = $bookmarked_publication->id;
+			$followed_content_id = $bookmarked_content->id;
+		}
+
+		switch ($content_type) {
+			case 'article':
+				$content_type = self::ARTICLE;
+				break;
+
+			case 'infoResource':
+				$content_type = self::RESOURCE;
+				break;
+
+			case 'thread':
+				$content_type = self::THREAD;
+				break;
+
+			case 'publication':
+				$content_type = self::PUBLICATION;
+				break;
+
+			default:
+				// nothing // this shouldn't happen
+				break;
 		}
 
 		return DB::table('follow_relationships')
 					    ->whereFollowerId($this->id)
-					    ->whereFollowedId($followed_publication_id)
-							->whereFollowerType(self::USER)
-							->whereFollowedType(self::PUBLICATION)
+					    ->whereFollowedId($followed_content_id)
+						->whereFollowerType(self::USER)
+						->whereFollowedType($content_type)
 					    ->count() > 0;
 	}
 
@@ -231,8 +246,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return DB::table('follow_relationships')
 					    ->whereFollowerId($this->id)
 					    ->whereFollowedId($followed_user_id)
-							->whereFollowerType(self::USER)
-							->whereFollowedType(self::USER)
+						->whereFollowerType(self::USER)
+						->whereFollowedType(self::USER)
 					    ->count() > 0;
 	}
 

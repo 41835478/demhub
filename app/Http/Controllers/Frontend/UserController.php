@@ -5,6 +5,7 @@ use App\Models\Division;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Article;
 use App\Models\ArticleMedia;
 use Es;
 use Config;
@@ -31,10 +32,31 @@ class UserController extends Controller {
 											->orderBy('publish_date', 'desc')
 											->orderBy('updated_at', 'desc')
 											->paginate(30);
-		$allDivisions = $navDivisions = Division::all();
+		$allDivisions = Division::all();
 		$type = 'teaser';
 		$html = view('frontend.user._activity_feed', compact([
-			'contents', 'allDivisions','type'
+			'contents', 'allDivisions', 'type'
+		]))->render();
+
+		return $html;
+	}
+
+    public function getArticles($scope) {
+		if (is_numeric($scope)) {
+			$contents = Article::where('divisions', 'LIKE', '%|'.$scope.'|%')
+								->orderBy('publish_date', 'desc')
+								->orderBy('updated_at', 'desc')
+								->paginate(30);
+		} else {
+			$contents = Article::orderBy('publish_date', 'desc')
+								->orderBy('updated_at', 'desc')
+								->paginate(30);
+		}
+
+		$allDivisions = Division::all();
+		$type = 'teaser';
+		$html = view('frontend.user._activity_feed', compact([
+			'contents', 'allDivisions', 'type'
 		]))->render();
 
 		return $html;

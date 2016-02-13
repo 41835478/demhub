@@ -47,8 +47,9 @@ $router->group(['middleware' => 'auth'], function () {
 
     get('discussion', 'ForumController@showDiscussionIndex' )->name('discussion');
 
-    get('userhome',         'UserController@index'          )->name('userhome');
-    get('get_activities',   'UserController@getActivities'  )->name('get_activities');
+    get('userhome',             'UserController@index'          )->name('userhome');
+    get('get_activities',       'UserController@getActivities'  )->name('get_activities');
+    get('get_articles/{scope}', 'UserController@getArticles'    )->name('get_articles');
 
     // NOTE - DashboardController@index used instead of @edit_profile
     get('dashboard',    'DashboardController@index'             )->name('dashboard');
@@ -75,8 +76,9 @@ $router->group(['middleware' => 'auth'], function () {
     get(  'publication/{id}',           'PublicationController@preview' )->name('preview_publication');
 
     // Bookmark
-    post('bookmark_publication/{id}',   'PublicationController@bookmarkPublication')->name('bookmark_publication');
-    post('unbookmark_publication/{id}', 'PublicationController@unbookmarkPublication')->name('unbookmark_publication');
+    get('bookmark_content/{id}/{type}',    'ContentController@bookmarkContent'     )->name('bookmark_content');
+    post('bookmark_content/{id}/{type}',    'ContentController@bookmarkContent'     )->name('bookmark_content');
+    post('unbookmark_content/{id}/{type}',  'ContentController@unbookmarkContent'   )->name('unbookmark_content');
 
     /*
      * Public Profiles
