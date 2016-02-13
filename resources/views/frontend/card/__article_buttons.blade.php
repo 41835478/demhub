@@ -35,29 +35,39 @@
     </button>
 @endif
 
-<div class="btn-group">
-    <button type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
-        <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
-    </button>
 
-    <!-- data-toggle="dropdown" -->
-    <ul class="dropdown-menu" aria-labelledby="dLabel" style="width:100%; heigth:auto; margin-left:-30px; padding: 15px 15px 15px 15px;">
-        <li>Place Holder</li>
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-        <hr>
-        <li>Place Holder</li>
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-        <hr>
-        <li>Place Holder</li>
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-        <hr>
+    <div class="btn-group">
+        <?php
+        $discussions =$item->check_for_article_discussions();
 
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Comment" style="width:100%; height: 100px;">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </ul>
-</div>
+         ?>
+        <button type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+            <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
+        </button>
+
+
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+            @if($discussions)
+                @foreach($discussions as $discussion)
+
+                    <li><a href="<?php echo strpos(Request::url(), 'forum') == false ? 'forum/' : ''; ?> {{ Helpers::route($discussion)}}">
+                        <?php
+
+                            if (strlen($discussion['name']) > 66){
+                                $str = substr($discussion['name'], 0, 66) . '...';
+                                echo $str;
+                            } else{
+                                echo $discussion['name'];
+                            }
+                        ?>
+                    </a></li>
+
+                @endforeach
+            @endif
+
+            <li><a href="{{url('content-thread/'.$item['id'])}}">CREATE THREAD</a></li>
+        </ul>
+    </div>
 
 <div class="btn-group dropup" onmouseenter="twitterActivate(this)">
     @if(Auth::user())

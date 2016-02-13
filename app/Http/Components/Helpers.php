@@ -279,7 +279,20 @@ class Helpers {
 			// $components['categoryAlias'] = 'global';
 			// $components['threadAlias'] = Str::slug($item['name'], '-');
 
-			return "9-global/".$item['id']."-".Str::slug($item['name'], '-');
+            $divisions=Helpers::divHash($item['divisions']);
+            $num=substr($item['divisions'],1,-($item['divisions']-1));
+
+            if($divisions){
+                foreach($divisions as $slug => $div){
+
+                    return $num."-".$slug."/".$item['id']."-".Str::slug($item['name'], '-');
+                }
+            }
+             else {
+                return "7-category/".$item['id']."-".Str::slug($item['name'], '-');
+
+            }
+
 	}
 
 	public static function return_json_results($result)

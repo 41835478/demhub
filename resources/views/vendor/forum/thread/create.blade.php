@@ -6,14 +6,14 @@
     <form method="POST" action="{{ Forum::route('thread.store', $category) }}">
         {!! csrf_field() !!}
         {!! method_field('post') !!}
-
+        
         <div class="form-group">
             <label for="title">{{ trans('forum::general.title') }}</label>
-            <input type="text" name="title" value="{{ old('title') }}" class="form-control">
+            <input type="text" name="title" value="{{ isset($title) ? $title : old('title') }}" class="form-control">
         </div>
 
         <div class="form-group">
-            <textarea name="content" class="form-control">{{ old('content') }}</textarea>
+            <textarea name="content" class="form-control">{{ isset($content) ? $content : old('content') }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-success pull-right">{{ trans('forum::general.create') }}</button>

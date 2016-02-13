@@ -1,9 +1,13 @@
+
+<?php if(! empty($contentId)){
+    $form_url=$form_url.'/'.$contentId;
+    } ?>
 {!! Form::open(['url' => $form_url, 'class' => $form_classes,'data-toggle'=>'validator', 'data-delay'=>'1100']) !!}
 
 @if ( $show_title_field )
 <div class="form-group">
     <label for="title">{{ trans('forum::base.title') }}</label>
-    {!! Form::text('title', Input::old('title'), ['class' => 'form-control','required']) !!}
+    {!! Form::text('title', isset($title) ? $title : old('title'), ['class' => 'form-control','required']) !!}
     <div class="help-block with-errors"></div>
 </div>
 @endif
@@ -18,7 +22,7 @@
 @endif
 
 <div class="form-group">
-    {!! Form::textarea('content', $post_content, ['class' => 'form-control','data-minlength'=>'6','style' => 'resize: vertical;']) !!}
+    {!! Form::textarea('content', isset($content) ? $content : old('content'), ['class' => 'form-control','data-minlength'=>'6','style' => 'resize: vertical;']) !!}
     <div class="help-block with-errors"></div>
 </div>
 

@@ -54,7 +54,7 @@ $router->group(['middleware' => 'auth'], function () {
     get('dashboard',    'DashboardController@index'             )->name('dashboard');
     get('connections',  'DashboardController@showConnections'   )->name('connections');
     get('bookmarks',  'DashboardController@showBookmarks'   )->name('bookmarks');
-
+    get('content-thread/{id}',  'FrontendController@contentThreadConnect'   )->where('id', '[A-Za-z0-9_\-]+');
     /*
      * Search
      */

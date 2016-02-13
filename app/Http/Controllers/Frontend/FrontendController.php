@@ -2,6 +2,7 @@
 
 use App\Models\Division;
 use App\Models\Article;
+use App\Models\Content;
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -11,6 +12,7 @@ use League\Csv\Reader;
 use DB;
 use File;
 use	Carbon\Carbon;
+
 
 /**
  * Class FrontendController
@@ -240,6 +242,16 @@ class FrontendController extends Controller {
 	   	]);
 		}
 	}
+    public function contentThreadConnect ($contentId){
+        $item=Content::where('id',$contentId)->first();
+        
+
+        $title=$item['name'];
+        $content=$item['url'];
+
+        header("Location: ".url('').'/forum/7-category/thread/connect/'.$contentId);
+        die();
+    }
 
 	/**
 	 * @return \Illuminate\View\View
