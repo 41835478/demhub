@@ -44,7 +44,7 @@
                 @include('frontend.card.__follow_button')
 
                 <div style="padding-left:5%">
-                    <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>
+                    <h3 style="margin-bottom:0px">{{count($user->followers)}}</h3>
                     <p style="color:#999">followers</p>
                 </div>
             </div>

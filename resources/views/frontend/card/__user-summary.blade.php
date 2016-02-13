@@ -4,9 +4,9 @@
         $width = 100 / count($user->divisions());
     }
 
-    $followers_count = count($user->followers());
-    $publications_count = count($user->publications())-1;
-
+    $followers_count = count($user->followers);
+    $publications_count = count($user->publications);
+    
     $description = null;
     if ($user->bio) {
         $description = $user->bio;
