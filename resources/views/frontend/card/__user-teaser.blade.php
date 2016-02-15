@@ -1,4 +1,56 @@
 <div class="peoplebox-teaser">
+    <div class="pull-left" style="height: 125px;  margin: -15px 0; position: absolute;">
+        <?php
+        $height = 100;
+        if (count($user->division) > 0) {
+            $height = 100 / count($user->division);
+        }; ?>
+        @if($user->divisions() == NULL)
+            <div style="height:100%;" class="color-label-vertical division_all"
+                 data-toggle="tooltip" data-placement="top" title="All Divisions">
+            </div>
+        @else
+            @foreach($user->divisions() as $slug => $div)
+                <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
+                     data-toggle="tooltip" data-placement="top" title="{{$div}}">
+                </div>
+            @endforeach
+        @endif
+    </div>
+    <div class="">
+        <div class="col-xs-3 text-center">
+            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'margin:0;']) !!}
+        </div>
+        <div class="col-xs-9">
+            <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
+                <h3 style="margin: 0 0 5px 0;">  {{$user->full_name()}}  </h3>
+            </a>
+            <div class="row">
+                <div class="col-xs-8">
+                    <p class="orange-hover" style="margin-bottom:0px">{{$user->job_title}}
+                        @if ($user->organization_name)
+                            <span style="text-transform:lowercase">at</span> {{$user->organization_name}}
+                        @endif
+                    </p>
+                    <p style="color:#999">
+                        {{$user->location}}
+                    </p>
+                </div>
+                <div class="col-xs-4">
+                    <div class="text-center">
+                        <h4 style="margin:0px 0 5px 0">
+                            {{count($user->followers)}} <small style="color:#999">followers</small>
+                        </h4>
+                    </div>
+                    @include('frontend.card.__follow_button')
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- the div that closes the peoplebox -->
+
+<?php /*
+<div class="peoplebox-teaser">
     <?php
     $height = 100;
     if (count($user->division) > 0) {
@@ -51,4 +103,5 @@
         </div>
     </div> <!-- the div that closes the inner-feedsbox -->
 
-</div> <!-- the div that closes the peoplebox -->
+</div>
+*/ ?>
