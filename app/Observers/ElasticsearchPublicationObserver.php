@@ -9,7 +9,7 @@ class ElasticsearchPublicationObserver
     {
         Es::index([
             'index' => 'info',
-            'type' => 'publication',
+            'type' => 'publications',
             'id' => $publication->id,
             'body' => $publication->toArray()
         ]);
@@ -19,7 +19,7 @@ class ElasticsearchPublicationObserver
     {
         Es::index([
             'index' => 'info',
-            'type' => 'publication',
+            'type' => 'publications',
             'id' => $publication->id,
             'body' => $publication->toArray()
         ]);
@@ -29,7 +29,7 @@ class ElasticsearchPublicationObserver
     {
         Es::delete([
             'index' => 'info',
-            'type' => 'publication',
+            'type' => 'publications',
             'id' => $publication->id
         ]);
     }
