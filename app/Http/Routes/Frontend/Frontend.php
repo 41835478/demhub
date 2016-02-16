@@ -15,6 +15,8 @@ get('signUpSuccess',    'FrontendController@signUpSuccess')->name('signUpSuccess
 get( 'feedback',    'FrontendController@getFeedback');
 post('feedback',    'FrontendController@postFeedback')->name('post_feedback');
 
+get('unsubscribe', 'FrontendController@unsubscribe')->name('unsubscribe');
+
 
 
 /*

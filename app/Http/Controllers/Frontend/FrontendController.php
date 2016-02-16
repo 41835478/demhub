@@ -282,6 +282,26 @@ class FrontendController extends Controller {
 
 	public function signUpSuccess()
 	{
-		return view('frontend.landing.signUpSuccess');
+
+	}
+
+	public function unsubscribe(Request $request)
+	{
+		$email = $request->input('email','na');
+		$storage_file = storage_path() . '/app/unsubscribed_emails.json';
+		if(file_exists($storage_file)){
+			$current_list = json_decode(file_get_contents($storage_file));
+		} else{
+			$current_list = array();
+		}
+
+		$new_item['email'] = $email;
+		$new_item['created'] = time();
+
+		$current_list[] = $new_item;
+
+		file_put_contents($storage_file, @json_encode($current_list));
+
+		return view('frontend.user.unsubscribe', compact(['email']));
 	}
 }
