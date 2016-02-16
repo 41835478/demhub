@@ -19,7 +19,7 @@
     </div>
     <div class="">
         <div class="col-xs-3 text-center">
-            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'margin:0;']) !!}
+            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'margin:0 0 0 10px;width: 95px;']) !!}
         </div>
         <div class="col-xs-9">
             <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
@@ -36,7 +36,7 @@
                         {{$user->location}}
                     </p>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-4 text-center">
                     <div class="text-center">
                         <h4 style="margin:0px 0 5px 0">
                             {{count($user->followers)}} <small style="color:#999">followers</small>
