@@ -1,4 +1,4 @@
-### Installation (OSX): 
+### Installation (OSX):
 
 #### Dev basics
 - Install [XCode](https://developer.apple.com/xcode/download/)
@@ -252,3 +252,6 @@ OR
 
 - Save Changes
 - Connect
+
+#### Other important stuff
+When in need of Lorem Ipsum text, use this: http://www.bobrosslipsum.com/
