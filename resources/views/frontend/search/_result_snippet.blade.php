@@ -33,7 +33,7 @@
 
     <div class="row" style="margin-top: 10px">
         <div class="col-xs-12">
-            <a href="{{$url}}" class="btn btn-danger pull-right">View All</a>
+            <a href="{{$url}}" class="btn btn-style-alt pull-right">View All</a>
         </div>
     </div>
     @endif

@@ -2153,19 +2153,23 @@ input[type="radio"] {
   border-radius: 0px !important;
 }
 
-button.btn-greytone {
+button.btn-greytone,
+a.btn-greytone {
   background: #ccc;
   color: #333;
   border-radius: 0.5px;
 }
 
 button.btn-greytone:hover,
-button.btn-greytone:focus {
+button.btn-greytone:focus,
+a.btn-greytone:hover,
+a.btn-greytone:focus {
   color: #337ab7;
   background: #d6d6d6;
 }
 
-button.btn-greytone:active {
+button.btn-greytone:active,
+a.btn-greytone:active {
   background: #ccc;
   color: #000;
 }
@@ -4173,7 +4177,7 @@ li.active-border {
 .peoplebox-teaser {
   background-color: #fff;
   min-width: 100%;
-  height: 140px;
+  height: 125px;
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;

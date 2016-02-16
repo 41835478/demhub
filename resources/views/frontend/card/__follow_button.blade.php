@@ -6,7 +6,7 @@
     ) !!}
         {!! Form::token() !!}
         <button type="submit" class="btn btn-greytone btn-sm"  style="width:95px; height:42px;">
-            <span class="js-follow-tag glyphicon glyphicon-ok" style="font-size:85%" aria-hidden="true"> UNFOLLOW</span>
+            <span class="js-follow-tag glyphicon glyphicon-ok" style="font-size:85%" aria-hidden="true"></span> UNFOLLOW
             <div class="js-loader loader" style="display:none;">Loading...</div>
         </button>
     {!! Form::close() !!}
@@ -18,7 +18,7 @@
     ) !!}
         {!! Form::token() !!}
         <button type="submit" class="btn btn-style-alt btn-sm"  style="width:95px; height:42px;">
-            <span class="js-follow-tag glyphicon glyphicon-plus" aria-hidden="true"> FOLLOW</span>
+            <span class="js-follow-tag glyphicon glyphicon-plus" aria-hidden="true"></span> FOLLOW
             <div class="js-loader loader" style="display:none;">Loading...</div>
         </button>
     {!! Form::close() !!}

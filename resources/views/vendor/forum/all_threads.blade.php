@@ -11,7 +11,7 @@
 	<div class="row container-fluid" style="padding-top:15px">
 		<div class="col-md-6 col-md-offset-3">
 
-			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-sm-offset-9">NEW DISCUSSION</a>
+			<a href="7-category/thread/create" class="btn btn-style-alt col-sm-offset-9">NEW DISCUSSION</a>
 		</div>
 		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<table class="table table-index table-hover">
@@ -28,6 +28,7 @@
 			  <tbody>
 			    @foreach ($threads as $thread)
 					<?php
+
 					$divisions=Helpers::divHash($thread['divisions']);
 					 ?>
 
@@ -37,11 +38,16 @@
 
 							<td><a href="{{Helpers::route($thread)}}" class="text-link-style"><b>{{$thread['name']}}</b></a></td>
   			      <td>
-								@foreach ($divisions as $divSlug => $divName)
-			            <a href="{{url('/division/'.$divSlug)}}">
-		  							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$divSlug}}" style="height:22px">
-		  						</a>
-			          @endforeach
+                      @if(! empty($divisions))
+                            @foreach ($divisions as $divSlug => $divName)
+			                        <a href="{{url('/division/'.$divSlug)}}">
+		  							        <img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$divSlug}}" style="height:22px">
+		  						    </a>
+
+                            @endforeach
+                        @else
+                                <img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_all" style="height:22px">
+                        @endif
   			      </td>
 							<?php  $uploader=$author=Helpers::uploader($thread); ?>
 

@@ -121,11 +121,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		}
 	}
 
+
+
     public function bookmarks() {
-		// return $this->belongsToMany('App\Models\Content','follow_relationships','follower_id','followed_id')
-		// 						->whereFollowerType(self::USER)
-		// 						->whereFollowedType([self::THREAD, self::PUBLICATION, self::ARTICLE])
-		// 						->withTimestamps();
+
         $follows = DB::table('follow_relationships')
                         ->whereIn('followed_type', [self::THREAD,self::PUBLICATION,self::ARTICLE])
                         ->whereFollowerId($this->id)

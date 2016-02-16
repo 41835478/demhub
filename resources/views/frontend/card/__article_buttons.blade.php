@@ -38,29 +38,42 @@
     </button>
 @endif
 
-<div class="btn-group">
-    <button type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" disabled>
-        <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
-    </button>
 
-    <!-- data-toggle="dropdown" -->
-    <ul class="dropdown-menu" aria-labelledby="dLabel" style="width:100%; heigth:auto; margin-left:-30px; padding: 15px 15px 15px 15px;">
-        <li>Place Holder</li>
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-        <hr>
-        <li>Place Holder</li>
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-        <hr>
-        <li>Place Holder</li>
-        <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr </p>
-        <hr>
+    <div class="btn-group">
+        <?php
+        $discussions =$item->check_for_article_discussions();
 
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Comment" style="width:100%; height: 100px;">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </ul>
-</div>
+         ?>
+
+
+        <a type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;" <?php echo ($item['subclass']=='thread') ? 'href="'.Helpers::route($item).'"' : 'aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"' ?>>
+            <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
+        </a>
+
+
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+            @if($discussions)
+                @foreach($discussions as $discussion)
+
+                    <li><a href="<?php echo strpos(Request::url(), 'forum') == false ? 'forum/' : ''; ?> {{ Helpers::route($discussion)}}">
+                        <?php
+
+                            if (strlen($discussion['name']) > 66){
+                                $str = substr($discussion['name'], 0, 66) . '...';
+                                echo $str;
+                            } else{
+                                echo $discussion['name'];
+                            }
+                        ?>
+                    </a></li>
+                    
+                @endforeach
+            @endif
+
+            <li>
+                <a href="{{url('content-thread/'.$item['id'])}}">CREATE THREAD</a></li>
+        </ul>
+    </div>
 
 <div class="btn-group dropup" onmouseenter="twitterActivate(this)">
     @if(Auth::user())
@@ -68,7 +81,7 @@
         style="margin-left:5px;">
             <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" >
             <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item['name']}}"
             data-url="<?php if ($item['subclass'] !== 'article' && $item['subclass'] !== 'infoResource') {
                 echo url('').'/';
@@ -76,11 +89,11 @@
             <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item['name']}}%0D%0A{{$item['url']}}"
             target="_top" class="article_email">EMAIL</a></li>
             <li role="separator" class="divider"></li>
-            <li><a><span>
-                <?php if ($item['subclass'] !== 'article' && $item['subclass'] !== 'infoResource') {
+            <li><a><input
+                value="<?php if ($item['subclass'] !== 'article' && $item['subclass'] !== 'infoResource') {
                     echo substr(url(''), 7).'/';
-                }; echo $item['url']; ?>
-            </span></a></li>
+                }; echo $item['url']; ?>">
+            </a></li>
             {{-- <li><a class="copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Link</span>
             <span class="copy-button-link" style="display:none">{{$item['url']}}</span></a></li> --}}
         </ul>

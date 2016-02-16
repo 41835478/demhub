@@ -105,11 +105,13 @@
 ?>
 
 @if((!is_array($item) && get_class($item) == 'content') || (isset($item['subclass'])))
+
     @if(isset($type) && $type == 'teaser')
         @include('frontend.card.__content-teaser')
     @else
         @include('frontend.card.__content-summary')
     @endif
+    
 @else
     @if(isset($type) && $type == 'teaser')
         @include('frontend.card.__user-teaser', ['user'=>$item])

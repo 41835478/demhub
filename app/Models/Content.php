@@ -5,6 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 use Nanigans\SingleTableInheritance\SingleTableInheritanceTrait;
 use App\Models\Division;
 use DateTime;
+use DB;
+use Riari\Forum\Models\Thread;
+use Riari\Forum\Models\Post;
 
 class Content extends Model
 {
@@ -84,6 +87,41 @@ class Content extends Model
                     ->where('deleted', 0)
                     ->orderBy('view_order', 'ASC');
     }
+    public function check_for_article_discussions() {
+
+      $contentId = $this['id'];
+      $postIds = DB::table('follow_relationships')->whereIn('follower_type',['A','P'])
+                ->whereFollowerId($contentId)
+                ->whereFollowedType('P')
+                ->select('followed_id')
+                ->get();
+      if (! $postIds){
+        $threadIds = DB::table('follow_relationships')->whereIn('follower_type',['A','P'])
+                  ->whereFollowerId($contentId)
+                  ->whereFollowedType('T')
+                  ->select('followed_id')
+                  ->get();
+        if ($threadIds){
+            $threadArray=[];
+            foreach ($threadIds as $key => $t) {
+                $threadArray[$key]=$t->followed_id;
+            }
+            $threads = Thread::whereIn('id',$threadArray)->get();
+
+            return (! $threads) ?  '' : $threads;
+        };
+      }
+      else {
+          $posts = Post::whereIn('id',$postIds)->get();
+          return $posts;
+      }
+    }
+    public function connectToDiscussion() {
+		return $this->belongsToMany('Riari\Forum\Models\Thread','follow_relationships','follower_id','followed_id')
+								->whereFollowerType('A')
+								->whereFollowedType('T')
+								->withTimestamps();
+	}
 
     public function mainMedia()
     {
