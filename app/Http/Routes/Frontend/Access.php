@@ -10,20 +10,20 @@ $router->group(['namespace' => 'Auth'], function () use ($router)
 	 */
 	$router->group(['middleware' => 'auth'], function ()
 	{
-		get(	'auth/logout', 					'AuthController@getLogout');
+		get(	'auth/logout', 			'AuthController@getLogout');
 		get(	'auth/password/change', 'PasswordController@getChangePassword');
 		post(	'auth/password/change', 'PasswordController@postChangePassword')->name('password.change');
 	});
 
 	/**
-	 * These reoutes require the user NOT be logged in
+	 * These routes require the user NOT be logged in
 	 */
 	$router->group(['middleware' => 'guest'], function () use ($router)
 	{
 		// get('auth/linkedin', 'AuthController@loginWithLinkedin')->name('linkedin-login');
-		get('auth/login/{provider}', 						'AuthController@loginThirdParty'				)->name('auth.provider');
-		get('account/confirm/{token}', 					'AuthController@confirmAccount'					)->name('account.confirm');
-		get('account/confirm/resend/{user_id}', 'AuthController@resendConfirmationEmail')->name('account.confirm.resend');
+		get('auth/login/{provider}',              'AuthController@loginThirdParty'		    )->name('auth.provider');
+		get('account/confirm/{token}',            'AuthController@confirmAccount'		    )->name('account.confirm');
+		get('account/confirm/resend/{user_id}',   'AuthController@resendConfirmationEmail'	)->name('account.confirm.resend');
 		// get('auth/register/{provider}', 'AuthController@getRegister')->name('register');
 
 		$router->controller('auth', 'AuthController');

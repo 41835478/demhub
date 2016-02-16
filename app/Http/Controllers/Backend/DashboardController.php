@@ -17,10 +17,9 @@ use App\Models\Publication;
 use Riari\Forum\Models\Thread;
 use Riari\Forum\Models\Post;
 use Illuminate\Http\Request;
-use Weblee\Mandrill\Mail;
+use App\Http\Components\Emailer;
 use League\Csv\Reader;
 use DB;
-use File;
 use	Carbon\Carbon;
 
 /**
@@ -266,7 +265,7 @@ class DashboardController extends Controller {
 					"organization_name" => $row[4],
 					"location" => $location
 				];
-				$this->sendEmail($data);
+				Emailer::sendAutoregisterEmail($data);
 	    });
 
 			return view('backend.signupblast', compact(['files']))
@@ -275,127 +274,6 @@ class DashboardController extends Controller {
 			return view('backend.signupblast', compact(['files']));
 		}
 
-
-	}
-
-
-	/**
-	 * @param null
-	 * @return \Illuminate\View\View
-	 */
-	public function sendEmail($data)
-	{
-		$email_path =  public_path().'/images/emails/las-vegas-dem-conference/';
-		try {
-				// $mandrill = new Mandrill(env('MANDRILL_SECRET'));
-				$template_name = 'las-vegas-dem-conference';
-				$template_content = array( // required for some reason
-						array(
-								'name' => 'example name',
-								'content' => 'example content'
-						)
-				);
-				$message = array(
-						// 'html' => '<p>Example HTML content</p>',
-						// 'text' => 'Example text content',
-						// 'subject' => 'example subject',
-						// 'from_email' => 'message.from_email@example.com',
-						// 'from_name' => 'Example Name',
-						'to' => array(
-								array(
-										'email' => $data['email'],
-										'name' => $data['first_name'] . ' ' . $data['last_name'],
-										'type' => 'to'
-								)
-						),
-						'headers' => array('Reply-To' => 'info@demhub.net'),
-						'important' => false,
-						'track_opens' => null,
-						'track_clicks' => null,
-						'auto_text' => null,
-						'auto_html' => null,
-						'inline_css' => null,
-						'url_strip_qs' => null,
-						'preserve_recipients' => null,
-						'view_content_link' => null,
-						// 'bcc_address' => 'message.bcc_address@example.com',
-						'tracking_domain' => null,
-						'signing_domain' => null,
-						'return_path_domain' => null,
-						'merge' => true,
-						'merge_language' => 'mailchimp',
-						// 'global_merge_vars' => array(
-						//     array(
-						//         'name' => 'merge1',
-						//         'content' => 'merge1 content'
-						//     )
-						// ),
-						'merge_vars' => array(
-								array(
-										'rcpt' => $data['email'],
-										'vars' => array(
-												array(
-														'name' => 'autoregister_link',
-														'content' => url(
-															'auth/autoregister?first_name=' . $data['first_name'] .
-															'&last_name=' . $data['last_name'] .
-															'&email=' . $data['email'] .
-															'&job_title=' . $data['job_title'] .
-															'&organization_name=' . $data['organization_name'] .
-															'&location=' . $data['location']
-														)
-												)
-										)
-								)
-						),
-						// 'tags' => array('password-resets'),
-						// 'subaccount' => 'customer-123',
-						// 'google_analytics_domains' => array('demhub.net'),
-						// 'google_analytics_campaign' => 'message.from_email@example.com',
-						// 'metadata' => array('website' => 'www.example.com'),
-						// 'recipient_metadata' => array(
-						//     array(
-						//         'rcpt' => 'recipient.email@example.com',
-						//         'values' => array('user_id' => 123456)
-						//     )
-						// ),
-						// 'attachments' => array(
-						//     array(
-						//         'type' => 'text/plain',
-						//         'name' => 'myfile.txt',
-						//         'content' => 'ZXhhbXBsZSBmaWxl'
-						//     )
-						// ),
-						'images' => array(
-								array(
-										'type' => 'image/png',
-										'name' => 'banner',
-										'content' => File::get($email_path.'banner.txt')
-								),
-								array(
-										'type' => 'image/png',
-										'name' => 'secondary',
-										'content' => File::get($email_path.'secondary.txt')
-								),
-								array(
-										'type' => 'image/png',
-										'name' => 'twitter',
-										'content' => File::get($email_path.'twitter.txt')
-								)
-						)
-				);
-				$async = false;
-				// $ip_pool = 'Main Pool';
-				// $send_at = 'example send_at';
-				// $result = $mandrill->messages()->sendTemplate($template_name, $template_content, $message, $async);
-				$result = \MandrillMail::messages()->sendTemplate($template_name, $template_content, $message, $async);
-				// print_r($result);
-		} catch(Mandrill_Error $e) {
-				// Mandrill errors are thrown as exceptions
-				dd ('A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage());
-				// i.e. A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-				throw $e;
-		}
 
 	}
 
