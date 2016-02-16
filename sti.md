@@ -5,11 +5,11 @@
 - Once the script is done, inside `App\Models\Content`, UNcomment line 12 or `use SingleTableInheritanceTrait;`
 - In the console, re-run the elasticsearch indexing for articles, discussions, publications and resources
 ```
-$php artisan es:articles-index
-$php artisan es:discussions-index
-$php artisan es:resources-index
-$php artisan es:publication-index
-$php artisan es:users-index
+$ php artisan es:articles-index
+$ php artisan es:discussions-index
+$ php artisan es:resources-index
+$ php artisan es:publication-index
+$ php artisan es:users-index
 ```
 
 ### Single Table Inheritance (Development):
