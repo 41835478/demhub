@@ -44,9 +44,11 @@
         $discussions =$item->check_for_article_discussions();
 
          ?>
-        <button type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;"  aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+
+
+        <a type="button" class="btn btn-greytone btn-sm" style="margin-left:5px;" <?php echo ($item['subclass']=='thread') ? 'href="'.Helpers::route($item).'"' : 'aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"' ?>>
             <div class="glyphicon glyphicon-comment" aria-hidden="true"> DISCUSS</div>
-        </button>
+        </a>
 
 
         <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -68,7 +70,8 @@
                 @endforeach
             @endif
 
-            <li><a href="{{url('content-thread/'.$item['id'])}}">CREATE THREAD</a></li>
+            <li>
+                <a href="{{url('content-thread/'.$item['id'])}}">CREATE THREAD</a></li>
         </ul>
     </div>
 
