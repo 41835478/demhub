@@ -17,13 +17,26 @@
 // });
 //
 $(function() {
+    var userTeaser = $('.people-card-info').height();
+    var userTeaserBox = $('.peoplebox-teaser').height();
+    var nameword = $('#js_user_name').val();
+    var userTeaserName = $('.js_user_name');
+
+    function resizeUserBox() {
+    for(var i = 0, l = userTeaserName.length; i < l; i ++){
+    console.log(wordcount,userTeaser[i],userTeaserBox[i]);
+
+        if (userTeaser[i] > userTeaserBox[i]){
+            userTeaserName[i].css('font-size','0.6em');
+        }
+    }
+};
 
     var theWindow        = $(window),
         $bg              = $("#caroimage"),
         aspectRatio      = $bg.width() / $bg.height();
 
     function resizeBg() {
-
         if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
             $bg
                 .removeClass()
@@ -33,11 +46,11 @@ $(function() {
                 .removeClass()
                 .addClass('bgwidth');
         }
-
-    }
+    };
 
     theWindow.resize(function() {
         resizeBg();
+        resizeUserBox();
     }).trigger("resize");
 
 });

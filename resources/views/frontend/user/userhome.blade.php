@@ -1,3 +1,4 @@
+
 @extends('frontend.layouts.autoload')
 
 @section('body-class')userhome-body @endsection
@@ -10,6 +11,8 @@
 		<div id="activity-feed" class="col-xs-12 col-sm-offset-3 col-sm-6" data-page="0" data-url="{{url('get_activities')}}" style="border:none"></div>
 	</div>
 @endsection
+
+@extends('frontend.includes._first-time-visit')
 
 @section('after-scripts-end')
     {!! HTML::script('js/frontend/userhome/feed.js') !!}

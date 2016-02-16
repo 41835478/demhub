@@ -20,10 +20,10 @@
     <div class="col-xs-10 col-xs-offset-1 inner-peoplebox">
         <div class="col-xs-1">
             <div class="" style="">
-                {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:110px;max-width:110px;margin-top:-8px;margin-left:-25px']) !!}
+                {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'max-height:110px;max-width:100px;margin-top:-8px;margin-left:-25px']) !!}
             </div>
         </div>
-        <div class="col-xs-5 col-xs-offset-3" style="text-align:left;">
+        <div class="col-xs-6 col-xs-offset-2 people-card-info" style="text-align:left;">
             <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">
                 <h3 style="margin-top:5px">  {{$user->full_name()}}  </h3>
             </a>
