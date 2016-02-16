@@ -284,6 +284,7 @@ class Helpers {
 
                 $divisions=Helpers::divHash($item['divisions']);
                 $num=substr($item['divisions'],1,-($item['divisions']-1));
+
             };
 
 

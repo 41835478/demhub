@@ -28,6 +28,7 @@
 			  <tbody>
 			    @foreach ($threads as $thread)
 					<?php
+
 					$divisions=Helpers::divHash($thread['divisions']);
 					 ?>
 
@@ -37,11 +38,16 @@
 
 							<td><a href="{{Helpers::route($thread)}}" class="text-link-style"><b>{{$thread['name']}}</b></a></td>
   			      <td>
-								@foreach ($divisions as $divSlug => $divName)
-			            <a href="{{url('/division/'.$divSlug)}}">
-		  							<img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$divSlug}}" style="height:22px">
-		  						</a>
-			          @endforeach
+                      @if(! empty($divisions))
+                            @foreach ($divisions as $divSlug => $divName)
+			                        <a href="{{url('/division/'.$divSlug)}}">
+		  							        <img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$divSlug}}" style="height:22px">
+		  						    </a>
+
+                            @endforeach
+                        @else
+                                <img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_all" style="height:22px">
+                        @endif
   			      </td>
 							<?php  $uploader=$author=Helpers::uploader($thread); ?>
 
