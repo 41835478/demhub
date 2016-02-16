@@ -6,6 +6,7 @@ use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Http\Components\Emailer;
 use Socialize;
 
 /**
@@ -43,8 +44,6 @@ class EloquentUserRepository implements UserContract {
 	 * @return static
 	 */
 	public function create($data, $provider=false) {
-
-
 		$unique_user_name = $this->generateUniqueUserName($data['first_name'].' '.$data['last_name']);
 
 		$user = User::create([
@@ -66,6 +65,8 @@ class EloquentUserRepository implements UserContract {
     		else
         		$user->confirmed = 1;
 
+        // TODO - Check if this implemenation of the welcome email needs to be changed
+        Emailer::sendWelcomeEmail($user);
 		return $user;
 	}
 
