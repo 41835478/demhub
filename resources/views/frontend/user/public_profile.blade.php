@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-sm-offset-2 col-sm-8">
             <div style="margin-left:13px;margin-right:-14px;">
-          <?php $item=$user; ?>
+          <?php $item = $user; ?>
           @include('frontend.card._card')
             </div>
         </div>
@@ -34,11 +34,11 @@
         <div class="box" style="background-color:#fff">
           <div class="">
             <h4>Stats</h4>
-            <h3 style="margin-bottom:0px">{{count($user->followers())}}</h3>
+            <h3 style="margin-bottom:0px">{{count($user->followers)}}</h3>
             <p style="color:#999">followers</p>
             <h3 style="margin-bottom:0px">{{count($user->discussions())}}</h3>
             <p style="color:#999">discussions</p>
-            <h3 style="margin-bottom:0px">{{count($user->publications())}}</h3>
+            <h3 style="margin-bottom:0px">{{count($user->publications)}}</h3>
             <p style="color:#999">publications</p>
           </div>
         </div>
@@ -52,11 +52,11 @@
               <?php
                 $description = $user->bio;
 
-                if (strlen($description) > 205){
-                  $str = substr($description, 0, 205) . '...';
-                  echo strip_tags($str);
-                } else{
-                  echo strip_tags($description);
+                if (strlen($description) > 205) {
+                    $str = substr($description, 0, 205).'...';
+                    echo strip_tags($str);
+                } else {
+                    echo strip_tags($description);
                 }
               ?>
             </p>
@@ -85,7 +85,7 @@
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <div id="boxList" style="width:100%;margin:10px 15px 5px 15px;padding:15px 20px 5px 20px;" >
             <div id="publicationsList">
-              <?php $items=$user->publications;
+              <?php $items = $user->publications;
 
                ?>
               @foreach($items as $item)
@@ -101,7 +101,7 @@
             </div>
 
             <div id="networkList">
-              <?php $users=$user->following ?>
+              <?php $users = $user->following ?>
               @foreach($users as $user)
                 @include('frontend.card._card')
               @endforeach
@@ -114,48 +114,48 @@
 </div>
 
 <script>
-  $( document ).ready(function() {
-    $("#publicationsList").hide();
-    $("#networkList").hide();
-    $("#discussionsList").hide();
+    $( document ).ready(function() {
+      $("#publicationsList").hide();
+      $("#networkList").hide();
+      $("#discussionsList").hide();
 
-    if ( $('#discussionsList').children().length > 0 ) {
-        $("#discussionsList").toggle();
-    } else if ($('#networkList').children().length > 0) {
-        $("#networkList").toggle();
-    } else if ($('#publicationsList').children().length > 0) {
-        $("#publicationsList").toggle();
+      if ( $('#discussionsList').children().length > 0 ) {
+          $("#discussionsList").toggle();
+      } else if ($('#networkList').children().length > 0) {
+          $("#networkList").toggle();
+      } else if ($('#publicationsList').children().length > 0) {
+          $("#publicationsList").toggle();
+      }
+    });
+    function togglePublications(){
+
+      $("#publicationsList").toggle();
+      $("#publicationsLi").attr('class','active-border');
+
+      $("#networkLi").attr('class','under-border');
+      $("#networkList").hide();
+      $("#discussionsLi").attr('class','under-border');
+      $("#discussionsList").hide()
     }
-  });
-  function togglePublications(){
+    function toggleDiscussions(){
 
-    $("#publicationsList").toggle();
-    $("#publicationsLi").attr('class','active-border');
+      $("#discussionsList").toggle();
+      $("#discussionsLi").attr('class','active-border');
 
-    $("#networkLi").attr('class','under-border');
-    $("#networkList").hide();
-    $("#discussionsLi").attr('class','under-border');
-    $("#discussionsList").hide()
-  }
-  function toggleDiscussions(){
+      $("#networkLi").attr('class','under-border');
+      $("#networkList").hide();
+      $("#publicationsLi").attr('class','under-border');
+      $("#publicationsList").hide();
+    }
+    function toggleNetwork(){
 
-    $("#discussionsList").toggle();
-    $("#discussionsLi").attr('class','active-border');
+      $("#networkList").toggle();
+      $("#networkLi").attr('class','active-border');
+      $("#publicationsLi").attr('class','under-border');
+      $("#publicationsList").hide();
+      $("#discussionsLi").attr('class','under-border');
+      $("#discussionsList").hide()
 
-    $("#networkLi").attr('class','under-border');
-    $("#networkList").hide();
-    $("#publicationsLi").attr('class','under-border');
-    $("#publicationsList").hide();
-  }
-  function toggleNetwork(){
-
-    $("#networkList").toggle();
-    $("#networkLi").attr('class','active-border');
-    $("#publicationsLi").attr('class','under-border');
-    $("#publicationsList").hide();
-    $("#discussionsLi").attr('class','under-border');
-    $("#discussionsList").hide()
-
-  }
+    }
 </script>
 @endsection

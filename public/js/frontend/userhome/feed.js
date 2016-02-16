@@ -11,7 +11,7 @@ $(window).on("scroll", function() {
     var scrollTop = $(window).scrollTop();
     var scrollBottom = $(window).scrollTop() + feedOffset;
 
-    // TODO - Add small empty space at the bottom for loader
+    // TODO - Add small empty space at the bottom of autoload layout for loader
     // and accommodate for this
     if ((winHeight + scrollTop) >= (feedOffset + feedHeight) && timeOut !== 1) {
         timeOut = 1;
@@ -26,6 +26,9 @@ $(window).on("scroll", function() {
     }
 });
 
+// NOTE : Function works for both divisions and userhome
+// each with different controller functions
+// TODO : May need to create two diff functions for each
 function get_activities() {
     var activity_feed = $("#activity-feed");
     var current_page = activity_feed.attr("data-page"); // add this to the div when available
@@ -56,15 +59,6 @@ function get_activities() {
                 topCheck = false;
             }, 550);
             activity_feed.attr("data-page", new_page);
-
-            // if (response.status == 'ok') {
-            // 	activity_feed.attr("data-page", new_page);
-            // 	$.each(response.data, function(index, value){
-            //
-            // 	});
-            // } else {
-            //
-            // }
         }
     });
 }
