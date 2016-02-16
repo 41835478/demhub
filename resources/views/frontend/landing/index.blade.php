@@ -48,7 +48,7 @@
 						<label for="divisions label-default" class="w-c">I am interested in: </label>
 						<br>
 						<div class="DrpDwn">
-					 		<select id="DropDown_division"><option>Division</option></select>
+					 		<select id="DropDown_division" style="color:#bbb;"><option>Division</option></select>
 						</div>
 					</td>
 						<td>
