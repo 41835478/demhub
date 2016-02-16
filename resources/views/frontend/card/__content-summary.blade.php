@@ -2,7 +2,7 @@
     use App\Http\Components\Helpers;
 
     if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
-    elseif($item['subclass']=='thread'){ $item['url']='forum/9-global/'.$item['id'].'-'.str_replace(' ','-',$item['name']);}
+    elseif($item['subclass']=='thread'){ $item['url']=Helpers::route($item);}
 
     $width = 100;
     if(count($item['divisions']) > 0) {

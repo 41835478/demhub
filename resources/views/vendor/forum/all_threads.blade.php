@@ -11,7 +11,7 @@
 	<div class="row container-fluid" style="padding-top:15px">
 		<div class="col-md-6 col-md-offset-3">
 
-			<a href="{{ $categories[6]->newThreadRoute }}" class="btn btn-style-alt col-sm-offset-9">NEW DISCUSSION</a>
+			<a href="7-category/thread/create" class="btn btn-style-alt col-sm-offset-9">NEW DISCUSSION</a>
 		</div>
 		<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<table class="table table-index table-hover">
