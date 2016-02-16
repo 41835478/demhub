@@ -279,10 +279,16 @@ class Helpers {
 			// $components['categoryAlias'] = 'global';
 			// $components['threadAlias'] = Str::slug($item['name'], '-');
 
-            $divisions=Helpers::divHash($item['divisions']);
-            $num=substr($item['divisions'],1,-($item['divisions']-1));
 
-            if($divisions){
+            if(is_array($item['divisions'])==false){
+
+                $divisions=Helpers::divHash($item['divisions']);
+                $num=substr($item['divisions'],1,-($item['divisions']-1));
+
+            };
+
+
+            if(! empty($divisions)){
                 foreach($divisions as $slug => $div){
 
                     return $num."-".$slug."/".$item['id']."-".Str::slug($item['name'], '-');
