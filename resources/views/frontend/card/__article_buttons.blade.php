@@ -78,7 +78,7 @@
         style="margin-left:5px;">
             <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" >
             <li><a class="article_twitter" href="https://twitter.com/share" data-hashtags="DEMHUBnetwork" data-text="{{$item['name']}}"
             data-url="<?php if ($item['subclass'] !== 'article' && $item['subclass'] !== 'infoResource') {
                 echo url('').'/';
@@ -86,11 +86,11 @@
             <li><a href="mailto:?Subject=DEMHUB%20News%20Article&amp;body=Found%20this%20article%20on%20DEMHUB%0D%0A%0D%0A{{$item['name']}}%0D%0A{{$item['url']}}"
             target="_top" class="article_email">EMAIL</a></li>
             <li role="separator" class="divider"></li>
-            <li><a><span>
-                <?php if ($item['subclass'] !== 'article' && $item['subclass'] !== 'infoResource') {
+            <li><a><input
+                value="<?php if ($item['subclass'] !== 'article' && $item['subclass'] !== 'infoResource') {
                     echo substr(url(''), 7).'/';
-                }; echo $item['url']; ?>
-            </span></a></li>
+                }; echo $item['url']; ?>">
+            </a></li>
             {{-- <li><a class="copy-button" ><span class="glyphicon glyphicon-link" aria-hidden="true"> </span><span class="copy-button-text"> Copy Link</span>
             <span class="copy-button-link" style="display:none">{{$item['url']}}</span></a></li> --}}
         </ul>
