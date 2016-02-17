@@ -16,4 +16,5 @@
     <div id="Resources"></div>
     <div class="black-bg">
     </div>
+    {{--  @extends('frontend.includes._first-time-visit') in userhome.blade--}}
 </div>

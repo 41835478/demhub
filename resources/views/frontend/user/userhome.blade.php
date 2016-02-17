@@ -12,8 +12,6 @@
 	</div>
 @endsection
 
-@extends('frontend.includes._first-time-visit')
-
 @section('after-scripts-end')
     {!! HTML::script('js/frontend/userhome/feed.js') !!}
 @stop
