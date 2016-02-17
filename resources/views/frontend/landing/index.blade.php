@@ -186,7 +186,10 @@
 		<div id="welcome_secondary_text" class="row">
 			<div class="row">
 				<div class="col-md-12 text-center">
+					<?php /*
 					<a type="button" class="btn btn-default btn-lg btn-style-w" href="{{url('divisions')}}">SIX DIVISIONS</a>
+ 					*/ ?>
+					SIX DIVISIONS
 				</div>
 
 				<p>&nbsp;</p>
@@ -196,7 +199,7 @@
 				<div class="splash-row">
 
 						@foreach($divisions as $div)
-							<a href="{{url('division', $div->slug)}}">
+							<a href="/<?php /*{{url('division', $div->slug)}}*/ ?>">
 								<div class="division-landing-box col-md-2">
 									<div id="division_{{$div->id}}">
 										<div class="icon division-{{$div->slug}} landing-icon x-lrg"></div>

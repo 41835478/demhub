@@ -42,6 +42,7 @@
                 <li class="{{ Active::pattern('admin/reports') }}"><a href="{!!route('backend.reports')!!}"><span>Reports</span></a></li>
                 <li class="{{ Active::pattern('admin/signup') }}"><a href="{!!route('backend.signup')!!}"><span>Signup Email Blast</span></a></li>
                 <li class="{{ Active::pattern('admin/betaInvite') }}"><a href="{!!route('backend.betainvites')!!}"><span>Beta Invites</span></a></li>
+                <li class="{{ Active::pattern('admin/reengageEmail') }}"><a href="{!!route('backend.reengageEmail')!!}"><span>Send Reengagement Email</span></a></li>
                 <li class="{{ Active::pattern('admin/scripts') }}"><a href="{!!route('backend.scripts')!!}"><span>Run Scripts</span></a></li>
 
 				  <?php /*
