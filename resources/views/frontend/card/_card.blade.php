@@ -84,7 +84,8 @@
         //  $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
     }
     // Elastic search result for content
-    elseif (isset($item['subclass']) || is_array($item)) {
+    //TODO check logcial operation
+    elseif (is_array($item) || isset($item['subclass'])) {
         $divs = array();
         foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
             $div = Division::findOrFail($divID);
@@ -104,6 +105,8 @@
     }
 ?>
 
+
+
 @if((!is_array($item) && get_class($item) == 'content') || (isset($item['subclass'])))
 
     @if(isset($type) && $type == 'teaser')
@@ -111,7 +114,7 @@
     @else
         @include('frontend.card.__content-summary')
     @endif
-    
+
 @else
     @if(isset($type) && $type == 'teaser')
         @include('frontend.card.__user-teaser', ['user'=>$item])

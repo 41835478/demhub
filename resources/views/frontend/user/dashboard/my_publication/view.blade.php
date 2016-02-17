@@ -63,15 +63,14 @@
                   </div>
 
                 <div id="publicationsList">
-                    <?php $items = $publication->contents_relation_data('publication','thread'); ?>
+                    <?php $items = $publication->same_division_same_class(); ?>
                     @if($items)
                         @foreach($items as $item)
                           @include('frontend.card._card')
                         @endforeach
                     @endif
+
                 </div>
-
-
 
                 <div id="networkList">
                     <?php $items = $publication->contents_relation_data('publication','user'); ?>

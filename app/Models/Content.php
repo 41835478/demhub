@@ -143,7 +143,7 @@ class Content extends Model
             if($classB=="User") {
                 $items=User::whereIn('id',$contentArray)->get();
             } else {
-                $items=$classB::whereIn('id',$contentArray)->get();
+                $items=Content::whereIn('id',$contentArray)->get();
             };
 
 
@@ -168,9 +168,15 @@ class Content extends Model
         }
 
 	}
-    public function same_division_same_class($class){
-        $class=strtoupper(substr($class,0,1));
+    public function same_division_same_class(){
+        //$class=ucfirst($this['subclass']);
+        $type=strtoupper(substr($this['subclass'],0,1));
+        $firstDivision=strtoupper(substr($this['divisions'],1,1));
 
+        $items = Content::where('subclass',$this['subclass'])
+                ->where('divisions','LIKE', '%'.$firstDivision.'%')
+                ->get();
+        return $items;
 
     }
 
