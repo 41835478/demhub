@@ -1207,9 +1207,10 @@ svg * {
 }
 
 #tutorial-resource {
-  right: 0px;
-  left: 85vw;
-  top: 130px;
+  top: -380px;
+  right: -90vw;
+  top: 0;
+  float: right;
 }
 
 #firsttime-popup {
