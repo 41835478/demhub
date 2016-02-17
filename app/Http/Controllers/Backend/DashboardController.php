@@ -14,6 +14,7 @@ use App\Models\Content;
 use App\Models\ContentMedia;
 use App\Models\InfoResource;
 use App\Models\Publication;
+use App\Models\Access\User\User;
 use Riari\Forum\Models\Thread;
 use Riari\Forum\Models\Post;
 use Illuminate\Http\Request;
@@ -267,7 +268,7 @@ class DashboardController extends Controller {
 				];
 
 				Emailer::sendAutoregisterBetaInvite($data);
-	    });
+	    	});
 
 			return view('backend.betainvites', compact(['files']))
 									->withFlashSuccess("Successfully sent emails to selected batch!");
@@ -275,6 +276,23 @@ class DashboardController extends Controller {
 			return view('backend.betainvites', compact(['files']));
 		}
 
+	}
+
+    /**
+	 * @param Request $request
+	 * @return \Illuminate\View\View
+	 */
+	public function reengageEmail(Request $request)
+	{
+		if ($request->input('users') && $request->input('users') == 'reengage') {
+			foreach (User::all() as $user) {
+				Emailer::sendReengageEmail($user);
+			}
+			return view('backend.reengageEmail', compact(['files']))
+									->withFlashSuccess("Successfully sent emails to all existing users!");
+		} else {
+			return view('backend.reengageEmail', compact(['files']));
+		}
 	}
 
 	/**
