@@ -282,6 +282,63 @@ class DashboardController extends Controller {
 	 * @param Request $request
 	 * @return \Illuminate\View\View
 	 */
+	public function potentialusersinvites(Request $request)
+	{
+		$conferenceDataFolder = database_path().'/data/potential-users-invitation';
+		// $files = preg_grep('~\.(csv)$~', scandir($conferenceDataFolder));
+		$files = array();
+		foreach (glob($conferenceDataFolder."/*.csv") as $file) {
+		  $files[] = $file;
+		}
+
+		if ($request->input('filename')) {
+
+			$csv_file = $request->input('filename');
+	    	$csv = Reader::createFromPath($csv_file);
+
+			$csv->setOffset(1)->fetchAll(function ($row) {
+				$location = "";
+
+				if (!empty($row[11])) {
+					$location = $row[11];
+				}
+
+				if (!empty($location) && !empty($row[12])) {
+					$location = $location . ', ' . $row[12];
+				} else if (empty($location) && !empty($row[12])) {
+					$location = $row[12];
+				}
+
+				if (!empty($location) && !empty($row[13])) {
+					$location = $location . ', ' . $row[13];
+				} else if (empty($location) && !empty($row[13])) {
+					$location = $row[13];
+				}
+
+				$data = [
+					"first_name" => $row[1],
+					"last_name" => $row[0],
+					"email" => $row[5],
+					"job_title" => $row[8],
+					"organization_name" => $row[4],
+					"location" => $location
+				];
+
+				Emailer::sendPotentialUsersInvites($data);
+	    	});
+
+			return view('backend.potentialusersinvites', compact(['files']))
+									->withFlashSuccess("Successfully sent emails to selected batch!");
+		} else {
+			return view('backend.potentialusersinvites', compact(['files']));
+		}
+
+	}
+
+    /**
+	 * @param Request $request
+	 * @return \Illuminate\View\View
+	 */
 	public function reengageEmail(Request $request)
 	{
 		if ($request->input('users') && $request->input('users') == 'reengage') {
