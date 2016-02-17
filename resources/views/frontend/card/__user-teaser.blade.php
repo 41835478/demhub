@@ -1,5 +1,5 @@
 <div class="peoplebox-teaser">
-    <div class="pull-left" style="height: 125px;  margin: -15px 0; position: absolute;">
+    <div class="pull-left" style="height: 125px; width:10px;  margin: -15px 0; position: absolute;">
         <?php
         $height = 100;
         if (count($user->division) > 0) {
