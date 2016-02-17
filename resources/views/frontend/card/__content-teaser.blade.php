@@ -20,7 +20,7 @@
     <!-- Begin: feedsbox-teaser -->
     <div class = "feedsbox-teaser">
 
-        <div class="col-xs-1" style="height: 145px; width:10px; margin-left:-15px;padding-bottom:5px;max-width:30px">
+        <div class="col-xs-1" style="height: 145px; margin-left:-15px;padding-bottom:5px;max-width:30px">
             @forelse($item['divisions'] as $slug => $div)
                 <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
                 data-toggle="tooltip" data-placement="top" title="{{$div}}">
