@@ -1207,9 +1207,8 @@ svg * {
 }
 
 #tutorial-resource {
-  top: -380px;
   right: -90vw;
-  top: 0;
+  top: -30px;
   float: right;
 }
 

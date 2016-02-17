@@ -5,6 +5,7 @@
 
 @section('content')
 	<div class="container-fluid row">
+
 		<h3 class="text-center" style="color: #ccc">Latest</h3>
 
 		{{-- NOTE - populated by jquery, takes partial render of _activity_feed view --}}
