@@ -88,11 +88,11 @@ class PublicationController extends Controller
 
         // TODO - check 'status' to see if increment happened successfully
         // $status should be true
-        
-        $status = $publication->incrementViewCount();
 
+        $status = $publication->incrementViewCount();
+        $type = 'teaser';
         return view(
-            'frontend.user.dashboard.my_publication.view', compact(['publication'])
+            'frontend.user.dashboard.my_publication.view', compact(['publication', 'type'])
         );
     }
 
