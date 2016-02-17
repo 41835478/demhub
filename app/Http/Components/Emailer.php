@@ -67,8 +67,8 @@ class Emailer
 					),
 					array(
 						'type' => 'image/png',
-						'name' => 'earth',
-						'content' => File::get($email_images_path.'earth.txt')
+						'name' => 'bgsmall',
+						'content' => File::get($email_images_path.'bgsmall.txt')
 					),
 					array(
 						'type' => 'image/png',
@@ -190,8 +190,8 @@ class Emailer
 					),
 					array(
 						'type' => 'image/png',
-						'name' => 'bg',
-						'content' => File::get($email_images_path.'bg.txt')
+						'name' => 'bgsmall',
+						'content' => File::get($email_images_path.'bgsmall.txt')
 					),
 					array(
 						'type' => 'image/png',
