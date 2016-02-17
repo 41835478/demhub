@@ -286,7 +286,16 @@ class Scraper
 			$model = $item;
 			// $data = $item->data;
 		}
+        $datetime1=isset($params['date']) ? date("Y-m-d H:i:s", strtotime($params['date'])) : null;
 
+
+        $now=date("Y-m-d H:i:s");
+        $datetime2 = date_create($now);
+        $interval = date_diff($datetime1, $datetime2);
+        if (round($interval->format('%H%a'))>32850){
+            $datetime1=$datetime2;
+
+        };
 		//$model->subclass 	= ($type==null||$type==0) ? ArticleController::typeOther : $type;
 
 		// $model->type 		= ($type==null||$type==0) ? ArticleController::typeOther : $type;
@@ -301,7 +310,7 @@ class Scraper
 		$model->country 	= $location_info!=null ? $location_info['country'] : null;
 		$model->lat 		= $location_info!=null ? $location_info['lat'] : null;
 		$model->lng 		= $location_info!=null ? $location_info['lng'] : null;
-		$model->publish_date= isset($params['date']) ? date("Y-m-d H:i:s", strtotime($params['date'])) : null;
+		$model->publish_date= $datetime1!=null ? $datetime1->format('Y-m-d H:i:s') : null;
 
 		if($model->save()){
 			$return['status'] = 'ok';

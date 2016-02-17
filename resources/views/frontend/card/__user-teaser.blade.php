@@ -1,5 +1,5 @@
 <div class="peoplebox-teaser">
-    <div class="pull-left" style="height: 125px;  margin: -15px 0; position: absolute;">
+    <div class="pull-left" style="height: 125px; width:10px;  margin: -15px 0; position: absolute;">
         <?php
         $height = 100;
         if (count($user->division) > 0) {
@@ -19,7 +19,7 @@
     </div>
     <div class="">
         <div class="col-xs-3 text-center">
-            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'margin:0 0 0 10px;width: 95px;']) !!}
+            {!! HTML::image($user->avatar->url('medium'), '$user->avatar_file_name', ['class' => "img-circle img-responsive", 'style' => 'margin:0 0 0 10px;max-width: 95px;max-height: 95px;']) !!}
         </div>
         <div class="col-xs-9">
             <a class="main-blue-color" href="{{ URL::to('profile/' . $user->user_name) }}">

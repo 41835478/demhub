@@ -4,6 +4,7 @@ use App\Http\Components\Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Nanigans\SingleTableInheritance\SingleTableInheritanceTrait;
 use App\Models\Division;
+use App\Models\Access\User\User;
 use DateTime;
 use DB;
 use Riari\Forum\Models\Thread;
@@ -116,6 +117,58 @@ class Content extends Model
           return $posts;
       }
     }
+    public function contents_relation_data($classThis,$classB) {
+        $typeThis=strtoupper(substr($classThis,0,1));
+        $typeB=strtoupper(substr($classB,0,1));
+        $contentId = $this['id'];
+        $relationsThis = DB::table('follow_relationships')->where('follower_type',$typeThis)
+                ->whereFollowerId($contentId)
+                ->whereFollowedType($typeB)
+                ->select('followed_id')
+                ->get();
+        $relationsB = DB::table('follow_relationships')->where('follower_type',$typeB)
+                ->whereFollowedId($contentId)
+                ->whereFollowedType($typeThis)
+                ->select('follower_id')
+                ->get();
+
+        if ($relationsThis || $relationsB){
+            $relations=array_merge($relationsThis,$relationsB);
+            $contentArray=[];
+            foreach ($relations as $key => $selection) {
+                $contentArray[$key]=$selection->follower_id;
+            }
+            //$items = Thread::whereIn('id',$threadArray)->get();
+            $classB=ucfirst($classB);
+            if($classB=="User") {
+                $items=User::whereIn('id',$contentArray)->get();
+            } else {
+                $items=$classB::whereIn('id',$contentArray)->get();
+            };
+
+
+            return (! $items) ?  null : $items;
+        };
+        return null;
+
+    }
+
+    public function connectedContent($followerClass,$followedClass) {
+		$conn=check_for_relation($followerClass,$followedClass);
+        if($conn){
+            $items = DB::table('contents')
+                // ->where('class',$followerClass)
+                    ->whereIn($conn)
+                    ->get();
+
+            return $items;
+        }
+        else {
+            return null;
+        }
+
+	}
+
     public function connectToDiscussion() {
 		return $this->belongsToMany('Riari\Forum\Models\Thread','follow_relationships','follower_id','followed_id')
 								->whereFollowerType('A')

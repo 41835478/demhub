@@ -36,5 +36,98 @@
       </div>
     </div> <!-- End: Content -->
 
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="box" style="width:100%;background-color:#fff" >
+              <h4>Activity Feed</h4>
+              <div>
+                <ul>
+                  <li id="publicationsLi" class="under-border"><a href="#publications" onclick="togglePublications()">Publications</a></li>
+                  <li id="discussionsLi" class="under-border"><a href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
+                  <li id="networkLi" class="under-border"><a href="#network" onclick="toggleNetwork()">Network</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+              <div id="boxList" style="width:100%;margin:10px 15px 5px 15px;padding:15px 20px 5px 20px;" >
+                  <div id="discussionsList">
+                    <?php $items = $publication->contents_relation_data('publication','thread'); ?>
+                    @if($items)
+                        @foreach($items as $item)
+                          @include('frontend.card._card')
+                        @endforeach
+                    @endif
+                  </div>
+
+                <div id="publicationsList">
+
+                </div>
+
+
+
+                <div id="networkList">
+                    <?php $items = $publication->contents_relation_data('publication','user'); ?>
+                    @if($items)
+                        @foreach($items as $item)
+                          @include('frontend.card._card')
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        $( document ).ready(function() {
+          $("#publicationsList").hide();
+          $("#networkList").hide();
+          $("#discussionsList").hide();
+
+          if ( $('#discussionsList').children().length > 0 ) {
+              $("#discussionsList").toggle();
+          } else if ($('#networkList').children().length > 0) {
+              $("#networkList").toggle();
+          } else if ($('#publicationsList').children().length > 0) {
+              $("#publicationsList").toggle();
+          }
+        });
+        function togglePublications(){
+
+          $("#publicationsList").toggle();
+          $("#publicationsLi").attr('class','active-border');
+
+          $("#networkLi").attr('class','under-border');
+          $("#networkList").hide();
+          $("#discussionsLi").attr('class','under-border');
+          $("#discussionsList").hide()
+        }
+        function toggleDiscussions(){
+
+          $("#discussionsList").toggle();
+          $("#discussionsLi").attr('class','active-border');
+
+          $("#networkLi").attr('class','under-border');
+          $("#networkList").hide();
+          $("#publicationsLi").attr('class','under-border');
+          $("#publicationsList").hide();
+        }
+        function toggleNetwork(){
+
+          $("#networkList").toggle();
+          $("#networkLi").attr('class','active-border');
+          $("#publicationsLi").attr('class','under-border');
+          $("#publicationsList").hide();
+          $("#discussionsLi").attr('class','under-border');
+          $("#discussionsList").hide()
+
+        }
+    </script>
   </section>
 @endsection
