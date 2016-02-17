@@ -114,6 +114,10 @@ $(function () {
 		"../images/about/ryersonslc.jpg"
 	]);
 
+    $("#js-landing-carousel-2").backstretch([
+		"../images/backgrounds/welcome.jpg"
+	]);
+
 	/* ---------------------------------------------------------
 	 * Background (Backstretch) - Divisions
 	 */
@@ -233,11 +237,11 @@ $("select#country").change(function(){
       $("#"+country+"_map").show();
       document.getElementById(country+"_map").style.visibility="";
       document.getElementById(country+"_map").style.height="";
-      $("#backButton").attr("onclick","window.location.reload()");
-      document.getElementById("backButton").style.display="";
-			document.getElementById("divisionFormGroup").style.display="";
-			// document.getElementById("keywordFormGroup").style.display="";
-			document.getElementById("countryFormGroup").style.display="none";
+      $("#backButton").hide();
+      $("#resetButton").show();
+	     document.getElementById("divisionFormGroup").style.display="";
+	     // document.getElementById("keywordFormGroup").style.display="";
+		 document.getElementById("countryFormGroup").style.display="none";
     }
 
 });
@@ -273,9 +277,9 @@ function firstFilterF(country){
 			document.getElementById("australia_map").style.marginTop="-15px";
 		}
 
-    $("#backButton").attr("onclick","window.location.reload()");
 
-    document.getElementById("backButton").style.display="";
+    $("#backButton").hide();
+    $("#resetButton").show();
     $("#"+country+"_map").show();
     document.getElementById(country+"_map").style.visibility="";
     document.getElementById(country+"_map").style.height="";
@@ -306,15 +310,16 @@ $("select#division").change(function(){
 				if(item.indexOf(filterVar) ==-1 && $(this).parent().hasClass('in')) {
 					$(this).parent().addClass("out");
         	$(this).parent().removeClass("in");
-				} 
+				}
 			});
 
 					$(".mapContainer").hide();
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-
-			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
+            $("#backButton").hide();
+            $("#resetButton").show();
+			
 		}
 	});
 
@@ -338,7 +343,8 @@ $("select#keyword").change(function(){
 					// document.getElementById(country+"_map").style.display="";
 					document.getElementById("mapListing").style.display="";
 
-
+            $("#backButton").show();
+            $("#resetButton").hide();
 			$("#backButton").prop("onclick","firstFilterF('"+currentCountry+"')");
 		}
 	});
@@ -360,7 +366,8 @@ if (($("select#region").val()) !== null){
       $(".mapContainer").hide();
       // document.getElementById(country+"_map").style.display="";
       document.getElementById("mapListing").style.display="";
-
+      $("#backButton").show();
+      $("#resetButton").hide();
       $("#backButton").attr("onclick","firstFilterF('"+currentCountry+"')");
 
   }
@@ -6972,38 +6979,45 @@ function caretSet (action){
 //     }
 // });
 //
+$(function() {
+    var userTeaser = $('.people-card-info').height();
+    var userTeaserBox = $('.peoplebox-teaser').height();
+    var nameword = $('#js_user_name').val();
+    var userTeaserName = $('.js_user_name');
 
-function responsiveImg() {
+    function resizeUserBox() {
+    for(var i = 0, l = userTeaserName.length; i < l; i ++){
+    console.log(wordcount,userTeaser[i],userTeaserBox[i]);
 
-  var winwidth = $(window).width();
-  var winheight = $(window).height();
-  var Imgwidth = $('.care-bg > img').width();
-  var Imgheight = $('.care-bg > img').height();
-
-if (Imgwidth <= winwidth && Imgheight >= winheight){
-    $('.care-bg > img').css('width','100vw');
-    $('.care-bg > img').css('height','auto');
-  }
-
-else if (Imgheight <= winheight && Imgwidth >= winwidth){
-      $('.care-bg > img').css('width','auto');
-      $('.care-bg > img').css('height','100vh');
-  }
-
-  else if (Imgheight < winheight && Imgwidth < winwidth){
-    H = winheight - Imgheight;
-    W = winwidth - Imgwidth;
-    if (H > W){
-      $('.care-bg > img').css('width','auto');
-      $('.care-bg > img').css('height','100vh');
+        if (userTeaser[i] > userTeaserBox[i]){
+            userTeaserName[i].css('font-size','0.6em');
+        }
     }
-    else {
-      $('.care-bg > img').css('width','100vw');
-      $('.care-bg > img').css('height','auto');
-    }
-    }
-  // console.log(winwidth,winheight,Imgwidth,Imgheight);
-}
+};
+
+    var theWindow        = $(window),
+        $bg              = $("#caroimage"),
+        aspectRatio      = $bg.width() / $bg.height();
+
+    function resizeBg() {
+        if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+            $bg
+                .removeClass()
+                .addClass('bgheight');
+        } else {
+            $bg
+                .removeClass()
+                .addClass('bgwidth');
+        }
+    };
+
+    theWindow.resize(function() {
+        resizeBg();
+        resizeUserBox();
+    }).trigger("resize");
+
+});
+
 // Get the modal
 var modal = document.getElementById('mymodal');
 
@@ -7028,11 +7042,11 @@ $(function(){
     var modalPosition = $('.landingmodal');
     modalPosition.css({
       top:nodeTop - 46,
-      left:nodeLeft 
+      left:nodeLeft
     });
     var svgID = $(this).attr('id');
 
-    // console.log(svgID);
+    console.log(svgID);
     var mapImg = $('#map-img');
     if(svgID === "XMLID_8"){
       $(mapImg).attr('src','images/landing-avatars/torrin.jpg');
@@ -7043,7 +7057,7 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_1"){
-      $(mapImg).attr('src','images/landing-avatars/aldo.png');
+      $(mapImg).attr('src','images/landing-avatars/aldo.jpg');
       $('#map-user').html('<li>Aldo Ruiz</li>');
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>Programmer</li>');
@@ -7051,6 +7065,7 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_15"){
+      $(mapImg).attr('src','images/landing-avatars/missing.png');
       $('#map-user').html('<li>Diana Wong</li>');
       $('#map-place').html('<li>Australia</li>');
       $('#map-profession').html('<li>Disaster Health Evaluation Consultant</li>');
@@ -7058,6 +7073,7 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_13"){
+      $(mapImg).attr('src','images/landing-avatars/missing.png');
       $('#map-user').html('<li>Matt Feryan</li>');
       $('#map-place').html('<li>USA</li>');
       $('#map-profession').html('<li>Sr. Emergency Management Specialist</li>');
@@ -7065,14 +7081,15 @@ $(function(){
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
     else if(svgID === "XMLID_5"){
+      $(mapImg).attr('src','images/landing-avatars/missing.png');
       $('#map-user').html('<li>Deb Borsos</li>');
       $('#map-place').html('<li>Canada</li>');
       $('#map-profession').html('<li>ESS Director, rural Recovery work</li>');
       $('#map-division').html('<li>Science & Environment</li>');
       $('#map-follow').html('<li><button>FOLLOW</button></li>');
     }
-    else{
-        $(mapImg).attr('src','images/landing-avatars/missing.png');
+    else {
+        $(mapImg).attr('src','images/landing-avatars/unknown.png');
         $('#map-user').html('<li>This location awaits your input </li>');
         $('#map-place').html('<li></li>');
         $('#map-profession').html('<li>Connect to Disaster Management professionals worldwide</li>');
@@ -7097,15 +7114,11 @@ $('.st3').mouseover(function(){
   });
 });
 
-$(document).ready(function(){
-    responsiveImg();
-});
-
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
 
 
 var twitterElement;
@@ -7179,7 +7192,7 @@ $(document).on('submit', 'form.js-bookmark', function(e){
         },
         complete: function(jqHXR, status) {
             // TODO - Add feedback for user to confirm that action was completed
-            // something similar to a 
+            // something similar to a flash alert
             $(loader_target).hide();
             if (unbookmark) {
                 bookmark_target.action = bookmark_target.action.replace(/unbookmark/g, "bookmark");
@@ -7203,5 +7216,208 @@ $(document).on('submit', 'form.js-bookmark', function(e){
         }
     });
 });
+
+$(document).on('submit', 'form.js-follow', function(e){
+    e.preventDefault();
+    var follow_target   = this;
+    var span_target     = "#" + follow_target.id + " .js-follow-tag";
+    var loader_target   = "#" + follow_target.id + " .js-loader";
+    // unfollow : boolean to determine whether an item
+    // is being followed or unfollowed
+    var unfollow      = /unfollow/i.test(follow_target.action) ? true : false;
+    var button_target;
+
+    $.ajax({
+        type: 'post',
+        url: follow_target.action,
+        async: true,
+        beforeSend: function() {
+            $(span_target).hide();
+            $(loader_target).show();
+        },
+        complete: function(jqHXR, status) {
+            // TODO - Add feedback for user to confirm that action was completed
+            // something similar to a flash alert
+            $(loader_target).hide();
+            if (unfollow) {
+                follow_target.action = follow_target.action.replace(/unfollow/g, "follow");
+                button_target = $(span_target).parent().removeClass('btn-greytone').addClass('btn-style-alt');
+                $(span_target).replaceWith(
+                    "<span class='js-follow-tag glyphicon glyphicon-plus' aria-hidden='true'> FOLLOW</span>"
+                );
+            } else {
+                follow_target.action = follow_target.action.replace(/follow/g, "unfollow");
+                button_target = $(span_target).parent().addClass('btn-greytone').removeClass('btn-style-alt');
+                $(span_target).replaceWith(
+                    "<span class='js-follow-tag glyphicon glyphicon-ok' style='font-size:85%' aria-hidden='true'> UNFOLLOW</span>"
+                );
+            }
+        },
+        success: function(data) {
+            console.log("Success!");
+        },
+        error: function(xhr, textStatus, thrownError) {
+            alert('Something went to wrong. Please Try again later...');
+        }
+    });
+});
+
+// TODO - Fix this so that it plays nicely with includes/invites.js
+
+$(document).ready(function() {
+    $("#feedbackForm").hide();
+    $('div#dashboard-icon > i').click(function() {
+        $("#feedbackForm").show();
+        if ($('div#dashboard').css('right') == '-350px') {
+            $('div#dashboard').animate({
+                right: '0px'
+            }, function() {
+                $('div#dashboard-icon > i').removeClass();
+                $('div#dashboard-icon > i').addClass('fa fa-angle-double-right');
+                $('div#dashboard-icon').css('right', '350px');
+            });
+        } else if ($('div#dashboard').css('right') == '0px') {
+            $('div#dashboard').animate({
+                right: '-350px'
+            }, function() {
+                $('div#dashboard-icon > i').removeClass();
+                $('div#dashboard-icon > i').addClass('fa fa-pencil-square-o');
+                $('div#dashboard-icon').css('right', '0');
+            });
+        }
+    });
+
+});
+
+function sidebar(action) {
+    var dashboard = $("#dashboard");
+    if (action == "invite") {
+        $("#feedbackForm").hide();
+        $("#inviteForm").show();
+        dashboard.addClass("open");
+    } else if (action == "feedback") {
+        $("#feedbackForm").show();
+        $("#inviteForm").hide();
+        dashboard.addClass("open");
+    } else if (action == "close") {
+        dashboard.removeClass("open");
+    } else if (action == "toggle") {
+        if (dashboard.hasClass("open")) {
+            dashboard.removeClass("open");
+        } else {
+            dashboard.addClass("open");
+        }
+    }
+}
+
+function feedbackFormUpdate() {
+    if ($("input:checked").length < 3) {
+        $('#modalErrorButton').click();
+    } else {
+        $('#modalSuccessButton').click();
+    }
+}
+
+$(document).ready(function() {
+    $("#inviteForm").hide();
+    $('#invite-icon').click(function() {
+        $("#inviteForm").show();
+        if ($('#dashboard').css('right') == '-350px') {
+            $('#dashboard').animate({
+                right: '0px'
+            }, function() {
+                $('#invite-icon > i').removeClass();
+                $('#invite-icon > i').addClass('fa fa-angle-double-right');
+                $('#invite-icon').css('right', '350px');
+            });
+        } else if ($('#dashboard').css('right') == '0px') {
+            $('#dashboard').animate({
+                right: '-350px'
+            }, function() {
+                $('#invite-icon > i').removeClass();
+                $('#invite-icon > i').addClass('fa fa-envelope-o');
+                $('#invite-icon').css('right', '0');
+            });
+        }
+    });
+
+    // TODO - Move this somewhere else
+    $("i").hover(
+        function() {
+            $(this).tooltip('show');
+        },
+        function() {
+            $(this).tooltip('hide');
+        }
+    );
+
+});
+
+function sidebar(action) {
+    var dashboard = $("#dashboard");
+    if (action == "invite") {
+        $("#feedbackForm").hide();
+        $("#inviteForm").show();
+        dashboard.addClass("open");
+    } else if (action == "close") {
+        dashboard.removeClass("open");
+    } else if (action == "toggle") {
+        if (dashboard.hasClass("open")) {
+            dashboard.removeClass("open");
+        } else {
+            dashboard.addClass("open");
+        }
+    }
+}
+
+$(document).ready(function(){
+	$(".searchbar-group").mouseenter(function() {
+		search_focus(true);
+	}).mouseleave(function() {
+		search_focus(false);
+	});
+
+	$(".nav-searchbar, .nav-search-text, .nav-search-icon-style").blur(function(){
+		search_focus(false);
+	}).focus(function(){
+		search_focus(true);
+	});
+
+	if(search_has_text()){
+		search_focus(true);
+	}
+});
+
+function search_focus(give_focus){
+	if(give_focus){
+		$(".nav-searchbar").addClass("active");
+		$(".nav-search-icon-style").addClass("active");
+		$(".nav-search-text").addClass("active");
+	} else {
+		if(	!search_has_text() &&
+			!$(".nav-searchbar").is(":focus") &&
+			!$(".nav-search-icon-style").is(":focus") &&
+			!$(".nav-search-text").is(":focus"))
+		{
+			$(".nav-searchbar").removeClass("active");
+			$(".nav-search-icon-style").removeClass("active");
+			$(".nav-search-text").removeClass("active");
+		}
+	}
+}
+
+function search_has_text()
+{
+	var text = '';
+	$(".nav-searchbar").each(function(index){
+		if($(this).val().trim() !== '')
+			text = $(this).val().trim();
+	});
+
+	if(text == '')
+		return false;
+	else
+		return text;
+}
 
 //# sourceMappingURL=frontend.js.map
