@@ -39,7 +39,7 @@ elixir(function(mix) {
             'frontend/plugins/moment.js',
             'frontend/plugins/bootstrap-datetimepicker.js',
             'frontend/publications/index.js',
-            'frontend/Page-animate/page-specific-animation.js', //some animations for multiple pages
+            'frontend/page_animate/page-specific-animation.js', //some animations for multiple pages
             'frontend/divisions/feeds.js',
             'frontend/card/bookmark.js',
             'frontend/card/follow.js',

@@ -141,3 +141,7 @@
     </div> <!-- End: feedsbox-teaser -->
 
 </div>
+<div id="firsttime-popup">
+    <div class="black-bg">
+    </div>
+</div>
