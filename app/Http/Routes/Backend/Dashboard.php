@@ -7,6 +7,7 @@ get('articles', 'DashboardController@articles')->name('backend.articles');
 get('reports', 'DashboardController@reports')->name('backend.reports');
 get('signup', 'DashboardController@signup')->name('backend.signup');
 get('betaInvite', 'DashboardController@betaInvite')->name('backend.betainvites');
+get('potentialusersinvites', 'DashboardController@potentialusersinvites')->name('backend.potentialusersinvites');
 get('reengageEmail', 'DashboardController@reengageEmail')->name('backend.reengageEmail');
 get('scripts', 'DashboardController@scripts')->name('backend.scripts');
 get('runScript', 'DashboardController@runScript')->name('backend.runScript');
