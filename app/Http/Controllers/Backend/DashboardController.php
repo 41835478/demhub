@@ -266,8 +266,7 @@ class DashboardController extends Controller {
 					"location" => $location
 				];
 
-				dd($data);
-				// Emailer::sendAutoregisterEmail($data);
+				Emailer::sendAutoregisterBetaInvite($data);
 	    });
 
 			return view('backend.betainvites', compact(['files']))
