@@ -101,7 +101,7 @@
 				</div>
 
 		    <div class="item">
-
+                <img id="caroimage" src="/images/backgrounds/welcome.jpg" alt="...">
 		      <div class="carousel-caption">
 		          <h3> Discover and get discovered within professional circles.</h3>
 		      </div>
