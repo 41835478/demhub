@@ -285,7 +285,7 @@ class DashboardController extends Controller {
 	public function reengageEmail(Request $request)
 	{
 		if ($request->input('users') && $request->input('users') == 'reengage') {
-			foreach (User::all() as $user) {
+			foreach (User::where('id','>',37)->get() as $user) {
 				Emailer::sendReengageEmail($user);
 			}
 			return view('backend.reengageEmail', compact(['files']))
