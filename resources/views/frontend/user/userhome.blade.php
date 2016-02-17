@@ -4,6 +4,7 @@
 @section('body-class')userhome-body @endsection
 
 @section('content')
+
 	<div class="container-fluid row">
 
 		<h3 class="text-center" style="color: #ccc">Latest</h3>
