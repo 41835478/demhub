@@ -51,6 +51,10 @@ class Emailer
 								array(
 									'name' => 'user_full_name',
 									'content' => $user->full_name()
+								),
+                                array(
+									'name' => 'user_email',
+									'content' => $user->email
 								)
 							)
 						)
