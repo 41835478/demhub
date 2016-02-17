@@ -40,9 +40,9 @@
   			      <td>
                       @if(! empty($divisions))
                             @foreach ($divisions as $divSlug => $divName)
-			                        <a href="{{url('/division/'.$divSlug)}}">
+			                        <span>
 		  							        <img src="/images/backgrounds/patterns/alpha_layer.png" alt="" class="img-circle img-responsive division_{{$divSlug}}" style="height:22px">
-		  						    </a>
+		  						    </span>
 
                             @endforeach
                         @else
