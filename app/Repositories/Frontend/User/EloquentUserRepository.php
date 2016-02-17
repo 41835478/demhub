@@ -66,7 +66,7 @@ class EloquentUserRepository implements UserContract {
         		$user->confirmed = 1;
 
         // TODO - Check if this implemenation of the welcome email needs to be changed
-        Emailer::sendWelcomeEmail($user)
+        Emailer::sendWelcomeEmail($user);
 		return $user;
 	}
 

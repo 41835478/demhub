@@ -2,7 +2,7 @@
     use App\Http\Components\Helpers;
 
     if($item['subclass']=='publication'){ $item['url']='publication/'.$item['id'].'/view';}
-    elseif($item['subclass']=='thread'){ $item['url']=Helpers::route($item);}
+    elseif($item['subclass']=='thread'){ $item['url']='forum/'.Helpers::route($item);}
 
     $width = 100;
     if(count($item['divisions']) > 0) {
@@ -85,8 +85,13 @@
             </a>
         </h3>
 
+        <div class="{{ isset($neededObject[0]) ? 'article-title-box label-default' : 'label-default' }}"
+        style="font-size:82%;display:inline;color:#fff;padding-left:1.3%;padding-right:1%;text-transform:capitalize">
+            {{ ($item['subclass']=='thread') ? 'discussion' : $item['subclass']}}
+        </div>
+
         <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : '' }}
-        style="font-size:82%;color:#777777;">
+        style="font-size:82%;color:#777777;padding-left:1.3%">
             {{ date_format(new DateTime($item['publish_date']), 'j F Y | g:i a') }}
         </span>
 

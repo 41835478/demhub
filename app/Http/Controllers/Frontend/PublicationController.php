@@ -88,6 +88,7 @@ class PublicationController extends Controller
 
         // TODO - check 'status' to see if increment happened successfully
         // $status should be true
+        
         $status = $publication->incrementViewCount();
 
         return view(

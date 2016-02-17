@@ -2154,7 +2154,8 @@ input[type="radio"] {
 }
 
 button.btn-greytone,
-a.btn-greytone {
+a.btn-greytone,
+div.btn-greytone {
   background: #ccc;
   color: #333;
   border-radius: 0.5px;

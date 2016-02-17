@@ -9,7 +9,7 @@ class ElasticsearchInfoResourceObserver
     {
         Es::index([
             'index' => 'info',
-            'type' => 'resource',
+            'type' => 'resources',
             'id' => $resource->id,
             'body' => $resource->toArray()
         ]);
@@ -19,7 +19,7 @@ class ElasticsearchInfoResourceObserver
     {
         Es::index([
             'index' => 'info',
-            'type' => 'resource',
+            'type' => 'resources',
             'id' => $resource->id,
             'body' => $resource->toArray()
         ]);
@@ -29,7 +29,7 @@ class ElasticsearchInfoResourceObserver
     {
         Es::delete([
             'index' => 'info',
-            'type' => 'resource',
+            'type' => 'resources',
             'id' => $resource->id
         ]);
     }
