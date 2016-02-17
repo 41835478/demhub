@@ -196,7 +196,7 @@
 				<div class="splash-row">
 
 						@foreach($divisions as $div)
-							<a href="{{url('division', $div->slug)}}">
+							<a href="/<?php /*{{url('division', $div->slug)}}*/ ?>">
 								<div class="division-landing-box col-md-2">
 									<div id="division_{{$div->id}}">
 										<div class="icon division-{{$div->slug}} landing-icon x-lrg"></div>
