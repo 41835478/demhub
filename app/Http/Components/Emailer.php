@@ -44,22 +44,77 @@ class Emailer
 					'return_path_domain' => null,
 					'merge' => true,
 					'merge_language' => 'mailchimp',
+					'merge_vars' => array(
+						array(
+							'rcpt' => $user->email,
+							'vars' => array(
+								array(
+									'name' => 'user_full_name',
+									'content' => $user->full_name()
+								),
+                                array(
+									'name' => 'user_email',
+									'content' => $user->email
+								)
+							)
+						)
+					),
 					'images' => array(
 							array(
 									'type' => 'image/png',
-									'name' => 'banner',
-									'content' => File::get($email_images_path.'banner.txt')
+									'name' => 'discuss',
+									'content' => File::get($email_images_path.'discuss.txt')
 							),
 							array(
 									'type' => 'image/png',
-									'name' => 'secondary',
-									'content' => File::get($email_images_path.'secondary.txt')
+									'name' => 'earth',
+									'content' => File::get($email_images_path.'earth.txt')
 							),
 							array(
 									'type' => 'image/png',
-									'name' => 'twitter',
-									'content' => File::get($email_images_path.'twitter.txt')
-							)
+									'name' => 'linked25',
+									'content' => File::get($email_images_path.'linked25.txt')
+							),
+                            array(
+									'type' => 'image/png',
+									'name' => 'linkedin20',
+									'content' => File::get($email_images_path.'linkedin20.txt')
+							),
+							array(
+									'type' => 'image/png',
+									'name' => 'logowhite',
+									'content' => File::get($email_images_path.'logowhite.txt')
+							),
+							array(
+									'type' => 'image/png',
+									'name' => 'people',
+									'content' => File::get($email_images_path.'people.txt')
+							),
+                            array(
+									'type' => 'image/png',
+									'name' => 'share',
+									'content' => File::get($email_images_path.'share.txt')
+							),
+							array(
+									'type' => 'image/png',
+									'name' => 'thankyou',
+									'content' => File::get($email_images_path.'thankyou.txt')
+							),
+							array(
+									'type' => 'image/png',
+									'name' => 'twitter20',
+									'content' => File::get($email_images_path.'twitter20.txt')
+							),
+                            array(
+									'type' => 'image/png',
+									'name' => 'twitter25',
+									'content' => File::get($email_images_path.'twitter25.txt')
+							),
+							array(
+									'type' => 'image/png',
+									'name' => 'web',
+									'content' => File::get($email_images_path.'web.txt')
+							),
 					)
 			);
 			$async = false;
