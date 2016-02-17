@@ -42,9 +42,9 @@
               <h4>Activity Feed</h4>
               <div>
                 <ul>
-                  <li id="publicationsLi" class="under-border"><a href="#publications" onclick="togglePublications()">Publications</a></li>
+                  <li id="publicationsLi" class="under-border"><a href="#publications" onclick="togglePublications()">Related Publications</a></li>
                   <li id="discussionsLi" class="under-border"><a href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
-                  <li id="networkLi" class="under-border"><a href="#network" onclick="toggleNetwork()">Network</a></li>
+                  <li id="networkLi" class="under-border"><a href="#network" onclick="toggleNetwork()">Followers</a></li>
                 </ul>
               </div>
             </div>
