@@ -213,7 +213,6 @@ option {
 
 .table-details1 {
   width: 100%;
-  max-height: 45%;
   display: block;
 }
 
@@ -289,7 +288,6 @@ option {
 
 .table-details2 {
   width: 100%;
-  max-height: 45%;
   display: block;
 }
 
@@ -4126,23 +4124,21 @@ a.btn-greytone:active {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 0px 5px -5px 0px;
-  border: 1px solid #ddd;
   float: left;
   position: relative;
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .box {
   margin: 10px 15px 5px 15px;
   padding: 15px 20px 5px 20px;
-  border: 1px solid #ddd;
   float: left;
   position: relative;
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .box ul li {
@@ -4183,13 +4179,12 @@ li.active-border {
   display: inline-block;
   margin: 10px 0px 5px 0px;
   padding: 15px 0px 5px 0px;
-  border: 1px solid #ddd;
   float: left;
   position: relative;
   text-transform: capitalize;
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .feedsbox-teaser {

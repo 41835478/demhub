@@ -66,8 +66,8 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
-        <div class="box" style="width:100%;background-color:#fff" >
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="box" style="width:100%;background-color:#fff;margin-bottom: 50px;" >
           <h4>Activity Feed</h4>
           <div>
             <ul>
@@ -78,7 +78,7 @@
           </div>
 
           <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <div class="col-xs-12">
               <div id="boxList" style="width:100%;margin:10px 15px 5px 15px;padding:15px 20px 5px 20px;" >
                 <div id="publicationsList">
                   <?php $items = $user->publications;
