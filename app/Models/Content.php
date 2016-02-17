@@ -168,6 +168,11 @@ class Content extends Model
         }
 
 	}
+    public function same_division_same_class($class){
+        $class=strtoupper(substr($class,0,1));
+
+
+    }
 
     public function connectToDiscussion() {
 		return $this->belongsToMany('Riari\Forum\Models\Thread','follow_relationships','follower_id','followed_id')

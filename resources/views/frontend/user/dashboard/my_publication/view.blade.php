@@ -1,15 +1,17 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-  <section id="content_wrapper" class="col-md-10 col-md-offset-1" style="margin-top: 60px;">
+  <section id="content_wrapper" style="margin-top: 60px;">
 
     <!-- Begin: Content -->
-    <div id="content" class="animated fadeIn" style="">
-      <div class="row center-block mt10" style="margin-left:-75px">
+    <div id="content" class="animated fadeIn row" style="">
+      <div class="col-sm-9 col-sm-offset-2">
 
-        <a type="button" class="btn btn-style-alt" href="{{ URL::to('public_journal') }}" style="margin-left:10px">
-          <span class="glyphicon glyphicon-folder-close"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS
-        </a>
+          <div class="col-sm-offset-1" style="padding-left:15px">
+            <a type="button" class="btn btn-style-alt" href="{{ URL::to('public_journal') }}" style="margin-left:10px">
+              <span class="glyphicon glyphicon-folder-close"></span><span style="visibility:hidden">*</span> ALL PUBLICATIONS
+            </a>
+        </div>
 
         @if($publication->mainMedia())
           <div class="col-sm-offset-5" style="display:inline">
@@ -36,23 +38,20 @@
       </div>
     </div> <!-- End: Content -->
 
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <div class="box" style="width:100%;background-color:#fff" >
-              <h4>Activity Feed</h4>
-              <div>
-                <ul>
-                  <li id="publicationsLi" class="under-border"><a href="#publications" onclick="togglePublications()">Related Publications</a></li>
-                  <li id="discussionsLi" class="under-border"><a href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
-                  <li id="networkLi" class="under-border"><a href="#network" onclick="toggleNetwork()">Followers</a></li>
-                </ul>
-              </div>
-            </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="box" style="width:100%;background-color:#fff;margin-bottom: 50px;" >
+          <h4>Activity Feed</h4>
+          <div>
+            <ul>
+              <li id="publicationsLi" class="under-border"><a href="#publications" onclick="togglePublications()">Related Publications</a></li>
+              <li id="discussionsLi" class="under-border"><a href="#discussions" onclick="toggleDiscussions()">Discussions</a></li>
+              <li id="networkLi" class="under-border"><a href="#network" onclick="toggleNetwork()">Followers</a></li>
+            </ul>
           </div>
-        </div>
 
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+          <div class="row">
+            <div class="col-xs-12">
               <div id="boxList" style="width:100%;margin:10px 15px 5px 15px;padding:15px 20px 5px 20px;" >
                   <div id="discussionsList">
                     <?php $items = $publication->contents_relation_data('publication','thread'); ?>
@@ -64,7 +63,12 @@
                   </div>
 
                 <div id="publicationsList">
-
+                    <?php $items = $publication->contents_relation_data('publication','thread'); ?>
+                    @if($items)
+                        @foreach($items as $item)
+                          @include('frontend.card._card')
+                        @endforeach
+                    @endif
                 </div>
 
 
