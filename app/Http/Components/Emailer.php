@@ -190,7 +190,7 @@ class Emailer
 					),
 					array(
 						'type' => 'image/png',
-						'name' => 'bg',
+						'name' => 'bgsmall',
 						'content' => File::get($email_images_path.'bg.txt')
 					),
 					array(
