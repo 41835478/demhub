@@ -153,8 +153,8 @@ class PublicationController extends Controller
           $request->institution,
           $request->conference,
           $request->publication_author,
-          FAVORITES_DEFAULT,
-          VIEWS_DEFAULT,
+          0,
+          1,
       ]);
 
         $inputs = [

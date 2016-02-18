@@ -219,6 +219,14 @@ class Content extends Model
 
     public function mainMediaUrl()
     {
-        return $this->mainMedia() ? $this->mainMedia()->resource->url() : NULL;
+        if ($this->mainMedia()) {
+            if ($this->mainMedia()->resource->contentType() == 'url') {
+                return $this->mainMedia()->resource->originalFilename();
+            } else {
+                return $this->mainMedia()->resource->url();
+            }
+        } else {
+            return NULL;
+        }
     }
 }
