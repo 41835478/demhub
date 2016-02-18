@@ -126,18 +126,37 @@ class Content extends Model
                 ->whereFollowedType($typeB)
                 ->select('followed_id')
                 ->get();
+        if ($relationsThis){
+
+            $contentArrayThis=array();
+            foreach ($relationsThis as $key => $selection) {
+                $contentArrayThis[$key]=$selection->followed_id;
+            }
+        }
         $relationsB = DB::table('follow_relationships')->where('follower_type',$typeB)
                 ->whereFollowedId($contentId)
                 ->whereFollowedType($typeThis)
                 ->select('follower_id')
                 ->get();
+        if ($relationsB){
+
+            $contentArrayB=array();
+            foreach ($relationsB as $key => $selection) {
+                $contentArrayB[$key]=$selection->follower_id;
+            }
+        }
+
 
         if ($relationsThis || $relationsB){
-            $relations=array_merge($relationsThis,$relationsB);
-            $contentArray=[];
-            foreach ($relations as $key => $selection) {
-                $contentArray[$key]=$selection->follower_id;
-            }
+            if (! empty($contentArrayThis) && ! empty($contentArrayB)){
+            $contentArray=array_merge($contentArrayThis,$contentArrayB);
+            } elseif (! empty($contentArrayThis)){
+                $contentArray=$contentArrayThis;
+            } else if (! empty($contentArrayB)){
+                $contentArray=$contentArrayB;
+            } else {
+            };
+
             //$items = Thread::whereIn('id',$threadArray)->get();
             $classB=ucfirst($classB);
             if($classB=="User") {
@@ -156,9 +175,7 @@ class Content extends Model
     public function connectedContent($followerClass,$followedClass) {
 		$conn=check_for_relation($followerClass,$followedClass);
         if($conn){
-            $items = DB::table('contents')
-                // ->where('class',$followerClass)
-                    ->whereIn($conn)
+            $items = Content::whereIn($conn)
                     ->get();
 
             return $items;
@@ -172,11 +189,13 @@ class Content extends Model
         //$class=ucfirst($this['subclass']);
         $type=strtoupper(substr($this['subclass'],0,1));
         $firstDivision=strtoupper(substr($this['divisions'],1,1));
-
-        $items = Content::where('subclass',$this['subclass'])
-                ->where('divisions','LIKE', '%'.$firstDivision.'%')
-                ->get();
-        return $items;
+        if (isset($firstDivision)){
+            $items = Content::where('subclass',$this['subclass'])
+                    ->where('divisions','LIKE', '%'.$firstDivision.'%')
+                    ->get();
+            return $items;
+        };
+        return null;
 
     }
 
