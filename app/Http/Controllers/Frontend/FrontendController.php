@@ -230,16 +230,6 @@ class FrontendController extends Controller {
 			]
 		];
         $advisorsMedium = [
-            "willO" => [
-				"name" => "Will Ollerhead",
-				"position" => "Strategic Business Development",
-				"description" => NULL
-			],
-            "SeanK" => [
-				"name" => "Sean Kondra",
-				"position" => "Strategic Business Development",
-				"description" => NULL
-			],
             "richardS" => [
 				"name" => "Richard Serino",
 				"position" => "EM Preparedness & Technology",
@@ -255,6 +245,16 @@ class FrontendController extends Controller {
 				"position" => "EM Industry and Consultation",
 				"description" => NULL
 			],
+            "willO" => [
+				"name" => "Will Ollerhead",
+				"position" => "Strategic Business Development",
+				"description" => NULL
+			],
+            "SeanK" => [
+				"name" => "Sean Kondra",
+				"position" => "Strategic Business Development",
+				"description" => NULL
+			]
         ];
 
 		return view('frontend.about.index', [
