@@ -29,7 +29,7 @@ class UserController extends Controller {
 
 	public function getActivities() {
 		$contents = Content::where('subclass', '!=', 'infoResource')
-											// ->orderBy('publish_date', 'desc')
+											->orderBy('publish_date', 'desc')
 											->orderBy('updated_at', 'desc')
 											->paginate(30);
 		$allDivisions = Division::all();
