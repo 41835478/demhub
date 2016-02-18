@@ -26,6 +26,7 @@ class PublicationRequest extends Request {
 	public function rules()
 	{
 		return [
+      'document' => 'max:20480',   
       'name' => 'required',
       'publication_date' => 'required',
 			'volume' => 'integer',
