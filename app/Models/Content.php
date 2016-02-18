@@ -192,7 +192,7 @@ class Content extends Model
         if (isset($firstDivision)){
             $items = Content::where('subclass',$this['subclass'])
                     ->where('divisions','LIKE', '%'.$firstDivision.'%')
-                    ->where(id,'!=',$this['id'])
+                    ->where('id','!=',$this['id'])
                     ->get();
             return $items;
         };
