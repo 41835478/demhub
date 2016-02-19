@@ -23,8 +23,9 @@
             'class' => 'col-xs-3 col-sm-2 control-label my-publication-label'
         ]) !!}
         <div class="col-sm-6">
-            {!! Form::input('text', 'description', null, [
-                'class' => 'form-control ', 'maxlength'=>'255', 'placeholder' => '50 words or less', 'id' => 'description'
+            {!! Form::textarea('text', 'description', [
+                'class' => 'form-control ', 'maxlength'=>'255', 'placeholder' => '50 words or less', 'id' => 'description',
+                'rows'=>"5",'style' => 'resize: none'
             ]) !!}
         </div>
         <div class="help-block with-errors"></div>
