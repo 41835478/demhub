@@ -29,5 +29,5 @@
         $("#top-menu li a").mouseleave(function() {
             $(this).children(".img-circle").attr("style","background-image:url({{Auth::user()->avatar->url('thumb')}});");
         });
-    })
+    });
 </script>
