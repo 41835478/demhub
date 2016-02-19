@@ -27,6 +27,18 @@ class UserController extends Controller {
 		]))->render();
 	}
 
+    /**
+	 * test // user activities
+	 */
+	public function userActivityFeed(){
+
+		$followEvents = FollowRelationship::all();
+
+		return view('frontend.user.userActivityFeed', compact([
+			'followEvents'
+		]))->render();
+	}
+
 	public function getActivities() {
 		$contents = Content::where('subclass', '!=', 'infoResource')
                                             ->where('deleted','!=',1)
