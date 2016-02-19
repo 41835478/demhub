@@ -3,7 +3,11 @@
 
     <tr>
       <td class="col-xs-3 col-sm-2 publication-detail-label">Description</td>
-      <td>{{ $publication->description }}</td>
+      <td>
+          <?php
+            echo preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', nl2br(e($publication->description)));
+          ?>
+      </td>
     </tr>
 
     <tr>

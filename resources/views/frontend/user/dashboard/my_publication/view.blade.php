@@ -14,7 +14,7 @@
         </div>
 
         @if($publication->mainMedia())
-          <div class="col-sm-offset-2" style="display:inline">
+          <div class="col-sm-offset-1" style="display:inline">
             <a type="button" class="btn btn-style-alt" href="{{ $publication->mainMediaUrl() }}">FULL SCREEN</a>
           </div>
         @endif

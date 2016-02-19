@@ -162,11 +162,8 @@
 <br>
 <script>
 
-
 $('#publication_date').click( function (){
   $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
 });
-
-
 
 </script>
