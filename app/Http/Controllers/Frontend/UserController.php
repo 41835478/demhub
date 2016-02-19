@@ -29,6 +29,7 @@ class UserController extends Controller {
 
 	public function getActivities() {
 		$contents = Content::where('subclass', '!=', 'infoResource')
+                                            ->where('deleted','!=',1)
 											->orderBy('publish_date', 'desc')
 											->orderBy('updated_at', 'desc')
 											->paginate(30);
