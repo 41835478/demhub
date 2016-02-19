@@ -149,7 +149,6 @@ class PublicationController extends Controller
         $keywords= $keywords.str_replace(',','|',$request->keywords);
         $keywords = str_replace(' ', '', $keywords);
         $keywords = $keywords.'|';
-        dd($keywords);
 
         $data = json_encode([
           $request->volume,
