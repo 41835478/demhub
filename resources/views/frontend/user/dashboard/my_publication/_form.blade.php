@@ -13,7 +13,7 @@
             @if (isset($publication) && $publication->mainMedia())
                 <input type="text" class="form-control" value="{{$publication->mainMediaName()}}" disabled/>
             @else
-                {!! Form::file('document', null, ['class' => 'form-control', 'required']) !!}
+                {!! Form::file('document', null, ['class' => 'form-control']) !!}
             @endif
         </div>
     </div>
@@ -41,7 +41,7 @@
 
     <div class="form-group">
         {!! Form::label('publication_date', "Date", ['class' => 'col-xs-3 col-sm-2 control-label my-publication-label']) !!}
-        <div class="col-sm-6 input-group date" id='datetimepicker1' style="padding-left:10px;padding-right:10px">
+        <div class="col-sm-6 input-group date" id='datetimepicker1' style="padding-left:10px;padding-right:10px;color:#fff">
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -160,3 +160,13 @@
 </div>
 
 <br>
+<script>
+
+
+$('#publication_date').click( function (){
+  $('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY'});
+});
+
+
+
+</script>
