@@ -145,6 +145,11 @@ class PublicationController extends Controller
         }
         $divisions = $divisions.'|';
 
+        $keywords = '|';
+        $keywords= $keywords.str_replace(',','|',$request->$keywords);
+        $keywords = str_replace(' ', '', $keywords);
+        $keywords = $keywords.'|';
+
         $data = json_encode([
           $request->volume,
           $request->issues,
@@ -162,7 +167,7 @@ class PublicationController extends Controller
         'description' => $request->description,
         'data' => $data,
         'divisions' => $divisions,
-        'keywords' => $request->keywords,
+        'keywords' => $keywords,
         'visibility' => $request->visibility,
         'owner_id' => Auth::user()->id,
         'deleted' => 0,
@@ -208,11 +213,16 @@ class PublicationController extends Controller
         }
         $divisions = $divisions.'|';
 
+        $keywords = '|';
+        $keywords= $keywords.str_replace(',','|',$request->$keywords);
+        $keywords = str_replace(' ', '', $keywords);
+        $keywords = $keywords.'|';
+
         $inputs = [
             'name'          => $request->name,
             'description'   => $request->description,
             'divisions'     => $divisions,
-            'keywords'      => $request->keywords,
+            'keywords'      => $keywords,
             'visibility'    => $request->visibility,
             'owner_id'      => Auth::user()->id,
             'deleted'       => 0,
