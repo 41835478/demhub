@@ -55,17 +55,17 @@
 									</a>
 								</li> --}}
 
-								<li class="text-center {{Request::url() === route('info_resources') ? 'active' : ''}}" style="display:inline-block;">
-									<a href="{{route('info_resources')}}">
-										<i class="fa fa-book fa-fw" style="margin: 0 auto;font-size: 2.0em;"></i>
-										<p style="font-size:55%;">{!! trans('RESOURCES') !!}<p>
+								<li class="text-center {{Request::url() === route('profiles') ? 'active' : ''}}" style="display:inline-block;">
+									<a href="{{url('profiles')}}">
+										<i class="fa fa-users fa-fw" style="margin: 0 auto;font-size: 2.0em;"></i>
+										<p style="font-size:55%;">{!! trans('NETWORK') !!}<p>
 									</a>
 								</li>
 
-								<li class="text-center {{strpos(Request::url(), 'forum') == true ? 'active' : ''}}" style="display:inline-block;">
-									<a href="{{url('forum/all_threads')}}">
-										<i class="fa fa-comments fa-fw" style="margin: -2px auto 2px auto;font-size: 2.2em"></i>
-										<p style="font-size:55%;margin-top:-2px">{!! trans('DISCUSSIONS') !!}<p>
+								<li class="text-center {{Request::url() === route('publications') ? 'active' : ''}}" style="display:inline-block;">
+									<a href="{{route('publications')}}">
+										<i class="fa fa-book fa-fw" style="margin: -2px auto 2px auto;font-size: 2.2em"></i>
+										<p style="font-size:55%;margin-top:-2px">{!! trans('PUBLICATIONS') !!}<p>
 									</a>
 								</li>
 

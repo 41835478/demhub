@@ -7388,6 +7388,10 @@ $(document).ready(function(){
 	}
 });
 
+$(document).on('change', 'select[name="scope"]', function(){
+	$(this).parents('form').submit();
+});
+
 function search_focus(give_focus){
 	if(give_focus){
 		$(".nav-searchbar").addClass("active");
