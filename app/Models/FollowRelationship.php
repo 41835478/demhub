@@ -22,7 +22,7 @@ class FollowRelationship extends Model
 	 *
 	 * @var string
 	 */
-	protected $table = 'keywords';
+	protected $table = 'follow_relationships';
 
 	/**
 	 * The attributes that are not mass assignable.
@@ -31,8 +31,7 @@ class FollowRelationship extends Model
 	 */
 	protected $guarded = ['id'];
 
-	public function follower()
-	{
-		return $this->hasMany('App\Models\NewsFeed');
+	public function follower() {
+		return $this->belongsTo('App\Models\Access\User\User');
 	}
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Article;
 use App\Models\ArticleMedia;
+use App\Models\FollowRelationship;
 use Es;
 use Config;
 
@@ -33,7 +34,7 @@ class UserController extends Controller {
 	public function userActivityFeed(){
 
 		$followEvents = FollowRelationship::all();
-
+		
 		return view('frontend.user.userActivityFeed', compact([
 			'followEvents'
 		]))->render();

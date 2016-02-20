@@ -5,9 +5,8 @@
 	@foreach($followEvents as $event)
 		{{-- 'U' for user --}}
 		@if($event->follower_type == 'U')
-			
 			<p>
-				{{$event->follower_id}}
+				{{$event->follower}}
 			</p>
 			<p>
 				{{$event->follower_type}}

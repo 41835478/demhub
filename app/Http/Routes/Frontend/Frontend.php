@@ -95,7 +95,6 @@ $router->group(['middleware' => 'auth'], function () {
 
     // Temp routes for testing user activity feed
     get('userActivityFeed', 'UserController@userActivityFeed')->name('userActivityFeed');
-
 });
 
 /*
