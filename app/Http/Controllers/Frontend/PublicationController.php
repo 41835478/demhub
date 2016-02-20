@@ -145,10 +145,15 @@ class PublicationController extends Controller
         }
         $divisions = $divisions.'|';
 
-        $keywords = '|';
-        $keywords= $keywords.str_replace(',','|',$request->keywords);
-        $keywords = str_replace(' ', '', $keywords);
-        $keywords = $keywords.'|';
+        if ($request->keywords !== '||' && strpos($request->keywords,'|')!==0){
+                $keywords = '|';
+                $keywords= $keywords.str_replace(',','|',$request->keywords);
+                $keywords = str_replace(' ', '', $keywords);
+                $keywords = $keywords.'|';
+
+        } else {
+            $keywords = $request->keywords;
+        };
 
         $data = json_encode([
           $request->volume,
@@ -213,11 +218,15 @@ class PublicationController extends Controller
         }
         $divisions = $divisions.'|';
 
-        $keywords = '|';
-        $keywords= $keywords.str_replace(',','|',$request->keywords);
-        $keywords = str_replace(' ', '', $keywords);
-        $keywords = $keywords.'|';
+        if ($request->keywords !== '||' && strpos($request->keywords,'|')!==0){
+                $keywords = '|';
+                $keywords= $keywords.str_replace(',','|',$request->keywords);
+                $keywords = str_replace(' ', '', $keywords);
+                $keywords = $keywords.'|';
 
+        } else {
+            $keywords = $request->keywords;
+        };
         $inputs = [
             'name'          => $request->name,
             'description'   => $request->description,
