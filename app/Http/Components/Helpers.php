@@ -51,7 +51,7 @@ class Helpers {
 	 */
 	public static function convertDBStringToArray($string)
 	{
-		$array = explode('|', $string);
+        $array = explode('|', $string);
 		foreach ($array as $i => $item) {
 			if ($item === '' || $item === null) unset($array[$i]);
 		}

@@ -75,24 +75,22 @@
         //do nothing
     } elseif (!empty($item) && is_array($item) && !isset($item['subclass'])) {
         $item = \App\Models\Access\User\User::find($item['id']);
-        //  $divs = array();
-        //  foreach (Helpers::convertDBStringToArray($item['division']) as $divID) {
-        //      $div = Division::findOrFail($divID);
-        //      $divs[$div->slug] = $div->name;
-        //  }
-        //  $item['division'] = $divs;
-        //  $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
     }
     // Elastic search result for content
     //TODO check logcial operation
     elseif (is_array($item) || isset($item['subclass'])) {
         $divs = array();
-        foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
-            $div = Division::findOrFail($divID);
-            $divs[$div->slug] = $div->name;
+        if (!is_array($item['divisions'])) {
+            foreach (Helpers::convertDBStringToArray($item['divisions']) as $divID) {
+                $div = Division::findOrFail($divID);
+                $divs[$div->slug] = $div->name;
+            }
+            $item['divisions'] = $divs;
         }
-        $item['divisions'] = $divs;
-        $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
+
+        if (!is_array($item['keywords'])) {
+            $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
+        }
     } elseif (isset($item->division) && !is_array($item->division)) {
         $divisions = array();
 
@@ -101,7 +99,6 @@
             $divisions[$div->slug] = $div->name;
         }
         $item->division = $divisions;
-        //  $item['keywords'] = Helpers::convertDBStringToArray($item['keywords']);
     }
 ?>
 
