@@ -47,6 +47,7 @@
                     @include('frontend.about._teammate', [
                         'imgName' 		=> $member,
                         'name'			=> $content["name"],
+                        'user_name'			=> $content["user_name"],
                         'position'		=> $content["position"],
                         'description'   => $content["description"]
                     ])
@@ -59,6 +60,7 @@
                     @include('frontend.about._advisor', [
                         'imgName' 		=> $member,
                         'name'			=> $content["name"],
+                        'user_name'			=> $content["user_name"],
                         'position'		=> $content["position"],
                         'description'	=> $content["description"]
                     ])

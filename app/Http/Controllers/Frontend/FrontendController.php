@@ -189,42 +189,50 @@ class FrontendController extends Controller {
 		$membersMedium = [
             "JenniferD" => [
 				"name" => "Jennifer Duke Holmes",
+                "user_name" => "jennifer-duke-holmes",
 				"position" => "Founder, CEO",
 				"description" => "Jennifer has spent over 5 years in the Disaster and Emergency Management field as both an academic and an entrepreneur. She founded Hybrid Intuition Media in 2013 which develops digital media materials within an emergency management context. Jen has also been President of the global student membership for the International Association of Emergency Managers, the world's largest association of its kind."
 			],
             "PoyaR" => [
 				"name" => "Poya Rahmati",
+                "user_name" => "poya-rahmati",
 				"position" => "Chief Technology Officer",
 				"description" => ""
 			],
             "AndrewC" => [
 				"name" => "Andrew Cram",
+                "user_name" => "andrew.cram",
 				"position" => "Director Of Finance",
 				"description" => "An adventurous, entrepreneurially-minded Financial professional who has worked for Coca-Cola as a Senior Financial Analyst, Thomson Reuters and State Street. Through his work experience, education at The University of Western Ontario in Finance & Accounting, and continuing Chartered Financial Analyst (CFA) studies, Andrew has exceptional knowledge in valuations, financial modeling & analysis, contract negotiation, corporate finance, and project management."
 			],
 
 			"AldoR" => [
 				"name" => "Aldo Rui­z Luna",
+                "user_name" => "aldo",
 				"position" => "Lead Developer",
 				"description" => "Results-driven, user-focused software developer with 4+ years of cumulative industry experience in automation, scripting and web applications. Deep understanding of MVC architecture and translating business needs into technical requirements. Articulate and strategic lateral thinker with an entrepreneurial spirit."
 			],
 			"LeonH" => [
 				"name" => "Leon Haggarty",
+                "user_name" => "lhaggarty",
 				"position" => "Full Stack Developer",
 				"description" => NULL
 			],
 			"JiaoX" => [
 				"name" => "Jiao Xue",
+                "user_name" => "kylo-xue",
 				"position" => "UI & UX Designer",
 				"description" => NULL
 			],
 			"PriscillaW" => [
 				"name" => "Priscilla Wong",
+                "user_name" => "pwong",
 				"position" => "UI & UX Designer",
 				"description" => NULL
 			],
 			"HilaryJ" => [
 				"name" => "Hilary Julien",
+                "user_name" => "hilary-julien",
 				"position" => "Social Media",
 				"description" => NULL
 			]
@@ -232,26 +240,31 @@ class FrontendController extends Controller {
         $advisorsMedium = [
             "richardS" => [
 				"name" => "Richard Serino",
+                "user_name" => "RichSerino",
 				"position" => "EM Preparedness & Technology",
 				"description" => NULL
 			],
             "JaneR" => [
 				"name" => "Jane Rovins",
+                "user_name" => "JaneRovins",
 				"position" => "EM Science and Research",
 				"description" => NULL
 			],
             "MargV" => [
 				"name" => "Marg Verbeek",
+                "user_name" => NULL,
 				"position" => "EM Industry and Consultation",
 				"description" => NULL
 			],
             "willO" => [
 				"name" => "Will Ollerhead",
+                "user_name" => "wollerhead",
 				"position" => "Strategic Business Development",
 				"description" => NULL
 			],
             "SeanK" => [
 				"name" => "Sean Kondra",
+                "user_name" => "skondra",
 				"position" => "Strategic Business Development",
 				"description" => NULL
 			]
