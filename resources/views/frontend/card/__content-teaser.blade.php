@@ -21,7 +21,7 @@
     <!-- Begin: feedsbox-teaser -->
     <div class = "feedsbox-teaser">
 
-        <div class="col-xs-1" style="height: 145px; margin-left:-15px;padding-bottom:5px;max-width:30px">
+        <div class="col-xs-1" style="position:absolute;height: 145px; margin-left:-15px;padding-bottom:5px;max-width:30px">
             @forelse($item['divisions'] as $slug => $div)
                 <div style="height:{{$height}}%;" class="color-label-vertical division_{{$slug}}"
                 data-toggle="tooltip" data-placement="top" title="{{$div}}">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Begin: inner-feedsbox-teaser -->
-        <div class="col-xs-10 inner-feedsbox-teaser">
+        <div class="col-xs-12 inner-feedsbox-teaser" style="margin-left: 15px; padding-left: 30px;">
 
             <div class="article-background col-xs-3" style=
                 <?php
@@ -97,25 +97,28 @@
                 </a>
             </h3>
 
-            <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : '' }}
-            style="font-size:82%;color:#777777;">
-                {{ date_format(new DateTime($item['publish_date']), 'j F Y | g:i a') }}
-            </span>
+            <div class="pull-right">
+                <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : '' }}
+                      style="font-size:82%;color:#777777;">
+                    {{ date_format(new DateTime($item['publish_date']), 'j F Y | g:i a') }}
+                </span>
 
-            <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
-            style="font-size:82%;color:#000;padding-left:5%">
-                <?php
-                if (isset($item['url']) && $item['subclass']=="article"){
-                  $parse=parse_url($item['url']);
-                  $host=$parse['host'];
-                  $host=substr($host,4);
+                <span {{ isset($neededObject[0]) ? 'class="article-title-box"' : ''}}
+                      style="font-size:82%;color:#000;padding-left:5%">
+                    <?php
+                    if (isset($item['url']) && $item['subclass']=="article"){
+                        $parse=parse_url($item['url']);
+                        $host=$parse['host'];
+                        $host=substr($host,4);
 
-                  if (substr_count($host,".") <= 1){
-                    echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
-                  }
-                }
-                ?>
-            </span>
+                        if (substr_count($host,".") <= 1){
+                            echo '<a target="_blank" href="http://www.'.$host.'">'.$host.'</a>';
+                        }
+                    }
+                    ?>
+                </span>
+            </div>
+
 
             <div {{ Request::url() == url('userhome') || strpos(Request::url(), "division")!==false ?
             'style="top:115px; position:absolute; width:100%;"' : 'style="position:absolute; width:100%;"' }} >

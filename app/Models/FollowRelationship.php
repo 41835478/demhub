@@ -22,7 +22,7 @@ class FollowRelationship extends Model
 	 *
 	 * @var string
 	 */
-	protected $table = 'keywords';
+	protected $table = 'follow_relationships';
 
 	/**
 	 * The attributes that are not mass assignable.
@@ -31,8 +31,88 @@ class FollowRelationship extends Model
 	 */
 	protected $guarded = ['id'];
 
-	public function follower()
-	{
-		return $this->hasMany('App\Models\NewsFeed');
+	/**
+	 * Publication date attribute
+	 *
+	 * @var array
+	 */
+	protected $dates = ['created_at', 'updated_at'];
+
+	public function follower() {
+		$model = NULL;
+		switch ($this->follower_type) {
+			case 'A': // ARTICLE
+				$model = 'App\Models\Article';
+				break;
+
+			// NOTE - ORGANIZATION Not yet in use
+			// case 'O': // ORGANIZATION
+			// 	# code...
+			// 	break;
+
+			case 'P': // PUBLICATION
+				$model = 'App\Models\Publication';
+				break;
+
+			case 'U':
+				$model = 'App\Models\Access\User\User';
+				break;
+
+			default:
+				return NULL;
+				break;
+		}
+		return $this->belongsTo($model, 'follower_id');
+	}
+
+	public function followed() {
+		$model = NULL;
+		switch ($this->followed_type) {
+			case 'A': // ARTICLE
+				$model = 'App\Models\Article';
+				break;
+
+			case 'D': // DIVISION
+				$model = 'App\Models\Division';
+				break;
+
+			case 'K': // KEYWORD
+				$model = 'App\Models\Keyword';
+				break;
+
+			case 'L': // LOCATION
+				$model = 'App\Models\Location';
+				break;
+
+			// NOTE - ORGANIZATION Not yet in use
+			// case 'O': // ORGANIZATION
+			// 	# code...
+			// 	break;
+
+			case 'P': // PUBLICATION
+				$model = 'App\Models\Publication';
+				break;
+
+			case 'R': // RESOURCE
+				$model = 'App\Models\InfoResource';
+				break;
+
+			case 'S': // SCRAPE_SOURCE
+				$model = 'App\Models\ScrapeSource';
+				break;
+
+			case 'T': // THREAD
+				$model = 'Riari\Forum\Models\Thread';
+				break;
+
+			case 'U': // USER
+				$model = 'App\Models\Access\User\User';
+				break;
+
+			default:
+				return NULL;
+				break;
+		}
+		return $this->belongsTo($model, 'followed_id');
 	}
 }
