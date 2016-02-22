@@ -145,7 +145,7 @@ class PublicationController extends Controller
         }
         $divisions = $divisions.'|';
 
-        if ($request->keywords !== '||' && strpos($request->keywords,'|')!==0){
+        if ($request->keywords !== '||' || $request->keywords !== NULL && strpos($request->keywords,'|')!==0){
                 $keywords = '|';
                 $keywords= $keywords.str_replace(',','|',$request->keywords);
                 $keywords = str_replace(' ', '', $keywords);
